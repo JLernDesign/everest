@@ -1,5 +1,45 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
-  devtools: { enabled: true }
-})
+  devtools: { enabled: false },
+
+  app: {
+    baseURL: '/',
+    head: {
+      title: 'Everest',
+      htmlAttrs: { lang: 'en' },
+      meta: [
+        { charset: 'utf-8' },
+        {
+          name: 'viewport',
+          content: 'width=device-width, initial-scale=1, maximum-scale=1',
+        },
+      ],
+    },
+  },
+
+  ssr: true,
+
+  nitro: {
+    prerender: {
+      failOnError: false,
+      crawlLinks: false,
+    },
+    preset: 'netlify',
+  },
+
+  modules: ['@vueuse/nuxt', '@nuxtjs/tailwindcss', '@nuxt/scripts'],
+
+  /* gtag: {
+    id: "G-252493159",
+  }, */
+
+  runtimeConfig: {
+    public: {
+      datoCmsToken: process.env.DATO_CMS_TOKEN,
+      BASE_URL: process.env.BASE_URL,
+    },
+  },
+
+  css: ['~/assets/fonts/fonts.css', '~/assets/css/global.css'],
+});
