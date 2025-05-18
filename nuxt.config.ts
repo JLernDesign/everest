@@ -15,6 +15,19 @@ export default defineNuxtConfig({
           content: 'width=device-width, initial-scale=1, maximum-scale=1',
         },
       ],
+      link: [
+        {
+          rel: 'preconnect',
+          href: 'https://fonts.googleapis.com',
+        },
+        {
+          rel: 'stylesheet',
+          href: 'https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&display=swap',
+          media: 'print',
+          onload: "this.onload=null;this.removeAttribute('media');",
+          crossorigin: '',
+        },
+      ],
     },
   },
 
@@ -28,7 +41,7 @@ export default defineNuxtConfig({
     preset: 'netlify',
   },
 
-  modules: ['@vueuse/nuxt', '@nuxtjs/tailwindcss', '@nuxt/scripts'],
+  modules: ['@vueuse/nuxt', '@nuxtjs/tailwindcss', '@nuxt/scripts', 'nuxt-graphql-request'],
 
   /* gtag: {
     id: "G-252493159",

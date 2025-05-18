@@ -12,8 +12,10 @@
   "dependencies": {
     "@nuxt/scripts": "^0.11.6",
     "@unhead/vue": "^2.0.8",
+    "graphql": "16.11.0",
     "gsap": "npm:@gsap/shockingly@^3.12.7",
     "nuxt": "^3.17.3",
+    "nuxt-graphql-request": "8.1.1",
     "vue": "^3.5.13",
     "vue-datocms": "^8.1.2",
     "vue-router": "^4.5.1"

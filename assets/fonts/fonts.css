@@ -17,10 +17,10 @@
 }
 
 @font-face {
-  font-family: 'Helvetica Neue LT Pro Md';
-  src: url('HelveticaNeueLTPro-Md.woff2') format('woff2'),
-    url('HelveticaNeueLTPro-Md.woff') format('woff');
-  font-weight: 500;
+  font-family: 'Helvetica Neue LT Pro Heavy';
+  src: url('HelveticaNeueLTPro-Hv.woff2') format('woff2'),
+    url('HelveticaNeueLTPro-Hv.woff') format('woff');
+  font-weight: 800;
   font-style: normal;
   font-display: swap;
 }

@@ -1,18 +1,36 @@
-/* colors */
-
-:root {
-  --teal: #067386;
-  --lime: #13ec9c;
-  --dark: #013139;
-  --orange: #ff7800;
-  --dkteal: #064651;
-  --paleorange: #f8f1e7;
-  --ltorange: #f9e6d2;
-}
-
 /* fluid resizing */
 
-@media (min-width: 1201px) and (max-width: 1800px) {
+:root {
+  --size: 375;
+  --clamp: 11px;
+  --global-font-size: clamp(
+    1px,
+    calc(10 * (100vw / var(--size))),
+    var(--clamp)
+  );
+}
+
+@media (min-width: 650px) {
+  :root {
+    --size: 1800;
+  }
+}
+
+html {
+  font-size: var(--global-font-size);
+  font-kerning: none;
+  font-variant-ligatures: common-ligatures;
+  -webkit-text-size-adjust: none;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+  background-color: theme('colors.shadowblue');
+  color: theme('colors.black');
+  hyphens: none;
+}
+
+/* @media (min-width: 1201px) and (max-width: 1800px) {
   html {
     font-size: clamp(0.625rem, -0.125rem + 1vw, 1rem);
   }
@@ -26,23 +44,27 @@
   html {
     font-size: clamp(1rem, 0.25rem + 3.0769vw, 1.5rem);
   }
-}
+} */
 
 /* setup */
 
 body {
-  font-family: 'Helvetica Neue LT Pro', sans-serif;
-  color: var(--dark);
+  font-family: theme('fontFamily.helv');
+  font-weight: 400;
+  font-size: 2.2rem;
+  line-height: 1.31;
+  color: theme('colors.black');
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #fff;
+  background-color: theme('colors.skyblue');
 }
 ::-moz-selection {
-  background: var(--teal);
+  background: theme('colors.red');
+
   color: #fff;
 }
 ::selection {
-  background: var(--teal);
+  background: theme('colors.red');
   color: #fff;
 }
 b,
@@ -229,17 +251,8 @@ svg.trans {
   transition: all 0.3s linear;
 }
 
+/* hoveres */
 @media (pointer: fine) {
-  .cta-btn:hover {
-    svg {
-      stroke: var(--lime);
-    }
-  }
-  .arrow-btn:hover {
-    svg {
-      fill: var(--lime);
-    }
-  }
 }
 
 .scroll-reveal {
@@ -284,7 +297,7 @@ svg.trans {
   width: 100vw;
   height: 100%;
   pointer-events: none;
-  background-color: var(--dkteal);
+  background-color: #000;
   opacity: 0;
   transition: opacity 0.5s ease-out;
   z-index: 50;
@@ -305,7 +318,6 @@ svg.trans {
     top: 50vh;
     margin: -75px 0 0 -75px;
     opacity: 0;
-    background: url(/icons/logo-circle.svg) center center no-repeat;
     transition: opacity 0.25s ease-out;
   }
 }
@@ -348,5 +360,5 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 1000px #fff inset;
-  -webkit-text-fill-color: var(--dark);
+  -webkit-text-fill-color: #000;
 }

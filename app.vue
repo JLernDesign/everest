@@ -1,6 +1,7 @@
 <script setup>
 import gsap from 'gsap';
 import { toHead } from 'vue-datocms';
+import HomeQuery from '~/assets/graphql/home.graphql';
 
 const route = useRoute();
 const router = useRouter();
@@ -12,7 +13,7 @@ const base_url = useState('base_url', () => 'https://everest.com');
 //const first_view = useState('first_view', () => true);
 
 // init global meta data
-const QUERY = /* GraphQL */ `
+const QUERY_OLD = /* GraphQL */ `
   query {
     site: _site {
       favicon: faviconMetaTags {
@@ -37,6 +38,7 @@ const QUERY = /* GraphQL */ `
     }
   }
 `;
+const QUERY = HomeQuery.loc.source.body;
 const { data } = await useGraphqlQuery({ query: QUERY });
 
 // compile meta tags for head

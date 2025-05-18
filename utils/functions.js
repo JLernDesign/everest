@@ -327,3 +327,8 @@ export const breakpoints = useBreakpoints({
   desktop: 1200,
   lgdesktop: 1500,
 });
+
+// shortcuts
+export const qs = (s, o = document) => o.querySelector(s);
+export const qsa = (s, o = document) => [...o.querySelectorAll(s)];
+export const rect = (el) => el.getBoundingClientRect();
