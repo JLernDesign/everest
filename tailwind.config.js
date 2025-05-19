@@ -82,7 +82,7 @@ export default {
         inner: 'inset 0 0 20px rgba(0, 0, 0, 0.15)',
       },
       maxWidth: {
-        base: '93.75rem',
+        base: '148rem',
       },
       padding: {
         'section-top': '10rem',

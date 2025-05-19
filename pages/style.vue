@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <div class="px-side space-y-10">
+  <div class="px-side space-y-10 max-w-base mx-auto">
     <div class="text-eyebrowb uppercase font-barlow font-bold">
       Quote to Cash
     </div>
@@ -83,6 +83,15 @@
       </div>
     </div>
   </div>
+
+  <Carousel>
+    <div
+      v-for="n in 5"
+      class="item shrink-0 w-[33.4%] grid place-content-center cursor-grab text-xl"
+    >
+      {{ n }}
+    </div>
+  </Carousel>
 </template>
 
 <style scoped></style>
