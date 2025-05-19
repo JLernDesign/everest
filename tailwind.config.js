@@ -31,11 +31,12 @@ export default {
       green: '#779D48',
       tan: '#E3D4C4',
       peach: '#FEF6F0',
-      grayline: 'rgba(0,0,0,.7)',
+      grayline: 'rgba(0,0,0,.07)',
       transparent: 'transparent',
     },
     fontFamily: {
-      barlow: ['Barlow Condensed', 'sans-serif'],
+      barlow: ['Barlow', 'sans-serif'],
+      'barlow-cond': ['Barlow Condensed', 'sans-serif'],
       helv: ['Helvetica Neue LT Pro', 'sans-serif'],
       helvb: ['Helvetica Neue LT Pro Bold', 'sans-serif'],
       helvh: ['Helvetica Neue LT Pro Heavy', 'sans-serif'],
@@ -51,8 +52,10 @@ export default {
       lg: '6rem',
       xl: '12rem',
       xxl: '24rem',
+      tag: '1.5rem',
     },
     lineHeight: {
+      sm: '1.38',
       body: '1.31',
       md: '1.33',
       xl: '.82',
@@ -62,6 +65,7 @@ export default {
       base: '.25rem',
     },
     borderRadius: {
+      sm: '.5rem',
       base: '1rem',
       btn: '10rem',
       diamond: '1.6rem',
@@ -93,6 +97,7 @@ export default {
       },
       margin: {
         sm: '1.875rem',
+        btn: '5rem',
       },
       borderWidth: {
         1: '1px',

@@ -13,31 +13,6 @@ const base_url = useState('base_url', () => 'https://everest.com');
 //const first_view = useState('first_view', () => true);
 
 // init global meta data
-const QUERY_OLD = /* GraphQL */ `
-  query {
-    site: _site {
-      favicon: faviconMetaTags {
-        attributes
-        content
-        tag
-      }
-      globalSeo {
-        fallbackSeo {
-          title
-          description
-        }
-      }
-    }
-    home {
-      headline
-      seo: _seoMetaTags {
-        attributes
-        content
-        tag
-      }
-    }
-  }
-`;
 const QUERY = HomeQuery.loc.source.body;
 const { data } = await useGraphqlQuery({ query: QUERY });
 
