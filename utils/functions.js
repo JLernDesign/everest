@@ -174,6 +174,49 @@ export const playInView = (
   });
 };
 
+// expand/collapse sections
+export const toggleExpand = (id, group) => {
+  group.forEach((item, i) => {
+    if (id == i) {
+      // open
+      if (!item.classList.contains('open')) {
+        item.classList.add('open');
+        const h = item.scrollHeight;
+        gsap.to(item, {
+          duration: 0.75,
+          height: h,
+          ease: 'power3.inOut',
+          onComplete: function () {
+            item.style.height = 'auto';
+          },
+        });
+
+        // close
+      } else {
+        item.classList.remove('open');
+        const h = item.scrollHeight;
+        gsap.fromTo(
+          item,
+          { height: h },
+          { duration: 0.75, height: 0, ease: 'power3.inOut' }
+        );
+      }
+
+      // close others if open
+    } else {
+      if (item.classList.contains('open')) {
+        item.classList.remove('open');
+        const h = item.scrollHeight;
+        gsap.fromTo(
+          item,
+          { height: h },
+          { duration: 0.75, height: 0, ease: 'power3.inOut' }
+        );
+      }
+    }
+  });
+};
+
 export const shuffle = (array) => {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));

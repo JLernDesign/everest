@@ -5,6 +5,8 @@ const props = defineProps(['data', 'type', 'active', 'submenu', 'close_func']);
 
 // submenu
 const openMenu = () => {
+  console.log('open');
+
   gsap.killTweensOf(menu.value);
   gsap.to(menu.value, {
     duration: 0.5,
@@ -91,25 +93,32 @@ const toggleSubMenu = (e) => {
 </script>
 
 <template>
-  <li @mouseleave="type != 'mobile' && submenu ? closeMenu() : null">
+  <li
+    @mouseleave="type != 'mobile' && submenu ? closeMenu() : null"
+    class="relative"
+  >
     <NuxtLink
       :to="type == 'main' ? data.url : null"
-      :data-href="data.url"
       :data-parent="type == 'mobile' && submenu ? true : null"
       :target="data.target"
-      class="toplink text-body-sm"
+      class="relative z-1 toplink text-body-sm"
       :class="[type == 'main' && active == data.title ? 'on' : null]"
       @mouseenter="type == 'main' && submenu ? openMenu() : null"
       @click.prevent="handleClick"
       >{{ data.title }}
+
+      <!-- mobile arrow -->
       <div v-if="type == 'mobile' && submenu" class="arrow">
         <img src="/public/ui/chevron.svg" alt="" />
       </div>
     </NuxtLink>
 
-    <div v-if="submenu" class="nav-sub" :class="data.subMenu.menuType">
-      <ul class="submenu" ref="menu">
-        <template v-for="item in data.subMenu.menu">
+    <div v-if="submenu" class="nav-sub w-full relative z-0 h-0">
+      <ul
+        class="submenu absolute min-w-full left-0 top-full z-0 mt-[.8rem] hidden opacity-0 before:content-[''] before:absolute before:left-0 before:-top-[3rem] before:w-full before:h-[3rem]"
+        ref="menu"
+      >
+        <!-- <template v-for="item in data.subMenu.menu">
           <li>
             <NuxtLink
               :to="item.url"
@@ -125,83 +134,13 @@ const toggleSubMenu = (e) => {
               {{ item.title }}
             </NuxtLink>
           </li>
-        </template>
+        </template> -->
       </ul>
     </div>
   </li>
 </template>
 
 <style scoped>
-/* .toplink {
-  z-index: 1;
-  width: 100%;
-}
-.arrow {
-  position: absolute;
-  right: -2px;
-  top: 15px;
-  width: 14px;
-  height: 25px;
-} */
-/* @media (min-width: 1025px) {
-  .submenu {
-    position: absolute;
-    left: 0;
-    top: 100%;
-    z-index: 0;
-    margin-top: 8px;
-    display: none;
-    opacity: 0;
-    transform: translateY(10px);
-    &:before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: -30px;
-      width: 100%;
-      height: 30px;
-    }
-    li {
-      width: 100%;
-      display: inline-block;
-    }
-    a {
-      width: 100%;
-      text-align: left;
-      padding: 12px 12px;
-      font-size: 14px;
-    }
-  }
-
-  .nav-sub {
-    &.text {
-      .submenu {
-        width: 215px;
-        a {
-          display: block;
-        }
-      }
-    }
-    &.icons {
-      .submenu {
-        width: 500px;
-        a {
-          display: flex;
-          justify-items: flex-start;
-          align-items: center;
-        }
-      }
-      .list-icon {
-        width: 46px;
-        height: 46px;
-        margin-right: 20px;
-        img {
-          object-fit: cover;
-        }
-      }
-    }
-  }
-} */
 /* @media (max-width: 1024px) {
   .nav-sub {
     height: 0;

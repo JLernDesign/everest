@@ -63,7 +63,7 @@ import RadialGradient from '~/components/UI/RadialGradient.vue';
 
       <IconChevron color="stroke-red" />
 
-      <div>
+      <!-- <div>
         <div
           v-for="n in 2"
           class="overview dark bg-shadowblue w-full h-[50rem] relative border-b border-[#3D4856]"
@@ -72,16 +72,16 @@ import RadialGradient from '~/components/UI/RadialGradient.vue';
             class="from-[#21272F] to-shadowblue bg-gradient-to-t w-full h-[6.2rem] absolute bottom-0 left-0 opacity-[.6]"
           ></div>
         </div>
-      </div>
+      </div> -->
 
-      <div class="has-jag">
+      <!-- <div class="has-jag">
         <div class="w-full bg-red h-[30rem]"></div>
         <div class="relative w-full bg-peach pb-20">
           <div class="absolute w-full h-[26.8rem] -top-[26.8rem]">
             <UIJagEdge color="fill-peach" />
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
 
     <Section class="bg-skyblue"
@@ -125,9 +125,9 @@ import RadialGradient from '~/components/UI/RadialGradient.vue';
       <CtaBtn to="/">View More</CtaBtn>
     </div>
 
-    <RadialGradient
+    <!--    <RadialGradient
       class="w-[118rem] h-[203.5rem] rotate-90 rounded-[203.5rem]"
-    />
+    /> -->
   </div>
 </template>
 

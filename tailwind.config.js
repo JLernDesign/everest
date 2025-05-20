@@ -32,6 +32,7 @@ export default {
       tan: '#E3D4C4',
       peach: '#FEF6F0',
       grayline: 'rgba(0,0,0,.07)',
+      darkline: '#3A424D',
       transparent: 'transparent',
     },
     fontFamily: {
@@ -43,7 +44,7 @@ export default {
     },
     fontSize: {
       eyebrow: '1.8rem',
-      eyebrowb: '2.1rem',
+      'body-xsm': '1.5rem',
       'body-sm': '1.8rem',
       body: '2.2rem',
       'body-md': '3rem',

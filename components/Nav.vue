@@ -29,7 +29,7 @@ const QUERY = /* GraphQL */ `
 `;
 /* const { data, error } = await useGraphqlQuery({ query: QUERY });
 const menu = toRaw(data.value).global.mainMenu; */
-const menu = [0, 0, 0, 0];
+const menu = [{ subMenu: true }, 0, 0, 0];
 
 const setActive = () => {
   activePage.value = '';
