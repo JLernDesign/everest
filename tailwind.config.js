@@ -58,6 +58,7 @@ export default {
       sm: '1.38',
       body: '1.31',
       md: '1.33',
+      lg: '.91',
       xl: '.82',
       xxl: '.82',
     },
@@ -69,6 +70,7 @@ export default {
       base: '1rem',
       btn: '10rem',
       diamond: '1.6rem',
+      full: '50%',
       none: '0',
     },
     zIndex: {
@@ -89,6 +91,7 @@ export default {
         base: '148rem',
       },
       padding: {
+        sm: '.8rem',
         'section-top': '10rem',
         'hero-top': '16rem',
         side: '4rem',
@@ -110,7 +113,8 @@ export default {
       },
       space: {
         nav: '4rem',
-        btn: '2rem',
+        btn: '2.5rem',
+        header: '5rem',
       },
     },
   },

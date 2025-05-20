@@ -32,10 +32,12 @@
       }}
     </p>
 
+    <!-- arrow -->
     <div class="arrow absolute right-0 bottom-0 pr-thumb pb-[2.5rem]">
       <IconArrow color="stroke-black" />
     </div>
 
+    <!-- link -->
     <NuxtLink
       to="/"
       class="absolute left-0 top-0 w-full h-full block"

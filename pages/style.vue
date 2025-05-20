@@ -55,12 +55,7 @@ import RadialGradient from '~/components/UI/RadialGradient.vue';
     > -->
       <CtaBtn to="#">Try Everest</CtaBtn>
 
-      <div class="diamond-btn size-[5.4rem] grid place-content-center relative">
-        <div
-          class="absolute bg-red w-full h-full rounded-diamond rotate-45 outline outline-1 outline-skyblue -outline-offset-[.8rem]"
-        ></div>
-        <img src="/public/ui/arrow-fill.svg" class="relative ml-1" alt="" />
-      </div>
+      <UIArrowDiamond />
 
       <div class="arrow-down rotate-90 -scale-y-100 inline-block">
         <IconArrow color="stroke-black" />
@@ -89,6 +84,31 @@ import RadialGradient from '~/components/UI/RadialGradient.vue';
       </div>
     </div>
 
+    <Section class="bg-skyblue"
+      ><SectionHeader
+        :data="{
+          eyebrow: 'Why Everest',
+          headline:
+            'Solving the challenges that<br/> hold SaaS companies back.',
+          intro:
+            'At Everest, we don’t just automate your core<br/> business processes—we fortify them.',
+          cta: [
+            {
+              type: 'button',
+              title: 'Read More',
+              url: '#',
+            },
+            {
+              type: 'text',
+              title: 'About',
+              url: '#',
+            },
+          ],
+        }"
+    /></Section>
+
+    <UIVideoThumb />
+
     <Carousel>
       <div
         v-for="n in 5"
@@ -104,8 +124,6 @@ import RadialGradient from '~/components/UI/RadialGradient.vue';
     <div class="text-center mt-btn">
       <CtaBtn to="/">View More</CtaBtn>
     </div>
-
-    <IconEyebrow color="fill-black" />
 
     <RadialGradient
       class="w-[118rem] h-[203.5rem] rotate-90 rounded-[203.5rem]"

@@ -2,14 +2,19 @@
 
 <template>
   <footer class="main relative min-h-[50rem]">
-    <div class="texture absolute left-0 top-0 w-full h-full z-0">
-      <img
-        src="/public/ui/texture-dark.jpg"
-        alt=""
-        class="w-full h-full object-cover object-left-top"
+    <UITexture />
+
+    <div class="content relative pt-[11rem]">
+      <Brands
+        theme="dark"
+        :data="[
+          '/logos/sutter-hill.svg',
+          '/logos/altimeter.png',
+          '/logos/redpoint.png',
+          '/logos/dl.svg',
+        ]"
       />
-    </div>
-    <div class="content relative">
+
       <NuxtLink to="/" class="block w-[9.4rem] h-[8.1rem]">
         <IconLogo color="white" />
       </NuxtLink>

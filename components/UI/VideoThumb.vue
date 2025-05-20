@@ -1,0 +1,36 @@
+<script setup></script>
+
+<template>
+  <!-- thumb -->
+  <div
+    class="rounded-base overflow-hidden aspect-[1.8] w-[33.5rem] relative grid place-content-center"
+  >
+    <!-- slides -->
+    <div class="slide absolute left-0 top-0 size-full">
+      <img
+        src="/public/home/ph-video-thumb.jpg"
+        alt=""
+        class="size-full object-cover"
+      />
+    </div>
+
+    <!-- cover -->
+    <div class="absolute left-0 top-0 size-full bg-[#2A3440] opacity-80"></div>
+
+    <!-- button -->
+    <UIArrowDiamond />
+
+    <button class="absolute left-0 top-0 size-full"></button>
+  </div>
+
+  <!-- nav -->
+  <div class="thumb-nav mt-[1.5rem] flex space-x-2">
+    <div
+      v-for="n in 3"
+      class="item size-[1rem] border-red border-1 rounded-[.5rem]"
+      :class="n == 1 && 'w-[2.5rem] bg-red'"
+    ></div>
+  </div>
+</template>
+
+<style scoped></style>
