@@ -1,6 +1,17 @@
 <script setup>
-const props = defineProps(['theme']);
-const sticky = ref(false);
+import gsap from "gsap";
+import { useScroll } from "@vueuse/core";
+
+const props = defineProps(["theme"]);
+const scrolled = ref(false);
+const sticky = ref(true);
+const header = ref(null);
+const logo = ref(null);
+const logo_wrap = ref(null);
+
+const { y, isScrolling, directions } = useScroll(window);
+const sp = 0.75;
+const easer = "power3.out";
 
 const setTheme = () => {
   // manual set
@@ -13,14 +24,105 @@ onMounted(() => {
   setTheme();
 
   // sticky nav
-  useEventListener(window, 'scroll', () => {
-    if (window.scrollY > 0) {
-      sticky.value = true;
-    } else {
-      sticky.value = false;
-    }
+  useEventListener(window, "scroll", () => {
+    setSticky();
   });
 });
+
+const setSticky = () => {
+  // shrink header on scroll start
+  if (window.scrollY > 0) {
+    if (!scrolled.value) {
+      smallHeader();
+    }
+  } else {
+    if (scrolled.value) {
+      fullHeader();
+    }
+  }
+
+  // activate show/hide once past screen height
+  if (y.value > window.innerHeight) {
+    // show sticky on scroll up
+    if (directions.top) {
+      if (!sticky.value) {
+        dropSticky();
+      }
+
+      // hide sticky on scroll down
+    } else {
+      if (sticky.value) {
+        hideSticky();
+      }
+    }
+  }
+};
+
+const smallHeader = () => {
+  scrolled.value = true;
+  logo.value.setSticky();
+
+  // logo
+  gsap.to(logo_wrap.value.$el, {
+    duration: sp,
+    scale: 0.73,
+    y: "-2.5rem",
+    ease: easer,
+  });
+
+  // nav
+  const bg = qs(".navbg", header.value);
+  const wrap = qs(".nav-wrap", header.value);
+  gsap.to(bg, { duration: sp, opacity: 1, ease: easer });
+  gsap.to(wrap, { duration: sp, y: "-4.9rem", ease: easer });
+
+  // cta
+  const cta = qs(".cta-wrap", header.value);
+  gsap.to(cta, { duration: sp, y: "-4.9rem", ease: easer });
+};
+
+const fullHeader = () => {
+  scrolled.value = false;
+  logo.value.unsetSticky();
+
+  // logo
+  gsap.to(logo_wrap.value.$el, {
+    duration: sp,
+    scale: 1,
+    y: "0rem",
+    ease: easer,
+  });
+
+  // nav
+  const bg = qs(".navbg", header.value);
+  const wrap = qs(".nav-wrap", header.value);
+  gsap.to(bg, { duration: sp, opacity: 0, ease: easer });
+  gsap.to(wrap, { duration: sp, y: 0, ease: easer });
+
+  // cta
+  const cta = qs(".cta-wrap", header.value);
+  gsap.to(cta, { duration: sp, y: 0, ease: easer });
+};
+
+const dropSticky = () => {
+  sticky.value = true;
+
+  gsap.to(header.value, {
+    duration: 0.75,
+    yPercent: 0,
+    ease: easer,
+  });
+};
+
+const hideSticky = () => {
+  sticky.value = false;
+
+  gsap.to(header.value, {
+    duration: 0.75,
+    yPercent: -100,
+    ease: "power3.inOut",
+  });
+};
 
 defineExpose({
   setTheme,
@@ -28,21 +130,40 @@ defineExpose({
 </script>
 
 <template>
-  <!-- logo -->
-  <div class="logo-main absolute p-side">
-    <NuxtLink to="/" class="block w-[9.4rem] h-[8.1rem]">
-      <IconLogo />
-    </NuxtLink>
-  </div>
+  <header class="fixed z-20 h-[12rem] w-full" ref="header">
+    <!-- logo -->
+    <div class="logo-main absolute pl-side pt-[4.25rem]">
+      <NuxtLink
+        to="/"
+        class="block h-[8.1rem] w-[9.4rem] origin-top-left"
+        ref="logo_wrap"
+      >
+        <IconLogo ref="logo" />
+      </NuxtLink>
+    </div>
 
-  <header class="main">
     <!-- nav -->
-    <div class="w-full grid justify-center pt-[7.6rem]">
-      <Nav type="main" />
+    <div class="nav-wrap grid w-full justify-center pt-[6rem]">
+      <div class="relative grid place-content-center px-[5rem] py-[1.25rem]">
+        <div
+          class="navbg bg-jaffa border-jaffalt absolute -top-[1px] left-0 h-full w-full rounded-btn border-1 opacity-0"
+        ></div>
+        <Nav type="main" />
+      </div>
     </div>
 
     <!-- cta / login -->
-    <div class="absolute right-0 top-0 p-side">
+    <div class="cta-wrap absolute right-0 top-0 pr-side pt-10">
+      <div
+        class="mb-[1.65rem] flex justify-end space-x-8 text-[1.3rem] uppercase"
+      >
+        <a href="#" class="flex items-start">
+          <span>EN</span
+          ><span class="ml-2 mt-1 inline-block"
+            ><IconChevron color="black" /></span
+        ></a>
+        <a href="#">Sign In</a>
+      </div>
       <CtaBtn>Try Everest</CtaBtn>
     </div>
   </header>

@@ -1,7 +1,7 @@
 <script setup>
 // reset to global page meta data
 //initSiteMeta();
-const page_id = 'homePage';
+const page_id = "homePage";
 
 // pull page from global site data by id
 const QUERY = /* GraphQL */ `
@@ -24,7 +24,7 @@ const page_data = toRaw(data.value)[page_id]; */
 </script>
 
 <template>
-  <div>Page</div>
+  <div class="h-screen">Page</div>
 </template>
 
 <style scoped></style>

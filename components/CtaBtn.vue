@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps(['href', 'target', 'theme']);
+const props = defineProps(["href", "target", "theme"]);
 
 const hoverOn = () => {};
 const hoverOff = () => {};
@@ -9,16 +9,16 @@ const hoverOff = () => {};
   <NuxtLink
     :to="props.href"
     :target="props.target"
-    class="cta-btn rounded-btn bg-red px-6 py-6 inline-flex items-center text-body-sm text-skyblue font-helvh"
+    class="cta-btn inline-flex items-center rounded-btn bg-red px-[1.4rem] py-[1.4rem] font-helvh text-body-sm text-skyblue"
   >
     <div><slot /></div>
-    <div class="arrow ml-4 relative">
+    <div class="arrow relative ml-4">
       <div
-        class="diamond size-[2.6rem] bg-transparent rounded-[.8rem] grid place-content-center rotate-45 p-[.4rem]"
+        class="diamond grid size-[2.6rem] rotate-45 place-content-center rounded-[.8rem] bg-transparent p-[.4rem]"
       >
         <IconArrow
           color="stroke-skyblue"
-          class="-rotate-45 size-full ml-[.2rem]"
+          class="ml-[.2rem] size-full -rotate-45"
         />
       </div>
     </div>

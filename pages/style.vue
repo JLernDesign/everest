@@ -1,16 +1,16 @@
 <script setup>
-import RadialGradient from '~/components/UI/RadialGradient.vue';
+import RadialGradient from "~/components/UI/RadialGradient.vue";
 </script>
 
 <template>
   <div class="overflow-hidden">
-    <div class="px-side space-y-10 max-w-base mx-auto">
-      <div class="text-eyebrowb uppercase font-barlow-cond font-bold">
+    <div class="mx-auto max-w-base space-y-10 px-side">
+      <div class="text-eyebrowb font-barlow-cond font-bold uppercase">
         Quote to Cash
       </div>
 
       <div class="max-w-[80rem]">
-        <h1 class="font-barlow-cond font-bold text-xl leading-xl">
+        <h1 class="font-barlow-cond text-xl font-bold leading-xl">
           Streamline every step from quote to cash.
         </h1>
         <p class="text-body">
@@ -20,11 +20,11 @@ import RadialGradient from '~/components/UI/RadialGradient.vue';
       </div>
 
       <h2
-        class="font-barlow-cond font-semibold text-xxl leading-xxl text-center"
+        class="text-center font-barlow-cond text-xxl font-semibold leading-xxl"
       >
         A COMPLETELY REIMAGINED <br />
         <span
-          class="inline-flex w-[32.1rem] h-[16.8rem] bg-[#9DBEE3] rounded-[.9rem] -mr-10"
+          class="-mr-10 inline-flex h-[16.8rem] w-[32.1rem] rounded-[.9rem] bg-[#9DBEE3]"
         ></span>
         ERP
       </h2>
@@ -37,12 +37,12 @@ import RadialGradient from '~/components/UI/RadialGradient.vue';
       <div class="space-x-btn">
         <a
           href="#"
-          class="text-body-sm font-helvh relative after:h-[1px] after:w-full after:bottom-[2px] after:absolute after:left-0 after:bg-black border-black font-extrabold text-black"
+          class="relative border-black font-helvh text-body-sm font-extrabold text-black after:absolute after:bottom-[2px] after:left-0 after:h-[1px] after:w-full after:bg-black"
           >Product</a
         >
         <a
           href="#"
-          class="text-body-sm font-helvh relative after:h-[1px] after:w-full after:bottom-[2px] after:absolute after:left-0 after:bg-black border-black font-extrabold text-black"
+          class="relative border-black font-helvh text-body-sm font-extrabold text-black after:absolute after:bottom-[2px] after:left-0 after:h-[1px] after:w-full after:bg-black"
           >Product</a
         >
         <CtaBtn to="#">Try Everest</CtaBtn>
@@ -57,7 +57,7 @@ import RadialGradient from '~/components/UI/RadialGradient.vue';
 
       <UIArrowDiamond />
 
-      <div class="arrow-down rotate-90 -scale-y-100 inline-block">
+      <div class="arrow-down inline-block rotate-90 -scale-y-100">
         <IconArrow color="stroke-black" />
       </div>
 
@@ -76,9 +76,9 @@ import RadialGradient from '~/components/UI/RadialGradient.vue';
 
       <!-- <div class="has-jag">
         <div class="w-full bg-red h-[30rem]"></div>
-        <div class="relative w-full bg-peach pb-20">
+        <div class="relative w-full bg-jaffa pb-20">
           <div class="absolute w-full h-[26.8rem] -top-[26.8rem]">
-            <UIJagEdge color="fill-peach" />
+            <UIJagEdge color="fill-jaffa" />
           </div>
         </div>
       </div> -->
@@ -112,16 +112,16 @@ import RadialGradient from '~/components/UI/RadialGradient.vue';
     <Carousel>
       <div
         v-for="n in 5"
-        class="item shrink-0 w-[33.4%] grid place-content-center cursor-grab text-xl"
+        class="item grid w-[33.4%] shrink-0 cursor-grab place-content-center text-xl"
       >
         {{ n }}
       </div>
     </Carousel>
 
-    <div class="flex divide-x-1 divide-grayline w-full">
+    <div class="flex w-full divide-x-1 divide-grayline">
       <BlogThumb v-for="n in 3" />
     </div>
-    <div class="text-center mt-btn">
+    <div class="mt-btn text-center">
       <CtaBtn to="/">View More</CtaBtn>
     </div>
 
