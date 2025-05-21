@@ -101,6 +101,7 @@ export default {
       },
       margin: {
         sm: '1.875rem',
+        side: '4rem',
         btn: '5rem',
       },
       borderWidth: {
@@ -114,7 +115,7 @@ export default {
       },
       space: {
         nav: '4rem',
-        btn: '2.5rem',
+        btn: '3rem',
         header: '5rem',
       },
     },
