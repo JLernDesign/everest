@@ -13,6 +13,8 @@ onMounted(() => {
 
 // submenu
 const openMenu = () => {
+  gsap.killTweensOf([el, accent]);
+
   link.classList.add("on");
   gsap.to(accent, {
     duration: 0.5,
@@ -22,7 +24,6 @@ const openMenu = () => {
     ease: "power3.out",
   });
 
-  gsap.killTweensOf(el);
   gsap.to(el, {
     duration: 0.5,
     display: "block",
@@ -32,6 +33,8 @@ const openMenu = () => {
   });
 };
 const closeMenu = () => {
+  gsap.killTweensOf([el, accent]);
+
   link.classList.remove("on");
   gsap.to(accent, {
     duration: 0.25,
@@ -41,7 +44,6 @@ const closeMenu = () => {
     ease: "quad.in",
   });
 
-  gsap.killTweensOf(el);
   gsap.to(el, {
     duration: 0.3,
     opacity: 0,
@@ -126,7 +128,7 @@ const toggleSubMenu = (e) => {
       :to="type == 'main' ? data.url : null"
       :data-parent="type == 'mobile' && submenu ? true : null"
       :target="data.target"
-      class="toplink ul relative z-1 text-body-sm after:bg-red hover:text-red"
+      class="toplink ul relative z-1 text-body-sm after:bg-red"
       :class="[type == 'main' && active == data.title ? 'on' : null]"
       @mouseenter="type == 'main' && submenu ? openMenu() : null"
       @click.prevent="handleClick"
@@ -153,6 +155,12 @@ const toggleSubMenu = (e) => {
 </template>
 
 <style scoped>
+.toplink {
+  transition-timing-function: ease-out;
+  &.on {
+    color: theme("colors.red");
+  }
+}
 /* @media (max-width: 1024px) {
   .nav-sub {
     height: 0;

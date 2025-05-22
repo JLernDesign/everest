@@ -1,17 +1,17 @@
 <script setup>
-const props = defineProps(['data', 'theme']);
+const props = defineProps(["data", "theme"]);
 </script>
 
 <template>
   <div>
     <h4
-      class="text-center text-tag mb-6"
+      class="mb-6 text-center text-tag"
       :class="theme == 'dark' ? 'text-white' : 'text-black'"
     >
-      Investors
+      {{ data.title }}
     </h4>
-    <div class="flex space-x-[10rem] justify-center">
-      <UILogo v-for="item in data" :src="item" />
+    <div class="flex justify-center space-x-[10rem]">
+      <UILogo v-for="item in data.logos" :src="item" />
     </div>
   </div>
 </template>

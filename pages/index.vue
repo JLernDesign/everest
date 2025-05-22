@@ -24,7 +24,10 @@ const page_data = toRaw(data.value)[page_id]; */
 </script>
 
 <template>
-  <div class="h-screen"></div>
+  <div>
+    <HomeHero />
+    <HomeIntro />
+  </div>
 </template>
 
 <style scoped></style>

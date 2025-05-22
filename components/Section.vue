@@ -1,8 +1,10 @@
-<script setup></script>
+<script setup>
+const props = defineProps(["hero"]);
+</script>
 
 <template>
   <section
-    class="relative w-full overflow-hidden px-side-mob s:px-side pt-section-top"
+    class="relative w-full overflow-hidden px-side-mob pt-section-top s:px-side"
   >
     <slot />
   </section>

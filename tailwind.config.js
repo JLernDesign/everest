@@ -97,6 +97,8 @@ export default {
       padding: {
         sm: ".8rem",
         "section-top": "10rem",
+        "section-top-lg": "15rem",
+        "section-bot": "15rem",
         "hero-top": "16rem",
         side: "4rem",
         "side-mob": "2rem",
@@ -119,7 +121,8 @@ export default {
       space: {
         nav: "4rem",
         btn: "3rem",
-        header: "5rem",
+        header: "3.5rem",
+        "header-lg": "5rem",
       },
     },
   },

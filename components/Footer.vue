@@ -14,12 +14,15 @@
           <!-- brands -->
           <Brands
             theme="dark"
-            :data="[
-              '/logos/sutter-hill.svg',
-              '/logos/altimeter.png',
-              '/logos/redpoint.png',
-              '/logos/dl.svg',
-            ]"
+            :data="{
+              title: 'Investors',
+              logos: [
+                '/logos/sutter-hill.svg',
+                '/logos/altimeter.png',
+                '/logos/redpoint.png',
+                '/logos/dl.svg',
+              ],
+            }"
           />
 
           <!-- logo -->

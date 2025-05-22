@@ -1,7 +1,7 @@
 <script setup>
-import { useElementSize } from '@vueuse/core';
+import { useElementSize } from "@vueuse/core";
 
-const props = defineProps(['theme']);
+const props = defineProps(["theme"]);
 const wrapper = ref(null);
 const header = ref(null);
 const { width, height } = useElementSize(wrapper);
@@ -25,7 +25,7 @@ defineExpose({
 <template>
   <div class="wrapper" ref="wrapper">
     <Header ref="header" :theme="theme" />
-    <div class="main-contents pt-hero-top pb-[20rem]"><slot /></div>
+    <div class="main-contents"><slot /></div>
     <Footer />
     <UISiteCover />
   </div>
