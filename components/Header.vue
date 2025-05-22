@@ -9,7 +9,7 @@ const header = ref(null);
 const logo = ref(null);
 const logo_wrap = ref(null);
 
-const { y, isScrolling, directions } = useScroll(window);
+const { y, directions } = useScroll(window);
 const sp = 0.75;
 const easer = "power3.out";
 

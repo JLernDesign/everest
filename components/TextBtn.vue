@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps(['href', 'target', 'theme', 'color']);
+const props = defineProps(["href", "target", "theme", "color"]);
 
 const hoverOn = () => {};
 const hoverOff = () => {};
@@ -9,11 +9,11 @@ const hoverOff = () => {};
   <NuxtLink
     :to="props.href"
     :target="props.target"
-    class="text-body-sm font-helvh relative after:h-[1px] after:w-full after:bottom-[2px] after:absolute after:left-0"
+    class="relative font-helvh text-body-sm after:absolute after:bottom-[2px] after:left-0 after:h-[1px] after:w-full"
     :class="
       color == 'black'
-        ? 'after:bg-black border-black text-black'
-        : 'after:bg-white border-white text-white'
+        ? 'text-black after:bg-black'
+        : 'text-white after:bg-white'
     "
     ><slot
   /></NuxtLink>

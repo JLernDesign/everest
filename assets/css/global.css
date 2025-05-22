@@ -8,6 +8,12 @@
     calc(10 * (100vw / var(--size))),
     var(--clamp)
   );
+
+  /* animation */
+  --ease-in-out: transform 0.5s cubic-bezier(1, 0, 0.5, 1);
+  --ease-in: all 0.25s cubic-bezier(0.57, 0, 1, 0.48);
+  --ease-out: all 0.5s cubic-bezier(0, 0.89, 0.32, 1);
+  --linear: all 0.5s linear;
 }
 
 @media (min-width: 650px) {
@@ -25,8 +31,8 @@ html {
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
-  background-color: theme('colors.shadowblue');
-  color: theme('colors.black');
+  background-color: theme("colors.shadowblue");
+  color: theme("colors.black");
   hyphens: none;
 }
 
@@ -49,37 +55,40 @@ html {
 /* setup */
 
 body {
-  font-family: theme('fontFamily.helv');
+  font-family: theme("fontFamily.helv");
   font-weight: 400;
   font-size: 2.2rem;
   line-height: 1.31;
-  color: theme('colors.black');
+  color: theme("colors.black");
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: theme('colors.skyblue');
+  background-color: theme("colors.skyblue");
 }
 ::-moz-selection {
-  background: theme('colors.red');
+  background: theme("colors.red");
 
   color: #fff;
 }
 ::selection {
-  background: theme('colors.red');
+  background: theme("colors.red");
   color: #fff;
 }
 b,
 strong {
   font-weight: normal;
-  font-family: 'Helvetica Neue LT Pro Bold', sans-serif;
+  font-family: "Helvetica Neue LT Pro Bold", sans-serif;
 }
 a,
 button,
 .basic-trans,
-input[type='submit'] {
-  transition: color 0.3s linear, background-color 0.3s linear,
-    opacity 0.3s linear, border-color 0.3s linear;
+input[type="submit"] {
+  transition:
+    color 0.3s linear,
+    background-color 0.3s linear,
+    opacity 0.3s linear,
+    border-color 0.3s linear;
 }
-input[type='submit'] {
+input[type="submit"] {
   cursor: pointer;
 }
 sup {
@@ -89,12 +98,35 @@ sup {
 
 /* UI */
 
-.ul-link {
+/* .ul-link {
   a {
     text-decoration: underline;
     text-underline-offset: 0.35rem;
     &:hover {
       opacity: 0.75;
+    }
+  }
+} */
+.ul {
+  position: relative;
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0.1rem;
+    width: 100%;
+    height: 1px;
+    opacity: 0;
+    transform: scaleX(0) translateY(1rem);
+    transform-origin: left top;
+    transition: var(--ease-in);
+  }
+  &.on,
+  &.nuxt-link-active {
+    &:after {
+      transform: scaleX(1) translateY(0);
+      opacity: 1;
+      transition: var(--ease-out);
     }
   }
 }
@@ -108,7 +140,7 @@ sup {
     display: flex;
     align-items: center;
     &:before {
-      content: '';
+      content: "";
       width: 2.8125rem; /* 45px */
       height: 2.8125rem;
       background: url(/icons/bullet-check.svg) left top no-repeat;
@@ -130,7 +162,7 @@ sup {
       }
     }
     li:before {
-      content: '•';
+      content: "•";
       position: absolute;
       margin-left: -1rem;
     }
@@ -204,7 +236,7 @@ sup {
       }
     }
     li:before {
-      content: '•';
+      content: "•";
       position: absolute;
       margin-left: -1rem;
     }
@@ -308,7 +340,7 @@ svg.trans {
     }
   }
   &:after {
-    content: '';
+    content: "";
     width: 150px;
     height: 150px;
     border-radius: 50%;

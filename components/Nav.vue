@@ -1,7 +1,7 @@
 <script setup>
-const props = defineProps(['type', 'close_func']);
+const props = defineProps(["type", "close_func"]);
 const route = useRoute();
-const activePage = ref('');
+const activePage = ref("");
 
 // Dato CMS Query
 const QUERY = /* GraphQL */ `
@@ -32,14 +32,14 @@ const menu = toRaw(data.value).global.mainMenu; */
 const menu = [{ subMenu: true }, 0, 0, 0];
 
 const setActive = () => {
-  activePage.value = '';
+  activePage.value = "";
 };
 onMounted(() => {
   setActive();
 });
 
 // watch for page change to update nav
-const page_title = useState('page_title');
+const page_title = useState("page_title");
 watch(page_title, () => {
   setActive();
 });

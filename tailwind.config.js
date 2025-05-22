@@ -34,6 +34,7 @@ export default {
       jaffalt: "#E3D4C4",
       jaffadk: "#BA9F82",
       grayline: "rgba(0,0,0,.07)",
+      whiteline: "rgba(255,255,255,.07)",
       darkline: "#3A424D",
       transparent: "transparent",
     },
