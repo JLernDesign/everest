@@ -24,7 +24,7 @@ const page_data = toRaw(data.value)[page_id]; */
 </script>
 
 <template>
-  <div class="h-screen">Page</div>
+  <div class="h-screen"></div>
 </template>
 
 <style scoped></style>

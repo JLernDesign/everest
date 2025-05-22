@@ -73,7 +73,11 @@ const smallHeader = () => {
   // nav
   const bg = qs(".navbg", header.value);
   const wrap = qs(".nav-wrap", header.value);
-  gsap.to(bg, { duration: sp, opacity: 1, ease: easer });
+  gsap.fromTo(
+    bg,
+    { scaleX: 0.5 },
+    { duration: 1, opacity: 1, scaleX: 1, ease: "expo.out" },
+  );
   gsap.to(wrap, { duration: sp, y: "-4.9rem", ease: easer });
 
   // cta
@@ -96,7 +100,7 @@ const fullHeader = () => {
   // nav
   const bg = qs(".navbg", header.value);
   const wrap = qs(".nav-wrap", header.value);
-  gsap.to(bg, { duration: sp, opacity: 0, ease: easer });
+  gsap.to(bg, { duration: 0.5, scaleX: 0.925, opacity: 0, ease: "power3.out" });
   gsap.to(wrap, { duration: sp, y: 0, ease: easer });
 
   // cta
@@ -132,7 +136,7 @@ defineExpose({
 <template>
   <header class="fixed z-20 h-[12rem] w-full" ref="header">
     <!-- logo -->
-    <div class="logo-main absolute pl-side pt-[4.25rem]">
+    <div class="logo-main absolute z-5 pl-side pt-[4.25rem]">
       <NuxtLink
         to="/"
         class="block h-[8.1rem] w-[9.4rem] origin-top-left"
