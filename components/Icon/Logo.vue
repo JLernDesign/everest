@@ -11,15 +11,15 @@ onMounted(() => {
 
 const setSticky = () => {
   gsap.to(text, {
-    duration: 1,
-    clipPath: "inset(20% 0% 100% 0)",
+    duration: 0.5,
+    clipPath: "inset(0% 100% 0% 0)",
     ease: "power3.out",
   });
   gsap.to(tri, { duration: 0.75, opacity: 1, ease: "power3.out" });
 };
 const unsetSticky = () => {
   gsap.to(text, {
-    duration: 1,
+    duration: 0.5,
     clipPath: "inset(0% 0% 0% 0)",
     ease: "power3.out",
   });

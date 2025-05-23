@@ -1,7 +1,6 @@
 <script setup>
 import gsap from "gsap";
 const main = ref(null);
-const menu = ref(null);
 const props = defineProps(["data", "type", "active", "submenu", "close_func"]);
 let el, link, accent;
 
@@ -11,11 +10,15 @@ onMounted(() => {
   accent = qs(".accent", main.value);
 });
 
-// submenu
+// desktop: submenu open/close
 const openMenu = () => {
+  // kill off old
   gsap.killTweensOf([el, accent]);
 
+  // toggle active class
   link.classList.add("on");
+
+  // show arrow
   gsap.to(accent, {
     duration: 0.5,
     x: 0,
@@ -24,6 +27,7 @@ const openMenu = () => {
     ease: "power3.out",
   });
 
+  // show menu
   gsap.to(el, {
     duration: 0.5,
     display: "block",
@@ -33,9 +37,13 @@ const openMenu = () => {
   });
 };
 const closeMenu = () => {
+  // kill off old
   gsap.killTweensOf([el, accent]);
 
+  // toggle active class
   link.classList.remove("on");
+
+  // hide arrow
   gsap.to(accent, {
     duration: 0.25,
     y: "-1rem",
@@ -44,6 +52,7 @@ const closeMenu = () => {
     ease: "quad.in",
   });
 
+  // hide menu
   gsap.to(el, {
     duration: 0.3,
     opacity: 0,
@@ -53,7 +62,7 @@ const closeMenu = () => {
   });
 };
 
-// handle menu click
+// mobile: handle menu click
 const handleClick = (e) => {
   if (e.target.dataset.parent) {
     toggleSubMenu(e);
@@ -70,7 +79,7 @@ const handleClick = (e) => {
   }
 };
 
-// toggle mobile submenu
+// mobile: toggle submenu
 const toggleSubMenu = (e) => {
   const child = e.target;
   const parent = child.parentElement;

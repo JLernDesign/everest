@@ -5,7 +5,7 @@ const props = defineProps(["data", "align"]);
 <template>
   <header
     v-if="data != undefined"
-    class="space-y-header"
+    class="relative z-5 space-y-header"
     :class="align == 'center' ? 'text-center' : 'text-left'"
   >
     <!-- eyebrow -->
@@ -27,17 +27,7 @@ const props = defineProps(["data", "align"]);
     </div>
 
     <!-- cta buttons -->
-    <div
-      class="flex space-x-btn"
-      :class="align == 'center' ? 'items-center justify-center' : 'text-left'"
-    >
-      <template v-for="item in data.cta">
-        <CtaBtn :to="item.url" v-if="item.type == 'button'">{{
-          item.title
-        }}</CtaBtn>
-        <TextBtn :to="item.url" color="black" v-else>{{ item.title }}</TextBtn>
-      </template>
-    </div>
+    <CtaGroup :data="data.cta" :align="align" />
   </header>
 </template>
 

@@ -1,18 +1,24 @@
-<svg width="1581" height="1460" viewBox="0 0 1581 1460" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g opacity="0.6" filter="url(#filter0_f_4388_2927)">
-<ellipse cx="790.5" cy="729" rx="590.5" ry="531" transform="rotate(180 790.5 729)" fill="url(#paint0_radial_4388_2927)"/>
-</g>
-<defs>
-<filter id="filter0_f_4388_2927" x="0" y="-2" width="1581" height="1462" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feGaussianBlur stdDeviation="100" result="effect1_foregroundBlur_4388_2927"/>
-</filter>
-<radialGradient id="paint0_radial_4388_2927" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(219.958 618.809) rotate(-25.0248) scale(1156.83 1286.22)">
-<stop stop-color="#FF9DDA"/>
-<stop offset="0.44" stop-color="#F7FF9D" stop-opacity="0.52"/>
-<stop offset="0.84" stop-color="#FF8B7B" stop-opacity="0.2"/>
-<stop offset="1" stop-color="#F7FF9D" stop-opacity="0"/>
-</radialGradient>
-</defs>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 1181 1062">
+  <!-- Generator: Adobe Illustrator 29.5.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 141)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: url(#radial-gradient);
+      }
+
+      .st1 {
+        opacity: .6;
+      }
+    </style>
+    <radialGradient id="radial-gradient" cx="-369.2" cy="1071.9" fx="-369.2" fy="1071.9" r="1" gradientTransform="translate(-969064.3 -1067988.3) rotate(155) scale(1156.8 -1286.2)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff9dda"/>
+      <stop offset=".4" stop-color="#f7ff9d" stop-opacity=".5"/>
+      <stop offset=".8" stop-color="#ff8b7b" stop-opacity=".2"/>
+      <stop offset="1" stop-color="#f7ff9d" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <g class="st1">
+    <ellipse class="st0" cx="590.5" cy="531" rx="590.5" ry="531"/>
+  </g>
 </svg>

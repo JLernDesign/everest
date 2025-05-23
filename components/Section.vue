@@ -3,9 +3,7 @@ const props = defineProps(["hero"]);
 </script>
 
 <template>
-  <section
-    class="relative w-full overflow-hidden px-side-mob pt-section-top s:px-side"
-  >
+  <section class="relative w-full px-side-mob pt-section-top s:px-side">
     <slot />
   </section>
 </template>

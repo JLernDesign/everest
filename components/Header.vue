@@ -73,10 +73,11 @@ const smallHeader = () => {
   // nav
   const bg = qs(".navbg", header.value);
   const wrap = qs(".nav-wrap", header.value);
+  gsap.killTweensOf(bg);
   gsap.fromTo(
     bg,
-    { scaleX: 0.5 },
-    { duration: 1, opacity: 1, scaleX: 1, ease: "expo.out" },
+    { scaleX: 0.7 },
+    { duration: 2, opacity: 1, scaleX: 1, ease: "expo.out" },
   );
   gsap.to(wrap, { duration: sp, y: "-4.9rem", ease: easer });
 
@@ -100,6 +101,7 @@ const fullHeader = () => {
   // nav
   const bg = qs(".navbg", header.value);
   const wrap = qs(".nav-wrap", header.value);
+  gsap.killTweensOf(bg);
   gsap.to(bg, { duration: 0.5, scaleX: 0.925, opacity: 0, ease: "power3.out" });
   gsap.to(wrap, { duration: sp, y: 0, ease: easer });
 

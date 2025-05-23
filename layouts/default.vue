@@ -25,7 +25,7 @@ defineExpose({
 <template>
   <div class="wrapper" ref="wrapper">
     <Header ref="header" :theme="theme" />
-    <div class="main-contents"><slot /></div>
+    <div class="main-contents overflow-hidden"><slot /></div>
     <Footer />
     <UISiteCover />
   </div>
