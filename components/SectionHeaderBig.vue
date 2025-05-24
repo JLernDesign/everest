@@ -18,10 +18,6 @@ const props = defineProps(["data", "align"]);
     </p>
 
     <CtaGroup :data="data.cta" :align="align" />
-    <!-- <div class="buttons space-x-btn">
-      <CtaBtn to="#">Try Everest</CtaBtn>
-      <TextBtn to="#" color="black">About</TextBtn>
-    </div> -->
   </header>
 </template>
 

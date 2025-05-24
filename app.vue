@@ -1,20 +1,22 @@
 <script setup>
-import gsap from 'gsap';
-import { toHead } from 'vue-datocms';
-import HomeQuery from '~/assets/graphql/home.graphql';
+import gsap from "gsap";
+import { toHead } from "vue-datocms";
+import HomeQuery from "~/assets/graphql/home.graphql";
 
 const route = useRoute();
 const router = useRouter();
 const layout = ref(null);
 
 // initial states
-const page_title = useState('page_title', () => 'index');
-const base_url = useState('base_url', () => 'https://everest.com');
-//const first_view = useState('first_view', () => true);
+const page_title = useState("page_title", () => "index");
+const base_url = useState("base_url", () => "https://everest.com");
 
 // init global meta data
 const QUERY = HomeQuery.loc.source.body;
-const { data } = await useGraphqlQuery({ query: QUERY });
+const { data } = await useGraphqlQuery({
+  query: QUERY,
+});
+//console.log(data.value);
 
 // compile meta tags for head
 useHead(() => {
@@ -24,18 +26,17 @@ useHead(() => {
 
 // execute leave animation for each route
 router.beforeEach(async (to, from) => {
-  first_view.value = false;
-  freezePage('.page-change');
+  console.log("exit animation");
 
   // navigate within same route
-  if (to.path == from.path) {
+  /*   if (to.path == from.path) {
     // change posts query
 
     // bring page back
     setTimeout(() => {
       refreshPage();
     }, 500);
-  }
+  } */
 });
 
 // open site after initial load
@@ -47,25 +48,7 @@ onMounted(() => {
 
 // open new page after leave
 const refreshPage = () => {
-  window.scrollTo(0, 0);
-  const reveal = document.getElementById('page-reveal');
-  gsap.set(reveal, { opacity: 1 });
-
-  setTimeout(() => {
-    const page_title = useState('page_title');
-    page_title.value = route.name;
-    unfreezePage('.page-change');
-
-    // page soft reveal
-    gsap.to(reveal, {
-      duration: 0.5,
-      opacity: 0,
-      ease: 'power3.out',
-    });
-
-    // update layout theme
-    layout.value.layoutRef.changePage();
-  }, 200);
+  console.log("open animation");
 };
 </script>
 

@@ -1,6 +1,4 @@
-<script setup>
-import RadialGradient from "~/components/UI/RadialGradient.vue";
-</script>
+<script setup></script>
 
 <template>
   <div class="overflow-hidden">

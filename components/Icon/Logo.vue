@@ -30,7 +30,7 @@ defineExpose({ setSticky, unsetSticky });
 </script>
 
 <template>
-  <div ref="main">
+  <div ref="main" class="pointer-events-none">
     <svg
       width="94"
       height="81"
