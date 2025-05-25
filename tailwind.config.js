@@ -108,6 +108,7 @@ export default {
         sm: "1.875rem",
         side: "4rem",
         btn: "5rem",
+        md: "7rem",
       },
       borderWidth: {
         1: "1px",

@@ -45,16 +45,14 @@ const props = defineProps(["theme"]);
 
         <!-- items -->
         <template v-for="n in 6">
-          <div
-            class="flex cursor-pointer rounded-base bg-white bg-opacity-0 px-[2rem] py-[1.2rem] text-body-sm"
-          >
-            <span class="w-[36.5%] pr-4">ADP</span>
-            <span class="w-[63.5%]">Payroll Solutions</span>
+          <div class="relative cursor-pointer text-body-sm">
+            <div class="absolute h-full w-full rounded-base bg-white"></div>
+            <div class="relative flex px-[2rem] py-[1.2rem]">
+              <span class="w-[36.5%] pr-4">ADP</span>
+              <span class="w-[63.5%]">Payroll Solutions</span>
+            </div>
           </div>
-          <div
-            class="flex rounded-base bg-white bg-opacity-0 px-[2rem] py-[1.2rem] text-body-sm"
-            :class="n == 1 && 'bg-opacity-100'"
-          >
+          <div class="flex rounded-base px-[2rem] py-[1.2rem] text-body-sm">
             <span class="w-[36.5%] pr-4">Airbase</span>
             <span class="w-[63.5%]">AP Automation & Finance Solutions</span>
           </div>

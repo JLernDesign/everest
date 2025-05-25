@@ -173,6 +173,9 @@ sup {
   flex-basis: 100%;
   height: 0;
 }
+.col {
+  position: relative;
+}
 
 @media (max-width: 900px) {
   .has-break br {
