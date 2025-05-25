@@ -33,7 +33,7 @@
     <div
       class="glow absolute left-[36.2rem] top-[19.7rem] w-[118.1rem] blur-[50px]"
     >
-      <img src="/public/home/hero-glow2.svg" alt="" />
+      <img src="/public/home/hero-glow.svg" alt="" />
     </div>
     <div
       class="bg-image absolute left-[31.4rem] top-[11.4rem] z-1 w-[104.6rem]"

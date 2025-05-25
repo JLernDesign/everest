@@ -3,7 +3,7 @@ const props = defineProps(["theme"]);
 </script>
 
 <template>
-  <Section :theme="theme" class="mt-[26.8rem] bg-jaffa pb-section-bot">
+  <Section :theme="theme" class="mt-[26.8rem] bg-jaffa !pt-0 pb-section-bot">
     <UIJagEdge color="fill-jaffa" />
 
     <SectionHeader

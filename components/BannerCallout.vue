@@ -4,7 +4,7 @@
   <div class="relative p-side">
     <!-- content -->
     <div
-      class="relative overflow-hidden rounded-base bg-shadowblue bg-[url(/ui/callout-bg@2x.jpg)] bg-cover px-[11.5rem] py-[7rem] text-white"
+      class="relative z-1 flex justify-between overflow-hidden rounded-base bg-shadowblue bg-[url(/ui/callout-texture@2x.jpg)] bg-cover p-[7rem] pl-[11.5rem] text-white"
     >
       <!-- text -->
       <div class="text relative w-[50%]">
@@ -23,6 +23,16 @@
       </div>
 
       <!-- image -->
+      <div
+        class="h-[31rem] w-[59rem] rounded-[.9rem] bg-[url(/ui/3dbg.svg)] bg-cover"
+      ></div>
+    </div>
+
+    <!-- gradient -->
+    <div
+      class="glow absolute left-1/2 top-[39rem] z-0 w-[118.1rem] -translate-x-1/2 blur-[50px]"
+    >
+      <img src="/public/ui/callout-bot-gradient.svg" alt="" />
     </div>
   </div>
 </template>

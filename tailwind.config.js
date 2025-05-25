@@ -98,7 +98,7 @@ export default {
         sm: ".8rem",
         "section-top": "10rem",
         "section-top-lg": "15rem",
-        "section-bot": "12rem",
+        "section-bot": "10rem",
         "hero-top": "16rem",
         side: "4rem",
         "side-mob": "2rem",
