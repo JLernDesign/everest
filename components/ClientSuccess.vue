@@ -3,7 +3,7 @@ const props = defineProps(["theme"]);
 </script>
 
 <template>
-  <Section :theme="theme" class="mt-[26.8rem] bg-jaffa !pt-0 pb-section-bot">
+  <Section :theme="theme" class="mt-[26.8rem] bg-jaffa !pt-8 pb-section-bot">
     <UIJagEdge color="fill-jaffa" />
 
     <SectionHeader
@@ -28,7 +28,7 @@ const props = defineProps(["theme"]);
         <div class="photo aspect-[1.57] w-full overflow-hidden rounded-base">
           <img src="/public/clients/ph-client-success@2x.png" alt="" />
         </div>
-        <div class="slide-text mt-10 text-body-xsm">
+        <div class="slide-text mt-6 text-body-xsm">
           <p class="font-helvb">Alex Hopper</p>
           <p>CEO of Logoipsm</p>
         </div>
@@ -70,7 +70,7 @@ const props = defineProps(["theme"]);
             house.”
           </blockquote>
           <div
-            class="byline mt-md flex items-center justify-between text-body-xsm"
+            class="byline mt-[5.5rem] flex items-center justify-between text-body-xsm"
           >
             <div>
               <p class="font-helvb">Lisa Schulz</p>

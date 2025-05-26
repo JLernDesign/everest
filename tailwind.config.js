@@ -57,6 +57,7 @@ export default {
       xl: "12rem",
       xxl: "24rem",
       tag: "1.5rem",
+      num: "2.1rem",
     },
     lineHeight: {
       sm: "1.38",
@@ -123,7 +124,7 @@ export default {
         nav: "4rem",
         btn: "3rem",
         header: "3.5rem",
-        "header-lg": "5rem",
+        "header-lg": "4rem",
       },
     },
   },

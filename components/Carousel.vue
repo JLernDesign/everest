@@ -37,7 +37,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="mt-32 flex h-[40rem] w-full overflow-hidden" ref="main">
+  <div class="flex h-[40rem] w-full overflow-hidden" ref="main">
     <slot />
   </div>
 </template>

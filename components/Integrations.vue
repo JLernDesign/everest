@@ -37,26 +37,30 @@ const props = defineProps(["theme"]);
       <!-- text -->
       <div class="w-1/2 pl-[14rem] leading-[1]">
         <div
-          class="mb-[5rem] flex px-[2rem] font-barlow text-body-xsm uppercase opacity-40"
+          class="mb-[3rem] flex px-[2rem] font-barlow text-body-xsm uppercase opacity-40"
         >
           <span class="w-[36.5%]">Name</span>
           <span class="w-[63.5%]">Use For</span>
         </div>
 
         <!-- items -->
-        <template v-for="n in 6">
-          <div class="relative cursor-pointer text-body-sm">
-            <div class="absolute h-full w-full rounded-base bg-white"></div>
-            <div class="relative flex px-[2rem] py-[1.2rem]">
-              <span class="w-[36.5%] pr-4">ADP</span>
-              <span class="w-[63.5%]">Payroll Solutions</span>
+        <div class="space-y-1">
+          <template v-for="n in 6">
+            <div class="relative cursor-pointer text-body-sm">
+              <div
+                class="absolute -top-[.2rem] h-full w-full rounded-base bg-white"
+              ></div>
+              <div class="relative flex px-[2rem] py-[1.2rem]">
+                <span class="w-[36.5%] pr-4">ADP</span>
+                <span class="w-[63.5%]">Payroll Solutions</span>
+              </div>
             </div>
-          </div>
-          <div class="flex rounded-base px-[2rem] py-[1.2rem] text-body-sm">
-            <span class="w-[36.5%] pr-4">Airbase</span>
-            <span class="w-[63.5%]">AP Automation & Finance Solutions</span>
-          </div>
-        </template>
+            <div class="flex rounded-base px-[2rem] py-[1.2rem] text-body-sm">
+              <span class="w-[36.5%] pr-4">Airbase</span>
+              <span class="w-[63.5%]">AP Automation & Finance Solutions</span>
+            </div>
+          </template>
+        </div>
       </div>
     </div>
   </Section>

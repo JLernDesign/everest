@@ -25,7 +25,7 @@ const toggle = (state) => {
 </script>
 
 <template>
-  <div class="ticker-wrap flex py-4" ref="main">
+  <div class="ticker-wrap flex py-5" ref="main">
     <div
       v-for="n in 4"
       class="ticker-group flex shrink-0 items-center space-x-nav pr-[4rem]"
@@ -42,7 +42,7 @@ const toggle = (state) => {
 </template>
 
 <style scoped>
-.ticker-wrap.on .ticker-group {
+.ticker-wrap.on1 .ticker-group {
   animation: ticker 30s linear infinite;
 }
 @keyframes ticker {

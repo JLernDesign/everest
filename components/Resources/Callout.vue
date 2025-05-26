@@ -1,12 +1,14 @@
 <script setup></script>
 
 <template>
-  <Section class="bg-jaffa pb-section-bot" :margin="false">
+  <Section class="bg-jaffa pb-section-bot pt-section-top-lg" :margin="false">
     <!-- header -->
-    <header class="relative border-y border-grayline py-[7rem] text-center">
+    <header
+      class="relative border-y border-grayline pb-[5rem] pt-[4.5rem] text-center"
+    >
       <!-- logo mark -->
       <div
-        class="absolute -top-[4rem] left-1/2 -translate-x-1/2 bg-jaffa px-[2.2rem]"
+        class="absolute -top-[4.25rem] left-1/2 -translate-x-1/2 bg-jaffa px-[2.2rem]"
       >
         <IconLogoMark class="w-[6.8rem]" />
       </div>
@@ -27,7 +29,7 @@
       <h2 class="font-barlow-cond text-xxl uppercase leading-xxl">
         The Summit
       </h2>
-      <p class="mt-[5.6rem] text-body-md">
+      <p class="mt-[5rem] text-body-md">
         Insights and resources for SaaS finance transformation.
       </p>
     </header>

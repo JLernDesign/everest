@@ -31,7 +31,7 @@ const props = defineProps({
     </div>
 
     <!-- cta buttons -->
-    <CtaGroup v-if="data.cta" :data="data.cta" :align="align" />
+    <CtaGroup v-if="data.cta" :data="data.cta" :align="align" class="pt-6" />
 
     <!-- breadcrumb nav -->
     <Breadcrumb v-if="data.breadcrumb" :data="data.breadcrumb" :theme="theme" />

@@ -53,28 +53,28 @@ const slides = [
         ],
       }"
     />
-  </Section>
 
-  <!-- slider -->
-  <Carousel class="slider-wrap !mt-0 h-[90rem] space-x-[9rem]">
-    <div
-      v-for="(slide, i) in slides"
-      class="item grid h-[62.8rem] w-[45.5rem] shrink-0 cursor-grab rounded-base p-[3.2rem]"
-      :style="`background-color:${slide.color}`"
-    >
-      <h3 class="relative font-barlow-cond text-sm font-bold leading-[.95]">
-        <IconTri color="fill-black" class="mb-[1.35rem]" />
-        <span v-html="slide.headline"></span>
-      </h3>
-
+    <!-- slider -->
+    <Carousel class="slider-wrap mt-[12rem] h-[62.8rem] space-x-[9rem]">
       <div
-        class="absolute bottom-0 left-0 h-auto w-full p-[3.2rem] text-body-sm leading-sm"
+        v-for="(slide, i) in slides"
+        class="item grid h-[62.8rem] w-[45.5rem] shrink-0 cursor-grab rounded-base p-[3.2rem] pt-[3.75rem]"
+        :style="`background-color:${slide.color}`"
       >
-        <p>{{ slide.description }}</p>
+        <h3 class="relative font-barlow-cond text-sm font-bold leading-[.95]">
+          <IconTri color="fill-black" class="mb-[1.35rem]" />
+          <span v-html="slide.headline"></span>
+        </h3>
+
+        <div
+          class="absolute bottom-0 left-0 h-auto w-full p-[3.2rem] text-body-sm leading-sm"
+        >
+          <p>{{ slide.description }}</p>
+        </div>
       </div>
-    </div>
-    <div class="item end-spacer w-0 shrink-0"></div>
-  </Carousel>
+      <div class="item end-spacer w-0 shrink-0"></div>
+    </Carousel>
+  </Section>
 </template>
 
 <style scoped></style>

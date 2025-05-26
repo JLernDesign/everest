@@ -22,7 +22,9 @@ const props = defineProps(["theme"]);
       }"
     />
 
-    <OverviewCard />
+    <div class="overview-wrap">
+      <OverviewCard v-for="n in 3" />
+    </div>
   </Section>
 </template>
 
