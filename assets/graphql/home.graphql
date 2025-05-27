@@ -1,23 +1,16 @@
 query Home {
-  site: _site {
-    favicon: faviconMetaTags {
-      attributes
-      content
-      tag
-    }
-    globalSeo {
-      fallbackSeo {
-        title
-        description
-      }
-    }
-  }
   home {
-    headline
-    seo: _seoMetaTags {
-      attributes
-      content
-      tag
+    hero {
+      headline
+      intro
+      cta {
+        buttons {
+          label
+          internal
+          external
+          style
+        }
+      }
     }
   }
 }

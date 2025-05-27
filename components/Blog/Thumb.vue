@@ -24,6 +24,7 @@
 
     <!-- details -->
     <BlogDetails
+      class="mt-[3.2rem]"
       :data="{
         publishDate: '2025-10-20',
         tag: {

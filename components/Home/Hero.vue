@@ -1,28 +1,10 @@
-<script setup></script>
+<script setup>
+const props = defineProps(["data"]);
+</script>
 
 <template>
   <Section :hero="true" class="!pt-[24.5rem] pb-[10rem]">
-    <SectionHeader
-      class="max-w-[42rem]"
-      align="left"
-      :data="{
-        headline: 'Reinventing ERP for SaaS Growth',
-        intro:
-          'The only enterprise-grade ERP purpose-built for SaaS companies. AI-driven, future-ready, and built to scale.',
-        cta: [
-          {
-            type: 'text',
-            title: 'Product',
-            url: '#',
-          },
-          {
-            type: 'text',
-            title: 'Why Everest',
-            url: '#',
-          },
-        ],
-      }"
-    />
+    <SectionHeader class="max-w-[42rem]" align="left" :data="data" />
 
     <!-- video -->
     <div class="relative z-5 mt-[23rem] grid justify-end">

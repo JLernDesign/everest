@@ -8,10 +8,10 @@ const props = defineProps(["data", "align"]);
     :class="align == 'center' ? 'items-center justify-center' : 'text-left'"
   >
     <template v-for="item in data">
-      <CtaBtn :to="item.url" v-if="item.type == 'button'">{{
-        item.title
+      <CtaBtn :data="item" v-if="item.style == 'button'">{{
+        item.label
       }}</CtaBtn>
-      <TextBtn :to="item.url" color="black" v-else>{{ item.title }}</TextBtn>
+      <TextBtn :data="item" color="black" v-else>{{ item.label }}</TextBtn>
     </template>
   </div>
 </template>

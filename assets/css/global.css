@@ -62,7 +62,7 @@ body {
   color: theme("colors.black");
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: theme("colors.skyblue");
+  /* background-color: theme("colors.skyblue"); */
 }
 ::-moz-selection {
   background: theme("colors.red");

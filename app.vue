@@ -1,7 +1,7 @@
 <script setup>
 import gsap from "gsap";
 import { toHead } from "vue-datocms";
-import HomeQuery from "~/assets/graphql/home.graphql";
+import SettingsQuery from "~/assets/graphql/settings.graphql";
 
 const route = useRoute();
 const router = useRouter();
@@ -12,7 +12,7 @@ const page_title = useState("page_title", () => "index");
 const base_url = useState("base_url", () => "https://everest.com");
 
 // init global meta data
-const QUERY = HomeQuery.loc.source.body;
+const QUERY = SettingsQuery.loc.source.body;
 const { data } = await useGraphqlQuery({
   query: QUERY,
 });
