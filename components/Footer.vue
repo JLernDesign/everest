@@ -86,22 +86,22 @@
           </h3>
           <div class="relative mt-side columns-2 space-y-[3rem]">
             <div>
-              <span class="text-red">North America</span><br />
+              <span class="font-helvh">North America</span><br />
               280 Hope Street<br />
               Mountain View, CA 94041
             </div>
             <div>
-              <span class="text-red">Germany</span><br />
+              <span class="font-helvh">Germany</span><br />
               Max-Jarecki-Straße 21, 69115<br />
               Heidelberg, Germany
             </div>
             <div>
-              <span class="text-red">North America</span><br />
+              <span class="font-helvh">North America</span><br />
               280 Hope Street<br />
               Mountain View, CA 94041
             </div>
             <div>
-              <span class="text-red">Germany</span><br />
+              <span class="font-helvh">Germany</span><br />
               Max-Jarecki-Straße 21, 69115<br />
               Heidelberg, Germany
             </div>

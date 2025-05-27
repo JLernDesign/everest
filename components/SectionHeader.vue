@@ -35,6 +35,8 @@ const props = defineProps({
 
     <!-- breadcrumb nav -->
     <Breadcrumb v-if="data.breadcrumb" :data="data.breadcrumb" :theme="theme" />
+
+    <slot />
   </header>
 </template>
 

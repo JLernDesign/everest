@@ -20,7 +20,8 @@ const props = defineProps(["theme"]);
           'Revenue Recognition',
         ],
       }"
-    />
+      ><UIGradientBot
+    /></SectionHeader>
 
     <div class="overview-wrap">
       <OverviewCard v-for="n in 3" />

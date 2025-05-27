@@ -23,12 +23,15 @@
     </div>
 
     <!-- details -->
-    <div
-      class="row details relative z-1 mb-10 mt-[3.2rem] flex items-center space-x-[2rem] font-barlow text-tag"
-    >
-      <time>10.20.25</time>
-      <BlogTags :tags="[{ tag: 'Insight', slug: 'insight' }]" />
-    </div>
+    <BlogDetails
+      :data="{
+        publishDate: '2025-10-20',
+        tag: {
+          name: 'Insight',
+          slug: 'insight',
+        },
+      }"
+    />
 
     <!-- title -->
     <h3 class="relative z-1 mb-[1.2rem] font-helvb text-body leading-body">

@@ -4,10 +4,10 @@
   <div class="relative p-side pb-section-bot">
     <!-- content -->
     <div
-      class="relative z-1 flex justify-between overflow-hidden rounded-base bg-shadowblue bg-[url(/ui/callout-texture@2x.jpg)] bg-cover p-[7rem] pl-[11.5rem] pt-[8rem] text-white"
+      class="relative z-1 flex justify-between overflow-hidden rounded-base bg-shadowblue bg-[url(/ui/callout-texture@2x.jpg)] bg-cover p-[7rem] pl-[11.5rem] text-white"
     >
       <!-- text -->
-      <div class="text relative w-[50%] space-y-14">
+      <div class="text relative w-[50%] space-y-14 pt-4">
         <h2 class="font-barlow-cond text-lg font-bold leading-lg">
           See how Everest can transform your SaaS operations.
         </h2>
@@ -24,8 +24,12 @@
 
       <!-- image -->
       <div
-        class="h-[31rem] w-[59rem] rounded-[.9rem] bg-[url(/ui/3dbg.svg)] bg-cover"
-      ></div>
+        class="relative h-[31rem] w-[59rem] overflow-hidden rounded-base bg-[url(/public/ui/callout-gradient@2x.png)] bg-cover"
+      >
+        <!-- <div
+          class="absolute -left-[10rem] -top-[10rem] h-[58.5rem] w-[62.4rem] rounded-[62.4rem] bg-gradient-to-r from-[#FF9DDA] to-[rgba(247_255_157/0.52)] to-60% blur-[60px]"
+        ></div> -->
+      </div>
     </div>
 
     <!-- gradient -->

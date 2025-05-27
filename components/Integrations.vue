@@ -39,8 +39,8 @@ const props = defineProps(["theme"]);
         <div
           class="mb-[3rem] flex px-[2rem] font-barlow text-body-xsm uppercase opacity-40"
         >
-          <span class="w-[36.5%]">Name</span>
-          <span class="w-[63.5%]">Use For</span>
+          <span class="w-[38%]">Name</span>
+          <span class="w-[62%]">Use For</span>
         </div>
 
         <!-- items -->
@@ -48,16 +48,12 @@ const props = defineProps(["theme"]);
           <template v-for="n in 6">
             <div class="relative cursor-pointer text-body-sm">
               <div
-                class="absolute -top-[.2rem] h-full w-full rounded-base bg-white"
+                class="absolute -top-[.2rem] h-full w-full scale-y-0 rounded-base bg-white"
               ></div>
               <div class="relative flex px-[2rem] py-[1.2rem]">
-                <span class="w-[36.5%] pr-4">ADP</span>
-                <span class="w-[63.5%]">Payroll Solutions</span>
+                <span class="w-[38%] pr-4">ADP</span>
+                <span class="w-[62%]">Payroll Solutions</span>
               </div>
-            </div>
-            <div class="flex rounded-base px-[2rem] py-[1.2rem] text-body-sm">
-              <span class="w-[36.5%] pr-4">Airbase</span>
-              <span class="w-[63.5%]">AP Automation & Finance Solutions</span>
             </div>
           </template>
         </div>

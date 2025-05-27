@@ -8,7 +8,7 @@
     <SliderAscending />
     <BannerCallout />
     <ClientSuccess />
-    <ResourcesCallout />
+    <BlogCallout />
     <Integrations />
   </div>
 </template>

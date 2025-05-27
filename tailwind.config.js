@@ -66,6 +66,7 @@ export default {
       lg: ".91",
       xl: ".82",
       xxl: ".82",
+      base: "1",
     },
     letterSpacing: {
       base: ".25rem",
@@ -101,6 +102,7 @@ export default {
         "section-top-lg": "15rem",
         "section-bot": "10rem",
         "hero-top": "16rem",
+        "post-top": "18rem",
         side: "4rem",
         "side-mob": "2rem",
         thumb: "6.8rem",
