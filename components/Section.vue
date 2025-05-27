@@ -8,9 +8,10 @@ const props = defineProps({
 
 <template>
   <section
-    class="relative w-full pt-section-top"
+    class="relative w-full"
     :class="[
       theme == 'dark' && 'bg-shadowblue text-white',
+      hero ? 'pt-hero-top' : 'pt-section-top',
       margin && 'px-side-mob s:px-side',
     ]"
   >

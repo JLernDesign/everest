@@ -29,9 +29,11 @@ defineExpose({
     <Footer />
     <UISiteCover />
   </div>
-  <div
+
+  <!-- guide line -->
+  <!-- <div
     class="fixed left-1/2 top-0 z-10 h-screen w-0 border-l border-l-red opacity-20"
-  ></div>
+  ></div> -->
 </template>
 
 <style scoped>

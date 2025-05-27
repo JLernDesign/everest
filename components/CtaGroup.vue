@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps(["data", "align"]);
+const props = defineProps(["data", "align", "theme"]);
 </script>
 
 <template>
@@ -11,7 +11,12 @@ const props = defineProps(["data", "align"]);
       <CtaBtn :data="item" v-if="item.style == 'button'">{{
         item.label
       }}</CtaBtn>
-      <TextBtn :data="item" color="black" v-else>{{ item.label }}</TextBtn>
+      <TextBtn
+        :data="item"
+        :color="theme == 'dark' ? 'white' : 'black'"
+        v-else
+        >{{ item.label }}</TextBtn
+      >
     </template>
   </div>
 </template>
