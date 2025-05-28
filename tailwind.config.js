@@ -58,6 +58,7 @@ export default {
       xxl: "24rem",
       tag: "1.5rem",
       num: "2.1rem",
+      h5: "2.1rem",
     },
     lineHeight: {
       sm: "1.38",

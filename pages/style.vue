@@ -105,6 +105,9 @@
         }"
     /></Section>
 
+    <!-- client list -->
+    <ClientList />
+
     <!-- advantage -->
     <Advantage />
 
@@ -167,17 +170,12 @@
       </div>
     </Section>
 
-    <!-- problem -->
-    <Section class="bg-jaffa pb-section-bot pt-[12rem]" side="lg">
-      <!-- header -->
-      <header class="relative flex justify-between">
-        <LineFull class="top-1/2" />
-        <div class="relative z-1 bg-jaffa px-5 text-body-sm">The Problem</div>
-        <div class="relative z-1 bg-jaffa px-5">
-          <IconEyebrow color="fill-black" />
-        </div>
-      </header>
-    </Section>
+    <!-- callout quote -->
+    <CalloutQuote />
+
+    <!-- problem / solution -->
+    <Problem layout="img-rt" :data="{ eyebrow: 'The Problem' }" />
+    <Problem layout="img-lt" :data="{ eyebrow: 'The Solution' }" />
 
     <!-- success -->
     <SuccessStack />

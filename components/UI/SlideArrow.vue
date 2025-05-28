@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps(["dir"]);
+const props = defineProps(["dir", "color"]);
 </script>
 
 <template>
@@ -8,9 +8,10 @@ const props = defineProps(["dir"]);
     :class="dir == 'left' ? 'left-0 -scale-x-100' : 'right-0'"
   >
     <button
-      class="back grid h-[3.2rem] w-full place-content-center rounded-btn border-1 border-red"
+      class="back grid h-[3.2rem] w-full place-content-center rounded-btn border-1"
+      :class="color == 'blue' ? 'border-lightblue' : 'border-red'"
     >
-      <IconArrow color="stroke-red" />
+      <IconArrow :color="color == 'blue' ? 'stroke-lightblue' : 'stroke-red'" />
     </button>
   </div>
 </template>
