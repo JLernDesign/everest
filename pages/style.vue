@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <div class="overflow-hidden">
+  <div class="overflow-hidden bg-skyblue">
     <div class="mx-auto max-w-base space-y-10 px-side">
       <div class="text-eyebrowb font-barlow-cond font-bold uppercase">
         Quote to Cash
@@ -104,6 +104,11 @@
           ],
         }"
     /></Section>
+
+    <!-- faq -->
+    <Faq />
+
+    <div class="h-[10rem]"></div>
 
     <UIVideoThumb />
 
