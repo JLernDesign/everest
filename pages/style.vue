@@ -105,6 +105,83 @@
         }"
     /></Section>
 
+    <!-- advantage -->
+    <Advantage />
+
+    <!-- impact -->
+    <Section class="bg-jaffa pb-section-bot pt-[12rem]" side="lg">
+      <!-- header -->
+      <header class="relative flex justify-between">
+        <LineFull class="top-1/2" />
+        <div class="relative z-1 bg-jaffa px-5 text-body-sm">The Impact</div>
+        <div class="relative z-1 bg-jaffa px-5">
+          <IconEyebrow color="fill-black" />
+        </div>
+      </header>
+
+      <!-- columns -->
+      <div class="flex items-start justify-between pt-section-top">
+        <!-- headline -->
+        <div class="w-[52rem] rounded-base bg-shadowblue p-side">
+          <h2 class="font-barlow-cond text-lg leading-lg text-lightblue">
+            Powering smarter decisions, stronger margins, and faster growth.
+          </h2>
+        </div>
+
+        <!-- contents -->
+        <div class="w-[79.4rem] space-y-[3.6rem]">
+          <!-- text -->
+          <div
+            class="bullets lines rounded-base bg-[url(/ui/mt-blue@2x.jpg)] bg-cover p-[2rem] pb-[2.5rem] [&_ul]:divide-y-1 [&_ul]:divide-grayline [&_ul]:border-y-1 [&_ul]:border-grayline"
+          >
+            <div class="space-y-16 rounded-sm bg-jaffa p-[3.2rem]">
+              <h3>
+                Native AI: Defined as an ERP product that is built from the
+                ground up with AI as a core part of its architecture and user
+                experience. It's an ERP system where forecasting, decision
+                support, anomaly detection, and task automation are not just
+                features, but the foundation of how it operates.
+              </h3>
+              <ul>
+                <li v-for="n in 4">
+                  Purpose-built for SaaS complexity and recurring revenue models
+                </li>
+              </ul>
+              <div class="stats flex">
+                <div class="stat w-1/2 space-y-5">
+                  <h3 class="font-barlow-cond text-xl font-bold leading-xl">
+                    100%
+                  </h3>
+                  <p class="text-body-xsm">Awesome stat here</p>
+                </div>
+                <div class="stat w-1/2 space-y-5">
+                  <h3 class="font-barlow-cond text-xl font-bold leading-xl">
+                    2X
+                  </h3>
+                  <p class="text-body-xsm">Awesome stat here</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Section>
+
+    <!-- problem -->
+    <Section class="bg-jaffa pb-section-bot pt-[12rem]" side="lg">
+      <!-- header -->
+      <header class="relative flex justify-between">
+        <LineFull class="top-1/2" />
+        <div class="relative z-1 bg-jaffa px-5 text-body-sm">The Problem</div>
+        <div class="relative z-1 bg-jaffa px-5">
+          <IconEyebrow color="fill-black" />
+        </div>
+      </header>
+    </Section>
+
+    <!-- success -->
+    <SuccessStack />
+
     <!-- faq -->
     <Faq />
 

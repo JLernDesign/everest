@@ -34,13 +34,7 @@ const props = defineProps(["theme"]);
         </div>
 
         <!-- arrow -->
-        <div class="absolute bottom-0 left-0 w-full -scale-x-100 px-[10rem]">
-          <button
-            class="back grid h-[3.2rem] w-full place-content-center rounded-btn border-1 border-red"
-          >
-            <IconArrow color="stroke-red" />
-          </button>
-        </div>
+        <UISlideArrow dir="left" class="px-[10rem]" />
       </div>
 
       <!-- active slide (center) -->
@@ -92,13 +86,7 @@ const props = defineProps(["theme"]);
         </div>
 
         <!-- arrow -->
-        <div class="absolute bottom-0 left-0 w-full px-[10rem]">
-          <button
-            class="next grid h-[3.2rem] w-full place-content-center rounded-btn border-1 border-red"
-          >
-            <IconArrow color="stroke-red" />
-          </button>
-        </div>
+        <UISlideArrow dir="right" class="px-[10rem]" />
       </div>
     </div>
   </Section>
