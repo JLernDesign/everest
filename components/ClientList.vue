@@ -9,7 +9,7 @@ const items = [
     industry: "Saas",
     quote:
       "Everest has leveraged the deep industry expertise of its team to get the details right! From handling complex contract modifications and delivering actionable deferred revenue analytics to managing multi-entity and multi-currency journal entries, Everest simplifies the most intricate accounting processes.",
-    image: "/success/ph-success-photo.jpg",
+    image: "/clients/ph-success-photo.jpg",
   },
   {
     name: "Ryann Hart",
@@ -17,7 +17,7 @@ const items = [
     industry: "Saas",
     quote:
       "Everest has leveraged the deep industry expertise of its team to get the details right! From handling complex contract modifications and delivering actionable deferred revenue analytics to managing multi-entity and multi-currency journal entries, Everest simplifies the most intricate accounting processes.",
-    image: "/success/ph-success-photo.jpg",
+    image: "/clients/ph-success-photo.jpg",
   },
   {
     name: "Ryann Hart",
@@ -25,7 +25,7 @@ const items = [
     industry: "Saas",
     quote:
       "Everest has leveraged the deep industry expertise of its team to get the details right! From handling complex contract modifications and delivering actionable deferred revenue analytics to managing multi-entity and multi-currency journal entries, Everest simplifies the most intricate accounting processes.",
-    image: "/success/ph-success-photo.jpg",
+    image: "/clients/ph-success-photo.jpg",
   },
 ];
 

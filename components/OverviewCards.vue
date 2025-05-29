@@ -3,7 +3,7 @@ const props = defineProps(["theme"]);
 </script>
 
 <template>
-  <Section :theme="theme" :margin="false">
+  <Section :theme="theme" side="none">
     <SectionHeader
       class="border-b border-[#3D4856] bg-shadowblue px-side-mob pb-[11.5rem] s:px-side"
       :theme="theme"

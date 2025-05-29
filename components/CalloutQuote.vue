@@ -8,7 +8,7 @@
       <div
         class="quote-person mx-auto mb-[8rem] w-[19.5rem] overflow-hidden rounded-sm"
       >
-        <img src="/public/ui/ph-quote-person@2x.jpg" alt="" />
+        <img src="/public/clients/ph-quote-person@2x.jpg" alt="" />
       </div>
 
       <blockquote

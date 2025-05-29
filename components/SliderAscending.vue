@@ -36,11 +36,7 @@ const slides = [
 </script>
 
 <template>
-  <Section
-    :theme="theme"
-    class="pb-section-bot pt-section-top-lg"
-    :margin="false"
-  >
+  <Section :theme="theme" class="pb-section-bot pt-section-top-lg" side="none">
     <SectionHeader
       :theme="theme"
       :data="{

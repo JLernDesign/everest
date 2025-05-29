@@ -36,7 +36,7 @@ defineExpose({ setInactive });
     <div class="flex w-full items-start justify-between p-side">
       <div class="w-[35%] shrink-0">
         <img
-          src="/public/success/ph-success-photo.jpg"
+          src="/public/clients/ph-success-photo.jpg"
           alt=""
           class="w-[23.4rem] overflow-hidden rounded-base"
         />

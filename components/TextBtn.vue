@@ -18,7 +18,7 @@ const hoverOff = () => {};
 <template>
   <NuxtLink
     :to="external ? props.data.external : internal"
-    :target="external && '_blank'"
+    :target="external ? '_blank' : ''"
     class="relative font-helvh text-body-sm after:absolute after:bottom-[2px] after:left-0 after:h-[1px] after:w-full"
     :class="
       color == 'black'

@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <Section :margin="false" class="pb-section-bot-lg bg-shadowblue">
+  <Section side="none" class="pb-section-bot-lg bg-shadowblue">
     <UIJagEdge color="fill-shadowblue" />
 
     <SectionHeader

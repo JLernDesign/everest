@@ -105,6 +105,9 @@
         }"
     /></Section>
 
+    <!-- client grid -->
+    <ClientSuccessGrid :edge="true" />
+
     <!-- client list -->
     <ClientList />
 

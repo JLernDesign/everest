@@ -3,7 +3,7 @@ const props = defineProps(["data"]);
 </script>
 
 <template>
-  <Section :hero="true" :margin="false">
+  <Section :hero="true" side="none">
     <div class="px-side-lg flex border-y border-y-grayline">
       <!-- text -->
       <SectionHeader

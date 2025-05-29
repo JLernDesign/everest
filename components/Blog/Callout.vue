@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <Section class="bg-jaffa pb-section-bot pt-section-top-lg" :margin="false">
+  <Section class="bg-jaffa pb-section-bot pt-section-top-lg" side="none">
     <!-- header -->
     <header
       class="relative border-y border-grayline pb-[5rem] pt-[4.5rem] text-center"

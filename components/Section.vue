@@ -2,19 +2,19 @@
 const props = defineProps({
   theme: { default: null },
   hero: { default: false },
-  margin: { default: true },
   side: { default: "normal" },
 });
 </script>
 
 <template>
   <section
-    class="relative w-full"
+    class="relative z-1 w-full"
     :class="[
       theme == 'dark' && 'bg-shadowblue text-white',
       hero ? 'pt-hero-top' : 'pt-section-top',
-      margin && side == 'normal' ? 'px-side-mob s:px-side' : null,
+      side == 'normal' && 'px-side-mob s:px-side',
       side == 'lg' && 'px-side-lg',
+      side == 'none' && 'px-0',
     ]"
   >
     <slot />
