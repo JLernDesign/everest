@@ -1,11 +1,13 @@
 <script setup>
-const props = defineProps(["theme"]);
+const props = defineProps(["theme", "header", "nav"]);
 </script>
 
 <template>
-  <Section :theme="theme" side="none">
+  <Section :theme="theme" side="none" class="!pt-0">
     <SectionHeader
-      class="border-b border-[#3D4856] bg-shadowblue px-side-mob pb-[11.5rem] s:px-side"
+      v-if="header"
+      class="border-b px-side-mob pb-[11.5rem] s:px-side"
+      :class="theme == 'dark' ? 'border-[#3D4856] bg-shadowblue' : null"
       :theme="theme"
       :data="{
         eyebrow: 'Product Overview',
@@ -24,7 +26,7 @@ const props = defineProps(["theme"]);
     /></SectionHeader>
 
     <div class="overview-wrap">
-      <OverviewCard v-for="n in 3" />
+      <OverviewCard v-for="n in 3" :theme="theme" :nav="nav" />
     </div>
   </Section>
 </template>

@@ -28,7 +28,7 @@ const props = defineProps({
     <!-- header / intro -->
     <div
       class="has-break space-y-[2.5rem]"
-      :class="align == 'center' && 'mx-auto max-w-[90rem]'"
+      :class="align == 'center' && 'mx-auto max-w-[100rem]'"
     >
       <h1
         v-if="hero"

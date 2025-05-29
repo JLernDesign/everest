@@ -1,8 +1,15 @@
-<script setup></script>
+<script setup>
+const props = defineProps(["theme", "nav"]);
+</script>
 
 <template>
   <div
-    class="overview-card dark relative w-full border-b border-[#3D4856] bg-shadowblue px-side-mob py-[11rem] s:px-side"
+    class="overview-card dark relative w-full border-b px-side-mob py-[11rem] s:px-side"
+    :class="
+      theme == 'dark'
+        ? 'border-[#3D4856] bg-shadowblue'
+        : 'border-grayline bg-jaffa'
+    "
   >
     <div class="content relative z-1 flex justify-between">
       <!-- text -->
@@ -23,7 +30,9 @@
 
         <CtaBtn to="#" class="mt-8">Learn More</CtaBtn>
 
+        <!-- slide nav -->
         <div
+          v-if="nav"
           class="slide-nav absolute bottom-0 left-0 w-[21rem] bg-[url(/public/ui/peak.png)] bg-contain bg-bottom bg-no-repeat"
         >
           <div class="flex w-full flex-col gap-y-6">
@@ -40,7 +49,6 @@
         <div
           class="image relative grid aspect-[1.0675] w-full place-content-center overflow-hidden rounded-base bg-skyblue p-[15rem]"
         >
-          <UIGridlines />
           <div class="image-ph">
             <img src="/public/home/ph-product-illus.png" alt="" />
           </div>
@@ -48,7 +56,7 @@
       </div>
     </div>
 
-    <UIGradientBot />
+    <UIGradientBot :theme="theme" />
   </div>
 </template>
 

@@ -117,14 +117,14 @@ sup {
     width: 100%;
     height: 1px;
     opacity: 0;
-    transform: translateY(1rem);
+    transform: scaleX(0);
     transform-origin: left top;
     transition: var(--ease-in);
   }
   &.on,
   &.nuxt-link-active {
     &:after {
-      transform: translateY(0);
+      transform: scaleX(1);
       opacity: 1;
       transition: var(--ease-out);
     }

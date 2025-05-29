@@ -12,7 +12,7 @@ const page = data.value.home;
   <div class="bg-skyblue">
     <HomeHero :data="page.hero" />
     <HomeIntro />
-    <OverviewCards theme="dark" />
+    <OverviewCards theme="dark" :nav="true" />
     <SliderAscending />
     <BannerCallout />
     <ClientSuccess />

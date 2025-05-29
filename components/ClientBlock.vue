@@ -4,8 +4,12 @@ const props = defineProps(["data"]);
 
 <template>
   <div
-    class="relative min-h-[43.8rem] rounded-base p-side pb-[9rem]"
-    :class="data.layout == 'two-col' && 'col-span-2'"
+    class="relative min-h-[43.8rem] rounded-base p-side"
+    :class="
+      data.layout == 'two-col'
+        ? 'col-span-2 pr-[2.5rem] pt-[2.5rem]'
+        : 'pb-[9rem]'
+    "
     :style="`background-color: ${data.color};`"
   >
     <!-- image/logo w/ quote -->
@@ -35,18 +39,43 @@ const props = defineProps(["data"]);
 
     <!-- two column quote w/ big photo -->
     <template v-if="data.layout == 'two-col'">
-      <!-- image -->
-      <img
-        v-if="data.image"
-        :src="data.image"
-        alt=""
-        class="mb-side w-[19.5rem] overflow-hidden rounded-base"
-      />
+      <div class="flex justify-between">
+        <!-- quote -->
+        <div class="left w-[46%] pt-[1.5rem]">
+          <img
+            v-if="data.logo"
+            :src="data.logo"
+            alt=""
+            class="mb-side w-[19.5rem] overflow-hidden rounded-base"
+          />
+          <blockquote v-if="data.quote" class="text-body-sm leading-sm">
+            “{{ data.quote }}”
+          </blockquote>
+        </div>
 
-      <!-- quote -->
-      <blockquote v-if="data.quote" class="text-body-sm leading-sm">
-        “{{ data.quote }}”
-      </blockquote>
+        <!-- image -->
+        <div class="right w-[47.5%]">
+          <img
+            v-if="data.image"
+            :src="data.image"
+            alt=""
+            class="overflow-hidden rounded-base"
+          />
+
+          <!-- stats -->
+          <hr class="my-side text-black" />
+          <div class="stats mb-side flex space-x-14 leading-[1]">
+            <div class="stat-item flex items-end space-x-4">
+              <h3 class="font-barlow-cond text-sm font-bold">2X</h3>
+              <p class="text-body-xsm">Awesome stat here</p>
+            </div>
+            <div class="stat-item flex items-end space-x-4">
+              <h3 class="font-barlow-cond text-sm font-bold">100%</h3>
+              <p class="text-body-xsm">Awesome stat here</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </template>
 
     <!-- byline -->

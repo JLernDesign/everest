@@ -11,8 +11,8 @@ console.log(hl.length);
 </script>
 
 <template>
-  <header v-if="data != undefined" class="space-y-header-lg">
-    <h2 class="font-barlow-cond text-xxl font-semibold leading-xxl">
+  <header v-if="data != undefined" class="relative space-y-header-lg">
+    <h2 class="font-barlow-cond text-xxl font-semibold uppercase leading-xxl">
       <!-- has inline block element -->
       <template v-if="hasBlock">
         <span v-html="hl[0]"></span>
@@ -24,7 +24,7 @@ console.log(hl.length);
 
       <!-- plain headline -->
       <template v-else>
-        {{ data.headline }}
+        <span v-html="data.headline"></span>
       </template>
     </h2>
 
@@ -32,12 +32,16 @@ console.log(hl.length);
       {{ data.intro }}
     </p>
 
+    <!-- cta buttons -->
     <CtaGroup
       v-if="data.cta"
       :data="data.cta.buttons"
       :align="align"
       :theme="theme"
     />
+
+    <!-- breadcrumb nav -->
+    <Breadcrumb v-if="data.breadcrumb" :data="data.breadcrumb" :theme="theme" />
   </header>
 </template>
 

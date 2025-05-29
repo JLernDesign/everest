@@ -82,6 +82,8 @@
       </div> -->
     </div>
 
+    <BodyBasic layout="img-lt" :edge="true" />
+
     <Section class="bg-skyblue"
       ><SectionHeader
         :data="{

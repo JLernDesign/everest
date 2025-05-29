@@ -131,6 +131,9 @@ export default {
         header: "3.5rem",
         "header-lg": "4rem",
       },
+      blur: {
+        glow: "50px",
+      },
     },
   },
 };

@@ -9,11 +9,9 @@ const page = data.value.home; */
 </script>
 
 <template>
-  <div class="bg-skyblue">
-    <ProductHero />
-    <BucketsNum />
-    <BigTextClouds />
-    <OverviewCards theme="light" :header="false" :nav="false" />
+  <div class="bg-jaffa">
+    <WhyHero />
+    <Advantage />
   </div>
 </template>
 
