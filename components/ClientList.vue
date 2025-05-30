@@ -38,8 +38,8 @@ onUnmounted(() => {});
 <template>
   <Section class="bg-skyblue pb-section-bot" side="lg">
     <!-- filter -->
-    <div class="mb-[5rem] w-full text-center filter">
-      <button class="inline-flex items-center gap-4">
+    <div class="mb-[4rem] w-full text-center filter">
+      <button class="inline-flex items-center gap-2">
         <span class="text-h5 font-barlow-cond font-bold uppercase"
           >filter by industry</span
         >

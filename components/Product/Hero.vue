@@ -7,11 +7,11 @@ const props = defineProps(["data"]);
     <div class="px-side-lg flex border-y border-y-grayline">
       <!-- text -->
       <SectionHeader
-        class="w-[57%] border-l border-l-grayline pl-side pr-[7.5rem] pt-[11rem]"
+        class="w-[57%] border-l border-l-grayline pl-side pr-[7.5rem] pt-[7.5rem]"
         align="left"
         :hero="true"
         :data="{
-          headline: 'Quote to Cash',
+          headline: 'Quote <br/>to Cash',
           intro:
             'Everest brings structure and speed to every stage of the quote-to-cash cycle with a system built specifically for SaaS. From configuring complex contracts to managing billing, revenue recognition, and collections, everything happens in one platform. ',
           cta: { buttons: [{ label: 'Book A Demo' }] },

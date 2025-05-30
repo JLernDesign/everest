@@ -25,7 +25,7 @@ defineExpose({ setInactive });
   >
     <!-- title -->
     <div
-      class="title flex w-full items-center justify-between border-b-1 border-b-grayline px-side py-[2.8rem]"
+      class="title flex w-full items-center justify-between border-b-1 border-b-grayline px-side pb-[2rem] pt-[2.6rem]"
     >
       <h3 class="w-[35%]">{{ data.name }}</h3>
       <p class="w-[45%] text-body-xsm leading-sm">{{ data.title }}</p>
@@ -49,7 +49,7 @@ defineExpose({ setInactive });
     </div>
 
     <!-- controls -->
-    <div class="relative flex w-full justify-between p-side">
+    <div class="relative flex w-full justify-between px-side pb-14 pt-9">
       <div class="relative w-[23.4rem]"><UISlideArrow dir="left" /></div>
       <div class="relative w-[23.4rem]"><UISlideArrow dir="right" /></div>
     </div>

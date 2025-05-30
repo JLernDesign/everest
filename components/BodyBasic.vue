@@ -21,7 +21,7 @@ const props = defineProps(["data", "edge", "layout"]);
     />
 
     <!-- columns -->
-    <div class="flex items-start justify-between pt-section-top">
+    <div class="flex items-start justify-between pt-[6rem]">
       <!-- image -->
       <div
         class="image aspect-square w-1/2 rounded-base bg-shadowbluelt"

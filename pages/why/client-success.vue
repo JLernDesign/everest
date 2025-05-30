@@ -6,6 +6,12 @@ const { data } = await useGraphqlQuery({
   query: QUERY,
 });
 const page = data.value.home; */
+
+onMounted(() => {
+  const theme = useState("theme");
+  theme.value = "dark";
+});
+onUnmounted(() => {});
 </script>
 
 <template>

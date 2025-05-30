@@ -1,12 +1,12 @@
 <script setup></script>
 
 <template>
-  <Section class="bg-jaffa pb-section-bot pt-[12rem]" side="lg">
+  <Section class="bg-jaffa pb-section-bot" side="lg">
     <!-- header -->
-    <header class="relative flex justify-between">
+    <header class="relative flex h-[1.8rem] justify-between">
       <LineFull class="top-1/2" />
       <div class="relative z-1 bg-jaffa px-5 text-body-sm">The Advantage</div>
-      <div class="relative z-1 bg-jaffa px-5">
+      <div class="relative z-1 -translate-y-1 bg-jaffa px-5">
         <IconEyebrow color="fill-black" />
       </div>
     </header>
@@ -15,7 +15,7 @@
     <div class="flex items-start justify-between pt-section-top">
       <!-- headline -->
       <div class="w-[52rem] rounded-base bg-shadowblue p-side">
-        <h2 class="font-barlow-cond text-lg leading-lg text-green">
+        <h2 class="font-barlow-cond text-lg font-bold leading-lg text-green">
           Reinventing ERP for the modern SaaS business
         </h2>
       </div>

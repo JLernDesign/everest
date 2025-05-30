@@ -60,13 +60,16 @@ onUnmounted(() => {});
 
     <!-- slides -->
     <div
-      class="slides relative mx-auto mt-[5rem] h-[50.5rem] max-w-[1160px]"
+      class="slides relative mx-auto mt-[5rem] h-[51.5rem] max-w-[1160px]"
       ref="main"
     >
       <StackSlide v-for="(slide, i) in slides" :data="slide" ref="slide" />
     </div>
 
     <!-- cta -->
+    <div class="btn-group mt-[6rem] space-x-nav text-center">
+      <CtaBtn>Client Success</CtaBtn>
+    </div>
   </Section>
 </template>
 

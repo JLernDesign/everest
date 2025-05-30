@@ -10,7 +10,7 @@ const props = defineProps(["layout", "data"]);
   >
     <!-- header -->
     <header
-      class="relative flex justify-between"
+      class="relative flex h-[1.8rem] justify-between"
       :class="
         layout == 'img-rt' ? '[&_.eyebrow]:bg-jaffa' : '[&_.eyebrow]:bg-skyblue'
       "
@@ -19,7 +19,7 @@ const props = defineProps(["layout", "data"]);
       <div class="eyebrow relative z-1 bg-jaffa px-5 text-body-sm">
         {{ data.eyebrow }}
       </div>
-      <div class="eyebrow relative z-1 bg-jaffa px-5">
+      <div class="eyebrow relative z-1 -translate-y-1 bg-jaffa px-5">
         <IconEyebrow color="fill-black" />
       </div>
     </header>

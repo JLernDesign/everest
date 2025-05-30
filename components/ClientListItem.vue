@@ -20,7 +20,7 @@ defineExpose({ openItem });
   >
     <!-- title -->
     <div
-      class="title flex w-full items-center justify-between border-b-1 border-b-grayline px-side py-[2.8rem]"
+      class="title flex w-full items-center justify-between border-b-1 border-b-grayline px-side pb-[2rem] pt-[2.6rem]"
     >
       <h3 class="w-[35%]">{{ data.name }}</h3>
       <p class="w-[45%] text-body-xsm leading-sm">{{ data.title }}</p>
@@ -29,7 +29,7 @@ defineExpose({ openItem });
 
     <!-- photo/quote -->
     <div class="item overflow-hidden" :class="open ? 'h-auto' : 'h-0'">
-      <div class="flex w-full items-start justify-between p-side">
+      <div class="flex w-full items-start justify-between p-side pb-[5rem]">
         <div class="w-[35%] shrink-0">
           <img
             :src="data.image"

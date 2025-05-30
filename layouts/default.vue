@@ -5,26 +5,25 @@ const props = defineProps(["theme"]);
 const wrapper = ref(null);
 const header = ref(null);
 const { width, height } = useElementSize(wrapper);
+const theme = useState("theme");
 
-// update theme on page change
-const changePage = () => {
-  header.value.setTheme();
-};
+/* watch theme for change */
+watch(theme, () => {
+  //console.log("layout shifted: " + height.value);
+  console.log("theme changed");
+  console.log(theme.value);
+});
 
 /* watch layout shift for scrolltrigger refresh */
 watch(height, () => {
   //console.log("layout shifted: " + height.value);
   layoutShiftRefresh();
 });
-
-defineExpose({
-  changePage,
-});
 </script>
 
 <template>
   <div class="wrapper" ref="wrapper">
-    <Header ref="header" :theme="theme" />
+    <Header ref="header" />
     <div class="main-contents overflow-hidden"><slot /></div>
     <Footer />
     <UISiteCover />

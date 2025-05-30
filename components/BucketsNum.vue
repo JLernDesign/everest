@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <Section side="none" class="pb-section-bot-lg bg-shadowblue">
+  <Section side="none" class="pb-section-bot-lg bg-shadowblue !pt-0">
     <UIJagEdge color="fill-shadowblue" />
 
     <SectionHeader
@@ -18,15 +18,17 @@
     <div class="px-side-lg mt-[8rem] flex flex-nowrap gap-[6rem]">
       <div
         v-for="n in 3"
-        class="bucket w-[45.5rem] space-y-10 rounded-base bg-shadowbluelt p-[3rem]"
+        class="bucket w-[45.5rem] rounded-base bg-shadowbluelt p-[3rem]"
       >
-        <IconTri color="fill-red" />
+        <IconTri color="fill-red" class="mb-4" />
         <div
-          class="num font-barlow-cond text-xxl font-semibold leading-xxl text-shadowblue"
+          class="num mb-12 font-barlow-cond text-xxl font-semibold leading-xxl text-shadowblue"
         >
           01
         </div>
-        <h3 class="font-barlow-cond text-sm font-bold leading-[.94] text-red">
+        <h3
+          class="mb-7 font-barlow-cond text-sm font-bold leading-[.94] text-red"
+        >
           Fragmented sales, billing, and finance systems.
         </h3>
         <p class="text-body-sm leading-sm text-white">

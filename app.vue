@@ -10,6 +10,7 @@ const layout = ref(null);
 // initial states
 const page_title = useState("page_title", () => "index");
 const base_url = useState("base_url", () => "https://everest.com");
+const theme = useState("theme", () => "light");
 
 // init global meta data
 const QUERY = SettingsQuery.loc.source.body;

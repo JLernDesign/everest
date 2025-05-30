@@ -2,7 +2,7 @@
 
 <template>
   <Section
-    class="z-1 overflow-hidden !pt-section-top-lg pb-section-bot text-center"
+    class="z-1 overflow-hidden !pt-section-top pb-section-bot text-center"
   >
     <!-- bg elements -->
     <div

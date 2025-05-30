@@ -24,9 +24,7 @@ const toggleMenu = (id) => {
   <Section class="bg-shadowblue !py-side" theme="dark">
     <UITexture />
 
-    <div
-      class="relative z-1 rounded-base bg-shadowblue px-[11.5rem] py-[8.5rem]"
-    >
+    <div class="relative z-1 rounded-base bg-shadowblue px-[12rem] py-[8.5rem]">
       <SectionHeader
         theme="dark"
         :data="{

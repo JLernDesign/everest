@@ -22,6 +22,14 @@ const props = defineProps(["data"]);
         class="mb-side w-[19.5rem] overflow-hidden rounded-base"
       />
 
+      <!-- logo -->
+      <img
+        v-if="data.logo"
+        :src="data.logo"
+        alt=""
+        class="mb-side w-[19.5rem] overflow-hidden rounded-base"
+      />
+
       <!-- quote -->
       <blockquote v-if="data.quote" class="text-body-sm leading-sm">
         “{{ data.quote }}”
@@ -30,8 +38,10 @@ const props = defineProps(["data"]);
 
     <!-- big quote on color -->
     <template v-if="data.layout == 'big-quote'">
-      <blockquote class="font-barlow-cond text-sm font-bold leading-[.94]">
-        <div class="quote lt absolute left-[2rem] top-[2rem]">“</div>
+      <blockquote
+        class="pt-10 font-barlow-cond text-sm font-bold leading-[.94]"
+      >
+        <div class="quote lt absolute left-[2rem] top-[3rem]">“</div>
         <div class="quote rt absolute bottom-[6rem] right-[4rem]">”</div>
         {{ data.quote }}
       </blockquote>
@@ -63,8 +73,8 @@ const props = defineProps(["data"]);
           />
 
           <!-- stats -->
-          <hr class="my-side text-black" />
-          <div class="stats mb-side flex space-x-14 leading-[1]">
+          <hr class="my-[3.25rem] text-black" />
+          <div class="stats flex space-x-14 leading-[1]">
             <div class="stat-item flex items-end space-x-4">
               <h3 class="font-barlow-cond text-sm font-bold">2X</h3>
               <p class="text-body-xsm">Awesome stat here</p>

@@ -2,27 +2,17 @@
 import gsap from "gsap";
 import { useScroll } from "@vueuse/core";
 
-const props = defineProps(["theme"]);
 const scrolled = ref(false);
 const sticky = ref(true);
 const header = ref(null);
 const logo = ref(null);
 const logo_wrap = ref(null);
+const theme = useState("theme");
 
 const { y, directions } = useScroll(window);
 const sp = 0.75;
 const easer = "power3.out";
-
-const setTheme = () => {
-  // manual set
-  if (props.theme) {
-    theme.value = props.theme;
-  }
-};
-
 onMounted(() => {
-  setTheme();
-
   // sticky nav
   useEventListener(window, "scroll", () => {
     setSticky();
@@ -129,14 +119,14 @@ const hideSticky = () => {
     ease: "power3.inOut",
   });
 };
-
-defineExpose({
-  setTheme,
-});
 </script>
 
 <template>
-  <header class="fixed z-20 h-[12rem] w-full" ref="header">
+  <header
+    class="fixed z-20 h-[12rem] w-full"
+    :class="theme == 'dark' && !scrolled ? 'text-white' : null"
+    ref="header"
+  >
     <!-- logo -->
     <div class="logo-main absolute z-5 pl-side pt-[4.25rem]">
       <NuxtLink
@@ -144,7 +134,7 @@ defineExpose({
         class="block h-[8.1rem] w-[9.4rem] origin-top-left"
         ref="logo_wrap"
       >
-        <IconLogo ref="logo" />
+        <IconLogo ref="logo" :theme="theme" />
       </NuxtLink>
     </div>
 
@@ -152,7 +142,7 @@ defineExpose({
     <div class="nav-wrap grid w-full justify-center pt-[6rem]">
       <div class="relative grid place-content-center px-[5rem] py-[1.25rem]">
         <div
-          class="navbg bg-jaffa border-jaffalt absolute -top-[1px] left-0 h-full w-full rounded-btn border-1 opacity-0"
+          class="navbg absolute -top-[1px] left-0 h-full w-full rounded-btn border-1 border-jaffalt bg-jaffa opacity-0"
         ></div>
         <Nav type="main" />
       </div>
@@ -166,7 +156,10 @@ defineExpose({
         <a href="#" class="flex items-start">
           <span>EN</span
           ><span class="ml-2 mt-1 inline-block"
-            ><IconChevron color="black" /></span
+            ><IconChevron
+              :color="
+                theme == 'dark' ? 'stroke-white' : 'stroke-black'
+              " /></span
         ></a>
         <a href="#">Sign In</a>
       </div>
