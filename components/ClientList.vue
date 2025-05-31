@@ -27,6 +27,46 @@ const items = [
       "Everest has leveraged the deep industry expertise of its team to get the details right! From handling complex contract modifications and delivering actionable deferred revenue analytics to managing multi-entity and multi-currency journal entries, Everest simplifies the most intricate accounting processes.",
     image: "/clients/ph-success-photo.jpg",
   },
+  {
+    name: "Ryann Hart",
+    title: "CPA and Revenue Accounting Sr. Manager",
+    industry: "Saas",
+    quote:
+      "Everest has leveraged the deep industry expertise of its team to get the details right! From handling complex contract modifications and delivering actionable deferred revenue analytics to managing multi-entity and multi-currency journal entries, Everest simplifies the most intricate accounting processes.",
+    image: "/clients/ph-success-photo.jpg",
+  },
+  {
+    name: "Ryann Hart",
+    title: "CPA and Revenue Accounting Sr. Manager",
+    industry: "Saas",
+    quote:
+      "Everest has leveraged the deep industry expertise of its team to get the details right! From handling complex contract modifications and delivering actionable deferred revenue analytics to managing multi-entity and multi-currency journal entries, Everest simplifies the most intricate accounting processes.",
+    image: "/clients/ph-success-photo.jpg",
+  },
+  {
+    name: "Ryann Hart",
+    title: "CPA and Revenue Accounting Sr. Manager",
+    industry: "Saas",
+    quote:
+      "Everest has leveraged the deep industry expertise of its team to get the details right! From handling complex contract modifications and delivering actionable deferred revenue analytics to managing multi-entity and multi-currency journal entries, Everest simplifies the most intricate accounting processes.",
+    image: "/clients/ph-success-photo.jpg",
+  },
+  {
+    name: "Ryann Hart",
+    title: "CPA and Revenue Accounting Sr. Manager",
+    industry: "Saas",
+    quote:
+      "Everest has leveraged the deep industry expertise of its team to get the details right! From handling complex contract modifications and delivering actionable deferred revenue analytics to managing multi-entity and multi-currency journal entries, Everest simplifies the most intricate accounting processes.",
+    image: "/clients/ph-success-photo.jpg",
+  },
+  {
+    name: "Ryann Hart",
+    title: "CPA and Revenue Accounting Sr. Manager",
+    industry: "Saas",
+    quote:
+      "Everest has leveraged the deep industry expertise of its team to get the details right! From handling complex contract modifications and delivering actionable deferred revenue analytics to managing multi-entity and multi-currency journal entries, Everest simplifies the most intricate accounting processes.",
+    image: "/clients/ph-success-photo.jpg",
+  },
 ];
 
 onMounted(() => {
@@ -37,6 +77,16 @@ onUnmounted(() => {});
 
 <template>
   <Section class="bg-skyblue pb-section-bot" side="lg">
+    <!-- bg elements -->
+    <UICloud
+      type="3"
+      class="-left-[59rem] top-[73rem] -scale-x-100 opacity-50"
+    />
+    <UICloud
+      type="3"
+      class="left-[88rem] top-[28rem] -scale-x-100 opacity-50"
+    />
+
     <!-- filter -->
     <div class="mb-[4rem] w-full text-center filter">
       <button class="inline-flex items-center gap-2">

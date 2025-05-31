@@ -7,7 +7,7 @@ const props = defineProps(["data"]);
     <SectionHeader class="max-w-[42rem]" align="left" :data="data" />
 
     <!-- video -->
-    <div class="relative z-5 mt-[23rem] grid justify-end">
+    <div class="relative z-5 mt-[14rem] grid justify-end">
       <UIVideoThumb />
     </div>
 

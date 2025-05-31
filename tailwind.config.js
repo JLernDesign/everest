@@ -133,6 +133,7 @@ export default {
       },
       blur: {
         glow: "50px",
+        big: "100px",
       },
     },
   },

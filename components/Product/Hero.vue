@@ -4,7 +4,16 @@ const props = defineProps(["data"]);
 
 <template>
   <Section :hero="true" side="none">
-    <div class="px-side-lg flex border-y border-y-grayline">
+    <!-- bg elements -->
+    <UIGlow
+      class="bottom-[0rem] left-1/2 h-[36rem] !w-[118rem] -translate-x-1/2"
+      src="/ui/edge-gradient-sm.svg"
+    />
+    <UICloud type="2" class="-top-[30rem] left-[99rem]" />
+    <UICloud type="2" class="left-0 top-[68rem]" />
+    <UICloud type="3" class="left-[73rem] top-[65rem]" />
+
+    <div class="px-side-lg relative flex border-y border-y-grayline">
       <!-- text -->
       <SectionHeader
         class="w-[57%] border-l border-l-grayline pl-side pr-[7.5rem] pt-[7.5rem]"
@@ -21,6 +30,13 @@ const props = defineProps(["data"]);
       <!-- image -->
       <div class="w-[43%] border-x border-x-grayline">
         <img src="/public/product/ph-large-img@2x.png" alt="" />
+      </div>
+
+      <!-- number -->
+      <div
+        class="absolute right-0 top-0 pr-side pt-[5rem] font-barlow-cond text-num font-bold"
+      >
+        01
       </div>
     </div>
 

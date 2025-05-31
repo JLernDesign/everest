@@ -1,6 +1,19 @@
 <script setup>
 const props = defineProps(["theme"]);
 
+const main = ref(null);
+let slide_els;
+const os = 13;
+
+onMounted(() => {
+  slide_els = qsa(".item", main.value.$el);
+  slide_els.reverse();
+
+  slide_els.forEach((slide, i) => {
+    slide.style.marginTop = i * os + "rem";
+  });
+});
+
 const slides = [
   {
     color: "#8FC8E3",
@@ -36,7 +49,12 @@ const slides = [
 </script>
 
 <template>
-  <Section :theme="theme" class="pb-section-bot pt-section-top-lg" side="none">
+  <Section
+    :theme="theme"
+    class="pb-section-bot pt-section-top-lg"
+    side="none"
+    ref="main"
+  >
     <SectionHeader
       :theme="theme"
       :data="{
@@ -44,27 +62,34 @@ const slides = [
         headline: 'Solving the challenges that <br/>hold SaaS companies back.',
         intro:
           'At Everest, we don’t just automate your core <br/>business processes—we fortify them.',
-        cta: [
-          {
-            type: 'button',
-            title: 'Read More',
-            url: '#',
-          },
-        ],
+        cta: {
+          buttons: [
+            {
+              style: 'button',
+              label: 'Read More',
+              url: '#',
+            },
+          ],
+        },
       }"
     />
 
     <!-- slider -->
-    <Carousel class="slider-wrap mt-[12rem] h-[62.8rem] space-x-[9rem]">
+    <Carousel class="slider-wrap -mt-[32rem] !h-[128rem] space-x-[9rem]">
       <div
         v-for="(slide, i) in slides"
-        class="item grid h-[62.8rem] w-[45.5rem] shrink-0 cursor-grab rounded-base p-[3.2rem] pt-[3.75rem]"
+        class="item h-[62.8rem] w-[45.5rem] shrink-0 cursor-grab rounded-base p-[3.2rem] pt-[3.75rem]"
         :style="`background-color:${slide.color}`"
       >
         <h3 class="relative font-barlow-cond text-sm font-bold leading-[.95]">
           <IconTri color="fill-black" class="mb-[1.35rem]" />
           <span v-html="slide.headline"></span>
         </h3>
+
+        <!-- illustration -->
+        <div class="illus mx-auto mt-[8rem] h-[20rem] w-[22rem]">
+          <img src="/public/why/ph-slider-illus.png" alt="" />
+        </div>
 
         <div
           class="absolute bottom-0 left-0 h-auto w-full p-[3.2rem] text-body-sm leading-sm"

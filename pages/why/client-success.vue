@@ -18,6 +18,9 @@ onUnmounted(() => {});
   <div class="bg-jaffa">
     <WhyClientsHero />
     <ClientSuccessGrid :edge="true" />
+    <CalloutQuote />
+    <ClientList class="!pb-[30rem]" />
+    <PressCallout />
   </div>
 </template>
 
