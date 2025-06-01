@@ -22,21 +22,10 @@
         </div>
       </div>
 
-      <!-- image -->
+      <!-- image 3D -->
       <div
         class="relative h-[31rem] w-[59rem] overflow-hidden rounded-base bg-[url(/public/ui/callout-gradient@2x.png)] bg-cover"
-      >
-        <!-- <div
-          class="absolute -left-[10rem] -top-[10rem] h-[58.5rem] w-[62.4rem] rounded-[62.4rem] bg-gradient-to-r from-[#FF9DDA] to-[rgba(247_255_157/0.52)] to-60% blur-[60px]"
-        ></div> -->
-      </div>
-    </div>
-
-    <!-- gradient -->
-    <div
-      class="glow absolute left-1/2 top-[39rem] z-0 w-[203.7rem] -translate-x-1/2 blur-[50px]"
-    >
-      <img src="/public/ui/callout-bot-gradient.svg" alt="" />
+      ></div>
     </div>
   </div>
 </template>

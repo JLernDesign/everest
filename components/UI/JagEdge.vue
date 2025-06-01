@@ -1,14 +1,14 @@
 <script setup>
-const props = defineProps(['color']);
+const props = defineProps(["color"]);
 </script>
 
 <template>
-  <div class="absolute left-0 w-full h-[26.8rem] -top-[26.8rem]">
+  <div class="absolute -top-[26.8rem] left-0 z-1 h-[26.8rem] w-full">
     <svg
       id="uuid-a7e36ef3-9a73-4651-a660-54067f565c41"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 1800 268"
-      class="w-full h-[26.8rem]"
+      class="h-[26.8rem] w-full"
       :class="color"
       preserveAspectRatio="none"
     >

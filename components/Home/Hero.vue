@@ -12,11 +12,10 @@ const props = defineProps(["data"]);
     </div>
 
     <!-- image -->
-    <div
-      class="glow absolute left-[36.2rem] top-[19.7rem] w-[118.1rem] blur-[50px]"
-    >
-      <img src="/public/home/hero-glow.svg" alt="" />
-    </div>
+    <UIGlow
+      class="bottom-0 left-[36.2rem] top-[19.7rem] w-[118.1rem]"
+      src="/home/hero-glow.svg"
+    />
     <div
       class="bg-image absolute left-[31.4rem] top-[11.4rem] z-1 w-[104.6rem]"
     >

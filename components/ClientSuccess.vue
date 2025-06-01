@@ -4,6 +4,13 @@ const props = defineProps(["theme"]);
 
 <template>
   <Section :theme="theme" class="mt-[26.8rem] bg-jaffa !pt-8 pb-section-bot">
+    <UIGlow
+      class="blur-big -top-[35rem] -z-1 h-[35rem] overflow-hidden"
+      src="/ui/callout-bot-gradient.svg"
+    />
+    <div
+      class="gradient-cover absolute left-0 top-0 z-0 h-full w-full bg-jaffa"
+    ></div>
     <UIJagEdge color="fill-jaffa" />
 
     <SectionHeader

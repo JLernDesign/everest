@@ -2,6 +2,7 @@
 const props = defineProps({
   data: { default: null },
   align: { default: "center" },
+  valign: { default: "top" },
   theme: { default: "light" },
   hero: { default: false },
 });
@@ -14,6 +15,7 @@ const props = defineProps({
     :class="[
       align == 'left' ? 'text-left' : 'text-center',
       theme == 'dark' && 'text-white',
+      valign == 'center' && 'flex flex-col justify-center',
     ]"
   >
     <!-- eyebrow -->
@@ -40,7 +42,9 @@ const props = defineProps({
         class="font-barlow-cond text-lg font-bold leading-lg"
         v-html="data.headline"
       ></h2>
-      <p v-html="data.intro"></p>
+      <div class="max-w-[610px]">
+        <p v-html="data.intro"></p>
+      </div>
     </div>
 
     <!-- cta buttons -->
