@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+const props = defineProps(["data", "color"]);
+</script>
 
 <template>
   <div>
@@ -11,15 +13,26 @@
         :class="n == 1 ? 'left-0' : 'right-0'"
       >
         <img
-          src="/public/why/ai-corner-blue@2x.png"
+          :src="
+            color == 'red' && n == 1
+              ? '/why/ai-corner-red@2x.png'
+              : '/why/ai-corner-blue@2x.png'
+          "
           alt=""
           class="h-full w-full object-cover"
         />
       </div>
 
-      <div class="w-full border-x border-x-whiteline px-side py-[5rem]">
-        <h2 class="font-barlow-cond text-lg font-bold leading-lg">
-          Why traditional ERP Systems can't get AI right
+      <!-- headline -->
+      <div
+        class="relative w-full border-x border-x-whiteline px-side py-[4.5rem]"
+      >
+        <h2 class="relative font-barlow-cond text-lg font-bold leading-lg">
+          {{ data.headline }}
+          <IconArrowFill
+            color="fill-red"
+            class="absolute bottom-0 right-0 rotate-[135deg]"
+          />
         </h2>
       </div>
     </div>

@@ -42,7 +42,7 @@ const props = defineProps({
         class="font-barlow-cond text-lg font-bold leading-lg"
         v-html="data.headline"
       ></h2>
-      <div class="max-w-[610px]">
+      <div>
         <p v-html="data.intro"></p>
       </div>
     </div>
