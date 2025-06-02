@@ -15,7 +15,31 @@ query Home {
       }
     }
     intro {
-      ...HeaderFragment
+      headline
+      intro
+      cta {
+        buttons {
+          label
+          internal
+          external
+          style
+        }
+      }
+    }
+    modules {
+      __typename
+      ... on BlogCalloutRecord {
+        __typename
+      }
+      ... on BannerCalloutRecord {
+        __typename
+      }
+      ... on OverviewRecord {
+        __typename
+      }
+      ... on IntegrationListRecord {
+        __typename
+      }
     }
   }
 }

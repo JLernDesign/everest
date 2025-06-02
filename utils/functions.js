@@ -346,7 +346,7 @@ export const createExcerpt = (
 const stripHTMLTags = (str) => str.replace(/<[^>]*>/g, "");
 
 export const addLineBreaks = (str) => {
-  return str.replaceAll("\n", "<br />");
+  return str?.replaceAll("\n", "<br />");
 };
 
 /* export const openHL = (el) => {

@@ -2,7 +2,7 @@
 const props = defineProps(["data", "align"]);
 
 // check for inline image marker
-const hl = props.data.headline.split(" []");
+const hl = props.data.headline.split("[]");
 let hasBlock = false;
 if (hl.length > 1) {
   hasBlock = true;
@@ -15,21 +15,21 @@ console.log(hl.length);
     <h2 class="font-barlow-cond text-xxl font-semibold uppercase leading-xxl">
       <!-- has inline block element -->
       <template v-if="hasBlock">
-        <span v-html="hl[0]"></span>
+        <span v-html="addLineBreaks(hl[0])"></span>
         <span
           class="-mr-10 inline-flex h-[16.8rem] w-[32.1rem] rounded-[.9rem] bg-[url(/ui/callout-gradient@2x.png)] bg-cover"
         ></span>
-        <span v-html="hl[1]"></span>
+        <span v-html="addLineBreaks(hl[1])"></span>
       </template>
 
       <!-- plain headline -->
       <template v-else>
-        <span v-html="data.headline"></span>
+        <span v-html="addLineBreaks(data.headline)"></span>
       </template>
     </h2>
 
     <p class="mx-auto max-w-[96rem] text-body-md leading-md">
-      {{ data.intro }}
+      {{ addLineBreaks(data.intro) }}
     </p>
 
     <!-- cta buttons -->

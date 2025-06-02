@@ -35,15 +35,15 @@ const props = defineProps({
       <h1
         v-if="hero"
         class="!mb-10 font-barlow-cond text-xl font-bold leading-xl"
-        v-html="data.headline"
+        v-html="addLineBreaks(data.headline)"
       ></h1>
       <h2
         v-else
         class="font-barlow-cond text-lg font-bold leading-lg"
-        v-html="data.headline"
+        v-html="addLineBreaks(data.headline)"
       ></h2>
       <div>
-        <p v-html="data.intro"></p>
+        <p v-html="addLineBreaks(data.intro)"></p>
       </div>
     </div>
 
