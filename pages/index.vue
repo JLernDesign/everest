@@ -28,15 +28,26 @@ console.log(toRaw(page));
         :header="true"
         :data="module"
       />
-      <SliderAscending v-if="module.__typename == 'AscendingRecord'" />
+      <SliderAscending
+        v-if="module.__typename == 'AscendingSliderRecord'"
+        :data="module"
+      />
       <BannerCallout
         v-if="module.__typename == 'BannerCalloutRecord'"
         :data="module"
       />
-      <ClientSuccess v-if="module.__typename == 'ClientSuccessRecord'" />
+      <ClientSuccess
+        v-if="module.__typename == 'ClientSuccessRecord'"
+        :data="module"
+      />
       <BlogCallout v-if="module.__typename == 'BlogCalloutRecord'" />
-      <Integrations v-if="module.__typename == 'IntegrationListRecord'" />
+      <Integrations
+        v-if="module.__typename == 'IntegrationListRecord'"
+        :data="module"
+      />
     </template>
+
+    <FooterLockup :data="page.footerCallout" />
   </div>
 </template>
 

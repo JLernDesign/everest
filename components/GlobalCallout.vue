@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+const props = defineProps(["data"]);
+</script>
 
 <template>
   <div class="relative p-side">
@@ -20,18 +22,24 @@
 
       <!-- text -->
       <div class="text relative w-[65%]">
-        <h2 class="font-barlow-cond text-xl font-bold leading-xl">
-          See how Everest can transform your SaaS operations.
-        </h2>
-        <p class="mt-[4.75rem]">
-          Discover how Everest empowers finance and operations leaders to drive
-          <br />
-          faster growth, smarter decisions, and stronger margins.
-        </p>
-        <div class="btn-group mt-side space-x-nav">
-          <CtaBtn to="#">Try Everest</CtaBtn>
-          <TextBtn to="#" color="black">Contact Us</TextBtn>
-        </div>
+        <h2
+          v-if="data.headline"
+          class="font-barlow-cond text-xl font-bold leading-xl"
+          v-html="addLineBreaks(data.headline)"
+        ></h2>
+        <p
+          v-if="data.intro"
+          class="mt-[4.75rem]"
+          v-html="addLineBreaks(data.intro)"
+        ></p>
+
+        <CtaGroup
+          v-if="data.cta"
+          :data="data.cta.buttons"
+          :align="left"
+          theme="light"
+          class="mt-side"
+        />
       </div>
 
       <!-- image -->

@@ -6,6 +6,13 @@ import { useBreakpoints } from "@vueuse/core";
 
 export const top_margin = 55;
 export const basew = 1800;
+export const colors = [
+  "bg-lightblue",
+  "bg-jaffalt",
+  "bg-yellow",
+  "bg-red",
+  "bg-green",
+];
 
 // auto scroll to section on click
 export const jumpTo = (e) => {

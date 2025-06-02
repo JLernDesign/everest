@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps(["theme"]);
+const props = defineProps(["theme", "data"]);
 
 const main = ref(null);
 let slide_els;
@@ -10,7 +10,7 @@ onMounted(() => {
   slide_els.reverse();
 
   slide_els.forEach((slide, i) => {
-    slide.style.marginTop = i * os + "rem";
+    //slide.style.marginTop = i * os + "rem";
   });
 });
 
@@ -55,31 +55,15 @@ const slides = [
     side="none"
     ref="main"
   >
-    <SectionHeader
-      :theme="theme"
-      :data="{
-        eyebrow: 'Why Everest',
-        headline: 'Solving the challenges that <br/>hold SaaS companies back.',
-        intro:
-          'At Everest, we don’t just automate your core <br/>business processes—we fortify them.',
-        cta: {
-          buttons: [
-            {
-              style: 'button',
-              label: 'Read More',
-              url: '#',
-            },
-          ],
-        },
-      }"
-    />
+    <SectionHeader :theme="theme" :data="data.header" />
 
     <!-- slider -->
-    <Carousel class="slider-wrap -mt-[32rem] !h-[128rem] space-x-[9rem]">
+    <!-- -mt-[32rem] !h-[128rem] -->
+    <Carousel class="slider-wrap mt-[12.5rem] !h-[62.8rem] space-x-[9rem]">
       <div
         v-for="(slide, i) in slides"
         class="item h-[62.8rem] w-[45.5rem] shrink-0 cursor-grab rounded-base p-[3.2rem] pt-[3.75rem]"
-        :style="`background-color:${slide.color}`"
+        :class="colors[i]"
       >
         <h3 class="relative font-barlow-cond text-sm font-bold leading-[.95]">
           <IconTri color="fill-black" class="mb-[1.35rem]" />

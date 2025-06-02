@@ -28,6 +28,9 @@ onMounted(() => {
         loop.toIndex(i, { duration: 1, ease: "power3.inOut" }),
       ),
     );
+
+    // start on 1st slide
+    loop.toIndex(0, { duration: 0 });
   }, main.value);
 });
 

@@ -86,6 +86,77 @@ query Home {
       ... on IntegrationListRecord {
         __typename
       }
+      ... on AscendingSliderRecord {
+        header {
+          eyebrow
+          headline
+          intro
+          cta {
+            buttons {
+              label
+              internal
+              external
+              style
+            }
+          }
+        }
+        modules {
+          headline
+          body
+          image {
+            url
+          }
+        }
+      }
+      ... on ClientSuccessRecord {
+        header {
+          eyebrow
+          headline
+          intro
+          cta {
+            buttons {
+              label
+              internal
+              external
+              style
+            }
+          }
+        }
+        slides {
+          name
+          title
+          quote
+          statsGroup {
+            stats {
+              figure
+              label
+            }
+          }
+          media {
+            image {
+              url
+            }
+            video {
+              url
+            }
+          }
+          logo {
+            url
+          }
+        }
+      }
+    }
+    footerCallout {
+      headline
+      intro
+      cta {
+        buttons {
+          label
+          internal
+          external
+          style
+        }
+      }
     }
   }
 }

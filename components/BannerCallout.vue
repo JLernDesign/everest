@@ -11,6 +11,7 @@ const props = defineProps(["data"]);
       <!-- text -->
       <div class="text relative w-[50%] space-y-14 pt-4">
         <h2
+          v-if="data.headline"
           class="font-barlow-cond text-lg font-bold leading-lg"
           v-html="addLineBreaks(data.headline)"
         ></h2>
