@@ -1,0 +1,12 @@
+fragment HeaderFragment on SectionHeaderRecord {
+  headline
+  intro
+  cta {
+    buttons {
+      label
+      internal
+      external
+      style
+    }
+  }
+}

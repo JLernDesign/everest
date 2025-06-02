@@ -1,3 +1,5 @@
+#import "../assets/graphql/fragments/header.graphql"
+
 query Home {
   home {
     hero {
@@ -11,6 +13,9 @@ query Home {
           style
         }
       }
+    }
+    intro {
+      ...HeaderFragment
     }
   }
 }
