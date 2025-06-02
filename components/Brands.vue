@@ -10,8 +10,8 @@ const props = defineProps(["data", "theme"]);
     >
       {{ data.title }}
     </h4>
-    <div class="flex justify-center space-x-[10rem]">
-      <UILogo v-for="item in data.logos" :src="item" />
+    <div class="flex justify-center space-x-[9rem]">
+      <UILogo v-for="item in data.logos" :src="item.url ? item.url : item" />
     </div>
   </div>
 </template>

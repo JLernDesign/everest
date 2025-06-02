@@ -26,6 +26,12 @@ query Home {
         }
       }
     }
+    featuredLogos {
+      title
+      logos {
+        url
+      }
+    }
     modules {
       __typename
       ... on BlogCalloutRecord {
@@ -33,9 +39,49 @@ query Home {
       }
       ... on BannerCalloutRecord {
         __typename
+        headline
+        intro
+        cta {
+          buttons {
+            label
+            internal
+            external
+            style
+          }
+        }
       }
       ... on OverviewRecord {
         __typename
+        header {
+          eyebrow
+          headline
+          intro
+          cta {
+            buttons {
+              label
+              internal
+              external
+              style
+            }
+          }
+        }
+        sections {
+          id
+          title
+          headline
+          body
+          cta {
+            buttons {
+              label
+              internal
+              external
+              style
+            }
+          }
+          image {
+            url
+          }
+        }
       }
       ... on IntegrationListRecord {
         __typename

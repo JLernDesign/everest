@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps(["theme", "nav"]);
+const props = defineProps(["theme", "nav", "data", "num"]);
 </script>
 
 <template>
@@ -16,19 +16,23 @@ const props = defineProps(["theme", "nav"]);
       <div class="left w-1/2 max-w-[60rem]">
         <div class="num mb-[11rem]">
           <IconTri color="fill-red" />
-          <div class="font-barlow-cond text-num font-bold opacity-30">01</div>
+          <div class="font-barlow-cond text-num font-bold opacity-30">
+            {{ num < 10 ? "0" + num : num }}
+          </div>
         </div>
 
-        <h3 class="mb-5 font-helvb text-md">Quote to Cash</h3>
-        <p>
-          From order creation and activation to invoicing and revenue
-          recognition, every step is integrated within a single platform. By
-          linking Order to Cash directly to the core General Ledger, Everest ERP
-          ensures that financial records are always up-to-date, enabling precise
-          revenue forecasts and ensuring compliance.
-        </p>
+        <h3 class="mb-5 font-helvb text-md">{{ data.headline }}</h3>
+        <span v-html="data.body"></span>
 
-        <CtaBtn to="#" class="mt-8">Learn More</CtaBtn>
+        <!-- cta buttons -->
+        <CtaGroup
+          v-if="data.cta"
+          :data="data.cta.buttons"
+          :align="align"
+          :theme="theme"
+          class="mt-8"
+        />
+        <!-- <CtaBtn to="#" class="mt-8">Learn More</CtaBtn> -->
 
         <!-- slide nav -->
         <div
@@ -49,8 +53,11 @@ const props = defineProps(["theme", "nav"]);
         <div
           class="image relative grid aspect-[1.0675] w-full place-content-center overflow-hidden rounded-base bg-skyblue p-[15rem]"
         >
-          <div class="image-ph">
-            <img src="/public/home/ph-product-illus.png" alt="" />
+          <UICloud type="2" class="-left-[16rem] top-[44rem]" />
+          <UICloud type="2" class="-top-[25rem] left-[18rem]" />
+
+          <div class="image-ph relative">
+            <img :src="data.image?.url" alt="" />
           </div>
         </div>
       </div>

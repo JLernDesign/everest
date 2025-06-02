@@ -4,7 +4,7 @@ const props = defineProps(["data"]);
 
 <template>
   <Section :hero="true" class="!pt-[24.5rem] pb-[10rem]">
-    <SectionHeader class="max-w-[42rem]" align="left" :data="data" />
+    <SectionHeader class="max-w-[60rem]" align="left" :data="data" />
 
     <!-- video -->
     <div class="relative z-5 mt-[14rem] grid justify-end">

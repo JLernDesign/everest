@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps(["data"]);
+const props = defineProps(["data", "logos"]);
 </script>
 
 <template>
@@ -7,20 +7,7 @@ const props = defineProps(["data"]);
     <SectionHeaderBig align="center" :data="data" />
 
     <!-- brands -->
-    <Brands
-      class="mt-[12rem]"
-      theme="light"
-      :data="{
-        title: 'Used by',
-        logos: [
-          '/logos/ph-logo.svg',
-          '/logos/ph-logo.svg',
-          '/logos/ph-logo.svg',
-          '/logos/ph-logo.svg',
-          '/logos/ph-logo.svg',
-        ],
-      }"
-    />
+    <Brands v-if="logos" class="mt-[12rem]" theme="light" :data="logos" />
   </Section>
 </template>
 

@@ -6,7 +6,7 @@ const props = defineProps(["data"]);
   <div class="w-full pt-[3rem] text-center">
     <ul class="inline-flex space-x-nav">
       <li v-for="(item, i) in data">
-        <BreadcrumbLink :data="item" :num="i" />
+        <BreadcrumbLink :data="item.title" :num="i" />
       </li>
     </ul>
   </div>

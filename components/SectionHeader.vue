@@ -5,12 +5,13 @@ const props = defineProps({
   valign: { default: "top" },
   theme: { default: "light" },
   hero: { default: false },
+  breadcrumb: { default: null },
 });
 </script>
 
 <template>
   <header
-    v-if="data != undefined"
+    v-if="data"
     class="relative z-5 space-y-header"
     :class="[
       align == 'left' ? 'text-left' : 'text-center',
@@ -57,7 +58,7 @@ const props = defineProps({
     />
 
     <!-- breadcrumb nav -->
-    <Breadcrumb v-if="data.breadcrumb" :data="data.breadcrumb" :theme="theme" />
+    <Breadcrumb v-if="breadcrumb" :data="breadcrumb" :theme="theme" />
 
     <slot />
   </header>
