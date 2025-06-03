@@ -8,6 +8,11 @@ query Menu {
           title
         }
         ... on PostRecord {
+          __typename
+          slug
+        }
+        ... on ProductRecord {
+          __typename
           slug
         }
       }

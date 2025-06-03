@@ -3,7 +3,7 @@ const props = defineProps(["data"]);
 </script>
 
 <template>
-  <Section :hero="true" side="none">
+  <Section :hero="true" side="none" class="overflow-hidden">
     <!-- bg elements -->
     <UIGlow
       class="bottom-[0rem] left-1/2 h-[36rem] !w-[118rem] -translate-x-1/2"
@@ -13,18 +13,13 @@ const props = defineProps(["data"]);
     <UICloud type="2" class="left-0 top-[68rem]" />
     <UICloud type="3" class="left-[73rem] top-[65rem]" />
 
-    <div class="px-side-lg relative flex border-y border-y-grayline">
+    <div class="relative flex border-y border-y-grayline px-side-lg">
       <!-- text -->
       <SectionHeader
         class="w-[57%] border-l border-l-grayline pl-side pr-[7.5rem] pt-[7.5rem]"
         align="left"
         :hero="true"
-        :data="{
-          headline: 'Quote <br/>to Cash',
-          intro:
-            'Everest brings structure and speed to every stage of the quote-to-cash cycle with a system built specifically for SaaS. From configuring complex contracts to managing billing, revenue recognition, and collections, everything happens in one platform. ',
-          cta: { buttons: [{ label: 'Book A Demo' }] },
-        }"
+        :data="data"
       />
 
       <!-- image -->
@@ -41,7 +36,7 @@ const props = defineProps(["data"]);
     </div>
 
     <!-- bottom space -->
-    <div class="px-side-lg flex h-[33rem]">
+    <div class="flex h-[33rem] px-side-lg">
       <div class="w-[57%] border-l border-l-grayline"></div>
       <div class="w-[43%] border-x border-x-grayline"></div>
     </div>

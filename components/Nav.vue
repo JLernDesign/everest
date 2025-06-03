@@ -28,7 +28,13 @@ const getUrl = (obj) => {
     if (obj.internal.title == "Home") {
       return "/";
     } else {
-      return obj.internal.slug;
+      switch (obj.internal.__typename) {
+        case "ProductRecord":
+          return "/product/" + obj.internal.slug;
+
+        default:
+          break;
+      }
     }
   }
 };

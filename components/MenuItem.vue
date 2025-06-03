@@ -140,7 +140,7 @@ const toggleSubMenu = (e) => {
       class="toplink ul relative z-1 text-body-sm after:bg-red"
       :class="[type == 'main' && active == data.title ? 'on' : null]"
       @mouseenter="type == 'main' && submenu ? openMenu() : null"
-      @click.prevent="handleClick"
+      @click.prevent="type == 'mobile' && handleClick"
       >{{ data.title }}
 
       <!-- mobile arrow -->
