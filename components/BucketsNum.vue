@@ -1,39 +1,32 @@
-<script setup></script>
+<script setup>
+const props = defineProps(["data"]);
+</script>
 
 <template>
-  <Section side="none" class="pb-section-bot-lg bg-shadowblue !pt-0">
+  <Section side="none" class="bg-shadowblue !pt-0 pb-section-bot-lg">
     <UIJagEdge color="fill-shadowblue" />
 
-    <SectionHeader
-      theme="dark"
-      :data="{
-        eyebrow: 'The Problem',
-        headline: 'Where traditional processes break down',
-        intro:
-          'Without a unified system, SaaS companies face costly delays, manual errors, and missed revenue opportunities across the quote-to-cash cycle.',
-      }"
-    />
+    <SectionHeader theme="dark" :data="data.header" />
 
     <!-- buckets -->
-    <div class="px-side-lg mt-[8rem] flex flex-nowrap gap-[6rem]">
+    <div class="mt-[8rem] flex flex-nowrap gap-[6rem] px-side-lg">
       <div
-        v-for="n in 3"
+        v-for="(item, i) in data.buckets"
         class="bucket w-[45.5rem] rounded-base bg-shadowbluelt p-[3rem]"
       >
         <IconTri color="fill-red" class="mb-4" />
         <div
           class="num mb-12 font-barlow-cond text-xxl font-semibold leading-xxl text-shadowblue"
         >
-          01
+          {{ "0" + (i + 1) }}
         </div>
         <h3
           class="mb-7 font-barlow-cond text-sm font-bold leading-[.94] text-red"
         >
-          Fragmented sales, billing, and finance systems.
+          {{ item.headline }}
         </h3>
         <p class="text-body-sm leading-sm text-white">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry.
+          {{ item.description }}
         </p>
       </div>
     </div>

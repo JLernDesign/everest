@@ -11,9 +11,32 @@ query Product($slug: String) {
           style
         }
       }
+      image {
+        url
+      }
     }
     modules {
       __typename
+      ... on NumberBucketGroupRecord {
+        header {
+          eyebrow
+          headline
+          intro
+          cta {
+            buttons {
+              label
+              internal
+              external
+              style
+            }
+          }
+        }
+        __typename
+        buckets {
+          headline
+          description
+        }
+      }
       ... on BlogCalloutRecord {
         __typename
       }

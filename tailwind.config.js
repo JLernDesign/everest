@@ -64,6 +64,7 @@ export default {
       sm: "1.38",
       body: "1.31",
       md: "1.33",
+      "sm-md": "1.09",
       lg: ".91",
       xl: ".82",
       xxl: ".82",

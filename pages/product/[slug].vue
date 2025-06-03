@@ -15,12 +15,9 @@ console.log(toRaw(page));
 </script>
 
 <template>
-  <div class="bg-skyblue">
+  <div class="bg-jaffa">
     <ProductHero v-if="page.hero" :data="page.hero" />
-    <!--     <BucketsNum />
-    <BigTextClouds /> -->
-    <!-- <OverviewCards theme="light" :header="false" :nav="false" /> -->
-
+    <FlexibleBlocks :data="page.modules" template="product" />
     <FooterLockup :data="page.footerCallout" />
   </div>
 </template>

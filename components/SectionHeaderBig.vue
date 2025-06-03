@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps(["data", "align"]);
+const props = defineProps(["data", "align", "breadcrumb"]);
 
 // check for inline image marker
 const hl = props.data.headline.split("[]");
@@ -28,9 +28,10 @@ console.log(hl.length);
       </template>
     </h2>
 
-    <p class="mx-auto max-w-[96rem] text-body-md leading-md">
-      {{ addLineBreaks(data.intro) }}
-    </p>
+    <p
+      class="mx-auto max-w-[96rem] text-body-md leading-md"
+      v-html="addLineBreaks(data.intro)"
+    ></p>
 
     <!-- cta buttons -->
     <CtaGroup
@@ -41,7 +42,7 @@ console.log(hl.length);
     />
 
     <!-- breadcrumb nav -->
-    <Breadcrumb v-if="data.breadcrumb" :data="data.breadcrumb" :theme="theme" />
+    <Breadcrumb v-if="breadcrumb" :data="breadcrumb" :theme="theme" />
   </header>
 </template>
 

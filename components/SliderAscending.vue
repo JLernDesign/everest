@@ -1,10 +1,25 @@
 <script setup>
-const props = defineProps(["theme", "data"]);
+const props = defineProps(["theme", "data", "template"]);
 
 const main = ref(null);
 let slide_els;
 const os = 13;
 const pos = [0, "-13rem", "-26rem", "26rem", "13rem"];
+
+const duplicated = computed(() => {
+  if (props.data.modules.length >= 5) {
+    return props.items;
+  }
+
+  const duplicates = [...props.data.modules];
+  const min = 5 - props.data.modules.length;
+
+  for (let i = 0; i < min; i++) {
+    duplicates.push({ ...props.data.modules[i % props.data.modules.length] });
+  }
+
+  return duplicates;
+});
 
 onMounted(() => {
   slide_els = qsa(".item", main.value.$el);
@@ -57,22 +72,24 @@ onMounted(() => {
     ref="main"
   >
     <!-- bg elements -->
-    <UICloud
-      type="3"
-      class="-left-[53.3rem] top-[46.6rem] -scale-x-100 opacity-50"
-    />
-    <UICloud type="3" class="left-[93rem] top-0 -scale-x-100 opacity-50" />
+    <template v-if="template == 'home'">
+      <UICloud
+        type="3"
+        class="-left-[53.3rem] top-[46.6rem] -scale-x-100 opacity-50"
+      />
+      <UICloud type="3" class="left-[93rem] top-0 -scale-x-100 opacity-50" />
+    </template>
 
     <SectionHeader :theme="theme" :data="data.header" />
 
     <!-- slider -->
     <!-- -mt-[32rem] !h-[128rem] cursor-grab -->
     <Carousel
-      class="slider-wrap mt-[12.5rem] !h-[82rem] space-x-[9rem]"
+      class="slider-wrap mt-[18.5rem] !h-[82rem] space-x-[9rem]"
       :drag="false"
     >
       <div
-        v-for="(slide, i) in data.modules"
+        v-for="(slide, i) in duplicated"
         class="item z-1 h-[62.8rem] w-[45.5rem] shrink-0 rounded-base p-[3.2rem] pt-[3.75rem]"
         :class="colors[i]"
       >

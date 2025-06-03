@@ -1,8 +1,10 @@
-<script setup></script>
+<script setup>
+const props = defineProps(["data"]);
+</script>
 
 <template>
   <Section
-    class="z-1 overflow-hidden !pt-section-top pb-section-bot text-center"
+    class="z-1 overflow-hidden bg-skyblue !pt-section-top pb-section-bot text-center"
   >
     <!-- bg elements -->
     <div
@@ -16,21 +18,16 @@
         :class="n == 2 && 'rotate-180'"
       />
       <UICloud type="3" class="-bottom-[72.7rem] -right-[53.4rem]" />
-      <UIGlow class="bottom-0 h-[21.8rem]" src="/ui/edge-gradient.svg" />
+      <UIGlow
+        class="bottom-0 h-[21.8rem] !blur-big"
+        src="/ui/edge-gradient.svg"
+      />
     </div>
 
     <SectionHeaderBig
       align="center"
-      :data="{
-        headline: 'THE <br/>Everest <br/>Solution',
-        intro:
-          'Why SaaS Leaders Choose Everest: Purpose-built for complex SaaS needs, powered by AI automation. Gain global visibility, ensure compliance, and access real-time metrics—faster and safer.',
-        breadcrumb: [
-          'Unified Sales',
-          'Native CRM integration',
-          'Automated revenue contract ',
-        ],
-      }"
+      :data="data.header"
+      :breadcrumb="data.sections"
     />
   </Section>
 </template>

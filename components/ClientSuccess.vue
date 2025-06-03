@@ -17,7 +17,10 @@ const active = 0;
     <SectionHeader :theme="theme" :data="data.header" />
 
     <!-- slide module -->
-    <div class="mt-md flex divide-x-1 divide-grayline">
+    <div
+      class="mt-md flex"
+      :class="data.slides.length > 1 && 'divide-x-1 divide-grayline'"
+    >
       <!-- left -->
       <div class="col lt w-[27.5%] overflow-hidden px-[10rem]">
         <template v-if="data.slides[active + 2]">
@@ -41,7 +44,11 @@ const active = 0;
         </template>
 
         <!-- arrow -->
-        <UISlideArrow dir="left" class="px-[10rem]" />
+        <UISlideArrow
+          v-if="data.slides.length > 1"
+          dir="left"
+          class="px-[10rem]"
+        />
       </div>
 
       <!-- active slide (center) -->
@@ -120,7 +127,11 @@ const active = 0;
         </template>
 
         <!-- arrow -->
-        <UISlideArrow dir="right" class="px-[10rem]" />
+        <UISlideArrow
+          v-if="data.slides.length > 1"
+          dir="right"
+          class="px-[10rem]"
+        />
       </div>
     </div>
   </Section>

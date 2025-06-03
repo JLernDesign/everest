@@ -3,7 +3,7 @@ const props = defineProps(["data"]);
 </script>
 
 <template>
-  <Section :hero="true" side="none" class="overflow-hidden">
+  <Section :hero="true" side="none" class="overflow-hidden bg-skyblue">
     <!-- bg elements -->
     <UIGlow
       class="bottom-[0rem] left-1/2 h-[36rem] !w-[118rem] -translate-x-1/2"
@@ -24,7 +24,7 @@ const props = defineProps(["data"]);
 
       <!-- image -->
       <div class="w-[43%] border-x border-x-grayline">
-        <img src="/public/product/ph-large-img@2x.png" alt="" />
+        <img v-if="data.image" :src="data.image.url" alt="" />
       </div>
 
       <!-- number -->

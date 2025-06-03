@@ -1,9 +1,10 @@
 <script setup>
-const props = defineProps(["theme", "header", "nav", "data"]);
+const props = defineProps(["theme", "header", "nav", "data", "template"]);
 </script>
 
 <template>
-  <Section :theme="theme" side="none" :class="!header && !pt - 0">
+  <BigTextClouds v-if="template == 'product'" :data="data" />
+  <Section :theme="theme" side="none" :class="!header && '!pt-0'">
     <SectionHeader
       v-if="header"
       class="border-b px-side-mob pb-[11.5rem] s:px-side"
@@ -21,6 +22,7 @@ const props = defineProps(["theme", "header", "nav", "data"]);
         :nav="nav"
         :data="item"
         :num="i + 1"
+        :template="template"
       />
     </div>
   </Section>
