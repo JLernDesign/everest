@@ -1,0 +1,16 @@
+query Menu {
+  menu {
+    main {
+      label
+      external
+      internal {
+        ... on HomeRecord {
+          title
+        }
+        ... on PostRecord {
+          slug
+        }
+      }
+    }
+  }
+}

@@ -1,34 +1,16 @@
 <script setup>
+import MenuQuery from "~/assets/graphql/menu.graphql";
+
 const props = defineProps(["type", "close_func"]);
 const route = useRoute();
 const activePage = ref("");
 
-// Dato CMS Query
-const QUERY = /* GraphQL */ `
-  query {
-    global {
-      mainMenu {
-        title
-        url
-        target
-        subMenu {
-          menuType
-          menu {
-            title
-            url
-            target
-            icon {
-              icon
-              bgcolor
-            }
-          }
-        }
-      }
-    }
-  }
-`;
-/* const { data, error } = await useGraphqlQuery({ query: QUERY });
-const menu = toRaw(data.value).global.mainMenu; */
+const QUERY = MenuQuery.loc.source.body;
+const { data } = await useGraphqlQuery({
+  query: QUERY,
+});
+const main_menu = data.value.menu.main;
+console.log(toRaw(main_menu));
 const menu = [{ subMenu: true }, 0, 0, 0];
 
 const setActive = () => {
@@ -37,6 +19,19 @@ const setActive = () => {
 onMounted(() => {
   setActive();
 });
+
+const getUrl = (obj) => {
+  if (obj.external) {
+    return obj.external;
+  }
+  if (obj.internal) {
+    if (obj.internal.title == "Home") {
+      return "/";
+    } else {
+      return obj.internal.slug;
+    }
+  }
+};
 
 // watch for page change to update nav
 const page_title = useState("page_title");
@@ -50,12 +45,12 @@ watch(page_title, () => {
     <ul
       :class="props.type == 'main' ? 'main-nav flex space-x-nav' : 'mobile-nav'"
     >
-      <template v-for="(item, i) in menu">
+      <template v-for="(item, i) in main_menu">
         <MenuItem
-          :data="{ title: 'Why Everest', url: '#' }"
+          :data="{ title: item.label, url: getUrl(item) }"
           :type="props.type"
           :active="activePage"
-          :submenu="item.subMenu ? true : false"
+          :submenu="i == 0 ? true : false"
           :close_func="close_func"
         />
       </template>
