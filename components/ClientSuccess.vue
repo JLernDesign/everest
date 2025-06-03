@@ -1,11 +1,12 @@
 <script setup>
-const props = defineProps(["theme"]);
+const props = defineProps(["theme", "data"]);
+const active = 0;
 </script>
 
 <template>
   <Section :theme="theme" class="mt-[26.8rem] bg-jaffa !pt-8 pb-section-bot">
     <UIGlow
-      class="blur-big -top-[35rem] -z-1 h-[35rem] overflow-hidden"
+      class="-top-[35rem] -z-1 h-[35rem] overflow-hidden blur-big"
       src="/ui/callout-bot-gradient.svg"
     />
     <div
@@ -13,32 +14,31 @@ const props = defineProps(["theme"]);
     ></div>
     <UIJagEdge color="fill-jaffa" />
 
-    <SectionHeader
-      :theme="theme"
-      :data="{
-        eyebrow: 'Client Success',
-        headline: 'Trusted by Innovative SaaS Companies',
-        cta: [
-          {
-            type: 'button',
-            title: 'Client Success',
-            url: '#',
-          },
-        ],
-      }"
-    />
+    <SectionHeader :theme="theme" :data="data.header" />
 
     <!-- slide module -->
     <div class="mt-md flex divide-x-1 divide-grayline">
       <!-- left -->
       <div class="col lt w-[27.5%] overflow-hidden px-[10rem]">
-        <div class="photo aspect-[1.57] w-full overflow-hidden rounded-base">
-          <img src="/public/clients/ph-client-success@2x.png" alt="" />
-        </div>
-        <div class="slide-text mt-6 text-body-xsm">
-          <p class="font-helvb">Alex Hopper</p>
-          <p>CEO of Logoipsm</p>
-        </div>
+        <template v-if="data.slides[active + 2]">
+          <div class="photo aspect-[1.57] w-full overflow-hidden rounded-base">
+            <!-- image -->
+            <img
+              v-if="data.slides[active + 2].media.image"
+              :src="data.slides[active + 2].media.image.url"
+              alt=""
+            />
+          </div>
+
+          <!-- name -->
+          <div
+            v-if="data.slides[active + 2].name"
+            class="slide-text mt-10 text-body-xsm"
+          >
+            <p class="font-helvb">{{ data.slides[active + 2].name }}</p>
+            <p>{{ data.slides[active + 2].title }}</p>
+          </div>
+        </template>
 
         <!-- arrow -->
         <UISlideArrow dir="left" class="px-[10rem]" />
@@ -47,50 +47,77 @@ const props = defineProps(["theme"]);
       <!-- active slide (center) -->
       <div class="col main w-[45%] overflow-hidden px-[10rem]">
         <div class="photo aspect-[1.57] w-full overflow-hidden rounded-base">
-          <img src="/public/clients/ph-client-success@2x.png" alt="" />
+          <img
+            v-if="data.slides[active].media.image"
+            :src="data.slides[active].media.image.url"
+            class="w-full"
+            alt=""
+          />
         </div>
 
         <hr class="my-side text-black" />
 
         <!-- text details -->
         <div class="slide-text">
-          <div class="stats mb-side flex space-x-14 leading-[1]">
-            <div class="stat-item flex items-end space-x-4">
-              <h3 class="font-barlow-cond text-sm font-bold">2X</h3>
-              <p class="text-body-xsm">Awesome stat here</p>
-            </div>
-            <div class="stat-item flex items-end space-x-4">
-              <h3 class="font-barlow-cond text-sm font-bold">100%</h3>
-              <p class="text-body-xsm">Awesome stat here</p>
+          <!-- stats -->
+          <div
+            v-if="data.slides[active].statsGroup"
+            class="stats mb-side flex space-x-14 leading-[1]"
+          >
+            <div
+              v-for="stat in data.slides[active].statsGroup.stats"
+              class="stat-item flex items-end space-x-4"
+            >
+              <h3 class="font-barlow-cond text-sm font-bold">
+                {{ stat.figure }}
+              </h3>
+              <p class="text-body-xsm">{{ stat.label }}</p>
             </div>
           </div>
-          <blockquote>
-            “Everest enables accounting teams to make huge productivity strides
-            by streamlining table-stakes accounting work and giving them tools
-            to become better business partners to the operational side of the
-            house.”
+
+          <!-- quote -->
+          <blockquote v-if="data.slides[active].quote">
+            “{{ data.slides[active].quote }}”
           </blockquote>
           <div
             class="byline mt-[5.5rem] flex items-center justify-between text-body-xsm"
           >
-            <div>
-              <p class="font-helvb">Lisa Schulz</p>
-              <p>3x Controller and 3 ERP Implementations</p>
+            <div v-if="data.slides[active].name">
+              <p class="font-helvb">{{ data.slides[active].name }}</p>
+              <p v-if="data.slides[active].title">
+                {{ data.slides[active].title }}
+              </p>
             </div>
-            <UILogo src="/logos/ph-logo.svg" class="!h-14" />
+            <UILogo
+              v-if="data.slides[active].logo"
+              :src="data.slides[active].logo.url"
+              class="!h-14"
+            />
           </div>
         </div>
       </div>
 
       <!-- right -->
       <div class="col rt w-[27.5%] overflow-hidden px-[10rem]">
-        <div class="photo aspect-[1.57] w-full overflow-hidden rounded-base">
-          <img src="/public/clients/ph-client-success@2x.png" alt="" />
-        </div>
-        <div class="slide-text mt-10 text-body-xsm">
-          <p class="font-helvb">Alex Hopper</p>
-          <p>CEO of Logoipsm</p>
-        </div>
+        <template v-if="data.slides[active + 1]">
+          <div class="photo aspect-[1.57] w-full overflow-hidden rounded-base">
+            <!-- image -->
+            <img
+              v-if="data.slides[active + 1].media.image"
+              :src="data.slides[active + 1].media.image.url"
+              alt=""
+            />
+          </div>
+
+          <!-- name -->
+          <div
+            v-if="data.slides[active + 1].name"
+            class="slide-text mt-10 text-body-xsm"
+          >
+            <p class="font-helvb">{{ data.slides[active + 1].name }}</p>
+            <p>{{ data.slides[active + 1].title }}</p>
+          </div>
+        </template>
 
         <!-- arrow -->
         <UISlideArrow dir="right" class="px-[10rem]" />

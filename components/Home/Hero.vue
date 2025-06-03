@@ -13,7 +13,7 @@ const props = defineProps(["data"]);
 
     <!-- image -->
     <UIGlow
-      class="bottom-0 left-[36.2rem] top-[19.7rem] w-[118.1rem]"
+      class="left-[36.2rem] top-[19.7rem] h-[106.2rem] !w-[118.1rem]"
       src="/home/hero-glow.svg"
     />
     <div

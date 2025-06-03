@@ -2,6 +2,8 @@
 import gsap from "gsap";
 import horizontalLoop from "~/assets/js/horizontalLoop.js";
 
+const props = defineProps(["drag"]);
+
 let ctx;
 const main = ref();
 
@@ -13,7 +15,7 @@ onMounted(() => {
     let activeElement;
     const loop = horizontalLoop(items, {
       paused: true,
-      draggable: true, // make it draggable
+      draggable: props.drag, // make it draggable
       center: true, // active element is the one in the center of the container rather than th left edge
       onChange: (element, index) => {
         // when the active element changes, this function gets called.
@@ -23,11 +25,11 @@ onMounted(() => {
       },
     });
 
-    items.forEach((item, i) =>
+    /* items.forEach((item, i) =>
       item.addEventListener("click", () =>
         loop.toIndex(i, { duration: 1, ease: "power3.inOut" }),
       ),
-    );
+    ); */
 
     // start on 1st slide
     loop.toIndex(0, { duration: 0 });
@@ -40,7 +42,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="flex h-[40rem] w-full overflow-hidden" ref="main">
+  <div class="flex h-[40rem] w-full" ref="main">
     <slot />
   </div>
 </template>

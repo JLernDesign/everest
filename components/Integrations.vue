@@ -1,18 +1,14 @@
 <script setup>
-const props = defineProps(["theme"]);
+const props = defineProps(["theme", "data"]);
+const active = ref(0);
 </script>
 
 <template>
   <Section :theme="theme" class="bg-jaffa pb-section-bot">
     <SectionHeader
       :theme="theme"
-      :data="{
-        eyebrow: 'Integrations',
-        headline: 'Go live faster with less effort',
-        intro:
-          'Accelerate time-to-market by launching new processes in weeks, not months, with pre-built business processes and integrations tailored for the SaaS industry.',
-        breadcrumb: ['Integrations', 'Cloud Cost Integrations'],
-      }"
+      :data="data.header"
+      :breadcrumb="data.groups"
     />
 
     <!-- content -->
@@ -22,11 +18,9 @@ const props = defineProps(["theme"]);
         <div
           class="grid h-[42rem] w-full place-content-center rounded-base bg-[url(/ui/callout-texture@2x.jpg)] bg-[size:1717px_auto]"
         >
-          <div
-            class="grid h-[18rem] w-[28rem] place-content-center rounded-base bg-jaffa"
-          >
+          <div class="flex h-[18rem] w-[28rem] rounded-base bg-jaffa p-side">
             <img
-              src="/public/logos/airbase.svg"
+              :src="data.groups[active].items[0].image.url"
               class="mix-blend-multiply"
               alt=""
             />
@@ -39,20 +33,20 @@ const props = defineProps(["theme"]);
         <div
           class="mb-[3rem] flex px-[2rem] font-barlow text-body-xsm uppercase opacity-40"
         >
-          <span class="w-[38%]">Name</span>
-          <span class="w-[62%]">Use For</span>
+          <span class="w-[38%]">{{ data.groups[active].headerLeft }}</span>
+          <span class="w-[62%]">{{ data.groups[active].headerRight }}</span>
         </div>
 
         <!-- items -->
         <div class="space-y-1">
-          <template v-for="n in 6">
+          <template v-for="(item, i) in data.groups[active].items">
             <div class="relative cursor-pointer text-body-sm">
               <div
                 class="absolute -top-[.2rem] h-full w-full scale-y-0 rounded-base bg-white"
               ></div>
               <div class="relative flex px-[2rem] py-[1.2rem]">
-                <span class="w-[38%] pr-4">ADP</span>
-                <span class="w-[62%]">Payroll Solutions</span>
+                <span class="w-[38%] pr-4">{{ item.name }}</span>
+                <span class="w-[62%]">{{ item.description }}</span>
               </div>
             </div>
           </template>

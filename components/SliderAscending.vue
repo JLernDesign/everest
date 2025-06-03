@@ -4,17 +4,18 @@ const props = defineProps(["theme", "data"]);
 const main = ref(null);
 let slide_els;
 const os = 13;
+const pos = [0, "-13rem", "-26rem", "26rem", "13rem"];
 
 onMounted(() => {
   slide_els = qsa(".item", main.value.$el);
-  slide_els.reverse();
+  //slide_els.reverse();
 
   slide_els.forEach((slide, i) => {
-    //slide.style.marginTop = i * os + "rem";
+    slide.style.marginTop = pos[i];
   });
 });
 
-const slides = [
+/* const slides = [
   {
     color: "#8FC8E3",
     headline: "Achieving Real-Time <br/>Financial Visibility",
@@ -45,7 +46,7 @@ const slides = [
     description:
       "We are built for the Saas industry- these are companies that are typically synonymous with subscription based revenue models and a heavy dependence on cloud infrastructure. ",
   },
-];
+]; */
 </script>
 
 <template>
@@ -55,14 +56,24 @@ const slides = [
     side="none"
     ref="main"
   >
+    <!-- bg elements -->
+    <UICloud
+      type="3"
+      class="-left-[53.3rem] top-[46.6rem] -scale-x-100 opacity-50"
+    />
+    <UICloud type="3" class="left-[93rem] top-0 -scale-x-100 opacity-50" />
+
     <SectionHeader :theme="theme" :data="data.header" />
 
     <!-- slider -->
-    <!-- -mt-[32rem] !h-[128rem] -->
-    <Carousel class="slider-wrap mt-[12.5rem] !h-[62.8rem] space-x-[9rem]">
+    <!-- -mt-[32rem] !h-[128rem] cursor-grab -->
+    <Carousel
+      class="slider-wrap mt-[12.5rem] !h-[82rem] space-x-[9rem]"
+      :drag="false"
+    >
       <div
-        v-for="(slide, i) in slides"
-        class="item h-[62.8rem] w-[45.5rem] shrink-0 cursor-grab rounded-base p-[3.2rem] pt-[3.75rem]"
+        v-for="(slide, i) in data.modules"
+        class="item z-1 h-[62.8rem] w-[45.5rem] shrink-0 rounded-base p-[3.2rem] pt-[3.75rem]"
         :class="colors[i]"
       >
         <h3 class="relative font-barlow-cond text-sm font-bold leading-[.95]">
@@ -71,14 +82,21 @@ const slides = [
         </h3>
 
         <!-- illustration -->
-        <div class="illus mx-auto mt-[8rem] h-[20rem] w-[22rem]">
-          <img src="/public/why/ph-slider-illus.png" alt="" />
+        <div
+          class="illus absolute left-0 top-[20rem] z-0 flex w-full justify-center"
+        >
+          <img
+            v-if="slide.image"
+            :src="slide.image.url"
+            alt=""
+            class="h-[20rem] w-[22rem]"
+          />
         </div>
 
         <div
-          class="absolute bottom-0 left-0 h-auto w-full p-[3.2rem] text-body-sm leading-sm"
+          class="absolute bottom-0 left-0 z-1 h-auto w-full p-[3.2rem] text-body-sm leading-sm"
         >
-          <p>{{ slide.description }}</p>
+          <span v-html="slide.body"></span>
         </div>
       </div>
       <div class="item end-spacer w-0 shrink-0"></div>

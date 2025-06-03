@@ -85,6 +85,31 @@ query Home {
       }
       ... on IntegrationListRecord {
         __typename
+        header {
+          eyebrow
+          headline
+          intro
+          cta {
+            buttons {
+              label
+              internal
+              external
+              style
+            }
+          }
+        }
+        groups {
+          title
+          headerLeft
+          headerRight
+          items {
+            name
+            description
+            image {
+              url
+            }
+          }
+        }
       }
       ... on AscendingSliderRecord {
         header {
