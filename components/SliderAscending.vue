@@ -8,7 +8,7 @@ const pos = [0, "-13rem", "-26rem", "26rem", "13rem"];
 
 const duplicated = computed(() => {
   if (props.data.modules.length >= 5) {
-    return props.items;
+    return props.data.modules;
   }
 
   const duplicates = [...props.data.modules];

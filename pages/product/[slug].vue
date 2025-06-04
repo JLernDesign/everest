@@ -1,5 +1,6 @@
 <script setup>
 import ProductQuery from "~/assets/graphql/product.graphql";
+import { toHead } from "vue-datocms";
 
 const route = useRoute();
 
@@ -11,7 +12,13 @@ const { data } = await useGraphqlQuery({
   },
 });
 const page = data.value.product;
-console.log(toRaw(page));
+console.log(toRaw(data.value));
+
+// compile meta tags for head
+useHead(() => {
+  if (!data.value) return {};
+  return toHead(page.seo);
+});
 </script>
 
 <template>

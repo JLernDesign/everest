@@ -12,7 +12,7 @@ const props = defineProps(["data"]);
     <div class="mt-[8rem] flex flex-nowrap gap-[6rem] px-side-lg">
       <div
         v-for="(item, i) in data.buckets"
-        class="bucket w-[45.5rem] rounded-base bg-shadowbluelt p-[3rem]"
+        class="bucket w-[45.5rem] shrink-0 rounded-base bg-shadowbluelt p-[3rem]"
       >
         <IconTri color="fill-red" class="mb-4" />
         <div

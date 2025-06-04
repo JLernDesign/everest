@@ -1,5 +1,10 @@
 query Product($slug: String) {
   product(filter: { slug: { eq: $slug } }) {
+    seo: _seoMetaTags {
+      attributes
+      content
+      tag
+    }
     hero {
       headline
       intro
@@ -150,6 +155,7 @@ query Product($slug: String) {
             }
           }
         }
+        jaggedEdge
         slides {
           name
           title

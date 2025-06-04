@@ -23,7 +23,7 @@ const props = defineProps(["data"]);
       />
 
       <!-- image -->
-      <div class="w-[43%] border-x border-x-grayline">
+      <div class="w-[43%] border-x border-x-grayline p-[2rem]">
         <img v-if="data.image" :src="data.image.url" alt="" />
       </div>
 

@@ -4,15 +4,21 @@ const active = 0;
 </script>
 
 <template>
-  <Section :theme="theme" class="mt-[26.8rem] bg-jaffa !pt-8 pb-section-bot">
-    <UIGlow
-      class="-top-[35rem] -z-1 h-[35rem] overflow-hidden blur-big"
-      src="/ui/callout-bot-gradient.svg"
-    />
-    <div
-      class="gradient-cover absolute left-0 top-0 z-0 h-full w-full bg-jaffa"
-    ></div>
-    <UIJagEdge color="fill-jaffa" />
+  <Section
+    :theme="theme"
+    class="bg-jaffa pb-section-bot"
+    :class="data.jaggedEdge && 'mt-[26.8rem] !pt-8'"
+  >
+    <template v-if="data.jaggedEdge">
+      <UIGlow
+        class="-top-[35rem] -z-1 h-[35rem] overflow-hidden blur-big"
+        src="/ui/callout-bot-gradient.svg"
+      />
+      <div
+        class="gradient-cover absolute left-0 top-0 z-0 h-full w-full bg-jaffa"
+      ></div>
+      <UIJagEdge color="fill-jaffa" />
+    </template>
 
     <SectionHeader :theme="theme" :data="data.header" />
 

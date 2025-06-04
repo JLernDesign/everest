@@ -147,6 +147,7 @@ query Home {
             }
           }
         }
+        jaggedEdge
         slides {
           name
           title
