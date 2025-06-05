@@ -407,12 +407,10 @@ export const openVideoModal = (id) => {
 
   gsap.fromTo(
     modal,
-    { opacity: 0, display: "block", xPercent: -10, yPercent: 10 },
+    { opacity: 0, display: "block" },
     {
-      duration: 0.75,
+      duration: 0.5,
       opacity: 1,
-      xPercent: 0,
-      yPercent: 0,
       ease: "power3.out",
     },
   );
@@ -421,7 +419,7 @@ export const openVideoModal = (id) => {
     { opacity: 0, xPercent: -5, yPercent: 5 },
     {
       delay: 0.2,
-      duration: 0.75,
+      duration: 0.5,
       opacity: 1,
       xPercent: 0,
       yPercent: 0,
