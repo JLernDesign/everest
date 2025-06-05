@@ -20,7 +20,10 @@
     <!-- button -->
     <UIArrowDiamond />
 
-    <button class="absolute left-0 top-0 size-full"></button>
+    <button
+      class="absolute left-0 top-0 size-full"
+      @click="openVideoModal('/video/sample-video.mp4')"
+    ></button>
   </div>
 
   <!-- nav -->

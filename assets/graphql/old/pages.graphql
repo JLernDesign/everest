@@ -1,0 +1,180 @@
+# global fragments
+fragment LinkFragment on CallToActionRecord {
+  buttons {
+    label
+    internal {
+      ... on HomeRecord {
+        title
+      }
+      ... on PostRecord {
+        __typename
+        slug
+      }
+      ... on ProductRecord {
+        __typename
+        slug
+      }
+    }
+    external
+    style
+  }
+}
+fragment HeroFragment on HeroRecord {
+  headline
+  intro
+  cta {
+    ...LinkFragment
+  }
+  image {
+    url
+  }
+}
+fragment HeaderFragment on SectionHeaderRecord {
+  eyebrow
+  headline
+  intro
+  cta {
+    ...LinkFragment
+  }
+}
+fragment FooterFragment on FooterBannerRecord {
+  headline
+  intro
+  cta {
+    ...LinkFragment
+  }
+}
+
+# modules
+fragment BlogCalloutFragment on BlogCalloutRecord {
+  __typename
+}
+fragment BannerCalloutFragment on BannerCalloutRecord {
+  __typename
+  headline
+  intro
+  cta {
+    ...LinkFragment
+  }
+}
+fragment OverviewFragment on OverviewRecord {
+  __typename
+  header {
+    ...HeaderFragment
+  }
+  sections {
+    id
+    title
+    headline
+    body
+    cta {
+      ...LinkFragment
+    }
+    image {
+      url
+    }
+  }
+}
+fragment IntegrationListFragment on IntegrationListRecord {
+  __typename
+  header {
+    ...HeaderFragment
+  }
+  groups {
+    title
+    headerLeft
+    headerRight
+    items {
+      name
+      description
+      image {
+        url
+      }
+    }
+  }
+}
+fragment AscendingSliderFragment on AscendingSliderRecord {
+  __typename
+  header {
+    ...HeaderFragment
+  }
+  modules {
+    headline
+    body
+    image {
+      url
+    }
+  }
+}
+fragment ClientSuccessFragment on ClientSuccessRecord {
+  __typename
+  header {
+    ...HeaderFragment
+  }
+  jaggedEdge
+  slides {
+    name
+    title
+    quote
+    statsGroup {
+      stats {
+        figure
+        label
+      }
+    }
+    media {
+      image {
+        url
+      }
+      video {
+        url
+      }
+    }
+    logo {
+      url
+    }
+  }
+}
+fragment NumberBucketGroupFragment on NumberBucketGroupRecord {
+  __typename
+  header {
+    ...HeaderFragment
+  }
+  buckets {
+    headline
+    description
+  }
+}
+
+# PAGES
+
+# home query
+query Home {
+  home {
+    hero {
+      ...HeroFragment
+    }
+    intro {
+      ...HeaderFragment
+    }
+    featuredLogos {
+      title
+      logos {
+        url
+      }
+    }
+    modules {
+      __typename
+      ...BlogCalloutFragment
+      ...BannerCalloutFragment
+      ...OverviewFragment
+      ...IntegrationListFragment
+      ...AscendingSliderFragment
+      ...ClientSuccessFragment
+      ...NumberBucketGroupFragment
+    }
+    footerCallout {
+      ...FooterFragment
+    }
+  }
+}

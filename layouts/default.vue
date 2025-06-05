@@ -26,6 +26,7 @@ watch(height, () => {
     <Header ref="header" />
     <div class="main-contents overflow-hidden"><slot /></div>
     <Footer />
+    <VideoModal />
     <UISiteCover />
   </div>
 

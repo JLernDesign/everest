@@ -398,6 +398,42 @@ export const breakpoints = useBreakpoints({
   lgdesktop: 1500,
 });
 
+// video modal
+export const openVideoModal = (id) => {
+  const videoID = useState("videoID", () => "");
+  const modal = document.getElementById("video-modal");
+  const wrap = document.getElementById("video-player");
+  videoID.value = id;
+
+  gsap.fromTo(
+    modal,
+    { opacity: 0, display: "block", xPercent: -10, yPercent: 10 },
+    {
+      duration: 0.75,
+      opacity: 1,
+      xPercent: 0,
+      yPercent: 0,
+      ease: "power3.out",
+    },
+  );
+  gsap.fromTo(
+    wrap,
+    { opacity: 0, xPercent: -5, yPercent: 5 },
+    {
+      delay: 0.2,
+      duration: 0.75,
+      opacity: 1,
+      xPercent: 0,
+      yPercent: 0,
+      ease: "quad.out",
+    },
+  );
+
+  // start video
+  const player = document.getElementById("video");
+  player.play();
+};
+
 // shortcuts
 export const qs = (s, o = document) => o.querySelector(s);
 export const qsa = (s, o = document) => [...o.querySelectorAll(s)];
