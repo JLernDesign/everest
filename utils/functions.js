@@ -434,6 +434,13 @@ export const openVideoModal = (id) => {
   player.play();
 };
 
+// preload hidden images
+export const preloadImg = (file) => {
+  let img = new Image();
+  img.src = file;
+  //img.onload = () => console.log("loaded " + img.src);
+};
+
 // shortcuts
 export const qs = (s, o = document) => o.querySelector(s);
 export const qsa = (s, o = document) => [...o.querySelectorAll(s)];

@@ -18,6 +18,9 @@ const setActive = () => {
 };
 onMounted(() => {
   setActive();
+
+  // preload hidden menu images
+  preloadImg("/ui/menu-texture1@2x.jpg");
 });
 
 // watch for page change to update nav
