@@ -14,6 +14,25 @@ export const colors = [
   "bg-green",
 ];
 
+export const getUrl = (obj) => {
+  if (obj.external) {
+    return obj.external;
+  }
+  if (obj.internal) {
+    if (obj.internal.title == "Home") {
+      return "/";
+    } else {
+      switch (obj.internal.__typename) {
+        case "ProductRecord":
+          return "/product/" + obj.internal.slug;
+
+        default:
+          break;
+      }
+    }
+  }
+};
+
 // auto scroll to section on click
 export const jumpTo = (e) => {
   const os = 50;

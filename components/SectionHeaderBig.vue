@@ -7,7 +7,6 @@ let hasBlock = false;
 if (hl.length > 1) {
   hasBlock = true;
 }
-console.log(hl.length);
 </script>
 
 <template>

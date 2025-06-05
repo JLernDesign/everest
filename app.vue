@@ -27,8 +27,7 @@ useHead(() => {
 
 // execute leave animation for each route
 router.beforeEach(async (to, from) => {
-  console.log("exit animation");
-
+  /* console.log("exit animation"); */
   // navigate within same route
   /*   if (to.path == from.path) {
     // change posts query
@@ -49,7 +48,7 @@ onMounted(() => {
 
 // open new page after leave
 const refreshPage = () => {
-  console.log("open animation");
+  /* console.log("open animation"); */
 };
 </script>
 

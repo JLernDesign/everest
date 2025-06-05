@@ -1,14 +1,14 @@
 <script setup>
-import HomeQuery from "~/assets/graphql/home.graphql";
+import { homeQuery } from "~/assets/graphql/queries/home";
+
 const theme = useState("theme");
 theme.value = "light";
 
-const QUERY = HomeQuery.loc.source.body;
 const { data } = await useGraphqlQuery({
-  query: QUERY,
+  query: homeQuery.loc.source.body,
 });
 const page = data.value.home;
-console.log(toRaw(page));
+/* console.log(data.value); */
 </script>
 
 <template>
@@ -19,7 +19,7 @@ console.log(toRaw(page));
       :data="page.intro"
       :logos="page.featuredLogos"
     />
-    <FlexibleBlocks :data="page.modules" template="home" />
+    <FlexibleBlocks :data="page.flexibleContent.modules" template="home" />
     <FooterLockup :data="page.footerCallout" />
   </div>
 </template>

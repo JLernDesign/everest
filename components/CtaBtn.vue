@@ -1,24 +1,14 @@
 <script setup>
 const props = defineProps(["data", "href", "target", "theme"]);
 
-// check if internal or external URL
-let internal;
-let external = false;
-if (props.data) {
-  props.data.internal ? (internal = props.data.internal) : null;
-  props.data.external && (external = true);
-} else {
-  internal = "#";
-}
-
 const hoverOn = () => {};
 const hoverOff = () => {};
 </script>
 
 <template>
   <NuxtLink
-    :to="external ? props.data.external : internal"
-    :target="external ? '_blank' : ''"
+    :to="data && getUrl(data)"
+    :target="data?.external && '_blank'"
     class="cta-btn inline-flex items-center rounded-btn bg-red px-[1.4rem] py-[1.4rem] font-helvh text-body-sm text-skyblue"
   >
     <div><slot /></div>

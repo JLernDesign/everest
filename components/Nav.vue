@@ -10,7 +10,7 @@ const { data } = await useGraphqlQuery({
   query: QUERY,
 });
 const main_menu = data.value.menu.main;
-console.log(toRaw(main_menu));
+//console.log(toRaw(main_menu));
 const menu = [{ subMenu: true }, 0, 0, 0];
 
 const setActive = () => {
@@ -19,25 +19,6 @@ const setActive = () => {
 onMounted(() => {
   setActive();
 });
-
-const getUrl = (obj) => {
-  if (obj.external) {
-    return obj.external;
-  }
-  if (obj.internal) {
-    if (obj.internal.title == "Home") {
-      return "/";
-    } else {
-      switch (obj.internal.__typename) {
-        case "ProductRecord":
-          return "/product/" + obj.internal.slug;
-
-        default:
-          break;
-      }
-    }
-  }
-};
 
 // watch for page change to update nav
 const page_title = useState("page_title");

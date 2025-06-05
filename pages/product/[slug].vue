@@ -1,18 +1,17 @@
 <script setup>
-import ProductQuery from "~/assets/graphql/product.graphql";
+import { productQuery } from "~/assets/graphql/queries/product";
 import { toHead } from "vue-datocms";
 
 const route = useRoute();
 
-const QUERY = ProductQuery.loc.source.body;
 const { data } = await useGraphqlQuery({
-  query: QUERY,
+  query: productQuery.loc.source.body,
   variables: {
     slug: route.params.slug,
   },
 });
 const page = data.value.product;
-console.log(toRaw(data.value));
+/* console.log(toRaw(data.value)); */
 
 // compile meta tags for head
 useHead(() => {
@@ -24,7 +23,7 @@ useHead(() => {
 <template>
   <div class="bg-jaffa">
     <ProductHero v-if="page.hero" :data="page.hero" />
-    <FlexibleBlocks :data="page.modules" template="product" />
+    <FlexibleBlocks :data="page.flexibleContent.modules" template="product" />
     <FooterLockup :data="page.footerCallout" />
   </div>
 </template>
