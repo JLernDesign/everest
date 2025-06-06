@@ -151,12 +151,12 @@ const toggleSubMenu = (e) => {
 
     <!-- submenu -->
     <div v-if="submenu" class="nav-sub relative z-0 h-0 w-full">
-      <Submenu />
+      <Submenu :id="data.title" />
     </div>
 
     <!-- accent arrow -->
     <div
-      class="accent absolute -top-[1.5rem] left-0 -translate-y-[1rem] opacity-0"
+      class="accent absolute -top-[1.5rem] left-0 w-[1.1rem] -translate-y-[1rem] opacity-0"
     >
       <img src="/public/ui/tri.svg" alt="" />
     </div>

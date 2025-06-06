@@ -429,7 +429,9 @@ export const openVideoModal = (id) => {
 
   // start video
   const player = document.getElementById("video");
-  player.play();
+  setTimeout(() => {
+    player.play();
+  }, 500);
 };
 
 // preload hidden images

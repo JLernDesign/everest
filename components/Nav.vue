@@ -20,7 +20,7 @@ onMounted(() => {
   setActive();
 
   // preload hidden menu images
-  preloadImg("/ui/menu-texture1@2x.jpg");
+  preloadImg("/ui/menu-texture@2x.webp");
 });
 
 // watch for page change to update nav
@@ -40,7 +40,7 @@ watch(page_title, () => {
           :data="{ title: item.label, url: getUrl(item) }"
           :type="props.type"
           :active="activePage"
-          :submenu="i == 0 ? true : false"
+          :submenu="i < 2 ? true : false"
           :close_func="close_func"
         />
       </template>
