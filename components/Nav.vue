@@ -1,17 +1,7 @@
 <script setup>
-import MenuQuery from "~/assets/graphql/menu.graphql";
-
-const props = defineProps(["type", "close_func"]);
+const props = defineProps(["type", "data", "close_func"]);
 const route = useRoute();
 const activePage = ref("");
-
-const QUERY = MenuQuery.loc.source.body;
-const { data } = await useGraphqlQuery({
-  query: QUERY,
-});
-const main_menu = data.value.menu.main;
-//console.log(toRaw(main_menu));
-const menu = [{ subMenu: true }, 0, 0, 0];
 
 const setActive = () => {
   activePage.value = "";
@@ -35,12 +25,12 @@ watch(page_title, () => {
     <ul
       :class="props.type == 'main' ? 'main-nav flex space-x-nav' : 'mobile-nav'"
     >
-      <template v-for="(item, i) in main_menu">
+      <template v-for="(item, i) in props.data">
         <MenuItem
-          :data="{ title: item.label, url: getUrl(item) }"
+          :data="item"
           :type="props.type"
           :active="activePage"
-          :submenu="i < 2 ? true : false"
+          :submenu="item.submenu ? true : false"
           :close_func="close_func"
         />
       </template>

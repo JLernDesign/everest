@@ -2,6 +2,7 @@
 import gsap from "gsap";
 import { useScroll } from "@vueuse/core";
 
+const props = defineProps(["menu"]);
 const scrolled = ref(false);
 const sticky = ref(true);
 const header = ref(null);
@@ -144,7 +145,7 @@ const hideSticky = () => {
         <div
           class="navbg absolute -top-[1px] left-0 h-full w-full rounded-btn border-1 border-jaffalt bg-jaffa opacity-0"
         ></div>
-        <Nav type="main" />
+        <Nav type="main" :data="menu.main" />
       </div>
     </div>
 

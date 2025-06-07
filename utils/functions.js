@@ -15,10 +15,10 @@ export const colors = [
 ];
 
 export const getUrl = (obj) => {
-  if (obj.external) {
+  if (obj?.external) {
     return obj.external;
   }
-  if (obj.internal) {
+  if (obj?.internal) {
     if (obj.internal.title == "Home") {
       return "/";
     } else {

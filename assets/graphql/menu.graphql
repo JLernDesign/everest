@@ -1,20 +1,9 @@
 query Menu {
   menu {
     main {
-      label
-      external
-      internal {
-        ... on HomeRecord {
-          title
-        }
-        ... on PostRecord {
-          __typename
-          slug
-        }
-        ... on ProductRecord {
-          __typename
-          slug
-        }
+      title
+      submenu {
+        label
       }
     }
   }

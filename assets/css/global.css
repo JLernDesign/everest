@@ -130,6 +130,21 @@ sup {
     }
   }
 }
+.has-ul .ul {
+  position: relative;
+  transition: all 0.3s ease-out;
+}
+.has-ul:hover {
+  > .ul,
+  > span span .ul {
+    color: theme("colors.red");
+    &:after {
+      transform: scaleX(1);
+      opacity: 1;
+      transition: var(--ease-out);
+    }
+  }
+}
 
 .bullets {
   li {

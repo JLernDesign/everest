@@ -1,4 +1,5 @@
 <script setup>
+import { menuQuery } from "~/assets/graphql/queries/menu";
 import { useElementSize } from "@vueuse/core";
 
 const props = defineProps(["theme"]);
@@ -6,6 +7,13 @@ const wrapper = ref(null);
 const header = ref(null);
 const { width, height } = useElementSize(wrapper);
 const theme = useState("theme");
+
+/* fetch menu data */
+const { data } = await useGraphqlQuery({
+  query: menuQuery.loc.source.body,
+});
+const main_menu = data.value.menu;
+console.log(main_menu);
 
 /* watch theme for change */
 watch(theme, () => {
@@ -23,9 +31,9 @@ watch(height, () => {
 
 <template>
   <div class="wrapper" ref="wrapper">
-    <Header ref="header" />
+    <Header ref="header" :menu="main_menu" />
     <div class="main-contents overflow-hidden"><slot /></div>
-    <Footer />
+    <Footer :menu="main_menu" />
     <VideoModal />
     <UISiteCover />
   </div>

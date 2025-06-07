@@ -1,5 +1,12 @@
 <script setup>
 const props = defineProps(["data", "id"]);
+
+// add filler block if odd number of products
+let products;
+if (props.id == "Product") {
+  products = props.data;
+  products.length % 2 != 0 && products.push("");
+}
 </script>
 
 <template>
@@ -18,10 +25,10 @@ const props = defineProps(["data", "id"]);
         "
       >
         <template v-if="id == 'Product'">
-          <SubmenuLinkIcon v-for="n in 4" :data="data" />
+          <SubmenuLinkIcon v-for="(item, i) in products" :data="item" />
         </template>
         <template v-else>
-          <SubmenuLink v-for="n in 4" :data="data" />
+          <SubmenuLink v-for="(item, i) in data" :data="item" />
         </template>
       </ul>
     </div>

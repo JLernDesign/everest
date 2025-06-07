@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+const props = defineProps(["menu"]);
+</script>
 
 <template>
   <footer class="main relative">

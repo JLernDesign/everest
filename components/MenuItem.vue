@@ -2,7 +2,8 @@
 import gsap from "gsap";
 const main = ref(null);
 const props = defineProps(["data", "type", "active", "submenu", "close_func"]);
-let el, link, accent;
+let el, link, accent, single;
+props.data.__typename == "MenuItemRecord" ? (single = true) : null;
 
 onMounted(() => {
   el = qs(".submenu", main.value);
@@ -134,14 +135,17 @@ const toggleSubMenu = (e) => {
     ref="main"
   >
     <NuxtLink
-      :to="type == 'main' ? data.url : null"
+      :to="type == 'main' && single ? getUrl(data) : null"
+      :target="data.external && '_blank'"
       :data-parent="type == 'mobile' && submenu ? true : null"
-      :target="data.target"
-      class="toplink ul relative z-1 text-body-sm after:bg-red"
-      :class="[type == 'main' && active == data.title ? 'on' : null]"
+      class="toplink ul relative z-1 cursor-pointer text-body-sm after:bg-red"
+      :class="[
+        type == 'main' && active == data.label ? 'on' : null,
+        single && 'hover:text-red',
+      ]"
       @mouseenter="type == 'main' && submenu ? openMenu() : null"
-      @click.prevent="type == 'mobile' && handleClick"
-      >{{ data.title }}
+      v-on="{ click: type == 'mobile' ? handleClick : null }"
+      >{{ data.label }}
 
       <!-- mobile arrow -->
       <div v-if="type == 'mobile' && submenu" class="arrow">
@@ -151,7 +155,7 @@ const toggleSubMenu = (e) => {
 
     <!-- submenu -->
     <div v-if="submenu" class="nav-sub relative z-0 h-0 w-full">
-      <Submenu :id="data.title" />
+      <Submenu :id="data.label" :data="data.submenu" />
     </div>
 
     <!-- accent arrow -->
