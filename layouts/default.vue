@@ -13,7 +13,7 @@ const { data } = await useGraphqlQuery({
   query: menuQuery.loc.source.body,
 });
 const main_menu = data.value.menu;
-console.log(main_menu);
+/* console.log(main_menu); */
 
 /* watch theme for change */
 watch(theme, () => {

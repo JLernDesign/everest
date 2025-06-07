@@ -1,53 +1,14 @@
 <script setup>
-import gsap from "gsap";
 const props = defineProps(["data", "num", "func"]);
 const open = ref(false);
-/* const main = ref(null);
-const answer = ref(null);
-const wrap = ref(null);
- */
-/* 
-const toggleQ = (e) => {
-  if (e.target.classList.contains("closed")) {
-    e.target.classList.remove("closed");
-    e.target.classList.add("open");
-    open.value = true;
-    openQ();
-  } else {
-    e.target.classList.remove("open");
-    e.target.classList.add("closed");
-    open.value = false;
-    closeQ();
-  }
-};
-
-const openQ = () => {
-  const h = answer.value.offsetHeight;
-  gsap.to(wrap.value, {
-    duration: 0.75,
-    height: h,
-    ease: "power3.inOut",
-    onComplete: function () {
-      wrap.value.style.height = "auto";
-    },
-  });
-};
-
-const closeQ = () => {
-  const h = answer.value.offsetHeight;
-  gsap.to(wrap.value, {
-    duration: 0.5,
-    height: 0,
-    ease: "power3.out",
-  });
-}; */
+const num = props.num;
 
 const handleClick = (e) => {
-  props.func(props.num);
   open.value = !open.value;
+  props.func(props.num);
 };
 
-defineExpose({ open });
+defineExpose({ open, num });
 </script>
 
 <template>
@@ -66,7 +27,7 @@ defineExpose({ open });
         :class="open && 'text-red'"
         @click="handleClick"
       >
-        Can Everest ERP handle multi-currency and multi-entity operations?
+        {{ data.question }}
       </h3>
 
       <!-- answer -->
@@ -79,30 +40,7 @@ defineExpose({ open });
             <div class="absolute left-[4.4rem] top-[5.5rem] w-[5.3rem]">
               <IconLogoMark color="red" />
             </div>
-            <span class="space-y-10">
-              <p>
-                Yes, Everest ERP is built to support complex financial
-                environments, including multi-currency and multi-entity
-                operations, making it an ideal solution for global SaaS
-                businesses. The platform allows organizations to manage multiple
-                subsidiaries or business units across different regions while
-                maintaining a centralized system for financial consolidation and
-                oversight. By accommodating various local currencies and
-                regulations, Everest ERP ensures accurate financial reporting
-                and helps businesses stay compliant across jurisdictions without
-                the need for extensive manual workarounds or third-party tools.
-                This multi-dimensional functionality enables real-time
-                visibility into financial performance at both the entity and
-                consolidated levels. Finance teams can easily generate reports,
-                track intercompany transactions, and manage compliance
-                requirements for each entity. With automated currency
-                conversions and built-in capabilities for handling transfer
-                pricing, tax reporting, and local financial statements, Everest
-                ERP streamlines operations for companies with diverse structures
-                and international footprints.
-              </p>
-              <p>Second paragraph here</p>
-            </span>
+            <span class="space-y-10" v-html="data.answer"></span>
           </div>
         </div>
       </div>

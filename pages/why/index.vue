@@ -1,17 +1,18 @@
 <script setup>
-/* import HomeQuery from "~/assets/graphql/home.graphql";
+import { whyQuery } from "~/assets/graphql/queries/why.js";
 
-const QUERY = HomeQuery.loc.source.body;
 const { data } = await useGraphqlQuery({
-  query: QUERY,
+  query: whyQuery.loc.source.body,
 });
-const page = data.value.home; */
+const page = data.value.whyMain;
+console.log(data.value);
 </script>
 
 <template>
   <div class="bg-jaffa">
-    <WhyHero />
-    <Advantage />
+    <WhyHero :data="page.hero" />
+    <FlexibleBlocks :data="page.flexibleContent.modules" template="home" />
+    <FooterLockup :data="page.footerCallout" />
   </div>
 </template>
 

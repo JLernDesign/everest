@@ -56,6 +56,31 @@ export const FooterFragment = gql`
 `;
 
 // modules
+const AdvantageFragment = gql`
+  fragment AdvantageFragment on AdvantageRecord {
+    __typename
+    eyebrow
+    headline
+    color
+    contentBlocks {
+      __typename
+      ... on AdvantageTextRecord {
+        content
+        stats {
+          stats {
+            figure
+            label
+          }
+        }
+      }
+      ... on AdvantageImageRecord {
+        image {
+          url
+        }
+      }
+    }
+  }
+`;
 const AscendingSliderFragment = gql`
   fragment AscendingSliderFragment on AscendingSliderRecord {
     __typename
@@ -117,6 +142,18 @@ const ClientSuccessFragment = gql`
     }
   }
 `;
+const FaqFragment = gql`
+  fragment FaqFragment on FaqRecord {
+    __typename
+    header {
+      ...HeaderFragment
+    }
+    items {
+      question
+      answer
+    }
+  }
+`;
 const IntegrationListFragment = gql`
   fragment IntegrationListFragment on IntegrationListRecord {
     __typename
@@ -174,19 +211,23 @@ export const FlexibleContentFragment = gql`
   fragment FlexibleContentFragment on FlexibleContentRecord {
     modules {
       __typename
+      ...AdvantageFragment
       ...AscendingSliderFragment
       ...BannerCalloutFragment
       ...BlogCalloutFragment
       ...ClientSuccessFragment
+      ...FaqFragment
       ...IntegrationListFragment
       ...NumberBucketGroupFragment
       ...OverviewFragment
     }
   }
+  ${AdvantageFragment}
   ${AscendingSliderFragment}
   ${BannerCalloutFragment}
   ${BlogCalloutFragment}
   ${ClientSuccessFragment}
+  ${FaqFragment}
   ${IntegrationListFragment}
   ${NumberBucketGroupFragment}
   ${OverviewFragment}
