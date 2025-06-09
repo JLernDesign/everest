@@ -20,6 +20,10 @@ const props = defineProps(["data", "template"]);
       v-if="module.__typename == 'ClientSuccessRecord'"
       :data="module"
     />
+    <SuccessStack
+      v-if="module.__typename == 'ClientCardsModuleRecord'"
+      :data="module"
+    />
     <Integrations
       v-if="module.__typename == 'IntegrationListRecord'"
       :data="module"
@@ -31,6 +35,11 @@ const props = defineProps(["data", "template"]);
       :header="template != 'product' && true"
       :data="module"
       :template="template"
+    />
+    <Problem
+      v-if="module.__typename == 'ProblemRecord'"
+      :layout="module.header.eyebrow == 'The Problem' ? 'img-rt' : 'img-lt'"
+      :data="module"
     />
     <SliderAscending
       v-if="module.__typename == 'AscendingSliderRecord'"

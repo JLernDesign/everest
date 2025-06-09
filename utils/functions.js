@@ -21,10 +21,14 @@ export const getUrl = (obj) => {
   if (obj?.internal) {
     if (obj.internal.title == "Home") {
       return "/";
+    } else if (obj.internal.title == "Why Everest") {
+      return "/why/";
     } else {
       switch (obj.internal.__typename) {
         case "ProductRecord":
           return "/product/" + obj.internal.slug;
+        case "WhySubpageRecord":
+          return "/why/" + obj.internal.slug;
 
         default:
           break;

@@ -17,6 +17,13 @@ export const LinkFragment = gql`
           __typename
           slug
         }
+        ... on WhyMainRecord {
+          title
+        }
+        ... on WhySubpageRecord {
+          __typename
+          slug
+        }
       }
       external
       style
@@ -154,6 +161,26 @@ const FaqFragment = gql`
     }
   }
 `;
+const ClientCardsFragment = gql`
+  fragment ClientCardsFragment on ClientCardsModuleRecord {
+    __typename
+    header {
+      ...HeaderFragment
+    }
+    slides {
+      name
+      title
+      industry
+      quote
+      image {
+        url
+      }
+    }
+    cta {
+      ...LinkFragment
+    }
+  }
+`;
 const IntegrationListFragment = gql`
   fragment IntegrationListFragment on IntegrationListRecord {
     __typename
@@ -206,6 +233,21 @@ const OverviewFragment = gql`
     }
   }
 `;
+const ProblemFragment = gql`
+  fragment ProblemFragment on ProblemRecord {
+    __typename
+    header {
+      ...HeaderFragment
+    }
+    slides {
+      headline
+      description
+      icon {
+        url
+      }
+    }
+  }
+`;
 
 export const FlexibleContentFragment = gql`
   fragment FlexibleContentFragment on FlexibleContentRecord {
@@ -216,10 +258,12 @@ export const FlexibleContentFragment = gql`
       ...BannerCalloutFragment
       ...BlogCalloutFragment
       ...ClientSuccessFragment
+      ...ClientCardsFragment
       ...FaqFragment
       ...IntegrationListFragment
       ...NumberBucketGroupFragment
       ...OverviewFragment
+      ...ProblemFragment
     }
   }
   ${AdvantageFragment}
@@ -227,8 +271,10 @@ export const FlexibleContentFragment = gql`
   ${BannerCalloutFragment}
   ${BlogCalloutFragment}
   ${ClientSuccessFragment}
+  ${ClientCardsFragment}
   ${FaqFragment}
   ${IntegrationListFragment}
   ${NumberBucketGroupFragment}
   ${OverviewFragment}
+  ${ProblemFragment}
 `;

@@ -5,10 +5,12 @@ const main = ref(null);
 
 const setInactive = (num) => {
   let title = qs(".title", main.value);
-  if (num == 0) {
+  // fully grayed
+  if (num > 1) {
     gsap.set(main.value, { backgroundColor: "#262D36" });
     gsap.set(title, { opacity: 0.1, color: "#ffffff" });
   }
+  // partial grayed
   if (num == 1) {
     gsap.set(main.value, { backgroundColor: "#313944" });
     gsap.set(title, { opacity: 0.3, color: "#ffffff" });
@@ -36,7 +38,8 @@ defineExpose({ setInactive });
     <div class="flex w-full items-start justify-between p-side">
       <div class="w-[35%] shrink-0">
         <img
-          src="/public/clients/ph-success-photo.jpg"
+          v-if="data.image"
+          :src="data.image.url"
           alt=""
           class="w-[23.4rem] overflow-hidden rounded-base"
         />

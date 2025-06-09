@@ -17,7 +17,7 @@ const props = defineProps(["layout", "data"]);
     >
       <LineFull class="top-1/2" />
       <div class="eyebrow relative z-1 bg-jaffa px-5 text-body-sm">
-        {{ data.eyebrow }}
+        {{ data.header.eyebrow }}
       </div>
       <div class="eyebrow relative z-1 -translate-y-1 bg-jaffa px-5">
         <IconEyebrow color="fill-black" />
@@ -30,21 +30,24 @@ const props = defineProps(["layout", "data"]);
     >
       <!-- text -->
       <div
-        class="text relative w-1/2 px-[5rem] pb-[13rem] pt-[11.5rem] text-white"
+        class="text relative w-1/2 px-[5rem] pb-[14rem] pt-[11.5rem] text-white"
         :class="layout == 'img-rt' ? 'order-1' : 'order-2'"
       >
         <div class="max-w-[575px] space-y-7">
-          <h2 class="font-helvb text-md leading-[1.09]">
-            Where legacy <br />ERP fall short.
-          </h2>
-          <p>
-            Legacy ERP systems weren’t built for the speed, scale, or complexity
-            of SaaS. They rely on outdated architectures, require constant IT
-            involvement, and force finance teams to stitch together point
-            solutions just to stay afloat. What you get as a result is slower
-            operations, higher costs, and missed opportunities.
-          </p>
-          <CtaBtn to="/">Try Everest</CtaBtn>
+          <h2
+            class="font-helvb text-md leading-[1.09]"
+            v-html="addLineBreaks(data.header.headline)"
+          ></h2>
+          <p v-html="addLineBreaks(data.header.intro)"></p>
+
+          <!-- cta buttons -->
+          <CtaGroup
+            v-if="data.header.cta"
+            :data="data.header.cta.buttons"
+            :align="align"
+            :theme="theme"
+            class="pt-6"
+          />
         </div>
 
         <!-- controls -->
@@ -61,7 +64,7 @@ const props = defineProps(["layout", "data"]);
             class="count px-side font-barlow-cond font-bold"
             :class="layout == 'img-rt' ? 'text-red' : 'text-lightblue'"
           >
-            1/10
+            1/{{ data.slides.length }}
           </div>
           <div class="relative h-full w-[23.4rem]">
             <UISlideArrow
@@ -74,7 +77,7 @@ const props = defineProps(["layout", "data"]);
 
       <!-- image -->
       <div
-        class="image w-[48.5%] rounded-base bg-cover px-[13rem] py-[5rem]"
+        class="image w-[48.5%] rounded-base bg-cover p-[13rem]"
         :class="
           layout == 'img-rt'
             ? 'order-2 bg-[url(/ui/mt-red@2x.jpg)]'
@@ -82,14 +85,16 @@ const props = defineProps(["layout", "data"]);
         "
       >
         <div
-          class="flex h-full min-h-[62rem] flex-col justify-end space-y-4 rounded-base bg-jaffa p-[3.2rem] text-body-sm leading-sm"
+          class="flex h-full flex-col items-center rounded-base bg-jaffa p-[3.2rem] text-center text-body-sm leading-sm"
         >
-          <h3 class="font-helvh">Manual, error-prone revenue recognition</h3>
-          <p>
-            Legacy systems struggle with modern revenue models. Teams are forced
-            to manage ASC 606 compliance in spreadsheets, increasing the risk of
-            errors and delaying the close.
-          </p>
+          <div v-if="data.slides[0].icon" class="icon mb-[3rem] size-[12.2rem]">
+            <img :src="data.slides[0].icon.url" alt="" />
+          </div>
+          <h3
+            class="mb-[4.25rem] font-barlow-cond text-h5 font-bold uppercase leading-base"
+            v-html="addLineBreaks(data.slides[0].headline)"
+          ></h3>
+          <p v-html="addLineBreaks(data.slides[0].description)"></p>
         </div>
       </div>
     </div>

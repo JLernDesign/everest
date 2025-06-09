@@ -1,11 +1,17 @@
 <script setup>
-import { whyQuery } from "~/assets/graphql/queries/why.js";
+import { whySubpageQuery } from "~/assets/graphql/queries/why-subpage";
 import { toHead } from "vue-datocms";
 
+const route = useRoute();
+
 const { data } = await useGraphqlQuery({
-  query: whyQuery.loc.source.body,
+  query: whySubpageQuery.loc.source.body,
+  variables: {
+    slug: route.params.slug,
+  },
 });
-const page = data.value.whyMain;
+const page = data.value.whySubpage;
+/* console.log(toRaw(data.value)); */
 
 // compile meta tags for head
 useHead(() => {
@@ -17,7 +23,7 @@ useHead(() => {
 <template>
   <div class="bg-jaffa">
     <WhyHero :data="page.hero" />
-    <FlexibleBlocks :data="page.flexibleContent.modules" template="home" />
+    <FlexibleBlocks :data="page.flexibleContent.modules" template="why" />
     <FooterLockup :data="page.footerCallout" />
   </div>
 </template>

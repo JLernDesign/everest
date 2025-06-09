@@ -14,6 +14,13 @@ export const InternalFragment = gql`
         __typename
         slug
       }
+      ... on WhyMainRecord {
+        title
+      }
+      ... on WhySubpageRecord {
+        __typename
+        slug
+      }
     }
   }
 `;
