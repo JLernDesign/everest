@@ -21,6 +21,9 @@ export const InternalFragment = gql`
         __typename
         slug
       }
+      ... on AiFirstRecord {
+        title
+      }
     }
   }
 `;

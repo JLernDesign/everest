@@ -24,6 +24,9 @@ export const LinkFragment = gql`
           __typename
           slug
         }
+        ... on AiFirstRecord {
+          title
+        }
       }
       external
       style

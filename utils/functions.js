@@ -19,10 +19,13 @@ export const getUrl = (obj) => {
     return obj.external;
   }
   if (obj?.internal) {
+    console.log(obj.internal.title);
     if (obj.internal.title == "Home") {
       return "/";
     } else if (obj.internal.title == "Why Everest") {
       return "/why/";
+    } else if (obj.internal.title == "AI First") {
+      return "/why/ai-first";
     } else {
       switch (obj.internal.__typename) {
         case "ProductRecord":
