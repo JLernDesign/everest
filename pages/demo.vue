@@ -7,6 +7,11 @@ const { data } = await useGraphqlQuery({
 });
 const page = data.value.bookDemo;
 
+onMounted(() => {
+  const theme = useState("theme");
+  theme.value = "light";
+});
+
 // compile meta tags for head
 useHead(() => {
   if (!data.value) return {};

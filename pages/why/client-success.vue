@@ -1,26 +1,30 @@
 <script setup>
-/* import HomeQuery from "~/assets/graphql/home.graphql";
+import { clientsQuery } from "~/assets/graphql/queries/clients.js";
+import { toHead } from "vue-datocms";
 
-const QUERY = HomeQuery.loc.source.body;
 const { data } = await useGraphqlQuery({
-  query: QUERY,
+  query: clientsQuery.loc.source.body,
 });
-const page = data.value.home; */
+const page = data.value.clientSuccess;
 
 onMounted(() => {
   const theme = useState("theme");
   theme.value = "dark";
 });
-onUnmounted(() => {});
+
+// compile meta tags for head
+useHead(() => {
+  if (!data.value) return {};
+  return toHead(page.seo);
+});
 </script>
 
 <template>
-  <div class="bg-jaffa">
-    <WhyClientsHero />
+  <div class="bg-skyblue">
+    <WhyClientsHero :data="page.hero" />
     <ClientSuccessGrid :edge="true" />
-    <CalloutQuote />
-    <ClientList class="!pb-[30rem]" />
-    <PressCallout />
+    <FlexibleBlocks :data="page.flexibleContent.modules" />
+    <FooterLockup :data="page.footerCallout" />
   </div>
 </template>
 

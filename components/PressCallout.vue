@@ -1,15 +1,15 @@
 <script setup></script>
 
 <template>
-  <Section class="!pt-0 pb-section-bot" side="none">
+  <Section class="mt-[30rem] !pt-0 pb-section-bot" side="none">
     <div class="absolute left-0 top-0 z-1 h-full w-full bg-jaffa"></div>
     <UIGlow
-      class="!blur-big -top-[13.6rem] z-0 h-[13.6rem]"
+      class="-top-[13.6rem] z-0 h-[13.6rem] !blur-big"
       src="/ui/edge-gradient.svg"
     />
 
     <div class="relative z-1">
-      <header class="py-12 text-center">
+      <header class="pb-14 pt-12 text-center">
         <h2 class="font-barlow-cond text-lg font-bold leading-lg">
           Everest in the Press
         </h2>

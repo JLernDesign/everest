@@ -19,16 +19,7 @@ onUnmounted(() => {});
   <Section :hero="true" class="pb-section-bot-lg" theme="dark">
     <UITexture />
 
-    <SectionHeader
-      class="pt-[4rem]"
-      align="center"
-      :hero="true"
-      :data="{
-        headline: 'Client Success',
-        intro:
-          'The ascent speaks volumes. So do the companies <br/>we\'ve helped get there.',
-      }"
-    />
+    <SectionHeader class="pt-[4rem]" align="center" :hero="true" :data="data" />
 
     <!-- slider -->
     <div

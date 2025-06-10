@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+const props = defineProps(["data"]);
+</script>
 
 <template>
   <Section class="bg-skyblue !py-side text-center text-white">
@@ -6,9 +8,10 @@
       class="rounded-base bg-[url(/ui/quote-bg@2x.jpg)] bg-cover pb-[11.5rem] pt-[7.6rem]"
     >
       <div
+        v-if="data.image"
         class="quote-person mx-auto mb-[8rem] w-[19.5rem] overflow-hidden rounded-sm"
       >
-        <img src="/public/clients/ph-quote-person@2x.jpg" alt="" />
+        <img :src="data.image.url" alt="" />
       </div>
 
       <blockquote
@@ -16,13 +19,13 @@
       >
         <div class="quote lt absolute -left-[3.5rem] -top-[5.5rem]">“</div>
         <div class="quote rt absolute -bottom-[18rem] right-0">”</div>
-
-        A truly exciting new option for mid-level businesses to consider when
-        looking to upgrade their ERP.
+        {{ data.quote }}
       </blockquote>
-      <div class="byline mt-[5rem] text-body-xsm">
-        <strong class="block font-helvb">Clark Hall (They/Them)</strong>
-        2X Controller, Former Controller at Tegus
+
+      <!-- byline -->
+      <div v-if="data.name" class="byline mt-[5rem] text-body-xsm">
+        <strong class="block font-helvb">{{ data.name }}</strong>
+        {{ data.title }}
       </div>
     </div>
   </Section>

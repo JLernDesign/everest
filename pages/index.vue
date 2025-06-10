@@ -1,14 +1,16 @@
 <script setup>
 import { homeQuery } from "~/assets/graphql/queries/home";
 
-const theme = useState("theme");
-theme.value = "light";
-
 const { data } = await useGraphqlQuery({
   query: homeQuery.loc.source.body,
 });
 const page = data.value.home;
 /* console.log(data.value); */
+
+onMounted(() => {
+  const theme = useState("theme");
+  theme.value = "light";
+});
 </script>
 
 <template>

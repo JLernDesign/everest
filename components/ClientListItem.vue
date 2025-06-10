@@ -32,7 +32,8 @@ defineExpose({ openItem });
       <div class="flex w-full items-start justify-between p-side pb-[5rem]">
         <div class="w-[35%] shrink-0">
           <img
-            :src="data.image"
+            v-if="data.image"
+            :src="data.image.url"
             alt=""
             class="w-[23.4rem] overflow-hidden rounded-sm"
           />

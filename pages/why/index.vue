@@ -7,6 +7,11 @@ const { data } = await useGraphqlQuery({
 });
 const page = data.value.whyMain;
 
+onMounted(() => {
+  const theme = useState("theme");
+  theme.value = "light";
+});
+
 // compile meta tags for head
 useHead(() => {
   if (!data.value) return {};
@@ -17,7 +22,7 @@ useHead(() => {
 <template>
   <div class="bg-jaffa">
     <WhyHero :data="page.hero" />
-    <FlexibleBlocks :data="page.flexibleContent.modules" template="home" />
+    <FlexibleBlocks :data="page.flexibleContent.modules" />
     <FooterLockup :data="page.footerCallout" />
   </div>
 </template>

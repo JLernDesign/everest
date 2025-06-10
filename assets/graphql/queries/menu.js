@@ -4,7 +4,7 @@ export const InternalFragment = gql`
   fragment InternalFragment on MenuItemRecord {
     internal {
       ... on HomeRecord {
-        title
+        __typename
       }
       ... on PostRecord {
         __typename
@@ -15,14 +15,20 @@ export const InternalFragment = gql`
         slug
       }
       ... on WhyMainRecord {
-        title
+        __typename
       }
       ... on WhySubpageRecord {
         __typename
         slug
       }
       ... on AiFirstRecord {
-        title
+        __typename
+      }
+      ... on ClientSuccessRecord {
+        __typename
+      }
+      ... on BookDemoRecord {
+        __typename
       }
     }
   }

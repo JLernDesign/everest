@@ -14,32 +14,6 @@ export const colors = [
   "bg-green",
 ];
 
-export const getUrl = (obj) => {
-  if (obj?.external) {
-    return obj.external;
-  }
-  if (obj?.internal) {
-    console.log(obj.internal.title);
-    if (obj.internal.title == "Home") {
-      return "/";
-    } else if (obj.internal.title == "Why Everest") {
-      return "/why/";
-    } else if (obj.internal.title == "AI First") {
-      return "/why/ai-first";
-    } else {
-      switch (obj.internal.__typename) {
-        case "ProductRecord":
-          return "/product/" + obj.internal.slug;
-        case "WhySubpageRecord":
-          return "/why/" + obj.internal.slug;
-
-        default:
-          break;
-      }
-    }
-  }
-};
-
 // auto scroll to section on click
 export const jumpTo = (e) => {
   const os = 50;

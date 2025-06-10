@@ -13,6 +13,11 @@ const { data } = await useGraphqlQuery({
 const page = data.value.product;
 /* console.log(toRaw(data.value)); */
 
+onMounted(() => {
+  const theme = useState("theme");
+  theme.value = "light";
+});
+
 // compile meta tags for head
 useHead(() => {
   if (!data.value) return {};

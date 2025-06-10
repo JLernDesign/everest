@@ -11,7 +11,11 @@ const props = defineProps(["data", "template"]);
       :data="module"
     />
     <BlogCallout v-if="module.__typename == 'BlogCalloutRecord'" />
-
+    <CalloutQuote v-if="module.__typename == 'BigQuoteRecord'" :data="module" />
+    <ClientList
+      v-if="module.__typename == 'ClientQuoteListRecord'"
+      :data="module"
+    />
     <BucketsNum
       v-if="module.__typename == 'NumberBucketGroupRecord'"
       :data="module"
@@ -36,6 +40,7 @@ const props = defineProps(["data", "template"]);
       :data="module"
       :template="template"
     />
+    <PressCallout v-if="module.__typename == 'PressCalloutRecord'" />
     <Problem
       v-if="module.__typename == 'ProblemRecord'"
       :layout="module.header.eyebrow == 'The Problem' ? 'img-rt' : 'img-lt'"

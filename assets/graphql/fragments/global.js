@@ -7,7 +7,7 @@ export const LinkFragment = gql`
       label
       internal {
         ... on HomeRecord {
-          title
+          __typename
         }
         ... on PostRecord {
           __typename
@@ -18,14 +18,20 @@ export const LinkFragment = gql`
           slug
         }
         ... on WhyMainRecord {
-          title
+          __typename
         }
         ... on WhySubpageRecord {
           __typename
           slug
         }
         ... on AiFirstRecord {
-          title
+          __typename
+        }
+        ... on ClientSuccessRecord {
+          __typename
+        }
+        ... on BookDemoRecord {
+          __typename
         }
       }
       external
@@ -121,8 +127,13 @@ const BlogCalloutFragment = gql`
     __typename
   }
 `;
+const PressCalloutFragment = gql`
+  fragment PressCalloutFragment on PressCalloutRecord {
+    __typename
+  }
+`;
 const ClientSuccessFragment = gql`
-  fragment ClientSuccessFragment on ClientSuccessRecord {
+  fragment ClientSuccessFragment on ClientSuccessModuleRecord {
     __typename
     header {
       ...HeaderFragment
@@ -251,6 +262,31 @@ const ProblemFragment = gql`
     }
   }
 `;
+const BigQuoteFragment = gql`
+  fragment BigQuoteFragment on BigQuoteRecord {
+    __typename
+    quote
+    name
+    title
+    image {
+      url
+    }
+  }
+`;
+const ClientListFragment = gql`
+  fragment ClientListFragment on ClientQuoteListRecord {
+    __typename
+    slides {
+      name
+      title
+      industry
+      quote
+      image {
+        url
+      }
+    }
+  }
+`;
 
 export const FlexibleContentFragment = gql`
   fragment FlexibleContentFragment on FlexibleContentRecord {
@@ -259,25 +295,31 @@ export const FlexibleContentFragment = gql`
       ...AdvantageFragment
       ...AscendingSliderFragment
       ...BannerCalloutFragment
+      ...BigQuoteFragment
       ...BlogCalloutFragment
       ...ClientSuccessFragment
       ...ClientCardsFragment
+      ...ClientListFragment
       ...FaqFragment
       ...IntegrationListFragment
       ...NumberBucketGroupFragment
       ...OverviewFragment
+      ...PressCalloutFragment
       ...ProblemFragment
     }
   }
   ${AdvantageFragment}
   ${AscendingSliderFragment}
   ${BannerCalloutFragment}
+  ${BigQuoteFragment}
   ${BlogCalloutFragment}
   ${ClientSuccessFragment}
   ${ClientCardsFragment}
+  ${ClientListFragment}
   ${FaqFragment}
   ${IntegrationListFragment}
   ${NumberBucketGroupFragment}
   ${OverviewFragment}
+  ${PressCalloutFragment}
   ${ProblemFragment}
 `;
