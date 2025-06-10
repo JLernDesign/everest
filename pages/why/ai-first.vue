@@ -1,42 +1,50 @@
 <script setup>
-/* import HomeQuery from "~/assets/graphql/home.graphql";
+import { aiFirstQuery } from "~/assets/graphql/queries/ai-first.js";
+import { toHead } from "vue-datocms";
 
-const QUERY = HomeQuery.loc.source.body;
 const { data } = await useGraphqlQuery({
-  query: QUERY,
+  query: aiFirstQuery.loc.source.body,
 });
-const page = data.value.home; */
+const page = data.value.aiFirst;
+console.log(page);
 
 onMounted(() => {
   const theme = useState("theme");
   theme.value = "dark";
 });
-onUnmounted(() => {});
+
+// compile meta tags for head
+useHead(() => {
+  if (!data.value) return {};
+  return toHead(page.seo);
+});
 </script>
 
 <template>
   <div class="text-white">
-    <WhyAIFirstHero />
-    <WhyAIContent
-      :data="{ headline: 'Why traditional ERP Systems can\'t get AI right' }"
-      color="blue"
-    />
-    <WhyAIContent
-      :data="{ headline: 'What You Get When You Choose Everest' }"
-      color="red"
-    />
-    <WhyAIBigText
-      :data="{
-        headline: 'Innovate Fearlessly with Live Sandbox<sup>™</sup>',
-        cta: { buttons: [{ style: 'button', label: 'Try Live Sandbox' }] },
-      }"
-    />
-    <WhyAIContentAlt />
-    <WhyAIContentBuckets />
-    <WhyAIBigText
-      :data="{ headline: 'Modern ERP Reinvented for the AI Era' }"
-    />
-    <Faq />
+    <WhyAIFirstHero :data="page.hero" />
+
+    <template v-for="module in page.aiFirstFlexible.aiFirstModules">
+      <WhyAIContent
+        v-if="module.__typename == 'AiFirstBasicRecord'"
+        :data="module"
+        :color="module.accentColor"
+      />
+      <WhyAIBigText
+        v-if="module.__typename == 'AiFirstBigtextRecord'"
+        :data="module"
+      />
+      <WhyAIContentAlt
+        v-if="module.__typename == 'AiFirstSlideModuleRecord'"
+        :data="module"
+      />
+      <WhyAIContentBuckets
+        v-if="module.__typename == 'AiFirstBucketGroupRecord'"
+        :data="module"
+      />
+    </template>
+
+    <FooterLockup :data="page.footerCallout" />
   </div>
 </template>
 

@@ -13,7 +13,7 @@ const props = defineProps(["data", "theme"]);
       />
     </div>
 
-    <div class="px-side-lg relative flex border-t border-t-whiteline">
+    <div class="relative flex border-t border-t-whiteline px-side-lg">
       <!-- text -->
       <SectionHeader
         class="w-[57%] border-l border-l-whiteline pl-side pr-[7.5rem]"
@@ -21,12 +21,7 @@ const props = defineProps(["data", "theme"]);
         valign="center"
         theme="dark"
         :hero="true"
-        :data="{
-          headline: 'AI-First <br/>Architecture',
-          intro:
-            'With Everest, AI isn’t a feature. It’s the foundation. Prebuilt and customizable AI agents, safe experimentation environments, and vendor-agnostic model support give you flexibility, control, and speed that legacy ERPs can’t match.',
-          cta: { buttons: [{ label: 'Book A Demo' }] },
-        }"
+        :data="data"
       />
 
       <!-- image -->

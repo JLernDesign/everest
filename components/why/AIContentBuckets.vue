@@ -1,51 +1,72 @@
 <script setup>
 const props = defineProps(["data"]);
+
+// format colors
+const accentColor = (obj) => {
+  switch (obj.accentColor) {
+    case "tan":
+      return "text-jaffalt border-jaffalt";
+    case "blue":
+      return "text-lightblue border-lightblue";
+    case "red":
+      return "text-red border-red";
+    case "green":
+      return "text-green border-green";
+
+    default:
+      break;
+  }
+};
 </script>
 
 <template>
   <div>
     <!-- header -->
-    <div class="px-side-lg relative border-t border-t-whiteline">
+    <div class="relative border-t border-t-whiteline px-side-lg">
       <div
-        class="w-full border-x border-x-whiteline bg-[url(/public/why/ai-lines-bgfull.svg)] bg-cover px-side py-[11.2rem]"
+        class="w-full border-x border-x-whiteline bg-[url(/why/ai-lines-bgfull.svg)] bg-cover px-side py-[11.2rem]"
       >
         <div
           class="mx-auto w-[81rem] space-y-[2.5rem] rounded-base bg-shadowblue p-[6rem] text-center"
         >
-          <h2 class="font-barlow-cond text-lg font-bold leading-lg">
-            What AI-native ERP really delivers for your business.
-          </h2>
-          <p>
-            AI-native architecture in ERP changes what’s possible for your SaaS
-            business. When you embed intelligence into the core platform, you
-            enable faster execution, sharper insight, and greater agility at
-            every level of the business
-          </p>
+          <h2
+            class="font-barlow-cond text-lg font-bold leading-lg"
+            v-html="addLineBreaks(data.headline)"
+          ></h2>
+          <p v-html="addLineBreaks(data.intro)"></p>
         </div>
       </div>
     </div>
 
     <!-- buckets -->
-    <div class="px-side-lg relative border-t border-t-whiteline">
+    <div
+      v-if="data.buckets"
+      class="relative border-t border-t-whiteline px-side-lg"
+    >
       <div class="flex flex-wrap border-x border-x-whiteline">
         <div
-          v-for="n in 4"
+          v-for="(bucket, i) in data.buckets"
           class="bucket w-1/2 px-[8rem] py-[5rem]"
           :class="[
-            n > 2 && 'border-t border-t-whiteline',
-            n % 2 == 0 && 'border-l border-l-whiteline',
+            i > 1 && 'border-t border-t-whiteline',
+            i % 1 == 0 && 'border-l border-l-whiteline',
           ]"
         >
           <div
-            class="icon mb-[2.5rem] size-[3.6rem] rounded-full border-2 border-green"
-          ></div>
-          <h3 class="font-barlow-cond text-sm font-bold leading-lg text-green">
-            Close books faster with <br />AI-assisted workflows
-          </h3>
-          <p class="mt-[1.8rem] text-body-sm leading-sm">
-            Automate recurring tasks, reduce manual touchpoints, <br />and speed
-            up close cycles with built-in intelligence.
-          </p>
+            class="icon mb-[2.5rem] size-[3.6rem] rounded-full border-2"
+            :class="accentColor(bucket)"
+          >
+            <img v-if="bucket.icon" :src="bucket.icon.url" alt="" />
+          </div>
+          <h3
+            class="font-barlow-cond text-sm font-bold leading-lg"
+            :class="accentColor(bucket)"
+            v-html="addLineBreaks(bucket.headline)"
+          ></h3>
+          <p
+            class="mt-[1.8rem] text-body-sm leading-sm"
+            v-html="addLineBreaks(bucket.description)"
+          ></p>
         </div>
       </div>
     </div>

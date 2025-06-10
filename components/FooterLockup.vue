@@ -3,7 +3,7 @@ const props = defineProps(["data"]);
 </script>
 
 <template>
-  <div class="footer-lockup relative">
+  <div class="footer-lockup relative text-black">
     <UITexture />
 
     <!-- callout -->

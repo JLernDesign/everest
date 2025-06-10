@@ -1,11 +1,12 @@
 <script setup>
 const props = defineProps(["data", "color"]);
+console.log(props.color);
 </script>
 
 <template>
   <div>
     <!-- header -->
-    <div class="px-side-lg relative flex border-t border-t-whiteline">
+    <div class="relative flex border-t border-t-whiteline px-side-lg">
       <!-- side images -->
       <div
         v-for="n in 2"
@@ -14,7 +15,7 @@ const props = defineProps(["data", "color"]);
       >
         <img
           :src="
-            color == 'red' && n == 1
+            color == 'blue' && n == 1
               ? '/why/ai-corner-red@2x.png'
               : '/why/ai-corner-blue@2x.png'
           "
@@ -38,24 +39,24 @@ const props = defineProps(["data", "color"]);
     </div>
 
     <!-- content -->
-    <div class="px-side-lg relative flex border-t border-t-whiteline">
+    <div class="relative flex border-t border-t-whiteline px-side-lg">
       <!-- image -->
-      <div class="w-[57%] border-l border-l-whiteline pl-side">
-        <div class="ph-image aspect-[1.44]"></div>
+      <div class="w-[57%] border-l border-l-whiteline">
+        <div
+          class="ph-image aspect-[1.44] bg-cover"
+          :class="
+            color == 'red'
+              ? 'bg-[url(/why/aifirst-redbg.svg)]'
+              : 'bg-[url(/why/aifirst-bluebg.svg)]'
+          "
+        ></div>
       </div>
 
       <!-- text -->
       <div
         class="flex w-[43%] flex-col justify-end border-x border-x-whiteline p-[5rem]"
       >
-        <p>
-          Traditional ERP systems were built for a different era of business.
-          They were designed to support stable, linear workflows in industries
-          like manufacturing, not the fast-moving, subscription-driven models of
-          today’s SaaS companies. As a result, they struggle to keep up with the
-          pace of change, the need for automation, and the demand for real-time
-          insights
-        </p>
+        <span v-html="data.body"></span>
       </div>
     </div>
   </div>
