@@ -43,7 +43,7 @@ const props = defineProps({
         class="font-barlow-cond text-lg font-bold leading-lg"
         v-html="addLineBreaks(data.headline)"
       ></h2>
-      <div>
+      <div class="max-w-[62rem]">
         <p v-html="addLineBreaks(data.intro)"></p>
       </div>
     </div>

@@ -10,6 +10,7 @@ import {
 export const productQuery = gql`
   query ($slug: String) {
     product(filter: { slug: { eq: $slug } }) {
+      order
       seo: _seoMetaTags {
         attributes
         content

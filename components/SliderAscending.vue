@@ -95,7 +95,7 @@ onMounted(() => {
             v-if="slide.image"
             :src="slide.image.url"
             alt=""
-            class="h-[20rem] w-[22rem]"
+            class="h-[20rem] w-[20rem]"
           />
         </div>
 

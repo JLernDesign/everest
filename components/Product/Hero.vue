@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps(["data"]);
+const props = defineProps(["data", "order"]);
 </script>
 
 <template>
@@ -16,14 +16,16 @@ const props = defineProps(["data"]);
     <div class="relative flex border-y border-y-grayline px-side-lg">
       <!-- text -->
       <SectionHeader
-        class="w-[57%] border-l border-l-grayline pl-side pr-[7.5rem] pt-[7.5rem]"
+        class="w-[57%] border-l border-l-grayline pb-side pl-side pr-[7.5rem] pt-[7.5rem]"
         align="left"
         :hero="true"
         :data="data"
       />
 
       <!-- image -->
-      <div class="w-[43%] border-x border-x-grayline p-[2rem]">
+      <div
+        class="grid w-[43%] place-content-center border-x border-x-grayline p-[2rem]"
+      >
         <img v-if="data.image" :src="data.image.url" alt="" />
       </div>
 
@@ -31,7 +33,7 @@ const props = defineProps(["data"]);
       <div
         class="absolute right-0 top-0 pr-side pt-[5rem] font-barlow-cond text-num font-bold"
       >
-        01
+        {{ order < 10 && "0" }}{{ order }}
       </div>
     </div>
 

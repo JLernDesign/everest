@@ -11,7 +11,7 @@ const { data } = await useGraphqlQuery({
   },
 });
 const page = data.value.product;
-/* console.log(toRaw(data.value)); */
+console.log(toRaw(data.value));
 
 onMounted(() => {
   const theme = useState("theme");
@@ -27,7 +27,7 @@ useHead(() => {
 
 <template>
   <div class="bg-jaffa">
-    <ProductHero v-if="page.hero" :data="page.hero" />
+    <ProductHero v-if="page.hero" :data="page.hero" :order="page.order" />
     <FlexibleBlocks :data="page.flexibleContent.modules" template="product" />
     <FooterLockup :data="page.footerCallout" />
   </div>
