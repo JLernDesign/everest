@@ -28,7 +28,7 @@ if (hl.length > 1) {
     </h2>
 
     <p
-      class="mx-auto max-w-[96rem] text-body-md leading-md"
+      class="mx-auto max-w-[80rem] text-body-md leading-md"
       v-html="addLineBreaks(data.intro)"
     ></p>
 

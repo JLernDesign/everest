@@ -22,10 +22,10 @@ const props = defineProps(["theme", "nav", "data", "num", "template"]);
         </div>
 
         <h3
-          class="leading-sm-md mb-5 font-helvb text-md"
+          class="mb-5 font-helvb text-md leading-sm-md"
           v-html="addLineBreaks(data.headline)"
         ></h3>
-        <span v-html="data.body"></span>
+        <span class="block max-w-[48rem]" v-html="data.body"></span>
 
         <!-- cta buttons -->
         <CtaGroup
