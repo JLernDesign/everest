@@ -57,7 +57,7 @@ const smallHeader = () => {
   gsap.to(logo_wrap.value.$el, {
     duration: sp,
     scale: 0.73,
-    y: "-2.5rem",
+    y: "-.8rem",
     ease: easer,
   });
 
@@ -70,11 +70,13 @@ const smallHeader = () => {
     { scaleX: 0.7 },
     { duration: 2, opacity: 1, scaleX: 1, ease: "expo.out" },
   );
-  gsap.to(wrap, { duration: sp, y: "-4.9rem", ease: easer });
+  gsap.to(wrap, { duration: sp, y: "-2.9rem", ease: easer });
 
   // cta
   const cta = qs(".cta-wrap", header.value);
-  gsap.to(cta, { duration: sp, y: "-4.9rem", ease: easer });
+  const lang = qs(".lang", header.value);
+  gsap.to(cta, { duration: sp, y: "-2.9rem", ease: easer });
+  gsap.to(lang, { duration: 0.3, autoAlpha: 0, ease: "none" });
 };
 
 const fullHeader = () => {
@@ -98,7 +100,9 @@ const fullHeader = () => {
 
   // cta
   const cta = qs(".cta-wrap", header.value);
+  const lang = qs(".lang", header.value);
   gsap.to(cta, { duration: sp, y: 0, ease: easer });
+  gsap.to(lang, { duration: 0.3, autoAlpha: 1, ease: "none" });
 };
 
 const dropSticky = () => {
@@ -152,7 +156,7 @@ const hideSticky = () => {
     <!-- cta / login -->
     <div class="cta-wrap absolute right-0 top-0 pr-side pt-10">
       <div
-        class="mb-[1.65rem] flex justify-end space-x-8 text-[1.3rem] uppercase"
+        class="lang mb-[1.65rem] flex justify-end space-x-8 text-[1.3rem] uppercase"
       >
         <a href="#" class="flex items-start">
           <span>EN</span

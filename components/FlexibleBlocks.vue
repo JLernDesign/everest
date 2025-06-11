@@ -21,7 +21,7 @@ const props = defineProps(["data", "template"]);
       :data="module"
     />
     <ClientSuccess
-      v-if="module.__typename == 'ClientSuccessRecord'"
+      v-if="module.__typename == 'ClientSuccessModuleRecord'"
       :data="module"
     />
     <SuccessStack
