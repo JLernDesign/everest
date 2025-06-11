@@ -100,6 +100,7 @@ const AdvantageFragment = gql`
 const AscendingSliderFragment = gql`
   fragment AscendingSliderFragment on AscendingSliderRecord {
     __typename
+    background
     header {
       ...HeaderFragment
     }
@@ -109,6 +110,7 @@ const AscendingSliderFragment = gql`
       image {
         url
       }
+      bgColor
     }
   }
 `;

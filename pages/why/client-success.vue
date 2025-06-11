@@ -22,7 +22,11 @@ useHead(() => {
 <template>
   <div class="bg-skyblue">
     <WhyClientsHero :data="page.hero" />
-    <ClientSuccessGrid :edge="true" />
+    <ClientSuccessGrid
+      v-if="page.clientGrid"
+      :edge="true"
+      :data="page.clientGrid"
+    />
     <FlexibleBlocks :data="page.flexibleContent.modules" />
     <FooterLockup :data="page.footerCallout" />
   </div>

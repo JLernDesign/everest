@@ -49,7 +49,6 @@ const props = defineProps(["data", "template"]);
     <SliderAscending
       v-if="module.__typename == 'AscendingSliderRecord'"
       :data="module"
-      :template="template"
     />
   </template>
 </template>

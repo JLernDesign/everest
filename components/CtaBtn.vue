@@ -9,10 +9,10 @@ const hoverOff = () => {};
   <NuxtLink
     :to="data && getUrl(data)"
     :target="data?.external && '_blank'"
-    class="cta-btn inline-flex items-center rounded-btn bg-red px-[1.4rem] py-[1.4rem] font-helvh text-body-sm text-skyblue"
+    class="cta-btn inline-flex items-center rounded-btn bg-red px-[1.75rem] py-[1.4rem] font-helvh text-body-sm text-skyblue"
   >
     <div><slot /></div>
-    <div class="arrow relative ml-4">
+    <div class="arrow relative ml-3 translate-x-[.2rem]">
       <div
         class="diamond grid size-[2.6rem] rotate-45 place-content-center rounded-[.8rem] bg-transparent p-[.4rem]"
       >

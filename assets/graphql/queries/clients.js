@@ -7,6 +7,32 @@ import {
   FlexibleContentFragment,
 } from "../fragments/global";
 
+const ClientGridFragment = gql`
+  fragment ClientGridFragment on ClientSuccessRecord {
+    clientGrid {
+      blocks {
+        style
+        name
+        title
+        quote
+        image {
+          url
+        }
+        logo {
+          url
+        }
+        statsGroup {
+          stats {
+            figure
+            label
+          }
+        }
+        bgColor
+      }
+    }
+  }
+`;
+
 export const clientsQuery = gql`
   query {
     clientSuccess {
@@ -18,6 +44,7 @@ export const clientsQuery = gql`
       hero {
         ...HeroFragment
       }
+      ...ClientGridFragment
       flexibleContent {
         ...FlexibleContentFragment
       }
@@ -30,5 +57,6 @@ export const clientsQuery = gql`
   ${HeaderFragment}
   ${FooterFragment}
   ${LinkFragment}
+  ${ClientGridFragment}
   ${FlexibleContentFragment}
 `;

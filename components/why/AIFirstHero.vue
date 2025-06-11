@@ -25,7 +25,7 @@ const props = defineProps(["data", "theme"]);
       />
 
       <!-- image -->
-      <div class="w-[43%] border-x border-x-whiteline">
+      <div class="aspect-[.76] w-[43%] border-x border-x-whiteline">
         <img src="/public/why/ai-first-hero@2x.png" alt="" />
       </div>
     </div>

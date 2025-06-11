@@ -1,6 +1,8 @@
 <script setup>
 const props = defineProps(["data", "edge"]);
 
+console.log(props.data);
+
 const items = [
   {
     image: "/clients/ph-success-photo.jpg",
