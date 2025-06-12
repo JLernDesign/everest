@@ -147,7 +147,7 @@ const hideSticky = () => {
     <div class="nav-wrap grid w-full justify-center pt-[6rem]">
       <div class="relative grid place-content-center px-[5rem] py-[1.25rem]">
         <div
-          class="navbg absolute -top-[1px] left-0 h-full w-full rounded-btn border-1 border-jaffalt bg-jaffa opacity-0"
+          class="navbg shadow-nav absolute -top-[1px] left-0 h-full w-full rounded-btn border-1 border-jaffalt bg-jaffa opacity-0"
         ></div>
         <Nav type="main" :data="menu.main" />
       </div>
@@ -168,7 +168,7 @@ const hideSticky = () => {
         ></a>
         <a href="#">Sign In</a>
       </div>
-      <CtaBtn>Try Everest</CtaBtn>
+      <CtaBtn :class="scrolled && 'shadow-submenu'">Try Everest</CtaBtn>
     </div>
   </header>
 

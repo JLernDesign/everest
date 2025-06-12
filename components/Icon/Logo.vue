@@ -42,7 +42,12 @@ defineExpose({ setSticky, unsetSticky });
       <path
         class="tri opacity-0"
         d="M42.94786-8.18515c1.25764-2.07745,4.21693-2.14218,5.58051-.19413l.12648.19413,38.92946,64.31751c1.34543,2.22281-.25524,5.06296-2.85349,5.06323H6.87184c-2.51697-.00026-4.0973-2.6647-2.97073-4.85216l.11726-.21107L42.94786-8.18515Z"
-        style="fill: #fef6f0; stroke: #e3d4c4; stroke-width: 1.3px"
+        style="
+          fill: #fef6f0;
+          stroke: #e3d4c4;
+          stroke-width: 1.3px;
+          filter: drop-shadow(0.5rem 0.5rem 4rem rgba(0, 0, 0, 0.3));
+        "
         transform-origin="center"
       />
       <path

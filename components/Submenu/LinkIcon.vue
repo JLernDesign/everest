@@ -3,11 +3,11 @@ const props = defineProps(["data"]);
 </script>
 
 <template>
-  <li class="has-ul relative grid content-center px-10 py-8 pb-7">
+  <li class="has-ul relative grid content-center px-14 py-8 pb-7">
     <template v-if="data != ''">
-      <span class="relative flex gap-[1.8rem]">
+      <span class="relative flex gap-[3rem]">
         <!-- icon -->
-        <span v-if="data.icon" class="icon block size-[3.8rem] shrink-0"
+        <span v-if="data.icon" class="icon block size-[4rem] shrink-0"
           ><img :src="data.icon.url" alt=""
         /></span>
         <span
@@ -16,7 +16,7 @@ const props = defineProps(["data"]);
         ></span>
 
         <!-- text -->
-        <span>
+        <span class="max-w-[24rem]">
           <span
             class="ul mb-[.4rem] inline-block font-helvb leading-[1] after:bg-red"
             >{{ data.label }}</span
