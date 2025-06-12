@@ -1,24 +1,6 @@
 <script setup>
 const props = defineProps(["data", "color"]);
 const active = 0;
-console.log(props.data);
-
-// format colors
-const accentColor = (obj) => {
-  switch (obj.accentColor) {
-    case "tan":
-      return "text-jaffalt";
-    case "blue":
-      return "text-lightblue";
-    case "yellow":
-      return "text-yellow";
-    case "green":
-      return "text-green";
-
-    default:
-      break;
-  }
-};
 </script>
 
 <template>

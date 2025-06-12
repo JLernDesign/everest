@@ -1,9 +1,12 @@
 <script setup>
+const props = defineProps(["data"]);
+console.log(props.data);
+
 let menus;
 const main = ref(null);
 
 onMounted(() => {
-  menus = qsa('.submenu', main.value);
+  menus = qsa(".submenu", main.value);
 });
 
 const toggleMenu = (e) => {
@@ -14,25 +17,25 @@ const toggleMenu = (e) => {
 
 <template>
   <ul
-    class="text-white text-body-sm leading-[1] w-[28rem] divide-y-1 divide-darkline border-t-1 border-b-1 border-darkline mt-[2rem]"
+    class="mt-[2rem] w-[28rem] divide-y-1 divide-darkline border-b-1 border-t-1 border-darkline text-body-sm leading-[1] text-white"
     ref="main"
   >
     <!-- link -->
-    <li v-for="n in 4">
+    <li v-for="(item, i) in data">
       <button
-        class="flex items-center justify-between w-full h-[4rem] pl-[.4rem] pr-[1.2rem] [&>*]:pointer-events-none"
+        class="flex h-[4rem] w-full items-center justify-between pl-[.4rem] pr-[1.2rem] [&>*]:pointer-events-none"
         @click="toggleMenu"
-        :data-num="n - 1"
+        :data-num="i"
       >
-        <span class="mt-1">Why Everest</span>
+        <span class="mt-1">{{ item.label }}</span>
         <IconChevron color="stroke-red" />
       </button>
 
       <!-- sub menu -->
-      <ul class="submenu pl-[1.2rem] text-body-xsm h-0 overflow-hidden">
-        <span class="pt-[1.75rem] pb-[2.25rem] space-y-5 block">
-          <li v-for="n in 3">
-            <NuxtLink to="/">Everest vs. Legacy ERP</NuxtLink>
+      <ul class="submenu h-0 overflow-hidden pl-[1.2rem] text-body-xsm">
+        <span class="block space-y-5 pb-[2.25rem] pt-[1.75rem]">
+          <li v-for="subitem in item.submenu">
+            <NuxtLink :to="getUrl(subitem)">{{ subitem.label }}</NuxtLink>
           </li>
         </span>
       </ul>

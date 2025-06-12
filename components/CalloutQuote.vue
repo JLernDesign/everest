@@ -15,7 +15,7 @@ const props = defineProps(["data"]);
       </div>
 
       <blockquote
-        class="relative mx-auto max-w-[1250px] font-barlow-cond text-xl font-bold leading-xl"
+        class="relative mx-auto max-w-[125rem] font-barlow-cond text-xl font-bold leading-xl"
       >
         <div class="quote lt absolute -left-[3.5rem] -top-[5.5rem]">“</div>
         <div class="quote rt absolute -bottom-[18rem] right-0">”</div>

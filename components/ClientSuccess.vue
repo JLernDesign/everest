@@ -30,13 +30,12 @@ const active = 0;
       <!-- left -->
       <div class="col lt w-[27.5%] overflow-hidden px-[10rem]">
         <template v-if="data.slides[active + 2]">
-          <div class="photo aspect-[1.57] w-full overflow-hidden rounded-base">
+          <div
+            v-if="data.slides[active + 2].media.image"
+            class="photo aspect-[1.57] w-full overflow-hidden rounded-base"
+          >
             <!-- image -->
-            <img
-              v-if="data.slides[active + 2].media.image"
-              :src="data.slides[active + 2].media.image.url"
-              alt=""
-            />
+            <img :src="data.slides[active + 2].media.image.url" alt="" />
           </div>
 
           <!-- name -->
@@ -113,13 +112,12 @@ const active = 0;
       <!-- right -->
       <div class="col rt w-[27.5%] overflow-hidden px-[10rem]">
         <template v-if="data.slides[active + 1]">
-          <div class="photo aspect-[1.57] w-full overflow-hidden rounded-base">
+          <div
+            v-if="data.slides[active + 1].media.image"
+            class="photo aspect-[1.57] w-full overflow-hidden rounded-base"
+          >
             <!-- image -->
-            <img
-              v-if="data.slides[active + 1].media.image"
-              :src="data.slides[active + 1].media.image.url"
-              alt=""
-            />
+            <img :src="data.slides[active + 1].media.image.url" alt="" />
           </div>
 
           <!-- name -->

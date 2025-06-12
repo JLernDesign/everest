@@ -5,19 +5,19 @@ const props = defineProps(["data"]);
 <template>
   <div
     class="relative min-h-[43.8rem] rounded-base p-side"
-    :class="
-      data.layout == 'two-col'
+    :class="[
+      data.style == 'two-col'
         ? 'col-span-2 pr-[2.5rem] pt-[2.5rem]'
-        : 'pb-[9rem]'
-    "
-    :style="`background-color: ${data.color};`"
+        : 'pb-[9rem]',
+      data.bgColor ? bgColor(data) : 'bg-white',
+    ]"
   >
     <!-- image/logo w/ quote -->
-    <template v-if="data.layout == 'image-quote'">
+    <template v-if="data.style == 'basic'">
       <!-- image -->
       <img
         v-if="data.image"
-        :src="data.image"
+        :src="data.image.url"
         alt=""
         class="mb-side w-[19.5rem] overflow-hidden rounded-base"
       />
@@ -25,7 +25,7 @@ const props = defineProps(["data"]);
       <!-- logo -->
       <img
         v-if="data.logo"
-        :src="data.logo"
+        :src="data.logo.url"
         alt=""
         class="mb-side w-[19.5rem] overflow-hidden rounded-base"
       />
@@ -37,7 +37,7 @@ const props = defineProps(["data"]);
     </template>
 
     <!-- big quote on color -->
-    <template v-if="data.layout == 'big-quote'">
+    <template v-if="data.style == 'big-quote'">
       <blockquote
         class="pt-10 font-barlow-cond text-sm font-bold leading-[.94]"
       >
@@ -48,13 +48,13 @@ const props = defineProps(["data"]);
     </template>
 
     <!-- two column quote w/ big photo -->
-    <template v-if="data.layout == 'two-col'">
+    <template v-if="data.style == 'two-col'">
       <div class="flex justify-between">
         <!-- quote -->
         <div class="left w-[46%] pt-[1.5rem]">
           <img
             v-if="data.logo"
-            :src="data.logo"
+            :src="data.logo.url"
             alt=""
             class="mb-side w-[19.5rem] overflow-hidden rounded-base"
           />
@@ -67,21 +67,23 @@ const props = defineProps(["data"]);
         <div class="right w-[47.5%]">
           <img
             v-if="data.image"
-            :src="data.image"
+            :src="data.image.url"
             alt=""
             class="overflow-hidden rounded-base"
           />
 
-          <!-- stats -->
           <hr class="my-[3.25rem] text-black" />
-          <div class="stats flex space-x-14 leading-[1]">
-            <div class="stat-item flex items-end space-x-4">
-              <h3 class="font-barlow-cond text-sm font-bold">2X</h3>
-              <p class="text-body-xsm">Awesome stat here</p>
-            </div>
-            <div class="stat-item flex items-end space-x-4">
-              <h3 class="font-barlow-cond text-sm font-bold">100%</h3>
-              <p class="text-body-xsm">Awesome stat here</p>
+
+          <!-- stats -->
+          <div v-if="data.statsGroup" class="stats flex space-x-14 leading-[1]">
+            <div
+              v-for="stat in data.statsGroup.stats"
+              class="stat-item flex items-end space-x-4"
+            >
+              <h3 class="font-barlow-cond text-sm font-bold">
+                {{ stat.figure }}
+              </h3>
+              <p class="text-body-xsm">{{ stat.label }}</p>
             </div>
           </div>
         </div>
@@ -90,11 +92,11 @@ const props = defineProps(["data"]);
 
     <!-- byline -->
     <div
-      v-if="data.byline"
+      v-if="data.name"
       class="byline absolute bottom-0 pb-[3rem] text-body-xsm"
     >
-      <strong class="block font-helvb">{{ data.byline.name }}</strong>
-      {{ data.byline.title }}
+      <strong class="block font-helvb">{{ data.name }}</strong>
+      {{ data.title }}
     </div>
   </div>
 </template>

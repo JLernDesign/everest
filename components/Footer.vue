@@ -46,7 +46,7 @@ const props = defineProps(["menu"]);
             </h3>
 
             <!-- menu -->
-            <FooterMenu />
+            <FooterMenu :data="menu.main" />
           </div>
         </div>
 

@@ -13,6 +13,41 @@ export const colors = [
   "bg-red",
   "bg-green",
 ];
+// format color picks for tailwind
+export const bgColor = (obj) => {
+  switch (obj.bgColor) {
+    case "blue":
+      return "bg-lightblue";
+    case "red":
+      return "bg-red";
+    case "tan":
+      return "bg-jaffalt";
+    case "yellow":
+      return "bg-yellow";
+    case "green":
+      return "bg-green";
+
+    default:
+      break;
+  }
+};
+export const accentColor = (obj) => {
+  switch (obj.accentColor) {
+    case "blue":
+      return "text-lightblue border-lightblue";
+    case "red":
+      return "text-red border-red";
+    case "tan":
+      return "text-jaffalt border-jaffalt";
+    case "yellow":
+      return "text-yellow";
+    case "green":
+      return "text-green border-green";
+
+    default:
+      break;
+  }
+};
 
 // auto scroll to section on click
 export const jumpTo = (e) => {

@@ -83,6 +83,8 @@ const fullHeader = () => {
   scrolled.value = false;
   logo.value.unsetSticky();
 
+  gsap.set(header.value, { yPercent: 0 });
+
   // logo
   gsap.to(logo_wrap.value.$el, {
     duration: sp,

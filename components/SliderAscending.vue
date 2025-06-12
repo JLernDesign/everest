@@ -7,7 +7,7 @@ const os = 13;
 const pos = [0, "-13rem", "-26rem", "26rem", "13rem"];
 
 const duplicated = computed(() => {
-  if (props.data.modules.length >= 5) {
+  if (props.data.modules.length >= 1) {
     return props.data.modules;
   }
 
@@ -21,33 +21,12 @@ const duplicated = computed(() => {
   return duplicates;
 });
 
-// format colors
-const bgColor = (obj) => {
-  switch (obj.bgColor) {
-    case "blue":
-      return "bg-lightblue";
-    case "red":
-      return "bg-red";
-    case "tan":
-      return "bg-jaffalt";
-    case "blue":
-      return "bg-lightblue";
-    case "yellow":
-      return "bg-yellow";
-    case "green":
-      return "bg-green";
-
-    default:
-      break;
-  }
-};
-
 onMounted(() => {
   slide_els = qsa(".item", main.value.$el);
   //slide_els.reverse();
 
   slide_els.forEach((slide, i) => {
-    slide.style.marginTop = pos[i];
+    //slide.style.marginTop = pos[i];
   });
 });
 </script>
@@ -74,12 +53,12 @@ onMounted(() => {
     <!-- slider -->
     <!-- -mt-[32rem] !h-[128rem] cursor-grab -->
     <Carousel
-      class="slider-wrap mt-[18.5rem] !h-[82rem] space-x-[9rem]"
-      :drag="false"
+      class="slider-wrap ml-[9.65rem] mt-[16.5rem] !h-[82rem] -rotate-[15deg] space-x-[9rem]"
+      :drag="true"
     >
       <div
         v-for="(slide, i) in duplicated"
-        class="item z-1 h-[62.8rem] w-[45.5rem] shrink-0 rounded-base p-[3.2rem] pt-[3.75rem]"
+        class="item z-1 h-[62.8rem] w-[45.5rem] shrink-0 rotate-[15deg] rounded-base p-[3.2rem] pt-[3.75rem]"
         :class="bgColor(slide)"
       >
         <h3 class="relative font-barlow-cond text-sm font-bold leading-[.95]">
@@ -105,7 +84,7 @@ onMounted(() => {
           <span v-html="slide.body"></span>
         </div>
       </div>
-      <div class="item end-spacer w-0 shrink-0"></div>
+      <!-- <div class="item end-spacer w-0 shrink-0"></div> -->
     </Carousel>
   </Section>
 </template>

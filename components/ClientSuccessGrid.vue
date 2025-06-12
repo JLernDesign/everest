@@ -3,7 +3,7 @@ const props = defineProps(["data", "edge"]);
 
 console.log(props.data);
 
-const items = [
+/* const items = [
   {
     image: "/clients/ph-success-photo.jpg",
     quote:
@@ -74,7 +74,7 @@ const items = [
     color: "#ECDD7B",
     layout: "big-quote",
   },
-];
+]; */
 </script>
 
 <template>
@@ -100,7 +100,7 @@ const items = [
 
       <div class="relative mt-[8rem] grid grid-cols-3 gap-[5.8rem] px-[12rem]">
         <!-- block -->
-        <ClientBlock v-for="(item, i) in items" :data="item" :key="i" />
+        <ClientBlock v-for="(item, i) in data.blocks" :data="item" :key="i" />
       </div>
     </div>
   </Section>
