@@ -11,7 +11,7 @@ const props = defineProps(["theme", "header", "nav", "data", "template"]);
       :class="theme == 'dark' ? 'border-[#3D4856] bg-shadowblue' : null"
       :theme="theme"
       :data="data.header"
-      :breadcrumb="data.sections"
+      :breadcrumb="template != 'home' && data.sections"
       ><UIGradientBot :theme="theme"
     /></SectionHeader>
 

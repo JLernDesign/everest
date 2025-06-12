@@ -1,6 +1,5 @@
 <script setup>
 const props = defineProps(["data"]);
-console.log(props.data);
 
 let menus;
 const main = ref(null);
