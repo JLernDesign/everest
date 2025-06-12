@@ -12,7 +12,7 @@ const props = defineProps(["data"]);
       <span v-html="data.headline"></span>
     </h2> -->
     <h2
-      class="bg-skyblue bg-[url(/why/Ellipse8.png)] bg-[size:82rem_82rem] bg-clip-text bg-[position:50rem_-40rem] bg-no-repeat font-barlow-cond text-xxl font-semibold uppercase leading-xxl text-transparent"
+      class="bg-skyblue bg-[url(/why/bigtextglow.png)] bg-[size:82rem_82rem] bg-clip-text bg-[position:50rem_-40rem] bg-no-repeat font-barlow-cond text-xxl font-semibold uppercase leading-xxl text-transparent"
     >
       <span v-html="data.headline"></span>
     </h2>

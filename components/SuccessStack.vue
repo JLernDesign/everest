@@ -24,7 +24,11 @@ onUnmounted(() => {});
 </script>
 
 <template>
-  <Section :theme="theme" class="pb-section-bot pt-section-top-lg" side="none">
+  <Section
+    :theme="theme"
+    class="bg-skyblue pb-section-bot pt-section-top-lg"
+    side="none"
+  >
     <SectionHeader :theme="theme" :data="data.header" />
 
     <!-- slides -->
