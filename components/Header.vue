@@ -2,7 +2,7 @@
 import gsap from "gsap";
 import { useScroll } from "@vueuse/core";
 
-const props = defineProps(["menu"]);
+const props = defineProps(["menu", "data"]);
 const scrolled = ref(false);
 const sticky = ref(true);
 const header = ref(null);
@@ -168,9 +168,17 @@ const hideSticky = () => {
                 theme == 'dark' ? 'stroke-white' : 'stroke-black'
               " /></span
         ></a>
-        <a href="#">Sign In</a>
+
+        <a v-if="data.signIn" :href="data.signIn" target="_blank">Sign In</a>
       </div>
-      <CtaBtn :class="scrolled && 'shadow-submenu'">Try Everest</CtaBtn>
+
+      <CtaGroup
+        v-if="data.headerCta"
+        :data="data.headerCta.buttons"
+        :align="left"
+        theme="dark"
+        :class="scrolled && 'shadow-submenu'"
+      />
     </div>
   </header>
 

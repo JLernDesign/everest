@@ -1,5 +1,6 @@
 <script setup>
-const props = defineProps(["menu"]);
+const props = defineProps(["menu", "data"]);
+const investors = useState("investors", () => props.data.investors);
 </script>
 
 <template>
@@ -15,22 +16,32 @@ const props = defineProps(["menu"]);
         <!-- text -->
         <div class="col w-[32.5%] pr-[5rem]">
           <div class="max-w-[43.5rem]">
-            <p>
-              Everest is an intelligent, AI-powered platform that replaces
-              outdated systems, streamlines operations, cuts costs, and unlocks
-              real-time insights for faster, smarter growth.
-            </p>
+            <p
+              v-if="data.description"
+              v-html="addLineBreaks(data.description)"
+            ></p>
             <div class="mt-side flex items-center justify-between">
-              <div class="btn-group space-x-btn">
-                <CtaBtn to="#">Contact</CtaBtn>
-                <TextBtn to="#" color="white">Sign In</TextBtn>
-              </div>
-              <ul class="social flex items-end space-x-[2.5rem]">
-                <li>
-                  <a href="#"><SocialLinkedin class="fill-red" /></a>
-                </li>
-                <li>
-                  <a href="#"><SocialYoutube class="fill-red" /></a>
+              <CtaGroup
+                v-if="data.footerCta"
+                :data="data.footerCta.buttons"
+                :align="left"
+                theme="dark"
+              />
+              <ul
+                v-if="data.socialMedia"
+                class="social flex items-end space-x-[2.5rem]"
+              >
+                <li v-for="item in data.socialMedia">
+                  <a :href="item.url">
+                    <SocialLinkedin
+                      v-if="item.platform == 'linkedin'"
+                      class="fill-red"
+                    />
+                    <SocialYoutube
+                      v-if="item.platform == 'youtube'"
+                      class="fill-red"
+                    />
+                  </a>
                 </li>
               </ul>
             </div>
@@ -42,7 +53,7 @@ const props = defineProps(["menu"]);
           <div class="group">
             <!-- title -->
             <h3 class="font-barlow-cond text-[2.1rem] uppercase text-red">
-              Explore EVEREST
+              Explore Everest
             </h3>
 
             <!-- menu -->
@@ -55,26 +66,14 @@ const props = defineProps(["menu"]);
           <h3 class="font-barlow-cond text-[2.1rem] uppercase text-red">
             Contact
           </h3>
-          <div class="relative mt-side columns-2 space-y-[3rem]">
-            <div>
-              <span class="font-helvh">North America</span><br />
-              280 Hope Street<br />
-              Mountain View, CA 94041
-            </div>
-            <div>
-              <span class="font-helvh">Germany</span><br />
-              Max-Jarecki-Straße 21, 69115<br />
-              Heidelberg, Germany
-            </div>
-            <div>
-              <span class="font-helvh">North America</span><br />
-              280 Hope Street<br />
-              Mountain View, CA 94041
-            </div>
-            <div>
-              <span class="font-helvh">Germany</span><br />
-              Max-Jarecki-Straße 21, 69115<br />
-              Heidelberg, Germany
+          <div
+            v-if="data.locations"
+            class="relative mt-side columns-2 space-y-[3rem]"
+          >
+            <div v-for="item in data.locations">
+              <span class="font-helvh">{{ item.location }}</span
+              ><br />
+              <span v-html="addLineBreaks(item.address)"></span>
             </div>
 
             <div
@@ -94,9 +93,16 @@ const props = defineProps(["menu"]);
         <div class="mt-5 text-[#6E7174]">
           Design: <a href="https://griflan.com" target="_blank">Griflan</a>
         </div>
-        <div class="absolute -top-1/2 right-0 flex space-x-[2rem]">
-          <img src="/public/logos/aws.png" alt="" class="w-[6.2rem]" />
-          <img src="/public/logos/aicpa.png" alt="" class="w-[7.4rem]" />
+        <div
+          v-if="data.badges"
+          class="absolute -top-1/2 right-0 flex space-x-[2rem]"
+        >
+          <img
+            v-for="item in data.badges"
+            :src="item.url"
+            alt=""
+            class="h-[6.8rem] w-auto"
+          />
         </div>
       </div>
 

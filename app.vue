@@ -1,7 +1,7 @@
 <script setup>
 import gsap from "gsap";
 import { toHead } from "vue-datocms";
-import SettingsQuery from "~/assets/graphql/settings.graphql";
+import { settingsQuery } from "~/assets/graphql/queries/settings";
 
 const route = useRoute();
 const router = useRouter();
@@ -9,15 +9,14 @@ const layout = ref(null);
 
 // initial states
 const page_title = useState("page_title", () => "index");
-const base_url = useState("base_url", () => "https://everest.com");
+const base_url = useState("base_url", () => "https://everest-systems.com");
 const theme = useState("theme", () => "light");
 
-// init global meta data
-const QUERY = SettingsQuery.loc.source.body;
+// get global settings data
+const QUERY = settingsQuery.loc.source.body;
 const { data } = await useGraphqlQuery({
   query: QUERY,
 });
-//console.log(data.value);
 
 // compile meta tags for head
 useHead(() => {
@@ -53,7 +52,7 @@ const refreshPage = () => {
 </script>
 
 <template>
-  <NuxtLayout ref="layout">
+  <NuxtLayout ref="layout" :data="data.global">
     <NuxtPage
       :transition="{
         name: 'custom',
