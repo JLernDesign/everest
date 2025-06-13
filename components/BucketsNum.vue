@@ -23,13 +23,18 @@ const getNum = () => {
 
     <!-- buckets -->
     <div class="mt-[8rem] px-side-lg">
-      <div class="overflow-hidden">
+      <div class="w-full overflow-hidden">
         <Carousel
           :drag="slider ? true : false"
           :center="slider ? true : false"
           :start="slider && 1"
+          :class="!slider && 'justify-between'"
         >
-          <div v-for="(item, i) in data.buckets" class="item px-[3rem]">
+          <div
+            v-for="(item, i) in data.buckets"
+            class="item"
+            :class="slider && 'px-[3rem]'"
+          >
             <div
               class="bucket h-full w-[45.5rem] rounded-base bg-shadowbluelt p-[3rem]"
             >
@@ -54,7 +59,7 @@ const getNum = () => {
       </div>
 
       <!-- controls -->
-      <div class="mt-[5.5rem] flex w-full justify-between">
+      <div v-if="slider" class="mt-[5.5rem] flex w-full justify-between">
         <div class="relative h-full w-[23.4rem]">
           <UISlideArrow dir="left" color="red" class="relative" />
         </div>
