@@ -56,14 +56,19 @@ const props = defineProps(["theme", "nav", "data", "num", "template"]);
       <!-- image -->
       <div class="right w-1/2">
         <div
-          class="image relative grid aspect-[1.0675] w-full place-content-center overflow-hidden rounded-base bg-skyblue"
+          class="image relative flex aspect-[1.0675] w-full items-center justify-center overflow-hidden rounded-base bg-skyblue"
           :class="template == 'home' ? 'p-[11.5rem]' : 'p-side'"
         >
           <UICloud type="2" class="-left-[16rem] top-[44rem]" />
           <UICloud type="2" class="-top-[25rem] left-[18rem]" />
 
-          <div class="image-ph relative">
-            <img :src="data.image?.url" alt="" />
+          <div class="image-ph relative h-full w-full">
+            <img
+              v-if="data.image"
+              :src="data.image.url"
+              alt=""
+              class="h-full w-full object-contain"
+            />
           </div>
         </div>
       </div>
