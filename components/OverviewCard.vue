@@ -13,31 +13,34 @@ const props = defineProps(["theme", "nav", "data", "num", "template"]);
   >
     <div class="content relative z-1 flex justify-between">
       <!-- text -->
-      <div class="left w-1/2 max-w-[60rem]">
-        <div class="num mb-[11rem]">
+      <div class="left flex w-1/2 items-center pl-[11.5rem]">
+        <div class="num absolute left-0 top-0 mb-[11rem]">
           <IconTri color="fill-red" />
           <div class="font-barlow-cond text-num font-bold opacity-30">
             {{ num < 10 ? "0" + num : num }}
           </div>
         </div>
 
-        <h3
-          class="mb-5 font-helvb text-md leading-sm-md"
-          v-html="formatText(data.headline)"
-        ></h3>
-        <span
-          class="bullets block max-w-[48rem] space-y-16 [&_ul]:space-y-4"
-          v-html="removeWidows(data.body)"
-        ></span>
+        <!-- text contents -->
+        <div class="max-w-[60rem]">
+          <h3
+            class="mb-5 font-helvb text-md leading-sm-md"
+            v-html="formatText(data.headline)"
+          ></h3>
+          <span
+            class="bullets block max-w-[48rem] space-y-16 [&_ul]:space-y-4"
+            v-html="removeWidows(data.body)"
+          ></span>
 
-        <!-- cta buttons -->
-        <CtaGroup
-          v-if="data.cta"
-          :data="data.cta.buttons"
-          :align="align"
-          :theme="theme"
-          class="mt-8"
-        />
+          <!-- cta buttons -->
+          <CtaGroup
+            v-if="data.cta"
+            :data="data.cta.buttons"
+            :align="align"
+            :theme="theme"
+            class="mt-8"
+          />
+        </div>
 
         <!-- slide nav -->
         <div

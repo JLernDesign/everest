@@ -24,7 +24,7 @@ const props = defineProps(["data", "order"]);
 
       <!-- image -->
       <div
-        class="grid w-[43%] place-content-center border-x border-x-grayline p-[2rem]"
+        class="grid w-[43%] place-content-center border-x border-x-grayline px-[7rem] py-[3.5rem]"
       >
         <img v-if="data.image" :src="data.image.url" alt="" />
       </div>
