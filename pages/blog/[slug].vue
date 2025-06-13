@@ -3,18 +3,40 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Image as DatocmsImage } from "vue-datocms";
 import { StructuredText as DatocmsStructuredText } from "vue-datocms";
-import BlogQuery from "~/assets/graphql/blog.graphql";
+import { blogQuery } from "~/assets/graphql/queries/blog";
+import { toHead } from "vue-datocms";
 
 const route = useRoute();
 
-const QUERY = BlogQuery.loc.source.body;
 const { data } = await useGraphqlQuery({
-  query: QUERY,
+  query: blogQuery.loc.source.body,
   variables: {
     slug: route.params.slug,
   },
 });
-console.log(toRaw(data.value.post));
+console.log(toRaw(data.value).post);
+
+const footerCallout = {
+  headline: "See how Everest can transform your SaaS operations.",
+  intro:
+    "Discover how Everest empowers finance and operations leaders to \ndrive faster growth, smarter decisions, and stronger margins.",
+  cta: {
+    buttons: [
+      {
+        label: "Try Everest",
+        internal: null,
+        external: "",
+        style: "button",
+      },
+      {
+        label: "Contact Us",
+        internal: null,
+        external: "",
+        style: "text",
+      },
+    ],
+  },
+};
 
 let ctx;
 const main = ref();
@@ -41,23 +63,45 @@ onUnmounted(() => {
 // Structured Text: block renderer
 const renderBlock = ({ record }) => {
   // quote block
-  if (record.__typename === "QuoteRecord") {
-    return h("div", { class: "content-block quote" }, [
-      h("div", { class: "quote-wrap" }, [
-        h("blockquote", { class: "text-xl" }, record.text),
-      ]),
-    ]);
+  if (record.__typename === "BlogQuoteRecord") {
+    return h(
+      "div",
+      {
+        class:
+          "content-block quote relative left-1/2 w-screen -translate-x-1/2 -ml-[20rem] !my-[10rem]",
+      },
+      [
+        h(
+          "div",
+          {
+            class:
+              "quote-wrap bg-[url(/public/blog/quote-bg.svg)] bg-cover px-[20rem] py-[13.2rem] border-y-1 border-y-grayline",
+          },
+          [
+            h(
+              "blockquote",
+              {
+                class:
+                  "text-xl font-barlow-cond font-bold leading-xl text-center p-[8rem] rounded-base bg-jaffa",
+              },
+              record.text,
+            ),
+          ],
+        ),
+      ],
+    );
   }
 };
 
-// SEO
-useHead({
-  title: data.value.post.title,
+// compile meta tags for head
+useHead(() => {
+  if (!data.value) return {};
+  return toHead(data.value.post.seo);
 });
 </script>
 
 <template>
-  <div class="pt-post-top bg-jaffa" ref="main">
+  <div class="bg-jaffa pt-post-top" ref="main">
     <!-- header -->
     <header
       class="mx-auto flex w-full max-w-[141rem] rounded-base bg-jaffalt p-[2.5rem]"
@@ -65,7 +109,7 @@ useHead({
       <!-- text -->
       <div class="left relative w-1/2 py-[2.5rem] pl-side pr-[6.5rem]">
         <BlogDetails :data="data.post" class="mb-[6.5rem]" />
-        <h1 class="leading-base mb-[3.2rem] font-helvb text-md">
+        <h1 class="mb-[3.2rem] font-helvb text-md leading-base">
           {{ data.post.title }}
         </h1>
         <p>{{ data.post.intro }}</p>
@@ -96,21 +140,51 @@ useHead({
     </header>
 
     <!-- content -->
-    <Section class="relative mx-auto w-full max-w-[126rem]">
+    <Section class="relative mx-auto !w-[124rem]" side="none">
       <!-- sidebar -->
-      <div class="h-0 w-[21%]" ref="sidebar">
+      <div class="z-2 h-0 w-[28.4rem]" ref="sidebar">
         <div class="menu relative">
-          <div class="overflow-hidden rounded-base bg-skyblue">
-            <img src="/public/blog/sidebar-callout@2x.png" alt="" />
+          <div
+            class="cta relative overflow-hidden rounded-base bg-skyblue bg-[url(/public/blog/sidebar-callout@2x.png)] bg-cover pb-[3rem] pt-[21.2rem] text-center"
+          >
+            <CtaBtn to="/">Try Everest</CtaBtn>
+          </div>
+          <div class="mt-[2.4rem] rounded-base bg-shadowblue">
+            <div class="border-b-1 border-b-whiteline py-5 text-center">
+              <h3
+                class="h5 font-barlow-cond text-h5 font-bold uppercase text-jaffa"
+              >
+                Share
+              </h3>
+            </div>
+            <div
+              class="grid h-[5rem] auto-cols-fr grid-flow-col divide-x-1 divide-whiteline"
+            >
+              <a href="#" class="grid place-content-center"
+                ><SocialFacebook class="fill-red"
+              /></a>
+              <a href="#" class="grid place-content-center"
+                ><SocialLinkedin class="fill-red"
+              /></a>
+              <a href="#" class="grid place-content-center"
+                ><SocialPinterest class="fill-red"
+              /></a>
+              <a href="#" class="grid place-content-center"
+                ><SocialX class="fill-red"
+              /></a>
+              <a href="#" class="grid place-content-center"
+                ><SocialWeblink class="fill-red"
+              /></a>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- article -->
       <div class="start-pin"></div>
-      <div class="flex justify-end">
+      <div class="relative z-0 flex justify-end">
         <div
-          class="article w-[68.7%] [&_h2]:font-helvb [&_h2]:text-body-md [&_h3]:font-helvb"
+          class="article bullets w-[84rem] [&_*+*]:mt-[3.2rem] [&_*+h2]:mt-[9rem] [&_h2]:font-helvb [&_h2]:text-body-md [&_h3+p]:mt-[.5rem] [&_h3]:font-helvb [&_ul]:space-y-[1rem]"
         >
           <DatocmsStructuredText
             :data="data.post.content"
@@ -120,6 +194,11 @@ useHead({
       </div>
       <div class="end-pin"></div>
     </Section>
+
+    <!-- more posts -->
+    <PressCallout />
+
+    <FooterLockup :data="footerCallout" />
   </div>
 </template>
 

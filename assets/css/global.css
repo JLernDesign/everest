@@ -157,7 +157,7 @@ sup {
     display: flex;
     align-items: center;
     padding-left: 2.2rem;
-    font-size: theme("fontSize.body-sm");
+    /* font-size: theme("fontSize.body-sm"); */
     &:before {
       content: "";
       width: 0.85rem;

@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import { useBreakpoints } from "@vueuse/core";
 
-export const top_margin = 55;
+export const top_margin = 40;
 export const basew = 1800;
 
 // format color picks for tailwind
