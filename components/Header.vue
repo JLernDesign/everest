@@ -177,7 +177,7 @@ const hideSticky = () => {
         :data="data.headerCta.buttons"
         :align="left"
         theme="dark"
-        :class="scrolled && 'shadow-submenu'"
+        :class="scrolled && 'btn-shadow'"
       />
     </div>
   </header>

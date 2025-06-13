@@ -88,6 +88,11 @@ input[type="submit"] {
     opacity 0.3s linear,
     border-color 0.3s linear;
 }
+.btn-shadow {
+  a {
+    box-shadow: theme("boxShadow.submenu");
+  }
+}
 input[type="submit"] {
   cursor: pointer;
 }
