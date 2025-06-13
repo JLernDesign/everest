@@ -18,7 +18,7 @@ const investors = useState("investors", () => props.data.investors);
           <div class="max-w-[43.5rem]">
             <p
               v-if="data.description"
-              v-html="addLineBreaks(data.description)"
+              v-html="formatText(data.description)"
             ></p>
             <div class="mt-side flex items-center justify-between">
               <CtaGroup
@@ -73,7 +73,7 @@ const investors = useState("investors", () => props.data.investors);
             <div v-for="item in data.locations">
               <span class="font-helvh">{{ item.location }}</span
               ><br />
-              <span v-html="addLineBreaks(item.address)"></span>
+              <span v-html="formatText(item.address)"></span>
             </div>
 
             <div

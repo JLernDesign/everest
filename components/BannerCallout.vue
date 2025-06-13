@@ -13,9 +13,9 @@ const props = defineProps(["data"]);
         <h2
           v-if="data.headline"
           class="font-barlow-cond text-lg font-bold leading-lg"
-          v-html="addLineBreaks(data.headline)"
+          v-html="formatText(data.headline)"
         ></h2>
-        <p v-if="data.intro" v-html="addLineBreaks(data.intro)"></p>
+        <p v-if="data.intro" v-html="formatText(data.intro)"></p>
 
         <CtaGroup
           v-if="data.cta"

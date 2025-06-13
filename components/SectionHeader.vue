@@ -36,15 +36,15 @@ const props = defineProps({
       <h1
         v-if="hero"
         class="!mb-12 font-barlow-cond text-xl font-bold leading-xl"
-        v-html="addLineBreaks(data.headline)"
+        v-html="formatText(data.headline)"
       ></h1>
       <h2
         v-else
         class="font-barlow-cond text-lg font-bold leading-lg"
-        v-html="addLineBreaks(data.headline)"
+        v-html="formatText(data.headline)"
       ></h2>
       <div class="max-w-[62rem]" :class="align == 'center' && 'mx-auto'">
-        <p v-html="addLineBreaks(data.intro)"></p>
+        <p v-html="formatText(data.intro)"></p>
       </div>
     </div>
 

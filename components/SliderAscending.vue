@@ -3,11 +3,11 @@ const props = defineProps(["theme", "data", "template"]);
 
 const main = ref(null);
 let slide_els;
-const os = 13;
-const pos = [0, "-13rem", "-26rem", "26rem", "13rem"];
+/* const os = 13;
+const pos = [0, "-13rem", "-26rem", "26rem", "13rem"]; */
 
 const duplicated = computed(() => {
-  if (props.data.modules.length >= 1) {
+  if (props.data.modules.length >= 4) {
     return props.data.modules;
   }
 
@@ -81,7 +81,7 @@ onMounted(() => {
         <div
           class="absolute bottom-0 left-0 z-1 h-auto w-full p-[3.2rem] text-body-sm leading-sm"
         >
-          <span v-html="slide.body"></span>
+          <span v-html="formatText(slide.body)"></span>
         </div>
       </div>
       <!-- <div class="item end-spacer w-0 shrink-0"></div> -->

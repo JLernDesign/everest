@@ -1,5 +1,34 @@
 <script setup>
 const props = defineProps(["data"]);
+
+// if more than 3 items, init slider
+let slider = false;
+const total = props.data.buckets.length;
+total > 3 ? (slider = true) : null;
+
+// duplicate for seamless looping
+const duplicated = computed(() => {
+  if (props.data.buckets.length <= 3) {
+    return props.data.buckets;
+  }
+
+  const duplicates = [...props.data.buckets];
+  const min = props.data.buckets.length * 2;
+
+  for (let i = 0; i < min; i++) {
+    duplicates.push({ ...props.data.buckets[i % props.data.buckets.length] });
+  }
+
+  return duplicates;
+});
+
+// set numbers for duplicates
+let n = 0;
+const getNum = () => {
+  n++;
+  n > total ? (n = 1) : null;
+  return "0" + n;
+};
 </script>
 
 <template>
@@ -9,26 +38,34 @@ const props = defineProps(["data"]);
     <SectionHeader theme="dark" :data="data.header" />
 
     <!-- buckets -->
-    <div class="mt-[8rem] flex flex-nowrap gap-[6rem] px-side-lg">
-      <div
-        v-for="(item, i) in data.buckets"
-        class="bucket w-[45.5rem] shrink-0 rounded-base bg-shadowbluelt p-[3rem]"
+    <div class="mt-[8rem]" :class="!slider && 'px-side-lg'">
+      <Carousel
+        :drag="slider ? true : false"
+        :center="slider ? true : false"
+        :start="slider && 1"
       >
-        <IconTri color="fill-red" class="mb-4" />
-        <div
-          class="num mb-12 font-barlow-cond text-xxl font-semibold leading-xxl text-shadowblue"
-        >
-          {{ "0" + (i + 1) }}
+        <div v-for="(item, i) in duplicated" class="item px-[3rem]">
+          <div
+            class="bucket h-full w-[45.5rem] rounded-base bg-shadowbluelt p-[3rem]"
+          >
+            <IconTri color="fill-red" class="mb-4" />
+            <div
+              class="num mb-12 font-barlow-cond text-xxl font-semibold leading-xxl text-shadowblue"
+            >
+              {{ getNum(i) }}
+            </div>
+            <h3
+              class="mb-7 font-barlow-cond text-sm font-bold leading-[.94] text-red"
+            >
+              {{ item.headline }}
+            </h3>
+            <p
+              class="text-body-sm leading-sm text-white"
+              v-html="formatText(item.description)"
+            ></p>
+          </div>
         </div>
-        <h3
-          class="mb-7 font-barlow-cond text-sm font-bold leading-[.94] text-red"
-        >
-          {{ item.headline }}
-        </h3>
-        <p class="text-body-sm leading-sm text-white">
-          {{ item.description }}
-        </p>
-      </div>
+      </Carousel>
     </div>
   </Section>
 </template>

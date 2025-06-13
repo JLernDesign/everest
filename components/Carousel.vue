@@ -2,7 +2,12 @@
 import gsap from "gsap";
 import horizontalLoop from "~/assets/js/horizontalLoop.js";
 
-const props = defineProps(["drag"]);
+const props = defineProps({
+  drag: { default: true },
+  center: { default: true },
+  click: { default: false },
+  start: { default: 0 },
+});
 
 let ctx;
 const main = ref();
@@ -16,7 +21,7 @@ onMounted(() => {
     const loop = horizontalLoop(items, {
       paused: true,
       draggable: props.drag, // make it draggable
-      center: true, // active element is the one in the center of the container rather than th left edge
+      center: props.center, // active element is the one in the center of the container rather than th left edge
       onChange: (element, index) => {
         // when the active element changes, this function gets called.
         activeElement && activeElement.classList.remove("active");
@@ -25,14 +30,16 @@ onMounted(() => {
       },
     });
 
-    items.forEach((item, i) =>
-      item.addEventListener("click", () =>
-        loop.toIndex(i, { duration: 1, ease: "power3.inOut" }),
-      ),
-    );
+    if (props.click) {
+      items.forEach((item, i) =>
+        item.addEventListener("click", () =>
+          loop.toIndex(i, { duration: 1, ease: "power3.inOut" }),
+        ),
+      );
+    }
 
-    // start on 1st slide
-    loop.toIndex(0, { duration: 0 });
+    // start on 1st or specified slide
+    loop.toIndex(props.start, { duration: 0 });
   }, main.value);
 });
 
@@ -42,7 +49,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="flex h-[40rem] w-full" ref="main">
+  <div class="flex w-full" ref="main">
     <slot />
   </div>
 </template>

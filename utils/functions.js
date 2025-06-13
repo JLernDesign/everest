@@ -6,13 +6,7 @@ import { useBreakpoints } from "@vueuse/core";
 
 export const top_margin = 55;
 export const basew = 1800;
-export const colors = [
-  "bg-lightblue",
-  "bg-jaffalt",
-  "bg-yellow",
-  "bg-red",
-  "bg-green",
-];
+
 // format color picks for tailwind
 export const bgColor = (obj) => {
   switch (obj.bgColor) {
@@ -372,6 +366,7 @@ export const hoverOnSocial = (e) => {
   }
 }; */
 
+const stripHTMLTags = (str) => str.replace(/<[^>]*>/g, "");
 export const createExcerpt = (
   content,
   maxNumberOfWords,
@@ -383,12 +378,6 @@ export const createExcerpt = (
   const output = listOfWords.length > maxNumberOfWords ? excerpt : content;
 
   return stripHTMLTags(output);
-};
-
-const stripHTMLTags = (str) => str.replace(/<[^>]*>/g, "");
-
-export const addLineBreaks = (str) => {
-  return str?.replaceAll("\n", "<br />");
 };
 
 /* export const openHL = (el) => {
@@ -455,6 +444,39 @@ export const preloadImg = (file) => {
   let img = new Image();
   img.src = file;
   //img.onload = () => console.log("loaded " + img.src);
+};
+
+// text formatting
+export const formatText = (str) => {
+  let formatted = str;
+  formatted = removeWidows(formatted);
+  formatted = addLineBreaks(formatted);
+  return formatted;
+};
+
+export const addLineBreaks = (str) => {
+  return str?.replaceAll("\n", "<br />");
+};
+export const removeWidows = (string) => {
+  if (!string || string.length < 0) {
+    return string;
+  }
+
+  // trim whitespace and then split into an array of words
+  const words = string.trim().split(" ");
+  const totalWords = words.length;
+  if (totalWords < 4) {
+    return string;
+  }
+
+  // wrap the last two words in a nobr
+  const formattedLastWords =
+    "<nobr>" + words[totalWords - 2] + " " + words[totalWords - 1] + "</nobr>";
+
+  // remove the last two words from the array
+  words.splice(-2, 2);
+
+  return words.join(" ") + " " + formattedLastWords;
 };
 
 // shortcuts

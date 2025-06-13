@@ -36,9 +36,9 @@ const props = defineProps(["layout", "data"]);
         <div class="max-w-[575px] space-y-7">
           <h2
             class="font-helvb text-md leading-[1.09]"
-            v-html="addLineBreaks(data.header.headline)"
+            v-html="formatText(data.header.headline)"
           ></h2>
-          <p v-html="addLineBreaks(data.header.intro)"></p>
+          <p v-html="formatText(data.header.intro)"></p>
 
           <!-- cta buttons -->
           <CtaGroup
@@ -92,9 +92,9 @@ const props = defineProps(["layout", "data"]);
           </div>
           <h3
             class="mb-[4.25rem] font-barlow-cond text-h5 font-bold uppercase leading-base"
-            v-html="addLineBreaks(data.slides[0].headline)"
+            v-html="formatText(data.slides[0].headline)"
           ></h3>
-          <p v-html="addLineBreaks(data.slides[0].description)"></p>
+          <p v-html="formatText(data.slides[0].description)"></p>
         </div>
       </div>
     </div>

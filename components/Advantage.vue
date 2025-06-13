@@ -32,7 +32,7 @@ props.data.color == "gray" ? (color = "text-white") : null;
         <h2
           class="font-barlow-cond text-lg font-bold leading-lg"
           :class="color"
-          v-html="addLineBreaks(data.headline)"
+          v-html="formatText(data.headline)"
         ></h2>
       </div>
 

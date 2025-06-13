@@ -23,9 +23,12 @@ const props = defineProps(["theme", "nav", "data", "num", "template"]);
 
         <h3
           class="mb-5 font-helvb text-md leading-sm-md"
-          v-html="addLineBreaks(data.headline)"
+          v-html="formatText(data.headline)"
         ></h3>
-        <span class="block max-w-[48rem]" v-html="data.body"></span>
+        <span
+          class="bullets block max-w-[48rem] space-y-16 [&_ul]:space-y-4"
+          v-html="removeWidows(data.body)"
+        ></span>
 
         <!-- cta buttons -->
         <CtaGroup

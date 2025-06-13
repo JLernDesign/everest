@@ -24,7 +24,7 @@ const active = 0;
         class="flex w-[43%] flex-col justify-between border-x border-x-whiteline"
       >
         <div class="p-side">
-          <span v-html="addLineBreaks(data.slides[active].description)"></span>
+          <span v-html="formatText(data.slides[active].description)"></span>
         </div>
 
         <!-- slide nav -->

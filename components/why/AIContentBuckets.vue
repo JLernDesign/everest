@@ -14,9 +14,9 @@ const props = defineProps(["data"]);
         >
           <h2
             class="font-barlow-cond text-lg font-bold leading-lg"
-            v-html="addLineBreaks(data.headline)"
+            v-html="formatText(data.headline)"
           ></h2>
-          <p v-html="addLineBreaks(data.intro)"></p>
+          <p v-html="formatText(data.intro)"></p>
         </div>
       </div>
     </div>
@@ -44,11 +44,11 @@ const props = defineProps(["data"]);
           <h3
             class="font-barlow-cond text-sm font-bold leading-lg"
             :class="accentColor(bucket)"
-            v-html="addLineBreaks(bucket.headline)"
+            v-html="formatText(bucket.headline)"
           ></h3>
           <p
             class="mt-[1.8rem] text-body-sm leading-sm"
-            v-html="addLineBreaks(bucket.description)"
+            v-html="formatText(bucket.description)"
           ></p>
         </div>
       </div>
