@@ -11,7 +11,7 @@ const { data } = await useGraphqlQuery({
   },
 });
 const page = data.value.whySubpage;
-/* console.log(toRaw(data.value)); */
+console.log(toRaw(data.value));
 
 onMounted(() => {
   const theme = useState("theme");

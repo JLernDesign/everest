@@ -8,8 +8,8 @@ import {
 } from "../fragments/global";
 
 export const whySubpageQuery = gql`
-  query {
-    whySubpage {
+  query ($slug: String) {
+    whySubpage(filter: { slug: { eq: $slug } }) {
       seo: _seoMetaTags {
         attributes
         content
