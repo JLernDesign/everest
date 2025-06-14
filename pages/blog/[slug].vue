@@ -1,15 +1,14 @@
 <script setup>
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Image as DatocmsImage } from "vue-datocms";
 import { StructuredText as DatocmsStructuredText } from "vue-datocms";
-import { blogQuery } from "~/assets/graphql/queries/blog";
+import { postQuery } from "~/assets/graphql/queries/blog";
 import { toHead } from "vue-datocms";
 
 const route = useRoute();
 
 const { data } = await useGraphqlQuery({
-  query: blogQuery.loc.source.body,
+  query: postQuery.loc.source.body,
   variables: {
     slug: route.params.slug,
   },
@@ -62,6 +61,18 @@ onUnmounted(() => {
 
 // Structured Text: block renderer
 const renderBlock = ({ record }) => {
+  // photo block
+  if (record.__typename === "BlogImageRecord") {
+    return h("figure", { class: "content-block image" }, [
+      h("img", { src: record.image.url }),
+      h(
+        "figcaption",
+        { class: "block text-body-sm text-left !mt-6" },
+        record.caption,
+      ),
+    ]);
+  }
+
   // quote block
   if (record.__typename === "BlogQuoteRecord") {
     return h(
@@ -104,10 +115,17 @@ useHead(() => {
   <div class="bg-jaffa pt-post-top" ref="main">
     <!-- header -->
     <header
-      class="mx-auto flex w-full max-w-[141rem] rounded-base bg-jaffalt p-[2.5rem]"
+      class="mx-auto flex w-full max-w-[141rem] rounded-base p-[2.5rem]"
+      :class="
+        data.post.accentColor.bgColor
+          ? bgColor(data.post.accentColor)
+          : 'bg-tan'
+      "
     >
       <!-- text -->
-      <div class="left relative w-1/2 py-[2.5rem] pl-side pr-[6.5rem]">
+      <div
+        class="left relative w-1/2 py-[2.5rem] pb-[7.5rem] pl-side pr-[6.5rem]"
+      >
         <BlogDetails :data="data.post" class="mb-[6.5rem]" />
         <h1 class="mb-[3.2rem] font-helvb text-md leading-base">
           {{ data.post.title }}
@@ -140,7 +158,7 @@ useHead(() => {
     </header>
 
     <!-- content -->
-    <Section class="relative mx-auto !w-[124rem]" side="none">
+    <Section class="relative mx-auto !w-[124rem] pb-section-bot" side="none">
       <!-- sidebar -->
       <div class="z-2 h-0 w-[28.4rem]" ref="sidebar">
         <div class="menu relative">
@@ -184,7 +202,7 @@ useHead(() => {
       <div class="start-pin"></div>
       <div class="relative z-0 flex justify-end">
         <div
-          class="article bullets w-[84rem] [&_*+*]:mt-[3.2rem] [&_*+h2]:mt-[9rem] [&_h2]:font-helvb [&_h2]:text-body-md [&_h3+p]:mt-[.5rem] [&_h3]:font-helvb [&_ul]:space-y-[1rem]"
+          class="article bullets min-h-[80rem] w-[84rem] [&_*+*]:mt-[3.2rem] [&_*+h2]:mt-[9rem] [&_h2]:font-helvb [&_h2]:text-body-md [&_h3+p]:mt-[.5rem] [&_h3]:font-helvb [&_ul]:space-y-[1rem]"
         >
           <DatocmsStructuredText
             :data="data.post.content"
@@ -196,7 +214,7 @@ useHead(() => {
     </Section>
 
     <!-- more posts -->
-    <PressCallout />
+    <!-- <PostsCallout :data="{ headline: 'Next Posts' }" /> -->
 
     <FooterLockup :data="footerCallout" />
   </div>

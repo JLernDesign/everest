@@ -56,7 +56,7 @@ export default {
       lg: "5.9rem",
       xl: "11.9rem",
       xxl: "23.9rem",
-      tag: "1.3rem",
+      tag: "1.4rem",
       num: "2rem",
       h5: "2rem",
     },

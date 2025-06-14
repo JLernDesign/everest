@@ -21,14 +21,7 @@ onUnmounted(() => {});
     />
 
     <!-- filter -->
-    <div class="mb-[4rem] w-full text-center filter">
-      <button class="inline-flex items-center gap-2">
-        <span class="font-barlow-cond text-h5 font-bold uppercase"
-          >filter by industry</span
-        >
-        <IconArrowFill color="fill-black" class="rotate-90" />
-      </button>
-    </div>
+    <UIFilter :data="{ label: 'filter by industry' }" />
 
     <!-- list -->
     <div class="list">

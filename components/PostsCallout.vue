@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+const props = defineProps(["data"]);
+</script>
 
 <template>
   <Section class="mt-[30rem] !pt-0 pb-section-bot" side="none">
@@ -11,7 +13,7 @@
     <div class="relative z-1">
       <header class="pb-14 pt-12 text-center">
         <h2 class="font-barlow-cond text-lg font-bold leading-lg">
-          Everest in the Press
+          {{ data.headline }}
         </h2>
       </header>
 

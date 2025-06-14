@@ -1,7 +1,69 @@
 import gql from "graphql-tag";
-import { LinkFragment } from "../fragments/global";
+
+const per_page = 12;
+const skip = 0;
+
+const PostFragment = gql`
+  fragment PostFragment on PostRecord {
+    __typename
+    id
+    title
+    slug
+    publishDate
+    tag {
+      name
+      slug
+    }
+    author {
+      name
+      photo {
+        url
+      }
+    }
+    image {
+      responsiveImage(imgixParams: { fit: fillmax, w: 1400, h: 1050 }) {
+        src
+        width
+        height
+        alt
+        base64
+      }
+    }
+    accentColor {
+      bgColor
+    }
+    intro
+  }
+`;
 
 export const blogQuery = gql`
+  query {
+    blogLanding {
+      seo: _seoMetaTags {
+        attributes
+        content
+        tag
+      }
+      title
+      description
+      textTicker {
+        text
+      }
+      featuredPosts {
+        ...PostFragment
+      }
+    }
+    _allPostsMeta {
+      count
+    }
+    allPosts(first: 12, skip: 0, orderBy: [publishDate_DESC]) {
+      ...PostFragment
+    }
+  }
+  ${PostFragment}
+`;
+
+export const postQuery = gql`
   query ($slug: String) {
     post(filter: { slug: { eq: $slug } }) {
       seo: _seoMetaTags {
@@ -9,30 +71,7 @@ export const blogQuery = gql`
         content
         tag
       }
-      id
-      title
-      slug
-      publishDate
-      tag {
-        name
-        slug
-      }
-      author {
-        name
-        photo {
-          url
-        }
-      }
-      image {
-        responsiveImage(imgixParams: { fit: fillmax, w: 1400, h: 1050 }) {
-          src
-          width
-          height
-          alt
-          base64
-        }
-      }
-      intro
+      ...PostFragment
       content {
         value
         blocks {
@@ -45,8 +84,17 @@ export const blogQuery = gql`
             __typename
             text
           }
+          ... on BlogImageRecord {
+            id
+            __typename
+            image {
+              url
+            }
+            caption
+          }
         }
       }
     }
   }
+  ${PostFragment}
 `;

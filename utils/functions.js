@@ -12,6 +12,8 @@ export const bgColor = (obj) => {
   switch (obj.bgColor) {
     case "blue":
       return "bg-lightblue";
+    case "lightblue":
+      return "bg-skyblue";
     case "red":
       return "bg-red";
     case "tan":

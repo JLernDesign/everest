@@ -40,7 +40,10 @@ const props = defineProps(["data", "template"]);
       :data="module"
       :template="template"
     />
-    <PressCallout v-if="module.__typename == 'PressCalloutRecord'" />
+    <PostsCallout
+      v-if="module.__typename == 'PressCalloutRecord'"
+      :data="{ headline: 'Everest in the Press' }"
+    />
     <Problem
       v-if="module.__typename == 'ProblemRecord'"
       :layout="module.header.eyebrow == 'The Problem' ? 'img-rt' : 'img-lt'"
