@@ -7,20 +7,18 @@ const slide = ref(null);
 let items;
 
 onMounted(() => {
-  setTimeout(() => {
-    items = qsa(".slide", main.value);
-    items.reverse();
+  /*   items = qsa(".slide", main.value);
+  items.reverse();
 
-    items.forEach((item, i) => {
-      let amt = 7.6 * i + "rem";
-      gsap.set(item, { y: amt, zIndex: i });
-    });
+  items.forEach((item, i) => {
+    let amt = 7.6 * i + "rem";
+    gsap.set(item, { y: amt, zIndex: i });
+  });
 
-    // dim inactive slides
-    slide.value.forEach((slide, i) => {
-      slide.setInactive(i);
-    });
-  }, 1000);
+  // dim inactive slides
+  slide.value.forEach((slide, i) => {
+    slide.setInactive(i);
+  }); */
 });
 onUnmounted(() => {});
 </script>
@@ -38,7 +36,7 @@ onUnmounted(() => {});
       class="slides relative mx-auto mt-[5rem] h-[51.5rem] max-w-[1160px]"
       ref="main"
     >
-      <StackSlide v-for="(slide, i) in data.slides" :data="slide" ref="slide" />
+      <!-- <StackSlide v-for="(slide, i) in data.slides" :data="slide" ref="slide" /> -->
     </div>
 
     <!-- cta buttons -->
