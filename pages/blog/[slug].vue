@@ -1,6 +1,5 @@
 <script setup>
 import gsap from "gsap";
-import { Image as DatocmsImage } from "vue-datocms";
 import { StructuredText as DatocmsStructuredText } from "vue-datocms";
 import { postQuery } from "~/assets/graphql/queries/blog";
 import { toHead } from "vue-datocms";
@@ -114,48 +113,7 @@ useHead(() => {
 <template>
   <div class="bg-jaffa pt-post-top" ref="main">
     <!-- header -->
-    <header
-      class="mx-auto flex w-full max-w-[141rem] rounded-base p-[2.5rem]"
-      :class="
-        data.post.accentColor.bgColor
-          ? bgColor(data.post.accentColor)
-          : 'bg-tan'
-      "
-    >
-      <!-- text -->
-      <div
-        class="left relative w-1/2 py-[2.5rem] pb-[7.5rem] pl-side pr-[6.5rem]"
-      >
-        <BlogDetails :data="data.post" class="mb-[6.5rem]" />
-        <h1 class="mb-[3.2rem] font-helvb text-md leading-base">
-          {{ data.post.title }}
-        </h1>
-        <p>{{ data.post.intro }}</p>
-        <div
-          v-if="data.post.author"
-          class="author absolute bottom-0 flex items-center space-x-6"
-        >
-          <img
-            v-if="data.post.author.photo"
-            :src="data.post.author.photo.url"
-            alt=""
-            class="w-[5rem] overflow-hidden rounded-full"
-          />
-          <p class="text-body-xsm">Author: {{ data.post.author.name }}</p>
-        </div>
-      </div>
-
-      <!-- image -->
-      <div class="right relative w-1/2">
-        <div class="featured-image h-full w-full overflow-hidden rounded-sm">
-          <DatocmsImage
-            v-if="data.post.image"
-            :data="data.post.image.responsiveImage"
-            class="h-full w-full object-cover"
-          />
-        </div>
-      </div>
-    </header>
+    <BlogPostHeader :data="data.post" />
 
     <!-- content -->
     <Section class="relative mx-auto !w-[124rem] pb-section-bot" side="none">

@@ -11,7 +11,6 @@ const formattedDate = useDateFormat(props.data.publishDate, "MM.DD.YY");
   >
     <time>{{ formattedDate }}</time>
     <NuxtLink
-      :to="data.tag.slug"
       :data-id="data.tag.slug"
       class="tag rounded-sm border-1 border-black px-[1.4rem] py-[.4rem] font-medium uppercase"
       >{{ data.tag.name }}</NuxtLink

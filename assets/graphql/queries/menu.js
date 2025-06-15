@@ -30,6 +30,9 @@ export const InternalFragment = gql`
       ... on BookDemoRecord {
         __typename
       }
+      ... on BlogLandingRecord {
+        __typename
+      }
     }
   }
 `;

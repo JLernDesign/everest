@@ -13,8 +13,6 @@ const { data } = await useGraphqlQuery({
 });
 const page = data.value.blogLanding;
 const posts = data.value.allPosts;
-console.log(toRaw(data.value));
-console.log(posts);
 
 const footerCallout = {
   headline: "See how Everest can transform your SaaS operations.",
@@ -53,14 +51,23 @@ useHead(() => {
 
     <!-- featured posts -->
     <Section :side="false" class="border-t border-grayline !py-[5rem]">
+      <Carousel>
+        <div
+          v-for="(item, i) in page.featuredPosts"
+          class="item shrink-0 px-[1.6rem]"
+        >
+          <BlogPostHeader :data="item" class="h-full" type="feature" />
+        </div>
+      </Carousel>
+
       <!-- nav -->
-      <div class="w-full text-center">
+      <div class="mt-4 w-full text-center">
         <UIProgressBars />
       </div>
     </Section>
 
     <!-- thumbs -->
-    <Section :side="false">
+    <Section :side="false" class="!pt-0">
       <!-- filter -->
       <UIFilter :data="{ label: 'filter by category' }" />
 

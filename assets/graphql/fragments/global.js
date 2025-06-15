@@ -33,6 +33,9 @@ export const LinkFragment = gql`
         ... on BookDemoRecord {
           __typename
         }
+        ... on BlogLandingRecord {
+          __typename
+        }
       }
       external
       style

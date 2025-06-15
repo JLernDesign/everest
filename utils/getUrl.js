@@ -20,6 +20,8 @@ export default function (obj) {
         return "/product/" + obj.internal.slug;
       case "BookDemoRecord":
         return "/demo";
+      case "BlogLandingRecord":
+        return "/blog";
 
       default:
         break;
