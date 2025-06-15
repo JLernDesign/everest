@@ -7,18 +7,20 @@ const slide = ref(null);
 let items;
 
 onMounted(() => {
-  items = qsa(".slide", main.value);
-  items.reverse();
+  setTimeout(() => {
+    items = qsa(".slide", main.value);
+    items.reverse();
 
-  items.forEach((item, i) => {
-    let amt = 7.6 * i + "rem";
-    gsap.set(item, { y: amt, zIndex: i });
-  });
+    items.forEach((item, i) => {
+      let amt = 7.6 * i + "rem";
+      gsap.set(item, { y: amt, zIndex: i });
+    });
 
-  // dim inactive slides
-  slide.value.forEach((slide, i) => {
-    slide.setInactive(i);
-  });
+    // dim inactive slides
+    slide.value.forEach((slide, i) => {
+      slide.setInactive(i);
+    });
+  }, 1000);
 });
 onUnmounted(() => {});
 </script>
