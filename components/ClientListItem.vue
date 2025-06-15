@@ -1,5 +1,6 @@
 <script setup>
 import gsap from "gsap";
+import { Image as DatocmsImage } from "vue-datocms";
 const props = defineProps(["data"]);
 const open = ref(false);
 
@@ -31,12 +32,12 @@ defineExpose({ openItem });
     <div class="item overflow-hidden" :class="open ? 'h-auto' : 'h-0'">
       <div class="flex w-full items-start justify-between p-side pb-[5rem]">
         <div class="w-[35%] shrink-0">
-          <img
-            v-if="data.image"
-            :src="data.image.url"
-            alt=""
-            class="w-[23.4rem] overflow-hidden rounded-sm"
-          />
+          <div class="w-[23.4rem] overflow-hidden rounded-sm">
+            <DatocmsImage
+              v-if="data.image"
+              :data="data.image.responsiveImage"
+            />
+          </div>
         </div>
         <div class="w-auto text-body-sm leading-sm">
           <blockquote>“{{ data.quote }}”</blockquote>

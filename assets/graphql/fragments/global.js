@@ -1,6 +1,28 @@
 import gql from "graphql-tag";
 
 // reuse parts
+export const ResponsiveImageFragment = gql`
+  fragment ResponsiveImageFragment on FileField {
+    url
+    width
+    height
+    alt
+    title
+    responsiveImage {
+      srcSet
+      webpSrcSet
+      sizes
+      src
+      width
+      height
+      aspectRatio
+      alt
+      title
+      base64
+    }
+  }
+`;
+
 export const LinkFragment = gql`
   fragment LinkFragment on CallToActionRecord {
     buttons {
@@ -50,7 +72,7 @@ export const HeroFragment = gql`
       ...LinkFragment
     }
     image {
-      url
+      ...ResponsiveImageFragment
     }
   }
 `;
@@ -94,7 +116,7 @@ const AdvantageFragment = gql`
       }
       ... on AdvantageImageRecord {
         image {
-          url
+          ...ResponsiveImageFragment
         }
       }
     }
@@ -111,7 +133,7 @@ const AscendingSliderFragment = gql`
       headline
       body
       image {
-        url
+        ...ResponsiveImageFragment
       }
       bgColor
     }
@@ -156,14 +178,14 @@ const ClientSuccessFragment = gql`
       }
       media {
         image {
-          url
+          ...ResponsiveImageFragment
         }
         video {
           url
         }
       }
       logo {
-        url
+        ...ResponsiveImageFragment
       }
     }
   }
@@ -192,7 +214,7 @@ const ClientCardsFragment = gql`
       industry
       quote
       image {
-        url
+        ...ResponsiveImageFragment
       }
     }
     cta {
@@ -214,7 +236,7 @@ const IntegrationListFragment = gql`
         name
         description
         image {
-          url
+          ...ResponsiveImageFragment
         }
       }
     }
@@ -247,7 +269,7 @@ const OverviewFragment = gql`
         ...LinkFragment
       }
       image {
-        url
+        ...ResponsiveImageFragment
       }
     }
   }
@@ -262,7 +284,7 @@ const ProblemFragment = gql`
       headline
       description
       icon {
-        url
+        ...ResponsiveImageFragment
       }
     }
   }
@@ -274,7 +296,7 @@ const BigQuoteFragment = gql`
     name
     title
     image {
-      url
+      ...ResponsiveImageFragment
     }
   }
 `;
@@ -287,7 +309,7 @@ const ClientListFragment = gql`
       industry
       quote
       image {
-        url
+        ...ResponsiveImageFragment
       }
     }
   }
@@ -327,4 +349,5 @@ export const FlexibleContentFragment = gql`
   ${OverviewFragment}
   ${PressCalloutFragment}
   ${ProblemFragment}
+  ${ResponsiveImageFragment}
 `;

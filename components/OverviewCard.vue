@@ -1,4 +1,6 @@
 <script setup>
+import { Image as DatocmsImage } from "vue-datocms";
+
 const props = defineProps(["theme", "nav", "data", "num", "template"]);
 </script>
 
@@ -66,10 +68,9 @@ const props = defineProps(["theme", "nav", "data", "num", "template"]);
           <UICloud type="2" class="-top-[25rem] left-[18rem]" />
 
           <div class="image-ph relative h-full w-full">
-            <img
+            <DatocmsImage
               v-if="data.image"
-              :src="data.image.url"
-              alt=""
+              :data="data.image.responsiveImage"
               class="h-full w-full object-contain"
             />
           </div>

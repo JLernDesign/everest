@@ -116,7 +116,7 @@ useHead(() => {
     <BlogPostHeader :data="data.post" />
 
     <!-- content -->
-    <Section class="relative mx-auto !w-[124rem] pb-section-bot" side="none">
+    <Section class="relative mx-auto !w-[124rem]" side="none">
       <!-- sidebar -->
       <div class="z-2 h-0 w-[28.4rem]" ref="sidebar">
         <div class="menu relative">
@@ -172,7 +172,7 @@ useHead(() => {
     </Section>
 
     <!-- more posts -->
-    <!-- <PostsCallout :data="{ headline: 'Next Posts' }" /> -->
+    <PostsCallout :data="{ headline: 'Next Posts' }" />
 
     <FooterLockup :data="footerCallout" />
   </div>

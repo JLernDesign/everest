@@ -1,4 +1,6 @@
 <script setup>
+import { Image as DatocmsImage } from "vue-datocms";
+
 const props = defineProps(["data"]);
 </script>
 
@@ -11,7 +13,7 @@ const props = defineProps(["data"]);
         v-if="data.image"
         class="quote-person mx-auto mb-[8rem] w-[19.5rem] overflow-hidden rounded-sm"
       >
-        <img :src="data.image.url" alt="" />
+        <DatocmsImage :data="data.image.responsiveImage" class="quote-image" />
       </div>
 
       <blockquote

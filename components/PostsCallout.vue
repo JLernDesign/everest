@@ -1,5 +1,13 @@
 <script setup>
-const props = defineProps(["data"]);
+const props = defineProps(["data", "type"]);
+
+import { blogQuery } from "~/assets/graphql/queries/blog";
+
+const { data: posts_data } = await useGraphqlQuery({
+  query: blogQuery.loc.source.body,
+});
+const posts = posts_data.value.allPosts;
+const selected = posts.slice(0, 3);
 </script>
 
 <template>
@@ -21,9 +29,9 @@ const props = defineProps(["data"]);
       <div
         class="flex w-full divide-x-1 divide-grayline border-y border-grayline"
       >
-        <BlogThumb v-for="n in 3" />
+        <BlogThumb v-for="(item, i) in selected" :data="item" />
       </div>
-      <div class="mt-btn text-center">
+      <div v-if="type == 'callout'" class="mt-btn text-center">
         <CtaBtn to="/">View More</CtaBtn>
       </div>
     </div>

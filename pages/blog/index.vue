@@ -4,14 +4,17 @@ import { toHead } from "vue-datocms";
 
 const route = useRoute();
 
+const page = ref(1);
+const postsPerPage = 12;
+
 const { data } = await useGraphqlQuery({
   query: blogQuery.loc.source.body,
   variables: {
-    first: 12,
-    skip: 0,
+    first: postsPerPage,
+    skip: (page.value - 1) * postsPerPage,
   },
 });
-const page = data.value.blogLanding;
+const pageData = data.value.blogLanding;
 const posts = data.value.allPosts;
 
 const footerCallout = {
@@ -39,21 +42,21 @@ const footerCallout = {
 // compile meta tags for head
 useHead(() => {
   if (!data.value) return {};
-  return toHead(page.seo);
+  return toHead(pageData.seo);
 });
 </script>
 
 <template>
   <div class="bg-jaffa">
     <Section class="pt-section-top-lg" :hero="true" side="none">
-      <BlogHeader :icon="false" :data="page" />
+      <BlogHeader :icon="false" :data="pageData" />
     </Section>
 
     <!-- featured posts -->
     <Section :side="false" class="border-t border-grayline !py-[5rem]">
       <Carousel>
         <div
-          v-for="(item, i) in page.featuredPosts"
+          v-for="(item, i) in pageData.featuredPosts"
           class="item shrink-0 px-[1.6rem]"
         >
           <BlogPostHeader :data="item" class="h-full" type="feature" />

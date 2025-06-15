@@ -1,4 +1,6 @@
 <script setup>
+import { Image as DatocmsImage } from "vue-datocms";
+
 const props = defineProps(["data", "order"]);
 </script>
 
@@ -26,7 +28,11 @@ const props = defineProps(["data", "order"]);
       <div
         class="grid w-[43%] place-content-center border-x border-x-grayline px-[7rem] py-[3.5rem]"
       >
-        <img v-if="data.image" :src="data.image.url" alt="" />
+        <DatocmsImage
+          v-if="data.image"
+          :data="data.image.responsiveImage"
+          class="hero-image"
+        />
       </div>
 
       <!-- number -->

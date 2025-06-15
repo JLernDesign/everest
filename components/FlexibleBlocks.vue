@@ -43,6 +43,7 @@ const props = defineProps(["data", "template"]);
     <PostsCallout
       v-if="module.__typename == 'PressCalloutRecord'"
       :data="{ headline: 'Everest in the Press' }"
+      type="callout"
     />
     <Problem
       v-if="module.__typename == 'ProblemRecord'"

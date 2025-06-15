@@ -37,7 +37,7 @@ const PostFragment = gql`
 `;
 
 export const blogQuery = gql`
-  query {
+  query ($first: IntType, $skip: IntType) {
     blogLanding {
       seo: _seoMetaTags {
         attributes
@@ -56,7 +56,7 @@ export const blogQuery = gql`
     _allPostsMeta {
       count
     }
-    allPosts(first: 12, skip: 0, orderBy: [publishDate_DESC]) {
+    allPosts(first: $first, skip: $skip, orderBy: [publishDate_DESC]) {
       ...PostFragment
     }
   }

@@ -1,4 +1,6 @@
 <script setup>
+import { Image as DatocmsImage } from "vue-datocms";
+
 const props = defineProps(["data"]);
 </script>
 
@@ -15,10 +17,9 @@ const props = defineProps(["data"]);
     <!-- image/logo w/ quote -->
     <template v-if="data.style == 'basic'">
       <!-- image -->
-      <img
+      <DatocmsImage
         v-if="data.image"
-        :src="data.image.url"
-        alt=""
+        :data="data.image.responsiveImage"
         class="mb-side w-[19.5rem] overflow-hidden rounded-base"
       />
 
@@ -65,10 +66,9 @@ const props = defineProps(["data"]);
 
         <!-- image -->
         <div class="right w-[47.5%]">
-          <img
+          <DatocmsImage
             v-if="data.image"
-            :src="data.image.url"
-            alt=""
+            :data="data.image.responsiveImage"
             class="overflow-hidden rounded-base"
           />
 
@@ -98,6 +98,12 @@ const props = defineProps(["data"]);
       <strong class="block font-helvb">{{ data.name }}</strong>
       {{ data.title }}
     </div>
+
+    <DatocmsImage
+      v-if="data.image"
+      :data="data.image.responsiveImage"
+      class="client-image-mobile"
+    />
   </div>
 </template>
 
