@@ -284,7 +284,7 @@ const ProblemFragment = gql`
       headline
       description
       icon {
-        ...ResponsiveImageFragment
+        url
       }
     }
   }

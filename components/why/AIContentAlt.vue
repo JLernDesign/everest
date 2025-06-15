@@ -1,4 +1,6 @@
 <script setup>
+import { Image as DatocmsImage } from "vue-datocms";
+
 const props = defineProps(["data", "color"]);
 const active = 0;
 </script>
@@ -45,10 +47,9 @@ const active = 0;
         <div
           class="ph-image grid aspect-[1.32] place-content-center rounded-sm bg-skyblue p-12"
         >
-          <img
+          <DatocmsImage
             v-if="data.slides[active].image"
-            :src="data.slides[active].image.url"
-            alt=""
+            :data="data.slides[active].image.responsiveImage"
           />
         </div>
       </div>

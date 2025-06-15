@@ -34,7 +34,7 @@ const AiFirstBucketFragment = gql`
       headline
       description
       icon {
-        ...ResponsiveImageFragment
+        url
       }
       accentColor
     }

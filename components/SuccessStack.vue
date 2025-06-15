@@ -3,24 +3,30 @@ import gsap from "gsap";
 const props = defineProps(["theme", "data"]);
 
 const main = ref(null);
-const slide = ref(null);
-let items;
+const slides = ref([]);
 
 onMounted(() => {
-  /*   items = qsa(".slide", main.value);
-  items.reverse();
+  if (!main.value) return;
 
-  items.forEach((item, i) => {
+  const items = main.value.querySelectorAll(".slide");
+  const itemsArray = Array.from(items).reverse();
+
+  itemsArray.forEach((item, i) => {
     let amt = 7.6 * i + "rem";
     gsap.set(item, { y: amt, zIndex: i });
   });
 
   // dim inactive slides
-  slide.value.forEach((slide, i) => {
-    slide.setInactive(i);
-  }); */
+  slides.value.forEach((slide, i) => {
+    if (slide && typeof slide.setInactive === "function") {
+      slide.setInactive(i);
+    }
+  });
 });
-onUnmounted(() => {});
+
+onUnmounted(() => {
+  // Cleanup if needed
+});
 </script>
 
 <template>
@@ -36,7 +42,16 @@ onUnmounted(() => {});
       class="slides relative mx-auto mt-[5rem] h-[51.5rem] max-w-[1160px]"
       ref="main"
     >
-      <!-- <StackSlide v-for="(slide, i) in data.slides" :data="slide" ref="slide" /> -->
+      <StackSlide
+        v-for="(slide, i) in data.slides"
+        :key="i"
+        :data="slide"
+        :ref="
+          (el) => {
+            if (el) slides.value[i] = el;
+          }
+        "
+      />
     </div>
 
     <!-- cta buttons -->
