@@ -1,6 +1,5 @@
 <script setup>
 const props = defineProps(["data"]);
-console.log(props.data);
 
 // format text color for tailwind
 let color;
