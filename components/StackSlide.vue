@@ -1,10 +1,9 @@
 <script setup>
-import gsap from "gsap";
 import { Image as DatocmsImage } from "vue-datocms";
 const props = defineProps(["data"]);
 const main = ref(null);
 
-const setInactive = (num) => {
+/* const setInactive = (num) => {
   let title = qs(".title", main.value);
   // fully grayed
   if (num > 1) {
@@ -18,7 +17,7 @@ const setInactive = (num) => {
   }
 };
 
-defineExpose({ setInactive });
+defineExpose({ setInactive }); */
 </script>
 
 <template>

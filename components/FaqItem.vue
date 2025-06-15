@@ -17,7 +17,7 @@ defineExpose({ open, num });
     ref="main"
   >
     <div
-      class="absolute left-0 top-[6.9rem] h-0 w-full border-b-1 border-b-[#3D4856]"
+      class="absolute left-0 top-[6.75rem] h-0 w-full border-b-1 border-b-[#3D4856]"
     ></div>
     <!-- text -->
     <div class="faq-text w-full shrink px-side">

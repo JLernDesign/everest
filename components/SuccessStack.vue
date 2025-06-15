@@ -7,22 +7,27 @@ const slide = ref(null);
 let items;
 
 onMounted(() => {
-  console.log("mounted");
-
   items = qsa(".slide", main.value);
-  items.reverse();
+  //items.reverse();
 
   items.forEach((item, i) => {
-    let amt = 7.6 * i + "rem";
-    gsap.set(item, { y: amt, zIndex: i });
-  });
+    let amt = 7.6 * (items.length - 1 - i) + "rem";
+    gsap.set(item, { y: amt, zIndex: items.length - 1 - i });
 
-  // dim inactive slides
-  /*   slide.value.forEach((slide, i) => {
-    slide.setInactive(i);
-  }); */
+    let title = qs(".title", item);
+
+    // fully grayed
+    if (i > 1) {
+      gsap.set(item, { backgroundColor: "#262D36" });
+      gsap.set(title, { opacity: 0.1, color: "#ffffff" });
+    }
+    // partial grayed
+    if (i == 1) {
+      gsap.set(item, { backgroundColor: "#313944" });
+      gsap.set(title, { opacity: 0.3, color: "#ffffff" });
+    }
+  });
 });
-onUnmounted(() => {});
 </script>
 
 <template>
