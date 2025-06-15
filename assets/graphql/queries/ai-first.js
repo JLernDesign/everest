@@ -3,6 +3,7 @@ import {
   LinkFragment,
   HeroFragment,
   FooterFragment,
+  ResponsiveImageFragment,
 } from "../fragments/global";
 
 const AiFirstBasicFragment = gql`
@@ -33,7 +34,7 @@ const AiFirstBucketFragment = gql`
       headline
       description
       icon {
-        url
+        ...ResponsiveImageFragment
       }
       accentColor
     }
@@ -47,7 +48,7 @@ const AiFirstSlidesFragment = gql`
       title
       description
       image {
-        url
+        ...ResponsiveImageFragment
       }
       accentColor
     }
@@ -86,4 +87,5 @@ export const aiFirstQuery = gql`
   ${AiFirstBigtextFragment}
   ${AiFirstBucketFragment}
   ${AiFirstSlidesFragment}
+  ${ResponsiveImageFragment}
 `;
