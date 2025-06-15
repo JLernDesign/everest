@@ -7,7 +7,9 @@ const slide = ref(null);
 let items;
 
 onMounted(() => {
-  /*   items = qsa(".slide", main.value);
+  console.log("mounted");
+
+  items = qsa(".slide", main.value);
   items.reverse();
 
   items.forEach((item, i) => {
@@ -16,7 +18,7 @@ onMounted(() => {
   });
 
   // dim inactive slides
-  slide.value.forEach((slide, i) => {
+  /*   slide.value.forEach((slide, i) => {
     slide.setInactive(i);
   }); */
 });
@@ -36,7 +38,12 @@ onUnmounted(() => {});
       class="slides relative mx-auto mt-[5rem] h-[51.5rem] max-w-[1160px]"
       ref="main"
     >
-      <StackSlide v-for="(slide, i) in data.slides" :data="slide" ref="slide" />
+      <StackSlide
+        v-for="(slide, i) in data.slides"
+        :data="slide"
+        :key="i"
+        ref="slide"
+      />
     </div>
 
     <!-- cta buttons -->
