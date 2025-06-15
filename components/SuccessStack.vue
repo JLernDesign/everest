@@ -7,9 +7,7 @@ const slide = ref(null);
 let items;
 
 onMounted(() => {
-  if (!main.value) return;
-
-  items = qsa(".slide", main.value);
+  /*   items = qsa(".slide", main.value);
   items.reverse();
 
   items.forEach((item, i) => {
@@ -18,7 +16,7 @@ onMounted(() => {
   });
 
   // dim inactive slides
-  /*   slide.value.forEach((slide, i) => {
+  slide.value.forEach((slide, i) => {
     slide.setInactive(i);
   }); */
 });
