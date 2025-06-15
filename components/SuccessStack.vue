@@ -38,12 +38,7 @@ onUnmounted(() => {});
       class="slides relative mx-auto mt-[5rem] h-[51.5rem] max-w-[1160px]"
       ref="main"
     >
-      <StackSlide
-        v-for="(slide, i) in data.slides"
-        :data="slide"
-        :key="i"
-        ref="slide"
-      />
+      <StackSlide v-for="(slide, i) in data.slides" :data="slide" :key="i" />
     </div>
 
     <!-- cta buttons -->
