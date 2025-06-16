@@ -41,7 +41,7 @@ props.data.color == "gray" ? (color = "text-white") : null;
           <!-- text -->
           <template v-if="block.__typename == 'AdvantageTextRecord'">
             <div
-              class="content-text bullets lines rounded-base bg-cover p-[2rem] pb-[2.5rem] [&_ul]:divide-y-1 [&_ul]:divide-grayline [&_ul]:border-y-1 [&_ul]:border-grayline"
+              class="content-text bullets lines rounded-base bg-cover p-[2rem] pb-[2.5rem] [&_ul]:divide-y-1 [&_ul]:divide-grayline [&_ul]:border-y-1 [&_ul]:border-grayline [&_ul]:text-body-sm"
               :style="`background-image:url(/ui/mt-${data.color}@2x.jpg)`"
             >
               <div class="space-y-16 rounded-sm bg-jaffa p-[3.2rem]">

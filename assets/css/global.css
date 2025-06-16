@@ -155,7 +155,9 @@ sup {
   li {
     position: relative;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
     padding-left: 2.2rem;
     /* font-size: theme("fontSize.body-sm"); */
     &:before {
