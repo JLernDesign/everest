@@ -17,28 +17,6 @@ const { data } = await useGraphqlQuery({
 const pageData = data.value.blogLanding;
 const posts = data.value.allPosts;
 
-const footerCallout = {
-  headline: "See how Everest can transform your SaaS operations.",
-  intro:
-    "Discover how Everest empowers finance and operations leaders to \ndrive faster growth, smarter decisions, and stronger margins.",
-  cta: {
-    buttons: [
-      {
-        label: "Try Everest",
-        internal: null,
-        external: "",
-        style: "button",
-      },
-      {
-        label: "Contact Us",
-        internal: null,
-        external: "",
-        style: "text",
-      },
-    ],
-  },
-};
-
 onMounted(() => {
   const theme = useState("theme");
   theme.value = "light";
@@ -92,7 +70,7 @@ useHead(() => {
       </div>
     </Section>
 
-    <FooterLockup :data="footerCallout" />
+    <FooterLockup :data="pageData.footerCallout" />
   </div>
 </template>
 

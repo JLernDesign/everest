@@ -22,7 +22,6 @@ export const ResponsiveImageFragment = gql`
     }
   }
 `;
-
 export const LinkFragment = gql`
   fragment LinkFragment on CallToActionRecord {
     buttons {

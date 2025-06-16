@@ -1,7 +1,5 @@
 import gql from "graphql-tag";
-
-const per_page = 12;
-const skip = 0;
+import { FooterFragment, LinkFragment } from "../fragments/global";
 
 const PostFragment = gql`
   fragment PostFragment on PostRecord {
@@ -52,6 +50,9 @@ export const blogQuery = gql`
       featuredPosts {
         ...PostFragment
       }
+      footerCallout {
+        ...FooterFragment
+      }
     }
     _allPostsMeta {
       count
@@ -61,6 +62,8 @@ export const blogQuery = gql`
     }
   }
   ${PostFragment}
+  ${FooterFragment}
+  ${LinkFragment}
 `;
 
 export const postQuery = gql`
@@ -95,6 +98,13 @@ export const postQuery = gql`
         }
       }
     }
+    blogLanding {
+      footerCallout {
+        ...FooterFragment
+      }
+    }
   }
   ${PostFragment}
+  ${FooterFragment}
+  ${LinkFragment}
 `;

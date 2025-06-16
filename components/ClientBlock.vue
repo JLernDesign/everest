@@ -17,11 +17,12 @@ const props = defineProps(["data"]);
     <!-- image/logo w/ quote -->
     <template v-if="data.style == 'basic'">
       <!-- image -->
-      <DatocmsImage
+      <div
         v-if="data.image"
-        :data="data.image.responsiveImage"
         class="mb-side w-[19.5rem] overflow-hidden rounded-base"
-      />
+      >
+        <DatocmsImage :data="data.image.responsiveImage" />
+      </div>
 
       <!-- logo -->
       <img
@@ -98,12 +99,6 @@ const props = defineProps(["data"]);
       <strong class="block font-helvb">{{ data.name }}</strong>
       {{ data.title }}
     </div>
-
-    <DatocmsImage
-      v-if="data.image"
-      :data="data.image.responsiveImage"
-      class="client-image-mobile"
-    />
   </div>
 </template>
 

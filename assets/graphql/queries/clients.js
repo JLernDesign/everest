@@ -5,6 +5,7 @@ import {
   HeaderFragment,
   FooterFragment,
   FlexibleContentFragment,
+  ResponsiveImageFragment,
 } from "../fragments/global";
 
 const ClientGridFragment = gql`
@@ -16,7 +17,7 @@ const ClientGridFragment = gql`
         title
         quote
         image {
-          url
+          ...ResponsiveImageFragment
         }
         logo {
           url

@@ -12,29 +12,6 @@ const { data } = await useGraphqlQuery({
     slug: route.params.slug,
   },
 });
-console.log(toRaw(data.value).post);
-
-const footerCallout = {
-  headline: "See how Everest can transform your SaaS operations.",
-  intro:
-    "Discover how Everest empowers finance and operations leaders to \ndrive faster growth, smarter decisions, and stronger margins.",
-  cta: {
-    buttons: [
-      {
-        label: "Try Everest",
-        internal: null,
-        external: "",
-        style: "button",
-      },
-      {
-        label: "Contact Us",
-        internal: null,
-        external: "",
-        style: "text",
-      },
-    ],
-  },
-};
 
 let ctx;
 const main = ref();
@@ -52,6 +29,9 @@ onMounted(() => {
       );
     }, 200);
   }, main.value);
+
+  const theme = useState("theme");
+  theme.value = "light";
 });
 
 onUnmounted(() => {
@@ -174,7 +154,7 @@ useHead(() => {
     <!-- more posts -->
     <PostsCallout :data="{ headline: 'Next Posts' }" />
 
-    <FooterLockup :data="footerCallout" />
+    <FooterLockup :data="data.blogLanding.footerCallout" />
   </div>
 </template>
 
