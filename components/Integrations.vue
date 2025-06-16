@@ -18,10 +18,10 @@ const active = ref(0);
         <div
           class="grid h-[42rem] w-full place-content-center rounded-base bg-[url(/ui/callout-texture@2x.jpg)] bg-[size:1717px_auto]"
         >
-          <div class="flex h-[18rem] w-[28rem] rounded-base bg-jaffa p-side">
+          <div class="flex h-[18rem] w-[28rem] rounded-base bg-jaffa">
             <img
               :src="data.groups[active].items[0].image.url"
-              class="h-full w-full object-contain mix-blend-multiply"
+              class="h-full w-full object-contain"
               alt=""
             />
           </div>
