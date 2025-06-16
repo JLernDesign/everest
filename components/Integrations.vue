@@ -21,7 +21,7 @@ const active = ref(0);
           <div class="flex h-[18rem] w-[28rem] rounded-base bg-jaffa p-side">
             <img
               :src="data.groups[active].items[0].image.url"
-              class="mix-blend-multiply"
+              class="h-full w-full object-contain mix-blend-multiply"
               alt=""
             />
           </div>

@@ -42,6 +42,7 @@ useHead(() => {
         v-if="module.__typename == 'AiFirstBucketGroupRecord'"
         :data="module"
       />
+      <Faq v-if="module.__typename == 'FaqRecord'" :data="module" />
     </template>
 
     <FooterLockup :data="page.footerCallout" />

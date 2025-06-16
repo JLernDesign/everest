@@ -2,8 +2,10 @@ import gql from "graphql-tag";
 import {
   LinkFragment,
   HeroFragment,
+  HeaderFragment,
   FooterFragment,
   ResponsiveImageFragment,
+  FaqFragment,
 } from "../fragments/global";
 
 const AiFirstBasicFragment = gql`
@@ -73,6 +75,7 @@ export const aiFirstQuery = gql`
           ...AiFirstBigtextFragment
           ...AiFirstBucketFragment
           ...AiFirstSlidesFragment
+          ...FaqFragment
         }
       }
       footerCallout {
@@ -88,4 +91,6 @@ export const aiFirstQuery = gql`
   ${AiFirstBucketFragment}
   ${AiFirstSlidesFragment}
   ${ResponsiveImageFragment}
+  ${FaqFragment}
+  ${HeaderFragment}
 `;

@@ -36,7 +36,7 @@ const props = defineProps(["data"]);
           ]"
         >
           <div
-            class="icon mb-[2.5rem] size-[3.6rem] rounded-full border-2"
+            class="icon mb-[2.5rem] size-[3.6rem]"
             :class="accentColor(bucket)"
           >
             <img v-if="bucket.icon" :src="bucket.icon.url" alt="" />

@@ -189,7 +189,7 @@ const ClientSuccessFragment = gql`
     }
   }
 `;
-const FaqFragment = gql`
+export const FaqFragment = gql`
   fragment FaqFragment on FaqRecord {
     __typename
     header {
