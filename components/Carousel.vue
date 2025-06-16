@@ -11,6 +11,19 @@ const props = defineProps({
 
 let ctx;
 const main = ref();
+let loop;
+
+const next = () => {
+  if (loop) {
+    loop.next({ duration: 1, ease: "power3.inOut" });
+  }
+};
+
+const back = () => {
+  if (loop) {
+    loop.previous({ duration: 1, ease: "power3.inOut" });
+  }
+};
 
 onMounted(() => {
   let el;
@@ -18,7 +31,7 @@ onMounted(() => {
     const items = gsap.utils.toArray(".item");
 
     let activeElement;
-    const loop = horizontalLoop(items, {
+    loop = horizontalLoop(items, {
       paused: true,
       draggable: props.drag, // make it draggable
       center: props.center, // active element is the one in the center of the container rather than th left edge
@@ -45,6 +58,11 @@ onMounted(() => {
 
 onUnmounted(() => {
   ctx.revert();
+});
+
+defineExpose({
+  next,
+  back,
 });
 </script>
 

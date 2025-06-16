@@ -1,4 +1,6 @@
 <script setup>
+import { ref } from "vue";
+
 const props = defineProps(["data"]);
 
 // if more than 3 items, init slider
@@ -13,6 +15,17 @@ const getNum = () => {
   n > total ? (n = 1) : null;
   return "0" + n;
 };
+
+// carousel ref and navigation
+const carouselRef = ref(null);
+
+const handlePrev = () => {
+  carouselRef.value?.back();
+};
+
+const handleNext = () => {
+  carouselRef.value?.next();
+};
 </script>
 
 <template>
@@ -25,6 +38,7 @@ const getNum = () => {
     <div class="mt-[8rem] px-side-lg">
       <div class="w-full overflow-hidden">
         <Carousel
+          ref="carouselRef"
           :drag="slider ? true : false"
           :center="slider ? true : false"
           :start="slider && 1"
@@ -61,11 +75,21 @@ const getNum = () => {
       <!-- controls -->
       <div v-if="slider" class="mt-[5.5rem] flex w-full justify-between">
         <div class="relative h-full w-[23.4rem]">
-          <UISlideArrow dir="left" color="red" class="relative" />
+          <UISlideArrow
+            dir="left"
+            color="red"
+            class="relative cursor-pointer"
+            @click="handlePrev"
+          />
         </div>
 
         <div class="relative h-full w-[23.4rem]">
-          <UISlideArrow dir="right" color="red" class="relative" />
+          <UISlideArrow
+            dir="right"
+            color="red"
+            class="relative cursor-pointer"
+            @click="handleNext"
+          />
         </div>
       </div>
     </div>

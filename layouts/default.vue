@@ -15,13 +15,6 @@ const { data: menu_data } = await useGraphqlQuery({
 const main_menu = menu_data.value.menu;
 /* console.log(main_menu); */
 
-/* watch theme for change */
-watch(theme, () => {
-  //console.log("layout shifted: " + height.value);
-  console.log("theme changed");
-  console.log(theme.value);
-});
-
 /* watch layout shift for scrolltrigger refresh */
 watch(height, () => {
   //console.log("layout shifted: " + height.value);
