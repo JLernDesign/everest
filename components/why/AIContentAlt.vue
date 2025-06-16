@@ -26,19 +26,30 @@ const active = 0;
         class="flex w-[43%] flex-col justify-between border-x border-x-whiteline"
       >
         <div class="p-side">
-          <span v-html="formatText(data.slides[active].description)"></span>
+          <h3
+            class="mb-[1.5rem] font-barlow-cond text-h5 font-bold uppercase"
+            :class="accentColor(data.slides[active])"
+          >
+            {{ data.slides[active].title }}
+          </h3>
+          <span
+            class="text-body-sm leading-sm"
+            v-html="formatText(data.slides[active].description)"
+          ></span>
         </div>
 
         <!-- slide nav -->
         <ul class="divide-y-1 divide-whiteline border-t border-t-whiteline">
-          <li v-for="(slide, i) in data.slides" class="px-side py-6">
-            <button
-              class="font-barlow-cond text-h5 font-bold uppercase"
-              :class="accentColor(slide)"
-            >
-              {{ slide.title }}
-            </button>
-          </li>
+          <template v-for="(slide, i) in data.slides">
+            <li v-if="i > 0" class="px-side py-6">
+              <button
+                class="font-barlow-cond text-h5 font-bold uppercase"
+                :class="accentColor(slide)"
+              >
+                {{ slide.title }}
+              </button>
+            </li>
+          </template>
         </ul>
       </div>
 
