@@ -57,6 +57,9 @@ export const LinkFragment = gql`
         ... on BlogLandingRecord {
           __typename
         }
+        ... on AboutRecord {
+          __typename
+        }
       }
       external
       style

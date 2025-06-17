@@ -22,6 +22,8 @@ export default function (obj) {
         return "/demo";
       case "BlogLandingRecord":
         return "/blog";
+      case "AboutRecord":
+        return "/about";
 
       default:
         break;
