@@ -276,6 +276,26 @@ const OverviewFragment = gql`
     }
   }
 `;
+const SolutionCardsFragment = gql`
+  fragment SolutionCardsFragment on SolutionModuleRecord {
+    __typename
+    header {
+      ...HeaderFragment
+    }
+    sections {
+      id
+      title
+      headline
+      body
+      cta {
+        ...LinkFragment
+      }
+      image {
+        ...ResponsiveImageFragment
+      }
+    }
+  }
+`;
 const ProblemFragment = gql`
   fragment ProblemFragment on ProblemRecord {
     __typename
@@ -365,6 +385,7 @@ export const FlexibleContentFragment = gql`
       ...IntegrationListFragment
       ...NumberBucketGroupFragment
       ...OverviewFragment
+      ...SolutionCardsFragment
       ...PressCalloutFragment
       ...ProblemFragment
       ...BasicContentFragment
@@ -384,6 +405,7 @@ export const FlexibleContentFragment = gql`
   ${IntegrationListFragment}
   ${NumberBucketGroupFragment}
   ${OverviewFragment}
+  ${SolutionCardsFragment}
   ${PressCalloutFragment}
   ${ProblemFragment}
   ${ResponsiveImageFragment}

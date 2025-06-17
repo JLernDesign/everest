@@ -3,6 +3,7 @@ const props = defineProps(["theme", "header", "nav", "data"]);
 </script>
 
 <template>
+  <BigTextClouds :data="data" />
   <Section :theme="theme" side="none" :class="!header && '!pt-0'">
     <SectionHeader
       v-if="header"
@@ -10,11 +11,12 @@ const props = defineProps(["theme", "header", "nav", "data"]);
       :class="theme == 'dark' ? 'border-[#3D4856] bg-shadowblue' : null"
       :theme="theme"
       :data="data.header"
+      :breadcrumb="data.sections"
       ><UIGradientBot :theme="theme"
     /></SectionHeader>
 
     <div class="overview-wrap">
-      <OverviewCard
+      <SolutionCard
         v-for="(item, i) in data.sections"
         :theme="theme"
         :nav="nav"

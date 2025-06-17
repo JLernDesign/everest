@@ -35,12 +35,14 @@ const props = defineProps(["data", "template"]);
     />
     <MapModule v-if="module.__typename == 'MapModuleRecord'" :data="module" />
     <OverviewCards
-      v-if="module.__typename == 'OverviewRecord'"
-      :theme="template == 'product' ? 'light' : 'dark'"
-      :nav="template != 'product' && true"
-      :header="template != 'product' && true"
+      v-if="module.__typename == 'OverviewRecord' && template != 'product'"
+      theme="dark"
       :data="module"
-      :template="template"
+    />
+    <SolutionCards
+      v-if="module.__typename == 'SolutionModuleRecord'"
+      theme="light"
+      :data="module"
     />
     <PostsCallout
       v-if="module.__typename == 'PressCalloutRecord'"

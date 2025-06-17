@@ -6,12 +6,7 @@ const props = defineProps(["theme", "nav", "data", "num", "template"]);
 
 <template>
   <div
-    class="overview-card dark relative w-full border-b px-side-mob py-[11rem] s:px-side"
-    :class="
-      theme == 'dark'
-        ? 'border-[#3D4856] bg-shadowblue'
-        : 'border-grayline bg-jaffa'
-    "
+    class="overview-card dark relative w-full border-b border-grayline bg-jaffa px-side-mob py-[11rem] s:px-side"
   >
     <div class="content relative z-1 flex justify-between">
       <!-- text -->
@@ -43,31 +38,18 @@ const props = defineProps(["theme", "nav", "data", "num", "template"]);
             class="mt-8"
           />
         </div>
-
-        <!-- slide nav -->
-        <div
-          v-if="nav"
-          class="slide-nav absolute bottom-0 left-0 w-[21rem] bg-[url(/public/ui/peak.png)] bg-contain bg-bottom bg-no-repeat"
-        >
-          <div class="flex w-full flex-col gap-y-6">
-            <div
-              v-for="n in 7"
-              class="nav-line h-[1px] w-full bg-[#3D4856]"
-            ></div>
-          </div>
-        </div>
       </div>
 
       <!-- image -->
       <div class="right w-1/2">
         <div
-          class="image relative flex aspect-[1.0675] w-full items-center justify-center overflow-hidden rounded-base bg-skyblue p-[11.5rem]"
+          class="image relative flex aspect-[1.0675] w-full items-center justify-center overflow-hidden rounded-base bg-skyblue p-side"
         >
           <UICloud type="2" class="-left-[16rem] top-[44rem]" />
           <UICloud type="2" class="-top-[25rem] left-[18rem]" />
 
           <div
-            class="image-ph relative h-full w-full [&>div]:h-full [&_img]:h-full [&_img]:w-full [&_img]:object-contain"
+            class="image-ph relative flex h-full w-full items-center justify-center [&_img]:h-full [&_img]:w-full [&_img]:object-contain"
           >
             <DatocmsImage
               v-if="data.image"
