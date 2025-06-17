@@ -7,6 +7,7 @@ const props = defineProps({
   center: { default: true },
   click: { default: false },
   start: { default: 0 },
+  padding: { default: 0 },
 });
 
 let ctx;
@@ -33,6 +34,7 @@ onMounted(() => {
     let activeElement;
     loop = horizontalLoop(items, {
       paused: true,
+      paddingRight: props.padding,
       draggable: props.drag, // make it draggable
       center: props.center, // active element is the one in the center of the container rather than th left edge
       onChange: (element, index) => {

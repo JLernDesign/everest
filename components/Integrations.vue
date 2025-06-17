@@ -8,7 +8,7 @@ const active = ref(0);
     <SectionHeader
       :theme="theme"
       :data="data.header"
-      :breadcrumb="data.groups"
+      :breadcrumb="data.groups.length > 1 ? data.groups : null"
     />
 
     <!-- content -->

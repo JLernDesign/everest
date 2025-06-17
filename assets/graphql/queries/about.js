@@ -15,6 +15,10 @@ export const aboutQuery = gql`
         tag
       }
       heroHeadline
+      statsSlider {
+        label
+        figure
+      }
       flexibleContent {
         ...FlexibleContentFragment
       }

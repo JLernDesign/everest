@@ -1,6 +1,16 @@
 <script setup>
 const props = defineProps(["data"]);
-//130, 290
+//130, 290, 384, 636
+const coords = [
+  {
+    x: "13rem",
+    y: "29rem",
+  },
+  {
+    x: "38.4rem",
+    y: "63.6rem",
+  },
+];
 </script>
 
 <template>
@@ -31,8 +41,19 @@ const props = defineProps(["data"]);
       <!-- pins -->
 
       <div
-        class="pin absolute left-[13rem] top-[29rem] z-2 h-[6.6rem] w-[7.1rem]"
+        v-for="coord in coords"
+        class="pin absolute z-2 h-[6.6rem] w-[7.1rem]"
+        :style="`left: ${coord.x}; top: ${coord.y};`"
       >
+        <div
+          v-if="i > 0 && 'hidden'"
+          class="pin-label absolute -top-[13rem] left-1/2 w-[26rem] -translate-x-1/2 rounded-base bg-jaffa p-[2.5rem] text-body-sm leading-sm shadow-submenu"
+        >
+          <span class="font-helvh">North America</span>
+          <br />
+          280 Hope Street <br />
+          Mountain View, CA 94041
+        </div>
         <img src="/public/about/map-pin.svg" alt="" />
       </div>
     </div>
