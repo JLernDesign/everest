@@ -32,6 +32,7 @@ export default {
       tan: "#E3D4C4",
       jaffa: "#FEF6F0",
       jaffalt: "#E3D4C4",
+      jaffaltfade: "rgba(227, 212, 196, 0.3)",
       jaffadk: "#BA9F82",
       grayline: "rgba(0,0,0,.07)",
       whiteline: "rgba(255,255,255,.07)",

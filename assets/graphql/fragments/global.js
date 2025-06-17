@@ -287,10 +287,23 @@ const SolutionCardsFragment = gql`
       title
       headline
       body
+      bullets {
+        title
+        text
+      }
+      stats {
+        stats {
+          figure
+          label
+        }
+      }
       cta {
         ...LinkFragment
       }
       image {
+        ...ResponsiveImageFragment
+      }
+      bgImage {
         ...ResponsiveImageFragment
       }
     }
