@@ -4,28 +4,21 @@ const props = defineProps(["data", "edge", "layout"]);
 
 <template>
   <Section
-    class="pb-section-bot-lg bg-shadowblue text-white"
-    :class="edge && '!pt-0'"
+    class="bg-shadowblue pb-section-bot-lg text-white"
+    :class="data.jaggedEdge && '!pt-0'"
     theme="dark"
   >
-    <UIJagEdge v-if="edge" color="fill-shadowblue" />
+    <UIJagEdge v-if="data.jaggedEdge" color="fill-shadowblue" />
 
     <!-- header -->
-    <SectionHeader
-      theme="dark"
-      :data="{
-        eyebrow: 'Company',
-        headline:
-          'It\'s time for a change. Everest ERP offers a complete and integrated system to help run your financial and business operations.',
-      }"
-    />
+    <SectionHeader theme="dark" :data="data.header" />
 
     <!-- columns -->
     <div class="flex items-start justify-between pt-[6rem]">
       <!-- image -->
       <div
         class="image aspect-square w-1/2 rounded-base bg-shadowbluelt"
-        :class="layout == 'img-lt' ? 'order-1' : 'order-2'"
+        :class="data.layout == 'image left' ? 'order-1' : 'order-2'"
       ></div>
 
       <!-- text -->

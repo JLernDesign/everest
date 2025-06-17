@@ -25,6 +25,7 @@ const active = 0;
     <!-- slide module -->
     <div
       class="mt-md flex"
+      v-if="data.slides && data.slides.length > 0"
       :class="data.slides.length > 1 && 'divide-x-1 divide-grayline'"
     >
       <!-- left -->

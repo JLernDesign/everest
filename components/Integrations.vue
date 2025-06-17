@@ -20,6 +20,7 @@ const active = ref(0);
         >
           <div class="flex h-[18rem] w-[28rem] rounded-base bg-jaffa">
             <img
+              v-if="data.groups[active].items[0].image"
               :src="data.groups[active].items[0].image.url"
               class="h-full w-full object-contain"
               alt=""

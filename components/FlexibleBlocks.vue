@@ -5,33 +5,35 @@ const props = defineProps(["data", "template"]);
 <template>
   <template v-for="module in data">
     <Advantage v-if="module.__typename == 'AdvantageRecord'" :data="module" />
-    <Faq v-if="module.__typename == 'FaqRecord'" :data="module" />
     <BannerCallout
       v-if="module.__typename == 'BannerCalloutRecord'"
       :data="module"
     />
     <BlogCallout v-if="module.__typename == 'BlogCalloutRecord'" />
-    <CalloutQuote v-if="module.__typename == 'BigQuoteRecord'" :data="module" />
-    <ClientList
-      v-if="module.__typename == 'ClientQuoteListRecord'"
+    <BodyBasic
+      v-if="module.__typename == 'BasicContentRecord'"
       :data="module"
     />
     <BucketsNum
       v-if="module.__typename == 'NumberBucketGroupRecord'"
       :data="module"
     />
+    <CalloutQuote v-if="module.__typename == 'BigQuoteRecord'" :data="module" />
+    <ClientList
+      v-if="module.__typename == 'ClientQuoteListRecord'"
+      :data="module"
+    />
     <ClientSuccess
       v-if="module.__typename == 'ClientSuccessModuleRecord'"
       :data="module"
     />
-    <SuccessStack
-      v-if="module.__typename == 'ClientCardsModuleRecord'"
-      :data="module"
-    />
+    <Faq v-if="module.__typename == 'FaqRecord'" :data="module" />
+    <FullPhoto v-if="module.__typename == 'FullPhotoRecord'" :data="module" />
     <Integrations
       v-if="module.__typename == 'IntegrationListRecord'"
       :data="module"
     />
+    <MapModule v-if="module.__typename == 'MapModuleRecord'" :data="module" />
     <OverviewCards
       v-if="module.__typename == 'OverviewRecord'"
       :theme="template == 'product' ? 'light' : 'dark'"
@@ -52,6 +54,10 @@ const props = defineProps(["data", "template"]);
     />
     <SliderAscending
       v-if="module.__typename == 'AscendingSliderRecord'"
+      :data="module"
+    />
+    <SuccessStack
+      v-if="module.__typename == 'ClientCardsModuleRecord'"
       :data="module"
     />
   </template>

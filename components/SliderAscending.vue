@@ -51,7 +51,6 @@ onMounted(() => {
     <SectionHeader :theme="theme" :data="data.header" />
 
     <!-- slider -->
-    <!-- -mt-[32rem] !h-[128rem] cursor-grab -->
     <Carousel
       class="slider-wrap ml-[9.65rem] mt-[16.5rem] !h-[82rem] -rotate-[15deg] space-x-[9rem]"
       :drag="true"

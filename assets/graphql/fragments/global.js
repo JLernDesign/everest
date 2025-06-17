@@ -313,6 +313,38 @@ const ClientListFragment = gql`
     }
   }
 `;
+const MapModuleFragment = gql`
+  fragment MapModuleFragment on MapModuleRecord {
+    __typename
+    headline
+    intro
+  }
+`;
+const FullPhotoFragment = gql`
+  fragment FullPhotoFragment on FullPhotoRecord {
+    __typename
+    image {
+      ...ResponsiveImageFragment
+    }
+  }
+`;
+const BasicContentFragment = gql`
+  fragment BasicContentFragment on BasicContentRecord {
+    __typename
+    header {
+      ...HeaderFragment
+    }
+    jaggedEdge
+    layout
+    body
+    cta {
+      ...LinkFragment
+    }
+    image {
+      ...ResponsiveImageFragment
+    }
+  }
+`;
 
 export const FlexibleContentFragment = gql`
   fragment FlexibleContentFragment on FlexibleContentRecord {
@@ -332,6 +364,9 @@ export const FlexibleContentFragment = gql`
       ...OverviewFragment
       ...PressCalloutFragment
       ...ProblemFragment
+      ...BasicContentFragment
+      ...MapModuleFragment
+      ...FullPhotoFragment
     }
   }
   ${AdvantageFragment}
@@ -349,4 +384,7 @@ export const FlexibleContentFragment = gql`
   ${PressCalloutFragment}
   ${ProblemFragment}
   ${ResponsiveImageFragment}
+  ${BasicContentFragment}
+  ${MapModuleFragment}
+  ${FullPhotoFragment}
 `;

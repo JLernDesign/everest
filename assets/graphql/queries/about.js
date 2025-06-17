@@ -1,23 +1,20 @@
 import gql from "graphql-tag";
 import {
   LinkFragment,
-  HeroFragment,
-  HeaderFragment,
   FooterFragment,
+  HeaderFragment,
   FlexibleContentFragment,
 } from "../fragments/global";
 
-export const whyQuery = gql`
+export const aboutQuery = gql`
   query {
-    whyMain {
+    about {
       seo: _seoMetaTags {
         attributes
         content
         tag
       }
-      hero {
-        ...HeroFragment
-      }
+      heroHeadline
       flexibleContent {
         ...FlexibleContentFragment
       }
@@ -26,9 +23,8 @@ export const whyQuery = gql`
       }
     }
   }
-  ${HeroFragment}
-  ${HeaderFragment}
   ${FooterFragment}
+  ${HeaderFragment}
   ${LinkFragment}
   ${FlexibleContentFragment}
 `;
