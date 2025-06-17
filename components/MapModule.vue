@@ -1,6 +1,6 @@
 <script setup>
 const props = defineProps(["data"]);
-//130, 290, 384, 636
+
 const coords = [
   {
     x: "13rem",
@@ -41,12 +41,12 @@ const coords = [
       <!-- pins -->
 
       <div
-        v-for="coord in coords"
+        v-for="(coord, i) in coords"
         class="pin absolute z-2 h-[6.6rem] w-[7.1rem]"
         :style="`left: ${coord.x}; top: ${coord.y};`"
       >
         <div
-          v-if="i > 0 && 'hidden'"
+          v-if="i < 1 && 'hidden'"
           class="pin-label absolute -top-[13rem] left-1/2 w-[26rem] -translate-x-1/2 rounded-base bg-jaffa p-[2.5rem] text-body-sm leading-sm shadow-submenu"
         >
           <span class="font-helvh">North America</span>

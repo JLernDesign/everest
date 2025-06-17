@@ -1,7 +1,14 @@
 <script setup>
 const props = defineProps(["data", "stats"]);
 
-const duplicated = [...props.stats, ...props.stats];
+let slider = false;
+let duplicated = [];
+if (props.stats.length <= 3) {
+  duplicated = props.stats;
+} else {
+  duplicated = [...props.stats, ...props.stats];
+  slider = true;
+}
 </script>
 
 <template>
@@ -23,9 +30,12 @@ const duplicated = [...props.stats, ...props.stats];
 
     <!-- slider -->
     <Carousel
-      class="slider-wrap ml-[5.65rem] mt-[22.5rem] !h-[50rem] -rotate-[15deg] space-x-[9rem]"
-      :drag="true"
-      padding="70"
+      class="slider-wrap mt-[22.5rem] !h-[50rem] -rotate-[15deg] space-x-[9rem]"
+      :class="slider ? 'ml-[5.65rem]' : 'ml-[3.5rem] justify-center'"
+      :drag="slider && true"
+      :padding="slider ? '70' : '0'"
+      :center="slider && true"
+      :start="slider && 1"
     >
       <div
         v-for="stat in duplicated"

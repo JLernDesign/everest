@@ -1,4 +1,5 @@
 <script setup>
+import { Image as DatocmsImage } from "vue-datocms";
 const props = defineProps(["data", "edge", "layout"]);
 </script>
 
@@ -17,9 +18,15 @@ const props = defineProps(["data", "edge", "layout"]);
     <div class="flex items-start justify-between pt-[6rem]">
       <!-- image -->
       <div
-        class="image aspect-square w-1/2 rounded-base bg-shadowbluelt"
+        class="image aspect-square w-1/2 overflow-hidden rounded-base bg-shadowbluelt"
         :class="data.layout == 'image left' ? 'order-1' : 'order-2'"
-      ></div>
+      >
+        <DatocmsImage
+          v-if="data.image"
+          :data="data.image.responsiveImage"
+          class="h-full w-full object-cover"
+        />
+      </div>
 
       <!-- text -->
       <div
@@ -30,25 +37,18 @@ const props = defineProps(["data", "edge", "layout"]);
             : 'order-1 pl-[9rem] pr-[11.5rem]'
         "
       >
-        <div class="bullets space-y-16">
-          <p>
-            SaaS companies are constantly evolving their product and pricing
-            strategies. Legacy ERPs can’t keep up and companies are forced to
-            build costly, Frankenstein ERPs just to keep their business running.
-            Unlike fragmented sets of solutions, Everest ERP offers a complete
-            and integrated system to help run your financial and business
-            operations.
-          </p>
-          <p>
-            Crafted over years of expertise Everest has been thoughtfully
-            architected and designed for long-term success by partnering with a
-            world-class team of ERP technology and financial systems experts.
-            Over 100 professionals have worked for more than four years to build
-            a robust platform and set of applications that empower your business
-            to grow and scale efficiently.
-          </p>
-          <CtaBtn>Try Everest</CtaBtn>
-        </div>
+        <div
+          class="bullets space-y-16 [&_*+h2]:mt-[9rem] [&_h2]:font-helvb [&_h2]:text-body-md [&_h3+p]:mt-[.5rem] [&_h3]:font-helvb"
+          v-html="formatText(data.body)"
+        ></div>
+
+        <CtaGroup
+          v-if="data.cta"
+          :data="data.cta.buttons"
+          :align="left"
+          :theme="dark"
+          class="mt-8"
+        />
       </div>
     </div>
   </Section>
