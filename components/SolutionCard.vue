@@ -6,23 +6,23 @@ const props = defineProps(["theme", "nav", "data", "num", "template"]);
 
 <template>
   <div
-    class="overview-card dark relative w-full border-b border-grayline bg-jaffa px-side-mob py-[11rem] s:px-[20rem]"
+    class="overview-card dark relative w-full border-b border-grayline bg-jaffa px-side-mob py-[18rem] s:px-[20rem]"
   >
     <!-- number -->
-    <div class="num absolute left-0 top-0 mb-[11rem] pl-side pt-[11.5rem]">
+    <div class="num absolute left-0 top-[11rem] mb-[11rem] pl-side">
       <IconTri color="fill-red" />
       <div class="font-barlow-cond text-num font-bold opacity-30">
         {{ num < 10 ? "0" + num : num }}
       </div>
     </div>
 
-    <div class="content relative z-1 flex justify-between pt-[5rem]">
+    <div class="content relative z-1 flex justify-between">
       <div
-        class="left flex w-1/2"
+        class="left flex w-1/2 items-center"
         :class="num % 2 == 0 ? 'order-2 justify-end' : 'order-1'"
       >
         <!-- text contents -->
-        <div class="w-full max-w-[60rem]">
+        <div class="w-full max-w-[52.5rem]">
           <h3
             class="mb-5 font-helvb text-md leading-sm-md"
             v-html="formatText(data.headline)"
