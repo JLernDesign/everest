@@ -1,8 +1,18 @@
 <script setup>
+import { VideoPlayer } from "vue-datocms";
 import gsap from "gsap";
 const videoID = useState("videoID");
 const video_ready = ref(false);
 let player;
+
+const video = {
+  muxPlaybackId: "eEGj4gxptu02uldLwAD5j00RnAiNdWEFlD",
+  width: 1680,
+  height: 1002,
+  thumbhash: "8vcJBIAAJFaGiImXiIZxcCM/Ng==",
+  title: null,
+  alt: null,
+};
 
 /* testing */
 const url =
@@ -13,7 +23,7 @@ onMounted(() => {
   player = document.getElementById("video");
 
   watch(videoID, () => {
-    url = videoID.value;
+    //url = videoID.value;
     video_ready.value = true;
   });
 });
@@ -57,13 +67,19 @@ const closeVideoModal = (id) => {
         id="video-player"
         class="modal-contents relative aspect-video w-full max-w-[119rem]"
       >
-        <video
+        <VideoPlayer
+          :data="video"
+          id="video"
+          accent-color="#FC5161"
+          class="overflow-hidden rounded-base"
+        />
+        <!--  <video
           id="video"
           class="absolute h-full w-full overflow-hidden rounded-base object-contain"
           controls
         >
           <source :src="url" type="video/mp4" />
-        </video>
+        </video> -->
         <button
           class="absolute -right-[2.5rem] -top-[5rem] size-[3rem]"
           @click="closeVideoModal"
