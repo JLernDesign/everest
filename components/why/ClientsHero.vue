@@ -1,15 +1,22 @@
 <script setup>
 import { Image as DatocmsImage } from "vue-datocms";
 const props = defineProps(["data", "items"]);
-
+console.log(props.items);
 let slider = false;
 let duplicated = [];
 if (props.items.length <= 3) {
-  duplicated = props.items;
+  // add side fillers
+  duplicated = ["", ...props.items, ""];
 } else {
   duplicated = [...props.items, ...props.items];
   slider = true;
 }
+
+const handleClick = (item) => {
+  if (item.video) {
+    openVideoModal(item.video.url);
+  }
+};
 </script>
 
 <template>
@@ -21,7 +28,7 @@ if (props.items.length <= 3) {
     <!-- slider -->
     <Carousel
       class="slider-wrap mt-[15.5rem] !h-[40rem] -rotate-[15deg] space-x-[7rem]"
-      :class="slider ? 'ml-[5.65rem]' : 'ml-[3.5rem] justify-end'"
+      :class="slider ? 'ml-[5.65rem]' : null"
       :drag="slider && true"
       :padding="slider ? '70' : '0'"
       :center="slider && true"
@@ -29,7 +36,9 @@ if (props.items.length <= 3) {
     >
       <div
         v-for="item in duplicated"
-        class="item z-1 -ml-[1.2rem] h-[19.2rem] w-[30.2rem] shrink-0 rotate-[15deg] overflow-hidden rounded-base bg-white p-[3.2rem] pt-[3.75rem] text-left"
+        class="item z-1 -ml-[1.2rem] h-[19.2rem] w-[30.2rem] shrink-0 rotate-[15deg] cursor-pointer overflow-hidden rounded-base bg-white p-[3.2rem] pt-[3.75rem] text-left"
+        :class="item == '' && 'invisible'"
+        @click="handleClick(item)"
       >
         <!-- photo -->
         <div

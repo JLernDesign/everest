@@ -54,6 +54,7 @@ export const clientsQuery = gql`
         }
         video {
           id
+          url
         }
         quote
         name

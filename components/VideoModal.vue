@@ -13,6 +13,7 @@ onMounted(() => {
   player = document.getElementById("video");
 
   watch(videoID, () => {
+    url = videoID.value;
     video_ready.value = true;
   });
 });

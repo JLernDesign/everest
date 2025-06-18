@@ -48,7 +48,7 @@ const props = defineProps(["theme", "nav", "data", "num", "template"]);
               ]"
             >
               <h4
-                class="cursor-pointer pb-2 font-barlow-cond text-h5 font-bold uppercase leading-base transition-colors duration-300 hover:text-red"
+                class="cursor-pointer font-helvb text-body-sm leading-base transition-colors duration-300 hover:text-red"
               >
                 {{ bullet.title }}
               </h4>
