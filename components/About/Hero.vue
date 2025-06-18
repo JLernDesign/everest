@@ -30,7 +30,7 @@ if (props.stats.length <= 3) {
 
     <!-- slider -->
     <Carousel
-      class="slider-wrap mt-[22.5rem] !h-[50rem] -rotate-[15deg] space-x-[9rem]"
+      class="slider-wrap mt-[22.5rem] !h-[50rem] -rotate-[15deg] space-x-[10rem]"
       :class="slider ? 'ml-[5.65rem]' : 'ml-[3.5rem] justify-center'"
       :drag="slider && true"
       :padding="slider ? '70' : '0'"
@@ -39,7 +39,7 @@ if (props.stats.length <= 3) {
     >
       <div
         v-for="stat in duplicated"
-        class="item z-1 -ml-[1.2rem] h-[27.7rem] w-[45.5rem] shrink-0 rotate-[15deg] rounded-base bg-white p-[3.2rem] pt-[3.75rem] text-left"
+        class="item z-1 -ml-[1.2rem] h-[27.7rem] w-[40rem] shrink-0 rotate-[15deg] rounded-base bg-white p-[3.2rem] pt-[3.75rem] text-left"
       >
         <IconTri color="fill-red" class="mb-[2.4rem]" />
         <h3 class="font-barlow-cond text-xl font-bold leading-xl">

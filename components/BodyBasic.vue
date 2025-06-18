@@ -38,8 +38,8 @@ const props = defineProps(["data", "edge", "layout"]);
         "
       >
         <div
-          class="bullets space-y-16 [&_*+h2]:mt-[9rem] [&_h2]:font-helvb [&_h2]:text-body-md [&_h3+p]:mt-[.5rem] [&_h3]:font-helvb"
-          v-html="formatText(data.body)"
+          class="bullets space-y-10 [&_*+h2]:mt-[9rem] [&_h2]:font-helvb [&_h2]:text-body-md [&_h3+p]:mt-[.5rem] [&_h3]:font-helvb"
+          v-html="data.body"
         ></div>
 
         <CtaGroup
@@ -47,7 +47,7 @@ const props = defineProps(["data", "edge", "layout"]);
           :data="data.cta.buttons"
           :align="left"
           :theme="dark"
-          class="mt-8"
+          class="mt-10"
         />
       </div>
     </div>

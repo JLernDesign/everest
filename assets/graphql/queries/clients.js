@@ -45,6 +45,20 @@ export const clientsQuery = gql`
       hero {
         ...HeroFragment
       }
+      clientSlider {
+        image {
+          ...ResponsiveImageFragment
+        }
+        logo {
+          url
+        }
+        video {
+          id
+        }
+        quote
+        name
+        title
+      }
       ...ClientGridFragment
       flexibleContent {
         ...FlexibleContentFragment

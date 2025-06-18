@@ -21,7 +21,7 @@ useHead(() => {
 
 <template>
   <div class="bg-skyblue">
-    <WhyClientsHero :data="page.hero" />
+    <WhyClientsHero :data="page.hero" :items="page.clientSlider" />
     <ClientSuccessGrid
       v-if="page.clientGrid"
       :edge="true"
