@@ -6,6 +6,7 @@ import {
   FooterFragment,
   FlexibleContentFragment,
   ResponsiveImageFragment,
+  VideoFragment,
 } from "../fragments/global";
 
 const ClientGridFragment = gql`
@@ -53,8 +54,7 @@ export const clientsQuery = gql`
           url
         }
         video {
-          id
-          url
+          ...VideoFragment
         }
         quote
         name
@@ -75,4 +75,5 @@ export const clientsQuery = gql`
   ${LinkFragment}
   ${ClientGridFragment}
   ${FlexibleContentFragment}
+  ${VideoFragment}
 `;

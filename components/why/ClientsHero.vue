@@ -36,7 +36,7 @@ const handleClick = (item) => {
     >
       <div
         v-for="item in duplicated"
-        class="item z-1 -ml-[1.2rem] h-[19.2rem] w-[30.2rem] shrink-0 rotate-[15deg] cursor-pointer overflow-hidden rounded-base bg-white p-[3.2rem] pt-[3.75rem] text-left"
+        class="item z-1 -ml-[1.2rem] h-[19.2rem] w-[30.2rem] shrink-0 rotate-[15deg] cursor-pointer overflow-hidden rounded-base p-[3.2rem] pt-[3.75rem] text-left"
         :class="item == '' && 'invisible'"
         @click="handleClick(item)"
       >

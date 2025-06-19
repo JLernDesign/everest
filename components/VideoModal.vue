@@ -3,6 +3,7 @@ import { VideoPlayer } from "vue-datocms";
 import gsap from "gsap";
 const videoID = useState("videoID");
 const video_ready = ref(false);
+const youtube = false;
 let player;
 
 const video = {
@@ -13,11 +14,6 @@ const video = {
   title: null,
   alt: null,
 };
-
-/* testing */
-const url =
-  "https://video.wixstatic.com/video/e3b010_3282c34472b249cd9d56e7907b23043e/1080p/mp4/file.mp4";
-const file = "/public/video/sample-video.mp4";
 
 onMounted(() => {
   player = document.getElementById("video");
@@ -67,11 +63,24 @@ const closeVideoModal = (id) => {
         id="video-player"
         class="modal-contents relative aspect-video w-full max-w-[119rem]"
       >
+        <!-- raw video -->
         <VideoPlayer
           :data="video"
           id="video"
           accent-color="#FC5161"
           class="overflow-hidden rounded-base"
+        />
+
+        <!-- youtube -->
+        <ScriptYouTubePlayer
+          v-if="youtube == true"
+          trigger="visible"
+          width="100%"
+          height="auto"
+          :player-vars="{ autoplay: true, rel: 0 }"
+          class="overflow-hidden rounded-base"
+          :video-id="videoID"
+          ref="yt_player"
         />
         <!--  <video
           id="video"

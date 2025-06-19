@@ -97,6 +97,29 @@ export const FooterFragment = gql`
     }
   }
 `;
+export const VideoFragment = gql`
+  fragment VideoFragment on VideoRecord {
+    file {
+      video {
+        muxPlaybackId
+        title
+        width
+        height
+        thumbhash
+        blurUpThumb
+      }
+    }
+    external {
+      height
+      provider
+      providerUid
+      thumbnailUrl
+      title
+      url
+      width
+    }
+  }
+`;
 
 // modules
 const AdvantageFragment = gql`

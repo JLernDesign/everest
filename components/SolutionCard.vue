@@ -2,11 +2,35 @@
 import { Image as DatocmsImage } from "vue-datocms";
 
 const props = defineProps(["theme", "nav", "data", "num", "template"]);
+const main = ref(null);
+let items, bullets, spacers;
+
+onMounted(() => {
+  items = main.value.querySelectorAll(".bullet-wrap");
+  spacers = main.value.querySelectorAll(".spacer");
+  bullets = main.value.querySelectorAll(".bullet");
+
+  // open first bullet by default
+  handleClick(0);
+});
+
+const handleClick = (i) => {
+  // toggle expand on items
+  toggleExpand(i, items);
+  toggleExpand(i, spacers);
+
+  // toggle open class on bullets
+  bullets.forEach((bullet) => {
+    bullet.classList.remove("open");
+  });
+  bullets[i].classList.add("open");
+};
 </script>
 
 <template>
   <div
     class="overview-card dark relative w-full border-b border-grayline bg-jaffa px-side-mob py-[18rem] s:px-[20rem]"
+    ref="main"
   >
     <!-- number -->
     <div class="num absolute left-0 top-[11rem] mb-[11rem] pl-side">
@@ -39,23 +63,23 @@ const props = defineProps(["theme", "nav", "data", "num", "template"]);
           >
             <div
               v-for="(bullet, i) in data.bullets"
-              class="bullet border-1 border-grayline px-[2.5rem] py-5"
+              class="bullet group cursor-pointer border-1 border-grayline px-[2.5rem] py-5"
+              @click="handleClick(i)"
               :class="[
-                i == 0 &&
-                  'first bg-jaffaltfade rounded-tl-base rounded-tr-base pt-12 [&_h4]:text-red',
+                i == 0 && 'first rounded-tl-base rounded-tr-base pt-6',
                 i == data.bullets.length - 1 &&
                   'last rounded-bl-base rounded-br-base',
               ]"
             >
+              <div class="spacer h-0 overflow-hidden">
+                <div class="h-7"></div>
+              </div>
               <h4
-                class="cursor-pointer font-helvb text-body-sm leading-base transition-colors duration-300 hover:text-red"
+                class="font-helvb text-body-sm leading-base transition-colors duration-300 group-hover:text-red"
               >
                 {{ bullet.title }}
               </h4>
-              <div
-                class="bullet-wrap relative h-0 overflow-hidden"
-                :class="i == 0 && 'h-auto'"
-              >
+              <div class="bullet-wrap relative h-0 overflow-hidden">
                 <p class="pb-6 pt-4 text-body-sm leading-body">
                   {{ bullet.text }}
                 </p>
@@ -121,4 +145,14 @@ const props = defineProps(["theme", "nav", "data", "num", "template"]);
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.bullet {
+  transition: all 0.75s ease-in-out;
+  &.open {
+    h4 {
+      color: theme("colors.red");
+    }
+    background-color: theme("colors.jaffaltfade");
+  }
+}
+</style>
