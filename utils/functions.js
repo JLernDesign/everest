@@ -406,11 +406,11 @@ export const breakpoints = useBreakpoints({
 });
 
 // video modal
-export const openVideoModal = (id) => {
+export const openVideoModal = (obj) => {
   const videoID = useState("videoID", () => "");
   const modal = document.getElementById("video-modal");
   const wrap = document.getElementById("video-player");
-  videoID.value = id;
+  videoID.value = obj;
 
   gsap.fromTo(
     modal,
@@ -423,13 +423,11 @@ export const openVideoModal = (id) => {
   );
   gsap.fromTo(
     wrap,
-    { opacity: 0, xPercent: -5, yPercent: 5 },
+    { opacity: 0 },
     {
       delay: 0.2,
       duration: 0.5,
       opacity: 1,
-      xPercent: 0,
-      yPercent: 0,
       ease: "quad.out",
     },
   );
@@ -437,7 +435,7 @@ export const openVideoModal = (id) => {
   // start video
   const player = document.getElementById("video");
   setTimeout(() => {
-    player.play();
+    //player.play();
   }, 500);
 };
 

@@ -111,30 +111,14 @@ const handleClick = (i) => {
       <!-- image -->
       <div class="right w-1/2" :class="num % 2 == 0 ? 'order-1' : 'order-2'">
         <div
-          class="image relative flex aspect-[1.0675] w-full items-center justify-center overflow-hidden rounded-base bg-skyblue p-side"
+          class="image relative flex w-full items-center justify-center overflow-hidden rounded-base"
         >
           <div
-            v-if="data.bgImage"
-            class="bg-image absolute inset-0 z-0 h-full w-full"
+            class="image-ph relative flex w-full items-center justify-center [&_img]:w-full"
           >
             <DatocmsImage
               v-if="data.bgImage"
               :data="data.bgImage.responsiveImage"
-            />
-          </div>
-
-          <!-- clouds -->
-          <template v-else>
-            <UICloud type="2" class="-left-[16rem] top-[44rem]" />
-            <UICloud type="2" class="-top-[25rem] left-[18rem]" />
-          </template>
-
-          <div
-            class="image-ph relative flex h-full w-full items-center justify-center [&_img]:h-full [&_img]:w-full [&_img]:object-contain"
-          >
-            <DatocmsImage
-              v-if="data.image"
-              :data="data.image.responsiveImage"
             />
           </div>
         </div>

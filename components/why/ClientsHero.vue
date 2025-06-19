@@ -14,7 +14,7 @@ if (props.items.length <= 3) {
 
 const handleClick = (item) => {
   if (item.video) {
-    openVideoModal(item.video.url);
+    openVideoModal(item.video);
   }
 };
 </script>

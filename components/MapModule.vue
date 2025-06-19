@@ -10,6 +10,14 @@ const coords = [
     x: "38.4rem",
     y: "63.6rem",
   },
+  {
+    x: "59rem",
+    y: "20.8rem",
+  },
+  {
+    x: "65rem",
+    y: "25.2rem",
+  },
 ];
 </script>
 

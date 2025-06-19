@@ -323,9 +323,6 @@ const SolutionCardsFragment = gql`
       cta {
         ...LinkFragment
       }
-      image {
-        ...ResponsiveImageFragment
-      }
       bgImage {
         ...ResponsiveImageFragment
       }

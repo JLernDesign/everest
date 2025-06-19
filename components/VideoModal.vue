@@ -3,31 +3,46 @@ import { VideoPlayer } from "vue-datocms";
 import gsap from "gsap";
 const videoID = useState("videoID");
 const video_ready = ref(false);
-const youtube = false;
-let player;
-
-const video = {
-  muxPlaybackId: "eEGj4gxptu02uldLwAD5j00RnAiNdWEFlD",
-  width: 1680,
-  height: 1002,
-  thumbhash: "8vcJBIAAJFaGiImXiIZxcCM/Ng==",
-  title: null,
-  alt: null,
-};
+let video, player, provider;
 
 onMounted(() => {
-  player = document.getElementById("video");
-
   watch(videoID, () => {
-    //url = videoID.value;
-    video_ready.value = true;
+    if (videoID.value) {
+      // set video and provider
+      if (videoID.value.file) {
+        // mux
+        video = videoID.value.file.video;
+        provider = "mux";
+      } else {
+        // youtube
+        video = videoID.value.external;
+        provider = videoID.value.external.provider;
+      }
+
+      // trigger render
+      video_ready.value = true;
+
+      // play video
+      setTimeout(() => {
+        // play mux video
+        player = document.getElementById("video");
+        if (provider == "mux") {
+          player.play();
+        }
+      }, 500);
+    }
   });
 });
 onUnmounted(() => {});
 
 const closeVideoModal = (id) => {
   video_ready.value = false;
-  player.pause();
+
+  // pause mux video
+  player = document.getElementById("video");
+  if (provider && provider == "mux") {
+    player.pause();
+  }
 
   const modal = document.getElementById("video-modal");
   const wrap = document.getElementById("video-player");
@@ -43,8 +58,6 @@ const closeVideoModal = (id) => {
   gsap.to(wrap, {
     duration: 0.35,
     opacity: 0,
-    xPercent: 10,
-    yPercent: -10,
     ease: "power3.in",
   });
 };
@@ -65,6 +78,7 @@ const closeVideoModal = (id) => {
       >
         <!-- raw video -->
         <VideoPlayer
+          v-if="video_ready && provider == 'mux'"
           :data="video"
           id="video"
           accent-color="#FC5161"
@@ -73,22 +87,17 @@ const closeVideoModal = (id) => {
 
         <!-- youtube -->
         <ScriptYouTubePlayer
-          v-if="youtube == true"
+          v-if="video_ready && provider == 'youtube'"
           trigger="visible"
           width="100%"
           height="auto"
           :player-vars="{ autoplay: true, rel: 0 }"
-          class="overflow-hidden rounded-base"
-          :video-id="videoID"
+          class="h-full w-full overflow-hidden rounded-base"
+          :video-id="video.providerUid"
           ref="yt_player"
         />
-        <!--  <video
-          id="video"
-          class="absolute h-full w-full overflow-hidden rounded-base object-contain"
-          controls
-        >
-          <source :src="url" type="video/mp4" />
-        </video> -->
+
+        <!-- close button -->
         <button
           class="absolute -right-[2.5rem] -top-[5rem] size-[3rem]"
           @click="closeVideoModal"
