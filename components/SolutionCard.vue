@@ -110,12 +110,8 @@ const handleClick = (i) => {
 
       <!-- image -->
       <div class="right w-1/2" :class="num % 2 == 0 ? 'order-1' : 'order-2'">
-        <div
-          class="image relative flex w-full items-center justify-center overflow-hidden rounded-base"
-        >
-          <div
-            class="image-ph relative flex w-full items-center justify-center [&_img]:w-full"
-          >
+        <div class="image relative w-full overflow-hidden rounded-base">
+          <div class="relative w-full [&_img]:w-full">
             <DatocmsImage
               v-if="data.bgImage"
               :data="data.bgImage.responsiveImage"

@@ -2,9 +2,6 @@
 const props = defineProps(["theme", "data", "template"]);
 
 const main = ref(null);
-let slide_els;
-/* const os = 13;
-const pos = [0, "-13rem", "-26rem", "26rem", "13rem"]; */
 
 const duplicated = computed(() => {
   if (props.data.modules.length >= 4) {
@@ -19,15 +16,6 @@ const duplicated = computed(() => {
   }
 
   return duplicates;
-});
-
-onMounted(() => {
-  slide_els = qsa(".item", main.value.$el);
-  //slide_els.reverse();
-
-  slide_els.forEach((slide, i) => {
-    //slide.style.marginTop = pos[i];
-  });
 });
 </script>
 
@@ -52,35 +40,39 @@ onMounted(() => {
 
     <!-- slider -->
     <Carousel
-      class="slider-wrap ml-[9.65rem] mt-[16.5rem] !h-[82rem] -rotate-[15deg] space-x-[9rem]"
+      class="slider-wrap ml-[2.5rem] mt-[16.5rem] !h-[82rem] -rotate-[15deg] space-x-[0]"
       :drag="true"
     >
       <div
         v-for="(slide, i) in duplicated"
-        class="item z-1 h-[62.8rem] w-[45.5rem] shrink-0 rotate-[15deg] rounded-base p-[3.2rem] pt-[3.75rem]"
-        :class="bgColor(slide)"
+        class="item z-1 h-[62.8rem] w-[56.5rem] shrink-0 px-[5.5rem]"
       >
-        <h3 class="relative font-barlow-cond text-sm font-bold leading-[.95]">
-          <IconTri color="fill-black" class="mb-[1.35rem]" />
-          <span v-html="slide.headline"></span>
-        </h3>
-
-        <!-- illustration -->
         <div
-          class="illus absolute left-0 top-[20rem] z-0 flex w-full justify-center"
+          class="relative h-full w-full rotate-[15deg] rounded-base p-[3.2rem] pt-[3.75rem]"
+          :class="bgColor(slide)"
         >
-          <img
-            v-if="slide.image"
-            :src="slide.image.url"
-            alt=""
-            class="h-auto w-[22rem] object-contain"
-          />
-        </div>
+          <h3 class="relative font-barlow-cond text-sm font-bold leading-[.95]">
+            <IconTri color="fill-black" class="mb-[1.35rem]" />
+            <span v-html="slide.headline"></span>
+          </h3>
 
-        <div
-          class="absolute bottom-0 left-0 z-1 h-auto w-full p-[3.2rem] text-body-sm leading-sm"
-        >
-          <span v-html="formatText(slide.body)"></span>
+          <!-- illustration -->
+          <div
+            class="illus absolute left-0 top-[20rem] z-0 flex w-full justify-center"
+          >
+            <img
+              v-if="slide.image"
+              :src="slide.image.url"
+              alt=""
+              class="h-auto w-[22rem] object-contain"
+            />
+          </div>
+
+          <div
+            class="absolute bottom-0 left-0 z-1 h-auto w-full p-[3.2rem] text-body-sm leading-sm"
+          >
+            <span v-html="formatText(slide.body)"></span>
+          </div>
         </div>
       </div>
       <!-- <div class="item end-spacer w-0 shrink-0"></div> -->
