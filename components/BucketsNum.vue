@@ -47,7 +47,7 @@ const handleNext = () => {
           <div
             v-for="(item, i) in data.buckets"
             class="item"
-            :class="slider && 'px-[3rem]'"
+            :class="slider && 'px-[2.9rem]'"
           >
             <div
               class="bucket h-full w-[45.5rem] rounded-base bg-shadowbluelt p-[3rem]"

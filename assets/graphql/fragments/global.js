@@ -184,7 +184,7 @@ const PressCalloutFragment = gql`
     __typename
   }
 `;
-const ClientSuccessFragment = gql`
+export const ClientSuccessFragment = gql`
   fragment ClientSuccessFragment on ClientSuccessModuleRecord {
     __typename
     header {

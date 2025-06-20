@@ -2,6 +2,7 @@
 import { Image as DatocmsImage } from "vue-datocms";
 
 const props = defineProps(["theme", "nav", "data", "num", "template"]);
+console.log(props.nav);
 </script>
 
 <template>

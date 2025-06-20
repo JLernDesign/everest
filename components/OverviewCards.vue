@@ -17,7 +17,7 @@ const props = defineProps(["theme", "header", "nav", "data"]);
       <OverviewCard
         v-for="(item, i) in data.sections"
         :theme="theme"
-        :nav="nav"
+        :nav="true"
         :data="item"
         :num="i + 1"
       />

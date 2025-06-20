@@ -1,15 +1,49 @@
 <script setup>
+import gql from "graphql-tag";
+import {
+  ClientSuccessFragment,
+  HeaderFragment,
+  ResponsiveImageFragment,
+  LinkFragment,
+} from "~/assets/graphql/fragments/global";
+
 const props = defineProps(["theme", "data"]);
 const active = 0;
+let page_data;
+
+// check for new data
+if (props.data.slides && props.data.slides.length > 0) {
+  page_data = props.data;
+} else {
+  // use fallback data
+  const fallbackQuery = gql`
+    query {
+      global {
+        clientSuccessModule {
+          ...ClientSuccessFragment
+        }
+      }
+    }
+    ${ClientSuccessFragment}
+    ${HeaderFragment}
+    ${ResponsiveImageFragment}
+    ${LinkFragment}
+  `;
+
+  const { data } = await useGraphqlQuery({
+    query: fallbackQuery.loc.source.body,
+  });
+  page_data = data.value.global.clientSuccessModule;
+}
 </script>
 
 <template>
   <Section
     :theme="theme"
     class="bg-jaffa pb-section-bot"
-    :class="data.jaggedEdge && 'mt-[26.8rem] !pt-8'"
+    :class="page_data.jaggedEdge && 'mt-[26.8rem] !pt-8'"
   >
-    <template v-if="data.jaggedEdge">
+    <template v-if="page_data.jaggedEdge">
       <UIGlow
         class="-top-[35rem] -z-1 h-[35rem] overflow-hidden blur-big"
         src="/ui/callout-bot-gradient.svg"
@@ -20,38 +54,38 @@ const active = 0;
       <UIJagEdge color="fill-jaffa" />
     </template>
 
-    <SectionHeader :theme="theme" :data="data.header" />
+    <SectionHeader :theme="theme" :data="page_data.header" />
 
     <!-- slide module -->
     <div
       class="mt-md flex"
-      v-if="data.slides && data.slides.length > 0"
-      :class="data.slides.length > 1 && 'divide-x-1 divide-grayline'"
+      v-if="page_data.slides && page_data.slides.length > 0"
+      :class="page_data.slides.length > 1 && 'divide-x-1 divide-grayline'"
     >
       <!-- left -->
       <div class="col lt w-[27.5%] overflow-hidden px-[10rem]">
-        <template v-if="data.slides[active + 2]">
+        <template v-if="page_data.slides[active + 2]">
           <div
-            v-if="data.slides[active + 2].media.image"
+            v-if="page_data.slides[active + 2].media.image"
             class="photo aspect-[1.57] w-full overflow-hidden rounded-base"
           >
             <!-- image -->
-            <img :src="data.slides[active + 2].media.image.url" alt="" />
+            <img :src="page_data.slides[active + 2].media.image.url" alt="" />
           </div>
 
           <!-- name -->
           <div
-            v-if="data.slides[active + 2].name"
+            v-if="page_data.slides[active + 2].name"
             class="slide-text mt-10 text-body-xsm"
           >
-            <p class="font-helvb">{{ data.slides[active + 2].name }}</p>
-            <p>{{ data.slides[active + 2].title }}</p>
+            <p class="font-helvb">{{ page_data.slides[active + 2].name }}</p>
+            <p>{{ page_data.slides[active + 2].title }}</p>
           </div>
         </template>
 
         <!-- arrow -->
         <UISlideArrow
-          v-if="data.slides.length > 1"
+          v-if="page_data.slides.length > 1"
           dir="left"
           class="px-[10rem]"
         />
@@ -61,8 +95,8 @@ const active = 0;
       <div class="col main w-[45%] overflow-hidden px-[10rem]">
         <div class="photo aspect-[1.57] w-full overflow-hidden rounded-base">
           <img
-            v-if="data.slides[active].media.image"
-            :src="data.slides[active].media.image.url"
+            v-if="page_data.slides[active].media.image"
+            :src="page_data.slides[active].media.image.url"
             class="w-full"
             alt=""
           />
@@ -74,11 +108,11 @@ const active = 0;
         <div class="slide-text">
           <!-- stats -->
           <div
-            v-if="data.slides[active].statsGroup"
+            v-if="page_data.slides[active].statsGroup"
             class="stats mb-side flex space-x-14 leading-[1]"
           >
             <div
-              v-for="stat in data.slides[active].statsGroup.stats"
+              v-for="stat in page_data.slides[active].statsGroup.stats"
               class="stat-item flex items-end space-x-4"
             >
               <h3 class="font-barlow-cond text-sm font-bold">
@@ -89,21 +123,21 @@ const active = 0;
           </div>
 
           <!-- quote -->
-          <blockquote v-if="data.slides[active].quote">
-            “{{ data.slides[active].quote }}”
+          <blockquote v-if="page_data.slides[active].quote">
+            “{{ page_data.slides[active].quote }}”
           </blockquote>
           <div
             class="byline mt-[5.5rem] flex items-center justify-between text-body-xsm"
           >
-            <div v-if="data.slides[active].name">
-              <p class="font-helvb">{{ data.slides[active].name }}</p>
-              <p v-if="data.slides[active].title">
-                {{ data.slides[active].title }}
+            <div v-if="page_data.slides[active].name">
+              <p class="font-helvb">{{ page_data.slides[active].name }}</p>
+              <p v-if="page_data.slides[active].title">
+                {{ page_data.slides[active].title }}
               </p>
             </div>
             <UILogo
-              v-if="data.slides[active].logo"
-              :src="data.slides[active].logo.url"
+              v-if="page_data.slides[active].logo"
+              :src="page_data.slides[active].logo.url"
               class="!h-14"
             />
           </div>
@@ -112,28 +146,28 @@ const active = 0;
 
       <!-- right -->
       <div class="col rt w-[27.5%] overflow-hidden px-[10rem]">
-        <template v-if="data.slides[active + 1]">
+        <template v-if="page_data.slides[active + 1]">
           <div
-            v-if="data.slides[active + 1].media.image"
+            v-if="page_data.slides[active + 1].media.image"
             class="photo aspect-[1.57] w-full overflow-hidden rounded-base"
           >
             <!-- image -->
-            <img :src="data.slides[active + 1].media.image.url" alt="" />
+            <img :src="page_data.slides[active + 1].media.image.url" alt="" />
           </div>
 
           <!-- name -->
           <div
-            v-if="data.slides[active + 1].name"
+            v-if="page_data.slides[active + 1].name"
             class="slide-text mt-10 text-body-xsm"
           >
-            <p class="font-helvb">{{ data.slides[active + 1].name }}</p>
-            <p>{{ data.slides[active + 1].title }}</p>
+            <p class="font-helvb">{{ page_data.slides[active + 1].name }}</p>
+            <p>{{ page_data.slides[active + 1].title }}</p>
           </div>
         </template>
 
         <!-- arrow -->
         <UISlideArrow
-          v-if="data.slides.length > 1"
+          v-if="page_data.slides.length > 1"
           dir="right"
           class="px-[10rem]"
         />

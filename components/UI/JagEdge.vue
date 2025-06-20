@@ -3,7 +3,9 @@ const props = defineProps(["color"]);
 </script>
 
 <template>
-  <div class="absolute -top-[26.6rem] left-0 z-1 h-[26.8rem] w-full">
+  <div
+    class="pointer-events-none absolute -top-[26.6rem] left-0 z-1 h-[26.8rem] w-full"
+  >
     <svg
       id="uuid-a7e36ef3-9a73-4651-a660-54067f565c41"
       xmlns="http://www.w3.org/2000/svg"
