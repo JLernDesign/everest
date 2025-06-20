@@ -7,7 +7,7 @@ console.log(props.nav);
 
 <template>
   <div
-    class="overview-card dark relative w-full border-b px-side-mob py-[11rem] s:px-side"
+    class="overview-card dark relative w-full border-b px-side-mob py-[11rem] s:px-[20rem]"
     :class="
       theme == 'dark'
         ? 'border-[#3D4856] bg-shadowblue'
@@ -16,7 +16,7 @@ console.log(props.nav);
   >
     <div class="content relative z-1 flex justify-between">
       <!-- text -->
-      <div class="left flex w-1/2 items-center pl-[11.5rem]">
+      <div class="left flex w-1/2 items-center">
         <div class="num absolute left-0 top-0 mb-[11rem]">
           <IconTri color="fill-red" />
           <div class="font-barlow-cond text-num font-bold opacity-30">

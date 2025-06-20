@@ -135,10 +135,12 @@ const hideSticky = () => {
     ref="header"
   >
     <!-- logo -->
-    <div class="logo-main absolute z-5 pl-side pt-[4.25rem]">
+    <div
+      class="logo-main absolute z-5 pl-side-mob pt-[1.5rem] s:pl-side s:pt-[4.25rem]"
+    >
       <NuxtLink
         to="/"
-        class="block h-[8.1rem] w-[9.4rem] origin-top-left"
+        class="block h-[5.3rem] w-[6.2rem] origin-top-left s:h-[8.1rem] s:w-[9.4rem]"
         ref="logo_wrap"
       >
         <IconLogo ref="logo" :theme="theme" />
@@ -146,17 +148,17 @@ const hideSticky = () => {
     </div>
 
     <!-- nav -->
-    <div class="nav-wrap grid w-full justify-center pt-[6rem]">
+    <div class="nav-wrap hidden w-full justify-center pt-[6rem] s:grid">
       <div class="relative grid place-content-center px-[5rem] py-[1.25rem]">
         <div
-          class="navbg shadow-nav absolute -top-[1px] left-0 h-full w-full rounded-btn border-1 border-jaffalt bg-jaffa opacity-0"
+          class="navbg absolute -top-[1px] left-0 h-full w-full rounded-btn border-1 border-jaffalt bg-jaffa opacity-0 shadow-nav"
         ></div>
         <Nav type="main" :data="menu.main" />
       </div>
     </div>
 
     <!-- cta / login -->
-    <div class="cta-wrap absolute right-0 top-0 pr-side pt-10">
+    <div class="cta-wrap absolute right-0 top-0 hidden pr-side pt-10 s:block">
       <div
         class="lang mb-[1.65rem] flex justify-end space-x-8 text-[1.3rem] uppercase"
       >

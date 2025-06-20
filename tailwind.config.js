@@ -117,6 +117,7 @@ export default {
       margin: {
         sm: "1.875rem",
         side: "4rem",
+        "side-mob": "2rem",
         btn: "5rem",
         md: "7rem",
       },
