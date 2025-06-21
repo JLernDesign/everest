@@ -10,7 +10,7 @@ const props = defineProps(["data"]);
     >
       <!-- text -->
       <div
-        class="text relative flex w-full space-y-10 pt-4 s:w-1/2 s:space-y-14 max-s:order-2 max-s:mt-10 max-s:flex-col max-s:pb-[3.5rem]"
+        class="text relative w-full space-y-10 pt-4 s:w-1/2 s:space-y-14 max-s:order-2 max-s:mt-10 max-s:pb-[3.5rem]"
       >
         <h2
           v-if="data.headline"
