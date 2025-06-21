@@ -5,20 +5,20 @@ const props = defineProps({ data: { default: null }, icon: { default: true } });
 <template>
   <!-- header -->
   <header
-    class="relative border-y border-grayline pb-[5rem] pt-[4.5rem] text-center"
+    class="relative border-y border-grayline pb-[3.5rem] pt-[4.5rem] text-center s:pb-[5rem] max-s:px-side-mob"
   >
     <!-- logo mark -->
     <div
       v-if="icon"
-      class="absolute -top-[4.25rem] left-1/2 -translate-x-1/2 bg-jaffa px-[2.2rem]"
+      class="absolute -top-[2rem] left-1/2 -translate-x-1/2 bg-jaffa px-[1.2rem] s:-top-[4.25rem] s:w-[6.8rem] s:px-[2.2rem]"
     >
-      <IconLogoMark class="w-[6.8rem]" />
+      <IconLogoMark class="s:w-[6.8rem] max-s:!w-[3.4rem]" />
     </div>
 
     <!-- side ornaments -->
     <div
       v-for="n in 2"
-      class="ornament absolute top-0 h-full w-[36.3rem] py-[1.2rem]"
+      class="ornament absolute top-0 hidden h-full w-[36.3rem] py-[1.2rem] s:block"
       :class="n == 1 ? 'left-0' : 'right-0 -scale-x-100'"
     >
       <img
@@ -28,10 +28,10 @@ const props = defineProps({ data: { default: null }, icon: { default: true } });
       />
     </div>
 
-    <h2 class="font-barlow-cond text-xxl uppercase leading-xxl">
+    <h2 class="font-barlow-cond text-xxl-mob uppercase leading-xxl s:text-xxl">
       {{ data.title }}
     </h2>
-    <p class="mt-[5rem] text-body-md">
+    <p class="text-body-md-mob mt-[2rem] s:mt-[5rem] s:text-body-md">
       {{ data.description }}
     </p>
   </header>

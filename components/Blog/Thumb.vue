@@ -4,19 +4,21 @@ const props = defineProps(["data"]);
 </script>
 
 <template>
-  <div class="thumb relative w-[60rem] bg-jaffa p-thumb pb-[15.6rem]">
+  <div
+    class="thumb relative w-full bg-jaffa p-side-mob pb-[15.6rem] s:w-[60rem] s:p-thumb"
+  >
     <!-- bg hover -->
     <div
       class="bg-hover absolute left-0 top-0 z-0 h-full w-full p-[1.6rem] opacity-0"
     >
       <div
-        class="h-full w-full rounded-base bg-jaffalt bg-opacity-25 p-thumb pb-[15.6rem]"
+        class="rounded-base-mob h-full w-full bg-jaffalt bg-opacity-25 p-thumb pb-[15.6rem] s:rounded-base"
       ></div>
     </div>
 
     <!-- image -->
     <div
-      class="thumb-img relative z-1 aspect-[1.3] overflow-hidden rounded-base"
+      class="thumb-img rounded-base-mob relative z-1 aspect-[1.3] overflow-hidden s:rounded-base"
     >
       <DatocmsImage
         v-if="data.image"
@@ -32,7 +34,7 @@ const props = defineProps(["data"]);
     <h3 class="relative z-1 mb-[1.2rem] font-helvb text-body leading-body">
       {{ data.title }}
     </h3>
-    <p class="relative z-1 text-body-sm leading-sm">
+    <p class="relative z-1 text-body-sm-mob leading-sm s:text-body-sm">
       {{ createExcerpt(data.intro, 30) }}
     </p>
 

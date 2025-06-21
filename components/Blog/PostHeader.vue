@@ -6,15 +6,15 @@ const props = defineProps(["data", "type"]);
 
 <template>
   <div
-    class="relative mx-auto flex w-full max-w-[141rem] rounded-base p-[2.5rem]"
+    class="rounded-base-mob relative mx-auto flex w-full max-w-[141rem] flex-col p-[2.5rem] s:flex-row s:rounded-base"
     :class="data.accentColor.bgColor ? bgColor(data.accentColor) : 'bg-tan'"
   >
     <!-- text -->
     <div
-      class="left relative w-1/2 py-[2.5rem] pb-[7.5rem] pl-side pr-[6.5rem]"
+      class="left relative w-full py-[2.5rem] pb-[7.5rem] pl-side pr-[6.5rem] s:w-1/2"
     >
       <BlogDetails :data="data" class="mb-[6.5rem]" />
-      <h1 class="mb-[3.2rem] font-helvb text-md leading-base">
+      <h1 class="text-md-mob mb-[3.2rem] font-helvb leading-base s:text-md">
         {{ data.title }}
       </h1>
       <p>{{ data.intro }}</p>
@@ -37,13 +37,15 @@ const props = defineProps(["data", "type"]);
             alt=""
             class="w-[5rem] overflow-hidden rounded-full"
           />
-          <p class="text-body-xsm">Author: {{ data.author.name }}</p>
+          <p class="text-body-xsm-mob s:text-body-xsm">
+            Author: {{ data.author.name }}
+          </p>
         </div>
       </template>
     </div>
 
     <!-- image -->
-    <div class="right relative w-1/2">
+    <div class="right relative w-full s:w-1/2">
       <div class="featured-image h-full w-full overflow-hidden rounded-sm">
         <DatocmsImage
           v-if="data.image"

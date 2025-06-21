@@ -6,7 +6,7 @@ const props = defineProps(["data"]);
   <div class="relative p-side">
     <!-- content -->
     <div
-      class="relative overflow-hidden rounded-base bg-[#FFD0B9] px-[11.5rem] py-[7rem]"
+      class="rounded-base-mob relative overflow-hidden bg-[#FFD0B9] px-[11.5rem] py-[7rem] s:rounded-base"
     >
       <!-- gradient -->
       <div
@@ -24,7 +24,7 @@ const props = defineProps(["data"]);
       <div class="text relative w-[65%]">
         <h2
           v-if="data.headline"
-          class="font-barlow-cond text-xl font-bold leading-xl"
+          class="text-xl-mob font-barlow-cond font-bold leading-xl s:text-xl"
           v-html="formatText(data.headline)"
         ></h2>
         <p

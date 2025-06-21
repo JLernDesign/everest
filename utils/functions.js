@@ -455,7 +455,7 @@ export const formatText = (str) => {
 };
 
 export const addLineBreaks = (str) => {
-  return str?.replaceAll("\n", "<br />");
+  return str?.replaceAll("\n", " <br />");
 };
 export const removeWidows = (string) => {
   if (!string || string.length < 0) {

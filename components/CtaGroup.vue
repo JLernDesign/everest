@@ -4,7 +4,7 @@ const props = defineProps(["data", "align", "theme"]);
 
 <template>
   <div
-    class="buttons flex items-center space-x-btn"
+    class="buttons space-x-btn-mob flex items-center s:space-x-btn"
     :class="align == 'center' ? 'items-center justify-center' : 'text-left'"
   >
     <template v-for="item in data">

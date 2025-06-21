@@ -138,7 +138,7 @@ const toggleSubMenu = (e) => {
       :to="type == 'main' && single ? getUrl(data) : null"
       :target="data.external && '_blank'"
       :data-parent="type == 'mobile' && submenu ? true : null"
-      class="toplink ul relative z-1 cursor-pointer text-body-sm after:bg-red"
+      class="toplink ul text-body-sm-mob relative z-1 cursor-pointer after:bg-red s:text-body-sm"
       :class="[
         type == 'main' && active == data.label ? 'on' : null,
         single && 'hover:text-red',

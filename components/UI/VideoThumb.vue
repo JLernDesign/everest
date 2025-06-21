@@ -3,7 +3,7 @@
 <template>
   <!-- thumb -->
   <div
-    class="relative grid aspect-[1.31] w-[33.5rem] place-content-center overflow-hidden rounded-base"
+    class="rounded-base-mob relative grid aspect-[1.31] place-content-center overflow-hidden s:w-[33.5rem] s:rounded-base"
   >
     <!-- slides -->
     <div class="slide absolute left-0 top-0 size-full">

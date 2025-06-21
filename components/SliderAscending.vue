@@ -31,51 +31,53 @@ const duplicated = computed(() => {
     <template v-if="data.background == 'blue'">
       <UICloud
         type="3"
-        class="-left-[53.3rem] top-[46.6rem] -scale-x-100 opacity-50"
+        class="-scale-x-100 opacity-50 s:-left-[53.3rem] s:top-[46.6rem]"
       />
-      <UICloud type="3" class="left-[93rem] top-0 -scale-x-100 opacity-50" />
+      <UICloud type="3" class="top-0 -scale-x-100 opacity-50 s:left-[93rem]" />
     </template>
 
     <SectionHeader :theme="theme" :data="data.header" />
 
     <!-- slider -->
     <Carousel
-      class="slider-wrap ml-[2.5rem] mt-[16.5rem] !h-[82rem] -rotate-[15deg] space-x-[0]"
+      class="slider-wrap ml-[1.2rem] mt-[5rem] !h-[56rem] -rotate-[15deg] space-x-[0] s:ml-[2.5rem] s:mt-[16.5rem] s:!h-[82rem]"
       :drag="true"
     >
+      <!-- slides -->
       <div
         v-for="(slide, i) in duplicated"
-        class="item z-1 h-[62.8rem] w-[56.5rem] shrink-0 px-[5.5rem]"
+        class="item z-1 h-[47.4rem] w-[35.2rem] shrink-0 px-[1.6rem] s:h-[62.8rem] s:w-[56.5rem] s:px-[5.5rem]"
       >
         <div
-          class="relative h-full w-full rotate-[15deg] rounded-base p-[3.2rem] pt-[3.75rem]"
+          class="rounded-base-mob relative h-full w-full rotate-[15deg] p-side-mob s:rounded-base s:p-[3.2rem] s:pt-[3.75rem]"
           :class="bgColor(slide)"
         >
-          <h3 class="relative font-barlow-cond text-sm font-bold leading-[.95]">
+          <h3
+            class="text-sm-mob relative font-barlow-cond font-bold leading-[.95] s:text-sm"
+          >
             <IconTri color="fill-black" class="mb-[1.35rem]" />
             <span v-html="slide.headline"></span>
           </h3>
 
           <!-- illustration -->
           <div
-            class="illus absolute left-0 top-[20rem] z-0 flex w-full justify-center"
+            class="illus absolute left-0 top-[12rem] z-0 flex w-full justify-center s:top-[20rem]"
           >
             <img
               v-if="slide.image"
               :src="slide.image.url"
               alt=""
-              class="h-auto w-[22rem] object-contain"
+              class="h-auto w-[15.2rem] object-contain s:w-[22rem]"
             />
           </div>
 
           <div
-            class="absolute bottom-0 left-0 z-1 h-auto w-full p-[3.2rem] text-body-sm leading-sm"
+            class="absolute bottom-0 left-0 z-1 h-auto w-full p-[3.2rem] text-body-sm-mob leading-sm s:text-body-sm"
           >
             <span v-html="formatText(slide.body)"></span>
           </div>
         </div>
       </div>
-      <!-- <div class="item end-spacer w-0 shrink-0"></div> -->
     </Carousel>
   </Section>
 </template>

@@ -16,7 +16,7 @@ const toggleMenu = (e) => {
 
 <template>
   <ul
-    class="mt-[2rem] w-[28rem] divide-y-1 divide-darkline border-b-1 border-t-1 border-darkline text-body-sm leading-[1] text-white"
+    class="mt-[2rem] w-[28rem] divide-y-1 divide-darkline border-b-1 border-t-1 border-darkline text-body-sm-mob leading-[1] text-white s:text-body-sm"
     ref="main"
   >
     <!-- link -->
@@ -31,7 +31,9 @@ const toggleMenu = (e) => {
       </button>
 
       <!-- sub menu -->
-      <ul class="submenu h-0 overflow-hidden pl-[1.2rem] text-body-xsm">
+      <ul
+        class="submenu text-body-xsm-mob h-0 overflow-hidden pl-[1.2rem] s:text-body-xsm"
+      >
         <span class="block space-y-5 pb-[2.25rem] pt-[1.75rem]">
           <li v-for="subitem in item.submenu">
             <NuxtLink :to="getUrl(subitem)">{{ subitem.label }}</NuxtLink>

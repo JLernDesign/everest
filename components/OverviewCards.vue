@@ -5,7 +5,7 @@ const props = defineProps(["theme", "header", "nav", "data"]);
 <template>
   <Section :theme="theme" side="none">
     <SectionHeader
-      class="border-b border-[#3D4856] bg-shadowblue px-side-mob pb-[11.5rem] s:px-side"
+      class="border-b border-[#3D4856] bg-shadowblue px-side-mob pb-[6rem] s:px-side s:pb-[11.5rem]"
       :data="data.header"
       theme="dark"
       ><UIGradientBot :theme="theme"

@@ -5,7 +5,7 @@ const props = defineProps(["data"]);
 
 <template>
   <Section class="py-side">
-    <div class="overflow-hidden rounded-base">
+    <div class="rounded-base-mob overflow-hidden s:rounded-base">
       <DatocmsImage v-if="data.image" :data="data.image.responsiveImage" />
     </div>
   </Section>

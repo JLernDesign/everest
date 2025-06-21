@@ -3,12 +3,14 @@
 <template>
   <div class="overflow-hidden bg-skyblue">
     <div class="mx-auto max-w-base space-y-10 px-side">
-      <div class="text-eyebrowb font-barlow-cond font-bold uppercase">
+      <div
+        class="text-eyebrow-mob s:text-eyebrowb font-barlow-cond font-bold uppercase"
+      >
         Quote to Cash
       </div>
 
       <div class="max-w-[80rem]">
-        <h1 class="font-barlow-cond text-xl font-bold leading-xl">
+        <h1 class="text-xl-mob font-barlow-cond font-bold leading-xl s:text-xl">
           Streamline every step from quote to cash.
         </h1>
         <p class="text-body">
@@ -18,7 +20,7 @@
       </div>
 
       <h2
-        class="text-center font-barlow-cond text-xxl font-semibold leading-xxl"
+        class="text-center font-barlow-cond text-xxl-mob font-semibold leading-xxl s:text-xxl"
       >
         A COMPLETELY REIMAGINED <br />
         <span
@@ -26,7 +28,7 @@
         ></span>
         ERP
       </h2>
-      <p class="text-md leading-md">
+      <p class="text-md-mob leading-md s:text-md">
         Why SaaS Leaders Choose Everest: Purpose-built for complex SaaS needs,
         powered by AI automation. Gain global visibility, ensure compliance, and
         access real-time metrics—faster and safer.
@@ -35,12 +37,12 @@
       <div class="space-x-btn">
         <a
           href="#"
-          class="relative border-black font-helvh text-body-sm font-extrabold text-black after:absolute after:bottom-[2px] after:left-0 after:h-[1px] after:w-full after:bg-black"
+          class="relative border-black font-helvh text-body-sm-mob font-extrabold text-black after:absolute after:bottom-[2px] after:left-0 after:h-[1px] after:w-full after:bg-black s:text-body-sm"
           >Product</a
         >
         <a
           href="#"
-          class="relative border-black font-helvh text-body-sm font-extrabold text-black after:absolute after:bottom-[2px] after:left-0 after:h-[1px] after:w-full after:bg-black"
+          class="relative border-black font-helvh text-body-sm-mob font-extrabold text-black after:absolute after:bottom-[2px] after:left-0 after:h-[1px] after:w-full after:bg-black s:text-body-sm"
           >Product</a
         >
         <CtaBtn to="#">Try Everest</CtaBtn>
@@ -48,7 +50,7 @@
 
       <!-- <a
       href="#"
-      class="text-body-sm font-helvh relative underline border-black font-extrabold text-black"
+      class="text-body-sm-mob s:text-body-sm font-helvh relative underline border-black font-extrabold text-black"
       >Product</a
     > -->
       <CtaBtn to="#">Try Everest</CtaBtn>
@@ -121,7 +123,9 @@
       <!-- header -->
       <header class="relative flex justify-between">
         <LineFull class="top-1/2" />
-        <div class="relative z-1 bg-jaffa px-5 text-body-sm">The Impact</div>
+        <div class="relative z-1 bg-jaffa px-5 text-body-sm-mob s:text-body-sm">
+          The Impact
+        </div>
         <div class="relative z-1 bg-jaffa px-5">
           <IconEyebrow color="fill-black" />
         </div>
@@ -130,8 +134,12 @@
       <!-- columns -->
       <div class="flex items-start justify-between pt-section-top">
         <!-- headline -->
-        <div class="w-[52rem] rounded-base bg-shadowblue p-side">
-          <h2 class="font-barlow-cond text-lg leading-lg text-lightblue">
+        <div
+          class="rounded-base-mob w-[52rem] bg-shadowblue p-side s:rounded-base"
+        >
+          <h2
+            class="font-barlow-cond text-lg-mob leading-lg text-lightblue s:text-lg"
+          >
             Powering smarter decisions, stronger margins, and faster growth.
           </h2>
         </div>
@@ -140,7 +148,7 @@
         <div class="w-[79.4rem] space-y-[3.6rem]">
           <!-- text -->
           <div
-            class="bullets lines rounded-base bg-[url(/ui/mt-blue@2x.jpg)] bg-cover p-[2rem] pb-[2.5rem] [&_ul]:divide-y-1 [&_ul]:divide-grayline [&_ul]:border-y-1 [&_ul]:border-grayline"
+            class="bullets lines rounded-base-mob bg-[url(/ui/mt-blue@2x.jpg)] bg-cover p-[2rem] pb-[2.5rem] s:rounded-base [&_ul]:divide-y-1 [&_ul]:divide-grayline [&_ul]:border-y-1 [&_ul]:border-grayline"
           >
             <div class="space-y-16 rounded-sm bg-jaffa p-[3.2rem]">
               <h3>
@@ -157,16 +165,24 @@
               </ul>
               <div class="stats flex">
                 <div class="stat w-1/2 space-y-5">
-                  <h3 class="font-barlow-cond text-xl font-bold leading-xl">
+                  <h3
+                    class="text-xl-mob font-barlow-cond font-bold leading-xl s:text-xl"
+                  >
                     100%
                   </h3>
-                  <p class="text-body-xsm">Awesome stat here</p>
+                  <p class="text-body-xsm-mob s:text-body-xsm">
+                    Awesome stat here
+                  </p>
                 </div>
                 <div class="stat w-1/2 space-y-5">
-                  <h3 class="font-barlow-cond text-xl font-bold leading-xl">
+                  <h3
+                    class="text-xl-mob font-barlow-cond font-bold leading-xl s:text-xl"
+                  >
                     2X
                   </h3>
-                  <p class="text-body-xsm">Awesome stat here</p>
+                  <p class="text-body-xsm-mob s:text-body-xsm">
+                    Awesome stat here
+                  </p>
                 </div>
               </div>
             </div>
@@ -195,7 +211,7 @@
     <Carousel>
       <div
         v-for="n in 5"
-        class="item grid w-[33.4%] shrink-0 cursor-grab place-content-center text-xl"
+        class="item text-xl-mob grid w-[33.4%] shrink-0 cursor-grab place-content-center s:text-xl"
       >
         {{ n }}
       </div>

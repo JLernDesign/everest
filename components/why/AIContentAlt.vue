@@ -33,7 +33,7 @@ const active = 0;
             {{ data.slides[active].title }}
           </h3>
           <span
-            class="text-body-sm leading-sm"
+            class="text-body-sm-mob leading-sm s:text-body-sm"
             v-html="formatText(data.slides[active].description)"
           ></span>
         </div>

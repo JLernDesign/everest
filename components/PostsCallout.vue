@@ -20,7 +20,7 @@ const selected = posts.slice(0, 3);
 
     <div class="relative z-1">
       <header class="pb-14 pt-12 text-center">
-        <h2 class="font-barlow-cond text-lg font-bold leading-lg">
+        <h2 class="text-lg-mob font-barlow-cond font-bold leading-lg s:text-lg">
           {{ data.headline }}
         </h2>
       </header>

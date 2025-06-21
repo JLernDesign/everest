@@ -11,10 +11,10 @@ const props = defineProps({
     class="relative z-1 w-full"
     :class="[
       theme == 'dark' && 'bg-shadowblue text-white',
-      hero ? 'pt-hero-top' : 'pt-section-top',
+      hero ? 'pt-hero-top' : 'pt-section-top-mob s:pt-section-top',
       side == 'normal' && 'px-side-mob s:px-side',
       side == 'lg' && 'px-side-lg',
-      side == 'none' && 'px-0',
+      side == 'none' && 'px-side-mob s:px-0',
     ]"
   >
     <slot />

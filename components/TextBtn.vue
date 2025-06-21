@@ -9,7 +9,7 @@ const hoverOff = () => {};
   <NuxtLink
     :to="data && getUrl(data)"
     :target="data?.external && '_blank'"
-    class="relative font-helvh text-body-sm after:absolute after:bottom-[2px] after:left-0 after:h-[1px] after:w-full"
+    class="text-body-sm-mob relative font-helvh after:absolute after:bottom-[2px] after:left-0 after:h-[1px] after:w-full s:text-body-sm"
     :class="
       color == 'black'
         ? 'text-black after:bg-black'

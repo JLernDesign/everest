@@ -7,17 +7,19 @@ console.log(props.nav);
 
 <template>
   <div
-    class="overview-card dark relative w-full border-b px-side-mob py-[11rem] s:px-[20rem]"
+    class="overview-card dark relative w-full border-b px-side-mob py-[6rem] s:px-[20rem] s:py-[11rem]"
     :class="
       theme == 'dark'
         ? 'border-[#3D4856] bg-shadowblue'
         : 'border-grayline bg-jaffa'
     "
   >
-    <div class="content relative z-1 flex justify-between">
+    <div class="content relative z-1 flex flex-col justify-between s:flex-row">
       <!-- text -->
-      <div class="left flex w-1/2 items-center">
-        <div class="num absolute left-0 top-0 mb-[11rem]">
+      <div
+        class="left flex w-full s:w-1/2 s:items-center max-s:order-2 max-s:mt-12 max-s:flex-col"
+      >
+        <div class="num left-0 top-0 mb-[2rem] s:absolute s:mb-[11rem]">
           <IconTri color="fill-red" />
           <div class="font-barlow-cond text-num font-bold opacity-30">
             {{ num < 10 ? "0" + num : num }}
@@ -27,7 +29,7 @@ console.log(props.nav);
         <!-- text contents -->
         <div class="max-w-[60rem]">
           <h3
-            class="mb-5 font-helvb text-md leading-sm-md"
+            class="text-md-mob mb-5 font-helvb leading-sm-md s:text-md"
             v-html="formatText(data.headline)"
           ></h3>
           <span
@@ -48,7 +50,7 @@ console.log(props.nav);
         <!-- slide nav -->
         <div
           v-if="nav"
-          class="slide-nav absolute bottom-0 left-0 w-[21rem] bg-[url(/public/ui/peak.png)] bg-contain bg-bottom bg-no-repeat"
+          class="slide-nav absolute bottom-0 left-0 hidden w-[21rem] bg-[url(/public/ui/peak.png)] bg-contain bg-bottom bg-no-repeat s:block"
         >
           <div class="flex w-full flex-col gap-y-6">
             <div
@@ -60,9 +62,9 @@ console.log(props.nav);
       </div>
 
       <!-- image -->
-      <div class="right w-1/2">
+      <div class="right w-full s:w-1/2 max-s:order-1">
         <div
-          class="image relative flex aspect-[1.0675] w-full items-center justify-center overflow-hidden rounded-base bg-skyblue p-[11.5rem]"
+          class="image rounded-base-mob relative flex aspect-[1.0675] w-full items-center justify-center overflow-hidden bg-skyblue p-[2rem] s:rounded-base s:p-[11.5rem]"
         >
           <UICloud type="2" class="-left-[16rem] top-[44rem]" />
           <UICloud type="2" class="-top-[25rem] left-[18rem]" />

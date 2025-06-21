@@ -16,7 +16,9 @@ const props = defineProps(["layout", "data"]);
       "
     >
       <LineFull class="top-1/2" />
-      <div class="eyebrow relative z-1 bg-jaffa px-5 text-body-sm">
+      <div
+        class="eyebrow relative z-1 bg-jaffa px-5 text-body-sm-mob s:text-body-sm"
+      >
         {{ data.header.eyebrow }}
       </div>
       <div class="eyebrow relative z-1 -translate-y-1 bg-jaffa px-5">
@@ -26,16 +28,16 @@ const props = defineProps(["layout", "data"]);
 
     <!-- slides -->
     <div
-      class="mt-[10rem] flex justify-between overflow-hidden rounded-base bg-shadowblue"
+      class="rounded-base-mob mt-[10rem] flex flex-col justify-between overflow-hidden bg-shadowblue s:flex-row s:rounded-base"
     >
       <!-- text -->
       <div
-        class="text relative w-1/2 px-[5rem] pb-[14rem] pt-[11.5rem] text-white"
+        class="text relative w-full px-[5rem] pb-[14rem] pt-[11.5rem] text-white s:w-1/2"
         :class="layout == 'img-rt' ? 'order-1' : 'order-2'"
       >
         <div class="max-w-[575px] space-y-7">
           <h2
-            class="font-helvb text-md leading-[1.09]"
+            class="text-md-mob font-helvb leading-[1.09] s:text-md"
             v-html="formatText(data.header.headline)"
           ></h2>
           <p v-html="formatText(data.header.intro)"></p>
@@ -77,7 +79,7 @@ const props = defineProps(["layout", "data"]);
 
       <!-- image -->
       <div
-        class="image w-[48.5%] rounded-base bg-cover p-[13rem]"
+        class="image rounded-base-mob w-full bg-cover p-[13rem] s:w-[48.5%] s:rounded-base"
         :class="
           layout == 'img-rt'
             ? 'order-2 bg-[url(/ui/mt-red@2x.jpg)]'
@@ -85,7 +87,7 @@ const props = defineProps(["layout", "data"]);
         "
       >
         <div
-          class="flex h-full flex-col items-center rounded-base bg-jaffa p-[3.2rem] text-center text-body-sm leading-sm"
+          class="rounded-base-mob flex h-full flex-col items-center bg-jaffa p-[3.2rem] text-center text-body-sm-mob leading-sm s:rounded-base s:text-body-sm"
         >
           <div v-if="data.slides[0].icon" class="icon mb-[3rem] size-[12.2rem]">
             <img :src="data.slides[0].icon.url" alt="" />

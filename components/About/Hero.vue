@@ -39,13 +39,13 @@ if (props.stats.length <= 3) {
     >
       <div
         v-for="stat in duplicated"
-        class="item z-1 -ml-[1.2rem] h-[27.7rem] w-[40rem] shrink-0 rotate-[15deg] rounded-base bg-white p-[3.2rem] pt-[3.75rem] text-left"
+        class="item rounded-base-mob z-1 -ml-[1.2rem] h-[27.7rem] w-[40rem] shrink-0 rotate-[15deg] bg-white p-[3.2rem] pt-[3.75rem] text-left s:rounded-base"
       >
         <IconTri color="fill-red" class="mb-[2.4rem]" />
-        <h3 class="font-barlow-cond text-xl font-bold leading-xl">
+        <h3 class="text-xl-mob font-barlow-cond font-bold leading-xl s:text-xl">
           {{ stat.figure }}
         </h3>
-        <p class="mt-[2.8rem] text-body-sm">
+        <p class="mt-[2.8rem] text-body-sm-mob s:text-body-sm">
           {{ stat.label }}
         </p>
       </div>

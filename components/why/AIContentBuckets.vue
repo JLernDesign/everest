@@ -10,10 +10,10 @@ const props = defineProps(["data"]);
         class="w-full border-x border-x-whiteline bg-[url(/why/ai-lines-bgfull.svg)] bg-cover px-side py-[11.2rem]"
       >
         <div
-          class="mx-auto w-[81rem] space-y-[2.5rem] rounded-base bg-shadowblue p-[6rem] text-center"
+          class="rounded-base-mob mx-auto w-[81rem] space-y-[2.5rem] bg-shadowblue p-[6rem] text-center s:rounded-base"
         >
           <h2
-            class="font-barlow-cond text-lg font-bold leading-lg"
+            class="font-barlow-cond text-lg-mob font-bold leading-lg s:text-lg"
             v-html="formatText(data.headline)"
           ></h2>
           <p v-html="formatText(data.intro)"></p>
@@ -26,10 +26,12 @@ const props = defineProps(["data"]);
       v-if="data.buckets"
       class="relative border-t border-t-whiteline px-side-lg"
     >
-      <div class="flex flex-wrap border-x border-x-whiteline">
+      <div
+        class="flex flex-col flex-wrap border-x border-x-whiteline s:flex-row"
+      >
         <div
           v-for="(bucket, i) in data.buckets"
-          class="bucket w-1/2 px-[8rem] py-[5rem]"
+          class="bucket w-full px-[8rem] py-[5rem] s:w-1/2"
           :class="[
             i > 1 && 'border-t border-t-whiteline',
             i % 1 == 0 && 'border-l border-l-whiteline',
@@ -42,12 +44,12 @@ const props = defineProps(["data"]);
             <img v-if="bucket.icon" :src="bucket.icon.url" alt="" />
           </div>
           <h3
-            class="font-barlow-cond text-sm font-bold leading-lg"
+            class="text-sm-mob font-barlow-cond font-bold leading-lg s:text-sm"
             :class="accentColor(bucket)"
             v-html="formatText(bucket.headline)"
           ></h3>
           <p
-            class="mt-[1.8rem] text-body-sm leading-sm"
+            class="mt-[1.8rem] text-body-sm-mob leading-sm s:text-body-sm"
             v-html="formatText(bucket.description)"
           ></p>
         </div>

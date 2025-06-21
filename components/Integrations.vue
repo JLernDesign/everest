@@ -12,13 +12,15 @@ const active = ref(0);
     />
 
     <!-- content -->
-    <div class="mt-[10rem] flex">
+    <div class="mt-[10rem] flex flex-col s:flex-row">
       <!-- logo -->
-      <div class="w-1/2">
+      <div class="w-full s:w-1/2">
         <div
-          class="grid h-[42rem] w-full place-content-center rounded-base bg-[url(/ui/callout-texture@2x.jpg)] bg-[size:1717px_auto]"
+          class="rounded-base-mob grid h-[42rem] w-full place-content-center bg-[url(/ui/callout-texture@2x.jpg)] bg-[size:1717px_auto] s:rounded-base"
         >
-          <div class="flex h-[18rem] w-[28rem] rounded-base bg-jaffa">
+          <div
+            class="rounded-base-mob flex h-[18rem] w-[28rem] bg-jaffa s:rounded-base"
+          >
             <img
               v-if="data.groups[active].items[0].image"
               :src="data.groups[active].items[0].image.url"
@@ -30,9 +32,9 @@ const active = ref(0);
       </div>
 
       <!-- text -->
-      <div class="w-1/2 pl-[14rem] leading-[1]">
+      <div class="w-full pl-[14rem] leading-[1] s:w-1/2">
         <div
-          class="mb-[3rem] flex px-[2rem] font-barlow text-body-xsm uppercase opacity-40"
+          class="text-body-xsm-mob mb-[3rem] flex px-[2rem] font-barlow uppercase opacity-40 s:text-body-xsm"
         >
           <span class="w-[38%]">{{ data.groups[active].headerLeft }}</span>
           <span class="w-[62%]">{{ data.groups[active].headerRight }}</span>
@@ -41,9 +43,11 @@ const active = ref(0);
         <!-- items -->
         <div class="space-y-1">
           <template v-for="(item, i) in data.groups[active].items">
-            <div class="relative cursor-pointer text-body-sm">
+            <div
+              class="relative cursor-pointer text-body-sm-mob s:text-body-sm"
+            >
               <div
-                class="absolute -top-[.2rem] h-full w-full scale-y-0 rounded-base bg-white"
+                class="rounded-base-mob absolute -top-[.2rem] h-full w-full scale-y-0 bg-white s:rounded-base"
               ></div>
               <div class="relative flex px-[2rem] py-[1.2rem]">
                 <span class="w-[38%] pr-4">{{ item.name }}</span>

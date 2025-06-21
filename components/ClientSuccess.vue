@@ -67,7 +67,7 @@ if (props.data.slides && props.data.slides.length > 0) {
         <template v-if="page_data.slides[active + 2]">
           <div
             v-if="page_data.slides[active + 2].media.image"
-            class="photo aspect-[1.57] w-full overflow-hidden rounded-base"
+            class="photo rounded-base-mob aspect-[1.57] w-full overflow-hidden s:rounded-base"
           >
             <!-- image -->
             <img :src="page_data.slides[active + 2].media.image.url" alt="" />
@@ -76,7 +76,7 @@ if (props.data.slides && props.data.slides.length > 0) {
           <!-- name -->
           <div
             v-if="page_data.slides[active + 2].name"
-            class="slide-text mt-10 text-body-xsm"
+            class="slide-text text-body-xsm-mob mt-10 s:text-body-xsm"
           >
             <p class="font-helvb">{{ page_data.slides[active + 2].name }}</p>
             <p>{{ page_data.slides[active + 2].title }}</p>
@@ -93,7 +93,9 @@ if (props.data.slides && props.data.slides.length > 0) {
 
       <!-- active slide (center) -->
       <div class="col main w-[45%] overflow-hidden px-[10rem]">
-        <div class="photo aspect-[1.57] w-full overflow-hidden rounded-base">
+        <div
+          class="photo rounded-base-mob aspect-[1.57] w-full overflow-hidden s:rounded-base"
+        >
           <img
             v-if="page_data.slides[active].media.image"
             :src="page_data.slides[active].media.image.url"
@@ -115,10 +117,10 @@ if (props.data.slides && props.data.slides.length > 0) {
               v-for="stat in page_data.slides[active].statsGroup.stats"
               class="stat-item flex items-end space-x-4"
             >
-              <h3 class="font-barlow-cond text-sm font-bold">
+              <h3 class="text-sm-mob font-barlow-cond font-bold s:text-sm">
                 {{ stat.figure }}
               </h3>
-              <p class="text-body-xsm">{{ stat.label }}</p>
+              <p class="text-body-xsm-mob s:text-body-xsm">{{ stat.label }}</p>
             </div>
           </div>
 
@@ -127,7 +129,7 @@ if (props.data.slides && props.data.slides.length > 0) {
             “{{ page_data.slides[active].quote }}”
           </blockquote>
           <div
-            class="byline mt-[5.5rem] flex items-center justify-between text-body-xsm"
+            class="byline text-body-xsm-mob mt-[5.5rem] flex items-center justify-between s:text-body-xsm"
           >
             <div v-if="page_data.slides[active].name">
               <p class="font-helvb">{{ page_data.slides[active].name }}</p>
@@ -149,7 +151,7 @@ if (props.data.slides && props.data.slides.length > 0) {
         <template v-if="page_data.slides[active + 1]">
           <div
             v-if="page_data.slides[active + 1].media.image"
-            class="photo aspect-[1.57] w-full overflow-hidden rounded-base"
+            class="photo rounded-base-mob aspect-[1.57] w-full overflow-hidden s:rounded-base"
           >
             <!-- image -->
             <img :src="page_data.slides[active + 1].media.image.url" alt="" />
@@ -158,7 +160,7 @@ if (props.data.slides && props.data.slides.length > 0) {
           <!-- name -->
           <div
             v-if="page_data.slides[active + 1].name"
-            class="slide-text mt-10 text-body-xsm"
+            class="slide-text text-body-xsm-mob mt-10 s:text-body-xsm"
           >
             <p class="font-helvb">{{ page_data.slides[active + 1].name }}</p>
             <p>{{ page_data.slides[active + 1].title }}</p>

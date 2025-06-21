@@ -1,7 +1,7 @@
 /* fluid resizing */
 
 :root {
-  --size: 375;
+  --size: 393;
   --clamp: 11px;
   --global-font-size: clamp(
     1px,
@@ -57,13 +57,19 @@ html {
 body {
   font-family: theme("fontFamily.helv");
   font-weight: 400;
-  font-size: 2.2rem;
-  line-height: 1.31;
+  font-size: theme("fontSize.body");
+  line-height: theme("lineHeight.body");
   color: theme("colors.black");
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* background-color: theme("colors.skyblue"); */
 }
+@media (max-width: 649px) {
+  body {
+    font-size: theme("fontSize.body-mob");
+  }
+}
+
 ::-moz-selection {
   background: theme("colors.red");
 

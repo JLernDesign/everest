@@ -22,7 +22,9 @@ const toggleMenu = (id) => {
   <Section class="bg-shadowblue !py-side" theme="dark">
     <UITexture />
 
-    <div class="relative z-1 rounded-base bg-shadowblue px-[12rem] py-[8.5rem]">
+    <div
+      class="rounded-base-mob relative z-1 bg-shadowblue px-[12rem] py-[8.5rem] s:rounded-base"
+    >
       <SectionHeader theme="dark" :data="data.header" />
 
       <div class="faq-items relative mt-[9.5rem]" ref="main">

@@ -50,21 +50,21 @@ const handleNext = () => {
             :class="slider && 'px-[2.9rem]'"
           >
             <div
-              class="bucket h-full w-[45.5rem] rounded-base bg-shadowbluelt p-[3rem]"
+              class="bucket rounded-base-mob h-full w-[45.5rem] bg-shadowbluelt p-[3rem] s:rounded-base"
             >
               <IconTri color="fill-red" class="mb-4" />
               <div
-                class="num mb-12 font-barlow-cond text-xxl font-semibold leading-xxl text-shadowblue"
+                class="num mb-12 font-barlow-cond text-xxl-mob font-semibold leading-xxl text-shadowblue s:text-xxl"
               >
                 {{ "0" + (i + 1) }}
               </div>
               <h3
-                class="mb-7 font-barlow-cond text-sm font-bold leading-[.94] text-red"
+                class="text-sm-mob mb-7 font-barlow-cond font-bold leading-[.94] text-red s:text-sm"
               >
                 {{ item.headline }}
               </h3>
               <p
-                class="text-body-sm leading-sm text-white"
+                class="text-body-sm-mob leading-sm text-white s:text-body-sm"
                 v-html="formatText(item.description)"
               ></p>
             </div>

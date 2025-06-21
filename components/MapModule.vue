@@ -23,13 +23,15 @@ const coords = [
 
 <template>
   <Section>
-    <header class="relative z-1 space-y-header-lg text-center">
+    <header
+      class="space-y-header-mob relative z-1 text-center s:space-y-header-lg"
+    >
       <h2
-        class="font-barlow-cond text-xxl font-semibold uppercase leading-xxl"
+        class="font-barlow-cond text-xxl-mob font-semibold uppercase leading-xxl s:text-xxl"
         v-html="formatText(data.headline)"
       ></h2>
       <p
-        class="mx-auto max-w-[80rem] text-body-md leading-md"
+        class="text-body-md-mob mx-auto max-w-[80rem] leading-md s:text-body-md"
         v-html="formatText(data.intro)"
       ></p>
     </header>
@@ -55,7 +57,7 @@ const coords = [
       >
         <div
           v-if="i < 1 && 'hidden'"
-          class="pin-label absolute -top-[13rem] left-1/2 w-[26rem] -translate-x-1/2 rounded-base bg-jaffa p-[2.5rem] text-body-sm leading-sm shadow-submenu"
+          class="pin-label rounded-base-mob absolute -top-[13rem] left-1/2 w-[26rem] -translate-x-1/2 bg-jaffa p-[2.5rem] text-body-sm-mob leading-sm shadow-submenu s:rounded-base s:text-body-sm"
         >
           <span class="font-helvh">North America</span>
           <br />

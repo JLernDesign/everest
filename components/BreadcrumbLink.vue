@@ -4,7 +4,7 @@ const props = defineProps(["data", "num"]);
 
 <template>
   <button
-    class="relative bg-gradient-to-r from-red to-red bg-[length:0%_1px] bg-[position:0%_80%] bg-no-repeat text-body-sm"
+    class="text-body-sm-mob relative bg-gradient-to-r from-red to-red bg-[length:0%_1px] bg-[position:0%_80%] bg-no-repeat s:text-body-sm"
     :class="num == 0 && 'on'"
   >
     <div

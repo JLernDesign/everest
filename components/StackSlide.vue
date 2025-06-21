@@ -22,7 +22,7 @@ defineExpose({ setInactive }); */
 
 <template>
   <div
-    class="slide absolute left-0 top-0 w-full rounded-base bg-white shadow-[4px_4px_20px_0px_rgba(0,0,0,0.03)]"
+    class="slide rounded-base-mob absolute left-0 top-0 w-full bg-white shadow-[4px_4px_20px_0px_rgba(0,0,0,0.03)] s:rounded-base"
     ref="main"
   >
     <!-- title -->
@@ -30,18 +30,24 @@ defineExpose({ setInactive }); */
       class="title flex w-full items-center justify-between border-b-1 border-b-grayline px-side pb-[2rem] pt-[2.6rem]"
     >
       <h3 class="w-[35%]">{{ data.name }}</h3>
-      <p class="w-[45%] text-body-xsm leading-sm">{{ data.title }}</p>
-      <p class="w-[20%] text-body-xsm leading-sm">{{ data.industry }}</p>
+      <p class="text-body-xsm-mob w-[45%] leading-sm s:text-body-xsm">
+        {{ data.title }}
+      </p>
+      <p class="text-body-xsm-mob w-[20%] leading-sm s:text-body-xsm">
+        {{ data.industry }}
+      </p>
     </div>
 
     <!-- photo/quote -->
     <div class="flex w-full items-start justify-between p-side">
       <div class="w-[35%] shrink-0">
-        <div class="w-[23.4rem] overflow-hidden rounded-base">
+        <div
+          class="rounded-base-mob w-[23.4rem] overflow-hidden s:rounded-base"
+        >
           <DatocmsImage v-if="data.image" :data="data.image.responsiveImage" />
         </div>
       </div>
-      <div class="w-auto text-body-sm leading-sm">
+      <div class="w-auto text-body-sm-mob leading-sm s:text-body-sm">
         <blockquote>
           {{ data.quote }}
         </blockquote>

@@ -10,12 +10,15 @@ const selected = posts.slice(0, 3);
 </script>
 
 <template>
-  <Section class="bg-jaffa pb-section-bot pt-section-top-lg" side="none">
+  <Section
+    class="bg-jaffa pb-section-bot pt-section-top-lg max-s:!px-0"
+    side="none"
+  >
     <BlogHeader :data="page" />
 
     <!-- thumbs -->
     <div
-      class="flex w-full divide-x-1 divide-grayline border-y border-grayline"
+      class="flex w-full flex-col divide-x-1 divide-grayline border-y border-grayline s:flex-row"
     >
       <BlogThumb v-for="(item, i) in selected" :data="item" />
     </div>

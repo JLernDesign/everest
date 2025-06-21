@@ -40,15 +40,15 @@ const handleClick = (i) => {
       </div>
     </div>
 
-    <div class="content relative z-1 flex justify-between">
+    <div class="content relative z-1 flex flex-col justify-between s:flex-row">
       <div
-        class="left flex w-1/2 items-center"
+        class="left flex w-full items-center s:w-1/2"
         :class="num % 2 == 0 ? 'order-2 justify-end' : 'order-1'"
       >
         <!-- text contents -->
         <div class="w-full max-w-[52.5rem]">
           <h3
-            class="mb-5 font-helvb text-md leading-sm-md"
+            class="text-md-mob mb-5 font-helvb leading-sm-md s:text-md"
             v-html="formatText(data.headline)"
           ></h3>
           <span
@@ -75,12 +75,14 @@ const handleClick = (i) => {
                 <div class="h-7"></div>
               </div>
               <h4
-                class="font-helvb text-body-sm leading-base transition-colors duration-300 group-hover:text-red"
+                class="font-helvb text-body-sm-mob leading-base transition-colors duration-300 group-hover:text-red s:text-body-sm"
               >
                 {{ bullet.title }}
               </h4>
               <div class="bullet-wrap relative h-0 overflow-hidden">
-                <p class="pb-6 pt-4 text-body-sm leading-body">
+                <p
+                  class="pb-6 pt-4 text-body-sm-mob leading-body s:text-body-sm"
+                >
                   {{ bullet.text }}
                 </p>
               </div>
@@ -88,12 +90,17 @@ const handleClick = (i) => {
           </div>
 
           <!-- stats -->
-          <div v-if="data.stats" class="stats mt-8 flex">
-            <div v-for="item in data.stats.stats" class="stat w-1/2 space-y-5">
-              <h3 class="font-barlow-cond text-xl font-bold leading-xl">
+          <div v-if="data.stats" class="stats mt-8 flex flex-col s:flex-row">
+            <div
+              v-for="item in data.stats.stats"
+              class="stat w-full space-y-5 s:w-1/2"
+            >
+              <h3
+                class="text-xl-mob font-barlow-cond font-bold leading-xl s:text-xl"
+              >
                 {{ item.figure }}
               </h3>
-              <p class="text-body-xsm">{{ item.label }}</p>
+              <p class="text-body-xsm-mob s:text-body-xsm">{{ item.label }}</p>
             </div>
           </div>
 
@@ -109,8 +116,13 @@ const handleClick = (i) => {
       </div>
 
       <!-- image -->
-      <div class="right w-1/2" :class="num % 2 == 0 ? 'order-1' : 'order-2'">
-        <div class="image relative w-full overflow-hidden rounded-base">
+      <div
+        class="right w-full s:w-1/2"
+        :class="num % 2 == 0 ? 'order-1' : 'order-2'"
+      >
+        <div
+          class="image rounded-base-mob relative w-full overflow-hidden s:rounded-base"
+        >
           <div class="relative w-full [&_img]:w-full">
             <DatocmsImage
               v-if="data.bgImage"

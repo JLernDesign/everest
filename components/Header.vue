@@ -130,7 +130,7 @@ const hideSticky = () => {
 
 <template>
   <header
-    class="fixed z-20 h-[12rem] w-full"
+    class="absolute z-20 h-[12rem] w-full s:fixed"
     :class="theme == 'dark' && !scrolled ? 'text-white' : null"
     ref="header"
   >

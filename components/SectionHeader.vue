@@ -12,7 +12,7 @@ const props = defineProps({
 <template>
   <header
     v-if="data"
-    class="relative z-5 space-y-header"
+    class="space-y-header-mob relative z-5 s:space-y-header"
     :class="[
       align == 'left' ? 'text-left' : 'text-center',
       theme == 'dark' && 'text-white',
@@ -22,25 +22,25 @@ const props = defineProps({
     <!-- eyebrow -->
     <div
       v-if="data.eyebrow"
-      class="eyebrow flex flex-col items-center justify-center space-y-[1.8rem]"
+      class="eyebrow flex flex-col items-center justify-center space-y-[1.8rem] max-s:mb-[4.5rem]"
     >
       <IconEyebrow :color="theme == 'dark' ? 'fill-white' : 'fill-black'" />
-      <h3 class="text-eyebrow">{{ data.eyebrow }}</h3>
+      <h3 class="text-eyebrow-mob s:text-eyebrow">{{ data.eyebrow }}</h3>
     </div>
 
     <!-- header / intro -->
     <div
-      class="has-break space-y-[2.5rem]"
+      class="has-break space-y-[2rem] s:space-y-[2.5rem]"
       :class="align == 'center' && 'mx-auto max-w-[100rem]'"
     >
       <h1
         v-if="hero"
-        class="!mb-12 font-barlow-cond text-xl font-bold leading-xl"
+        class="text-xl-mob !mb-12 font-barlow-cond font-bold leading-xl s:text-xl"
         v-html="formatText(data.headline)"
       ></h1>
       <h2
         v-else
-        class="font-barlow-cond text-lg font-bold leading-lg"
+        class="font-barlow-cond text-lg-mob font-bold leading-lg s:text-lg"
         v-html="formatText(data.headline)"
       ></h2>
       <div class="max-w-[62rem]" :class="align == 'center' && 'mx-auto'">
@@ -54,7 +54,7 @@ const props = defineProps({
       :data="data.cta.buttons"
       :align="align"
       :theme="theme"
-      class="pt-6"
+      class="s:pt-6"
     />
 
     <!-- breadcrumb nav -->

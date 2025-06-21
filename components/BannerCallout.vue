@@ -3,16 +3,18 @@ const props = defineProps(["data"]);
 </script>
 
 <template>
-  <div class="relative px-side py-section-bot">
+  <div class="relative p-side-mob s:px-side s:py-section-bot">
     <!-- content -->
     <div
-      class="relative z-1 flex justify-between overflow-hidden rounded-base bg-shadowblue bg-[url(/ui/callout-texture@2x.jpg)] bg-cover p-[7rem] pl-[11.5rem] text-white"
+      class="rounded-base-mob relative z-1 flex flex-col justify-between overflow-hidden bg-shadowblue bg-[url(/ui/callout-texture-mob@2x.jpg)] bg-cover p-side-mob text-white s:flex-row s:rounded-base s:bg-[url(/ui/callout-texture@2x.jpg)] s:p-[7rem] s:pl-[11.5rem]"
     >
       <!-- text -->
-      <div class="text relative w-[50%] space-y-14 pt-4">
+      <div
+        class="text relative flex w-full space-y-10 pt-4 s:w-1/2 s:space-y-14 max-s:order-2 max-s:mt-10 max-s:flex-col max-s:pb-[3.5rem]"
+      >
         <h2
           v-if="data.headline"
-          class="font-barlow-cond text-lg font-bold leading-lg"
+          class="font-barlow-cond text-lg-mob font-bold leading-lg s:text-lg"
           v-html="formatText(data.headline)"
         ></h2>
         <p v-if="data.intro" v-html="formatText(data.intro)"></p>
@@ -27,7 +29,7 @@ const props = defineProps(["data"]);
 
       <!-- image 3D -->
       <div
-        class="relative h-[31rem] w-[59rem] overflow-hidden rounded-base bg-[url(/public/ui/callout-gradient@2x.png)] bg-cover"
+        class="rounded-base-mob relative h-[16rem] w-full overflow-hidden bg-[url(/public/ui/callout-gradient@2x.png)] bg-cover s:h-[31rem] s:w-[59rem] s:rounded-base max-s:order-1"
       ></div>
     </div>
   </div>

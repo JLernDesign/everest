@@ -46,7 +46,7 @@ const renderBlock = ({ record }) => {
       h("img", { src: record.image.url }),
       h(
         "figcaption",
-        { class: "block text-body-sm text-left !mt-6" },
+        { class: "block text-body-sm-mob s:text-body-sm text-left !mt-6" },
         record.caption,
       ),
     ]);
@@ -72,7 +72,7 @@ const renderBlock = ({ record }) => {
               "blockquote",
               {
                 class:
-                  "text-xl font-barlow-cond font-bold leading-xl text-center p-[8rem] rounded-base bg-jaffa",
+                  "text-xl-mob s:text-xl font-barlow-cond font-bold leading-xl text-center p-[8rem] rounded-base-mob s:rounded-base bg-jaffa",
               },
               record.text,
             ),
@@ -101,11 +101,13 @@ useHead(() => {
       <div class="z-2 h-0 w-[28.4rem]" ref="sidebar">
         <div class="menu relative">
           <div
-            class="cta relative overflow-hidden rounded-base bg-skyblue bg-[url(/public/blog/sidebar-callout@2x.png)] bg-cover pb-[3rem] pt-[21.2rem] text-center"
+            class="cta rounded-base-mob relative overflow-hidden bg-skyblue bg-[url(/public/blog/sidebar-callout@2x.png)] bg-cover pb-[3rem] pt-[21.2rem] text-center s:rounded-base"
           >
             <CtaBtn to="/">Try Everest</CtaBtn>
           </div>
-          <div class="mt-[2.4rem] rounded-base bg-shadowblue">
+          <div
+            class="rounded-base-mob mt-[2.4rem] bg-shadowblue s:rounded-base"
+          >
             <div class="border-b-1 border-b-whiteline py-5 text-center">
               <h3
                 class="h5 font-barlow-cond text-h5 font-bold uppercase text-jaffa"
@@ -140,7 +142,7 @@ useHead(() => {
       <div class="start-pin"></div>
       <div class="relative z-0 flex justify-end">
         <div
-          class="article bullets min-h-[80rem] w-[84rem] [&_*+*]:mt-[3.2rem] [&_*+h2]:mt-[9rem] [&_h2]:font-helvb [&_h2]:text-body-md [&_h3+p]:mt-[.5rem] [&_h3]:font-helvb [&_ul]:space-y-[1rem]"
+          class="article bullets [&_h2]:text-body-md-mob min-h-[80rem] w-[84rem] s:text-body-md [&_*+*]:mt-[3.2rem] [&_*+h2]:mt-[9rem] [&_h2]:font-helvb [&_h3+p]:mt-[.5rem] [&_h3]:font-helvb [&_ul]:space-y-[1rem]"
         >
           <DatocmsStructuredText
             :data="data.post.content"

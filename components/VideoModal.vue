@@ -82,7 +82,7 @@ const closeVideoModal = (id) => {
           :data="video"
           id="video"
           accent-color="#FC5161"
-          class="overflow-hidden rounded-base"
+          class="rounded-base-mob overflow-hidden s:rounded-base"
         />
 
         <!-- youtube -->
@@ -92,7 +92,7 @@ const closeVideoModal = (id) => {
           width="100%"
           height="auto"
           :player-vars="{ autoplay: true, rel: 0 }"
-          class="h-full w-full overflow-hidden rounded-base"
+          class="rounded-base-mob h-full w-full overflow-hidden s:rounded-base"
           :video-id="video.providerUid"
           ref="yt_player"
         />

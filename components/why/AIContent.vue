@@ -28,7 +28,9 @@ console.log(props.color);
       <div
         class="relative w-full border-x border-x-whiteline px-side py-[4.5rem]"
       >
-        <h2 class="relative font-barlow-cond text-lg font-bold leading-lg">
+        <h2
+          class="relative font-barlow-cond text-lg-mob font-bold leading-lg s:text-lg"
+        >
           {{ data.headline }}
           <IconArrowFill
             color="fill-red"

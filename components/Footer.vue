@@ -11,10 +11,10 @@ const investors = useState("investors", () => props.data.investors);
 
       <!-- columns -->
       <div
-        class="flex divide-x-1 divide-darkline border-r-1 border-r-darkline text-body-sm leading-sm text-white"
+        class="flex divide-x-1 divide-darkline border-r-1 border-r-darkline text-body-sm-mob leading-sm text-white s:text-body-sm"
       >
         <!-- text -->
-        <div class="col w-[32.5%] pr-[5rem]">
+        <div class="col flex w-[32.5%] pr-[5rem] max-s:flex-col">
           <div class="max-w-[43.5rem]">
             <p
               v-if="data.description"
@@ -84,7 +84,9 @@ const investors = useState("investors", () => props.data.investors);
       </div>
 
       <!-- legal -->
-      <div class="legal relative mt-[15rem] text-body-xsm text-white">
+      <div
+        class="legal text-body-xsm-mob relative mt-[15rem] text-white s:text-body-xsm"
+      >
         <ul class="flex items-center space-x-5">
           <li><NuxtLink to="/">Privacy Policy</NuxtLink></li>
           <li>•</li>

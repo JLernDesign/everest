@@ -6,7 +6,7 @@ const props = defineProps(["data"]);
 
 <template>
   <div
-    class="relative min-h-[43.8rem] rounded-base p-side"
+    class="rounded-base-mob relative min-h-[43.8rem] p-side s:rounded-base"
     :class="[
       data.style == 'two-col'
         ? 'col-span-2 pr-[2.5rem] pt-[2.5rem]'
@@ -19,7 +19,7 @@ const props = defineProps(["data"]);
       <!-- image -->
       <div
         v-if="data.image"
-        class="mb-side w-[19.5rem] overflow-hidden rounded-base"
+        class="rounded-base-mob mb-side w-[19.5rem] overflow-hidden s:rounded-base"
       >
         <DatocmsImage :data="data.image.responsiveImage" />
       </div>
@@ -29,11 +29,14 @@ const props = defineProps(["data"]);
         v-if="data.logo"
         :src="data.logo.url"
         alt=""
-        class="mb-side w-[19.5rem] overflow-hidden rounded-base"
+        class="rounded-base-mob mb-side w-[19.5rem] overflow-hidden s:rounded-base"
       />
 
       <!-- quote -->
-      <blockquote v-if="data.quote" class="text-body-sm leading-sm">
+      <blockquote
+        v-if="data.quote"
+        class="text-body-sm-mob leading-sm s:text-body-sm"
+      >
         “{{ data.quote }}”
       </blockquote>
     </template>
@@ -41,7 +44,7 @@ const props = defineProps(["data"]);
     <!-- big quote on color -->
     <template v-if="data.style == 'big-quote'">
       <blockquote
-        class="pt-10 font-barlow-cond text-sm font-bold leading-[.94]"
+        class="text-sm-mob pt-10 font-barlow-cond font-bold leading-[.94] s:text-sm"
       >
         <div class="quote lt absolute left-[2rem] top-[3rem]">“</div>
         <div class="quote rt absolute bottom-[6rem] right-[4rem]">”</div>
@@ -58,9 +61,12 @@ const props = defineProps(["data"]);
             v-if="data.logo"
             :src="data.logo.url"
             alt=""
-            class="mb-side w-[19.5rem] overflow-hidden rounded-base"
+            class="rounded-base-mob mb-side w-[19.5rem] overflow-hidden s:rounded-base"
           />
-          <blockquote v-if="data.quote" class="text-body-sm leading-sm">
+          <blockquote
+            v-if="data.quote"
+            class="text-body-sm-mob leading-sm s:text-body-sm"
+          >
             “{{ data.quote }}”
           </blockquote>
         </div>
@@ -70,7 +76,7 @@ const props = defineProps(["data"]);
           <DatocmsImage
             v-if="data.image"
             :data="data.image.responsiveImage"
-            class="overflow-hidden rounded-base"
+            class="rounded-base-mob overflow-hidden s:rounded-base"
           />
 
           <hr class="my-[3.25rem] text-black" />
@@ -81,10 +87,10 @@ const props = defineProps(["data"]);
               v-for="stat in data.statsGroup.stats"
               class="stat-item flex items-end space-x-4"
             >
-              <h3 class="font-barlow-cond text-sm font-bold">
+              <h3 class="text-sm-mob font-barlow-cond font-bold s:text-sm">
                 {{ stat.figure }}
               </h3>
-              <p class="text-body-xsm">{{ stat.label }}</p>
+              <p class="text-body-xsm-mob s:text-body-xsm">{{ stat.label }}</p>
             </div>
           </div>
         </div>
@@ -94,7 +100,7 @@ const props = defineProps(["data"]);
     <!-- byline -->
     <div
       v-if="data.name"
-      class="byline absolute bottom-0 pb-[3rem] text-body-xsm"
+      class="byline text-body-xsm-mob absolute bottom-0 pb-[3rem] s:text-body-xsm"
     >
       <strong class="block font-helvb">{{ data.name }}</strong>
       {{ data.title }}

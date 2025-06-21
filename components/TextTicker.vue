@@ -42,7 +42,7 @@ const toggle = (state) => {
 </script>
 
 <template>
-  <div class="ticker-wrap flex py-5" ref="main">
+  <div class="ticker-wrap flex py-10 s:py-5" ref="main">
     <div
       v-for="n in 2"
       class="ticker-group flex shrink-0 items-center space-x-nav pr-[4rem]"
