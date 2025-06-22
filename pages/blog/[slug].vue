@@ -142,7 +142,7 @@ useHead(() => {
       <div class="start-pin"></div>
       <div class="relative z-0 flex justify-end">
         <div
-          class="article bullets [&_h2]:text-body-md-mob min-h-[80rem] w-[84rem] s:text-body-md [&_*+*]:mt-[3.2rem] [&_*+h2]:mt-[9rem] [&_h2]:font-helvb [&_h3+p]:mt-[.5rem] [&_h3]:font-helvb [&_ul]:space-y-[1rem]"
+          class="article bullets [&_h2]:text-body-md-mob min-h-[80rem] w-[84rem] [&_*+*]:mt-[3.2rem] [&_*+h2]:mt-[9rem] [&_h2]:font-helvb [&_h2]:s:text-body-md [&_h3+p]:mt-[.5rem] [&_h3]:font-helvb [&_ul]:space-y-[1rem]"
         >
           <DatocmsStructuredText
             :data="data.post.content"

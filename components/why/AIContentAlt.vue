@@ -25,7 +25,7 @@ const active = 0;
       <div
         class="flex w-[43%] flex-col justify-between border-x border-x-whiteline"
       >
-        <div class="p-side">
+        <div class="p-side-mob s:p-side">
           <h3
             class="mb-[1.5rem] font-barlow-cond text-h5 font-bold uppercase"
             :class="accentColor(data.slides[active])"

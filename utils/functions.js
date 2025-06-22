@@ -471,7 +471,11 @@ export const removeWidows = (string) => {
 
   // wrap the last two words in a nobr
   const formattedLastWords =
-    "<nobr>" + words[totalWords - 2] + " " + words[totalWords - 1] + "</nobr>";
+    '<span class="nobr">' +
+    words[totalWords - 2] +
+    " " +
+    words[totalWords - 1] +
+    "</span>";
 
   // remove the last two words from the array
   words.splice(-2, 2);

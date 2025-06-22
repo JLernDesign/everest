@@ -6,15 +6,17 @@ const investors = useState("investors", () => props.data.investors);
 <template>
   <footer class="main relative">
     <!-- footer details -->
-    <div class="footer-details relative bg-shadowblue p-side-mob s:p-side">
+    <div
+      class="footer-details relative bg-shadowblue p-side-mob s:p-side s:p-side-mob"
+    >
       <UIJagEdge color="fill-shadowblue" />
 
       <!-- columns -->
       <div
-        class="flex divide-x-1 divide-darkline border-r-1 border-r-darkline text-body-sm-mob leading-sm text-white s:text-body-sm"
+        class="flex flex-col divide-x-1 divide-darkline border-r-1 border-r-darkline text-body-sm-mob leading-sm text-white s:flex-row s:text-body-sm"
       >
         <!-- text -->
-        <div class="col flex w-[32.5%] pr-[5rem] max-s:flex-col">
+        <div class="col flex w-full s:w-[32.5%] s:pr-[5rem] max-s:flex-col">
           <div class="max-w-[43.5rem]">
             <p
               v-if="data.description"
@@ -49,7 +51,7 @@ const investors = useState("investors", () => props.data.investors);
         </div>
 
         <!-- links -->
-        <div class="col w-[22.5%] px-[5rem]">
+        <div class="col w-full s:w-[22.5%] s:px-[5rem]">
           <div class="group">
             <!-- title -->
             <h3 class="font-barlow-cond text-[2.1rem] uppercase text-red">
@@ -62,7 +64,7 @@ const investors = useState("investors", () => props.data.investors);
         </div>
 
         <!-- contact -->
-        <div class="col w-[45.5%] pl-[5rem]">
+        <div class="col w-full s:w-[45.5%] s:pl-[5rem]">
           <h3 class="font-barlow-cond text-[2.1rem] uppercase text-red">
             Contact
           </h3>

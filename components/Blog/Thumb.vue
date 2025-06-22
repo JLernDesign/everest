@@ -5,7 +5,7 @@ const props = defineProps(["data"]);
 
 <template>
   <div
-    class="thumb relative w-full bg-jaffa p-side-mob pb-[15.6rem] s:w-[60rem] s:p-thumb"
+    class="thumb relative w-full bg-jaffa p-side-mob pb-[8rem] s:w-[60rem] s:p-thumb s:pb-[15.6rem]"
   >
     <!-- bg hover -->
     <div
@@ -31,7 +31,9 @@ const props = defineProps(["data"]);
     <BlogDetails class="mt-[3.2rem]" :data="data" />
 
     <!-- title -->
-    <h3 class="relative z-1 mb-[1.2rem] font-helvb text-body leading-body">
+    <h3
+      class="relative z-1 mb-[1.2rem] font-helvb text-body-mob leading-body s:text-body"
+    >
       {{ data.title }}
     </h3>
     <p class="relative z-1 text-body-sm-mob leading-sm s:text-body-sm">
@@ -39,7 +41,9 @@ const props = defineProps(["data"]);
     </p>
 
     <!-- arrow -->
-    <div class="arrow absolute bottom-0 right-0 z-1 pb-[3.5rem] pr-thumb">
+    <div
+      class="arrow absolute bottom-0 z-1 pb-[2rem] s:right-0 s:pb-[3.5rem] s:pr-thumb max-s:left-0 max-s:pb-[2rem] max-s:pl-side-mob"
+    >
       <IconArrow color="stroke-black" />
     </div>
 

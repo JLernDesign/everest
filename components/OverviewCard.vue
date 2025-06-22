@@ -7,7 +7,7 @@ console.log(props.nav);
 
 <template>
   <div
-    class="overview-card dark relative w-full border-b px-side-mob py-[6rem] s:px-[20rem] s:py-[11rem]"
+    class="overview-card dark relative w-full border-b px-0 py-[6rem] s:px-[20rem] s:py-[11rem]"
     :class="
       theme == 'dark'
         ? 'border-[#3D4856] bg-shadowblue'

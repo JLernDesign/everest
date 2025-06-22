@@ -34,7 +34,9 @@ defineExpose({ openItem });
 
     <!-- photo/quote -->
     <div class="item overflow-hidden" :class="open ? 'h-auto' : 'h-0'">
-      <div class="flex w-full items-start justify-between p-side pb-[5rem]">
+      <div
+        class="flex w-full items-start justify-between p-side-mob pb-[5rem] s:p-side s:p-side-mob"
+      >
         <div class="w-[35%] shrink-0">
           <div class="w-[23.4rem] overflow-hidden rounded-sm">
             <DatocmsImage

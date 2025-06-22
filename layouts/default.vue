@@ -32,7 +32,7 @@ watch(height, () => {
   </div>
 
   <!-- guide line -->
-  <div
+  <!--   <div
     class="ml-side-mob fixed left-0 top-0 z-10 h-screen w-0 border-l border-l-red opacity-20 s:ml-side"
   ></div>
   <div
@@ -40,7 +40,7 @@ watch(height, () => {
   ></div>
   <div
     class="fixed left-1/2 top-0 z-10 h-screen w-0 border-l border-l-red opacity-20"
-  ></div>
+  ></div> -->
 </template>
 
 <style scoped>

@@ -174,7 +174,7 @@ sup {
       background-size: 0.85rem auto;
       position: absolute;
       left: 0;
-      top: 0.4rem;
+      top: 0.5rem;
     }
   }
   &.lines {
@@ -212,6 +212,9 @@ sup {
 .col {
   position: relative;
 }
+.nobr {
+  white-space: nowrap;
+}
 
 @media (max-width: 900px) {
   .has-break br {
@@ -236,6 +239,9 @@ sup {
         background-size: 2.25rem auto;
       }
     }
+  }
+  .nobr {
+    white-space: normal;
   }
 }
 

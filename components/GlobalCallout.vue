@@ -3,10 +3,10 @@ const props = defineProps(["data"]);
 </script>
 
 <template>
-  <div class="relative p-side">
+  <div class="relative p-side-mob s:p-side">
     <!-- content -->
     <div
-      class="rounded-base-mob relative overflow-hidden bg-[#FFD0B9] px-[11.5rem] py-[7rem] s:rounded-base"
+      class="rounded-base-mob relative overflow-hidden bg-[#FFD0B9] px-side-mob py-side-mob s:rounded-base s:px-[11.5rem] s:py-[7rem]"
     >
       <!-- gradient -->
       <div
@@ -21,15 +21,15 @@ const props = defineProps(["data"]);
       ></div>
 
       <!-- text -->
-      <div class="text relative w-[65%]">
+      <div class="text has-break relative w-full s:w-[65%]">
         <h2
           v-if="data.headline"
-          class="text-xl-mob font-barlow-cond font-bold leading-xl s:text-xl"
+          class="text-xl-mob font-barlow-cond font-bold leading-xl s:text-xl max-s:pr-[2rem]"
           v-html="formatText(data.headline)"
         ></h2>
         <p
           v-if="data.intro"
-          class="mt-[4.75rem]"
+          class="mt-[3rem] s:mt-[4.75rem]"
           v-html="formatText(data.intro)"
         ></p>
 
@@ -38,19 +38,21 @@ const props = defineProps(["data"]);
           :data="data.cta.buttons"
           :align="left"
           theme="light"
-          class="mt-side"
+          class="mt-side-mob s:mt-side"
         />
       </div>
 
       <!-- image -->
-      <div class="absolute right-0 top-0 flex h-full items-center pr-[12rem]">
+      <div
+        class="right-0 top-0 flex h-full items-center pr-[12rem] s:absolute max-s:h-[20rem]"
+      >
         <!-- <div class="w-[54rem]">
           <img src="/public/ui/ph-footer-callout@2x.png" alt="" />
         </div> -->
       </div>
 
       <!-- seal -->
-      <div class="absolute right-0 top-0 p-side">
+      <div class="absolute right-0 top-0 hidden p-side-mob s:block s:p-side">
         <img src="/public/ui/tri-erp.svg" alt="" class="w-[12.2rem]" />
       </div>
     </div>

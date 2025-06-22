@@ -28,7 +28,7 @@ props.data.color == "gray" ? (color = "text-white") : null;
     <div class="flex items-start justify-between pt-section-top">
       <!-- headline -->
       <div
-        class="rounded-base-mob w-[52rem] bg-shadowblue p-side s:rounded-base"
+        class="rounded-base-mob w-[52rem] bg-shadowblue p-side-mob s:rounded-base s:p-side s:p-side-mob"
       >
         <h2
           class="font-barlow-cond text-lg-mob font-bold leading-lg s:text-lg"
@@ -43,7 +43,7 @@ props.data.color == "gray" ? (color = "text-white") : null;
           <!-- text -->
           <template v-if="block.__typename == 'AdvantageTextRecord'">
             <div
-              class="content-text bullets lines rounded-base-mob bg-cover p-[2rem] pb-[2.5rem] s:rounded-base s:text-body-sm [&_ul]:divide-y-1 [&_ul]:divide-grayline [&_ul]:border-y-1 [&_ul]:border-grayline [&_ul]:text-body-sm-mob"
+              class="content-text bullets lines rounded-base-mob bg-cover p-[2rem] pb-[2.5rem] s:rounded-base [&_ul]:divide-y-1 [&_ul]:divide-grayline [&_ul]:border-y-1 [&_ul]:border-grayline [&_ul]:text-body-sm-mob [&_ul]:s:text-body-sm"
               :style="`background-image:url(/ui/mt-${data.color}@2x.jpg)`"
             >
               <div class="space-y-16 rounded-sm bg-jaffa p-[3.2rem]">

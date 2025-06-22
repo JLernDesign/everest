@@ -38,7 +38,7 @@ const props = defineProps(["data", "edge", "layout"]);
         "
       >
         <div
-          class="bullets [&_h2]:text-body-md-mob space-y-10 s:text-body-md [&_*+h2]:mt-[9rem] [&_h2]:font-helvb [&_h3+p]:mt-[.5rem] [&_h3]:font-helvb"
+          class="bullets [&_h2]:text-body-md-mob space-y-10 [&_*+h2]:mt-[9rem] [&_h2]:font-helvb [&_h2]:s:text-body-md [&_h3+p]:mt-[.5rem] [&_h3]:font-helvb"
           v-html="data.body"
         ></div>
 

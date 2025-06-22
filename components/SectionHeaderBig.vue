@@ -12,7 +12,7 @@ if (hl.length > 1) {
 <template>
   <header
     v-if="data != undefined"
-    class="space-y-header-mob s:space-y-header-mob s:space-y-header-mob relative s:space-y-header-lg"
+    class="space-y-header-mob relative s:space-y-header-lg"
   >
     <h2
       class="font-barlow-cond text-xxl-mob font-semibold uppercase leading-xxl s:text-xxl"

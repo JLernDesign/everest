@@ -31,16 +31,12 @@ onMounted(() => {
 </script>
 
 <template>
-  <Section
-    :theme="theme"
-    class="bg-skyblue pb-section-bot pt-section-top-lg"
-    side="none"
-  >
+  <Section :theme="theme" class="bg-skyblue pb-section-bot pt-section-top-lg">
     <SectionHeader :theme="theme" :data="data.header" />
 
     <!-- slides -->
     <div
-      class="slides relative mx-auto mt-[5rem] h-[51.5rem] max-w-[1160px]"
+      class="slides relative mx-auto mt-[5rem] h-[51.5rem] w-[116rem] max-s:w-full"
       ref="main"
     >
       <StackSlide v-for="(slide, i) in data.slides" :data="slide" :key="i" />
