@@ -49,7 +49,7 @@ const props = defineProps(["data", "order"]);
       <div class="w-[43%] border-x border-x-grayline"></div>
     </div>
 
-    <UIArrowDown />
+    <UIArrowDown class="max-s:hidden" />
   </Section>
 </template>
 

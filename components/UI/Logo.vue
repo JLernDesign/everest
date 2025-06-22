@@ -4,7 +4,7 @@ const props = defineProps(["src", "align", "small"]);
 
 <template>
   <figure
-    class="relative h-20 w-40 text-left"
+    class="relative h-[8rem] w-[16rem] text-left"
     :class="!small ? 's:h-[8rem] s:w-[16rem]' : 's:h-[4rem] s:w-[13rem]'"
   >
     <img

@@ -70,7 +70,7 @@ const closeVideoModal = (id) => {
   >
     <UITexture class="opacity-[.98]" @click="closeVideoModal" />
     <div
-      class="flex h-screen w-screen items-center justify-center p-side-mob s:p-side s:p-side-mob"
+      class="flex h-screen w-screen items-center justify-center p-side-mob s:p-side"
     >
       <div
         id="video-player"

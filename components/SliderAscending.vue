@@ -40,7 +40,7 @@ const duplicated = computed(() => {
 
     <!-- slider -->
     <Carousel
-      class="slider-wrap ml-[1.2rem] mt-[5rem] !h-[56rem] -rotate-[15deg] space-x-[0] s:ml-[2.5rem] s:mt-[16.5rem] s:!h-[82rem]"
+      class="slider-wrap ml-[1.2rem] mt-[5rem] !h-[50rem] -rotate-[15deg] space-x-[0] s:ml-[2.5rem] s:mt-[16.5rem] s:!h-[82rem]"
       :drag="true"
     >
       <!-- slides -->

@@ -30,7 +30,7 @@ const props = defineProps(["data", "theme"]);
       </div>
     </div>
 
-    <UIArrowDown theme="dark" />
+    <UIArrowDown class="max-s:hidden" theme="dark" />
   </Section>
 </template>
 

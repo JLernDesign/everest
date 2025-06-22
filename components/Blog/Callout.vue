@@ -11,7 +11,7 @@ const selected = posts.slice(0, 3);
 
 <template>
   <Section
-    class="bg-jaffa pb-section-bot pt-section-top-lg max-s:!px-0"
+    class="pb-section-bot-mob bg-jaffa pt-section-top-lg s:pb-section-bot max-s:!px-0"
     side="none"
   >
     <BlogHeader :data="page" />
@@ -22,7 +22,7 @@ const selected = posts.slice(0, 3);
     >
       <BlogThumb v-for="(item, i) in selected" :data="item" />
     </div>
-    <div class="mt-btn text-center">
+    <div class="mt-[4rem] text-center s:mt-btn">
       <CtaBtn to="/blog">View More</CtaBtn>
     </div>
   </Section>

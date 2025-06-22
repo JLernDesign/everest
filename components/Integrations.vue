@@ -11,8 +11,8 @@ const active = ref(0);
       :breadcrumb="data.groups.length > 1 ? data.groups : null"
     />
 
-    <!-- content -->
-    <div class="mt-[10rem] flex flex-col s:flex-row">
+    <!-- desktop module -->
+    <div class="mt-[10rem] hidden flex-col s:flex s:flex-row">
       <!-- logo -->
       <div class="w-full s:w-1/2">
         <div
@@ -56,6 +56,23 @@ const active = ref(0);
             </div>
           </template>
         </div>
+      </div>
+    </div>
+
+    <!-- mobile module -->
+    <div
+      class="mt-[4.5rem] flex w-full flex-wrap justify-between gap-[2rem] s:hidden"
+    >
+      <div
+        v-for="(item, i) in data.groups[active].items"
+        class="h-[10.6rem] w-[16.6rem] shrink-0 rounded-base border border-grayline"
+      >
+        <img
+          v-if="item.image"
+          :src="item.image.url"
+          class="h-full w-full object-contain"
+          alt=""
+        />
       </div>
     </div>
   </Section>

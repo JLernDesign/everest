@@ -135,7 +135,7 @@
       <div class="flex items-start justify-between pt-section-top">
         <!-- headline -->
         <div
-          class="rounded-base-mob w-[52rem] bg-shadowblue p-side-mob s:rounded-base s:p-side s:p-side-mob"
+          class="rounded-base-mob w-[52rem] bg-shadowblue p-side-mob s:rounded-base s:p-side"
         >
           <h2
             class="font-barlow-cond text-lg-mob leading-lg text-lightblue s:text-lg"

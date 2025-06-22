@@ -6,7 +6,7 @@ const props = defineProps(["data"]);
 
 <template>
   <div
-    class="rounded-base-mob relative min-h-[43.8rem] p-side-mob s:rounded-base s:p-side s:p-side-mob"
+    class="rounded-base-mob relative min-h-[43.8rem] p-side-mob s:rounded-base s:p-side"
     :class="[
       data.style == 'two-col'
         ? 'col-span-2 pr-[2.5rem] pt-[2.5rem]'

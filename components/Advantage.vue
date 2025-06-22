@@ -28,7 +28,7 @@ props.data.color == "gray" ? (color = "text-white") : null;
     <div class="flex items-start justify-between pt-section-top">
       <!-- headline -->
       <div
-        class="rounded-base-mob w-[52rem] bg-shadowblue p-side-mob s:rounded-base s:p-side s:p-side-mob"
+        class="rounded-base-mob w-[52rem] bg-shadowblue p-side-mob s:rounded-base s:p-side"
       >
         <h2
           class="font-barlow-cond text-lg-mob font-bold leading-lg s:text-lg"

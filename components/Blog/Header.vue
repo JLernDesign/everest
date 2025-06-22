@@ -10,7 +10,7 @@ const props = defineProps({ data: { default: null }, icon: { default: true } });
     <!-- logo mark -->
     <div
       v-if="icon"
-      class="absolute -top-[2rem] left-1/2 -translate-x-1/2 bg-jaffa px-[1.2rem] s:-top-[4.25rem] s:w-[6.8rem] s:px-[2.2rem]"
+      class="absolute -top-[2rem] left-1/2 -translate-x-1/2 bg-jaffa px-[1.2rem] s:-top-[4.25rem] s:px-[2.2rem]"
     >
       <IconLogoMark class="s:w-[6.8rem] max-s:!w-[3.4rem]" />
     </div>

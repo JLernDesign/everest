@@ -10,13 +10,16 @@ const investors = useState("investors");
     <!-- callout -->
     <GlobalCallout :data="data" />
 
-    <div class="relative pb-6 pt-[2.5rem]">
+    <div class="relative pb-[4rem] pt-[2.5rem] s:pb-6">
       <div class="p-side-mob s:p-side">
         <!-- brands -->
         <Brands v-if="investors" theme="dark" :data="investors" />
 
         <!-- logo -->
-        <NuxtLink to="/" class="mt-[15rem] block h-[8.1rem] w-[9.4rem]">
+        <NuxtLink
+          to="/"
+          class="mt-[3.5rem] block h-[5.3rem] w-[6.2rem] s:mt-[15rem] s:h-[8.1rem] s:w-[9.4rem]"
+        >
           <IconLogo color="white" />
         </NuxtLink>
       </div>

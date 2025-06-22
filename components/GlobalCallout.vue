@@ -10,7 +10,7 @@ const props = defineProps(["data"]);
     >
       <!-- gradient -->
       <div
-        class="circle-gradient absolute -right-[6rem] -top-[44rem] h-[121.6rem] w-[77rem] -rotate-90 rounded-[121.6rem] opacity-[.6] blur-[100px]"
+        class="circle-gradient absolute h-[60.8rem] w-[38.5rem] -rotate-90 rounded-[121.6rem] opacity-[.6] blur-[50px] s:-right-[6rem] s:-top-[44rem] s:h-[121.6rem] s:w-[77rem] max-s:-bottom-[20rem] max-s:left-1/2 max-s:translate-x-[-50%]"
         style="
           background: radial-gradient(
             80.43% 67.96% at 27.01% 46.13%,
@@ -44,7 +44,7 @@ const props = defineProps(["data"]);
 
       <!-- image -->
       <div
-        class="right-0 top-0 flex h-full items-center pr-[12rem] s:absolute max-s:h-[20rem]"
+        class="right-0 top-0 flex h-full items-center pr-[12rem] s:absolute max-s:h-[32.5rem]"
       >
         <!-- <div class="w-[54rem]">
           <img src="/public/ui/ph-footer-callout@2x.png" alt="" />

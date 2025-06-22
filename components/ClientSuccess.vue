@@ -41,11 +41,11 @@ if (props.data.slides && props.data.slides.length > 0) {
   <Section
     :theme="theme"
     class="bg-jaffa pb-section-bot"
-    :class="page_data.jaggedEdge && 'mt-[26.8rem] !pt-8'"
+    :class="page_data.jaggedEdge && 'mt-[23rem] !pt-16 s:mt-[26.8rem] s:!pt-8'"
   >
     <template v-if="page_data.jaggedEdge">
       <UIGlow
-        class="-top-[35rem] -z-1 h-[35rem] overflow-hidden blur-big"
+        class="transform-origin-left scale-60 -top-[18rem] -z-1 h-[60rem] w-[116rem] overflow-hidden s:-top-[35rem] s:h-[35rem] s:w-[116rem] s:scale-100 max-s:left-1/2 max-s:translate-x-[-50%] max-s:blur-big"
         src="/ui/callout-bot-gradient.svg"
       />
       <div
@@ -58,12 +58,12 @@ if (props.data.slides && props.data.slides.length > 0) {
 
     <!-- slide module -->
     <div
-      class="mt-md flex"
+      class="mt-[3rem] flex s:mt-md"
       v-if="page_data.slides && page_data.slides.length > 0"
-      :class="page_data.slides.length > 1 && 'divide-x-1 divide-grayline'"
+      :class="page_data.slides.length > 1 && 's:divide-x-1 s:divide-grayline'"
     >
       <!-- left -->
-      <div class="col lt w-[27.5%] overflow-hidden px-[10rem]">
+      <div class="col lt hidden w-[27.5%] overflow-hidden px-[10rem] s:block">
         <template v-if="page_data.slides[active + 2]">
           <div
             v-if="page_data.slides[active + 2].media.image"
@@ -92,7 +92,7 @@ if (props.data.slides && props.data.slides.length > 0) {
       </div>
 
       <!-- active slide (center) -->
-      <div class="col main w-[45%] overflow-hidden px-[10rem]">
+      <div class="col main w-full overflow-hidden s:w-[45%] s:px-[10rem]">
         <div
           class="photo rounded-base-mob aspect-[1.57] w-full overflow-hidden s:rounded-base"
         >
@@ -104,7 +104,7 @@ if (props.data.slides && props.data.slides.length > 0) {
           />
         </div>
 
-        <hr class="my-side text-black" />
+        <hr class="my-side-mob text-black s:my-side" />
 
         <!-- text details -->
         <div class="slide-text">
@@ -129,7 +129,7 @@ if (props.data.slides && props.data.slides.length > 0) {
             “{{ page_data.slides[active].quote }}”
           </blockquote>
           <div
-            class="byline text-body-xsm-mob mt-[5.5rem] flex items-center justify-between s:text-body-xsm"
+            class="byline text-body-xsm-mob mt-[2.5rem] flex items-center justify-between s:mt-[5.5rem] s:text-body-xsm"
           >
             <div v-if="page_data.slides[active].name">
               <p class="font-helvb">{{ page_data.slides[active].name }}</p>
@@ -147,7 +147,7 @@ if (props.data.slides && props.data.slides.length > 0) {
       </div>
 
       <!-- right -->
-      <div class="col rt w-[27.5%] overflow-hidden px-[10rem]">
+      <div class="col rt hidden w-[27.5%] overflow-hidden px-[10rem] s:block">
         <template v-if="page_data.slides[active + 1]">
           <div
             v-if="page_data.slides[active + 1].media.image"
@@ -174,6 +174,22 @@ if (props.data.slides && props.data.slides.length > 0) {
           class="px-[10rem]"
         />
       </div>
+    </div>
+
+    <!-- mobile controls-->
+    <div
+      class="relative mt-[5.5rem] flex h-[3.2rem] w-full justify-between px-side-mob s:hidden"
+    >
+      <UISlideArrow
+        v-if="page_data.slides.length > 1"
+        dir="left"
+        class="!w-[48%]"
+      />
+      <UISlideArrow
+        v-if="page_data.slides.length > 1"
+        dir="right"
+        class="!w-[48%]"
+      />
     </div>
   </Section>
 </template>

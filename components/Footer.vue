@@ -6,14 +6,12 @@ const investors = useState("investors", () => props.data.investors);
 <template>
   <footer class="main relative">
     <!-- footer details -->
-    <div
-      class="footer-details relative bg-shadowblue p-side-mob s:p-side s:p-side-mob"
-    >
+    <div class="footer-details relative bg-shadowblue p-side-mob s:p-side">
       <UIJagEdge color="fill-shadowblue" />
 
       <!-- columns -->
       <div
-        class="flex flex-col divide-x-1 divide-darkline border-r-1 border-r-darkline text-body-sm-mob leading-sm text-white s:flex-row s:text-body-sm"
+        class="flex flex-col text-body-sm-mob leading-sm text-white s:flex-row s:divide-x-1 s:divide-darkline s:border-r-1 s:border-r-darkline s:text-body-sm max-s:gap-y-[7rem]"
       >
         <!-- text -->
         <div class="col flex w-full s:w-[32.5%] s:pr-[5rem] max-s:flex-col">
@@ -22,7 +20,9 @@ const investors = useState("investors", () => props.data.investors);
               v-if="data.description"
               v-html="formatText(data.description)"
             ></p>
-            <div class="mt-side flex items-center justify-between">
+            <div
+              class="mt-side-mob flex flex-col s:mt-side s:flex-row s:items-center s:justify-between max-s:gap-y-[3.5rem]"
+            >
               <CtaGroup
                 v-if="data.footerCta"
                 :data="data.footerCta.buttons"
@@ -51,7 +51,7 @@ const investors = useState("investors", () => props.data.investors);
         </div>
 
         <!-- links -->
-        <div class="col w-full s:w-[22.5%] s:px-[5rem]">
+        <div class="col hidden w-full s:block s:w-[22.5%] s:px-[5rem]">
           <div class="group">
             <!-- title -->
             <h3 class="font-barlow-cond text-[2.1rem] uppercase text-red">
@@ -70,7 +70,7 @@ const investors = useState("investors", () => props.data.investors);
           </h3>
           <div
             v-if="data.locations"
-            class="relative mt-side columns-2 space-y-[3rem]"
+            class="relative mt-4 space-y-[1.25rem] s:mt-side s:columns-2 s:space-y-[3rem]"
           >
             <div v-for="item in data.locations">
               <span class="font-helvh">{{ item.location }}</span
@@ -79,7 +79,7 @@ const investors = useState("investors", () => props.data.investors);
             </div>
 
             <div
-              class="div-line absolute left-1/2 top-0 !mt-0 -ml-side h-full w-0 border-l-1 border-l-darkline"
+              class="div-line absolute left-1/2 top-0 !mt-0 -ml-side hidden h-full w-0 border-l-1 border-l-darkline s:block"
             ></div>
           </div>
         </div>
@@ -87,19 +87,21 @@ const investors = useState("investors", () => props.data.investors);
 
       <!-- legal -->
       <div
-        class="legal text-body-xsm-mob relative mt-[15rem] text-white s:text-body-xsm"
+        class="legal relative mt-[7rem] text-body-xsm text-white s:mt-[15rem] max-s:flex max-s:flex-col"
       >
-        <ul class="flex items-center space-x-5">
-          <li><NuxtLink to="/">Privacy Policy</NuxtLink></li>
-          <li>•</li>
-          <li>© 2025 Everest Systems, Inc</li>
-        </ul>
-        <div class="mt-5 text-[#6E7174]">
-          Design: <a href="https://griflan.com" target="_blank">Griflan</a>
+        <div class="max-s:order-2 max-s:mt-[5rem]">
+          <ul class="flex items-center space-x-5">
+            <li><NuxtLink to="/">Privacy Policy</NuxtLink></li>
+            <li>•</li>
+            <li>© 2025 Everest Systems, Inc</li>
+          </ul>
+          <div class="mt-5 text-[#6E7174]">
+            Design: <a href="https://griflan.com" target="_blank">Griflan</a>
+          </div>
         </div>
         <div
           v-if="data.badges"
-          class="absolute -top-1/2 right-0 flex space-x-[2rem]"
+          class="-top-1/2 right-0 flex space-x-[2rem] s:absolute max-s:order-1"
         >
           <img
             v-for="item in data.badges"
