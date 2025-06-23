@@ -19,11 +19,11 @@ const toggleMenu = (id) => {
 </script>
 
 <template>
-  <Section class="bg-shadowblue !py-side" theme="dark">
-    <UITexture />
+  <Section class="bg-shadowblue s:!py-side" theme="dark">
+    <UITexture class="max-s:hidden" />
 
     <div
-      class="rounded-base-mob relative z-1 bg-shadowblue px-[12rem] py-[8.5rem] s:rounded-base"
+      class="rounded-base-mob relative z-1 bg-shadowblue s:rounded-base s:px-[12rem] s:py-[8.5rem]"
     >
       <SectionHeader theme="dark" :data="data.header" />
 

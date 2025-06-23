@@ -6,6 +6,7 @@ const props = defineProps({
   theme: { default: "light" },
   hero: { default: false },
   breadcrumb: { default: null },
+  wrap: { default: false },
 });
 </script>
 
@@ -54,6 +55,7 @@ const props = defineProps({
       :data="data.cta.buttons"
       :align="align"
       :theme="theme"
+      :wrap="wrap"
       class="s:pt-6"
     />
 

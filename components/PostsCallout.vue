@@ -11,7 +11,10 @@ const selected = posts.slice(0, 3);
 </script>
 
 <template>
-  <Section class="mt-[30rem] !pt-0 pb-section-bot" side="none">
+  <Section
+    class="pb-section-bot-mob mt-[30rem] !pt-0 s:pb-section-bot"
+    side="none"
+  >
     <div class="absolute left-0 top-0 z-1 h-full w-full bg-jaffa"></div>
     <UIGlow
       class="-top-[13.6rem] z-0 h-[13.6rem] !blur-big"
@@ -20,7 +23,7 @@ const selected = posts.slice(0, 3);
 
     <div class="relative z-1">
       <header class="pb-14 pt-12 text-center">
-        <h2 class="text-lg-mob font-barlow-cond font-bold leading-lg s:text-lg">
+        <h2 class="font-barlow-cond text-lg-mob font-bold leading-lg s:text-lg">
           {{ data.headline }}
         </h2>
       </header>

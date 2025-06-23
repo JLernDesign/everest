@@ -4,7 +4,7 @@ const active = ref(0);
 </script>
 
 <template>
-  <Section :theme="theme" class="bg-jaffa pb-section-bot">
+  <Section :theme="theme" class="pb-section-bot-mob bg-jaffa s:pb-section-bot">
     <SectionHeader
       :theme="theme"
       :data="data.header"

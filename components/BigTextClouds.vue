@@ -4,7 +4,7 @@ const props = defineProps(["data"]);
 
 <template>
   <Section
-    class="z-1 overflow-hidden bg-skyblue !pt-section-top pb-section-bot text-center"
+    class="pb-section-bot-mob z-1 overflow-hidden bg-skyblue !pt-section-top text-center s:pb-section-bot"
   >
     <!-- bg elements -->
     <div

@@ -24,7 +24,7 @@ const props = defineProps(["data"]);
       <div class="text has-break relative w-full s:w-[65%]">
         <h2
           v-if="data.headline"
-          class="text-xl-mob font-barlow-cond font-bold leading-xl s:text-xl max-s:pr-[2rem]"
+          class="text-xl-mob font-barlow-cond font-bold leading-xl s:text-xl max-s:pr-[2rem] [&_.nobr]:whitespace-normal"
           v-html="formatText(data.headline)"
         ></h2>
         <p

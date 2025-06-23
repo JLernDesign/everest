@@ -15,7 +15,7 @@ if (props.stats.length <= 3) {
   <Section
     :hero="true"
     side="none"
-    class="bg-skyblue pb-section-bot-lg text-center"
+    class="pb-section-bot-mob bg-skyblue text-center s:pb-section-bot-lg"
   >
     <!-- bg elements -->
     <UICloud type="1" class="-left-[11.5rem] top-[26.5rem] -scale-x-100" />

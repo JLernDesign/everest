@@ -20,7 +20,11 @@ const handleClick = (item) => {
 </script>
 
 <template>
-  <Section :hero="true" class="pb-section-bot-lg" theme="dark">
+  <Section
+    :hero="true"
+    class="pb-section-bot-mob s:pb-section-bot-lg"
+    theme="dark"
+  >
     <UITexture />
 
     <SectionHeader class="pt-[4rem]" align="center" :hero="true" :data="data" />

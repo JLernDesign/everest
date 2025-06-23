@@ -12,7 +12,7 @@ props.data.color == "gray" ? (color = "text-white") : null;
 </script>
 
 <template>
-  <Section class="bg-jaffa pb-section-bot" side="lg">
+  <Section class="pb-section-bot-mob bg-jaffa s:pb-section-bot" side="lg">
     <!-- header -->
     <header class="relative flex h-[1.8rem] justify-between">
       <LineFull class="top-1/2" />
@@ -25,10 +25,12 @@ props.data.color == "gray" ? (color = "text-white") : null;
     </header>
 
     <!-- columns -->
-    <div class="flex items-start justify-between pt-section-top">
+    <div
+      class="pt-section-top-mob flex flex-col items-start justify-between s:flex-row s:pt-section-top"
+    >
       <!-- headline -->
       <div
-        class="rounded-base-mob w-[52rem] bg-shadowblue p-side-mob s:rounded-base s:p-side"
+        class="rounded-base-mob w-full bg-shadowblue p-side-mob s:w-[52rem] s:rounded-base s:p-side max-s:mb-side-mob"
       >
         <h2
           class="font-barlow-cond text-lg-mob font-bold leading-lg s:text-lg"
@@ -38,7 +40,7 @@ props.data.color == "gray" ? (color = "text-white") : null;
       </div>
 
       <!-- contents -->
-      <div class="w-[79.4rem] space-y-[3.6rem]">
+      <div class="w-full space-y-8 s:w-[79.4rem] s:space-y-[3.6rem]">
         <template v-for="(block, i) in data.contentBlocks">
           <!-- text -->
           <template v-if="block.__typename == 'AdvantageTextRecord'">
@@ -46,8 +48,13 @@ props.data.color == "gray" ? (color = "text-white") : null;
               class="content-text bullets lines rounded-base-mob bg-cover p-[2rem] pb-[2.5rem] s:rounded-base [&_ul]:divide-y-1 [&_ul]:divide-grayline [&_ul]:border-y-1 [&_ul]:border-grayline [&_ul]:text-body-sm-mob [&_ul]:s:text-body-sm"
               :style="`background-image:url(/ui/mt-${data.color}@2x.jpg)`"
             >
-              <div class="space-y-16 rounded-sm bg-jaffa p-[3.2rem]">
-                <span class="space-y-16" v-html="block.content"></span>
+              <div
+                class="space-y-16 rounded-sm bg-jaffa p-side-mob s:p-[3.2rem]"
+              >
+                <span
+                  class="space-y-10 s:space-y-16"
+                  v-html="block.content"
+                ></span>
 
                 <!-- stats -->
                 <div v-if="block.stats" class="stats flex flex-col s:flex-row">
@@ -72,7 +79,7 @@ props.data.color == "gray" ? (color = "text-white") : null;
           <!-- image -->
           <template v-if="block.__typename == 'AdvantageImageRecord'">
             <div
-              class="content-image rounded-base-mob bg-cover p-[11.5rem] s:rounded-base"
+              class="content-image rounded-base-mob bg-cover p-side-mob s:rounded-base s:p-[11.5rem]"
               :style="`background-image:url(/ui/mt-${data.color}@2x.jpg)`"
             >
               <div class="rounded-base-mob bg-white p-4 s:rounded-base">

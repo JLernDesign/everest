@@ -9,7 +9,7 @@ onUnmounted(() => {});
 </script>
 
 <template>
-  <Section class="bg-skyblue pb-section-bot" side="lg">
+  <Section class="pb-section-bot-mob bg-skyblue s:pb-section-bot" side="lg">
     <!-- bg elements -->
     <UICloud
       type="3"

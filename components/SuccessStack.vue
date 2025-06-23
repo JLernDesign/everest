@@ -31,7 +31,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <Section :theme="theme" class="bg-skyblue pb-section-bot pt-section-top-lg">
+  <Section
+    :theme="theme"
+    class="pb-section-bot-mob bg-skyblue pt-section-top-lg s:pb-section-bot"
+  >
     <SectionHeader :theme="theme" :data="data.header" />
 
     <!-- slides -->

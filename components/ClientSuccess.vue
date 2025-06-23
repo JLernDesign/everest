@@ -40,12 +40,12 @@ if (props.data.slides && props.data.slides.length > 0) {
 <template>
   <Section
     :theme="theme"
-    class="bg-jaffa pb-section-bot"
+    class="pb-section-bot-mob bg-jaffa s:pb-section-bot"
     :class="page_data.jaggedEdge && 'mt-[23rem] !pt-16 s:mt-[26.8rem] s:!pt-8'"
   >
     <template v-if="page_data.jaggedEdge">
       <UIGlow
-        class="transform-origin-left scale-60 -top-[18rem] h-[60rem] w-[116rem] overflow-hidden s:-top-[35rem] s:h-[35rem] s:w-[116rem] s:scale-100 max-s:left-1/2 max-s:translate-x-[-50%] max-s:blur-big"
+        class="transform-origin-left scale-60 -top-[18rem] h-[60rem] w-[116rem] s:-top-[35rem] s:h-[35rem] s:w-[116rem] s:scale-100 max-s:left-1/2 max-s:translate-x-[-50%] max-s:blur-big"
         src="/ui/callout-bot-gradient.svg"
       />
       <div

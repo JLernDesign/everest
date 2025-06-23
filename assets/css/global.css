@@ -220,16 +220,26 @@ sup {
   .has-break br {
     display: none;
   }
-}
-
-@media (min-width: 650px) {
-  .has-break-mob br {
-    display: none;
+  .has-break .nobr br {
+    display: block;
   }
 }
 
+/* @media (min-width: 650px) {
+  .has-break-mob :not(.nobr) br {
+    display: none;
+  }
+} */
+
 @media (max-width: 649px) {
-  .bullets {
+  .bullets.lines {
+    li {
+      &:before {
+        top: 2.1rem;
+      }
+    }
+  }
+  /*  .bullets {
     li {
       padding-left: 3.125rem;
       min-height: 2.25rem;
@@ -239,10 +249,10 @@ sup {
         background-size: 2.25rem auto;
       }
     }
-  }
-  .nobr {
+  } */
+  /*   .nobr {
     white-space: normal;
-  }
+  } */
 }
 
 /* blog / plain text */

@@ -70,7 +70,7 @@ console.log(props.nav);
           <UICloud type="2" class="-top-[25rem] left-[18rem]" />
 
           <div
-            class="image-ph relative h-full w-full [&>div]:h-full [&_img]:h-full [&_img]:w-full [&_img]:object-contain"
+            class="image-ph relative h-full w-full max-s:p-side-mob [&>div]:h-full [&_img]:h-full [&_img]:w-full [&_img]:object-contain"
           >
             <DatocmsImage
               v-if="data.image"

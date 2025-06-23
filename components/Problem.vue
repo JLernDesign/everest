@@ -4,7 +4,7 @@ const props = defineProps(["layout", "data"]);
 
 <template>
   <Section
-    class="pb-section-bot pt-[12rem]"
+    class="pb-section-bot-mob pt-[12rem] s:pb-section-bot"
     :class="layout == 'img-rt' ? 'bg-jaffa' : 'bg-skyblue'"
     side="lg"
   >

@@ -20,10 +20,10 @@ defineExpose({ open, num });
       class="absolute left-0 top-[6.75rem] h-0 w-full border-b-1 border-b-[#3D4856]"
     ></div>
     <!-- text -->
-    <div class="faq-text w-full shrink px-side">
+    <div class="faq-text w-full shrink s:px-side">
       <!-- question -->
       <h3
-        class="q cursor-pointer py-[2.2rem] text-body-sm-mob leading-sm transition-colors duration-300 hover:text-red s:text-body-sm"
+        class="q cursor-pointer py-[2.2rem] text-body-sm-mob leading-sm transition-colors duration-300 hover:text-red s:text-body-sm max-s:pr-12"
         :class="open && 'text-red'"
         @click="handleClick"
       >
@@ -32,15 +32,17 @@ defineExpose({ open, num });
 
       <!-- answer -->
       <div class="faq-answer relative h-0 overflow-hidden" ref="wrap">
-        <div class="py-20">
+        <div class="py-10 s:py-20">
           <div
-            class="rounded-base-mob relative bg-jaffa px-[14rem] pb-side pt-[5rem] text-body-sm-mob leading-sm text-black s:rounded-base s:text-body-sm"
+            class="rounded-base-mob relative bg-jaffa px-side-mob py-side-mob text-body-sm-mob leading-sm text-black s:rounded-base s:px-[14rem] s:pb-side-mob s:pt-[5rem] s:text-body-sm"
             ref="answer"
           >
-            <div class="absolute left-[4.4rem] top-[5.5rem] w-[5.3rem]">
+            <div
+              class="left-[4.4rem] top-[5.5rem] w-[2.6rem] s:absolute s:w-[5.3rem] max-s:mb-8"
+            >
               <IconLogoMark color="red" />
             </div>
-            <span class="space-y-10" v-html="data.answer"></span>
+            <span class="space-y-8 s:space-y-10" v-html="data.answer"></span>
           </div>
         </div>
       </div>
@@ -48,10 +50,10 @@ defineExpose({ open, num });
 
     <!-- arrow -->
     <div
-      class="faq-arrow relative w-[6.8rem] shrink-0 border-l-1 border-l-[#3D4856]"
+      class="faq-arrow absolute shrink-0 border-l-[#3D4856] s:relative s:w-[6.8rem] s:border-l-1 max-s:right-0"
     >
       <IconArrow
-        class="arrow absolute left-[2.5rem] top-[2.5rem] rotate-90 duration-500 ease-in-out"
+        class="arrow absolute top-[2.5rem] rotate-90 duration-500 ease-in-out s:left-[2.5rem] max-s:right-0"
         color="stroke-red"
         :class="open && 'on'"
       />

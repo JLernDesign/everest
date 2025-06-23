@@ -35,6 +35,7 @@ onMounted(() => {
     loop = horizontalLoop(items, {
       paused: true,
       paddingRight: props.padding,
+      speed: 0.5,
       draggable: props.drag, // make it draggable
       center: props.center, // active element is the one in the center of the container rather than th left edge
       onChange: (element, index) => {

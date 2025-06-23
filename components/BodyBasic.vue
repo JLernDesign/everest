@@ -5,7 +5,7 @@ const props = defineProps(["data", "edge", "layout"]);
 
 <template>
   <Section
-    class="bg-shadowblue pb-section-bot-lg text-white"
+    class="pb-section-bot-mob bg-shadowblue text-white s:pb-section-bot-lg"
     :class="data.jaggedEdge && '!pt-0'"
     theme="dark"
   >

@@ -60,7 +60,7 @@ useHead(() => {
     </Section>
 
     <!-- contents -->
-    <Section class="pb-section-bot-lg">
+    <Section class="pb-section-bot-mob s:pb-section-bot-lg">
       <div class="mx-auto max-w-base">
         <!-- columns -->
         <div class="flex flex-col items-start justify-between s:flex-row">

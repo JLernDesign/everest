@@ -22,7 +22,7 @@ const duplicated = computed(() => {
 <template>
   <Section
     :theme="theme"
-    class="pb-section-bot pt-section-top-lg"
+    class="pb-section-bot-mob pt-section-top-lg s:pb-section-bot"
     :class="data.background == 'blue' ? 'bg-skyblue' : 'bg-jaffa'"
     side="none"
     ref="main"
@@ -36,11 +36,15 @@ const duplicated = computed(() => {
       <UICloud type="3" class="top-0 -scale-x-100 opacity-50 s:left-[93rem]" />
     </template>
 
-    <SectionHeader :theme="theme" :data="data.header" />
+    <SectionHeader
+      :theme="theme"
+      :data="data.header"
+      class="max-s:px-side-mob"
+    />
 
     <!-- slider -->
     <Carousel
-      class="slider-wrap ml-[1.2rem] mt-[5rem] !h-[50rem] -rotate-[15deg] space-x-[0] s:ml-[2.5rem] s:mt-[16.5rem] s:!h-[82rem]"
+      class="slider-wrap ml-[.4rem] mt-[5rem] !h-[50rem] -rotate-[15deg] space-x-[0] s:ml-[2.5rem] s:mt-[16.5rem] s:!h-[82rem]"
       :drag="true"
     >
       <!-- slides -->

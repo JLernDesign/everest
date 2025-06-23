@@ -119,7 +119,10 @@
     <Advantage />
 
     <!-- impact -->
-    <Section class="bg-jaffa pb-section-bot pt-[12rem]" side="lg">
+    <Section
+      class="pb-section-bot-mob bg-jaffa pt-[12rem] s:pb-section-bot"
+      side="lg"
+    >
       <!-- header -->
       <header class="relative flex justify-between">
         <LineFull class="top-1/2" />
