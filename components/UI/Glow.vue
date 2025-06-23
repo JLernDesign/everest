@@ -3,7 +3,7 @@ const props = defineProps(["src"]);
 </script>
 
 <template>
-  <div class="glow absolute blur-big s:left-0 s:w-[180rem] s:blur-glow">
+  <div class="glow absolute blur-glow s:w-[180rem]">
     <img :src="src" alt="" />
   </div>
 </template>

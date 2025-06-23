@@ -35,7 +35,7 @@ const props = defineProps({
     >
       <h1
         v-if="hero"
-        class="text-xl-mob !mb-12 font-barlow-cond font-bold leading-xl s:text-xl"
+        class="text-xl-mob !mb-6 font-barlow-cond font-bold leading-xl s:!mb-12 s:text-xl"
         v-html="formatText(data.headline)"
       ></h1>
       <h2

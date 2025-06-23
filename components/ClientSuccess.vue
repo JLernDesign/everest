@@ -45,7 +45,7 @@ if (props.data.slides && props.data.slides.length > 0) {
   >
     <template v-if="page_data.jaggedEdge">
       <UIGlow
-        class="transform-origin-left scale-60 -top-[18rem] -z-1 h-[60rem] w-[116rem] overflow-hidden s:-top-[35rem] s:h-[35rem] s:w-[116rem] s:scale-100 max-s:left-1/2 max-s:translate-x-[-50%] max-s:blur-big"
+        class="transform-origin-left scale-60 -top-[18rem] h-[60rem] w-[116rem] overflow-hidden s:-top-[35rem] s:h-[35rem] s:w-[116rem] s:scale-100 max-s:left-1/2 max-s:translate-x-[-50%] max-s:blur-big"
         src="/ui/callout-bot-gradient.svg"
       />
       <div

@@ -122,6 +122,7 @@ export default {
         "section-bot-mob": "7rem",
         "section-bot-lg": "14rem",
         "hero-top": "16rem",
+        "hero-top-mob": "8.5rem",
         "post-top": "18rem",
         side: "4rem",
         "side-lg": "16rem",

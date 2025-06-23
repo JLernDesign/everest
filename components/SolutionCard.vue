@@ -29,22 +29,22 @@ const handleClick = (i) => {
 
 <template>
   <div
-    class="overview-card dark relative w-full border-b border-grayline bg-jaffa px-side-mob py-[18rem] s:px-[20rem]"
+    class="overview-card dark relative w-full border-b border-grayline bg-jaffa px-side-mob py-[6rem] s:px-[20rem] s:py-[18rem]"
     ref="main"
   >
-    <!-- number -->
-    <div class="num absolute left-0 top-[11rem] mb-[11rem] pl-side">
-      <IconTri color="fill-red" />
-      <div class="font-barlow-cond text-num font-bold opacity-30">
-        {{ num < 10 ? "0" + num : num }}
-      </div>
-    </div>
-
     <div class="content relative z-1 flex flex-col justify-between s:flex-row">
       <div
-        class="left flex w-full items-center s:w-1/2"
+        class="left flex w-full s:w-1/2 s:items-center max-s:order-2 max-s:mt-12 max-s:flex-col"
         :class="num % 2 == 0 ? 'order-2 justify-end' : 'order-1'"
       >
+        <!-- number -->
+        <div class="num left-0 top-0 mb-[2rem] s:absolute s:mb-[11rem]">
+          <IconTri color="fill-red" />
+          <div class="font-barlow-cond text-num font-bold opacity-30">
+            {{ num < 10 ? "0" + num : num }}
+          </div>
+        </div>
+
         <!-- text contents -->
         <div class="w-full max-w-[52.5rem]">
           <h3
@@ -90,7 +90,7 @@ const handleClick = (i) => {
           </div>
 
           <!-- stats -->
-          <div v-if="data.stats" class="stats mt-8 flex flex-col s:flex-row">
+          <div v-if="data.stats" class="stats mt-8 flex">
             <div
               v-for="item in data.stats.stats"
               class="stat w-full space-y-5 s:w-1/2"
@@ -117,7 +117,7 @@ const handleClick = (i) => {
 
       <!-- image -->
       <div
-        class="right w-full s:w-1/2"
+        class="right w-full s:w-1/2 max-s:order-1"
         :class="num % 2 == 0 ? 'order-1' : 'order-2'"
       >
         <div

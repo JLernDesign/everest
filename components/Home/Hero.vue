@@ -11,7 +11,7 @@ const props = defineProps(["data"]);
       class="image-wrap relative left-1/2 top-auto -ml-[91rem] w-[180rem] origin-top scale-[.4] s:absolute s:left-0 s:top-0 s:ml-0 s:scale-100 max-s:mt-[3.2rem] max-s:h-[36rem]"
     >
       <UIGlow
-        class="top-[8.3rem] h-[106.2rem] !w-[118.1rem] s:left-[36.2rem] s:top-[19.7rem]"
+        class="left-[36.2rem] top-[8.3rem] h-[106.2rem] !w-[118.1rem] s:top-[19.7rem]"
         src="/home/hero-glow.svg"
       />
       <div

@@ -46,7 +46,12 @@ if (hl.length > 1) {
     />
 
     <!-- breadcrumb nav -->
-    <Breadcrumb v-if="breadcrumb" :data="breadcrumb" :theme="theme" />
+    <Breadcrumb
+      v-if="breadcrumb"
+      :data="breadcrumb"
+      :theme="theme"
+      class="hidden s:block"
+    />
   </header>
 </template>
 

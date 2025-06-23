@@ -18,10 +18,7 @@ const props = defineProps(["data"]);
         :class="n == 2 && 'rotate-180'"
       />
       <UICloud type="3" class="-bottom-[72.7rem] -right-[53.4rem]" />
-      <UIGlow
-        class="bottom-0 h-[21.8rem] !blur-big"
-        src="/ui/edge-gradient.svg"
-      />
+      <UIGlow class="bottom-0 h-[21.8rem]" src="/ui/edge-gradient.svg" />
     </div>
 
     <SectionHeaderBig

@@ -29,13 +29,16 @@ const handleNext = () => {
 </script>
 
 <template>
-  <Section side="none" class="bg-shadowblue !pt-0 pb-section-bot-lg">
+  <Section
+    side="none"
+    class="bg-shadowblue px-side-mob pb-[8.5rem] s:!pt-0 s:pb-section-bot-lg max-s:!pt-4"
+  >
     <UIJagEdge color="fill-shadowblue" />
 
     <SectionHeader theme="dark" :data="data.header" />
 
     <!-- buckets -->
-    <div class="mt-[8rem] px-side-lg">
+    <div class="mt-12 s:mt-[8rem] s:px-side-lg">
       <div class="w-full overflow-hidden">
         <Carousel
           ref="carouselRef"
@@ -43,6 +46,7 @@ const handleNext = () => {
           :center="slider ? true : false"
           :start="slider && 1"
           :class="!slider && 'justify-between'"
+          class="max-s:hidden"
         >
           <div
             v-for="(item, i) in data.buckets"
@@ -70,10 +74,38 @@ const handleNext = () => {
             </div>
           </div>
         </Carousel>
+
+        <!-- mobile carousel -->
+        <div class="space-y-[2.5rem] s:hidden">
+          <div v-for="(item, i) in data.buckets">
+            <div
+              class="bucket rounded-base-mob h-full w-full bg-shadowbluelt p-side-mob s:rounded-base s:p-[3rem]"
+            >
+              <IconTri color="fill-red" class="mb-10 s:mb-4" />
+              <div
+                class="num mb-12 font-barlow-cond text-xxl-mob font-semibold leading-xxl text-shadowblue s:text-xxl"
+              >
+                {{ "0" + (i + 1) }}
+              </div>
+              <h3
+                class="text-sm-mob mb-7 font-barlow-cond font-bold leading-[.94] text-red s:text-sm"
+              >
+                {{ item.headline }}
+              </h3>
+              <p
+                class="text-body-sm leading-sm text-white s:text-body-sm"
+                v-html="formatText(item.description)"
+              ></p>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- controls -->
-      <div v-if="slider" class="mt-[5.5rem] flex w-full justify-between">
+      <div
+        v-if="slider"
+        class="mt-[5.5rem] hidden w-full justify-between s:flex"
+      >
         <div class="relative h-full w-[23.4rem]">
           <UISlideArrow
             dir="left"
