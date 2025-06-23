@@ -5,7 +5,9 @@ const props = defineProps(["data", "theme"]);
 <template>
   <Section :hero="true" side="none">
     <!-- side image -->
-    <div class="absolute left-0 top-0 h-full w-[16rem] pt-hero-top">
+    <div
+      class="absolute left-0 top-0 hidden h-full w-[16rem] pt-hero-top s:block"
+    >
       <img
         src="/public/why/ai-first-side@2x.png"
         alt=""
@@ -13,10 +15,12 @@ const props = defineProps(["data", "theme"]);
       />
     </div>
 
-    <div class="relative flex border-t border-t-whiteline px-side-lg">
+    <div
+      class="relative flex flex-col border-t border-t-whiteline px-side-mob s:flex-row s:px-side-lg"
+    >
       <!-- text -->
       <SectionHeader
-        class="w-[57%] border-l border-l-whiteline pl-side pr-[7.5rem]"
+        class="border-l border-l-whiteline p-side-mob s:w-[57%] s:pl-side s:pr-[7.5rem] max-s:border-r max-s:border-r-whiteline max-s:pb-[4rem]"
         align="left"
         valign="center"
         theme="dark"
@@ -25,7 +29,10 @@ const props = defineProps(["data", "theme"]);
       />
 
       <!-- image -->
-      <div class="aspect-[.76] w-[43%] border-x border-x-whiteline">
+      <hr
+        class="relative left-1/2 w-screen -translate-x-1/2 text-whiteline s:hidden"
+      />
+      <div class="border-x border-x-whiteline s:aspect-[.76] s:w-[43%]">
         <img src="/public/why/ai-first-hero@2x.png" alt="" />
       </div>
     </div>

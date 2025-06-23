@@ -9,7 +9,7 @@ const props = defineProps(["data"]);
     class="rounded-base-mob relative p-side-mob s:min-h-[43.8rem] s:rounded-base s:p-side"
     :class="[
       data.style == 'two-col'
-        ? 'col-span-2 pr-[2.5rem] pt-[2.5rem]'
+        ? 's:col-span-2 s:pr-[2.5rem] s:pt-[2.5rem] max-s:pb-[9rem]'
         : 'pb-[9rem]',
       data.bgColor ? bgColor(data) : 'bg-white',
     ]"
@@ -62,14 +62,14 @@ const props = defineProps(["data"]);
 
     <!-- two column quote w/ big photo -->
     <template v-if="data.style == 'two-col'">
-      <div class="flex justify-between">
+      <div class="flex flex-col justify-between s:flex-row">
         <!-- quote -->
-        <div class="left w-[46%] pt-[1.5rem]">
+        <div class="left s:w-[46%] s:pt-[1.5rem] max-s:order-2">
           <img
             v-if="data.logo"
             :src="data.logo.url"
             alt=""
-            class="rounded-base-mob mb-side w-[19.5rem] overflow-hidden s:rounded-base"
+            class="rounded-base-mob mb-side-mob w-[12rem] overflow-hidden s:mb-side s:w-[19.5rem] s:rounded-base"
           />
           <blockquote
             v-if="data.quote"
@@ -80,7 +80,7 @@ const props = defineProps(["data"]);
         </div>
 
         <!-- image -->
-        <div class="right w-[47.5%]">
+        <div class="right s:w-[47.5%] max-s:order-1 max-s:mb-12">
           <DatocmsImage
             v-if="data.image"
             :data="data.image.responsiveImage"

@@ -3,7 +3,7 @@ const props = defineProps(["data"]);
 </script>
 
 <template>
-  <div class="mb-[4rem] w-full text-center filter">
+  <div class="mb-[2.5rem] w-full text-center filter s:mb-[4rem]">
     <button class="inline-flex items-center gap-2">
       <span class="font-barlow-cond text-h5 font-bold uppercase">{{
         data.label

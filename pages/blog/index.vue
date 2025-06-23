@@ -31,16 +31,19 @@ useHead(() => {
 
 <template>
   <div class="bg-jaffa">
-    <Section class="pt-section-top-lg" :hero="true" side="none">
+    <Section class="s:pt-section-top-lg" :hero="true" side="none">
       <BlogHeader :icon="false" :data="pageData" />
     </Section>
 
     <!-- featured posts -->
-    <Section :side="false" class="border-t border-grayline !py-[5rem]">
+    <Section
+      :side="false"
+      class="border-t border-grayline s:!py-[5rem] max-s:pt-0"
+    >
       <Carousel>
         <div
           v-for="(item, i) in pageData.featuredPosts"
-          class="item shrink-0 px-[1.6rem]"
+          class="item shrink-0 s:px-[1.6rem] max-s:w-full"
         >
           <BlogPostHeader :data="item" class="h-full" type="feature" />
         </div>
@@ -53,7 +56,7 @@ useHead(() => {
     </Section>
 
     <!-- thumbs -->
-    <Section :side="false" class="!pt-0">
+    <Section :side="false" class="s:!pt-0">
       <!-- filter -->
       <UIFilter :data="{ label: 'filter by category' }" />
 

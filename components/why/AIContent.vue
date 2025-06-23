@@ -6,11 +6,13 @@ console.log(props.color);
 <template>
   <div>
     <!-- header -->
-    <div class="relative flex border-t border-t-whiteline px-side-lg">
+    <div
+      class="relative flex border-t border-t-whiteline px-side-mob s:px-side-lg"
+    >
       <!-- side images -->
       <div
         v-for="n in 2"
-        class="absolute top-0 h-full w-[16rem]"
+        class="absolute top-0 hidden h-full w-[16rem] s:block"
         :class="n == 1 ? 'left-0' : 'right-0'"
       >
         <img
@@ -26,24 +28,26 @@ console.log(props.color);
 
       <!-- headline -->
       <div
-        class="relative w-full border-x border-x-whiteline px-side py-[4.5rem]"
+        class="relative w-full border-x border-x-whiteline px-side-mob py-[3.5rem] s:px-side s:py-[4.5rem]"
       >
         <h2
-          class="relative font-barlow-cond text-lg-mob font-bold leading-lg s:text-lg"
+          class="relative font-barlow-cond text-lg-mob font-bold leading-lg s:text-lg max-s:pr-8"
         >
           {{ data.headline }}
           <IconArrowFill
             color="fill-red"
-            class="absolute bottom-0 right-0 rotate-[135deg]"
+            class="absolute right-0 top-0 rotate-[135deg] s:bottom-0"
           />
         </h2>
       </div>
     </div>
 
     <!-- content -->
-    <div class="relative flex border-t border-t-whiteline px-side-lg">
+    <div
+      class="relative flex flex-col border-t border-t-whiteline px-side-mob s:flex-row s:px-side-lg"
+    >
       <!-- image -->
-      <div class="w-[57%] border-l border-l-whiteline">
+      <div class="w-full border-l border-l-whiteline s:w-[57%]">
         <div
           class="ph-image aspect-[1.44] bg-cover"
           :class="
@@ -56,7 +60,7 @@ console.log(props.color);
 
       <!-- text -->
       <div
-        class="flex w-[43%] flex-col justify-end border-x border-x-whiteline p-[5rem]"
+        class="flex flex-col justify-end border-x border-x-whiteline p-side-mob s:w-[43%] s:p-[5rem]"
       >
         <span v-html="data.body"></span>
       </div>

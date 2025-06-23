@@ -12,12 +12,12 @@ const selected = posts.slice(0, 3);
 
 <template>
   <Section
-    class="pb-section-bot-mob mt-[30rem] !pt-0 s:pb-section-bot"
+    class="pb-section-bot-mob mt-[5rem] !pt-0 s:mt-[30rem] s:pb-section-bot"
     side="none"
   >
     <div class="absolute left-0 top-0 z-1 h-full w-full bg-jaffa"></div>
     <UIGlow
-      class="-top-[13.6rem] z-0 h-[13.6rem] !blur-big"
+      class="-top-[5rem] z-0 h-[13.6rem] s:-top-[13.6rem] s:blur-big"
       src="/ui/edge-gradient.svg"
     />
 
@@ -30,7 +30,7 @@ const selected = posts.slice(0, 3);
 
       <!-- thumbs -->
       <div
-        class="flex w-full divide-x-1 divide-grayline border-y border-grayline"
+        class="flex w-full flex-col divide-grayline border-y border-grayline s:flex-row s:divide-x-1 max-s:divide-y-1"
       >
         <BlogThumb v-for="(item, i) in selected" :data="item" />
       </div>

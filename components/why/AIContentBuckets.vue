@@ -5,12 +5,12 @@ const props = defineProps(["data"]);
 <template>
   <div>
     <!-- header -->
-    <div class="relative border-t border-t-whiteline px-side-lg">
+    <div class="relative border-t border-t-whiteline px-side-mob s:px-side-lg">
       <div
-        class="w-full border-x border-x-whiteline bg-[url(/why/ai-lines-bgfull.svg)] bg-cover px-side py-[11.2rem]"
+        class="w-full border-x border-x-whiteline bg-[url(/why/ai-lines-bgfull.svg)] bg-cover px-side-mob py-[4rem] s:px-side s:py-[11.2rem]"
       >
         <div
-          class="rounded-base-mob mx-auto w-[81rem] space-y-[2.5rem] bg-shadowblue p-[6rem] text-center s:rounded-base"
+          class="rounded-base-mob mx-auto space-y-[2.5rem] bg-shadowblue p-side-mob text-center s:w-[81rem] s:rounded-base s:p-[6rem]"
         >
           <h2
             class="font-barlow-cond text-lg-mob font-bold leading-lg s:text-lg"
@@ -24,17 +24,18 @@ const props = defineProps(["data"]);
     <!-- buckets -->
     <div
       v-if="data.buckets"
-      class="relative border-t border-t-whiteline px-side-lg"
+      class="relative border-t border-t-whiteline px-side-mob s:px-side-lg"
     >
       <div
         class="flex flex-col flex-wrap border-x border-x-whiteline s:flex-row"
       >
         <div
           v-for="(bucket, i) in data.buckets"
-          class="bucket w-full px-[8rem] py-[5rem] s:w-1/2"
+          class="bucket w-full px-side-mob py-[3rem] s:w-1/2 s:px-[8rem] s:py-[5rem]"
           :class="[
             i > 1 && 'border-t border-t-whiteline',
-            i % 1 == 0 && 'border-l border-l-whiteline',
+            i % 1 == 0 &&
+              's:border-l s:border-l-whiteline max-s:border-t max-s:border-t-whiteline',
           ]"
         >
           <div

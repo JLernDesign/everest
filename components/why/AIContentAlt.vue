@@ -7,11 +7,13 @@ const active = 0;
 
 <template>
   <div>
-    <div class="relative flex border-t border-t-whiteline px-side-lg">
+    <div
+      class="relative flex flex-col border-t border-t-whiteline px-side-mob s:flex-row s:px-side-lg"
+    >
       <!-- side images -->
       <div
         v-for="n in 2"
-        class="absolute top-0 h-full w-[16rem]"
+        class="absolute top-0 hidden h-full w-[16rem] s:block"
         :class="n == 1 ? 'left-0' : 'right-0 -scale-x-100'"
       >
         <img
@@ -23,7 +25,7 @@ const active = 0;
 
       <!-- text -->
       <div
-        class="flex w-[43%] flex-col justify-between border-x border-x-whiteline"
+        class="flex flex-col justify-between border-x border-x-whiteline s:w-[43%] max-s:order-2"
       >
         <div class="p-side-mob s:p-side">
           <h3
@@ -41,9 +43,9 @@ const active = 0;
         <!-- slide nav -->
         <ul class="divide-y-1 divide-whiteline border-t border-t-whiteline">
           <template v-for="(slide, i) in data.slides">
-            <li v-if="i > 0" class="px-side py-6">
+            <li v-if="i > 0" class="px-side-mob py-6 s:px-side">
               <button
-                class="font-barlow-cond text-h5 font-bold uppercase"
+                class="text-left font-barlow-cond text-h5 font-bold uppercase"
                 :class="accentColor(slide)"
               >
                 {{ slide.title }}
@@ -54,7 +56,9 @@ const active = 0;
       </div>
 
       <!-- image -->
-      <div class="w-[57%] border-r border-r-whiteline p-8">
+      <div
+        class="w-full border-r border-r-whiteline p-8 s:w-[57%] max-s:order-1 max-s:border max-s:border-t-0 max-s:border-whiteline"
+      >
         <div
           class="ph-image grid aspect-[1.32] place-content-center rounded-sm bg-skyblue p-12"
         >
