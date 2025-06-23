@@ -5,13 +5,13 @@ const props = defineProps(["data"]);
 </script>
 
 <template>
-  <Section class="bg-skyblue !py-side text-center text-white">
+  <Section class="bg-skyblue text-center text-white s:!py-side max-s:p-0">
     <div
-      class="rounded-base-mob bg-[url(/ui/quote-bg@2x.jpg)] bg-cover pb-[11.5rem] pt-[7.6rem] s:rounded-base"
+      class="bg-[url(/ui/quote-bg@2x.jpg)] bg-cover pb-[8rem] pt-20 s:rounded-base s:pb-[11.5rem] s:pt-[7.6rem] max-s:px-side-mob"
     >
       <div
         v-if="data.image"
-        class="quote-person mx-auto mb-[8rem] w-[19.5rem] overflow-hidden rounded-sm"
+        class="quote-person mx-auto mb-[5rem] w-[19.5rem] overflow-hidden rounded-sm s:mb-[8rem]"
       >
         <DatocmsImage :data="data.image.responsiveImage" class="quote-image" />
       </div>
@@ -19,15 +19,19 @@ const props = defineProps(["data"]);
       <blockquote
         class="text-xl-mob relative mx-auto max-w-[125rem] font-barlow-cond font-bold leading-xl s:text-xl"
       >
-        <div class="quote lt absolute -left-[3.5rem] -top-[5.5rem]">“</div>
-        <div class="quote rt absolute -bottom-[18rem] right-0">”</div>
+        <div class="quote lt absolute -top-[5.5rem] s:-left-[3.5rem]">“</div>
+        <div
+          class="quote rt absolute -bottom-[13rem] right-0 s:-bottom-[18rem]"
+        >
+          ”
+        </div>
         {{ data.quote }}
       </blockquote>
 
       <!-- byline -->
       <div
         v-if="data.name"
-        class="byline text-body-xsm-mob mt-[5rem] s:text-body-xsm"
+        class="byline text-body-xsm-mob mt-[3.5rem] s:mt-[5rem] s:text-body-xsm"
       >
         <strong class="block font-helvb">{{ data.name }}</strong>
         {{ data.title }}

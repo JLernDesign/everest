@@ -6,7 +6,7 @@ const props = defineProps(["data"]);
 
 <template>
   <div
-    class="rounded-base-mob relative min-h-[43.8rem] p-side-mob s:rounded-base s:p-side"
+    class="rounded-base-mob relative p-side-mob s:min-h-[43.8rem] s:rounded-base s:p-side"
     :class="[
       data.style == 'two-col'
         ? 'col-span-2 pr-[2.5rem] pt-[2.5rem]'
@@ -19,7 +19,7 @@ const props = defineProps(["data"]);
       <!-- image -->
       <div
         v-if="data.image"
-        class="rounded-base-mob mb-side w-[19.5rem] overflow-hidden s:rounded-base"
+        class="rounded-base-mob mb-[3rem] w-[23.4rem] overflow-hidden s:mb-side s:w-[19.5rem] s:rounded-base"
       >
         <DatocmsImage :data="data.image.responsiveImage" />
       </div>
@@ -44,10 +44,18 @@ const props = defineProps(["data"]);
     <!-- big quote on color -->
     <template v-if="data.style == 'big-quote'">
       <blockquote
-        class="text-sm-mob pt-10 font-barlow-cond font-bold leading-[.94] s:text-sm"
+        class="text-sm-mob pt-14 font-barlow-cond font-bold leading-[.94] s:pt-10 s:text-sm max-s:mb-16"
       >
-        <div class="quote lt absolute left-[2rem] top-[3rem]">“</div>
-        <div class="quote rt absolute bottom-[6rem] right-[4rem]">”</div>
+        <div
+          class="quote lt absolute left-[2rem] top-[2rem] s:top-[3rem] max-s:text-[3.6rem]"
+        >
+          “
+        </div>
+        <div
+          class="quote rt absolute bottom-[6rem] right-[4rem] max-s:text-[3.6rem]"
+        >
+          ”
+        </div>
         {{ data.quote }}
       </blockquote>
     </template>

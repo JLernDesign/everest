@@ -19,7 +19,7 @@ const toggleMenu = (id) => {
 </script>
 
 <template>
-  <Section class="bg-shadowblue s:!py-side" theme="dark">
+  <Section class="pb-section-bot-mob bg-shadowblue s:!py-side" theme="dark">
     <UITexture class="max-s:hidden" />
 
     <div
@@ -27,7 +27,7 @@ const toggleMenu = (id) => {
     >
       <SectionHeader theme="dark" :data="data.header" />
 
-      <div class="faq-items relative mt-[9.5rem]" ref="main">
+      <div class="faq-items relative mt-[3.5rem] s:mt-[9.5rem]" ref="main">
         <FaqItem
           v-for="(item, i) in data.items"
           :func="toggleMenu"

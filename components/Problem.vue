@@ -28,11 +28,11 @@ const props = defineProps(["layout", "data"]);
 
     <!-- slides -->
     <div
-      class="rounded-base-mob mt-[10rem] flex flex-col justify-between overflow-hidden bg-shadowblue s:flex-row s:rounded-base"
+      class="rounded-base-mob mt-[5rem] flex flex-col justify-between overflow-hidden bg-shadowblue s:mt-[10rem] s:flex-row s:rounded-base"
     >
       <!-- text -->
       <div
-        class="text relative w-full px-[5rem] pb-[14rem] pt-[11.5rem] text-white s:w-1/2"
+        class="text relative w-full px-side-mob pb-[5rem] pt-[3.5rem] text-white s:w-1/2 s:px-[5rem] s:pb-[14rem] s:pt-[11.5rem] max-s:order-1"
         :class="layout == 'img-rt' ? 'order-1' : 'order-2'"
       >
         <div class="max-w-[575px] space-y-7">
@@ -54,7 +54,7 @@ const props = defineProps(["layout", "data"]);
 
         <!-- controls -->
         <div
-          class="absolute bottom-[8rem] left-0 flex h-[3.2rem] w-full items-center px-[5rem]"
+          class="absolute bottom-[8rem] left-0 hidden h-[3.2rem] w-full items-center px-[5rem] s:flex"
         >
           <div class="relative h-full w-[23.4rem]">
             <UISlideArrow
@@ -79,7 +79,7 @@ const props = defineProps(["layout", "data"]);
 
       <!-- image -->
       <div
-        class="image rounded-base-mob w-full bg-cover p-[13rem] s:w-[48.5%] s:rounded-base"
+        class="image rounded-base-mob w-full bg-cover p-[1.4rem] s:w-[48.5%] s:rounded-base s:p-[13rem] max-s:order-2"
         :class="
           layout == 'img-rt'
             ? 'order-2 bg-[url(/ui/mt-red@2x.jpg)]'
@@ -98,6 +98,23 @@ const props = defineProps(["layout", "data"]);
           ></h3>
           <p v-html="formatText(data.slides[0].description)"></p>
         </div>
+      </div>
+    </div>
+
+    <!-- mobile controls -->
+    <div
+      class="mt-12 flex h-[3.2rem] w-full items-center justify-center s:hidden"
+    >
+      <div class="relative h-full w-[11rem] shrink-0 s:w-[23.4rem]">
+        <UISlideArrow dir="left" :color="red" />
+      </div>
+      <div
+        class="count px-side-mob font-barlow-cond font-bold text-red s:px-side"
+      >
+        1/{{ data.slides.length }}
+      </div>
+      <div class="relative h-full w-[11rem] shrink-0 s:w-[23.4rem]">
+        <UISlideArrow dir="right" :color="red" />
       </div>
     </div>
   </Section>

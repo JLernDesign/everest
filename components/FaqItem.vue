@@ -16,9 +16,9 @@ defineExpose({ open, num });
     class="faq-wrap closed relative flex justify-between border-b-1 border-b-[#3D4856]"
     ref="main"
   >
-    <div
+    <!-- <div
       class="absolute left-0 top-[6.75rem] h-0 w-full border-b-1 border-b-[#3D4856]"
-    ></div>
+    ></div> -->
     <!-- text -->
     <div class="faq-text w-full shrink s:px-side">
       <!-- question -->
@@ -32,7 +32,7 @@ defineExpose({ open, num });
 
       <!-- answer -->
       <div class="faq-answer relative h-0 overflow-hidden" ref="wrap">
-        <div class="py-10 s:py-20">
+        <div class="pb-10 s:py-20">
           <div
             class="rounded-base-mob relative bg-jaffa px-side-mob py-side-mob text-body-sm-mob leading-sm text-black s:rounded-base s:px-[14rem] s:pb-side-mob s:pt-[5rem] s:text-body-sm"
             ref="answer"

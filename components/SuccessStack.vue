@@ -39,10 +39,37 @@ onMounted(() => {
 
     <!-- slides -->
     <div
-      class="slides relative mx-auto mt-[5rem] h-[51.5rem] w-[116rem] max-s:w-full"
+      class="slides relative mx-auto mt-[5rem] hidden h-[51.5rem] w-[116rem] s:block max-s:w-full"
       ref="main"
     >
       <StackSlide v-for="(slide, i) in data.slides" :data="slide" :key="i" />
+    </div>
+
+    <!-- mobile slides -->
+    <div
+      class="slides-mobile relative left-1/2 w-screen -translate-x-1/2 s:hidden"
+    >
+      <Carousel :drag="true" class="mt-[2rem]">
+        <div
+          class="item w-full shrink-0 px-side-mob"
+          v-for="(slide, i) in data.slides"
+          :key="i"
+        >
+          <StackSlide :data="slide" />
+        </div>
+      </Carousel>
+    </div>
+
+    <!-- mobile controls-->
+    <div
+      class="relative mt-[2.5rem] flex h-[3.2rem] w-full justify-between px-side-mob s:hidden"
+    >
+      <UISlideArrow v-if="data.slides.length > 1" dir="left" class="!w-[48%]" />
+      <UISlideArrow
+        v-if="data.slides.length > 1"
+        dir="right"
+        class="!w-[48%]"
+      />
     </div>
 
     <!-- cta buttons -->
@@ -51,7 +78,7 @@ onMounted(() => {
       :data="data.cta.buttons"
       align="center"
       :theme="theme"
-      class="mt-[6rem]"
+      class="mt-[4rem] s:mt-[6rem]"
     />
   </Section>
 </template>

@@ -31,8 +31,8 @@ const handleClick = (item) => {
 
     <!-- slider -->
     <Carousel
-      class="slider-wrap mt-[15.5rem] !h-[40rem] -rotate-[15deg] space-x-[7rem]"
-      :class="slider ? 'ml-[5.65rem]' : null"
+      class="slider-wrap mt-[10rem] -rotate-[15deg] space-x-[3rem] s:mt-[15.5rem] s:!h-[40rem] s:space-x-[7rem] max-s:!h-[30rem]"
+      :class="slider ? 's:ml-[5.65rem]' : null"
       :drag="slider && true"
       :padding="slider ? '70' : '0'"
       :center="slider && true"

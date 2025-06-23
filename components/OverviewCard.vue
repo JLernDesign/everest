@@ -64,7 +64,7 @@ console.log(props.nav);
       <!-- image -->
       <div class="right w-full s:w-1/2 max-s:order-1">
         <div
-          class="image rounded-base-mob relative flex aspect-[1.0675] w-full items-center justify-center overflow-hidden bg-skyblue p-[2rem] s:rounded-base s:p-[11.5rem]"
+          class="image rounded-base-mob relative flex aspect-[1.0675] w-full items-center justify-center overflow-hidden bg-skyblue s:rounded-base s:p-[11.5rem]"
         >
           <UICloud type="2" class="-left-[16rem] top-[44rem]" />
           <UICloud type="2" class="-top-[25rem] left-[18rem]" />

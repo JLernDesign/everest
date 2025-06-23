@@ -30,7 +30,7 @@ props.data.color == "gray" ? (color = "text-white") : null;
     >
       <!-- headline -->
       <div
-        class="rounded-base-mob w-full bg-shadowblue p-side-mob s:w-[52rem] s:rounded-base s:p-side max-s:mb-side-mob"
+        class="rounded-base-mob w-full bg-shadowblue p-[3rem] s:w-[52rem] s:rounded-base s:p-side max-s:mb-side-mob"
       >
         <h2
           class="font-barlow-cond text-lg-mob font-bold leading-lg s:text-lg"
@@ -45,11 +45,11 @@ props.data.color == "gray" ? (color = "text-white") : null;
           <!-- text -->
           <template v-if="block.__typename == 'AdvantageTextRecord'">
             <div
-              class="content-text bullets lines rounded-base-mob bg-cover p-[2rem] pb-[2.5rem] s:rounded-base [&_ul]:divide-y-1 [&_ul]:divide-grayline [&_ul]:border-y-1 [&_ul]:border-grayline [&_ul]:text-body-sm-mob [&_ul]:s:text-body-sm"
+              class="content-text bullets lines rounded-base-mob bg-cover p-[1.4rem] s:rounded-base [&_ul]:divide-y-1 [&_ul]:divide-grayline [&_ul]:border-y-1 [&_ul]:border-grayline [&_ul]:text-body-sm-mob [&_ul]:s:text-body-sm"
               :style="`background-image:url(/ui/mt-${data.color}@2x.jpg)`"
             >
               <div
-                class="space-y-16 rounded-sm bg-jaffa p-side-mob s:p-[3.2rem]"
+                class="space-y-16 rounded-sm bg-jaffa px-[1.4rem] py-[3rem] s:p-[3.2rem]"
               >
                 <span
                   class="space-y-10 s:space-y-16"
@@ -79,7 +79,7 @@ props.data.color == "gray" ? (color = "text-white") : null;
           <!-- image -->
           <template v-if="block.__typename == 'AdvantageImageRecord'">
             <div
-              class="content-image rounded-base-mob bg-cover p-side-mob s:rounded-base s:p-[11.5rem]"
+              class="content-image rounded-base-mob bg-cover px-[5rem] py-[8rem] s:rounded-base s:p-[11.5rem]"
               :style="`background-image:url(/ui/mt-${data.color}@2x.jpg)`"
             >
               <div class="rounded-base-mob bg-white p-4 s:rounded-base">
