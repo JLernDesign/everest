@@ -34,20 +34,18 @@ if (props.stats.length <= 3) {
 
     <!-- slider -->
     <Carousel
-      class="slider-wrap mt-[7.5rem] -rotate-[15deg] s:mt-[22.5rem] s:!h-[50rem] s:space-x-[10rem]"
-      :class="
-        slider ? 'ml-[1.6rem] s:ml-[5.65rem]' : 'justify-center s:ml-[3.5rem]'
-      "
+      class="slider-wrap mt-[10rem] -rotate-[15deg] s:mt-[22.5rem] s:!h-[50rem]"
+      :class="slider ? 's:ml-[5.65rem]' : 'justify-center s:ml-[3.5rem]'"
       :drag="slider && true"
       :center="slider && true"
       :start="slider && 1"
     >
       <div
         v-for="stat in duplicated"
-        class="item h-full shrink-0 rotate-[15deg] px-[1.6rem] max-s:w-[35.2rem]"
+        class="item h-[19rem] shrink-0 px-[1.6rem] s:px-[4.2rem] max-s:w-[35.2rem]"
       >
         <div
-          class="rounded-base-mob z-1 bg-white p-[2rem] text-left s:-ml-[1.2rem] s:h-[27.7rem] s:w-[40rem] s:rounded-base s:p-[3.2rem] s:pt-[3.75rem]"
+          class="rounded-base-mob z-1 rotate-[15deg] bg-white p-[2rem] text-left s:h-[27.7rem] s:w-[40rem] s:rounded-base s:p-[3.2rem] s:pt-[3.75rem]"
         >
           <IconTri color="fill-red" class="mb-[2.4rem]" />
           <h3

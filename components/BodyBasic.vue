@@ -20,13 +20,13 @@ const props = defineProps(["data", "edge", "layout"]);
     >
       <!-- image -->
       <div
-        class="image rounded-base-mob aspect-square w-full overflow-hidden bg-shadowbluelt s:w-1/2 s:rounded-base"
+        class="image rounded-base-mob aspect-square w-full overflow-hidden bg-shadowbluelt s:w-1/2 s:rounded-base [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
         :class="data.layout == 'image left' ? 'order-1' : 'order-2'"
       >
         <DatocmsImage
           v-if="data.image"
           :data="data.image.responsiveImage"
-          class="h-full w-full object-cover"
+          class="h-full w-full"
         />
       </div>
 

@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps(["theme", "data"]);
+const props = defineProps(["theme", "data", "template"]);
 const active = ref(0);
 </script>
 
@@ -60,21 +60,39 @@ const active = ref(0);
     </div>
 
     <!-- mobile module -->
-    <div
-      class="mt-[4.5rem] flex w-full flex-wrap justify-between gap-[2rem] s:hidden"
-    >
+
+    <!-- text list -->
+    <template v-if="template == 'about'">
       <div
-        v-for="(item, i) in data.groups[active].items"
-        class="h-[10.6rem] w-[16.6rem] shrink-0 rounded-base border border-grayline"
+        class="mt-[4.5rem] block divide-y-1 divide-grayline border-y-1 border-grayline s:hidden"
       >
-        <img
-          v-if="item.image"
-          :src="item.image.url"
-          class="h-full w-full object-contain"
-          alt=""
-        />
+        <div
+          v-for="(item, i) in data.groups[active].items"
+          class="py-8 text-body-sm-mob leading-sm"
+        >
+          <h4 class="mb-2 font-helvb">{{ item.name }}</h4>
+
+          {{ item.description }}
+        </div>
       </div>
-    </div>
+    </template>
+
+    <!-- logo blocks -->
+    <template v-else>
+      <div class="mt-[4.5rem] grid w-full grid-cols-2 gap-[2rem] s:hidden">
+        <div
+          v-for="(item, i) in data.groups[active].items"
+          class="rounded-base border border-grayline"
+        >
+          <img
+            v-if="item.image"
+            :src="item.image.url"
+            class="h-full w-full object-contain"
+            alt=""
+          />
+        </div>
+      </div>
+    </template>
   </Section>
 </template>
 

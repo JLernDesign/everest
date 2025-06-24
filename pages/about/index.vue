@@ -23,7 +23,7 @@ useHead(() => {
 <template>
   <div class="bg-jaffa">
     <AboutHero :data="page.heroHeadline" :stats="page.statsSlider" />
-    <FlexibleBlocks :data="page.flexibleContent.modules" />
+    <FlexibleBlocks :data="page.flexibleContent.modules" template="about" />
     <FooterLockup :data="page.footerCallout" />
   </div>
 </template>

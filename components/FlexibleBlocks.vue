@@ -32,6 +32,7 @@ const props = defineProps(["data", "template"]);
     <Integrations
       v-if="module.__typename == 'IntegrationListRecord'"
       :data="module"
+      :template="template"
     />
     <MapModule v-if="module.__typename == 'MapModuleRecord'" :data="module" />
     <OverviewCards
