@@ -49,36 +49,46 @@ useHead(() => {
 
 <template>
   <div class="bg-jaffa">
-    <Section :hero="true">
+    <Section :hero="true" class="max-s:pt-hero-mob-lg">
       <header class="text-center">
         <h1
           class="font-barlow-cond text-xxl-mob font-semibold uppercase leading-xxl s:text-xxl"
         >
           {{ page.headline }}
         </h1>
+        <h2
+          class="text-body-md-mob block leading-md s:hidden max-s:pt-[2.5rem] max-s:text-center"
+        >
+          Send us your contact information and we will get back to you as soon
+          as possible.
+        </h2>
       </header>
     </Section>
 
     <!-- contents -->
-    <Section class="pb-section-bot-mob s:pb-section-bot-lg">
+    <Section class="pb-section-bot-mob s:pb-section-bot-lg max-s:pt-[3rem]">
       <div class="mx-auto max-w-base">
         <!-- columns -->
         <div class="flex flex-col items-start justify-between s:flex-row">
           <!-- text -->
-          <div class="w-full s:w-[38%]">
-            <h2 class="text-body-md-mob leading-md s:text-body-md">
+          <div class="w-full s:w-[38%] max-s:order-2">
+            <h2
+              class="text-body-md-mob hidden leading-md s:block s:text-body-md max-s:text-center"
+            >
               Send us your contact information and we will get back to you as
               soon as possible.
             </h2>
 
-            <hr class="my-side text-black" />
+            <hr class="my-side text-black max-s:mb-[2.5rem]" />
 
             <!-- contact -->
             <div class="text-body-sm-mob leading-sm s:text-body-sm">
               <h3 class="font-barlow-cond text-[2.1rem] uppercase text-red">
                 Contact
               </h3>
-              <div class="relative mt-[2rem] columns-2 space-y-[2rem]">
+              <div
+                class="relative mt-[1rem] space-y-[1.5rem] s:mt-[2rem] s:columns-2 s:space-y-[2rem]"
+              >
                 <div>
                   <span class="font-helvh">North America</span><br />
                   280 Hope Street<br />
@@ -102,14 +112,14 @@ useHead(() => {
               </div>
             </div>
 
-            <hr class="my-side text-black" />
+            <hr class="my-side text-black max-s:mt-[2.5rem]" />
 
             <!-- <Brands v-if="logos" class="mt-[12rem]" theme="light" :data="logos" /> -->
           </div>
 
           <!-- form -->
           <div
-            class="rounded-base-mob relative w-full overflow-hidden p-[5rem] text-white s:w-1/2 s:rounded-base"
+            class="rounded-base-mob relative w-full overflow-hidden p-[2.5rem] text-white s:w-1/2 s:rounded-base s:p-[5rem] max-s:order-1 max-s:pb-[5rem]"
           >
             <UITexture />
 

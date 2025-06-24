@@ -13,20 +13,23 @@ const { data } = await useGraphqlQuery({
   },
 });
 
-let ctx;
+let ctx, mm;
+const min = 650;
 const main = ref();
 const sidebar = ref();
 
 onMounted(() => {
-  let el;
+  mm = gsap.matchMedia();
   ctx = gsap.context((self) => {
     setTimeout(() => {
       // pin menu for duration of article
-      pinMenu(
-        sidebar.value,
-        self.selector(".start-pin"),
-        self.selector(".end-pin"),
-      );
+      mm.add("(min-width: " + min + "px)", () => {
+        pinMenu(
+          sidebar.value,
+          self.selector(".start-pin"),
+          self.selector(".end-pin"),
+        );
+      });
     }, 200);
   }, main.value);
 
@@ -36,6 +39,7 @@ onMounted(() => {
 
 onUnmounted(() => {
   ctx.revert();
+  mm.revert();
 });
 
 // Structured Text: block renderer
@@ -58,21 +62,21 @@ const renderBlock = ({ record }) => {
       "div",
       {
         class:
-          "content-block quote relative left-1/2 w-screen -translate-x-1/2 -ml-[20rem] !my-[10rem]",
+          "content-block quote relative left-1/2 w-screen -ml-[50vw] s:!my-[10rem] max-s:!my-[8rem]",
       },
       [
         h(
           "div",
           {
             class:
-              "quote-wrap bg-[url(/public/blog/quote-bg.svg)] bg-cover px-[20rem] py-[13.2rem] border-y-1 border-y-grayline",
+              "quote-wrap s:bg-[url(/public/blog/quote-bg.svg)] bg-[url(/public/blog/quote-bg-mob.svg)] bg-cover s:px-[20rem] s:py-[13.2rem] py-[17rem] border-y-1 border-y-grayline",
           },
           [
             h(
               "blockquote",
               {
                 class:
-                  "text-xl-mob s:text-xl font-barlow-cond font-bold leading-xl text-center p-[8rem] rounded-base-mob s:rounded-base bg-jaffa",
+                  "text-xl-mob s:text-xl font-barlow-cond font-bold leading-xl text-center s:p-[8rem] p-[4rem] rounded-base-mob s:rounded-base bg-jaffa",
               },
               record.text,
             ),
@@ -91,14 +95,20 @@ useHead(() => {
 </script>
 
 <template>
-  <div class="bg-jaffa pt-post-top" ref="main">
+  <div class="pt-hero-top-mob bg-jaffa s:pt-post-top" ref="main">
     <!-- header -->
     <BlogPostHeader :data="data.post" />
 
     <!-- content -->
-    <Section class="relative mx-auto !w-[124rem]" side="none">
+    <Section
+      class="relative mx-auto s:!w-[124rem] max-s:flex max-s:flex-col max-s:pb-[5rem]"
+      side="none"
+    >
       <!-- sidebar -->
-      <div class="z-2 h-0 w-[28.4rem]" ref="sidebar">
+      <div
+        class="z-2 s:h-0 s:w-[28.4rem] max-s:order-2 max-s:mt-[8rem] max-s:px-side-mob"
+        ref="sidebar"
+      >
         <div class="menu relative">
           <div
             class="cta rounded-base-mob relative overflow-hidden bg-skyblue bg-[url(/public/blog/sidebar-callout@2x.png)] bg-cover pb-[3rem] pt-[21.2rem] text-center s:rounded-base"
@@ -139,10 +149,12 @@ useHead(() => {
       </div>
 
       <!-- article -->
-      <div class="start-pin"></div>
-      <div class="relative z-0 flex justify-end">
+      <div class="start-pin hidden s:block"></div>
+      <div
+        class="relative z-0 flex s:justify-end max-s:order-1 max-s:px-side-mob"
+      >
         <div
-          class="article bullets [&_h2]:text-body-md-mob min-h-[80rem] w-[84rem] [&_*+*]:mt-[3.2rem] [&_*+h2]:mt-[9rem] [&_h2]:font-helvb [&_h2]:s:text-body-md [&_h3+p]:mt-[.5rem] [&_h3]:font-helvb [&_ul]:space-y-[1rem]"
+          class="article bullets [&_h2]:text-body-md-mob s:min-h-[80rem] s:w-[84rem] [&_*+*]:mt-[1.8rem] [&_*+*]:s:mt-[3.2rem] [&_*+h2]:mt-[6rem] [&_*+h2]:s:mt-[9rem] [&_h2]:font-helvb [&_h2]:s:text-body-md [&_h3+p]:mt-[.25rem] [&_h3+p]:s:mt-[.5rem] [&_h3]:font-helvb [&_ul]:space-y-[1rem]"
         >
           <DatocmsStructuredText
             :data="data.post.content"
@@ -150,11 +162,11 @@ useHead(() => {
           />
         </div>
       </div>
-      <div class="end-pin"></div>
+      <div class="end-pin hidden s:block"></div>
     </Section>
 
     <!-- more posts -->
-    <PostsCallout :data="{ headline: 'Next Posts' }" />
+    <PostsCallout :data="{ headline: 'Next Posts' }" class="max-s:pb-0" />
 
     <FooterLockup :data="data.blogLanding.footerCallout" />
   </div>

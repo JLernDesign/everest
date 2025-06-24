@@ -5,8 +5,8 @@ const props = defineProps(["data", "edge", "layout"]);
 
 <template>
   <Section
-    class="pb-section-bot-mob bg-shadowblue text-white s:pb-section-bot-lg"
-    :class="data.jaggedEdge && '!pt-0'"
+    class="bg-shadowblue pb-section-bot text-white s:pb-section-bot-lg"
+    :class="data.jaggedEdge && 's:!pt-0 max-s:!pt-6'"
     theme="dark"
   >
     <UIJagEdge v-if="data.jaggedEdge" color="fill-shadowblue" />
@@ -15,7 +15,9 @@ const props = defineProps(["data", "edge", "layout"]);
     <SectionHeader theme="dark" :data="data.header" />
 
     <!-- columns -->
-    <div class="flex flex-col items-start justify-between pt-[6rem] s:flex-row">
+    <div
+      class="flex flex-col items-start justify-between pt-[2.5rem] s:flex-row s:pt-[6rem]"
+    >
       <!-- image -->
       <div
         class="image rounded-base-mob aspect-square w-full overflow-hidden bg-shadowbluelt s:w-1/2 s:rounded-base"
@@ -30,11 +32,11 @@ const props = defineProps(["data", "edge", "layout"]);
 
       <!-- text -->
       <div
-        class="text w-full s:w-1/2"
+        class="text w-full s:w-1/2 max-s:mt-[5rem]"
         :class="
           layout == 'img-lt'
-            ? 'order-2 pl-[11.5rem] pr-[9rem]'
-            : 'order-1 pl-[9rem] pr-[11.5rem]'
+            ? 'order-2 s:pl-[11.5rem] s:pr-[9rem]'
+            : 'order-1 s:pl-[9rem] s:pr-[11.5rem]'
         "
       >
         <div

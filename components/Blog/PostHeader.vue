@@ -7,7 +7,10 @@ const props = defineProps(["data", "type"]);
 <template>
   <div
     class="relative mx-auto flex w-full max-w-[141rem] flex-col p-[2.5rem] s:flex-row s:rounded-base"
-    :class="data.accentColor.bgColor ? bgColor(data.accentColor) : 'bg-tan'"
+    :class="[
+      data.accentColor.bgColor ? bgColor(data.accentColor) : 'bg-tan',
+      type != 'feature' && 'max-s:pb-0',
+    ]"
   >
     <!-- text -->
     <div
@@ -31,13 +34,13 @@ const props = defineProps(["data", "type"]);
       <template v-else>
         <div
           v-if="data.author"
-          class="author absolute bottom-0 flex items-center space-x-6"
+          class="author flex items-center space-x-6 s:absolute s:bottom-0 max-s:mt-[3.5rem]"
         >
           <img
             v-if="data.author.photo"
             :src="data.author.photo.url"
             alt=""
-            class="w-[5rem] overflow-hidden rounded-full"
+            class="w-[4rem] overflow-hidden rounded-full s:w-[5rem]"
           />
           <p class="text-body-xsm-mob s:text-body-xsm">
             Author: {{ data.author.name }}

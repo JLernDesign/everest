@@ -62,7 +62,7 @@ useHead(() => {
 
       <!-- thumbs grid -->
       <div
-        class="thumbs-grid flex w-full flex-wrap border-t border-grayline [&_.thumb:nth-child(3n)]:!border-r-transparent [&_.thumb:nth-child(n+4)]:!border-t-1 [&_.thumb]:border-r-1 [&_.thumb]:!border-grayline"
+        class="thumbs-grid flex w-full flex-wrap border-t border-grayline s:flex-row s:divide-x-1 max-s:divide-y-1 [&_.thumb:nth-child(3n)]:s:!border-r-transparent [&_.thumb:nth-child(n+4)]:s:!border-t-1 [&_.thumb]:!border-grayline [&_.thumb]:s:border-r-1"
       >
         <BlogThumb v-for="(item, i) in posts" :data="item" />
 
