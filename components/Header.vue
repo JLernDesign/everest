@@ -185,6 +185,7 @@ const hideSticky = () => {
   </header>
 
   <!-- mobile menu -->
+  <Menu :data="menu.main" :sticky="sticky" />
 </template>
 
 <style scoped></style>
