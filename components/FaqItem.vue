@@ -34,7 +34,7 @@ defineExpose({ open, num });
       <div class="faq-answer relative h-0 overflow-hidden" ref="wrap">
         <div class="pb-10 s:py-20">
           <div
-            class="rounded-base-mob relative bg-jaffa px-side-mob py-side-mob text-body-sm-mob leading-sm text-black s:rounded-base s:px-[14rem] s:pb-side-mob s:pt-[5rem] s:text-body-sm"
+            class="rounded-base-mob relative bg-jaffa px-side-mob py-side-mob text-body-sm-mob leading-sm text-black s:rounded-base s:px-[14rem] s:pb-side s:pt-[5rem] s:text-body-sm"
             ref="answer"
           >
             <div

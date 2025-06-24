@@ -1,5 +1,20 @@
 <script setup>
 const props = defineProps(["layout", "data"]);
+const active = ref(0);
+
+const handleSlide = (dir) => {
+  if (dir == "left") {
+    active.value--;
+    if (active.value < 0) {
+      active.value = props.data.slides.length - 1;
+    }
+  } else {
+    active.value++;
+    if (active.value > props.data.slides.length - 1) {
+      active.value = 0;
+    }
+  }
+};
 </script>
 
 <template>
@@ -60,17 +75,19 @@ const props = defineProps(["layout", "data"]);
             <UISlideArrow
               dir="left"
               :color="layout == 'img-rt' ? 'red' : 'blue'"
+              @click="handleSlide('left')"
             />
           </div>
           <div
             class="count px-side font-barlow-cond font-bold"
             :class="layout == 'img-rt' ? 'text-red' : 'text-lightblue'"
           >
-            1/{{ data.slides.length }}
+            {{ active + 1 }}/{{ data.slides.length }}
           </div>
           <div class="relative h-full w-[23.4rem]">
             <UISlideArrow
               dir="right"
+              @click="handleSlide('right')"
               :color="layout == 'img-rt' ? 'red' : 'blue'"
             />
           </div>
@@ -79,7 +96,7 @@ const props = defineProps(["layout", "data"]);
 
       <!-- image -->
       <div
-        class="image rounded-base-mob w-full bg-cover p-[1.4rem] s:w-[48.5%] s:rounded-base s:p-[13rem] max-s:order-2"
+        class="image rounded-base-mob flex w-full flex-col justify-center bg-cover p-[1.4rem] s:h-[72.6rem] s:w-[48.5%] s:rounded-base s:px-[13rem] max-s:order-2"
         :class="
           layout == 'img-rt'
             ? 'order-2 bg-[url(/ui/mt-red@2x.jpg)]'
@@ -87,16 +104,19 @@ const props = defineProps(["layout", "data"]);
         "
       >
         <div
-          class="rounded-base-mob flex h-full flex-col items-center bg-jaffa p-[3.2rem] text-center text-body-sm-mob leading-sm s:rounded-base s:text-body-sm"
+          class="rounded-base-mob flex flex-col items-center bg-jaffa p-[3.2rem] text-center text-body-sm-mob leading-sm s:rounded-base s:text-body-sm"
         >
-          <div v-if="data.slides[0].icon" class="icon mb-[3rem] size-[12.2rem]">
-            <img :src="data.slides[0].icon.url" alt="" />
+          <div
+            v-if="data.slides[active].icon"
+            class="icon mb-[3rem] size-[12.2rem]"
+          >
+            <img :src="data.slides[active].icon.url" alt="" />
           </div>
           <h3
             class="mb-[4.25rem] font-barlow-cond text-h5 font-bold uppercase leading-base"
-            v-html="formatText(data.slides[0].headline)"
+            v-html="formatText(data.slides[active].headline)"
           ></h3>
-          <p v-html="formatText(data.slides[0].description)"></p>
+          <p v-html="formatText(data.slides[active].description)"></p>
         </div>
       </div>
     </div>

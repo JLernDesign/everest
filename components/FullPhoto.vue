@@ -5,7 +5,9 @@ const props = defineProps(["data"]);
 
 <template>
   <Section class="py-side-mob s:py-side">
-    <div class="rounded-base-mob overflow-hidden s:rounded-base">
+    <div
+      class="rounded-base-mob overflow-hidden s:rounded-base [&>div]:!max-w-none"
+    >
       <DatocmsImage v-if="data.image" :data="data.image.responsiveImage" />
     </div>
   </Section>

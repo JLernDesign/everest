@@ -44,7 +44,7 @@ const active = ref(0);
         <div class="space-y-1">
           <template v-for="(item, i) in data.groups[active].items">
             <div
-              class="relative cursor-pointer text-body-sm-mob s:text-body-sm"
+              class="relative cursor-pointer text-body-sm-mob leading-sm s:text-body-sm"
             >
               <div
                 class="rounded-base-mob absolute -top-[.2rem] h-full w-full scale-y-0 bg-white s:rounded-base"
