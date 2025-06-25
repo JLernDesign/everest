@@ -18,6 +18,9 @@ const { data } = await useGraphqlQuery({
   query: QUERY,
 });
 
+// make address data available globally
+provide("locations", data.value.global.locations);
+
 // compile meta tags for head
 useHead(() => {
   if (!data.value) return {};

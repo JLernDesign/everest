@@ -1,5 +1,9 @@
 <script setup>
+import gsap from "gsap";
 const props = defineProps(["data"]);
+
+const locations = inject("locations");
+console.log(locations);
 
 const coords = [
   {
@@ -19,6 +23,45 @@ const coords = [
     y: "25.2rem",
   },
 ];
+
+const getCoords = (coords) => {
+  const x = Number(coords.split(",")[0]) / 10;
+  const y = Number(coords.split(",")[1]) / 10;
+  return `left: ${x}rem; top: ${y}rem;`;
+};
+
+const handleMouseEnter = (e) => {
+  e.target.classList.add("hover");
+  const label = e.target.querySelector(".pin-label");
+  gsap.killTweensOf(label);
+  gsap.fromTo(
+    label,
+    {
+      display: "block",
+      opacity: 0,
+      y: -10,
+    },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      ease: "power3.out",
+    },
+  );
+};
+
+const handleMouseLeave = (e) => {
+  e.target.classList.remove("hover");
+  const label = e.target.querySelector(".pin-label");
+  gsap.killTweensOf(label);
+  gsap.to(label, {
+    opacity: 0,
+    display: "none",
+    y: -10,
+    duration: 0.25,
+    ease: "power3.out",
+  });
+};
 </script>
 
 <template>
@@ -64,20 +107,20 @@ const coords = [
         <!-- pins -->
 
         <div
-          v-for="(coord, i) in coords"
-          class="pin absolute z-2 h-[6.6rem] w-[7.1rem]"
-          :style="`left: ${coord.x}; top: ${coord.y};`"
+          v-for="location in locations"
+          class="pin absolute z-2 h-[6.6rem] w-[7.1rem] cursor-pointer"
+          :style="getCoords(location.coords)"
+          @mouseenter="handleMouseEnter"
+          @mouseleave="handleMouseLeave"
         >
           <!-- labels -->
           <div class="hidden s:block">
             <div
-              v-if="i < 1 && 'hidden'"
-              class="pin-label rounded-base-mob absolute -top-[13rem] left-1/2 w-[26rem] -translate-x-1/2 bg-jaffa p-[2.5rem] text-body-sm-mob leading-sm shadow-submenu s:rounded-base s:text-body-sm"
+              class="pin-label rounded-base-mob pointer-events-none absolute -top-[13rem] left-1/2 hidden w-[30rem] -translate-x-1/2 bg-jaffa p-[2.5rem] text-body-sm-mob leading-sm shadow-submenu s:rounded-base s:text-body-sm"
             >
-              <span class="font-helvh">North America</span>
+              <span class="font-helvh">{{ location.location }}</span>
               <br />
-              280 Hope Street <br />
-              Mountain View, CA 94041
+              <span v-html="formatText(location.address)"></span>
             </div>
           </div>
           <img src="/public/about/map-pin.svg" alt="" />
@@ -109,4 +152,8 @@ const coords = [
   </Section>
 </template>
 
-<style scoped></style>
+<style scoped>
+.pin.hover {
+  z-index: 10;
+}
+</style>

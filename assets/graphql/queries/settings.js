@@ -45,6 +45,7 @@ export const settingsQuery = gql`
       locations {
         location
         address
+        coords
       }
       badges {
         url

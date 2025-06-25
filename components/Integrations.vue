@@ -26,17 +26,13 @@ onMounted(() => {
   }, main.value);
 });
 
+onUnmounted(() => {
+  ctx.revert();
+  mm.revert();
+});
+
 const handleMouseEnter = (i) => {
-  console.log(i);
-  console.log(props.data.groups[groupNum.value].items[i]);
   active.value = i;
-  /* items.forEach((item, index) => {
-    if (index === i) {
-      item.classList.add("hover");
-    } else {
-      item.classList.remove("hover");
-    }
-  }); */
 };
 </script>
 
