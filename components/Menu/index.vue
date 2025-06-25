@@ -1,12 +1,11 @@
 <script setup>
 const props = defineProps(["data", "theme", "sticky"]);
 import gsap from "gsap";
-console.log(props.data);
+
 let menuOpen = false;
 const main = ref(null);
 const menu = ref(null);
 const burger = ref(null);
-const logo = ref(null);
 
 onMounted(() => {
   // set toggle for scroll up
@@ -41,7 +40,7 @@ const toggleMenu = (e) => {
 // handle menu click
 const handleClick = (e) => {
   if (e.target.dataset.parent) {
-    toggleSubMenu(e);
+    toggleSubMenus(e);
   } else {
     closeMenu();
     navigateTo(e.target.dataset.href);
@@ -69,15 +68,15 @@ const closeMenu = () => {
 };
 
 // toggle submenu
-const toggleSubMenu = (e) => {
+/* const toggleSubMenu = (e) => {
   const child = e.target;
   const parent = child.parentElement;
   const el = parent.querySelector(".nav-sub");
   const arrow = parent.querySelector(".arrow");
 
   // open
-  if (!e.target.classList.contains("open")) {
-    e.target.classList.add("open");
+  if (!el.classList.contains("open")) {
+    el.classList.add("open");
 
     const h = parent.querySelector(".sub").offsetHeight;
 
@@ -112,6 +111,38 @@ const toggleSubMenu = (e) => {
       ease: "power3.inOut",
     });
   }
+}; */
+
+const toggleSubMenus = (e) => {
+  const submenus = document.querySelectorAll(".nav-sub");
+
+  submenus.forEach((submenu) => {
+    if (
+      submenu.dataset.label === e.target.dataset.label &&
+      !submenu.classList.contains("open")
+    ) {
+      /* open submenu */
+      submenu.classList.add("open");
+      const h = submenu.querySelector(".sub").offsetHeight;
+      gsap.to(submenu, {
+        duration: 0.75,
+        height: h,
+        ease: "power3.inOut",
+        onComplete: function () {
+          submenu.style.height = "auto";
+        },
+      });
+
+      /* close all other submenus */
+    } else {
+      submenu.classList.remove("open");
+      gsap.to(submenu, {
+        duration: 0.75,
+        height: 0,
+        ease: "power3.inOut",
+      });
+    }
+  });
 };
 </script>
 
@@ -120,6 +151,7 @@ const toggleSubMenu = (e) => {
     class="mobile-menu fixed left-0 top-0 z-20 block h-0 w-screen overflow-visible s:hidden"
     ref="main"
   >
+    <!-- menu button -->
     <MenuBurger
       @click="toggleMenu"
       :theme="theme"
@@ -132,6 +164,7 @@ const toggleSubMenu = (e) => {
       class="menu-wrap absolute left-0 top-0 z-1 hidden h-screen w-screen touch-auto overflow-scroll overscroll-contain"
       ref="menu"
     >
+      <!-- top bar -->
       <div class="bar fixed left-0 top-0 z-1 h-[9rem] w-full bg-skyblue">
         <!-- logo -->
         <div
@@ -146,8 +179,9 @@ const toggleSubMenu = (e) => {
         </div>
       </div>
 
+      <!-- menu contents -->
       <div
-        class="menu-contents min-h-screen w-full bg-skyblue px-side-mob pb-12 pt-[10.5rem]"
+        class="menu-contents relative min-h-screen w-full bg-skyblue px-side-mob pt-[10.5rem]"
       >
         <!-- cta from header -->
         <CtaBtn
@@ -167,7 +201,8 @@ const toggleSubMenu = (e) => {
             @click.prevent="handleClick"
             :data-href="!page.submenu && getUrl(page)"
             :data-parent="page.submenu && true"
-            class="text-body-md-mob inline-block w-full px-side-mob pt-2 text-left leading-base"
+            :data-label="page.label"
+            class="text-body-md-mob inline-block w-full px-3 pt-2 text-left leading-base"
           >
             {{ page.label }}
             <div
@@ -178,23 +213,23 @@ const toggleSubMenu = (e) => {
           </button>
 
           <!-- submenu -->
-          <!-- <div
-            class="nav-sub h-0 overflow-hidden px-side-mob text-body leading-body"
+          <div
+            v-if="page.submenu"
+            :data-label="page.label"
+            class="nav-sub h-0 overflow-hidden text-body-sm-mob"
           >
-            <div
-              v-if="page.groups"
-              class="sub pt-10"
-              :class="page.id != 'Company' ? 'space-y-10' : 'space-y-6'"
-            >
-              <MenuGroup
-                v-for="group in page.groups"
-                :data="group"
-                :parent="page.id"
-                loc="mobile"
-                :close="closeMenu"
-              />
+            <div class="sub">
+              <MenuGroup :data="page.submenu" :close="closeMenu" />
             </div>
-          </div> -->
+          </div>
+        </div>
+
+        <!-- bottom image -->
+        <div class="h-[30rem]"></div>
+        <div
+          class="bottom-image absolute bottom-0 left-1/2 mt-[10rem] w-screen -translate-x-1/2 bg-shadowblue pb-[9.3rem]"
+        >
+          <UIJagEdge color="fill-shadowblue" />
         </div>
       </div>
     </div>
