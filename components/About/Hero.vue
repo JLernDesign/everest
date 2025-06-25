@@ -3,7 +3,7 @@ const props = defineProps(["data", "stats"]);
 
 let slider = true;
 let duplicated = [];
-if (props.stats.length <= 3) {
+if (props.stats.length > 5) {
   duplicated = props.stats;
 } else {
   duplicated = [...props.stats, ...props.stats];
@@ -42,10 +42,10 @@ if (props.stats.length <= 3) {
     >
       <div
         v-for="stat in duplicated"
-        class="item h-[19rem] shrink-0 px-[1.6rem] s:px-[4.2rem] max-s:w-[35.2rem]"
+        class="item h-[19rem] shrink-0 px-[1.5rem] s:px-[4.2rem]"
       >
         <div
-          class="rounded-base-mob z-1 rotate-[15deg] bg-white p-[2rem] text-left s:h-[27.7rem] s:w-[40rem] s:rounded-base s:p-[3.2rem] s:pt-[3.75rem]"
+          class="rounded-base-mob z-1 h-full w-[35.2rem] rotate-[15deg] bg-white p-[2rem] text-left s:h-[27.7rem] s:w-[40rem] s:rounded-base s:p-[3.2rem] s:pt-[3.75rem]"
         >
           <IconTri color="fill-red" class="mb-[2.4rem]" />
           <h3

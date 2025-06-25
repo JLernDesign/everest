@@ -194,7 +194,7 @@ const toggleSubMenus = (e) => {
 
         <!-- menu -->
         <div
-          class="nav-parent relative w-full border-t-1 border-t-black py-4"
+          class="nav-parent relative z-10 w-full border-t-1 border-t-black py-4"
           v-for="page in data"
         >
           <button
@@ -225,10 +225,21 @@ const toggleSubMenus = (e) => {
         </div>
 
         <!-- bottom image -->
-        <div class="h-[30rem]"></div>
+        <div class="h-[25rem]"></div>
         <div
-          class="bottom-image absolute bottom-0 left-1/2 mt-[10rem] w-screen -translate-x-1/2 bg-shadowblue pb-[9.3rem]"
+          class="bottom-image absolute bottom-0 left-1/2 mt-[10rem] w-screen -translate-x-1/2 pb-[9.3rem]"
         >
+          <div class="gradient absolute bottom-0 left-0 w-full">
+            <img src="/public/ui/menu-gradient.svg" />
+          </div>
+          <div
+            class="clouds absolute -bottom-[13rem] left-1/2 ml-[9rem] w-[108.8rem] -translate-x-1/2"
+          >
+            <img src="/public/ui/menu-clouds@2x.png" />
+          </div>
+          <div
+            class="absolute bottom-0 z-10 h-[9.3rem] w-[108.8rem] bg-shadowblue"
+          ></div>
           <UIJagEdge color="fill-shadowblue" />
         </div>
       </div>

@@ -162,14 +162,15 @@ const hideSticky = () => {
       <div
         class="lang mb-[1.65rem] flex justify-end space-x-8 text-[1.3rem] uppercase"
       >
-        <a href="#" class="flex items-start">
+        <!-- language -->
+        <!-- <a href="#" class="flex items-start">
           <span>EN</span
           ><span class="ml-2 mt-1 inline-block"
             ><IconChevron
               :color="
                 theme == 'dark' ? 'stroke-white' : 'stroke-black'
               " /></span
-        ></a>
+        ></a> -->
 
         <a v-if="data.signIn" :href="data.signIn" target="_blank">Sign In</a>
       </div>
