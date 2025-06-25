@@ -2,13 +2,33 @@
 import { Image as DatocmsImage } from "vue-datocms";
 
 const props = defineProps(["data", "color"]);
+const main = ref(null);
 const active = 0;
+
+let items, wraps, topSpacers, botSpacers;
+
+onMounted(() => {
+  items = main.value.querySelectorAll(".slide");
+  wraps = main.value.querySelectorAll(".wrap");
+  topSpacers = main.value.querySelectorAll(".spacer.top");
+  botSpacers = main.value.querySelectorAll(".spacer.bot");
+  // open first wrap by default
+  handleClick(0);
+});
+
+const handleClick = (i) => {
+  // toggle expand on items
+  toggleExpand(i, wraps);
+  toggleExpand(i, topSpacers);
+  toggleExpand(i, botSpacers);
+};
 </script>
 
 <template>
   <div>
     <div
       class="relative flex flex-col border-t border-t-whiteline px-side-mob s:flex-row s:px-side-lg"
+      ref="main"
     >
       <!-- side images -->
       <div
@@ -27,32 +47,36 @@ const active = 0;
       <div
         class="flex flex-col justify-between border-x border-x-whiteline s:w-[43%] max-s:order-2"
       >
-        <div class="p-side-mob s:p-side">
-          <h3
-            class="mb-[1.5rem] font-barlow-cond text-h5 font-bold uppercase"
-            :class="accentColor(data.slides[active])"
+        <!-- slides -->
+        <div class="items divide-y-1 divide-whiteline">
+          <div
+            v-for="(slide, i) in data.slides"
+            class="slide px-side-mob py-6 s:px-side"
           >
-            {{ data.slides[active].title }}
-          </h3>
-          <span
-            class="text-body-sm-mob leading-sm s:text-body-sm"
-            v-html="formatText(data.slides[active].description)"
-          ></span>
+            <!-- add space above -->
+            <div class="spacer top h-0 overflow-hidden">
+              <div class="h-10"></div>
+            </div>
+            <button
+              class="text-left font-barlow-cond text-h5 font-bold uppercase"
+              :class="accentColor(slide)"
+              @click="handleClick(i)"
+            >
+              {{ slide.title }}
+            </button>
+            <!-- expand content -->
+            <div class="wrap relative h-0 overflow-hidden">
+              <div
+                class="pb-10 pt-4 text-body-sm-mob leading-sm s:text-body-sm"
+                v-html="formatText(slide.description)"
+              ></div>
+            </div>
+            <!-- add space below -->
+            <div class="spacer bot h-0 overflow-hidden">
+              <div class="h-[20rem]"></div>
+            </div>
+          </div>
         </div>
-
-        <!-- slide nav -->
-        <ul class="divide-y-1 divide-whiteline border-t border-t-whiteline">
-          <template v-for="(slide, i) in data.slides">
-            <li v-if="i > 0" class="px-side-mob py-6 s:px-side">
-              <button
-                class="text-left font-barlow-cond text-h5 font-bold uppercase"
-                :class="accentColor(slide)"
-              >
-                {{ slide.title }}
-              </button>
-            </li>
-          </template>
-        </ul>
       </div>
 
       <!-- image -->
