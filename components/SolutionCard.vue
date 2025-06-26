@@ -38,7 +38,9 @@ const handleClick = (i) => {
         :class="num % 2 == 0 ? 'order-2 justify-end' : 'order-1'"
       >
         <!-- number -->
-        <div class="num left-0 top-0 mb-[2rem] s:absolute s:mb-[11rem]">
+        <div
+          class="num mb-[2rem] s:absolute s:-left-[11.7rem] s:-top-[6.4rem] s:mb-[11rem]"
+        >
           <IconTri color="fill-red" />
           <div class="font-barlow-cond text-num font-bold opacity-30">
             {{ num < 10 ? "0" + num : num }}
@@ -133,7 +135,15 @@ const handleClick = (i) => {
       </div>
     </div>
 
-    <UIGradientBot :theme="theme" />
+    <UIGradientBot
+      v-if="num > 1"
+      :theme="theme"
+      class="absolute -top-[6.2rem] left-0"
+    />
+
+    <div
+      class="cover pointer-events-none absolute left-0 top-0 z-5 h-full w-full bg-jaffalt opacity-0"
+    ></div>
   </div>
 </template>
 

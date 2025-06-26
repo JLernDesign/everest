@@ -62,7 +62,7 @@ const renderBlock = ({ record }) => {
       "div",
       {
         class:
-          "content-block quote relative left-1/2 w-screen -ml-[50vw] s:!my-[10rem] max-s:!my-[8rem]",
+          "content-block quote relative left-1/2 w-screen max-s:-ml-[50vw] s:-translate-x-1/2 -ml-[20rem] s:!my-[10rem] max-s:!my-[8rem]",
       },
       [
         h(
