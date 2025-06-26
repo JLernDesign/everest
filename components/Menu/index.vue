@@ -165,13 +165,14 @@ const toggleSubMenus = (e) => {
       ref="menu"
     >
       <!-- top bar -->
-      <div class="bar fixed left-0 top-0 z-1 h-[9rem] w-full bg-skyblue">
+      <div class="bar fixed left-0 top-0 z-10 h-[9rem] w-full bg-skyblue">
         <!-- logo -->
         <div
           class="logo-main absolute z-5 pl-side-mob pt-[1.5rem] s:pl-side s:pt-[4.25rem]"
         >
           <NuxtLink
             to="/"
+            @click="closeMenu"
             class="block h-[5.3rem] w-[6.2rem] origin-top-left s:h-[8.1rem] s:w-[9.4rem]"
           >
             <IconLogo />
@@ -194,7 +195,7 @@ const toggleSubMenus = (e) => {
 
         <!-- menu -->
         <div
-          class="nav-parent relative z-10 w-full border-t-1 border-t-black py-4"
+          class="nav-parent relative z-3 w-full border-t-1 border-t-black py-4"
           v-for="page in data"
         >
           <button

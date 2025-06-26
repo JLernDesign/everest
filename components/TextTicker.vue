@@ -68,13 +68,9 @@ const toggle = (state) => {
 .ticker-wrap.on .ticker-group {
   animation: ticker 60s linear infinite;
 }
-@keyframes ticker {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-100%);
+@media (max-width: 649px) {
+  .ticker-wrap.on .ticker-group {
+    animation: ticker 120s linear infinite;
   }
 }
 </style>

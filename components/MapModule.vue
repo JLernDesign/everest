@@ -133,7 +133,7 @@ const handleMouseLeave = (e) => {
       class="relative mt-10 block divide-y-1 divide-grayline border-y-1 border-grayline s:hidden"
     >
       <div
-        v-for="coord in coords"
+        v-for="location in locations"
         class="flex items-start gap-x-10 px-[1.5rem] py-8 text-body-sm-mob leading-sm"
       >
         <img
@@ -142,10 +142,9 @@ const handleMouseLeave = (e) => {
           class="mt-2 w-[4.5rem] shrink-0"
         />
         <span>
-          <span class="font-helvh">North America</span>
+          <span class="font-helvh">{{ location.location }}</span>
           <br />
-          280 Hope Street <br />
-          Mountain View, CA 94041
+          <span v-html="formatText(location.address)"></span>
         </span>
       </div>
     </div>
