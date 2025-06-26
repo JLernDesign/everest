@@ -181,7 +181,7 @@ const toggleSubMenus = (e) => {
 
       <!-- menu contents -->
       <div
-        class="menu-contents relative min-h-screen w-full bg-skyblue px-side-mob pt-[10.5rem]"
+        class="menu-contents relative min-h-screen w-full overflow-hidden bg-skyblue px-side-mob pt-[10.5rem]"
       >
         <!-- cta from header -->
         <CtaBtn
