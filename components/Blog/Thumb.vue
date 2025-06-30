@@ -5,7 +5,7 @@ const props = defineProps(["data"]);
 
 <template>
   <div
-    class="thumb relative w-full bg-jaffa p-side-mob pb-[8rem] s:w-[60rem] s:p-thumb s:pb-[15.6rem]"
+    class="thumb scroll-reveal relative w-full bg-jaffa p-side-mob pb-[8rem] s:w-[60rem] s:p-thumb s:pb-[15.6rem]"
   >
     <!-- bg hover -->
     <div

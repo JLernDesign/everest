@@ -351,14 +351,14 @@ svg.trans {
 }
 
 @media (min-width: 769px) and (max-width: 1200px) {
-  .blog-grid .scroll-reveal {
+  .thumbs-grid .scroll-reveal {
     &:nth-child(2n + 2) {
       transition-delay: 0.2s;
     }
   }
 }
 @media (min-width: 1201px) {
-  .blog-grid .scroll-reveal {
+  .thumbs-grid .scroll-reveal {
     &:nth-child(3n + 2) {
       transition-delay: 0.15s;
     }
@@ -368,7 +368,7 @@ svg.trans {
   }
 }
 @media (min-width: 769px) {
-  .blog-grid .scroll-reveal {
+  .thumbs-grid .scroll-reveal {
     &:nth-child(2n + 2) {
       transition-delay: 0.2s;
     }
