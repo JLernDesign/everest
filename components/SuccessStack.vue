@@ -4,7 +4,17 @@ const props = defineProps(["theme", "data"]);
 
 const main = ref(null);
 const slide = ref(null);
+const carouselRef = ref(null);
 let items;
+
+// Navigation handlers
+const handlePrev = () => {
+  carouselRef.value?.back();
+};
+
+const handleNext = () => {
+  carouselRef.value?.next();
+};
 
 onMounted(() => {
   items = qsa(".slide", main.value);
@@ -49,7 +59,7 @@ onMounted(() => {
     <div
       class="slides-mobile relative left-1/2 w-screen -translate-x-1/2 s:hidden"
     >
-      <Carousel :drag="true" class="mt-[2rem]">
+      <Carousel ref="carouselRef" :drag="true" class="mt-[2rem]">
         <div
           class="item w-full shrink-0 px-side-mob"
           v-for="(slide, i) in data.slides"
@@ -64,11 +74,17 @@ onMounted(() => {
     <div
       class="relative mt-[2.5rem] flex h-[3.2rem] w-full justify-between px-side-mob s:hidden"
     >
-      <UISlideArrow v-if="data.slides.length > 1" dir="left" class="!w-[48%]" />
+      <UISlideArrow
+        v-if="data.slides.length > 1"
+        dir="left"
+        class="!w-[48%] cursor-pointer"
+        @click="handlePrev"
+      />
       <UISlideArrow
         v-if="data.slides.length > 1"
         dir="right"
-        class="!w-[48%]"
+        class="!w-[48%] cursor-pointer"
+        @click="handleNext"
       />
     </div>
 

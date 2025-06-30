@@ -19,12 +19,12 @@ const props = defineProps(["data", "loc"]);
 
     <!-- image -->
     <div
-      class="thumb-img rounded-base-mob relative z-1 aspect-[1.3] overflow-hidden s:rounded-base"
+      class="thumb-img rounded-base-mob relative z-1 aspect-[1.3] overflow-hidden s:rounded-base [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
     >
       <DatocmsImage
         v-if="data.image"
         :data="data.image.responsiveImage"
-        class="h-full w-full object-cover"
+        class="h-full w-full"
       />
     </div>
 

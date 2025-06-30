@@ -9,7 +9,23 @@ import {
 
 const props = defineProps(["theme", "data"]);
 const active = 0;
+const carouselRef = ref(null);
+const carouselRefRight = ref(null);
+const carouselRefLeft = ref(null);
 let page_data;
+
+// Navigation handlers
+const handlePrev = () => {
+  carouselRef.value?.back();
+  carouselRefRight.value?.back();
+  carouselRefLeft.value?.back();
+};
+
+const handleNext = () => {
+  carouselRef.value?.next();
+  carouselRefRight.value?.next();
+  carouselRefLeft.value?.next();
+};
 
 // check for new data
 if (props.data.slides && props.data.slides.length > 0) {
@@ -63,40 +79,49 @@ if (props.data.slides && props.data.slides.length > 0) {
       :class="page_data.slides.length > 1 && 's:divide-x-1 s:divide-grayline'"
     >
       <!-- left -->
-      <div class="col lt hidden w-[27.5%] overflow-hidden px-[10rem] s:block">
-        <template v-if="page_data.slides[active + 2]">
+      <div class="col lt hidden w-[27.5%] overflow-hidden s:block">
+        <Carousel ref="carouselRefLeft" :start="2" :drag="false">
           <div
-            v-if="page_data.slides[active + 2].media.image"
-            class="photo rounded-base-mob aspect-[1.57] w-full overflow-hidden s:rounded-base"
+            v-for="slide in page_data.slides"
+            class="item shrink-0 s:w-[47.5rem] s:px-[10rem]"
           >
-            <!-- image -->
-            <img :src="page_data.slides[active + 2].media.image.url" alt="" />
-          </div>
+            <div
+              v-if="slide.media.image"
+              class="photo rounded-base-mob aspect-[1.57] w-full overflow-hidden s:rounded-base"
+            >
+              <!-- image -->
+              <img :src="slide.media.image.url" alt="" />
+            </div>
 
-          <!-- name -->
-          <div
-            v-if="page_data.slides[active + 2].name"
-            class="slide-text text-body-xsm-mob mt-10 s:text-body-xsm"
-          >
-            <p class="font-helvb">{{ page_data.slides[active + 2].name }}</p>
-            <p>{{ page_data.slides[active + 2].title }}</p>
+            <!-- name -->
+            <div
+              v-if="slide.name"
+              class="slide-text text-body-xsm-mob mt-10 s:text-body-xsm"
+            >
+              <p class="font-helvb">{{ slide.name }}</p>
+              <p>{{ slide.title }}</p>
+            </div>
           </div>
-        </template>
+        </Carousel>
 
         <!-- arrow -->
         <UISlideArrow
           v-if="page_data.slides.length > 1"
           dir="left"
-          class="px-[10rem]"
+          class="cursor-pointer px-[10rem]"
+          @click="handlePrev"
         />
       </div>
 
       <!-- active slide (center) -->
-      <div class="col main w-full overflow-hidden s:w-[45%]">
-        <Carousel>
+      <div class="col main w-full s:w-[45%] s:overflow-hidden">
+        <Carousel
+          ref="carouselRef"
+          class="relative max-s:-left-[2rem] max-s:w-screen"
+        >
           <div
             v-for="slide in page_data.slides"
-            class="item w-[77.2rem] shrink-0 s:px-[10rem]"
+            class="item w-screen shrink-0 px-side-mob s:w-[77.2rem] s:px-[10rem]"
           >
             <div
               class="photo rounded-base-mob aspect-[1.57] w-full overflow-hidden s:rounded-base"
@@ -154,31 +179,37 @@ if (props.data.slides && props.data.slides.length > 0) {
       </div>
 
       <!-- right -->
-      <div class="col rt hidden w-[27.5%] overflow-hidden px-[10rem] s:block">
-        <template v-if="page_data.slides[active + 1]">
+      <div class="col rt hidden w-[27.5%] overflow-hidden s:block">
+        <Carousel ref="carouselRefRight" :start="1" :drag="false">
           <div
-            v-if="page_data.slides[active + 1].media.image"
-            class="photo rounded-base-mob aspect-[1.57] w-full overflow-hidden s:rounded-base"
+            v-for="slide in page_data.slides"
+            class="item shrink-0 s:w-[47.5rem] s:px-[10rem]"
           >
-            <!-- image -->
-            <img :src="page_data.slides[active + 1].media.image.url" alt="" />
-          </div>
+            <div
+              v-if="slide.media.image"
+              class="photo rounded-base-mob aspect-[1.57] w-full overflow-hidden s:rounded-base"
+            >
+              <!-- image -->
+              <img :src="slide.media.image.url" alt="" />
+            </div>
 
-          <!-- name -->
-          <div
-            v-if="page_data.slides[active + 1].name"
-            class="slide-text text-body-xsm-mob mt-10 s:text-body-xsm"
-          >
-            <p class="font-helvb">{{ page_data.slides[active + 1].name }}</p>
-            <p>{{ page_data.slides[active + 1].title }}</p>
+            <!-- name -->
+            <div
+              v-if="slide.name"
+              class="slide-text text-body-xsm-mob mt-10 s:text-body-xsm"
+            >
+              <p class="font-helvb">{{ slide.name }}</p>
+              <p>{{ slide.title }}</p>
+            </div>
           </div>
-        </template>
+        </Carousel>
 
         <!-- arrow -->
         <UISlideArrow
           v-if="page_data.slides.length > 1"
           dir="right"
-          class="px-[10rem]"
+          class="cursor-pointer px-[10rem]"
+          @click="handleNext"
         />
       </div>
     </div>
@@ -191,11 +222,13 @@ if (props.data.slides && props.data.slides.length > 0) {
         v-if="page_data.slides.length > 1"
         dir="left"
         class="!w-[48%]"
+        @click="handlePrev"
       />
       <UISlideArrow
         v-if="page_data.slides.length > 1"
         dir="right"
         class="!w-[48%]"
+        @click="handleNext"
       />
     </div>
   </Section>

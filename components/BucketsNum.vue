@@ -38,7 +38,7 @@ const handleNext = () => {
     <SectionHeader theme="dark" :data="data.header" />
 
     <!-- buckets -->
-    <div class="mt-12 s:mt-[8rem] s:px-side-lg">
+    <div class="mt-12 s:mt-[8rem] s:px-[13rem]">
       <div class="w-full overflow-hidden">
         <Carousel
           ref="carouselRef"
@@ -104,7 +104,7 @@ const handleNext = () => {
       <!-- controls -->
       <div
         v-if="slider"
-        class="mt-[5.5rem] hidden w-full justify-between s:flex"
+        class="mt-[5.5rem] hidden w-full justify-between px-[1rem] s:flex"
       >
         <div class="relative h-full w-[23.4rem]">
           <UISlideArrow

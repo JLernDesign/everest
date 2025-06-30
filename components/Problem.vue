@@ -1,6 +1,7 @@
 <script setup>
 const props = defineProps(["layout", "data"]);
 const active = ref(0);
+const carouselRef = ref(null);
 
 const handleSlide = (dir) => {
   if (dir == "left") {
@@ -8,11 +9,13 @@ const handleSlide = (dir) => {
     if (active.value < 0) {
       active.value = props.data.slides.length - 1;
     }
+    carouselRef.value?.back();
   } else {
     active.value++;
     if (active.value > props.data.slides.length - 1) {
       active.value = 0;
     }
+    carouselRef.value?.next();
   }
 };
 </script>
@@ -96,28 +99,32 @@ const handleSlide = (dir) => {
 
       <!-- image -->
       <div
-        class="image rounded-base-mob flex w-full flex-col justify-center bg-cover p-[1.4rem] s:h-[72.6rem] s:w-[48.5%] s:rounded-base s:px-[13rem] max-s:order-2"
+        class="image rounded-base-mob w-full overflow-hidden bg-cover p-[1.4rem] s:h-[72.6rem] s:w-[48.5%] s:rounded-base max-s:order-2"
         :class="
           layout == 'img-rt'
             ? 'order-2 bg-[url(/ui/mt-red@2x.jpg)]'
             : 'order-1 bg-[url(/ui/mt-blue@2x.jpg)]'
         "
       >
-        <div
-          class="rounded-base-mob flex flex-col items-center bg-jaffa p-[3.2rem] text-center text-body-sm-mob leading-sm s:rounded-base s:text-body-sm"
-        >
+        <Carousel :drag="false" class="h-full" ref="carouselRef">
           <div
-            v-if="data.slides[active].icon"
-            class="icon mb-[3rem] size-[12.2rem]"
+            v-for="slide in data.slides"
+            class="item w-full shrink-0 s:flex s:flex-col s:justify-center s:px-[13rem]"
           >
-            <img :src="data.slides[active].icon.url" alt="" />
+            <div
+              class="rounded-base-mob flex flex-col items-center bg-jaffa p-[3.2rem] text-center text-body-sm-mob leading-sm s:rounded-base s:text-body-sm"
+            >
+              <div v-if="slide.icon" class="icon mb-[3rem] size-[12.2rem]">
+                <img :src="slide.icon.url" alt="" />
+              </div>
+              <h3
+                class="mb-[4.25rem] font-barlow-cond text-h5 font-bold uppercase leading-base"
+                v-html="formatText(slide.headline)"
+              ></h3>
+              <p v-html="formatText(slide.description)"></p>
+            </div>
           </div>
-          <h3
-            class="mb-[4.25rem] font-barlow-cond text-h5 font-bold uppercase leading-base"
-            v-html="formatText(data.slides[active].headline)"
-          ></h3>
-          <p v-html="formatText(data.slides[active].description)"></p>
-        </div>
+        </Carousel>
       </div>
     </div>
 
@@ -126,7 +133,12 @@ const handleSlide = (dir) => {
       class="mt-12 flex h-[3.2rem] w-full items-center justify-center s:hidden"
     >
       <div class="relative h-full w-[11rem] shrink-0 s:w-[23.4rem]">
-        <UISlideArrow dir="left" :color="red" />
+        <UISlideArrow
+          dir="left"
+          :color="red"
+          class="cursor-pointer"
+          @click="handleSlide('left')"
+        />
       </div>
       <div
         class="count px-side-mob font-barlow-cond font-bold text-red s:px-side"
@@ -134,7 +146,12 @@ const handleSlide = (dir) => {
         1/{{ data.slides.length }}
       </div>
       <div class="relative h-full w-[11rem] shrink-0 s:w-[23.4rem]">
-        <UISlideArrow dir="right" :color="red" />
+        <UISlideArrow
+          dir="right"
+          :color="red"
+          class="cursor-pointer"
+          @click="handleSlide('right')"
+        />
       </div>
     </div>
   </Section>

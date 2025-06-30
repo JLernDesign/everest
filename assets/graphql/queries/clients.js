@@ -12,6 +12,9 @@ import {
 const ClientGridFragment = gql`
   fragment ClientGridFragment on ClientSuccessRecord {
     clientGrid {
+      header {
+        ...HeaderFragment
+      }
       blocks {
         style
         name

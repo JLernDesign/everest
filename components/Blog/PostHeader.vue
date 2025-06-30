@@ -51,11 +51,13 @@ const props = defineProps(["data", "type"]);
 
     <!-- image -->
     <div class="right relative w-full s:w-1/2 max-s:order-1">
-      <div class="featured-image h-full w-full overflow-hidden rounded-sm">
+      <div
+        class="featured-image h-full w-full overflow-hidden rounded-sm [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
+      >
         <DatocmsImage
           v-if="data.image"
           :data="data.image.responsiveImage"
-          class="h-full w-full object-cover"
+          class="h-full w-full"
         />
       </div>
     </div>

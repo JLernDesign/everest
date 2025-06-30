@@ -9,13 +9,7 @@ const props = defineProps(["data", "edge"]);
   >
     <UIJagEdge v-if="edge" color="fill-jaffa" />
 
-    <SectionHeader
-      :data="{
-        eyebrow: 'Client Success',
-        headline:
-          'The ascent speaks volumes. So do the companies we\'ve helped get there.',
-      }"
-    />
+    <SectionHeader :data="data.header" />
 
     <!-- grid -->
     <div class="relative">

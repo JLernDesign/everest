@@ -2,6 +2,16 @@
 import { Image as DatocmsImage } from "vue-datocms";
 const props = defineProps(["data"]);
 const main = ref(null);
+const carouselRef = ref(null);
+
+// Navigation handlers
+const handlePrev = () => {
+  carouselRef.value?.back();
+};
+
+const handleNext = () => {
+  carouselRef.value?.next();
+};
 </script>
 
 <template>
@@ -45,8 +55,12 @@ const main = ref(null);
     <div
       class="relative hidden w-full justify-between px-side pb-14 pt-9 s:flex"
     >
-      <div class="relative w-[23.4rem]"><UISlideArrow dir="left" /></div>
-      <div class="relative w-[23.4rem]"><UISlideArrow dir="right" /></div>
+      <div class="relative w-[23.4rem]">
+        <UISlideArrow dir="left" class="cursor-pointer" @click="handlePrev" />
+      </div>
+      <div class="relative w-[23.4rem]">
+        <UISlideArrow dir="right" class="cursor-pointer" @click="handleNext" />
+      </div>
     </div>
   </div>
 </template>
