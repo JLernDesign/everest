@@ -4,7 +4,7 @@ import { blogQuery } from "~/assets/graphql/queries/blog";
 import { toHead } from "vue-datocms";
 
 const page = ref(1);
-const postsPerPage = 15;
+const postsPerPage = 12;
 const main = ref(null);
 
 // Create reactive variables
