@@ -80,6 +80,7 @@ onUnmounted(() => {
         :nav="nav"
         :data="item"
         :num="i + 1"
+        :id="item.id"
       />
     </div>
   </Section>

@@ -1,11 +1,12 @@
 <script setup>
 import { Image as DatocmsImage } from "vue-datocms";
-const props = defineProps(["data"]);
+const props = defineProps(["data", "loc"]);
 </script>
 
 <template>
   <div
-    class="thumb scroll-reveal relative w-full bg-jaffa p-side-mob pb-[8rem] s:w-[60rem] s:p-thumb s:pb-[15.6rem]"
+    class="thumb relative w-full bg-jaffa p-side-mob pb-[8rem] s:w-[60rem] s:p-thumb s:pb-[15.6rem]"
+    :class="loc == 'blog' && 'scroll-reveal'"
   >
     <!-- bg hover -->
     <div

@@ -80,7 +80,15 @@ const props = defineProps(["theme", "nav", "data", "num", "template"]);
       </div>
     </div>
 
-    <UIGradientBot :theme="theme" />
+    <UIGradientBot
+      v-if="num > 1"
+      :theme="theme"
+      class="absolute -top-[6.2rem] left-0"
+    />
+
+    <div
+      class="cover pointer-events-none absolute left-0 top-0 z-5 h-full w-full bg-shadowblue opacity-0"
+    ></div>
   </div>
 </template>
 

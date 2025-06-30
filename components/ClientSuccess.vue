@@ -92,58 +92,65 @@ if (props.data.slides && props.data.slides.length > 0) {
       </div>
 
       <!-- active slide (center) -->
-      <div class="col main w-full overflow-hidden s:w-[45%] s:px-[10rem]">
-        <div
-          class="photo rounded-base-mob aspect-[1.57] w-full overflow-hidden s:rounded-base"
-        >
-          <img
-            v-if="page_data.slides[active].media.image"
-            :src="page_data.slides[active].media.image.url"
-            class="w-full"
-            alt=""
-          />
-        </div>
-
-        <hr class="my-side-mob text-black s:my-side" />
-
-        <!-- text details -->
-        <div class="slide-text">
-          <!-- stats -->
+      <div class="col main w-full overflow-hidden s:w-[45%]">
+        <Carousel>
           <div
-            v-if="page_data.slides[active].statsGroup"
-            class="stats mb-side flex space-x-14 leading-[1]"
+            v-for="slide in page_data.slides"
+            class="item w-[77.2rem] shrink-0 s:px-[10rem]"
           >
             <div
-              v-for="stat in page_data.slides[active].statsGroup.stats"
-              class="stat-item flex items-end space-x-4"
+              class="photo rounded-base-mob aspect-[1.57] w-full overflow-hidden s:rounded-base"
             >
-              <h3 class="text-sm-mob font-barlow-cond font-bold s:text-sm">
-                {{ stat.figure }}
-              </h3>
-              <p class="text-body-xsm-mob s:text-body-xsm">{{ stat.label }}</p>
+              <img
+                v-if="slide.media.image"
+                :src="slide.media.image.url"
+                class="w-full"
+                alt=""
+              />
             </div>
-          </div>
 
-          <!-- quote -->
-          <blockquote v-if="page_data.slides[active].quote">
-            “{{ page_data.slides[active].quote }}”
-          </blockquote>
-          <div
-            class="byline text-body-xsm-mob mt-[2.5rem] flex items-center justify-between s:mt-[5.5rem] s:text-body-xsm"
-          >
-            <div v-if="page_data.slides[active].name">
-              <p class="font-helvb">{{ page_data.slides[active].name }}</p>
-              <p v-if="page_data.slides[active].title">
-                {{ page_data.slides[active].title }}
-              </p>
+            <hr class="my-side-mob text-black s:my-side" />
+
+            <!-- text details -->
+            <div class="slide-text">
+              <!-- stats -->
+              <div
+                v-if="slide.statsGroup"
+                class="stats mb-side flex space-x-14 leading-[1]"
+              >
+                <div
+                  v-for="stat in slide.statsGroup.stats"
+                  class="stat-item flex items-end space-x-4"
+                >
+                  <h3 class="text-sm-mob font-barlow-cond font-bold s:text-sm">
+                    {{ stat.figure }}
+                  </h3>
+                  <p class="text-body-xsm-mob s:text-body-xsm">
+                    {{ stat.label }}
+                  </p>
+                </div>
+              </div>
+
+              <!-- quote -->
+              <blockquote v-if="slide.quote">“{{ slide.quote }}”</blockquote>
+              <div
+                class="byline text-body-xsm-mob mt-[2.5rem] flex items-center justify-between s:mt-[5.5rem] s:text-body-xsm"
+              >
+                <div v-if="page_data.slides[active].name">
+                  <p class="font-helvb">{{ page_data.slides[active].name }}</p>
+                  <p v-if="page_data.slides[active].title">
+                    {{ page_data.slides[active].title }}
+                  </p>
+                </div>
+                <UILogo
+                  v-if="page_data.slides[active].logo"
+                  :src="page_data.slides[active].logo.url"
+                  class="!h-14"
+                />
+              </div>
             </div>
-            <UILogo
-              v-if="page_data.slides[active].logo"
-              :src="page_data.slides[active].logo.url"
-              class="!h-14"
-            />
           </div>
-        </div>
+        </Carousel>
       </div>
 
       <!-- right -->
