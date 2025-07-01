@@ -16,11 +16,30 @@ export const demoQuery = gql`
         tag
       }
       headline
+      intro
+      hubspotId
+      featuredLogos {
+        title
+        logos {
+          url
+        }
+      }
+      flexibleContent {
+        ...FlexibleContentFragment
+      }
       footerCallout {
         ...FooterFragment
       }
     }
+    global {
+      locations {
+        location
+        address
+      }
+    }
   }
+  ${HeaderFragment}
   ${FooterFragment}
   ${LinkFragment}
+  ${FlexibleContentFragment}
 `;

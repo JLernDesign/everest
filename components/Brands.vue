@@ -1,20 +1,34 @@
 <script setup>
 import { gsap } from "gsap";
-const props = defineProps(["data", "theme"]);
+const props = defineProps(["data", "theme", "scroll"]);
 
 const main = ref();
-let mm;
+let mm, ctx;
 
 onMounted(() => {
-  mm = gsap.matchMedia();
-  mm.add("(max-width: 649px)", () => {
-    setTimeout(() => {
-      playInView(main.value, null, toggle);
-    }, 200);
-  });
+  // desktop scroll
+
+  if (props.scroll) {
+    ctx = gsap.context(() => {
+      setTimeout(() => {
+        playInView(main.value, null, toggle);
+      }, 200);
+    }, main.value);
+  }
+
+  // mobile scroll only
+  else {
+    mm = gsap.matchMedia();
+    mm.add("(max-width: 649px)", () => {
+      setTimeout(() => {
+        playInView(main.value, null, toggle);
+      }, 200);
+    });
+  }
 });
 
 onUnmounted(() => {
+  ctx && ctx.revert();
   mm && mm.revert();
 });
 
@@ -35,8 +49,11 @@ const toggle = (state) => {
       {{ data.title }}
     </h4>
 
-    <!-- desktop -->
-    <div class="hidden justify-center space-x-[4rem] s:flex s:space-x-[9rem]">
+    <!-- desktop no scroll -->
+    <div
+      class="hidden justify-center space-x-[4rem] s:flex s:space-x-[9rem]"
+      :class="scroll ? 's:hidden' : ''"
+    >
       <UILogo
         v-for="item in data.logos"
         :src="item.url ? item.url : item"
@@ -44,8 +61,12 @@ const toggle = (state) => {
       />
     </div>
 
-    <!-- mobile -->
-    <div ref="main" class="brands-wrap flex s:hidden">
+    <!-- desktop scroll / mobile -->
+    <div
+      ref="main"
+      class="brands-wrap"
+      :class="scroll ? 'flex' : 'flex s:hidden'"
+    >
       <div
         v-for="n in 2"
         class="brands-group flex justify-center space-x-[6rem] s:space-x-[9rem]"

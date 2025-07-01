@@ -13,7 +13,12 @@ const investors = useState("investors");
     <div class="relative pb-[4rem] pt-[2.5rem] s:pb-6">
       <div class="p-side-mob s:p-side">
         <!-- brands -->
-        <Brands v-if="investors" theme="dark" :data="investors" />
+        <Brands
+          v-if="investors"
+          theme="dark"
+          :data="investors"
+          :scroll="false"
+        />
 
         <!-- logo -->
         <NuxtLink

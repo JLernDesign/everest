@@ -7,7 +7,9 @@ const { data } = await useGraphqlQuery({
   query: demoQuery.loc.source.body,
 });
 const page = data.value.bookDemo;
-const form_id = "5350cf07-c779-4320-9bd6-a3ecc0bef59f";
+const locations = data.value.global.locations;
+const logos = data.value.bookDemo.featuredLogos;
+//const form_id = "5350cf07-c779-4320-9bd6-a3ecc0bef59f";
 
 onMounted(() => {
   window.addEventListener("message", (event) => {
@@ -21,7 +23,7 @@ onMounted(() => {
     }
   });
 
-  if (form_id) {
+  if (page.hubspotId) {
     const script = document.createElement("script");
     script.src = "https://js.hsforms.net/forms/v2.js";
     document.body.appendChild(script);
@@ -29,7 +31,7 @@ onMounted(() => {
       if (window.hbspt) {
         window.hbspt.forms.create({
           portalId: "48112164",
-          formId: form_id,
+          formId: page.hubspotId,
           target: "#hubspotForm",
           css: "",
         });
@@ -58,10 +60,9 @@ useHead(() => {
           {{ page.headline }}
         </h1>
         <h2
-          class="text-body-md-mob block leading-md s:hidden max-s:pt-[2.5rem] max-s:text-center"
+          class="block text-body-md-mob leading-md s:hidden max-s:pt-[2.5rem] max-s:text-center"
         >
-          Send us your contact information and we will get back to you as soon
-          as possible.
+          {{ page.intro }}
         </h2>
       </header>
     </Section>
@@ -74,53 +75,46 @@ useHead(() => {
           <!-- text -->
           <div class="w-full s:w-[38%] max-s:order-2">
             <h2
-              class="text-body-md-mob hidden leading-md s:block s:text-body-md max-s:text-center"
+              class="hidden text-body-md-mob leading-md s:block s:text-body-md max-s:text-center"
             >
-              Send us your contact information and we will get back to you as
-              soon as possible.
+              {{ page.intro }}
             </h2>
 
             <hr class="my-side text-black max-s:mb-[2.5rem]" />
 
             <!-- contact -->
-            <div class="text-body-sm-mob leading-sm s:text-body-sm">
+            <div
+              v-if="locations"
+              class="text-body-sm-mob leading-sm s:text-body-sm"
+            >
               <h3 class="font-barlow-cond text-[2.1rem] uppercase text-red">
                 Contact
               </h3>
               <div
                 class="relative mt-[1rem] space-y-[1.5rem] s:mt-[2rem] s:columns-2 s:space-y-[2rem]"
               >
-                <div>
-                  <span class="font-helvh">North America</span><br />
-                  280 Hope Street<br />
-                  Mountain View, CA 94041
-                </div>
-                <div>
-                  <span class="font-helvh">Germany</span><br />
-                  Max-Jarecki-Straße 21, 69115<br />
-                  Heidelberg, Germany
-                </div>
-                <div>
-                  <span class="font-helvh">North America</span><br />
-                  280 Hope Street<br />
-                  Mountain View, CA 94041
-                </div>
-                <div>
-                  <span class="font-helvh">Germany</span><br />
-                  Max-Jarecki-Straße 21, 69115<br />
-                  Heidelberg, Germany
+                <div v-for="item in locations">
+                  <span class="font-helvh">{{ item.location }}</span
+                  ><br />
+                  <span v-html="formatText(item.address)"></span>
                 </div>
               </div>
             </div>
 
             <hr class="my-side text-black max-s:mt-[2.5rem]" />
 
-            <!-- <Brands v-if="logos" class="mt-[12rem]" theme="light" :data="logos" /> -->
+            <!-- brands -->
+            <div
+              v-if="logos"
+              class="mt-[4rem] w-full overflow-hidden [&_h4]:!text-left"
+            >
+              <Brands theme="light" :data="logos" :scroll="true" />
+            </div>
           </div>
 
           <!-- form -->
           <div
-            class="rounded-base-mob relative w-full overflow-hidden p-[2.5rem] text-white s:w-1/2 s:rounded-base s:p-[5rem] max-s:order-1 max-s:pb-[5rem]"
+            class="relative w-full overflow-hidden rounded-base-mob p-[2.5rem] text-white s:w-1/2 s:rounded-base s:p-[5rem] max-s:order-1 max-s:pb-[5rem]"
           >
             <UITexture />
 
@@ -137,6 +131,8 @@ useHead(() => {
         </div>
       </div>
     </Section>
+
+    <FlexibleBlocks :data="page.flexibleContent.modules" template="demo" />
 
     <FooterLockup :data="page.footerCallout" />
   </div>

@@ -14,6 +14,7 @@ const props = defineProps(["data", "logos"]);
       class="mt-[8rem] s:mt-[12rem]"
       theme="light"
       :data="logos"
+      :scroll="true"
     />
   </Section>
 </template>

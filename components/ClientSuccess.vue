@@ -13,6 +13,7 @@ const carouselRef = ref(null);
 const carouselRefRight = ref(null);
 const carouselRefLeft = ref(null);
 let page_data;
+console.log(props.data);
 
 // Navigation handlers
 const handlePrev = () => {
