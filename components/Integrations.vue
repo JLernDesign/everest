@@ -34,6 +34,12 @@ onUnmounted(() => {
 const handleMouseEnter = (i) => {
   active.value = i;
 };
+
+const handleClick = (link) => {
+  if (link) {
+    window.open(link, "_blank");
+  }
+};
 </script>
 
 <template>
@@ -80,6 +86,7 @@ const handleMouseEnter = (i) => {
             <div
               class="item group relative cursor-pointer text-body-sm-mob leading-sm s:text-body-sm"
               @mouseenter="handleMouseEnter(i)"
+              @click="handleClick(item.link)"
             >
               <div
                 class="rounded-base-mob absolute -top-[.2rem] h-full w-full scale-y-0 bg-white transition-all duration-300 ease-in-out group-hover:scale-y-100 s:rounded-base"

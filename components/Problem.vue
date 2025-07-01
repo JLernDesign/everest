@@ -99,7 +99,7 @@ const handleSlide = (dir) => {
 
       <!-- image -->
       <div
-        class="image rounded-base-mob w-full overflow-hidden bg-cover p-[1.4rem] s:h-[72.6rem] s:w-[48.5%] s:rounded-base max-s:order-2"
+        class="image has-break rounded-base-mob w-full overflow-hidden bg-cover p-[1.4rem] s:h-[72.6rem] s:w-[72rem] s:rounded-base max-s:order-2"
         :class="
           layout == 'img-rt'
             ? 'order-2 bg-[url(/ui/mt-red@2x.jpg)]'

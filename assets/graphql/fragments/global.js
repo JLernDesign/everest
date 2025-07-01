@@ -263,6 +263,7 @@ const IntegrationListFragment = gql`
         image {
           ...ResponsiveImageFragment
         }
+        link
       }
     }
   }
