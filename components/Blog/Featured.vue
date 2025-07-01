@@ -19,8 +19,10 @@ const slideTimer = () => {
 };
 
 onMounted(() => {
-  progressBars.value.next();
-  slideTimer();
+  setTimeout(() => {
+    progressBars.value.next();
+    slideTimer();
+  }, 200);
 });
 </script>
 

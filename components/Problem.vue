@@ -109,7 +109,7 @@ const handleSlide = (dir) => {
         <Carousel :drag="false" class="h-full" ref="carouselRef">
           <div
             v-for="slide in data.slides"
-            class="item w-full shrink-0 s:flex s:flex-col s:justify-center s:px-[13rem]"
+            class="item flex w-full shrink-0 flex-col justify-center px-side-mob s:px-[13rem]"
           >
             <div
               class="rounded-base-mob flex flex-col items-center bg-jaffa p-[3.2rem] text-center text-body-sm-mob leading-sm s:rounded-base s:text-body-sm"
@@ -143,7 +143,7 @@ const handleSlide = (dir) => {
       <div
         class="count px-side-mob font-barlow-cond font-bold text-red s:px-side"
       >
-        1/{{ data.slides.length }}
+        {{ active + 1 }}/{{ data.slides.length }}
       </div>
       <div class="relative h-full w-[11rem] shrink-0 s:w-[23.4rem]">
         <UISlideArrow
