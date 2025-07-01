@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps(["data"]);
+const props = defineProps(["data", "mediaSlides"]);
 </script>
 
 <template>
@@ -36,8 +36,11 @@ const props = defineProps(["data"]);
     </div>
 
     <!-- video -->
-    <div class="relative z-5 s:mt-[24rem] s:grid s:justify-end">
-      <UIVideoThumb />
+    <div
+      v-if="mediaSlides && mediaSlides.length > 0"
+      class="relative z-5 s:mt-[24rem] s:grid s:justify-end"
+    >
+      <MediaSlider :data="mediaSlides" />
     </div>
 
     <UIArrowDown class="max-s:hidden" />

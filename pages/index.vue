@@ -15,7 +15,11 @@ onMounted(() => {
 
 <template>
   <div class="bg-skyblue">
-    <HomeHero v-if="page.hero" :data="page.hero" />
+    <HomeHero
+      v-if="page.hero"
+      :data="page.hero"
+      :mediaSlides="page.mediaSlider.mediaSlides"
+    />
     <HomeIntro
       v-if="page.intro"
       :data="page.intro"

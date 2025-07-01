@@ -5,6 +5,7 @@ import {
   HeaderFragment,
   FooterFragment,
   FlexibleContentFragment,
+  MediaSliderFragment,
 } from "../fragments/global";
 
 export const homeQuery = gql`
@@ -12,6 +13,9 @@ export const homeQuery = gql`
     home {
       hero {
         ...HeroFragment
+      }
+      mediaSlider {
+        ...MediaSliderFragment
       }
       intro {
         ...HeaderFragment
@@ -35,4 +39,5 @@ export const homeQuery = gql`
   ${FooterFragment}
   ${LinkFragment}
   ${FlexibleContentFragment}
+  ${MediaSliderFragment}
 `;

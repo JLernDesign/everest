@@ -66,6 +66,46 @@ export const LinkFragment = gql`
     }
   }
 `;
+export const SingleLinkFragment = gql`
+  fragment SingleLinkFragment on LinkRecord {
+    internal {
+      ... on HomeRecord {
+        __typename
+      }
+      ... on PostRecord {
+        __typename
+        slug
+      }
+      ... on ProductRecord {
+        __typename
+        slug
+      }
+      ... on WhyMainRecord {
+        __typename
+      }
+      ... on WhySubpageRecord {
+        __typename
+        slug
+      }
+      ... on AiFirstRecord {
+        __typename
+      }
+      ... on ClientSuccessRecord {
+        __typename
+      }
+      ... on BookDemoRecord {
+        __typename
+      }
+      ... on BlogLandingRecord {
+        __typename
+      }
+      ... on AboutRecord {
+        __typename
+      }
+    }
+    external
+  }
+`;
 export const HeroFragment = gql`
   fragment HeroFragment on HeroRecord {
     headline
@@ -401,6 +441,24 @@ const BasicContentFragment = gql`
       ...ResponsiveImageFragment
     }
   }
+`;
+export const MediaSliderFragment = gql`
+  fragment MediaSliderFragment on MediaSliderRecord {
+    __typename
+    mediaSlides {
+      thumbnail {
+        ...ResponsiveImageFragment
+      }
+      video {
+        ...VideoFragment
+      }
+      link {
+        ...SingleLinkFragment
+      }
+    }
+  }
+  ${SingleLinkFragment}
+  ${VideoFragment}
 `;
 
 export const FlexibleContentFragment = gql`

@@ -1,33 +1,47 @@
-<script setup></script>
+<script setup>
+import { Image as DatocmsImage } from "vue-datocms";
+const props = defineProps(["data"]);
+
+const handleClick = () => {
+  // open video modal
+  if (props.data.video) {
+    openVideoModal(props.data.video);
+  }
+
+  // open link
+  if (props.data.link) {
+    // external link
+    if (props.data.link.external) {
+      window.open(props.data.link.external, "_blank");
+    } else {
+      // internal link
+      navigateTo(getUrl(props.data.link));
+    }
+  }
+};
+</script>
 
 <template>
-  <!-- thumb -->
-  <div
-    class="rounded-base-mob relative grid aspect-[1.31] place-content-center overflow-hidden s:w-[33.5rem] s:rounded-base"
-  >
-    <!-- slides -->
-    <div class="slide absolute left-0 top-0 size-full">
-      <img
-        src="/public/home/ph-video-thumb.jpg"
-        alt=""
-        class="size-full object-cover"
-      />
+  <div class="item h-full w-[33.5rem] shrink-0">
+    <div
+      class="relative h-full [&>div]:h-full [&_img]:size-full [&_img]:object-cover"
+    >
+      <DatocmsImage :data="data.thumbnail.responsiveImage" />
     </div>
 
     <!-- cover -->
     <div class="absolute left-0 top-0 size-full bg-[#2A3440] opacity-80"></div>
 
     <!-- button -->
-    <UIArrowDiamond />
+    <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+      <UIArrowDiamond />
+    </div>
 
     <button
       class="absolute left-0 top-0 size-full"
-      @click="openVideoModal('/video/sample-video.mp4')"
+      @click="handleClick"
     ></button>
   </div>
-
-  <!-- nav -->
-  <UIProgressBars />
 </template>
 
 <style scoped></style>
