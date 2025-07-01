@@ -3,7 +3,6 @@ import gsap from "gsap";
 const props = defineProps(["data"]);
 
 const locations = inject("locations");
-console.log(locations);
 
 const coords = [
   {

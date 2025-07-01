@@ -161,17 +161,13 @@ if (props.data.slides && props.data.slides.length > 0) {
               <div
                 class="byline text-body-xsm-mob mt-[2.5rem] flex items-center justify-between s:mt-[5.5rem] s:text-body-xsm"
               >
-                <div v-if="page_data.slides[active].name">
-                  <p class="font-helvb">{{ page_data.slides[active].name }}</p>
-                  <p v-if="page_data.slides[active].title">
-                    {{ page_data.slides[active].title }}
+                <div v-if="slide.name">
+                  <p class="font-helvb">{{ slide.name }}</p>
+                  <p v-if="slide.title">
+                    {{ slide.title }}
                   </p>
                 </div>
-                <UILogo
-                  v-if="page_data.slides[active].logo"
-                  :src="page_data.slides[active].logo.url"
-                  class="!h-14"
-                />
+                <UILogo v-if="slide.logo" :src="slide.logo.url" class="!h-14" />
               </div>
             </div>
           </div>

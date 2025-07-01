@@ -1,6 +1,5 @@
 <script setup>
 const props = defineProps(["data", "color"]);
-console.log(props.color);
 </script>
 
 <template>

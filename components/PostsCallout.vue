@@ -35,7 +35,7 @@ const selected = posts.slice(0, 3);
         <BlogThumb v-for="(item, i) in selected" :data="item" />
       </div>
       <div v-if="type == 'callout'" class="mt-btn text-center">
-        <CtaBtn to="/">View More</CtaBtn>
+        <CtaBtn to="/blog">View More</CtaBtn>
       </div>
     </div>
   </Section>

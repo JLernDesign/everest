@@ -11,6 +11,7 @@ const props = defineProps(["data"]);
     <span class="block">{{ data.description }}</span>
     <NuxtLink
       :to="getUrl(data)"
+      :target="data.external ? '_blank' : null"
       class="absolute left-0 top-0 z-1 h-full w-full"
     ></NuxtLink>
   </li>

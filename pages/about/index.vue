@@ -6,7 +6,6 @@ const { data } = await useGraphqlQuery({
   query: aboutQuery.loc.source.body,
 });
 const page = data.value.about;
-console.log(data.value);
 
 onMounted(() => {
   const theme = useState("theme");

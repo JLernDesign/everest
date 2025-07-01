@@ -1,7 +1,7 @@
 <script setup>
 import { Image as DatocmsImage } from "vue-datocms";
 const props = defineProps(["data", "items"]);
-console.log(props.items);
+
 let slider = false;
 let duplicated = [];
 if (props.items.length <= 3) {
