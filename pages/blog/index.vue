@@ -103,24 +103,7 @@ useHead(() => {
     </Section>
 
     <!-- featured posts -->
-    <Section
-      :side="false"
-      class="border-t border-grayline s:!py-[5rem] max-s:pt-0"
-    >
-      <Carousel v-if="finalPageData?.featuredPosts">
-        <div
-          v-for="(item, i) in finalPageData.featuredPosts"
-          class="item shrink-0 s:px-[1.6rem] max-s:w-full"
-        >
-          <BlogPostHeader :data="item" class="h-full" type="feature" />
-        </div>
-      </Carousel>
-
-      <!-- nav -->
-      <div class="mt-4 w-full text-center">
-        <UIProgressBars />
-      </div>
-    </Section>
+    <BlogFeatured :data="finalPageData" />
 
     <!-- thumbs -->
     <Section :side="false" class="s:!pt-0">

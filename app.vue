@@ -11,6 +11,7 @@ const layout = ref(null);
 const page_title = useState("page_title", () => "index");
 const base_url = useState("base_url", () => "https://everest-systems.com");
 const theme = useState("theme", () => "light");
+const pageInactive = useState("pageInactive", () => false);
 
 // get global settings data
 const QUERY = settingsQuery.loc.source.body;
@@ -43,9 +44,18 @@ router.beforeEach(async (to, from) => {
 
 // open site after initial load
 onMounted(() => {
+  // open page
   setTimeout(function () {
     openPage(route.fullPath, route.name);
   }, 300);
+
+  // check if tab is focused
+  window.addEventListener("focus", () => {
+    pageInactive.value = false;
+  });
+  window.addEventListener("blur", () => {
+    pageInactive.value = true;
+  });
 });
 
 // open new page after leave
