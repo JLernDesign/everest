@@ -1,12 +1,11 @@
 <script setup>
-const props = defineProps(["data", "type"]);
-
 import { blogQuery } from "~/assets/graphql/queries/blog";
+const props = defineProps(["data", "type", "posts"]);
 
 const { data: posts_data } = await useGraphqlQuery({
   query: blogQuery.loc.source.body,
 });
-const posts = posts_data.value.allPosts;
+const posts = props.posts || posts_data.value.allPosts;
 const selected = posts.slice(0, 3);
 </script>
 

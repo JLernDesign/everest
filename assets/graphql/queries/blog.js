@@ -1,7 +1,7 @@
 import gql from "graphql-tag";
 import { FooterFragment, LinkFragment } from "../fragments/global";
 
-const PostFragment = gql`
+export const PostFragment = gql`
   fragment PostFragment on PostRecord {
     __typename
     id

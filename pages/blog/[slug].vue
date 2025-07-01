@@ -1,7 +1,8 @@
 <script setup>
 import gsap from "gsap";
+import gql from "graphql-tag";
 import { StructuredText as DatocmsStructuredText } from "vue-datocms";
-import { postQuery } from "~/assets/graphql/queries/blog";
+import { postQuery, PostFragment } from "~/assets/graphql/queries/blog";
 import { toHead } from "vue-datocms";
 
 const route = useRoute();
@@ -12,6 +13,26 @@ const { data } = await useGraphqlQuery({
     slug: route.params.slug,
   },
 });
+console.log(data.value);
+
+/* get next 3 posts */
+const nextPostsQuery = gql`
+  query {
+    allPosts(
+      orderBy: publishDate_DESC
+      filter: { publishDate: { lte: "${data.value.post.publishDate}" }, id: {neq: "${data.value.post.id}"} }
+      first: 3
+    ) {
+      ...PostFragment
+    }
+  }
+  ${PostFragment}
+`;
+
+const { data: nextPostsData } = await useGraphqlQuery({
+  query: nextPostsQuery.loc.source.body,
+});
+console.log(nextPostsData.value);
 
 let ctx, mm;
 const min = 650;
@@ -124,7 +145,12 @@ useHead(() => {
     </Section>
 
     <!-- more posts -->
-    <PostsCallout :data="{ headline: 'Next Posts' }" class="max-s:pb-0" />
+    <PostsCallout
+      :data="{ headline: 'Next Posts' }"
+      :posts="nextPostsData.allPosts"
+      class="max-s:pb-0"
+      type="next"
+    />
 
     <FooterLockup :data="data.blogLanding.footerCallout" />
   </div>
