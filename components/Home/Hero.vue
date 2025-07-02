@@ -4,7 +4,12 @@ const props = defineProps(["data", "mediaSlides"]);
 
 <template>
   <Section :hero="true" class="!pt-[10.5rem] s:!pt-[24.5rem] s:pb-[10rem]">
-    <SectionHeader class="max-w-[60rem]" align="left" :data="data" />
+    <SectionHeader
+      class="max-w-[60rem]"
+      align="left"
+      :data="data"
+      loc="home-hero"
+    />
 
     <!-- image -->
     <div

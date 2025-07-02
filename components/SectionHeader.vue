@@ -7,13 +7,14 @@ const props = defineProps({
   hero: { default: false },
   breadcrumb: { default: null },
   wrap: { default: false },
+  loc: { default: null },
 });
 </script>
 
 <template>
   <header
     v-if="data"
-    class="space-y-header-mob relative z-5 s:space-y-header"
+    class="relative z-5 space-y-header-mob s:space-y-header"
     :class="[
       align == 'left' ? 'text-left' : 'text-center',
       theme == 'dark' && 'text-white',
@@ -32,11 +33,14 @@ const props = defineProps({
     <!-- header / intro -->
     <div
       class="has-break space-y-[2rem] s:space-y-[2.5rem]"
-      :class="align == 'center' && 'mx-auto max-w-[100rem]'"
+      :class="[
+        align == 'center' && 'mx-auto max-w-[100rem]',
+        loc == 'home-hero' && 's:!space-y-[1.8rem]',
+      ]"
     >
       <h1
         v-if="hero"
-        class="text-xl-mob !mb-6 font-barlow-cond font-bold leading-xl s:!mb-12 s:text-xl"
+        class="!mb-6 font-barlow-cond text-xl-mob font-bold leading-xl s:!mb-12 s:text-xl"
         v-html="formatText(data.headline)"
       ></h1>
       <h2
@@ -57,6 +61,7 @@ const props = defineProps({
       :theme="theme"
       :wrap="wrap"
       class="s:pt-6"
+      :class="loc == 'home-hero' && 's:!pt-0'"
     />
 
     <!-- breadcrumb nav -->

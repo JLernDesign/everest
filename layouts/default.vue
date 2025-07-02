@@ -28,6 +28,7 @@ watch(height, () => {
     <div class="main-contents overflow-hidden"><slot /></div>
     <Footer :menu="main_menu" :data="data" />
     <VideoModal />
+    <Cookies />
     <UISiteCover />
   </div>
 

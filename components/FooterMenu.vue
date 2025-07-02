@@ -32,11 +32,15 @@ const toggleMenu = (e) => {
 
       <!-- sub menu -->
       <ul
-        class="submenu text-body-xsm-mob h-0 overflow-hidden pl-[1.2rem] s:text-body-xsm"
+        class="submenu h-0 overflow-hidden pl-[1.2rem] text-body-xsm-mob s:text-body-xsm"
       >
         <span class="block space-y-5 pb-[2.25rem] pt-[1.75rem]">
           <li v-for="subitem in item.submenu">
-            <NuxtLink :to="getUrl(subitem)">{{ subitem.label }}</NuxtLink>
+            <NuxtLink
+              :to="getUrl(subitem)"
+              :target="subitem.external && '_blank'"
+              >{{ subitem.label }}</NuxtLink
+            >
           </li>
         </span>
       </ul>

@@ -83,7 +83,9 @@ const updatePage = (n) => {
       duration: 0.3,
       ease: "power3.inOut",
       onComplete: () => {
-        scrollReveal(main.value);
+        nextTick(() => {
+          scrollReveal(main.value);
+        });
       },
     });
   }, 300);
