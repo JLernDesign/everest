@@ -6,10 +6,20 @@ onMounted(() => {
   clients.value[0].openItem();
 });
 onUnmounted(() => {});
+
+const handleClick = (i) => {
+  // close all
+  clients.value.forEach((client) => {
+    client.open = false;
+  });
+
+  // open new
+  clients.value[i].open = true;
+};
 </script>
 
 <template>
-  <Section class="pb-section-bot-mob bg-skyblue s:pb-section-bot" side="lg">
+  <Section class="bg-skyblue pb-section-bot-mob s:pb-section-bot" side="lg">
     <!-- bg elements -->
     <UICloud
       type="3"
@@ -30,6 +40,7 @@ onUnmounted(() => {});
         :data="item"
         :key="i"
         ref="clients"
+        @mouseenter="handleClick(i)"
       />
     </div>
   </Section>

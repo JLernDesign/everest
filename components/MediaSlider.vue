@@ -4,20 +4,32 @@ const progressBars = ref(null);
 const speed = 5;
 const carousel = ref(null);
 const pageInactive = useState("pageInactive");
+let slideshow;
 
 const next = () => {
   progressBars.value.next();
   carousel.value.next();
 };
 
+const gotoSlide = (n) => {
+  progressBars.value.next(n);
+  carousel.value.goto(n - 1);
+  stopSlideshow();
+};
+
 const slideTimer = () => {
-  setInterval(() => {
-    //console.log("slideTimer");
+  slideshow = setInterval(() => {
+    console.log("slideshow");
 
     if (!pageInactive.value) {
       next();
     }
   }, speed * 1000);
+};
+
+const stopSlideshow = () => {
+  console.log("stopSlideshow");
+  clearInterval(slideshow);
 };
 
 onMounted(() => {
@@ -37,12 +49,17 @@ onMounted(() => {
   >
     <!-- slides -->
     <Carousel ref="carousel" :drag="false" class="h-full">
-      <UIVideoThumb v-for="slide in data" :key="slide.id" :data="slide" />
+      <UIMediaThumb v-for="slide in data" :key="slide.id" :data="slide" />
     </Carousel>
   </div>
 
   <!-- nav -->
-  <UIProgressBars ref="progressBars" :speed="speed" />
+  <UIProgressBars
+    ref="progressBars"
+    :speed="speed"
+    :total="data.length"
+    :gotoSlide="gotoSlide"
+  />
 </template>
 
 <style scoped></style>

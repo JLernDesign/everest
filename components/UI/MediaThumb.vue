@@ -22,20 +22,24 @@ const handleClick = () => {
 </script>
 
 <template>
-  <div class="item h-full w-[33.5rem] shrink-0">
+  <div class="item h-full w-screen shrink-0 s:w-[33.5rem]">
     <div
       class="relative h-full [&>div]:h-full [&_img]:size-full [&_img]:object-cover"
     >
       <DatocmsImage :data="data.thumbnail.responsiveImage" />
     </div>
 
-    <!-- cover -->
-    <div class="absolute left-0 top-0 size-full bg-[#2A3440] opacity-80"></div>
+    <!-- video cover -->
+    <template v-if="data.video">
+      <div
+        class="absolute left-0 top-0 size-full bg-[#2A3440] opacity-80"
+      ></div>
 
-    <!-- button -->
-    <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-      <UIArrowDiamond />
-    </div>
+      <!-- button -->
+      <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+        <UIArrowDiamond />
+      </div>
+    </template>
 
     <button
       class="absolute left-0 top-0 size-full"

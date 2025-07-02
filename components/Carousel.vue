@@ -26,6 +26,12 @@ const back = () => {
   }
 };
 
+const goto = (n) => {
+  if (loop) {
+    loop.toIndex(n, { duration: 1, ease: "power3.inOut" });
+  }
+};
+
 onMounted(() => {
   let el;
   ctx = gsap.context((self) => {
@@ -66,6 +72,7 @@ onUnmounted(() => {
 defineExpose({
   next,
   back,
+  goto,
 });
 </script>
 

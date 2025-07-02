@@ -11,12 +11,12 @@ const openItem = () => {
   open.value = true;
 };
 
-defineExpose({ openItem });
+defineExpose({ openItem, open });
 </script>
 
 <template>
   <div
-    class="rounded-base-mob relative cursor-pointer transition-all duration-300 s:rounded-base"
+    class="relative rounded-base-mob transition-all duration-500 s:rounded-base"
     :class="open && 'bg-white shadow-[4px_4px_20px_0px_rgba(0,0,0,0.03)]'"
   >
     <!-- title -->
@@ -33,13 +33,16 @@ defineExpose({ openItem });
     </div>
 
     <!-- photo/quote -->
-    <div class="item overflow-hidden" :class="open ? 'h-auto' : 'h-0'">
+    <div
+      class="item overflow-hidden transition-all duration-300"
+      :class="open ? 'h-auto' : 'h-0'"
+    >
       <div
         class="flex w-full flex-col items-start justify-between p-side-mob s:flex-row s:p-side"
       >
         <div class="shrink-0 s:w-[35%]">
           <div
-            class="rounded-base-mob w-[23.4rem] overflow-hidden s:rounded-base"
+            class="w-[23.4rem] overflow-hidden rounded-base-mob s:rounded-base"
           >
             <DatocmsImage
               v-if="data.image"
