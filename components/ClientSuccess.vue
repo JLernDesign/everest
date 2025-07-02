@@ -8,24 +8,62 @@ import {
 } from "~/assets/graphql/fragments/global";
 
 const props = defineProps(["theme", "data"]);
+const mobile = breakpoints.smallerOrEqual("tablet1");
 const active = 0;
 const carouselRef = ref(null);
 const carouselRefRight = ref(null);
 const carouselRefLeft = ref(null);
 let page_data;
 
-// Navigation handlers
+// navigation handlers
 const handlePrev = () => {
   carouselRef.value?.back();
   carouselRefRight.value?.back();
   carouselRefLeft.value?.back();
+  stopSlideshow();
 };
 
 const handleNext = () => {
   carouselRef.value?.next();
   carouselRefRight.value?.next();
   carouselRefLeft.value?.next();
+  stopSlideshow();
 };
+
+const stopSlideshow = () => {
+  clearInterval(slideshow);
+  progressBar.value?.stopProgress();
+};
+
+// slideshow
+const speed = 5;
+const pageInactive = useState("pageInactive");
+const progressBar = ref(null);
+let slideshow;
+
+const next = () => {
+  progressBar.value?.next();
+  carouselRef.value?.next();
+  carouselRefRight.value?.next();
+  carouselRefLeft.value?.next();
+};
+
+const slideTimer = () => {
+  slideshow = setInterval(() => {
+    if (!pageInactive.value) {
+      next();
+    }
+  }, speed * 1000);
+};
+
+onMounted(() => {
+  // start slideshow
+  setTimeout(() => {
+    progressBar.value?.barProgress();
+    next();
+    slideTimer();
+  }, 200);
+});
 
 // check for new data
 if (props.data.slides && props.data.slides.length > 0) {
@@ -118,6 +156,8 @@ if (props.data.slides && props.data.slides.length > 0) {
         <Carousel
           ref="carouselRef"
           class="relative max-s:-left-[2rem] max-s:w-screen"
+          :drag="mobile ? true : false"
+          @mousedown="stopSlideshow"
         >
           <div
             v-for="slide in page_data.slides"
@@ -206,6 +246,8 @@ if (props.data.slides && props.data.slides.length > 0) {
           dir="right"
           class="cursor-pointer px-[10rem]"
           @click="handleNext"
+          :speed="speed"
+          ref="progressBar"
         />
       </div>
     </div>
