@@ -31,17 +31,6 @@ watch(height, () => {
     <Cookies />
     <UISiteCover />
   </div>
-
-  <!-- guide line -->
-  <!-- <div
-    class="fixed left-0 top-0 z-10 ml-side-mob h-screen w-0 border-l border-l-red opacity-20 s:ml-side"
-  ></div>
-  <div
-    class="fixed right-0 top-0 z-10 mr-side-mob h-screen w-0 border-r border-r-red opacity-20 s:mr-side"
-  ></div>
-  <div
-    class="fixed left-1/2 top-0 z-10 h-screen w-0 border-l border-l-red opacity-20"
-  ></div> -->
 </template>
 
 <style scoped>

@@ -13,7 +13,6 @@ const carouselRef = ref(null);
 const carouselRefRight = ref(null);
 const carouselRefLeft = ref(null);
 let page_data;
-console.log(props.data);
 
 // Navigation handlers
 const handlePrev = () => {
@@ -57,7 +56,7 @@ if (props.data.slides && props.data.slides.length > 0) {
 <template>
   <Section
     :theme="theme"
-    class="pb-section-bot-mob bg-jaffa s:pb-section-bot"
+    class="bg-jaffa pb-section-bot-mob s:pb-section-bot"
     :class="page_data.jaggedEdge && 'mt-[23rem] !pt-16 s:mt-[26.8rem] s:!pt-8'"
   >
     <template v-if="page_data.jaggedEdge">
@@ -88,7 +87,7 @@ if (props.data.slides && props.data.slides.length > 0) {
           >
             <div
               v-if="slide.media.image"
-              class="photo rounded-base-mob aspect-[1.57] w-full overflow-hidden s:rounded-base"
+              class="photo aspect-[1.57] w-full overflow-hidden rounded-base-mob s:rounded-base"
             >
               <!-- image -->
               <img :src="slide.media.image.url" alt="" />
@@ -97,7 +96,7 @@ if (props.data.slides && props.data.slides.length > 0) {
             <!-- name -->
             <div
               v-if="slide.name"
-              class="slide-text text-body-xsm-mob mt-10 s:text-body-xsm"
+              class="slide-text mt-10 text-body-xsm-mob s:text-body-xsm"
             >
               <p class="font-helvb">{{ slide.name }}</p>
               <p>{{ slide.title }}</p>
@@ -125,7 +124,7 @@ if (props.data.slides && props.data.slides.length > 0) {
             class="item w-screen shrink-0 px-side-mob s:w-[77.2rem] s:px-[10rem]"
           >
             <div
-              class="photo rounded-base-mob aspect-[1.57] w-full overflow-hidden s:rounded-base"
+              class="photo aspect-[1.57] w-full overflow-hidden rounded-base-mob s:rounded-base"
             >
               <img
                 v-if="slide.media.image"
@@ -148,7 +147,7 @@ if (props.data.slides && props.data.slides.length > 0) {
                   v-for="stat in slide.statsGroup.stats"
                   class="stat-item flex items-end space-x-4"
                 >
-                  <h3 class="text-sm-mob font-barlow-cond font-bold s:text-sm">
+                  <h3 class="font-barlow-cond text-sm-mob font-bold s:text-sm">
                     {{ stat.figure }}
                   </h3>
                   <p class="text-body-xsm-mob s:text-body-xsm">
@@ -160,7 +159,7 @@ if (props.data.slides && props.data.slides.length > 0) {
               <!-- quote -->
               <blockquote v-if="slide.quote">“{{ slide.quote }}”</blockquote>
               <div
-                class="byline text-body-xsm-mob mt-[2.5rem] flex items-center justify-between s:mt-[5.5rem] s:text-body-xsm"
+                class="byline mt-[2.5rem] flex items-center justify-between text-body-xsm-mob s:mt-[5.5rem] s:text-body-xsm"
               >
                 <div v-if="slide.name">
                   <p class="font-helvb">{{ slide.name }}</p>
@@ -184,7 +183,7 @@ if (props.data.slides && props.data.slides.length > 0) {
           >
             <div
               v-if="slide.media.image"
-              class="photo rounded-base-mob aspect-[1.57] w-full overflow-hidden s:rounded-base"
+              class="photo aspect-[1.57] w-full overflow-hidden rounded-base-mob s:rounded-base"
             >
               <!-- image -->
               <img :src="slide.media.image.url" alt="" />
@@ -193,7 +192,7 @@ if (props.data.slides && props.data.slides.length > 0) {
             <!-- name -->
             <div
               v-if="slide.name"
-              class="slide-text text-body-xsm-mob mt-10 s:text-body-xsm"
+              class="slide-text mt-10 text-body-xsm-mob s:text-body-xsm"
             >
               <p class="font-helvb">{{ slide.name }}</p>
               <p>{{ slide.title }}</p>

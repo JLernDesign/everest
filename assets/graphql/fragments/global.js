@@ -187,7 +187,7 @@ const AdvantageFragment = gql`
     }
   }
 `;
-const AscendingSliderFragment = gql`
+export const AscendingSliderFragment = gql`
   fragment AscendingSliderFragment on AscendingSliderRecord {
     __typename
     background

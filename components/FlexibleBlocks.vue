@@ -3,7 +3,7 @@ const props = defineProps(["data", "template"]);
 </script>
 
 <template>
-  <template v-for="module in data">
+  <template v-for="(module, i) in data">
     <Advantage v-if="module.__typename == 'AdvantageRecord'" :data="module" />
     <BannerCallout
       v-if="module.__typename == 'BannerCalloutRecord'"
@@ -58,6 +58,7 @@ const props = defineProps(["data", "template"]);
     <SliderAscending
       v-if="module.__typename == 'AscendingSliderRecord'"
       :data="module"
+      :class="i == data.length - 1 && 's:!pb-[15rem]'"
     />
     <SuccessStack
       v-if="module.__typename == 'ClientCardsModuleRecord'"
