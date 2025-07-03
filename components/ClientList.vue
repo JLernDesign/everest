@@ -32,7 +32,7 @@ const handleClick = (i) => {
     />
 
     <!-- filter -->
-    <UIFilter :data="{ label: 'filter by industry' }" />
+    <!-- <UIFilter :data="{ label: 'filter by industry' }" /> -->
 
     <!-- list -->
     <div class="list">

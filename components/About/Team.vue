@@ -46,7 +46,7 @@ const handleClick = (i) => {
 
 <template>
   <Section
-    class="bg-skyblue pb-section-bot-mob s:!pt-4 s:pb-section-bot max-s:pt-0"
+    class="bg-skyblue pb-section-bot-mob s:!pt-0 s:pb-section-bot max-s:pt-0"
     side="lg"
   >
     <!-- bg elements -->

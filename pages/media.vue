@@ -1,11 +1,14 @@
 <script setup>
-import { leadershipQuery } from "~/assets/graphql/queries/leadership.js";
+import { mediaQuery } from "~/assets/graphql/queries/media.js";
 import { toHead } from "vue-datocms";
 
 const { data } = await useGraphqlQuery({
-  query: leadershipQuery.loc.source.body,
+  query: mediaQuery.loc.source.body,
 });
-const page = data.value.leadership;
+const page = data.value.mediaPage;
+const media = data.value.allMediaCollections;
+
+console.log(media);
 
 onMounted(() => {
   const theme = useState("theme");
@@ -20,14 +23,13 @@ useHead(() => {
 </script>
 
 <template>
-  <div class="bg-skyblue">
+  <div class="bg-jaffa">
     <!-- basic hero -->
-    <BasicHero :data="{ headline: page.team.header.headline }" />
+    <BasicHero :data="page.hero" />
 
-    <!-- team -->
-    <AboutTeam :data="page.team" />
+    <!-- media grid -->
+    Grid
 
-    <FlexibleBlocks :data="page.flexibleContent.modules" />
     <FooterLockup :data="page.footerCallout" />
   </div>
 </template>
