@@ -110,7 +110,7 @@ useHead(() => {
     <!-- thumbs -->
     <Section :side="false" class="s:!pt-0">
       <!-- filter -->
-      <UIFilter :data="{ label: 'filter by category' }" />
+      <!-- <UIFilter :data="{ label: 'filter by category' }" /> -->
 
       <!-- thumbs grid -->
       <div

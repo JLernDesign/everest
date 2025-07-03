@@ -11,6 +11,12 @@ const next = () => {
   carousel.value.next();
 };
 
+const gotoSlide = (n) => {
+  progressBars.value.next(n);
+  carousel.value.goto(n - 1);
+  clearInterval(slideshow);
+};
+
 const slideTimer = () => {
   slideshow = setInterval(() => {
     if (!pageInactive.value) {
@@ -47,7 +53,12 @@ onMounted(() => {
 
     <!-- nav -->
     <div class="mt-4 w-full text-center">
-      <UIProgressBars ref="progressBars" :speed="speed" />
+      <UIProgressBars
+        ref="progressBars"
+        :speed="speed"
+        :total="data.featuredPosts.length"
+        :gotoSlide="gotoSlide"
+      />
     </div>
   </Section>
 </template>
