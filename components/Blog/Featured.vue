@@ -4,6 +4,7 @@ const progressBars = ref(null);
 const speed = 5;
 const carousel = ref(null);
 const pageInactive = useState("pageInactive");
+let slideshow;
 
 const next = () => {
   progressBars.value.next();
@@ -11,12 +12,16 @@ const next = () => {
 };
 
 const slideTimer = () => {
-  setInterval(() => {
+  slideshow = setInterval(() => {
     if (!pageInactive.value) {
       next();
     }
   }, speed * 1000);
 };
+
+onUnmounted(() => {
+  clearInterval(slideshow);
+});
 
 onMounted(() => {
   setTimeout(() => {

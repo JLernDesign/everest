@@ -28,7 +28,6 @@ const slideTimer = () => {
 };
 
 const stopSlideshow = () => {
-  console.log("stopSlideshow");
   clearInterval(slideshow);
 };
 
@@ -39,6 +38,9 @@ onMounted(() => {
     }
     slideTimer();
   }, 200);
+});
+onUnmounted(() => {
+  stopSlideshow();
 });
 </script>
 

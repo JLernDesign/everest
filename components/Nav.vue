@@ -3,20 +3,40 @@ const props = defineProps(["type", "data", "close_func"]);
 const route = useRoute();
 const activePage = ref("");
 
+// watch for page change to update nav
+watch(
+  () => route.path,
+  () => {
+    setActive();
+  },
+);
 const setActive = () => {
-  activePage.value = "";
+  let parent = route.path.split("/")[1];
+
+  switch (parent) {
+    case "product":
+      activePage.value = "Product";
+      break;
+    case "why":
+      activePage.value = "Why Everest";
+      break;
+    case "blog":
+      activePage.value = "Learn";
+      break;
+    case "about":
+      activePage.value = "About";
+      break;
+    default:
+      activePage.value = "";
+  }
 };
+
 onMounted(() => {
+  // set active page
   setActive();
 
   // preload hidden menu images
   preloadImg("/ui/menu-texture@2x.webp");
-});
-
-// watch for page change to update nav
-const page_title = useState("page_title");
-watch(page_title, () => {
-  setActive();
 });
 </script>
 
@@ -25,15 +45,15 @@ watch(page_title, () => {
     <ul
       :class="props.type == 'main' ? 'main-nav flex space-x-nav' : 'mobile-nav'"
     >
-      <template v-for="(item, i) in props.data">
-        <MenuItem
-          :data="item"
-          :type="props.type"
-          :active="activePage"
-          :submenu="item.submenu ? true : false"
-          :close_func="close_func"
-        />
-      </template>
+      <MenuItem
+        v-for="(item, i) in props.data"
+        :key="item.label"
+        :data="item"
+        :type="props.type"
+        :submenu="item.submenu ? true : false"
+        :active="activePage"
+        :close_func="close_func"
+      />
     </ul>
   </nav>
 </template>

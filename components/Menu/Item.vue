@@ -20,13 +20,7 @@ const openMenu = () => {
   link.classList.add("on");
 
   // show arrow
-  gsap.to(accent, {
-    duration: 0.5,
-    x: 0,
-    y: 0,
-    opacity: 1,
-    ease: "power3.out",
-  });
+  toggleAccent("on");
 
   // show menu
   gsap.to(el, {
@@ -37,6 +31,7 @@ const openMenu = () => {
     ease: "power3.out",
   });
 };
+
 const closeMenu = () => {
   // kill off old
   gsap.killTweensOf([el, accent]);
@@ -45,13 +40,9 @@ const closeMenu = () => {
   link.classList.remove("on");
 
   // hide arrow
-  gsap.to(accent, {
-    duration: 0.25,
-    y: "-1rem",
-    x: "-1rem",
-    opacity: 0,
-    ease: "quad.in",
-  });
+  if (props.active != props.data.label) {
+    toggleAccent("off");
+  }
 
   // hide menu
   gsap.to(el, {
@@ -62,6 +53,34 @@ const closeMenu = () => {
     ease: "power3.in",
   });
 };
+
+const toggleAccent = (state) => {
+  if (state == "on") {
+    gsap.to(accent, {
+      duration: 0.5,
+      x: 0,
+      y: 0,
+      opacity: 1,
+      ease: "power3.out",
+    });
+  } else {
+    gsap.to(accent, {
+      duration: 0.25,
+      y: "-1rem",
+      x: "-1rem",
+      opacity: 0,
+      ease: "quad.in",
+    });
+  }
+};
+
+// watch for active page change to update accent
+watch(
+  () => props.active,
+  () => {
+    props.active == props.data.label ? toggleAccent("on") : toggleAccent("off");
+  },
+);
 
 // mobile: handle menu click
 const handleClick = (e) => {
@@ -138,9 +157,9 @@ const toggleSubMenu = (e) => {
       :to="type == 'main' && single ? getUrl(data) : null"
       :target="data.external && '_blank'"
       :data-parent="type == 'mobile' && submenu ? true : null"
-      class="toplink ul text-body-sm-mob relative z-1 cursor-pointer after:bg-red s:text-body-sm"
+      class="toplink ul relative z-1 cursor-pointer text-body-sm-mob after:bg-red s:text-body-sm"
       :class="[
-        type == 'main' && active == data.label ? 'on' : null,
+        type == 'main' && active == data.label ? 'nuxt-link-active' : null,
         single && 'hover:text-red',
       ]"
       @mouseenter="type == 'main' && submenu ? openMenu() : null"
@@ -170,59 +189,9 @@ const toggleSubMenu = (e) => {
 <style scoped>
 .toplink {
   transition-timing-function: ease-out;
-  &.on {
+  &.on,
+  &.nuxt-link-active {
     color: theme("colors.red");
   }
 }
-/* @media (max-width: 1024px) {
-  .nav-sub {
-    height: 0;
-    overflow: hidden;
-  }
-  .submenu {
-    border: none !important;
-    padding-bottom: 15px;
-    padding-top: 16px;
-    padding-left: 22px;
-    li {
-      font-family: 'Inter', sans-serif;
-      font-size: 18px;
-      text-transform: none;
-      letter-spacing: 0;
-      font-weight: 400;
-    }
-    li + li {
-      border: none !important;
-      margin-top: 22px;
-    }
-    a {
-      &:hover {
-        background-color: var(--black);
-        color: var(--cream);
-      }
-    }
-  }
-
-  .nav-sub {
-    &.icons {
-      .submenu {
-        a {
-          display: flex;
-          justify-items: flex-start;
-          align-items: center;
-        }
-      }
-      .list-icon {
-        width: 46px;
-        height: 46px;
-        flex-shrink: 0;
-        margin-right: 20px;
-
-        img {
-          object-fit: cover;
-        }
-      }
-    }
-  }
-} */
 </style>
