@@ -60,6 +60,9 @@ export const LinkFragment = gql`
         ... on AboutRecord {
           __typename
         }
+        ... on LeadershipRecord {
+          __typename
+        }
       }
       external
       style
@@ -100,6 +103,9 @@ export const SingleLinkFragment = gql`
         __typename
       }
       ... on AboutRecord {
+        __typename
+      }
+      ... on LeadershipRecord {
         __typename
       }
     }

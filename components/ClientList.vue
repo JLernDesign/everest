@@ -3,6 +3,7 @@ const props = defineProps(["data"]);
 const clients = ref(null);
 
 onMounted(() => {
+  // open first item
   clients.value[0].openItem();
 });
 onUnmounted(() => {});

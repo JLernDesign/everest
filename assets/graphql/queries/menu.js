@@ -36,6 +36,9 @@ export const InternalFragment = gql`
       ... on AboutRecord {
         __typename
       }
+      ... on LeadershipRecord {
+        __typename
+      }
     }
   }
 `;
