@@ -19,8 +19,6 @@ const gotoSlide = (n) => {
 
 const slideTimer = () => {
   slideshow = setInterval(() => {
-    console.log("slideshow");
-
     if (!pageInactive.value) {
       next();
     }

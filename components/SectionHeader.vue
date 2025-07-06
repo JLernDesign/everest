@@ -33,9 +33,9 @@ const props = defineProps({
 
     <!-- header / intro -->
     <div
-      class="has-break space-y-[2rem] s:space-y-[2.5rem]"
+      class="has-break space-y-[2rem] s:space-y-[2.5rem] s:pb-4"
       :class="[
-        align == 'center' && 'mx-auto max-w-[100rem]',
+        align == 'center' && 'mx-auto max-w-[70rem]',
         loc == 'home-hero' && 's:!space-y-[1.8rem]',
       ]"
     >
@@ -47,9 +47,14 @@ const props = defineProps({
       <h2
         v-else
         class="font-barlow-cond text-lg-mob font-bold leading-lg s:text-lg"
+        :class="!data.intro && 's:pb-[.5rem]'"
         v-html="formatText(data.headline)"
       ></h2>
-      <div class="max-w-[62rem]" :class="align == 'center' && 'mx-auto'">
+      <div
+        v-if="data.intro"
+        class="max-w-[62rem]"
+        :class="align == 'center' && 'mx-auto'"
+      >
         <p v-html="formatText(data.intro)"></p>
       </div>
     </div>
@@ -61,7 +66,6 @@ const props = defineProps({
       :align="align"
       :theme="theme"
       :wrap="wrap"
-      class="s:pt-6"
       :class="loc == 'home-hero' && 's:!pt-0'"
     />
 

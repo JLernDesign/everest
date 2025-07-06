@@ -46,16 +46,16 @@ const handleSlide = (dir) => {
 
     <!-- slides -->
     <div
-      class="rounded-base-mob mt-[5rem] flex flex-col justify-between overflow-hidden bg-shadowblue s:mt-[10rem] s:flex-row s:rounded-base"
+      class="mt-[5rem] flex flex-col justify-between overflow-hidden rounded-base-mob bg-shadowblue s:mt-[10rem] s:flex-row s:rounded-base"
     >
       <!-- text -->
       <div
-        class="text relative w-full px-side-mob pb-[5rem] pt-[3.5rem] text-white s:w-1/2 s:px-[5rem] s:pb-[14rem] s:pt-[11.5rem] max-s:order-1"
+        class="text relative w-full px-side-mob pb-[5rem] pt-[3.5rem] text-white s:w-1/2 s:px-[5rem] s:pb-[16rem] s:pt-[11.5rem] max-s:order-1"
         :class="layout == 'img-rt' ? 'order-1' : 'order-2'"
       >
         <div class="max-w-[575px] space-y-7">
           <h2
-            class="text-md-mob font-helvb leading-[1.09] s:text-md"
+            class="font-helvb text-md-mob leading-[1.09] s:text-md"
             v-html="formatText(data.header.headline)"
           ></h2>
           <p v-html="formatText(data.header.intro)"></p>
@@ -85,7 +85,9 @@ const handleSlide = (dir) => {
             class="count px-side font-barlow-cond font-bold"
             :class="layout == 'img-rt' ? 'text-red' : 'text-lightblue'"
           >
-            {{ active + 1 }}/{{ data.slides.length }}
+            <span class="inline-block w-[3rem] text-center">
+              {{ active + 1 }}/{{ data.slides.length }}</span
+            >
           </div>
           <div class="relative h-full w-[23.4rem]">
             <UISlideArrow
@@ -99,7 +101,7 @@ const handleSlide = (dir) => {
 
       <!-- image -->
       <div
-        class="image has-break rounded-base-mob w-full overflow-hidden bg-cover p-[1.4rem] s:h-[72.6rem] s:w-[72rem] s:rounded-base max-s:order-2"
+        class="image has-break w-full overflow-hidden rounded-base-mob bg-cover p-[1.4rem] s:h-auto s:min-h-[72.6rem] s:w-[72rem] s:rounded-base max-s:order-2"
         :class="
           layout == 'img-rt'
             ? 'order-2 bg-[url(/ui/mt-red@2x.jpg)]'
@@ -112,7 +114,7 @@ const handleSlide = (dir) => {
             class="item flex w-full shrink-0 flex-col justify-center px-side-mob s:px-[13rem]"
           >
             <div
-              class="rounded-base-mob flex flex-col items-center bg-jaffa p-[3.2rem] text-center text-body-sm-mob leading-sm s:rounded-base s:text-body-sm"
+              class="flex flex-col items-center rounded-base-mob bg-jaffa p-[3.2rem] text-center text-body-sm-mob leading-sm s:rounded-base s:text-body-sm"
             >
               <div v-if="slide.icon" class="icon mb-[3rem] size-[12.2rem]">
                 <img :src="slide.icon.url" alt="" />
@@ -143,7 +145,9 @@ const handleSlide = (dir) => {
       <div
         class="count px-side-mob font-barlow-cond font-bold text-red s:px-side"
       >
-        {{ active + 1 }}/{{ data.slides.length }}
+        <span class="inline-block w-[3rem] text-center">
+          {{ active + 1 }}/{{ data.slides.length }}
+        </span>
       </div>
       <div class="relative h-full w-[11rem] shrink-0 s:w-[23.4rem]">
         <UISlideArrow

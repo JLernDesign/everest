@@ -6,7 +6,7 @@ const props = defineProps(["data"]);
   <div class="relative p-side-mob s:px-side s:py-section-bot">
     <!-- content -->
     <div
-      class="rounded-base-mob relative z-1 flex flex-col justify-between overflow-hidden bg-shadowblue bg-[url(/ui/callout-texture-mob@2x.jpg)] bg-cover p-side-mob text-white s:flex-row s:rounded-base s:bg-[url(/ui/callout-texture@2x.jpg)] s:p-[7rem] s:pl-[11.5rem]"
+      class="relative z-1 flex flex-col justify-between overflow-hidden rounded-base-mob bg-shadowblue bg-[url(/ui/callout-texture-mob@2x.jpg)] bg-cover p-side-mob text-white s:flex-row s:rounded-base s:bg-[url(/ui/callout-texture@2x.jpg)] s:p-[7rem] s:pl-[11.5rem]"
     >
       <!-- text -->
       <div
@@ -29,7 +29,7 @@ const props = defineProps(["data"]);
 
       <!-- image 3D -->
       <div
-        class="rounded-base-mob relative h-[16rem] w-full overflow-hidden bg-[url(/public/ui/callout-gradient@2x.png)] bg-cover s:h-[31rem] s:w-[59rem] s:rounded-base max-s:order-1"
+        class="relative h-[16rem] w-full overflow-hidden rounded-base-mob bg-[url(/public/ui/callout-gradient@2x.png)] bg-cover s:h-[31rem] s:w-[59rem] s:rounded-base max-s:order-1"
       ></div>
     </div>
   </div>

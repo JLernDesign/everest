@@ -7,33 +7,6 @@ import {
   VideoFragment,
 } from "../fragments/global";
 
-/* export const mediaPageQuery = gql`
-  query {
-    mediaPage {
-      seo: _seoMetaTags {
-        attributes
-        content
-        tag
-      }
-      hero {
-        ...HeroFragment
-      }
-      footerCallout {
-        ...FooterFragment
-      }
-    }
-    allMediaCollections(orderBy: order_ASC) {
-      title
-      slug
-    }
-  }
-  ${HeroFragment}
-  ${FooterFragment}
-  ${LinkFragment}
-  ${ResponsiveImageFragment}
-  ${VideoFragment}
-`; */
-
 export const mediaCollectionQuery = gql`
   query ($slug: String) {
     mediaPage {

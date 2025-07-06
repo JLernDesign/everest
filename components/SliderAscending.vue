@@ -16,6 +16,7 @@ const main = ref(null);
 const follow = ref(null);
 let active = false;
 let count = 0;
+const mouseDown = ref(false);
 
 // get mouse movement
 const { elementX, elementY } = useMouseInElement(main);
@@ -55,10 +56,10 @@ const followMouse = () => {
   if (count % 2 == 0) {
     // follow mouse
     gsap.to(follow.value, {
-      duration: 0.5,
+      duration: 0.2,
       x: elementX.value,
       y: elementY.value,
-      ease: "power3.out",
+      ease: "quad.out",
     });
   }
 
@@ -77,6 +78,16 @@ const unfollowMouse = () => {
     scale: 0.7,
     ease: "back.in(1)",
   });
+};
+
+const handleMouseDown = () => {
+  mouseDown.value = true;
+  console.log("mousedown");
+};
+
+const handleMouseUp = () => {
+  mouseDown.value = false;
+  console.log("mouseup");
 };
 
 // get data
@@ -150,6 +161,8 @@ const duplicated = computed(() => {
       <Carousel
         class="slider-wrap ml-[.4rem] mt-[5rem] !h-[50rem] -rotate-[15deg] !cursor-none space-x-[0] s:ml-[2.5rem] s:mt-[16.5rem] s:!h-[82rem]"
         :drag="true"
+        @mousedown="handleMouseDown"
+        @mouseup="handleMouseUp"
       >
         <!-- slides -->
         <div
@@ -193,7 +206,15 @@ const duplicated = computed(() => {
         ref="follow"
         class="follow pointer-events-none absolute -left-[6.1rem] -top-[7.2rem] z-10 size-[12.2rem]"
       >
-        <img src="/public/ui/scroll-icon.svg" alt="" class="opacity-0" />
+        <div
+          class="transition-all duration-300"
+          :style="{
+            transform: mouseDown ? 'scale(0.9)' : 'scale(1)',
+            opacity: mouseDown ? 0.8 : 1,
+          }"
+        >
+          <img src="/public/ui/scroll-icon.svg" alt="" />
+        </div>
       </div>
     </div>
   </Section>

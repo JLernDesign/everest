@@ -5,9 +5,9 @@ const link = getUrl(props.data);
 </script>
 
 <template>
-  <li class="has-ul relative grid content-center px-14 py-8 pb-7">
+  <li class="has-ul icon-link relative grid content-center px-14 py-8 pb-7">
     <template v-if="data != ''">
-      <span class="relative flex gap-[3rem]">
+      <span class="inner-content relative flex gap-[3rem]">
         <!-- icon -->
         <span v-if="data.icon" class="icon block size-[4rem] shrink-0"
           ><img :src="data.icon.url" alt=""
