@@ -43,11 +43,11 @@ const handleClick = (link) => {
 </script>
 
 <template>
-  <Section :theme="theme" class="pb-section-bot-mob bg-jaffa s:pb-section-bot">
+  <Section :theme="theme" class="bg-jaffa pb-section-bot-mob s:pb-section-bot">
     <SectionHeader
       :theme="theme"
       :data="data.header"
-      :breadcrumb="data.groups.length > 1 ? data.groups : null"
+      :subnav="data.groups.length > 1 ? data.groups : null"
     />
 
     <!-- desktop module -->
@@ -55,10 +55,10 @@ const handleClick = (link) => {
       <!-- logo -->
       <div class="w-full s:w-1/2" ref="sidebar">
         <div
-          class="menu rounded-base-mob grid h-[42rem] w-full place-content-center bg-[url(/ui/callout-texture@2x.jpg)] bg-[size:1717px_auto] s:rounded-base"
+          class="menu grid h-[42rem] w-full place-content-center rounded-base-mob bg-[url(/ui/callout-texture@2x.jpg)] bg-[size:1717px_auto] s:rounded-base"
         >
           <div
-            class="rounded-base-mob flex h-[18rem] w-[28rem] bg-jaffa s:rounded-base"
+            class="flex h-[18rem] w-[28rem] rounded-base-mob bg-jaffa s:rounded-base"
           >
             <img
               v-if="data.groups[groupNum].items[active].image"
@@ -74,7 +74,7 @@ const handleClick = (link) => {
       <div class="w-full pl-[14rem] leading-[1] s:w-1/2">
         <div class="start-pin"></div>
         <div
-          class="text-body-xsm-mob mb-[3rem] flex px-[2rem] font-barlow uppercase opacity-40 s:text-body-xsm"
+          class="mb-[3rem] flex px-[2rem] font-barlow text-body-xsm-mob uppercase opacity-40 s:text-body-xsm"
         >
           <span class="w-[38%]">{{ data.groups[groupNum].headerLeft }}</span>
           <span class="w-[62%]">{{ data.groups[groupNum].headerRight }}</span>
@@ -89,7 +89,7 @@ const handleClick = (link) => {
               @click="handleClick(item.link)"
             >
               <div
-                class="rounded-base-mob absolute -top-[.2rem] h-full w-full scale-y-0 bg-white transition-all duration-300 ease-in-out group-hover:scale-y-100 s:rounded-base"
+                class="absolute -top-[.2rem] h-full w-full scale-y-0 rounded-base-mob bg-white transition-all duration-300 ease-in-out group-hover:scale-y-100 s:rounded-base"
               ></div>
               <div class="relative flex px-[2rem] py-[1.2rem]">
                 <span class="w-[38%] pr-4">{{ item.name }}</span>

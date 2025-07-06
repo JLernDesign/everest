@@ -69,7 +69,7 @@ onUnmounted(() => {
       :class="theme == 'dark' ? 'border-[#3D4856] bg-shadowblue' : null"
       :theme="theme"
       :data="data.header"
-      :breadcrumb="data.sections"
+      :subnav="data.sections"
       ><UIGradientBot :theme="theme"
     /></SectionHeader>
 

@@ -63,6 +63,10 @@ export const LinkFragment = gql`
         ... on LeadershipRecord {
           __typename
         }
+        ... on MediaCollectionRecord {
+          __typename
+          slug
+        }
       }
       external
       style
@@ -107,6 +111,10 @@ export const SingleLinkFragment = gql`
       }
       ... on LeadershipRecord {
         __typename
+      }
+      ... on MediaCollectionRecord {
+        __typename
+        slug
       }
     }
     external

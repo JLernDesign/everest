@@ -39,6 +39,10 @@ export const InternalFragment = gql`
       ... on LeadershipRecord {
         __typename
       }
+      ... on MediaCollectionRecord {
+        __typename
+        slug
+      }
     }
   }
 `;
@@ -51,12 +55,27 @@ export const menuQuery = gql`
           __typename
           label
           submenu {
-            label
-            description
-            ...InternalFragment
-            external
-            icon {
-              url
+            ... on MenuItemRecord {
+              __typename
+              label
+              description
+              ...InternalFragment
+              external
+              icon {
+                url
+              }
+            }
+            ... on MenuGroupRecord {
+              __typename
+              label
+              submenu {
+                ... on MenuItemRecord {
+                  __typename
+                  label
+                  ...InternalFragment
+                  external
+                }
+              }
             }
           }
         }

@@ -4,7 +4,7 @@ const props = defineProps(["data"]);
 
 <template>
   <Section
-    class="pb-section-bot-mob z-1 overflow-hidden bg-skyblue !pt-section-top text-center s:pb-section-bot"
+    class="z-1 overflow-hidden bg-skyblue !pt-section-top pb-section-bot-mob text-center s:pb-section-bot"
   >
     <!-- bg elements -->
     <div
@@ -24,7 +24,7 @@ const props = defineProps(["data"]);
     <SectionHeaderBig
       align="center"
       :data="data.header"
-      :breadcrumb="data.sections"
+      :subnav="data.sections"
     />
   </Section>
 </template>

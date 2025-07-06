@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps(["data", "align", "breadcrumb"]);
+const props = defineProps(["data", "align", "subnav"]);
 
 // check for inline image marker
 const hl = props.data.headline.split("[]");
@@ -12,7 +12,7 @@ if (hl.length > 1) {
 <template>
   <header
     v-if="data != undefined"
-    class="space-y-header-mob relative s:space-y-header-lg"
+    class="relative space-y-header-mob s:space-y-header-lg"
   >
     <h2
       class="font-barlow-cond text-xxl-mob font-semibold uppercase leading-xxl s:text-xxl"
@@ -33,7 +33,7 @@ if (hl.length > 1) {
     </h2>
 
     <p
-      class="text-body-md-mob mx-auto max-w-[80rem] leading-md s:text-body-md"
+      class="mx-auto max-w-[80rem] text-body-md-mob leading-md s:text-body-md"
       v-html="formatText(data.intro)"
     ></p>
 
@@ -45,10 +45,10 @@ if (hl.length > 1) {
       :theme="theme"
     />
 
-    <!-- breadcrumb nav -->
-    <Breadcrumb
-      v-if="breadcrumb"
-      :data="breadcrumb"
+    <!-- subpage nav -->
+    <SubNav
+      v-if="subnav"
+      :data="subnav"
       :theme="theme"
       class="hidden s:block"
     />

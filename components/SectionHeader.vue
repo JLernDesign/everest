@@ -5,9 +5,10 @@ const props = defineProps({
   valign: { default: "top" },
   theme: { default: "light" },
   hero: { default: false },
-  breadcrumb: { default: null },
+  subnav: { default: null },
   wrap: { default: false },
   loc: { default: null },
+  template: { default: null },
 });
 </script>
 
@@ -64,8 +65,8 @@ const props = defineProps({
       :class="loc == 'home-hero' && 's:!pt-0'"
     />
 
-    <!-- breadcrumb nav -->
-    <Breadcrumb v-if="breadcrumb" :data="breadcrumb" :theme="theme" />
+    <!-- subpage nav -->
+    <SubNav v-if="subnav" :data="subnav" :theme="theme" :template="template" />
 
     <slot />
   </header>
