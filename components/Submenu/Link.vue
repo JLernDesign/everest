@@ -13,7 +13,7 @@ const link = getUrl(props.data);
         :class="route.path == link ? 'nuxt-link-active' : ''"
         >{{ data.label }}</span
       >
-      <span class="block">{{ data.description }}</span>
+      <span class="block opacity-50">{{ data.description }}</span>
 
       <NuxtLink
         :to="link"
