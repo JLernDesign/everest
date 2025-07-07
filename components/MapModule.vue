@@ -73,7 +73,7 @@ const handleMouseLeave = (e) => {
         v-html="addLineBreaks(data.headline)"
       ></h2>
       <p
-        class="text-body-md-mob mx-auto max-w-[80rem] leading-md s:text-body-md"
+        class="mx-auto max-w-[80rem] text-body-md-mob leading-md s:text-body-md"
         v-html="formatText(data.intro)"
       ></p>
     </header>
@@ -115,14 +115,14 @@ const handleMouseLeave = (e) => {
           <!-- labels -->
           <div class="hidden s:block">
             <div
-              class="pin-label rounded-base-mob pointer-events-none absolute -top-[13rem] left-1/2 hidden w-[30rem] -translate-x-1/2 bg-jaffa p-[2.5rem] text-body-sm-mob leading-sm shadow-submenu s:rounded-base s:text-body-sm"
+              class="pin-label pointer-events-none absolute -top-[13rem] left-1/2 hidden w-[30rem] -translate-x-1/2 rounded-base-mob bg-jaffa p-[2.5rem] text-body-sm-mob leading-sm shadow-submenu s:rounded-base s:text-body-sm"
             >
               <span class="font-helvh">{{ location.location }}</span>
               <br />
               <span v-html="formatText(location.address)"></span>
             </div>
           </div>
-          <img src="/public/about/map-pin.svg" alt="" />
+          <IconPin />
         </div>
       </div>
     </div>

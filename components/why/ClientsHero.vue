@@ -1,22 +1,25 @@
 <script setup>
-import { Image as DatocmsImage } from "vue-datocms";
 const props = defineProps(["data", "items"]);
-
-let slider = false;
-let duplicated = [];
-if (props.items.length <= 3) {
-  // add side fillers
-  duplicated = ["", ...props.items, ""];
-} else {
-  duplicated = [...props.items, ...props.items];
-  slider = true;
+const mobile = breakpoints.smallerOrEqual("tablet1");
+const slider = ref(true);
+if (!mobile.value && props.items.length <= 3) {
+  slider.value = false;
 }
 
-const handleClick = (item) => {
-  if (item.video) {
-    openVideoModal(item.video);
+let duplicated = [];
+if (props.items.length > 5) {
+  duplicated = props.items;
+} else {
+  duplicated = [...props.items, ...props.items];
+}
+
+watch(mobile, () => {
+  if (!mobile.value && props.items.length <= 3) {
+    slider.value = false;
+  } else {
+    slider.value = true;
   }
-};
+});
 </script>
 
 <template>
@@ -30,49 +33,37 @@ const handleClick = (item) => {
     <SectionHeader class="pt-[4rem]" align="center" :hero="true" :data="data" />
 
     <!-- slider -->
-    <Carousel
-      class="slider-wrap mt-[10rem] -rotate-[15deg] space-x-[3rem] s:mt-[15.5rem] s:!h-[40rem] s:space-x-[7rem] max-s:!h-[30rem]"
-      :class="slider ? 's:ml-[5.65rem]' : null"
-      :drag="slider && true"
-      :padding="slider ? '70' : '0'"
-      :center="slider && true"
-      :start="slider && 1"
-    >
-      <div
-        v-for="item in duplicated"
-        class="item rounded-base-mob z-1 -ml-[1.2rem] h-[19.2rem] w-[30.2rem] shrink-0 rotate-[15deg] cursor-pointer overflow-hidden p-[3.2rem] pt-[3.75rem] text-left s:rounded-base"
-        :class="item == '' && 'invisible'"
-        @click="handleClick(item)"
+    <template v-if="slider || mobile">
+      <Carousel
+        class="slider-wrap mt-[10rem] -rotate-[15deg] s:mt-[15.5rem] s:!h-[40rem] max-s:!h-[30rem]"
+        :class="
+          slider ? 'ml-[1.5rem] s:ml-[5.65rem]' : 'justify-center s:ml-[3.5rem]'
+        "
+        :drag="slider && true"
+        :center="slider && true"
+        :start="slider && 1"
       >
-        <!-- photo -->
         <div
-          class="photo-wrap absolute inset-0 [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
+          v-for="item in duplicated"
+          class="item shrink-0 px-[1.8rem] s:px-[4.2rem]"
         >
-          <DatocmsImage
-            v-if="item.image"
-            :data="item.image.responsiveImage"
-            class="h-full w-full"
-          />
+          <WhyClientsSlide :data="item" class="rotate-[15deg]" />
         </div>
+      </Carousel>
+    </template>
 
-        <!-- gradient -->
-        <div
-          class="gradient absolute left-0 top-0 h-full w-full bg-gradient-to-t from-[#2A3440] to-[rgba(42_52_62/0)] opacity-80"
-        ></div>
-
-        <!-- logo -->
-        <div
-          class="absolute left-0 top-0 flex h-full w-full items-end justify-start p-[2.5rem]"
-        >
-          <UILogo
-            v-if="item.logo"
-            :src="item.logo.url"
-            align="object-left-bottom"
-            :small="true"
-          />
-        </div>
+    <!-- static buckets if 3 or less items -->
+    <template v-else>
+      <div
+        class="mb-[13rem] mt-[24.5rem] flex flex-wrap justify-center gap-[6rem]"
+      >
+        <WhyClientsSlide
+          v-for="(item, i) in items"
+          :data="item"
+          :style="`margin-top:-${9.5 * i}rem`"
+        />
       </div>
-    </Carousel>
+    </template>
   </Section>
 </template>
 
