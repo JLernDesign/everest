@@ -24,12 +24,14 @@ const link = getUrl(props.data);
 
     <!-- menu group -->
     <template v-else>
-      <span class="mb-[.4rem] inline-block font-helvb leading-[1]">{{
-        data.label
-      }}</span>
+      <span
+        class="inline-block font-helvb leading-[1]"
+        :class="data.description && 'mb-[.4rem]'"
+        >{{ data.label }}</span
+      >
       <span v-if="data.description" class="block">{{ data.description }}</span>
 
-      <ul class="mt-8 space-y-6 pb-8">
+      <ul class="mt-6 space-y-6 pb-8">
         <li v-for="(item, i) in data.submenu" class="has-ul">
           <NuxtLink
             :to="getUrl(item)"

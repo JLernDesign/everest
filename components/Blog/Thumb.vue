@@ -91,7 +91,21 @@ const handleClick = () => {
         </div>
       </template>
 
-      <!-- document -->
+      <!-- podcast -->
+      <div
+        v-if="data.__typename == 'PodcastRecord'"
+        class="absolute left-0 top-0 flex size-full items-center justify-center"
+      >
+        <MediaPodcast :data="data" />
+      </div>
+
+      <!-- ebook -->
+      <div
+        v-if="data.__typename == 'EbookRecord'"
+        class="absolute left-0 top-0 flex size-full items-center justify-center"
+      >
+        <MediaEbook :data="data" />
+      </div>
     </div>
 
     <!-- details -->

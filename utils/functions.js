@@ -44,6 +44,23 @@ export const accentColor = (obj) => {
       break;
   }
 };
+export const fillColor = (obj) => {
+  switch (obj.bgColor) {
+    case "blue":
+      return "fill-blue";
+    case "red":
+      return "fill-reddk";
+    case "tan":
+      return "fill-jaffadk";
+    case "yellow":
+      return "fill-yellowdk";
+    case "green":
+      return "fill-greendk";
+
+    default:
+      break;
+  }
+};
 
 // auto scroll to section on click
 export const jumpTo = (e) => {
