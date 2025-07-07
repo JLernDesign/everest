@@ -2,9 +2,14 @@
 const props = defineProps(["data", "items"]);
 const mobile = breakpoints.smallerOrEqual("tablet1");
 const slider = ref(true);
-if (!mobile.value && props.items.length <= 3) {
-  slider.value = false;
-}
+
+onMounted(() => {
+  if (!mobile.value && props.items.length <= 3) {
+    slider.value = false;
+  } else {
+    slider.value = true;
+  }
+});
 
 let duplicated = [];
 if (props.items.length > 5) {
