@@ -46,16 +46,40 @@ const handleClick = () => {
     <div
       class="thumb-img relative z-1 aspect-[1.3] overflow-hidden rounded-base-mob s:rounded-base [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
     >
+      <!-- thumbnail -->
       <DatocmsImage
         v-if="data.image"
         :data="data.image.responsiveImage"
         class="h-full w-full"
       />
 
+      <!-- texture background fallback -->
+      <img
+        v-else
+        src="/video/media-bg.jpg"
+        class="absolute left-0 top-0 size-full"
+      />
+
+      <!-- product demo -->
+      <div
+        v-if="data.__typename == 'ProductDemoRecord'"
+        class="absolute left-0 top-0 flex size-full items-center p-[6rem]"
+      >
+        <div class="shadow-media relative overflow-hidden rounded-base">
+          <DatocmsImage
+            v-if="data.screen"
+            :data="data.screen.responsiveImage"
+          />
+          <div
+            class="absolute left-0 top-0 size-full bg-[#2A3440] opacity-80"
+          ></div>
+        </div>
+      </div>
+
       <!-- video -->
       <template v-if="isVideo">
         <div
-          v-if="data.tag.name == 'Media'"
+          v-if="data.__typename == 'MediaVideoRecord'"
           class="absolute left-0 top-0 size-full bg-[#2A3440] opacity-80"
         ></div>
 

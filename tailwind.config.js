@@ -109,6 +109,7 @@ export default {
         inner: "inset 0 0 20px rgba(0, 0, 0, 0.15)",
         submenu: ".5rem .5rem 5rem rgba(0, 0, 0, 0.20)",
         nav: ".5rem .5rem 5rem rgba(0, 0, 0, 0.1)",
+        media: ".7rem .7rem 1.8rem rgba(0, 0, 0, 0.25)",
       },
       maxWidth: {
         base: "148rem",

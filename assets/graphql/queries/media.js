@@ -31,21 +31,65 @@ export const mediaCollectionQuery = gql`
       slug
       items {
         mediaGroup {
-          title
-          publishDate
-          tag {
-            name
+          ... on ProductDemoRecord {
+            __typename
+            title
+            publishDate
+            tag {
+              name
+            }
+            intro
+            screen {
+              ...ResponsiveImageFragment
+            }
+            video {
+              ...VideoFragment
+            }
           }
-          intro
-          image {
-            ...ResponsiveImageFragment
+          ... on MediaVideoRecord {
+            __typename
+            title
+            publishDate
+            tag {
+              name
+            }
+            intro
+            image {
+              ...ResponsiveImageFragment
+            }
+            video {
+              ...VideoFragment
+            }
           }
-          video {
-            ...VideoFragment
+          ... on PodcastRecord {
+            __typename
+            title
+            publishDate
+            tag {
+              name
+            }
+            intro
+            bgColor
+            person {
+              name
+              photo {
+                url
+              }
+            }
+            externalLink
           }
-          externalLink
-          document {
-            url
+          ... on EbookRecord {
+            __typename
+            title
+            publishDate
+            tag {
+              name
+            }
+            intro
+            bgColor
+            document {
+              url
+            }
           }
         }
       }
