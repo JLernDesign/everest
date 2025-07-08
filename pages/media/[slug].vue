@@ -29,7 +29,12 @@ useHead(() => {
 <template>
   <div class="bg-jaffa">
     <!-- basic hero -->
-    <BasicHero :data="page.hero" :subnav="collections" template="media" />
+    <BasicHero
+      :data="page.hero"
+      :subnav="collections"
+      template="media"
+      class="max-s:z-3"
+    />
 
     <!-- media grid -->
     <BlogGrid>

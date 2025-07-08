@@ -3,7 +3,9 @@ const props = defineProps(["data"]);
 </script>
 
 <template>
-  <div class="shadow-media relative w-[20.2rem] overflow-hidden rounded-base">
+  <div
+    class="shadow-media relative w-[20.2rem] overflow-hidden rounded-base max-s:scale-[.8]"
+  >
     <svg
       id="uuid-744740ab-21c0-4062-817b-c1abeb55fb43"
       xmlns="http://www.w3.org/2000/svg"

@@ -9,7 +9,7 @@ const route = useRoute();
     :class="route.params.slug == data.slug && 'on'"
   >
     <div
-      class="accent absolute -left-[1.3rem] top-0 h-[1rem] w-[1.1rem] -translate-y-[1rem] opacity-0"
+      class="accent absolute -left-[1.3rem] top-0 hidden h-[1rem] w-[1.1rem] -translate-y-[1rem] opacity-0 s:block"
     >
       <img src="/public/ui/tri.svg" alt="" />
     </div>
@@ -23,9 +23,13 @@ button {
 }
 .on {
   color: theme("colors.red");
-  background-size: 100% 1px;
-  .accent {
-    opacity: 1;
+}
+@media (min-width: 650px) {
+  .on {
+    background-size: 100% 1px;
+    .accent {
+      opacity: 1;
+    }
   }
 }
 </style>

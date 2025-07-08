@@ -3,7 +3,7 @@ const props = defineProps(["data"]);
 </script>
 
 <template>
-  <div class="relative">
+  <div class="relative max-s:scale-[.8]">
     <svg
       width="258"
       height="226"

@@ -203,7 +203,7 @@ const toggleSubMenus = (e) => {
             :data-href="!page.submenu && getUrl(page)"
             :data-parent="page.submenu && true"
             :data-label="page.label"
-            class="text-body-md-mob inline-block w-full px-3 pt-2 text-left leading-base"
+            class="inline-block w-full px-3 pt-2 text-left text-body-md-mob leading-base"
           >
             {{ page.label }}
             <div
