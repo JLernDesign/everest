@@ -53,18 +53,11 @@ onMounted(() => {
 
 const followMouse = () => {
   // reduce amount of calls to every 10
-  if (count % 2 == 0) {
-    // follow mouse
-    gsap.to(follow.value, {
-      duration: 0.2,
-      x: elementX.value,
-      y: elementY.value,
-      ease: "quad.out",
-    });
-  }
-
-  // increment
-  count++;
+  // follow mouse
+  gsap.set(follow.value, {
+    x: elementX.value,
+    y: elementY.value,
+  });
 };
 const unfollowMouse = () => {
   active = false;
@@ -159,7 +152,7 @@ const duplicated = computed(() => {
     <!-- slider -->
     <div ref="main" class="relative">
       <Carousel
-        class="slider-wrap ml-[.4rem] mt-[5rem] !h-[50rem] -rotate-[15deg] !cursor-none space-x-[0] s:ml-[2.5rem] s:mt-[16.5rem] s:!h-[82rem]"
+        class="slider-wrap ml-[.4rem] mt-[5rem] !h-[50rem] -rotate-[15deg] space-x-[0] s:ml-[2.5rem] s:mt-[16.5rem] s:!h-[82rem] s:!cursor-none"
         :drag="true"
         @mousedown="handleMouseDown"
         @mouseup="handleMouseUp"
@@ -204,7 +197,7 @@ const duplicated = computed(() => {
       <!-- scroll icon -->
       <div
         ref="follow"
-        class="follow pointer-events-none absolute -left-[6.1rem] -top-[7.2rem] z-10 size-[12.2rem]"
+        class="follow pointer-events-none absolute -left-[6.1rem] -top-[7.2rem] z-10 hidden size-[12.2rem] s:block"
       >
         <div
           class="transition-all duration-300"
