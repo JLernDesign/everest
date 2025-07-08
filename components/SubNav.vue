@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { vOnClickOutside } from "@vueuse/components";
 
 const props = defineProps(["data", "template"]);
+const mobile = breakpoints.smallerOrEqual("tablet1");
 const route = useRoute();
 const current = props.data.find((item) => item.slug === route.params.slug);
 const open = ref(false);
@@ -39,14 +40,16 @@ const openMenu = () => {
 };
 
 const closeMenu = () => {
-  open.value = false;
-  gsap.to(menu.value, {
-    duration: 0.3,
-    opacity: 0,
-    display: "none",
-    y: 15,
-    ease: "power3.in",
-  });
+  if (mobile) {
+    open.value = false;
+    gsap.to(menu.value, {
+      duration: 0.3,
+      opacity: 0,
+      display: "none",
+      y: 15,
+      ease: "power3.in",
+    });
+  }
 };
 </script>
 
@@ -63,13 +66,15 @@ const closeMenu = () => {
         >
           <img src="/public/ui/tri.svg" alt="" />
         </div>
-        <span class="ul on text-red after:bg-red">{{ current.title }}</span>
+        <span v-if="current" class="ul on text-red after:bg-red">{{
+          current.title
+        }}</span>
       </button>
     </div>
 
     <!-- menu list -->
     <div
-      class="absolute s:relative max-s:left-0 max-s:top-[5.5rem] max-s:hidden max-s:w-full max-s:translate-y-[1.5rem]"
+      class="absolute s:relative s:!block s:!translate-y-0 s:!opacity-100 max-s:left-0 max-s:top-[5.5rem] max-s:hidden max-s:w-full max-s:translate-y-[1.5rem]"
       ref="menu"
     >
       <ul

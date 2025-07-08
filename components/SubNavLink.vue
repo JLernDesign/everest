@@ -9,7 +9,7 @@ const route = useRoute();
     :class="route.params.slug == data.slug && 'on'"
   >
     <div
-      class="accent absolute -left-[1.3rem] top-0 hidden h-[1rem] w-[1.1rem] -translate-y-[1rem] opacity-0 s:block"
+      class="accent absolute -top-2 left-0 hidden h-[1rem] w-[1.1rem] -translate-y-[1rem] opacity-0 s:block"
     >
       <img src="/public/ui/tri.svg" alt="" />
     </div>

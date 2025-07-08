@@ -23,9 +23,13 @@ const setActive = () => {
     case "blog":
       activePage.value = "Learn";
       break;
+    case "media":
+      activePage.value = "Learn";
+      break;
     case "about":
       activePage.value = "About";
       break;
+
     default:
       activePage.value = "";
   }
