@@ -159,6 +159,14 @@ sup {
     }
   }
 }
+.ul.single:hover {
+  color: theme("colors.red");
+  &:after {
+    transform: scaleX(1);
+    opacity: 1;
+    transition: var(--ease-out);
+  }
+}
 
 .bullets {
   li {

@@ -474,7 +474,7 @@ export const MediaSliderFragment = gql`
   ${SingleLinkFragment}
   ${VideoFragment}
 `;
-export const HappeningsFragment = gql`
+const HappeningsFragment = gql`
   fragment HappeningsFragment on HappeningsSliderRecord {
     __typename
     header {
@@ -485,6 +485,25 @@ export const HappeningsFragment = gql`
         ...ResponsiveImageFragment
       }
       caption
+    }
+  }
+`;
+const EventsFragment = gql`
+  fragment EventsFragment on EventListRecord {
+    __typename
+    header {
+      ...HeaderFragment
+    }
+    events {
+      startDate
+      endDate
+      location
+      title
+      description
+      link
+      image {
+        ...ResponsiveImageFragment
+      }
     }
   }
 `;
@@ -512,6 +531,7 @@ export const FlexibleContentFragment = gql`
       ...MapModuleFragment
       ...FullPhotoFragment
       ...HappeningsFragment
+      ...EventsFragment
     }
   }
   ${AdvantageFragment}
@@ -534,4 +554,5 @@ export const FlexibleContentFragment = gql`
   ${MapModuleFragment}
   ${FullPhotoFragment}
   ${HappeningsFragment}
+  ${EventsFragment}
 `;

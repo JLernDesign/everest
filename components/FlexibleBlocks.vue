@@ -31,10 +31,11 @@ const props = defineProps(["data", "template"]);
       v-if="module.__typename == 'HappeningsSliderRecord'"
       :data="module"
     />
+    <Events v-if="module.__typename == 'EventListRecord'" :data="module" />
     <Faq v-if="module.__typename == 'FaqRecord'" :data="module" />
     <FullPhoto v-if="module.__typename == 'FullPhotoRecord'" :data="module" />
     <Integrations
-      v-if="module.__typename == 'IntegrationListRecord'"
+      v-if="module.__typename == 'IntegrationListRecord' && template != 'about'"
       :data="module"
       :template="template"
     />
