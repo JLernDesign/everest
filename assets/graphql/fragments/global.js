@@ -474,6 +474,20 @@ export const MediaSliderFragment = gql`
   ${SingleLinkFragment}
   ${VideoFragment}
 `;
+export const HappeningsFragment = gql`
+  fragment HappeningsFragment on HappeningsSliderRecord {
+    __typename
+    header {
+      ...HeaderFragment
+    }
+    slides {
+      photo {
+        ...ResponsiveImageFragment
+      }
+      caption
+    }
+  }
+`;
 
 export const FlexibleContentFragment = gql`
   fragment FlexibleContentFragment on FlexibleContentRecord {
@@ -497,6 +511,7 @@ export const FlexibleContentFragment = gql`
       ...BasicContentFragment
       ...MapModuleFragment
       ...FullPhotoFragment
+      ...HappeningsFragment
     }
   }
   ${AdvantageFragment}
@@ -518,4 +533,5 @@ export const FlexibleContentFragment = gql`
   ${BasicContentFragment}
   ${MapModuleFragment}
   ${FullPhotoFragment}
+  ${HappeningsFragment}
 `;
