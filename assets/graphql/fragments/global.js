@@ -485,6 +485,7 @@ const HappeningsFragment = gql`
         ...ResponsiveImageFragment
       }
       caption
+      link
     }
   }
 `;

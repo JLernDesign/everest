@@ -136,8 +136,17 @@ onMounted(() => {
               <!-- caption -->
               <span
                 v-html="slide.caption"
-                class="space-y-[2.5rem] [&_a]:font-helvh [&_a]:underline"
+                class="space-y-[2.5rem] [&_a]:underline"
               ></span>
+
+              <!-- link -->
+              <a
+                v-if="slide.link"
+                :href="slide.link"
+                target="_blank"
+                class="mt-8 inline-block font-helvh text-body-sm underline hover:text-red"
+                >Read More</a
+              >
             </div>
           </div>
         </Carousel>
