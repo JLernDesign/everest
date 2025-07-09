@@ -119,7 +119,7 @@ onMounted(() => {
           :key="i"
           :data-id="i"
           @mouseenter="handleMouseEnter"
-          class="item group relative border-b-1 border-grayline py-[3rem] text-body-sm-mob leading-sm s:px-side s:py-[5rem] s:text-body-sm"
+          class="item group relative border-b-1 border-grayline py-[3rem] text-body-sm-mob leading-sm s:px-side s:py-[4rem] s:text-body-sm"
         >
           <div class="relative s:flex">
             <div
@@ -138,7 +138,7 @@ onMounted(() => {
                 >{{ item.title }}</a
               >
               <div v-else class="font-helvh">{{ item.title }}</div>
-              <p v-if="item.description" class="mt-6">{{ item.description }}</p>
+              <p v-if="item.description" class="mt-2">{{ item.description }}</p>
             </div>
           </div>
 
