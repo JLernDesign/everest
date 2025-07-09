@@ -11,7 +11,7 @@ const selected = posts.slice(0, 3);
 
 <template>
   <Section
-    class="pb-section-bot-mob mt-[5rem] !pt-0 s:mt-[30rem] s:pb-section-bot"
+    class="mt-[5rem] !pt-0 pb-section-bot-mob s:mt-[15rem] s:pb-section-bot"
     side="none"
   >
     <div class="absolute left-0 top-0 z-1 h-full w-full bg-jaffa"></div>
