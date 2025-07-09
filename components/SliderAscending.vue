@@ -206,7 +206,7 @@ const duplicated = computed(() => {
             opacity: mouseDown ? 0.8 : 1,
           }"
         >
-          <img src="/public/ui/scroll-icon.svg" alt="" />
+          <img src="/public/ui/scroll-icon.svg" alt="" class="opacity-0" />
         </div>
       </div>
     </div>

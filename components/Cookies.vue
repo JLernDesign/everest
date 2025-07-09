@@ -21,9 +21,12 @@ const closePopup = () => {
 </script>
 
 <template>
-  <div v-if="!cookies" class="cookies fixed bottom-[4rem] left-[4rem] z-20">
+  <div
+    v-if="!cookies"
+    class="cookies fixed bottom-[2rem] left-0 z-20 s:bottom-[4rem] s:left-[4rem] max-s:px-side-mob"
+  >
     <div
-      class="cookies-inner w-[83rem] rounded-base bg-shadowblue p-[2rem] text-body-xsm leading-sm text-white"
+      class="cookies-inner w-full rounded-base bg-shadowblue p-[2rem] text-body-xsm leading-sm text-white s:w-[83rem]"
     >
       <div class="cookies-content space-y-[1rem]">
         <p>
