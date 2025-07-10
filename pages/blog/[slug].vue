@@ -115,7 +115,7 @@ useHead(() => {
 </script>
 
 <template>
-  <div class="pt-hero-top-mob bg-jaffa s:pt-post-top" ref="main">
+  <div class="bg-jaffa pt-hero-top-mob s:pt-post-top" ref="main">
     <!-- header -->
     <BlogPostHeader :data="data.post" />
 
@@ -125,7 +125,7 @@ useHead(() => {
       side="none"
     >
       <!-- sidebar -->
-      <BlogSidebar />
+      <BlogSidebar :title="data.post.title" />
 
       <!-- article -->
       <div class="start-pin hidden s:block"></div>
@@ -133,7 +133,7 @@ useHead(() => {
         class="relative z-0 flex s:justify-end max-s:order-1 max-s:px-side-mob"
       >
         <div
-          class="article bullets [&_h2]:text-body-md-mob s:min-h-[80rem] s:w-[84rem] [&_*+*]:mt-[1.8rem] [&_*+*]:s:mt-[3.2rem] [&_*+h2]:mt-[6rem] [&_*+h2]:s:mt-[9rem] [&_h2]:font-helvb [&_h2]:s:text-body-md [&_h3+p]:mt-[.25rem] [&_h3+p]:s:mt-[.5rem] [&_h3]:font-helvb [&_ul]:space-y-[1rem]"
+          class="article bullets s:min-h-[80rem] s:w-[84rem] [&_*+*]:mt-[1.8rem] [&_*+*]:s:mt-[3.2rem] [&_*+h2]:mt-[6rem] [&_*+h2]:s:mt-[9rem] [&_h2]:font-helvb [&_h2]:text-body-md-mob [&_h2]:s:text-body-md [&_h3+p]:mt-[.25rem] [&_h3+p]:s:mt-[.5rem] [&_h3]:font-helvb [&_ul]:space-y-[1rem]"
         >
           <DatocmsStructuredText
             :data="data.post.content"

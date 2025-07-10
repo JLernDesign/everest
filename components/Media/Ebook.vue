@@ -15,7 +15,7 @@ const props = defineProps(["data"]);
       <rect
         width="202"
         height="263"
-        :class="data.bgColor ? fillColor(data) : 'fill-blue'"
+        :class="data.media.bgColor ? fillColor(data.media) : 'fill-blue'"
       />
       <path
         d="M202,140.86l-13.564-.86-17.48201.86-11.239,2.38699h-13.308l-10.465,3.505-13.216,1.61301-14.359.793-12.36459,2.467h-14.99931l-15.70129,1.56599-16.8419,5.33301-18.0104,2.86299-25.69045,1.19101-4.98429,1.976v100.60722h202.22524v-124.30122Z"

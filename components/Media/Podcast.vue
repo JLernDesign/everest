@@ -23,15 +23,15 @@ const props = defineProps(["data"]);
     >
       <p class="text-body-sm opacity-80">With</p>
       <img
-        v-if="data.person.photo"
-        :src="data.person.photo.url"
-        :alt="data.person.name"
+        v-if="data.media.person"
+        :src="data.media.person.photo?.url"
+        :alt="data.media.person.name"
         class="inline-block !size-[8.2rem] rounded-full border-[.4rem] border-white object-cover"
       />
       <p
         class="font-barlow-cond text-sm-mob font-semibold uppercase opacity-80"
       >
-        {{ data.person.name }}
+        {{ data.media.person.name }}
       </p>
     </div>
   </div>

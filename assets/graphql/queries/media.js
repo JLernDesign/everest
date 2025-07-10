@@ -7,8 +7,15 @@ import {
   VideoFragment,
 } from "../fragments/global";
 
+export const tagIds = {
+  "product-demos": "cg00smj3TbioZKUzVg3s2A",
+  video: "fyWxNDPCQeCC5Ue2d3rdtQ",
+  podcast: "Ug2zyP8QSZanoBxyhEZ1wA",
+  "e-book": "fCd4d2mrSAeBNYqcPSAZCw",
+};
+
 export const mediaCollectionQuery = gql`
-  query ($slug: String) {
+  query {
     mediaPage {
       seo: _seoMetaTags {
         attributes
@@ -26,70 +33,49 @@ export const mediaCollectionQuery = gql`
       title
       slug
     }
-    mediaCollection(filter: { slug: { eq: $slug } }) {
+    allMediaPosts(orderBy: publishDate_DESC) {
       title
-      slug
-      items {
-        mediaGroup {
-          ... on ProductDemoRecord {
-            __typename
-            title
-            publishDate
-            tag {
-              name
-            }
-            intro
-            screen {
-              ...ResponsiveImageFragment
-            }
-            video {
-              ...VideoFragment
-            }
+      intro
+      publishDate
+      tag {
+        name
+        slug
+      }
+      media {
+        ... on ProductDemoRecord {
+          __typename
+          screen {
+            ...ResponsiveImageFragment
           }
-          ... on MediaVideoRecord {
-            __typename
-            title
-            publishDate
-            tag {
-              name
-            }
-            intro
-            image {
-              ...ResponsiveImageFragment
-            }
-            video {
-              ...VideoFragment
-            }
+          video {
+            ...VideoFragment
           }
-          ... on PodcastRecord {
-            __typename
-            title
-            publishDate
-            tag {
-              name
-            }
-            intro
-            bgColor
-            person {
-              name
-              photo {
-                url
-              }
-            }
-            externalLink
+        }
+        ... on MediaVideoRecord {
+          __typename
+          image {
+            ...ResponsiveImageFragment
           }
-          ... on EbookRecord {
-            __typename
-            title
-            publishDate
-            tag {
-              name
-            }
-            intro
-            bgColor
-            document {
+          video {
+            ...VideoFragment
+          }
+        }
+        ... on PodcastRecord {
+          __typename
+          bgColor
+          person {
+            name
+            photo {
               url
             }
+          }
+          externalLink
+        }
+        ... on EbookRecord {
+          __typename
+          bgColor
+          document {
+            url
           }
         }
       }

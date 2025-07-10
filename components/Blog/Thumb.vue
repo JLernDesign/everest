@@ -4,26 +4,26 @@ const props = defineProps(["data", "loc"]);
 
 const linkTo = computed(() => {
   // external link
-  if (props.data.externalLink) {
-    return props.data.externalLink;
+  if (props.data.media.externalLink) {
+    return props.data.media.externalLink;
   }
 
-  // document
-  if (props.data.document) {
-    return props.data.document.url;
+  // document (ebook)
+  if (props.data.media.document) {
+    return props.data.media.document.url;
   }
 
-  // internal link
+  // internal link (blog post)
   return `/blog/${props.data.slug}`;
 });
 
 const isVideo = computed(() => {
-  return props.data.video?.file || props.data.video?.external;
+  return props.data.media.video?.file || props.data.media.video?.external;
 });
 
 const handleClick = () => {
-  if (props.data.video?.file) {
-    openVideoModal(props.data.video);
+  if (props.data.media.video?.file) {
+    openVideoModal(props.data.media.video);
   }
 };
 </script>
@@ -46,10 +46,17 @@ const handleClick = () => {
     <div
       class="thumb-img relative z-1 aspect-[1.3] overflow-hidden rounded-base-mob s:rounded-base [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
     >
-      <!-- thumbnail -->
+      <!-- blog thumbnail -->
       <DatocmsImage
         v-if="data.image"
         :data="data.image.responsiveImage"
+        class="h-full w-full"
+      />
+
+      <!-- media thumbnail -->
+      <DatocmsImage
+        v-else-if="data.media.image"
+        :data="data.media.image.responsiveImage"
         class="h-full w-full"
       />
 
@@ -62,13 +69,13 @@ const handleClick = () => {
 
       <!-- product demo -->
       <div
-        v-if="data.__typename == 'ProductDemoRecord'"
+        v-if="data.media.__typename == 'ProductDemoRecord'"
         class="absolute left-0 top-0 flex size-full items-center p-[6rem]"
       >
         <div class="shadow-media relative overflow-hidden rounded-base">
           <DatocmsImage
-            v-if="data.screen"
-            :data="data.screen.responsiveImage"
+            v-if="data.media.screen"
+            :data="data.media.screen.responsiveImage"
           />
           <div
             class="absolute left-0 top-0 size-full bg-[#2A3440] opacity-80"
@@ -79,7 +86,7 @@ const handleClick = () => {
       <!-- video -->
       <template v-if="isVideo">
         <div
-          v-if="data.__typename == 'MediaVideoRecord'"
+          v-if="data.media.__typename == 'MediaVideoRecord'"
           class="absolute left-0 top-0 size-full bg-[#2A3440] opacity-80"
         ></div>
 
@@ -93,7 +100,7 @@ const handleClick = () => {
 
       <!-- podcast -->
       <div
-        v-if="data.__typename == 'PodcastRecord'"
+        v-if="data.media.__typename == 'PodcastRecord'"
         class="absolute left-0 top-0 flex size-full items-center justify-center"
       >
         <MediaPodcast :data="data" />
@@ -101,7 +108,7 @@ const handleClick = () => {
 
       <!-- ebook -->
       <div
-        v-if="data.__typename == 'EbookRecord'"
+        v-if="data.media.__typename == 'EbookRecord'"
         class="absolute left-0 top-0 flex size-full items-center justify-center"
       >
         <MediaEbook :data="data" />
