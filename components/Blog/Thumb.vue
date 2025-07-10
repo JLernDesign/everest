@@ -4,13 +4,13 @@ const props = defineProps(["data", "loc"]);
 
 const linkTo = computed(() => {
   // external link
-  if (props.data.media.externalLink) {
-    return props.data.media.externalLink;
+  if (props.data.media?.externalLink) {
+    return props.data.media?.externalLink;
   }
 
   // document (ebook)
-  if (props.data.media.document) {
-    return props.data.media.document.url;
+  if (props.data.media?.document) {
+    return props.data.media?.document.url;
   }
 
   // internal link (blog post)
@@ -18,12 +18,12 @@ const linkTo = computed(() => {
 });
 
 const isVideo = computed(() => {
-  return props.data.media.video?.file || props.data.media.video?.external;
+  return props.data.media?.video?.file || props.data.media?.video?.external;
 });
 
 const handleClick = () => {
-  if (props.data.media.video?.file) {
-    openVideoModal(props.data.media.video);
+  if (props.data.media?.video?.file) {
+    openVideoModal(props.data.media?.video);
   }
 };
 </script>
@@ -69,7 +69,7 @@ const handleClick = () => {
 
       <!-- product demo -->
       <div
-        v-if="data.media.__typename == 'ProductDemoRecord'"
+        v-if="data.media?.__typename == 'ProductDemoRecord'"
         class="absolute left-0 top-0 flex size-full items-center p-[6rem]"
       >
         <div class="shadow-media relative overflow-hidden rounded-base">
@@ -86,7 +86,7 @@ const handleClick = () => {
       <!-- video -->
       <template v-if="isVideo">
         <div
-          v-if="data.media.__typename == 'MediaVideoRecord'"
+          v-if="data.media?.__typename == 'MediaVideoRecord'"
           class="absolute left-0 top-0 size-full bg-[#2A3440] opacity-80"
         ></div>
 
@@ -100,7 +100,7 @@ const handleClick = () => {
 
       <!-- podcast -->
       <div
-        v-if="data.media.__typename == 'PodcastRecord'"
+        v-if="data.media?.__typename == 'PodcastRecord'"
         class="absolute left-0 top-0 flex size-full items-center justify-center"
       >
         <MediaPodcast :data="data" />
@@ -108,7 +108,7 @@ const handleClick = () => {
 
       <!-- ebook -->
       <div
-        v-if="data.media.__typename == 'EbookRecord'"
+        v-if="data.media?.__typename == 'EbookRecord'"
         class="absolute left-0 top-0 flex size-full items-center justify-center"
       >
         <MediaEbook :data="data" />
