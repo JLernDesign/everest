@@ -84,8 +84,10 @@ const closeMenu = () => {
           <SubNavLink
             :data="item"
             @click="
-              item.slug
-                ? navigateTo(`/${props.template}/${item.slug}`)
+              item.slug || item.tag?.slug
+                ? navigateTo(
+                    `/${props.template}/${item.slug || item.tag?.slug}`,
+                  )
                 : handleClick(item.id)
             "
           />

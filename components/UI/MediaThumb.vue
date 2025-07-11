@@ -32,7 +32,7 @@ const handleClick = () => {
   <div class="item h-full w-full shrink-0 s:w-[33.5rem]">
     <!-- image -->
     <div
-      class="thumb-img relative z-1 h-full w-full [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
+      class="thumb-img dato-image relative z-1 h-full w-full [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
     >
       <!-- blog thumbnail -->
       <DatocmsImage

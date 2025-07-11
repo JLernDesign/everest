@@ -18,7 +18,7 @@ const props = defineProps(["data", "type"]);
     >
       <BlogDetails :data="data" class="mb-[3rem] s:mb-[6.5rem]" />
       <h1
-        class="text-md-mob mb-[1.5rem] font-helvb leading-base s:mb-[3.2rem] s:text-md"
+        class="mb-[1.5rem] font-helvb text-md-mob leading-base s:mb-[3.2rem] s:text-md"
       >
         {{ data.title }}
       </h1>
@@ -52,7 +52,7 @@ const props = defineProps(["data", "type"]);
     <!-- image -->
     <div class="right relative w-full s:w-1/2 max-s:order-1">
       <div
-        class="featured-image h-full w-full overflow-hidden rounded-sm [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
+        class="featured-image dato-image h-full w-full overflow-hidden rounded-sm [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
       >
         <DatocmsImage
           v-if="data.image"

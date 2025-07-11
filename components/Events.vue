@@ -144,7 +144,7 @@ onMounted(() => {
 
           <!-- hover image -->
           <!-- <div
-            class="pointer-events-none absolute right-0 top-1/2 hidden h-[21.5rem] w-[28.5rem] -translate-y-1/2 s:block [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
+            class="pointer-events-none dato-image absolute right-0 top-1/2 hidden h-[21.5rem] w-[28.5rem] -translate-y-1/2 s:block [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
           >
             <div
               class="hover-image absolute h-full w-full overflow-hidden rounded-base opacity-0"
@@ -161,7 +161,7 @@ onMounted(() => {
 
       <!-- hover image -->
       <div
-        class="hover-image pointer-events-none absolute right-0 top-0 hidden h-[21.5rem] w-[28.5rem] s:block [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
+        class="hover-image dato-image pointer-events-none absolute right-0 top-0 hidden h-[21.5rem] w-[28.5rem] s:block [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
       >
         <div
           class="image-inner absolute h-full w-full -translate-y-1/2 overflow-hidden rounded-base opacity-0"

@@ -14,18 +14,18 @@ onMounted(() => {
 
 <template>
   <div class="bg-skyblue">
-    <HomeHero
+    <LazyHomeHero
       v-if="page.hero"
       :data="page.hero"
       :mediaSlides="page.mediaSlider.mediaSlides"
     />
-    <HomeIntro
+    <LazyHomeIntro
       v-if="page.intro"
       :data="page.intro"
       :logos="page.featuredLogos"
     />
     <FlexibleBlocks :data="page.flexibleContent.modules" template="home" />
-    <FooterLockup :data="page.footerCallout" />
+    <LazyFooterLockup :data="page.footerCallout" />
   </div>
 </template>
 

@@ -44,7 +44,7 @@ const handleClick = () => {
 
     <!-- image -->
     <div
-      class="thumb-img relative z-1 aspect-[1.3] overflow-hidden rounded-base-mob s:rounded-base [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
+      class="thumb-img dato-image relative z-1 aspect-[1.3] overflow-hidden rounded-base-mob s:rounded-base [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
     >
       <!-- blog thumbnail -->
       <DatocmsImage

@@ -1,6 +1,5 @@
 <script setup>
 const props = defineProps(["data"]);
-
 let menus;
 const main = ref(null);
 
@@ -41,6 +40,18 @@ const toggleMenu = (e) => {
               :target="subitem.external && '_blank'"
               >{{ subitem.label }}</NuxtLink
             >
+
+            <!-- sub sub menu -->
+            <ul
+              class="mt-5 space-y-5 pl-[1.2rem] text-body-xsm-mob s:text-body-xsm"
+              v-if="subitem.submenu"
+            >
+              <li v-for="subsubitem in subitem.submenu">
+                <NuxtLink :to="getUrl(subsubitem)">{{
+                  subsubitem.label
+                }}</NuxtLink>
+              </li>
+            </ul>
           </li>
         </span>
       </ul>

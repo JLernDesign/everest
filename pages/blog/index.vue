@@ -84,6 +84,10 @@ const updatePage = (n) => {
       ease: "power3.inOut",
       onComplete: () => {
         setTimeout(() => {
+          console.log(
+            "scrollReveal",
+            main.value.querySelectorAll(".scroll-reveal"),
+          );
           scrollReveal(main.value);
         }, 200);
       },

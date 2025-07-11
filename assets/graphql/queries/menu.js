@@ -41,7 +41,9 @@ export const InternalFragment = gql`
       }
       ... on MediaCollectionRecord {
         __typename
-        slug
+        tag {
+          slug
+        }
       }
     }
   }

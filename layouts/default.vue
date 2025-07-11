@@ -24,10 +24,10 @@ watch(height, () => {
 
 <template>
   <div class="wrapper" ref="wrapper">
-    <Header ref="header" :menu="main_menu" :data="data" />
+    <LazyHeader ref="header" :menu="main_menu" :data="data" />
     <div class="main-contents overflow-hidden"><slot /></div>
-    <Footer :menu="main_menu" :data="data" />
-    <VideoModal />
+    <LazyFooter :menu="main_menu" :data="data" />
+    <LazyVideoModal />
     <Cookies />
     <UISiteCover />
   </div>

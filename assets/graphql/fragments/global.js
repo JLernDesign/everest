@@ -65,7 +65,9 @@ export const LinkFragment = gql`
         }
         ... on MediaCollectionRecord {
           __typename
-          slug
+          tag {
+            slug
+          }
         }
       }
       external
@@ -114,7 +116,9 @@ export const SingleLinkFragment = gql`
       }
       ... on MediaCollectionRecord {
         __typename
-        slug
+        tag {
+          slug
+        }
       }
     }
     external

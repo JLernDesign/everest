@@ -1,11 +1,11 @@
 <script setup>
 import gsap from "gsap";
 
-const cookies = ref(false);
+const cookies = ref(true);
 
 onMounted(() => {
-  if (document.cookie.includes("cookies_popup=true")) {
-    cookies.value = true;
+  if (!document.cookie.includes("cookies_popup=true")) {
+    cookies.value = false;
   }
 });
 

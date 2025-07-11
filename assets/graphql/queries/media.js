@@ -32,7 +32,9 @@ export const mediaCollectionQuery = gql`
     }
     allMediaCollections(orderBy: order_ASC) {
       title
-      slug
+      tag {
+        slug
+      }
     }
     allMediaPosts(orderBy: publishDate_DESC) {
       ...MediaPostFragment

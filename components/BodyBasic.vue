@@ -20,7 +20,7 @@ const props = defineProps(["data", "edge", "layout"]);
     >
       <!-- image -->
       <div
-        class="image rounded-base-mob aspect-square w-full overflow-hidden bg-shadowbluelt s:w-1/2 s:rounded-base [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
+        class="image dato-image w-full overflow-hidden rounded-base-mob bg-shadowbluelt s:w-1/2 s:rounded-base [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
         :class="data.layout == 'image left' ? 'order-1' : 'order-2'"
       >
         <DatocmsImage
@@ -40,7 +40,7 @@ const props = defineProps(["data", "edge", "layout"]);
         "
       >
         <div
-          class="bullets [&_h2]:text-body-md-mob space-y-10 [&_*+h2]:mt-[9rem] [&_h2]:font-helvb [&_h2]:s:text-body-md [&_h3+p]:mt-[.5rem] [&_h3]:font-helvb"
+          class="bullets space-y-10 [&_*+h2]:mt-[9rem] [&_h2]:font-helvb [&_h2]:text-body-md-mob [&_h2]:s:text-body-md [&_h3+p]:mt-[.5rem] [&_h3]:font-helvb"
           v-html="data.body"
         ></div>
 

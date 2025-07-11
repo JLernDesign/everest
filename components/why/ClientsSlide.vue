@@ -16,7 +16,7 @@ const handleClick = (item) => {
   >
     <!-- photo -->
     <div
-      class="photo-wrap absolute inset-0 [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
+      class="photo-wrap dato-image absolute inset-0 [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
     >
       <DatocmsImage
         v-if="data.image"
