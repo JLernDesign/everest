@@ -15,7 +15,7 @@ const props = defineProps(["data"]);
     >
       <path
         d="M120.34 5.00002C124.189 -1.66665 133.811 -1.66667 137.66 5L256.306 210.5C260.155 217.167 255.344 225.5 247.646 225.5H10.3545C2.65654 225.5 -2.15474 217.167 1.69427 210.5L120.34 5.00002Z"
-        :class="data.bgColor ? fillColor(data) : 'fill-blue'"
+        :class="data.media.bgColor ? fillColor(data.media) : 'fill-blue'"
       />
     </svg>
     <div
