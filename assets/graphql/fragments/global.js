@@ -504,7 +504,6 @@ export const MediaPostFragment = gql`
       }
     }
   }
-  ${VideoFragment}
 `;
 export const MediaSliderFragment = gql`
   fragment MediaSliderFragment on MediaSliderRecord {
