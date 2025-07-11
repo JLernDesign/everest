@@ -1,5 +1,6 @@
 <script setup>
 const props = defineProps(["data", "mediaSlides"]);
+console.log(props.mediaSlides);
 </script>
 
 <template>

@@ -49,7 +49,7 @@ onUnmounted(() => {
   >
     <!-- slides -->
     <Carousel ref="carousel" :drag="false" class="h-full">
-      <UIMediaThumb v-for="slide in data" :key="slide.id" :data="slide" />
+      <UIMediaThumb v-for="slide in data" :key="slide.id" :data="slide.post" />
     </Carousel>
   </div>
 

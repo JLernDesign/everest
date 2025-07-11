@@ -456,23 +456,66 @@ const BasicContentFragment = gql`
     }
   }
 `;
+export const MediaPostFragment = gql`
+  fragment MediaPostFragment on MediaPostRecord {
+    title
+    intro
+    publishDate
+    tag {
+      name
+      slug
+    }
+    media {
+      ... on ProductDemoRecord {
+        __typename
+        screen {
+          ...ResponsiveImageFragment
+        }
+        video {
+          ...VideoFragment
+        }
+      }
+      ... on MediaVideoRecord {
+        __typename
+        image {
+          ...ResponsiveImageFragment
+        }
+        video {
+          ...VideoFragment
+        }
+      }
+      ... on PodcastRecord {
+        __typename
+        bgColor
+        person {
+          name
+          photo {
+            url
+          }
+        }
+        externalLink
+      }
+      ... on EbookRecord {
+        __typename
+        bgColor
+        document {
+          url
+        }
+      }
+    }
+  }
+  ${VideoFragment}
+`;
 export const MediaSliderFragment = gql`
   fragment MediaSliderFragment on MediaSliderRecord {
     __typename
     mediaSlides {
-      thumbnail {
-        ...ResponsiveImageFragment
-      }
-      video {
-        ...VideoFragment
-      }
-      link {
-        ...SingleLinkFragment
+      post {
+        ...MediaPostFragment
       }
     }
   }
-  ${SingleLinkFragment}
-  ${VideoFragment}
+  ${MediaPostFragment}
 `;
 const HappeningsFragment = gql`
   fragment HappeningsFragment on HappeningsSliderRecord {

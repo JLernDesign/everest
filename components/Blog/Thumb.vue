@@ -115,7 +115,7 @@ const handleClick = () => {
       </div>
     </div>
 
-    <!-- details -->
+    <!-- date/tag -->
     <BlogDetails class="mt-[3.2rem]" :data="data" />
 
     <!-- title -->
@@ -135,14 +135,14 @@ const handleClick = () => {
       <IconArrow color="stroke-black" />
     </div>
 
-    <!-- video -->
+    <!-- open video modal -->
     <button
       v-if="isVideo"
       class="absolute left-0 top-0 z-2 block size-full"
       @click="handleClick"
     ></button>
 
-    <!-- link -->
+    <!-- link to blog post / external link -->
     <NuxtLink
       v-else
       :to="linkTo"

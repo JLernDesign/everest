@@ -5,6 +5,7 @@ import {
   LinkFragment,
   ResponsiveImageFragment,
   VideoFragment,
+  MediaPostFragment,
 } from "../fragments/global";
 
 export const tagIds = {
@@ -34,51 +35,7 @@ export const mediaCollectionQuery = gql`
       slug
     }
     allMediaPosts(orderBy: publishDate_DESC) {
-      title
-      intro
-      publishDate
-      tag {
-        name
-        slug
-      }
-      media {
-        ... on ProductDemoRecord {
-          __typename
-          screen {
-            ...ResponsiveImageFragment
-          }
-          video {
-            ...VideoFragment
-          }
-        }
-        ... on MediaVideoRecord {
-          __typename
-          image {
-            ...ResponsiveImageFragment
-          }
-          video {
-            ...VideoFragment
-          }
-        }
-        ... on PodcastRecord {
-          __typename
-          bgColor
-          person {
-            name
-            photo {
-              url
-            }
-          }
-          externalLink
-        }
-        ... on EbookRecord {
-          __typename
-          bgColor
-          document {
-            url
-          }
-        }
-      }
+      ...MediaPostFragment
     }
   }
   ${HeroFragment}
@@ -86,4 +43,5 @@ export const mediaCollectionQuery = gql`
   ${LinkFragment}
   ${ResponsiveImageFragment}
   ${VideoFragment}
+  ${MediaPostFragment}
 `;

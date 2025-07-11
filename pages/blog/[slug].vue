@@ -13,7 +13,6 @@ const { data } = await useGraphqlQuery({
     slug: route.params.slug,
   },
 });
-console.log(data.value);
 
 /* get next 3 posts */
 const nextPostsQuery = gql`
@@ -32,7 +31,6 @@ const nextPostsQuery = gql`
 const { data: nextPostsData } = await useGraphqlQuery({
   query: nextPostsQuery.loc.source.body,
 });
-console.log(nextPostsData.value);
 
 let ctx, mm;
 const min = 650;
