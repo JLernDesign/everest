@@ -2,7 +2,6 @@
 import { Image as DatocmsImage } from "vue-datocms";
 const props = defineProps(["data"]);
 
-console.log(props.data);
 const linkTo = computed(() => {
   // external link
   if (props.data.media?.externalLink) {
@@ -30,15 +29,22 @@ const handleClick = () => {
 </script>
 
 <template>
-  <div class="item h-full w-screen shrink-0 s:w-[33.5rem]">
+  <div class="item h-full w-full shrink-0 s:w-[33.5rem]">
     <!-- image -->
     <div
       class="thumb-img relative z-1 h-full w-full [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
     >
+      <!-- blog thumbnail -->
+      <DatocmsImage
+        v-if="data.image"
+        :data="data.image.responsiveImage"
+        class="h-full w-full"
+      />
+
       <!-- media thumbnail -->
       <DatocmsImage
-        v-if="data.media.image"
-        :data="data.media.image.responsiveImage"
+        v-else-if="data.media?.image"
+        :data="data.media?.image.responsiveImage"
         class="h-full w-full"
       />
 
@@ -56,8 +62,8 @@ const handleClick = () => {
       >
         <div class="shadow-media relative overflow-hidden rounded-base">
           <DatocmsImage
-            v-if="data.media.screen"
-            :data="data.media.screen.responsiveImage"
+            v-if="data.media?.screen"
+            :data="data.media?.screen.responsiveImage"
           />
           <div
             class="absolute left-0 top-0 size-full bg-[#2A3440] opacity-80"

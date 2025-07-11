@@ -511,6 +511,13 @@ export const MediaSliderFragment = gql`
     mediaSlides {
       post {
         ...MediaPostFragment
+        ... on PostRecord {
+          title
+          slug
+          image {
+            ...ResponsiveImageFragment
+          }
+        }
       }
     }
   }
