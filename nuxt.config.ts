@@ -1,51 +1,50 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2024-11-01',
+  compatibilityDate: "2024-11-01",
   devtools: { enabled: false },
 
   app: {
-    baseURL: '/',
+    baseURL: "/",
     head: {
-      title: 'Everest',
-      htmlAttrs: { lang: 'en' },
+      title: "Everest",
+      htmlAttrs: { lang: "en" },
       meta: [
-        { charset: 'utf-8' },
+        { charset: "utf-8" },
         {
-          name: 'viewport',
-          content: 'width=device-width, initial-scale=1, maximum-scale=1',
+          name: "viewport",
+          content: "width=device-width, initial-scale=1, maximum-scale=1",
         },
       ],
       link: [
         {
-          rel: 'preconnect',
-          href: 'https://fonts.googleapis.com',
+          rel: "preconnect",
+          href: "https://fonts.googleapis.com",
         },
         {
-          rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@500&display=swap',
-          media: 'print',
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@500&display=swap",
+          media: "print",
           onload: "this.onload=null;this.removeAttribute('media');",
-          crossorigin: '',
+          crossorigin: "",
         },
       ],
     },
   },
-
-  ssr: true,
 
   nitro: {
     prerender: {
       failOnError: false,
       crawlLinks: false,
     },
-    preset: 'netlify',
+    preset: "netlify-static",
   },
 
   modules: [
-    '@vueuse/nuxt',
-    '@nuxtjs/tailwindcss',
-    '@nuxt/scripts',
-    'nuxt-graphql-request',
+    "@vueuse/nuxt",
+    "@nuxtjs/tailwindcss",
+    "@nuxt/scripts",
+    "nuxt-graphql-request",
+    "@nuxt/image",
   ],
 
   /* gtag: {
@@ -59,5 +58,5 @@ export default defineNuxtConfig({
     },
   },
 
-  css: ['~/assets/fonts/fonts.css', '~/assets/css/global.css'],
+  css: ["~/assets/fonts/fonts.css", "~/assets/css/global.css"],
 });
