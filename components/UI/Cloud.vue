@@ -11,12 +11,7 @@ const props = defineProps(["type"]);
       type == 3 && 'w-[169.3rem]',
     ]"
   >
-    <NuxtImg
-      :src="`/ui/cloud-type${type}@2x.png`"
-      alt=""
-      :width="type == 1 ? 1046 : type == 2 ? 1117 : 1693"
-      format="webp"
-    />
+    <img :src="`/ui/cloud-type${type}@2x.png`" alt="" />
   </div>
 </template>
 

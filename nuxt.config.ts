@@ -46,7 +46,6 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@nuxt/scripts",
     "nuxt-graphql-request",
-    "@nuxt/image",
   ],
 
   /* gtag: {
