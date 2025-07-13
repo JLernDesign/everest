@@ -46,7 +46,7 @@ const props = defineProps(["data", "order"]);
 
       <!-- number -->
       <div
-        class="absolute right-0 top-0 hidden pr-side pt-[5rem] font-barlow-cond text-num font-bold s:block"
+        class="absolute right-0 top-0 hidden pr-side pt-[5rem] font-barlow-cond text-num s:block"
       >
         {{ order < 10 && "0" }}{{ order }}
       </div>

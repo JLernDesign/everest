@@ -11,7 +11,7 @@ const props = defineProps(["type"]);
       type == 3 && 'w-[169.3rem]',
     ]"
   >
-    <img :src="`/ui/cloud-type${type}@2x.png`" alt="" />
+    <img :src="`/ui/cloud-type${type}.png`" alt="" />
   </div>
 </template>
 

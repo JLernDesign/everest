@@ -43,8 +43,9 @@ export default {
       transparent: "transparent",
     },
     fontFamily: {
-      barlow: ["Barlow", "sans-serif"],
-      "barlow-cond": ["Barlow Condensed", "sans-serif"],
+      barlow: ["barlowmedium", "sans-serif"],
+      "barlow-cond": ["barlow_condensedbold", "sans-serif"],
+      "barlow-cond-semibold": ["barlow_condensedsemibold", "sans-serif"],
       helv: ["Helvetica Neue LT Pro", "sans-serif"],
       helvb: ["Helvetica Neue LT Pro Bold", "sans-serif"],
       helvh: ["Helvetica Neue LT Pro Heavy", "sans-serif"],

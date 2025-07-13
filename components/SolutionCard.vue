@@ -42,7 +42,7 @@ const handleClick = (i) => {
           class="num mb-[2rem] s:absolute s:-left-[11.7rem] s:-top-[6.4rem] s:mb-[11rem]"
         >
           <IconTri color="fill-red" />
-          <div class="font-barlow-cond text-num font-bold opacity-30">
+          <div class="font-barlow-cond text-num opacity-30">
             {{ num < 10 ? "0" + num : num }}
           </div>
         </div>
@@ -50,7 +50,7 @@ const handleClick = (i) => {
         <!-- text contents -->
         <div class="w-full max-w-[52.5rem]">
           <h3
-            class="text-md-mob mb-5 font-helvb leading-sm-md s:text-md"
+            class="mb-5 font-helvb text-md-mob leading-sm-md s:text-md"
             v-html="formatText(data.headline)"
           ></h3>
           <span
@@ -97,9 +97,7 @@ const handleClick = (i) => {
               v-for="item in data.stats.stats"
               class="stat w-full space-y-5 s:w-1/2"
             >
-              <h3
-                class="text-xl-mob font-barlow-cond font-bold leading-xl s:text-xl"
-              >
+              <h3 class="font-barlow-cond text-xl-mob leading-xl s:text-xl">
                 {{ item.figure }}
               </h3>
               <p class="text-body-xsm-mob s:text-body-xsm">{{ item.label }}</p>
@@ -123,7 +121,7 @@ const handleClick = (i) => {
         :class="num % 2 == 0 ? 'order-1' : 'order-2'"
       >
         <div
-          class="image rounded-base-mob relative w-full overflow-hidden s:rounded-base"
+          class="image relative w-full overflow-hidden rounded-base-mob s:rounded-base"
         >
           <div class="relative w-full [&_img]:w-full">
             <DatocmsImage

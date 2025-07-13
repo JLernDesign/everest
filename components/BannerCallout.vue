@@ -14,7 +14,7 @@ const props = defineProps(["data"]);
       >
         <h2
           v-if="data.headline"
-          class="font-barlow-cond text-lg-mob font-bold leading-lg s:text-lg"
+          class="font-barlow-cond text-lg-mob leading-lg s:text-lg"
           v-html="formatText(data.headline)"
         ></h2>
         <p v-if="data.intro" v-html="formatText(data.intro)"></p>

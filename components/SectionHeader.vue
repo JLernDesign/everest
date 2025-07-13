@@ -41,12 +41,12 @@ const props = defineProps({
     >
       <h1
         v-if="hero"
-        class="!mb-6 font-barlow-cond text-xl-mob font-bold leading-xl s:!mb-12 s:text-xl"
+        class="!mb-6 font-barlow-cond text-xl-mob leading-xl s:!mb-12 s:text-xl"
         v-html="formatText(data.headline)"
       ></h1>
       <h2
         v-else
-        class="font-barlow-cond text-lg-mob font-bold leading-lg s:text-lg"
+        class="font-barlow-cond text-lg-mob leading-lg s:text-lg"
         :class="!data.intro && 's:pb-[.5rem]'"
         v-html="formatText(data.headline)"
       ></h2>

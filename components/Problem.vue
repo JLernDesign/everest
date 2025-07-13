@@ -82,7 +82,7 @@ const handleSlide = (dir) => {
             />
           </div>
           <div
-            class="count px-side font-barlow-cond font-bold"
+            class="count px-side font-barlow-cond"
             :class="layout == 'img-rt' ? 'text-red' : 'text-lightblue'"
           >
             <span class="inline-block w-[3rem] text-center">
@@ -120,7 +120,7 @@ const handleSlide = (dir) => {
                 <img :src="slide.icon.url" alt="" />
               </div>
               <h3
-                class="mb-[4.25rem] font-barlow-cond text-h5 font-bold uppercase leading-base"
+                class="mb-[4.25rem] font-barlow-cond text-h5 uppercase leading-base"
                 v-html="formatText(slide.headline)"
               ></h3>
               <p v-html="formatText(slide.description)"></p>
@@ -142,9 +142,7 @@ const handleSlide = (dir) => {
           @click="handleSlide('left')"
         />
       </div>
-      <div
-        class="count px-side-mob font-barlow-cond font-bold text-red s:px-side"
-      >
+      <div class="count px-side-mob font-barlow-cond text-red s:px-side">
         <span class="inline-block w-[3rem] text-center">
           {{ active + 1 }}/{{ data.slides.length }}
         </span>

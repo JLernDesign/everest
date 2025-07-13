@@ -28,9 +28,7 @@ const props = defineProps(["data"]);
         :alt="data.media.person.name"
         class="inline-block !size-[8.2rem] rounded-full border-[.4rem] border-white object-cover"
       />
-      <p
-        class="font-barlow-cond text-sm-mob font-semibold uppercase opacity-80"
-      >
+      <p class="font-barlow-cond-semibold text-sm-mob uppercase opacity-80">
         {{ data.media.person.name }}
       </p>
     </div>

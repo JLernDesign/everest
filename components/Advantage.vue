@@ -12,7 +12,7 @@ props.data.color == "gray" ? (color = "text-white") : null;
 </script>
 
 <template>
-  <Section class="pb-section-bot-mob bg-jaffa s:pb-section-bot" side="lg">
+  <Section class="bg-jaffa pb-section-bot-mob s:pb-section-bot" side="lg">
     <!-- header -->
     <header class="relative flex h-[1.8rem] justify-between">
       <LineFull class="top-1/2" />
@@ -26,14 +26,14 @@ props.data.color == "gray" ? (color = "text-white") : null;
 
     <!-- columns -->
     <div
-      class="pt-section-top-mob flex flex-col items-start justify-between s:flex-row s:pt-section-top"
+      class="flex flex-col items-start justify-between pt-section-top-mob s:flex-row s:pt-section-top"
     >
       <!-- headline -->
       <div
-        class="rounded-base-mob w-full bg-shadowblue p-[3rem] s:w-[52rem] s:rounded-base s:p-side max-s:mb-side-mob"
+        class="w-full rounded-base-mob bg-shadowblue p-[3rem] s:w-[52rem] s:rounded-base s:p-side max-s:mb-side-mob"
       >
         <h2
-          class="font-barlow-cond text-lg-mob font-bold leading-lg s:text-lg"
+          class="font-barlow-cond text-lg-mob leading-lg s:text-lg"
           :class="color"
           v-html="formatText(data.headline)"
         ></h2>
@@ -63,7 +63,7 @@ props.data.color == "gray" ? (color = "text-white") : null;
                     class="stat w-full space-y-5 s:w-1/2"
                   >
                     <h3
-                      class="text-xl-mob font-barlow-cond font-bold leading-xl s:text-xl"
+                      class="font-barlow-cond text-xl-mob leading-xl s:text-xl"
                     >
                       {{ item.figure }}
                     </h3>

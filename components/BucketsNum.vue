@@ -54,16 +54,16 @@ const handleNext = () => {
             :class="slider && 'px-[2.9rem]'"
           >
             <div
-              class="bucket rounded-base-mob h-full w-[45.5rem] bg-shadowbluelt p-[3rem] s:rounded-base"
+              class="bucket h-full w-[45.5rem] rounded-base-mob bg-shadowbluelt p-[3rem] s:rounded-base"
             >
               <IconTri color="fill-red" class="mb-4" />
               <div
-                class="num mb-12 font-barlow-cond text-xxl-mob font-semibold leading-xxl text-shadowblue s:text-xxl"
+                class="num font-barlow-cond-semibold mb-12 text-xxl-mob leading-xxl text-shadowblue s:text-xxl"
               >
                 {{ "0" + (i + 1) }}
               </div>
               <h3
-                class="text-sm-mob mb-7 font-barlow-cond font-bold leading-[.94] text-red s:text-sm"
+                class="mb-7 font-barlow-cond text-sm-mob leading-[.94] text-red s:text-sm"
               >
                 {{ item.headline }}
               </h3>
@@ -79,16 +79,16 @@ const handleNext = () => {
         <div class="space-y-[2.5rem] s:hidden">
           <div v-for="(item, i) in data.buckets">
             <div
-              class="bucket rounded-base-mob h-full w-full bg-shadowbluelt p-side-mob s:rounded-base s:p-[3rem]"
+              class="bucket h-full w-full rounded-base-mob bg-shadowbluelt p-side-mob s:rounded-base s:p-[3rem]"
             >
               <IconTri color="fill-red" class="mb-10 s:mb-4" />
               <div
-                class="num mb-12 font-barlow-cond text-xxl-mob font-semibold leading-xxl text-shadowblue s:text-xxl"
+                class="num font-barlow-cond-semibold mb-12 text-xxl-mob leading-xxl text-shadowblue s:text-xxl"
               >
                 {{ "0" + (i + 1) }}
               </div>
               <h3
-                class="text-sm-mob mb-7 font-barlow-cond font-bold leading-[.94] text-red s:text-sm"
+                class="mb-7 font-barlow-cond text-sm-mob leading-[.94] text-red s:text-sm"
               >
                 {{ item.headline }}
               </h3>

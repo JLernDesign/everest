@@ -66,9 +66,7 @@ const copy_to_clipboard = () => {
       </div>
       <div class="mt-[2.4rem] rounded-base-mob bg-shadowblue s:rounded-base">
         <div class="border-b-1 border-b-whiteline py-5 text-center">
-          <h3
-            class="h5 font-barlow-cond text-h5 font-bold uppercase text-jaffa"
-          >
+          <h3 class="h5 font-barlow-cond text-h5 uppercase text-jaffa">
             Share
           </h3>
         </div>

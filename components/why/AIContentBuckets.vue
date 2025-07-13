@@ -10,10 +10,10 @@ const props = defineProps(["data"]);
         class="w-full border-x border-x-whiteline bg-[url(/why/ai-lines-bgfull.svg)] bg-cover px-side-mob py-[4rem] s:px-side s:py-[11.2rem]"
       >
         <div
-          class="rounded-base-mob mx-auto space-y-[2.5rem] bg-shadowblue p-side-mob text-center s:w-[81rem] s:rounded-base s:p-[6rem]"
+          class="mx-auto space-y-[2.5rem] rounded-base-mob bg-shadowblue p-side-mob text-center s:w-[81rem] s:rounded-base s:p-[6rem]"
         >
           <h2
-            class="font-barlow-cond text-lg-mob font-bold leading-lg s:text-lg"
+            class="font-barlow-cond text-lg-mob leading-lg s:text-lg"
             v-html="formatText(data.headline)"
           ></h2>
           <p v-html="formatText(data.intro)"></p>
@@ -45,7 +45,7 @@ const props = defineProps(["data"]);
             <img v-if="bucket.icon" :src="bucket.icon.url" alt="" />
           </div>
           <h3
-            class="text-sm-mob font-barlow-cond font-bold leading-lg s:text-sm"
+            class="font-barlow-cond text-sm-mob leading-lg s:text-sm"
             :class="accentColor(bucket)"
             v-html="formatText(bucket.headline)"
           ></h3>

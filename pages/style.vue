@@ -3,14 +3,12 @@
 <template>
   <div class="overflow-hidden bg-skyblue">
     <div class="mx-auto max-w-base space-y-10 px-side">
-      <div
-        class="text-eyebrow-mob s:text-eyebrowb font-barlow-cond font-bold uppercase"
-      >
+      <div class="s:text-eyebrowb font-barlow-cond text-eyebrow-mob uppercase">
         Quote to Cash
       </div>
 
       <div class="max-w-[80rem]">
-        <h1 class="text-xl-mob font-barlow-cond font-bold leading-xl s:text-xl">
+        <h1 class="font-barlow-cond text-xl-mob leading-xl s:text-xl">
           Streamline every step from quote to cash.
         </h1>
         <p class="text-body">
@@ -20,7 +18,7 @@
       </div>
 
       <h2
-        class="text-center font-barlow-cond text-xxl-mob font-semibold leading-xxl s:text-xxl"
+        class="font-barlow-cond-semibold text-center text-xxl-mob leading-xxl s:text-xxl"
       >
         A COMPLETELY REIMAGINED <br />
         <span
@@ -120,7 +118,7 @@
 
     <!-- impact -->
     <Section
-      class="pb-section-bot-mob bg-jaffa pt-[12rem] s:pb-section-bot"
+      class="bg-jaffa pb-section-bot-mob pt-[12rem] s:pb-section-bot"
       side="lg"
     >
       <!-- header -->
@@ -138,7 +136,7 @@
       <div class="flex items-start justify-between pt-section-top">
         <!-- headline -->
         <div
-          class="rounded-base-mob w-[52rem] bg-shadowblue p-side-mob s:rounded-base s:p-side"
+          class="w-[52rem] rounded-base-mob bg-shadowblue p-side-mob s:rounded-base s:p-side"
         >
           <h2
             class="font-barlow-cond text-lg-mob leading-lg text-lightblue s:text-lg"
@@ -168,9 +166,7 @@
               </ul>
               <div class="stats flex">
                 <div class="stat w-1/2 space-y-5">
-                  <h3
-                    class="text-xl-mob font-barlow-cond font-bold leading-xl s:text-xl"
-                  >
+                  <h3 class="font-barlow-cond text-xl-mob leading-xl s:text-xl">
                     100%
                   </h3>
                   <p class="text-body-xsm-mob s:text-body-xsm">
@@ -178,9 +174,7 @@
                   </p>
                 </div>
                 <div class="stat w-1/2 space-y-5">
-                  <h3
-                    class="text-xl-mob font-barlow-cond font-bold leading-xl s:text-xl"
-                  >
+                  <h3 class="font-barlow-cond text-xl-mob leading-xl s:text-xl">
                     2X
                   </h3>
                   <p class="text-body-xsm-mob s:text-body-xsm">
@@ -214,7 +208,7 @@
     <Carousel>
       <div
         v-for="n in 5"
-        class="item text-xl-mob grid w-[33.4%] shrink-0 cursor-grab place-content-center s:text-xl"
+        class="item grid w-[33.4%] shrink-0 cursor-grab place-content-center text-xl-mob s:text-xl"
       >
         {{ n }}
       </div>

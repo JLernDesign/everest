@@ -58,7 +58,7 @@ const handleClick = (i) => {
               <div class="h-10"></div>
             </div>
             <button
-              class="text-left font-barlow-cond text-h5 font-bold uppercase"
+              class="text-left font-barlow-cond text-h5 uppercase"
               :class="accentColor(slide)"
               @click="handleClick(i)"
             >

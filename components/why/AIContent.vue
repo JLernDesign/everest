@@ -30,7 +30,7 @@ const props = defineProps(["data", "color"]);
         class="relative w-full border-x border-x-whiteline px-side-mob py-[3.5rem] s:px-side s:py-[4.5rem]"
       >
         <h2
-          class="relative font-barlow-cond text-lg-mob font-bold leading-lg s:text-lg max-s:pr-8"
+          class="relative font-barlow-cond text-lg-mob leading-lg s:text-lg max-s:pr-8"
         >
           {{ data.headline }}
           <IconArrowFill

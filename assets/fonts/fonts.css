@@ -1,26 +1,56 @@
 @font-face {
-  font-family: 'Helvetica Neue LT Pro Bold';
-  src: url('HelveticaNeueLTPro-Bd.woff2') format('woff2'),
-    url('HelveticaNeueLTPro-Bd.woff') format('woff');
+  font-family: "Helvetica Neue LT Pro Bold";
+  src:
+    url("HelveticaNeueLTPro-Bd.woff2") format("woff2"),
+    url("HelveticaNeueLTPro-Bd.woff") format("woff");
   font-weight: bold;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Helvetica Neue LT Pro';
-  src: url('HelveticaNeueLTPro-Roman.woff2') format('woff2'),
-    url('HelveticaNeueLTPro-Roman.woff') format('woff');
+  font-family: "Helvetica Neue LT Pro";
+  src:
+    url("HelveticaNeueLTPro-Roman.woff2") format("woff2"),
+    url("HelveticaNeueLTPro-Roman.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Helvetica Neue LT Pro Heavy';
-  src: url('HelveticaNeueLTPro-Hv.woff2') format('woff2'),
-    url('HelveticaNeueLTPro-Hv.woff') format('woff');
+  font-family: "Helvetica Neue LT Pro Heavy";
+  src:
+    url("HelveticaNeueLTPro-Hv.woff2") format("woff2"),
+    url("HelveticaNeueLTPro-Hv.woff") format("woff");
   font-weight: 800;
   font-style: normal;
   font-display: swap;
+}
+
+@font-face {
+  font-family: "barlowmedium";
+  src:
+    url("barlow-medium-webfont.woff2") format("woff2"),
+    url("barlow-medium-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "barlow_condensedbold";
+  src:
+    url("barlowcondensed-bold-webfont.woff2") format("woff2"),
+    url("barlowcondensed-bold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "barlow_condensedsemibold";
+  src:
+    url("barlowcondensed-semibold-webfont.woff2") format("woff2"),
+    url("barlowcondensed-semibold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
 }

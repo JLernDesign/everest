@@ -167,7 +167,7 @@ const duplicated = computed(() => {
             :class="bgColor(slide)"
           >
             <h3
-              class="relative font-barlow-cond text-sm-mob font-bold leading-[.95] s:text-sm"
+              class="relative font-barlow-cond text-sm-mob leading-[.95] s:text-sm"
             >
               <IconTri color="fill-black" class="mb-[1.35rem]" />
               <span v-html="slide.headline"></span>

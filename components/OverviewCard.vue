@@ -20,7 +20,7 @@ const props = defineProps(["theme", "nav", "data", "num", "template"]);
       >
         <div class="num left-0 top-0 mb-[2rem] s:absolute s:mb-[11rem]">
           <IconTri color="fill-red" />
-          <div class="font-barlow-cond text-num font-bold opacity-30">
+          <div class="font-barlow-cond text-num opacity-30">
             {{ num < 10 ? "0" + num : num }}
           </div>
         </div>
@@ -28,7 +28,7 @@ const props = defineProps(["theme", "nav", "data", "num", "template"]);
         <!-- text contents -->
         <div class="max-w-[60rem]">
           <h3
-            class="text-md-mob mb-5 font-helvb leading-sm-md s:text-md"
+            class="mb-5 font-helvb text-md-mob leading-sm-md s:text-md"
             v-html="formatText(data.headline)"
           ></h3>
           <span
@@ -63,7 +63,7 @@ const props = defineProps(["theme", "nav", "data", "num", "template"]);
       <!-- image -->
       <div class="right w-full s:w-1/2 max-s:order-1">
         <div
-          class="image rounded-base-mob relative flex aspect-[1.0675] w-full items-center justify-center overflow-hidden bg-skyblue s:rounded-base s:p-[11.5rem]"
+          class="image relative flex aspect-[1.0675] w-full items-center justify-center overflow-hidden rounded-base-mob bg-skyblue s:rounded-base s:p-[11.5rem]"
         >
           <UICloud type="2" class="-left-[16rem] top-[44rem]" />
           <UICloud type="2" class="-top-[25rem] left-[18rem]" />

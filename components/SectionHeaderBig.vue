@@ -15,7 +15,7 @@ if (hl.length > 1) {
     class="relative space-y-header-mob s:space-y-header-lg"
   >
     <h2
-      class="font-barlow-cond text-xxl-mob font-semibold uppercase leading-xxl s:text-xxl"
+      class="font-barlow-cond-semibold text-xxl-mob uppercase leading-xxl s:text-xxl"
     >
       <!-- has inline block element -->
       <template v-if="hasBlock">

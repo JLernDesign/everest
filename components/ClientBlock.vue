@@ -44,7 +44,7 @@ const props = defineProps(["data"]);
     <!-- big quote on color -->
     <template v-if="data.style == 'big-quote'">
       <blockquote
-        class="pt-14 font-barlow-cond text-sm-mob font-bold leading-[.94] s:pt-10 s:text-sm max-s:mb-16"
+        class="pt-14 font-barlow-cond text-sm-mob leading-[.94] s:pt-10 s:text-sm max-s:mb-16"
       >
         <div
           class="quote lt absolute left-[2rem] top-[2rem] s:top-[3rem] max-s:text-[3.6rem]"
@@ -95,7 +95,7 @@ const props = defineProps(["data"]);
               v-for="stat in data.statsGroup.stats"
               class="stat-item flex items-end space-x-4"
             >
-              <h3 class="font-barlow-cond text-sm-mob font-bold s:text-sm">
+              <h3 class="font-barlow-cond text-sm-mob s:text-sm">
                 {{ stat.figure }}
               </h3>
               <p class="text-body-xsm-mob s:text-body-xsm">{{ stat.label }}</p>

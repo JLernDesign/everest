@@ -16,7 +16,7 @@ const handleClick = (n) => {
 <template>
   <div class="pagination my-[8.5rem] flex justify-center">
     <ul
-      class="flex justify-between gap-x-6 font-barlow-cond font-semibold [&_button.on]:text-red"
+      class="font-barlow-cond-semibold flex justify-between gap-x-6 [&_button.on]:text-red"
     >
       <li v-for="n in totalPages">
         <button

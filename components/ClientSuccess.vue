@@ -187,7 +187,7 @@ if (props.data.slides && props.data.slides.length > 0) {
                   v-for="stat in slide.statsGroup.stats"
                   class="stat-item flex items-end space-x-4"
                 >
-                  <h3 class="font-barlow-cond text-sm-mob font-bold s:text-sm">
+                  <h3 class="font-barlow-cond text-sm-mob s:text-sm">
                     {{ stat.figure }}
                   </h3>
                   <p class="text-body-xsm-mob s:text-body-xsm">

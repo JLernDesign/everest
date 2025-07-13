@@ -55,7 +55,7 @@ useHead(() => {
     <Section :hero="true" class="max-s:pt-hero-mob-lg">
       <header class="text-center">
         <h1
-          class="font-barlow-cond text-xxl-mob font-semibold uppercase leading-xxl s:text-xxl"
+          class="font-barlow-cond-semibold text-xxl-mob uppercase leading-xxl s:text-xxl"
         >
           {{ page.headline }}
         </h1>

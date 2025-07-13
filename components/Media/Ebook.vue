@@ -44,7 +44,7 @@ const props = defineProps(["data"]);
       class="absolute left-0 top-[4.5rem] flex h-[10rem] items-center px-[2rem] text-white"
     >
       <p
-        class="font-barlow-cond text-body-mob font-semibold uppercase leading-base opacity-80"
+        class="font-barlow-cond-semibold text-body-mob uppercase leading-base opacity-80"
       >
         {{ data.title }}
       </p>

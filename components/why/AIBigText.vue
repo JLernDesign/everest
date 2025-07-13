@@ -4,10 +4,10 @@ const props = defineProps(["data"]);
 
 <template>
   <Section
-    class="max-s:pb-section-bot-mob border-t border-t-whiteline px-side-mob text-center s:!py-[13rem] s:px-[15rem]"
+    class="border-t border-t-whiteline px-side-mob text-center s:!py-[13rem] s:px-[15rem] max-s:pb-section-bot-mob"
   >
     <h2
-      class="bg-skyblue bg-[url(/why/bigtextglow.png)] bg-[size:82rem_82rem] bg-clip-text bg-[position:50rem_-40rem] bg-no-repeat font-barlow-cond text-xxl-mob font-semibold uppercase leading-xxl text-transparent s:text-xxl"
+      class="font-barlow-cond-semibold bg-skyblue bg-[url(/why/bigtextglow.png)] bg-[size:82rem_82rem] bg-clip-text bg-[position:50rem_-40rem] bg-no-repeat text-xxl-mob uppercase leading-xxl text-transparent s:text-xxl"
     >
       <span v-html="data.headline"></span>
     </h2>
