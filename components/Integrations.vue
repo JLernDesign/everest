@@ -40,14 +40,21 @@ const handleClick = (link) => {
     window.open(link, "_blank");
   }
 };
+
+const changeGroup = (group) => {
+  groupNum.value = group;
+};
 </script>
 
 <template>
   <Section :theme="theme" class="bg-jaffa pb-section-bot-mob s:pb-section-bot">
-    <SectionHeader
-      :theme="theme"
-      :data="data.header"
-      :subnav="data.groups.length > 1 ? data.groups : null"
+    <SectionHeader :theme="theme" :data="data.header" />
+
+    <!-- subnav -->
+    <SubNav
+      v-if="data.groups.length > 1"
+      :data="data.groups"
+      :changeContent="changeGroup"
     />
 
     <!-- desktop module -->

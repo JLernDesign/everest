@@ -171,7 +171,8 @@ sup {
   transition: var(--ease-in-out);
 }
 
-.ul.single:hover {
+.ul.single:hover,
+.ul.single.on {
   color: theme("colors.red");
   background-size: 100% 1px;
 }

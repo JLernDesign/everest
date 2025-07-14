@@ -3,21 +3,73 @@ import gsap from "gsap";
 import { Image as DatocmsImage } from "vue-datocms";
 const props = defineProps(["data"]);
 const open = ref(false);
+const itemRef = ref(null);
 
 onMounted(() => {});
 onUnmounted(() => {});
 
 const openItem = () => {
   open.value = true;
+  animateItemOpen();
 };
 
-defineExpose({ openItem, open });
+const animateItemOpen = () => {
+  if (!itemRef.value) return;
+
+  // Get the item element
+  const item = itemRef.value;
+
+  // First, temporarily set height to auto to measure the natural height
+  gsap.set(item, { height: "auto" });
+  const targetHeight = item.scrollHeight;
+
+  // Set initial state
+  gsap.set(item, {
+    height: 0,
+    opacity: 0,
+  });
+
+  // Animate to the exact measured height
+  gsap.to(item, {
+    height: targetHeight,
+    opacity: 1,
+    duration: 0.75,
+    ease: "power3.inOut",
+    onComplete: () => {
+      // Reset to auto height and overflow after animation
+      gsap.set(item, {
+        height: "auto",
+      });
+    },
+  });
+};
+
+const closeItem = () => {
+  if (!itemRef.value) return;
+
+  const item = itemRef.value;
+  open.value = false;
+
+  // Animate to closed state
+  gsap.to(item, {
+    height: 0,
+    opacity: 0,
+    duration: 0.75,
+    ease: "power3.inOut",
+  });
+};
+
+defineExpose({ openItem, open, closeItem });
 </script>
 
 <template>
   <div
     class="relative rounded-base-mob transition-all duration-500 s:rounded-base"
-    :class="open && 'bg-white shadow-[4px_4px_20px_0px_rgba(0,0,0,0.03)]'"
+    :class="
+      open
+        ? 'cursor-auto bg-white shadow-[4px_4px_20px_0px_rgba(0,0,0,0.03)]'
+        : 'cursor-pointer'
+    "
   >
     <!-- title -->
     <div
@@ -33,10 +85,7 @@ defineExpose({ openItem, open });
     </div>
 
     <!-- photo/quote -->
-    <div
-      class="item overflow-hidden transition-all duration-300"
-      :class="open ? 'h-auto' : 'h-0'"
-    >
+    <div ref="itemRef" class="item h-0 overflow-hidden">
       <div
         class="flex w-full flex-col items-start justify-between p-side-mob s:flex-row s:p-side"
       >
@@ -54,7 +103,7 @@ defineExpose({ openItem, open });
           v-if="data.quote"
           class="w-auto text-body-sm-mob leading-sm s:text-body-sm max-s:mt-12"
         >
-          <blockquote>“{{ data.quote }}”</blockquote>
+          <blockquote>"{{ data.quote }}"</blockquote>
         </div>
       </div>
     </div>

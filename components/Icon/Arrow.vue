@@ -9,7 +9,7 @@ const props = defineProps(["color"]);
     viewBox="0 0 18 14"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    class="inline-block size-8"
+    class="inline-block size-8 transition-[stroke] duration-500"
     :class="props.color"
   >
     <path d="M11 13L16 7.73913L11 3" stroke-width="2" />

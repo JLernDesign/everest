@@ -2,21 +2,34 @@
 import gsap from "gsap";
 import { vOnClickOutside } from "@vueuse/components";
 
-const props = defineProps(["data", "template"]);
+const props = defineProps(["data", "template", "changeContent"]);
 const mobile = breakpoints.smallerOrEqual("tablet1");
 const route = useRoute();
-const current = props.data.find((item) => item.slug === route.params.slug);
+const current = props.data.find(
+  (item) =>
+    item.slug === route.params.slug || item.tag?.slug === route.params.slug,
+);
+const active = ref(0);
 const open = ref(false);
 const menu = ref(null);
 
 // scroll to element
-const handleClick = (id) => {
-  const element = document.getElementById(id);
-  gsap.to(window, {
-    scrollTo: { y: element },
-    duration: 0.75,
-    ease: "power3.inOut",
-  });
+const handleClick = (item, i) => {
+  // scroll to element
+  if (item.id) {
+    const element = document.getElementById(item.id);
+    gsap.to(window, {
+      scrollTo: { y: element },
+      duration: 0.75,
+      ease: "power3.inOut",
+    });
+  }
+
+  // change content
+  if (item.items) {
+    props.changeContent(i);
+    active.value = i;
+  }
 };
 
 // toggle menu
@@ -80,15 +93,20 @@ const closeMenu = () => {
       <ul
         class="inline-block s:inline-flex s:space-x-nav max-s:divide-y-1 max-s:divide-jaffalt max-s:rounded-base-mob max-s:border-1 max-s:border-jaffalt max-s:bg-white max-s:shadow-nav"
       >
-        <li v-for="item in data" class="max-s:px-6 max-s:py-4 max-s:text-left">
+        <li
+          v-for="(item, i) in data"
+          class="max-s:px-6 max-s:py-4 max-s:text-left"
+        >
           <SubNavLink
             :data="item"
+            :num="i"
+            :active="active"
             @click="
               item.slug || item.tag?.slug
                 ? navigateTo(
                     `/${props.template}/${item.slug || item.tag?.slug}`,
                   )
-                : handleClick(item.id)
+                : handleClick(item, i)
             "
           />
         </li>

@@ -4,18 +4,24 @@ const clients = ref(null);
 
 onMounted(() => {
   // open first item
-  clients.value[0].openItem();
+  setTimeout(() => {
+    clients.value[0].openItem();
+  }, 200);
 });
 onUnmounted(() => {});
 
 const handleClick = (i) => {
-  // close all
-  clients.value.forEach((client) => {
-    client.open = false;
+  // close all items
+  clients.value.forEach((client, index) => {
+    if (index !== i) {
+      client.closeItem();
+    }
   });
 
-  // open new
-  clients.value[i].open = true;
+  // open the clicked item
+  if (!clients.value[i].open) {
+    clients.value[i].openItem();
+  }
 };
 </script>
 
@@ -41,7 +47,7 @@ const handleClick = (i) => {
         :data="item"
         :key="i"
         ref="clients"
-        @mouseenter="handleClick(i)"
+        @click="handleClick(i)"
       />
     </div>
   </Section>

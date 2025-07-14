@@ -1,6 +1,8 @@
 <script setup>
+import { gsap } from "gsap";
 import { Image as DatocmsImage } from "vue-datocms";
 const props = defineProps(["data", "loc"]);
+const main = ref(null);
 
 const linkTo = computed(() => {
   // external link
@@ -26,12 +28,45 @@ const handleClick = () => {
     openVideoModal(props.data.media?.video);
   }
 };
+
+const hoverOn = () => {
+  const bg = main.value.querySelector(".bg-hover");
+  const title = main.value.querySelector(".title");
+  gsap.killTweensOf(bg);
+  gsap.fromTo(
+    bg,
+    { scale: 0.9, opacity: 0 },
+    {
+      duration: 0.5,
+      scale: 1,
+      opacity: 1,
+      ease: "power3.out",
+    },
+  );
+  title.classList.add("on");
+};
+
+const hoverOff = () => {
+  const bg = main.value.querySelector(".bg-hover");
+  const title = main.value.querySelector(".title");
+  gsap.killTweensOf(bg);
+  gsap.to(bg, {
+    duration: 0.5,
+    opacity: 0,
+    scale: 0.98,
+    ease: "power3.out",
+  });
+  title.classList.remove("on");
+};
 </script>
 
 <template>
   <div
     class="thumb relative w-full bg-jaffa p-side-mob pb-[8rem] s:w-[60rem] s:p-thumb s:pb-[15.6rem]"
     :class="loc == 'blog' && 'scroll-reveal'"
+    ref="main"
+    @mouseenter="hoverOn"
+    @mouseleave="hoverOff"
   >
     <!-- bg hover -->
     <div
@@ -122,7 +157,7 @@ const handleClick = () => {
     <h3
       class="relative z-1 mb-[1.2rem] font-helvb text-body-mob leading-body s:text-body"
     >
-      {{ data.title }}
+      <span class="ul single title !ease-out">{{ data.title }}</span>
     </h3>
     <p class="relative z-1 text-body-sm-mob leading-sm s:text-body-sm">
       {{ createExcerpt(data.intro, 30) }}
