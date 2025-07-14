@@ -1,6 +1,8 @@
 <script setup>
 import { homeQuery } from "~/assets/graphql/queries/home";
 
+const loaded = ref(false);
+
 const { data } = await useGraphqlQuery({
   query: homeQuery.loc.source.body,
 });
@@ -9,12 +11,16 @@ const page = data.value.home;
 onMounted(() => {
   const theme = useState("theme");
   theme.value = "light";
+
+  setTimeout(() => {
+    loaded.value = true;
+  }, 1000);
 });
 </script>
 
 <template>
   <div class="bg-skyblue">
-    <LazyHomeHero
+    <HomeHero
       v-if="page.hero"
       :data="page.hero"
       :mediaSlides="page.mediaSlider.mediaSlides"
@@ -24,8 +30,13 @@ onMounted(() => {
       :data="page.intro"
       :logos="page.featuredLogos"
     />
-    <LazyFlexibleBlocks :data="page.flexibleContent.modules" template="home" />
-    <LazyFooterLockup :data="page.footerCallout" />
+    <template v-if="loaded">
+      <LazyFlexibleBlocks
+        :data="page.flexibleContent.modules"
+        template="home"
+      />
+      <LazyFooterLockup :data="page.footerCallout" />
+    </template>
   </div>
 </template>
 

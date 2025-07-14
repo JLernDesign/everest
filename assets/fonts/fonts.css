@@ -5,7 +5,6 @@
     url("HelveticaNeueLTPro-Bd.woff") format("woff");
   font-weight: bold;
   font-style: normal;
-  font-display: swap;
 }
 
 @font-face {
@@ -15,7 +14,6 @@
     url("HelveticaNeueLTPro-Roman.woff") format("woff");
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
 }
 
 @font-face {
@@ -25,7 +23,6 @@
     url("HelveticaNeueLTPro-Hv.woff") format("woff");
   font-weight: 800;
   font-style: normal;
-  font-display: swap;
 }
 
 @font-face {
@@ -35,7 +32,6 @@
     url("barlow-medium-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
 }
 
 @font-face {
@@ -45,7 +41,6 @@
     url("barlowcondensed-bold-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
 }
 
 @font-face {
@@ -55,5 +50,4 @@
     url("barlowcondensed-semibold-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
 }

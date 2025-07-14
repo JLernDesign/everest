@@ -26,10 +26,24 @@ const handleClick = () => {
     openVideoModal(props.data.media?.video);
   }
 };
+
+/* hovers */
+const arrowDiamond = ref(null);
+const hoverOn = () => {
+  arrowDiamond.value.hoverOn();
+};
+
+const hoverOff = () => {
+  arrowDiamond.value.hoverOff();
+};
 </script>
 
 <template>
-  <div class="item h-full w-full shrink-0 s:w-[33.5rem]">
+  <div
+    class="item h-full w-full shrink-0 s:w-[33.5rem]"
+    @mouseenter="hoverOn"
+    @mouseleave="hoverOff"
+  >
     <!-- image -->
     <div
       class="thumb-img dato-image relative z-1 h-full w-full [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
@@ -60,7 +74,7 @@ const handleClick = () => {
         v-if="data.media?.__typename == 'ProductDemoRecord'"
         class="absolute left-0 top-0 flex size-full items-center p-[6rem]"
       >
-        <div class="shadow-media relative overflow-hidden rounded-base">
+        <div class="relative overflow-hidden rounded-base shadow-media">
           <DatocmsImage
             v-if="data.media?.screen"
             :data="data.media?.screen.responsiveImage"
@@ -82,7 +96,7 @@ const handleClick = () => {
         <div
           class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
         >
-          <UIArrowDiamond />
+          <UIArrowDiamond ref="arrowDiamond" />
         </div>
       </template>
 

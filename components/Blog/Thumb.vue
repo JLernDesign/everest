@@ -4,6 +4,8 @@ import { Image as DatocmsImage } from "vue-datocms";
 const props = defineProps(["data", "loc"]);
 const main = ref(null);
 
+const arrowDiamond = ref(null);
+
 const linkTo = computed(() => {
   // external link
   if (props.data.media?.externalLink) {
@@ -45,6 +47,9 @@ const hoverOn = () => {
     },
   );
   title.classList.add("on");
+  if (isVideo) {
+    arrowDiamond.value.hoverOn();
+  }
 };
 
 const hoverOff = () => {
@@ -59,6 +64,9 @@ const hoverOff = () => {
     ease: "power3.out",
   });
   title.classList.remove("on");
+  if (isVideo) {
+    arrowDiamond.value.hoverOff();
+  }
 };
 </script>
 
@@ -109,7 +117,7 @@ const hoverOff = () => {
         v-if="data.media?.__typename == 'ProductDemoRecord'"
         class="absolute left-0 top-0 flex size-full items-center p-[6rem]"
       >
-        <div class="shadow-media relative overflow-hidden rounded-base">
+        <div class="relative overflow-hidden rounded-base shadow-media">
           <DatocmsImage
             v-if="data.media.screen"
             :data="data.media.screen.responsiveImage"
@@ -131,7 +139,7 @@ const hoverOff = () => {
         <div
           class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
         >
-          <UIArrowDiamond />
+          <UIArrowDiamond ref="arrowDiamond" />
         </div>
       </template>
 

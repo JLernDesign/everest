@@ -10,7 +10,7 @@ onMounted(() => {
   }, 200);
 });
 
-/* const hero_img = {
+const hero_img = {
   responsiveImage: {
     srcSet:
       "https://www.datocms-assets.com/160976/1752429988-ph-home-hero-2x.png?dpr=0.25 523w,https://www.datocms-assets.com/160976/1752429988-ph-home-hero-2x.png?dpr=0.5 1046w,https://www.datocms-assets.com/160976/1752429988-ph-home-hero-2x.png?dpr=0.75 1569w,https://www.datocms-assets.com/160976/1752429988-ph-home-hero-2x.png 2092w",
@@ -26,7 +26,7 @@ onMounted(() => {
     base64:
       "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAWCAYAAADafVyIAAADeUlEQVR42n2V67LbJhSFEaCrfa6Zad//IfKj0zc6TdqcHFu2JSTyLYQU223DzB4h2Ky1b2z85z/+NDFGM8+zmaYpSQgT/1Na07DWGu/9b74sf6/K8qmqKqbl5Jw7FUXRc74PIYzDMMyIQ/w4jiXnnRQ3AgFJOMS/XQiYWwSCGd0IuKRgXkBQoF+gZzVn2Cz8Oouxzrdtm4CuPZCsayLLHkQZI/As1nnvQPMY6DkTsTpmD0o8KhNB13X/CtH/EAjcVlVt67ry8kResTcRxZkzdgzBECen8Gwh+hWB1lcCrC8BLau6bmpJVWnNWW0a49EHH4JxTATyIBGgvBFck1wTEE950EGwB3vfNHULUUHCR2dNDcElGgPBTIGEWwK5fu3BOgScZxDYPXpPi7hnkZXeF96aEfPPIkBG5220rpJXwl0IVksXD/gyj1eiKipm88q+5FOWLp1zbgT4ZBaSAW0OGVnmszhPxn+ZA0ZNDb6yJoIX1iTtol9dZKksZu2CTkAKwpNKNHnQ930CmuTBdtHC4lFM5jwC8EAwH4j5AwbtkUaXSncBgon9AYxRZziriooS/md/OBwWAoHLKsCvvWA03KbGO1cvhVSpMBxflS1RciETnNC/BHkRggh0AYufBGuIIAiZZG0VS6k6LpqfAJUMyAjhCYIDBO9gvE/T3IM/cH7SeeFuIVpzEBKBPAhrHlQhZ4DOhOMM6DH3Is3fWf+KAV/Q+wcjv2PgWX1JIdIgySMg8w3Bz68I5h6CHisPEHzIdd1a9k8U/t/U5BsEb2D9xTpeTEf2LpsHAo93pbmJSd8jBEd1TIw4qrEptpoD8g2Fr5ngjf8+3OXw5qIp1tdipcQmlXThfyAcA/oSk0LmHJ65I6ofMsDcDWH4pmn+8x6sb0K+C6ktqwUDbtVVc7sWkRSmFSPlUIatHqRmh0a8I7jrRyrVFos7CHaZYFbLgLjV/lbqa/50VgT7/T57ELdXbCOQ9TE+wPBIMp+x9gXgx0xAO/Ijt/xICL+D8ZHzshVKSvJut7vppgvBvIUHecLCF8BfAfwE7lMmaHSL87N5zBdtAHi8IVhzcN+yU9NbLtpjIQ+cUzd9Lpc3WXmo5IGTB0UhDw6cPXH2CzJvBKoIja2bYrneEM0pYT0mjeJMKFpi0gLcIbxsVcoBBB0EO/Q64t5x0TrAD2sOfgCgq/PG1kWNZgAAAABJRU5ErkJggg==",
   },
-}; */
+};
 </script>
 
 <template>
@@ -44,15 +44,16 @@ onMounted(() => {
       class="image-wrap relative left-1/2 top-auto -ml-[91rem] w-[180rem] origin-top scale-[.4] s:absolute s:left-0 s:top-0 s:ml-0 s:scale-100 max-s:mt-[3.2rem] max-s:h-[36rem]"
     >
       <UIGlow
-        class="left-[36.2rem] top-[8.3rem] h-[106.2rem] !w-[118.1rem] s:top-[19.7rem]"
+        class="left-[36.2rem] top-[8.3rem] h-[106.2rem] !w-[118.1rem] transition-opacity duration-500 s:top-[19.7rem]"
+        :class="loaded ? 'opacity-100' : 'opacity-0'"
         src="/home/hero-glow.svg"
       />
       <div
         class="bg-image absolute left-[31.4rem] top-0 z-1 w-[104.6rem] s:top-[11.4rem]"
       >
         <div class="computer absolute left-0 top-0 z-0">
-          <!-- <DatocmsImage :data="hero_img.responsiveImage" /> -->
-          <img src="/public/home/ph-home-hero@2x.png" alt="" />
+          <DatocmsImage :data="hero_img.responsiveImage" />
+          <!-- <img src="/public/home/ph-home-hero@2x.png" alt="" /> -->
         </div>
       </div>
 
@@ -72,7 +73,7 @@ onMounted(() => {
     <!-- video -->
     <div
       v-if="mediaSlides && mediaSlides.length > 0"
-      class="relative z-5 s:mt-[24rem] s:grid s:justify-end"
+      class="relative z-5 transition-opacity duration-500 s:mt-[24rem] s:grid s:justify-end"
       :class="loaded ? 'opacity-100' : 'opacity-0'"
     >
       <LazyMediaSlider :data="mediaSlides" />
