@@ -30,6 +30,7 @@ const handleClick = () => {
 };
 
 const hoverOn = () => {
+  if (isTouchDevice()) return;
   const bg = main.value.querySelector(".bg-hover");
   const title = main.value.querySelector(".title");
   gsap.killTweensOf(bg);
@@ -47,6 +48,7 @@ const hoverOn = () => {
 };
 
 const hoverOff = () => {
+  if (isTouchDevice()) return;
   const bg = main.value.querySelector(".bg-hover");
   const title = main.value.querySelector(".title");
   gsap.killTweensOf(bg);

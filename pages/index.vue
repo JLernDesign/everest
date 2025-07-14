@@ -24,7 +24,7 @@ onMounted(() => {
       :data="page.intro"
       :logos="page.featuredLogos"
     />
-    <FlexibleBlocks :data="page.flexibleContent.modules" template="home" />
+    <LazyFlexibleBlocks :data="page.flexibleContent.modules" template="home" />
     <LazyFooterLockup :data="page.footerCallout" />
   </div>
 </template>

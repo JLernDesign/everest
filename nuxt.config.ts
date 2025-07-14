@@ -25,7 +25,7 @@ export default defineNuxtConfig({
       failOnError: false,
       crawlLinks: false,
     },
-    preset: "netlify",
+    preset: "netlify-static",
   },
 
   modules: [

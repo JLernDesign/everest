@@ -11,12 +11,15 @@ const hoverOn = () => {
     diamond,
     {
       opacity: 0,
-      scale: 0.8,
+      x: -10,
+      y: 0,
+      scale: 1,
     },
     {
-      duration: 0.5,
+      duration: 0.35,
       opacity: 1,
-      scale: 1,
+      x: 0,
+      y: 0,
       ease: "power3.out",
     },
   );
@@ -29,6 +32,7 @@ const hoverOff = () => {
     duration: 0.35,
     scale: 0.8,
     opacity: 0,
+    x: 10,
     ease: "power3.in",
   });
 };
