@@ -6,7 +6,7 @@ const isActive = computed(() => {
   let active = false;
 
   // links to a page
-  if (props.data.slug != undefined) {
+  if (props.data.slug != undefined || props.data.tag?.slug != undefined) {
     if (route.params.slug == (props.data.slug || props.data.tag?.slug)) {
       active = true;
     }

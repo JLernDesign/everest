@@ -4,43 +4,27 @@ const props = defineProps(["data"]);
 
 const main = ref(null);
 const sidebar = ref(null);
-let mm, ctx;
-const min = 650;
 const people = ref(null);
 
 onMounted(() => {
   // open first item
-  people.value[0].openItem();
-  //items = main.value.querySelectorAll(".item");
-
-  mm = gsap.matchMedia();
-  ctx = gsap.context((self) => {
-    setTimeout(() => {
-      // pin menu for duration of article
-      mm.add("(min-width: " + min + "px)", () => {
-        pinMenu(
-          sidebar.value,
-          self.selector(".start-pin"),
-          self.selector(".end-pin"),
-        );
-      });
-    }, 200);
-  }, main.value);
-});
-
-onUnmounted(() => {
-  ctx.revert();
-  mm.revert();
+  setTimeout(() => {
+    people.value[0].openItem();
+  }, 200);
 });
 
 const handleClick = (i) => {
-  // close all
-  people.value.forEach((person) => {
-    person.open = false;
+  // close all items
+  people.value.forEach((person, index) => {
+    if (index !== i) {
+      person.closeItem();
+    }
   });
 
-  // open new
-  people.value[i].open = true;
+  // open the clicked item
+  if (!people.value[i].open) {
+    people.value[i].openItem();
+  }
 };
 </script>
 
@@ -84,8 +68,7 @@ const handleClick = (i) => {
             :data="person"
             :key="person.name"
             ref="people"
-            @mouseenter="handleClick(i)"
-            @mousedown="handleClick(i)"
+            @click="handleClick(i)"
           />
         </div>
         <div class="end-pin"></div>

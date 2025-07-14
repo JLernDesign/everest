@@ -5,9 +5,6 @@ const props = defineProps(["data"]);
 const open = ref(false);
 const itemRef = ref(null);
 
-onMounted(() => {});
-onUnmounted(() => {});
-
 const openItem = () => {
   open.value = true;
   animateItemOpen();
