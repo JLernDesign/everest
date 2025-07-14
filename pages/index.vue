@@ -25,12 +25,13 @@ onMounted(() => {
       :data="page.hero"
       :mediaSlides="page.mediaSlider.mediaSlides"
     />
-    <LazyHomeIntro
-      v-if="page.intro"
-      :data="page.intro"
-      :logos="page.featuredLogos"
-    />
+    <div v-if="!loaded" class="h-screen w-screen bg-skyblue"></div>
     <template v-if="loaded">
+      <LazyHomeIntro
+        v-if="page.intro"
+        :data="page.intro"
+        :logos="page.featuredLogos"
+      />
       <LazyFlexibleBlocks
         :data="page.flexibleContent.modules"
         template="home"

@@ -7,6 +7,7 @@ const wrapper = ref(null);
 const header = ref(null);
 const { width, height } = useElementSize(wrapper);
 const theme = useState("theme");
+const loaded = ref(false);
 
 /* fetch menu data */
 const { data: menu_data } = await useGraphqlQuery({
@@ -20,14 +21,22 @@ watch(height, () => {
   //console.log("layout shifted: " + height.value);
   layoutShiftRefresh();
 });
+
+onMounted(() => {
+  setTimeout(() => {
+    loaded.value = true;
+  }, 1000);
+});
 </script>
 
 <template>
   <div class="wrapper" ref="wrapper">
     <LazyHeader ref="header" :menu="main_menu" :data="data" />
     <div class="main-contents overflow-hidden"><slot /></div>
-    <LazyFooter :menu="main_menu" :data="data" />
-    <LazyVideoModal />
+    <template v-if="loaded">
+      <LazyFooter :menu="main_menu" :data="data" />
+      <LazyVideoModal />
+    </template>
     <Cookies />
     <UISiteCover />
   </div>

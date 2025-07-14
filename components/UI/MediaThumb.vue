@@ -30,11 +30,15 @@ const handleClick = () => {
 /* hovers */
 const arrowDiamond = ref(null);
 const hoverOn = () => {
-  arrowDiamond.value.hoverOn();
+  if (arrowDiamond.value) {
+    arrowDiamond.value.hoverOn();
+  }
 };
 
 const hoverOff = () => {
-  arrowDiamond.value.hoverOff();
+  if (arrowDiamond.value) {
+    arrowDiamond.value.hoverOff();
+  }
 };
 </script>
 

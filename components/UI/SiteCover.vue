@@ -3,7 +3,7 @@
 <template>
   <div
     id="page-reveal"
-    class="cover fixed left-0 top-0 z-20 h-screen w-screen"
+    class="cover fixed left-0 top-0 z-20 h-screen w-screen bg-skyblue opacity-20"
   ></div>
 </template>
 

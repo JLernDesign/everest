@@ -5,10 +5,17 @@ const props = defineProps(["data", "type", "active", "submenu", "close_func"]);
 let el, link, accent, single;
 props.data.__typename == "MenuItemRecord" ? (single = true) : null;
 
+const loaded = ref(false);
 onMounted(() => {
-  el = qs(".submenu", main.value);
-  link = qs(".toplink", main.value);
-  accent = qs(".accent", main.value);
+  setTimeout(() => {
+    loaded.value = true;
+
+    nextTick(() => {
+      el = qs(".submenu", main.value);
+      link = qs(".toplink", main.value);
+      accent = qs(".accent", main.value);
+    });
+  }, 1000);
 });
 
 // desktop: submenu open/close
@@ -173,9 +180,11 @@ const toggleSubMenu = (e) => {
     </NuxtLink>
 
     <!-- submenu -->
-    <div v-if="submenu" class="nav-sub relative z-0 h-0 w-full">
-      <Submenu :id="data.label" :data="data.submenu" />
-    </div>
+    <template v-if="loaded">
+      <div v-if="submenu" class="nav-sub relative z-0 h-0 w-full">
+        <Submenu :id="data.label" :data="data.submenu" />
+      </div>
+    </template>
 
     <!-- accent arrow -->
     <div
