@@ -52,7 +52,7 @@ const props = defineProps(["data", "type"]);
     <!-- image -->
     <div class="right relative w-full s:w-1/2 max-s:order-1">
       <div
-        class="featured-image dato-image h-full w-full overflow-hidden rounded-sm [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
+        class="featured-image dato-image aspect-[1.32] h-full w-full overflow-hidden rounded-sm [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
       >
         <DatocmsImage
           v-if="data.image"

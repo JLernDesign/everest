@@ -35,7 +35,6 @@
     url("barlow-medium-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
 }
 
 @font-face {
@@ -45,7 +44,6 @@
     url("barlowcondensed-bold-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
 }
 
 @font-face {
@@ -55,5 +53,4 @@
     url("barlowcondensed-semibold-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
 }
