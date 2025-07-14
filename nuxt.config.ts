@@ -18,14 +18,14 @@ export default defineNuxtConfig({
     },
   },
 
-  ssr: true,
+  ssr: false,
 
   nitro: {
     prerender: {
       failOnError: false,
-      crawlLinks: false,
+      crawlLinks: true,
     },
-    preset: "netlify",
+    preset: "netlify-static",
   },
 
   modules: [
