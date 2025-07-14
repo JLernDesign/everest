@@ -1,6 +1,7 @@
 <script setup>
 import { menuQuery } from "~/assets/graphql/queries/menu";
 import { useElementSize } from "@vueuse/core";
+const loaded = ref(false);
 
 const props = defineProps(["theme", "data"]);
 const wrapper = ref(null);
@@ -20,11 +21,24 @@ watch(height, () => {
   //console.log("layout shifted: " + height.value);
   layoutShiftRefresh();
 });
+
+onMounted(() => {
+  setTimeout(() => {
+    loaded.value = true;
+  }, 200);
+});
 </script>
 
 <template>
   <div class="wrapper" ref="wrapper">
-    <LazyHeader ref="header" :menu="main_menu" :data="data" />
+    <LazyHeader
+      v-if="loaded"
+      class="transition-opacity duration-500"
+      :class="loaded ? 'opacity-100' : 'opacity-0'"
+      ref="header"
+      :menu="main_menu"
+      :data="data"
+    />
     <div class="main-contents overflow-hidden"><slot /></div>
     <LazyFooter :menu="main_menu" :data="data" />
     <LazyVideoModal />
