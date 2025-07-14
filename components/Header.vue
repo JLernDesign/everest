@@ -9,11 +9,25 @@ const header = ref(null);
 const logo = ref(null);
 const logo_wrap = ref(null);
 const theme = useState("theme");
-
+const loaded = ref(false);
 const { y, directions } = useScroll(window);
 const sp = 0.75;
 const easer = "power3.out";
 onMounted(() => {
+  setTimeout(() => {
+    loaded.value = true;
+    gsap.fromTo(
+      header.value,
+      { y: -20 },
+      {
+        duration: 0.75,
+        opacity: 1,
+        y: 0,
+        ease: "power3.out",
+      },
+    );
+  }, 200);
+
   // sticky nav
   useEventListener(window, "scroll", () => {
     setSticky();
@@ -130,8 +144,8 @@ const hideSticky = () => {
 
 <template>
   <header
-    class="absolute z-20 h-[12rem] w-full s:fixed"
-    :class="theme == 'dark' && !scrolled ? 'text-white' : null"
+    class="absolute z-20 h-[12rem] w-full opacity-0 s:fixed"
+    :class="[theme == 'dark' && !scrolled ? 'text-white' : null]"
     ref="header"
   >
     <!-- logo -->

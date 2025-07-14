@@ -75,7 +75,7 @@ const hero_img = {
       class="relative z-5 s:mt-[24rem] s:grid s:justify-end"
       :class="loaded ? 'opacity-100' : 'opacity-0'"
     >
-      <MediaSlider :data="mediaSlides" />
+      <LazyMediaSlider :data="mediaSlides" />
     </div>
 
     <UIArrowDown class="max-s:hidden" />
