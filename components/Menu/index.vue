@@ -1,6 +1,7 @@
 <script setup>
 const props = defineProps(["data", "theme", "sticky"]);
 import gsap from "gsap";
+const global_cta = inject("global_cta");
 
 let menuOpen = false;
 const main = ref(null);
@@ -186,11 +187,11 @@ const toggleSubMenus = (e) => {
       >
         <!-- cta from header -->
         <CtaBtn
-          to="/demo"
+          :to="getUrl(global_cta.buttons[0])"
           :stretch="true"
           class="mb-[5rem] w-full"
           @click="closeMenu"
-          >Try Everest</CtaBtn
+          >{{ global_cta.buttons[0].label }}</CtaBtn
         >
 
         <!-- menu -->
