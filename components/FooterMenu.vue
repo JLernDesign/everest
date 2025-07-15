@@ -21,7 +21,7 @@ const toggleMenu = (e) => {
     <!-- link -->
     <li v-for="(item, i) in data">
       <button
-        class="flex h-[4rem] w-full items-center justify-between pl-[.4rem] pr-[1.2rem] [&>*]:pointer-events-none"
+        class="ul single fast flex h-[4rem] w-full items-center justify-between pl-[.4rem] pr-[1.2rem] [&>*]:pointer-events-none"
         @click="toggleMenu"
         :data-num="i"
       >
@@ -38,6 +38,7 @@ const toggleMenu = (e) => {
             <NuxtLink
               :to="getUrl(subitem)"
               :target="subitem.external && '_blank'"
+              :class="!subitem.submenu ? 'ul single fast' : null"
               >{{ subitem.label }}</NuxtLink
             >
 
@@ -47,7 +48,7 @@ const toggleMenu = (e) => {
               v-if="subitem.submenu"
             >
               <li v-for="subsubitem in subitem.submenu">
-                <NuxtLink :to="getUrl(subsubitem)">{{
+                <NuxtLink :to="getUrl(subsubitem)" class="ul single fast">{{
                   subsubitem.label
                 }}</NuxtLink>
               </li>

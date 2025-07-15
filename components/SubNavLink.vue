@@ -1,6 +1,8 @@
 <script setup>
+import gsap from "gsap";
 const props = defineProps(["data", "num", "active"]);
 const route = useRoute();
+const accent = ref(null);
 
 const isActive = computed(() => {
   let active = false;
@@ -18,17 +20,56 @@ const isActive = computed(() => {
       active = true;
     }
   }
+
+  if (active) {
+    toggleAccent("on");
+  } else {
+    toggleAccent("off");
+  }
+
   return active;
 });
+
+const hoverOn = () => {
+  toggleAccent("on");
+};
+const hoverOff = () => {
+  toggleAccent("off");
+};
+
+const toggleAccent = (state) => {
+  gsap.killTweensOf(accent.value);
+  if (state == "on") {
+    gsap.to(accent.value, {
+      duration: 0.5,
+      x: 0,
+      y: 0,
+      opacity: 1,
+      ease: "power3.out",
+    });
+  } else {
+    gsap.to(accent.value, {
+      duration: 0.25,
+      y: "-1rem",
+      x: "-1rem",
+      opacity: 0,
+      ease: "quad.in",
+    });
+  }
+};
 </script>
 
 <template>
   <button
-    class="relative bg-gradient-to-r from-red to-red bg-[length:0%_1px] bg-[position:0%_80%] bg-no-repeat text-body-sm-mob hover:text-red s:text-body-sm"
-    :class="isActive ? 'on' : ''"
+    class="ul single fast relative text-body-sm-mob leading-base hover:text-red s:text-body-sm"
+    :class="isActive ? 'on text-red' : ''"
+    @mouseenter="hoverOn"
+    @mouseleave="isActive ? null : hoverOff"
   >
     <div
-      class="accent absolute -top-2 left-0 hidden h-[1rem] w-[1.1rem] -translate-y-[1rem] opacity-0 s:block"
+      class="accent absolute -top-[1.75rem] left-0 hidden h-[1rem] w-[1.1rem] s:block"
+      :class="isActive ? 'translate-x-0 translate-y-0 opacity-100' : ''"
+      ref="accent"
     >
       <img src="/public/ui/tri.svg" alt="" />
     </div>
@@ -37,7 +78,7 @@ const isActive = computed(() => {
 </template>
 
 <style scoped>
-button {
+/* button {
   transition: var(--ease-out);
 }
 .on {
@@ -50,5 +91,5 @@ button {
       opacity: 1;
     }
   }
-}
+} */
 </style>

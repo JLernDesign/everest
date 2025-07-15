@@ -19,7 +19,7 @@ const { data } = await useGraphqlQuery({
   query: QUERY,
 });
 
-// make address data available globally
+// make reused global data available
 provide("locations", data.value.global.locations);
 provide("global_cta", data.value.global.headerCta);
 

@@ -4,6 +4,7 @@ const props = defineProps(["data", "href", "target", "theme", "stretch"]);
 const open = ref(false);
 const arrow = ref(null);
 const hoverOn = () => {
+  if (isTouchDevice()) return;
   open.value = true;
   const diamond = arrow.value.querySelector(".diamond-inner");
   gsap.killTweensOf(diamond);
@@ -25,6 +26,7 @@ const hoverOn = () => {
   );
 };
 const hoverOff = () => {
+  if (isTouchDevice()) return;
   open.value = false;
   const diamond = arrow.value.querySelector(".diamond-inner");
   gsap.killTweensOf(diamond);

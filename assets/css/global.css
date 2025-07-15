@@ -36,22 +36,6 @@ html {
   hyphens: none;
 }
 
-/* @media (min-width: 1201px) and (max-width: 1800px) {
-  html {
-    font-size: clamp(0.625rem, -0.125rem + 1vw, 1rem);
-  }
-}
-@media (min-width: 650px) and (max-width: 1200px) {
-  html {
-    font-size: clamp(0.5625rem, 0.3152rem + 0.6087vw, 1rem);
-  }
-}
-@media (max-width: 649px) {
-  html {
-    font-size: clamp(1rem, 0.25rem + 3.0769vw, 1.5rem);
-  }
-} */
-
 /* setup */
 
 body {
@@ -169,6 +153,11 @@ sup {
   background-repeat: no-repeat;
   background-size: 0% 1px;
   transition: var(--ease-in-out);
+  &.fast {
+    transition:
+      color 0.3s linear,
+      background-size 0.5s ease-out;
+  }
 }
 
 .ul.single:hover,

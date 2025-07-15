@@ -53,7 +53,7 @@ defineExpose({
     ref="main"
   >
     <button
-      class="back relative grid h-[3.2rem] w-full place-content-center overflow-hidden rounded-btn border-1"
+      class="back group relative grid h-[3.2rem] w-full place-content-center overflow-hidden rounded-btn border-1"
       :class="color == 'blue' ? 'border-lightblue' : 'border-red'"
     >
       <div
@@ -61,7 +61,7 @@ defineExpose({
       ></div>
       <IconArrow
         :color="color == 'blue' ? 'stroke-lightblue' : 'stroke-red'"
-        class="relative z-10"
+        class="relative z-10 ease-out group-hover:translate-x-4"
       />
     </button>
   </div>

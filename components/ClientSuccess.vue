@@ -1,4 +1,5 @@
 <script setup>
+import { Image as DatocmsImage } from "vue-datocms";
 import gql from "graphql-tag";
 import {
   ClientSuccessFragment,
@@ -128,7 +129,7 @@ if (props.data.slides && props.data.slides.length > 0) {
               class="photo aspect-[1.57] w-full overflow-hidden rounded-base-mob s:rounded-base"
             >
               <!-- image -->
-              <img :src="slide.media.image.url" alt="" />
+              <DatocmsImage :data="slide.media.image.responsiveImage" />
             </div>
 
             <!-- name -->
@@ -166,11 +167,10 @@ if (props.data.slides && props.data.slides.length > 0) {
             <div
               class="photo aspect-[1.57] w-full overflow-hidden rounded-base-mob s:rounded-base"
             >
-              <img
+              <DatocmsImage
                 v-if="slide.media.image"
-                :src="slide.media.image.url"
+                :data="slide.media.image.responsiveImage"
                 class="w-full"
-                alt=""
               />
             </div>
 
@@ -226,7 +226,7 @@ if (props.data.slides && props.data.slides.length > 0) {
               class="photo aspect-[1.57] w-full overflow-hidden rounded-base-mob s:rounded-base"
             >
               <!-- image -->
-              <img :src="slide.media.image.url" alt="" />
+              <DatocmsImage :data="slide.media.image.responsiveImage" />
             </div>
 
             <!-- name -->

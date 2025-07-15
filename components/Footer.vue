@@ -34,7 +34,11 @@ const investors = useState("investors", () => props.data.investors);
                 class="social flex items-end space-x-[2.5rem]"
               >
                 <li v-for="item in data.socialMedia">
-                  <a :href="item.url" target="_blank">
+                  <a
+                    :href="item.url"
+                    target="_blank"
+                    class="[&_svg]:transition-colors [&_svg]:duration-500 hover:[&_svg]:fill-white"
+                  >
                     <SocialLinkedin
                       v-if="item.platform == 'linkedin'"
                       class="fill-red"

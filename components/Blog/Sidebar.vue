@@ -71,32 +71,35 @@ const copy_to_clipboard = () => {
           </h3>
         </div>
         <div
-          class="grid h-[5rem] auto-cols-fr grid-flow-col divide-x-1 divide-whiteline"
+          class="grid h-[5rem] auto-cols-fr grid-flow-col divide-x-1 divide-whiteline [&_svg]:transition-colors [&_svg]:duration-500"
         >
           <a
             :href="facebook_url"
-            class="grid place-content-center"
+            class="grid place-content-center hover:[&_svg]:fill-white"
             target="_blank"
             ><SocialFacebook class="fill-red"
           /></a>
           <a
             :href="linkedin_url"
-            class="grid place-content-center"
+            class="grid place-content-center hover:[&_svg]:fill-white"
             target="_blank"
             ><SocialLinkedin class="fill-red"
           /></a>
           <a
             :href="pinterest_url"
-            class="grid place-content-center"
+            class="grid place-content-center hover:[&_svg]:fill-white"
             target="_blank"
             ><SocialPinterest class="fill-red"
           /></a>
-          <a :href="x_url" class="grid place-content-center" target="_blank"
+          <a
+            :href="x_url"
+            class="grid place-content-center hover:[&_svg]:fill-white"
+            target="_blank"
             ><SocialX class="fill-red"
           /></a>
           <a
             @click="copy_to_clipboard"
-            class="grid cursor-pointer place-content-center"
+            class="grid cursor-pointer place-content-center hover:[&_svg]:fill-white"
             ><SocialWeblink class="fill-red"
           /></a>
         </div>

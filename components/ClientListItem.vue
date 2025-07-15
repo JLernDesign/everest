@@ -61,11 +61,11 @@ defineExpose({ openItem, open, closeItem });
 
 <template>
   <div
-    class="relative rounded-base-mob transition-all duration-500 s:rounded-base"
+    class="relative rounded-base-mob transition-all duration-500 ease-out s:rounded-base"
     :class="
       open
         ? 'cursor-auto bg-white shadow-[4px_4px_20px_0px_rgba(0,0,0,0.03)]'
-        : 'cursor-pointer'
+        : 'cursor-pointer hover:bg-[rgba(255,255,255,0.2)]'
     "
   >
     <!-- title -->

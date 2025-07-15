@@ -9,6 +9,8 @@ const { data } = await useGraphqlQuery({
 const page = data.value.home;
 
 onMounted(() => {
+  window.scrollTo(0, 0);
+
   const theme = useState("theme");
   theme.value = "light";
 
@@ -36,8 +38,8 @@ onMounted(() => {
         :data="page.flexibleContent.modules"
         template="home"
       />
-      <LazyFooterLockup :data="page.footerCallout" />
     </template>
+    <LazyFooterLockup :data="page.footerCallout" />
   </div>
 </template>
 

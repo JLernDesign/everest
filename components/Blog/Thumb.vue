@@ -167,7 +167,7 @@ const hoverOff = () => {
     <h3
       class="relative z-1 mb-[1.2rem] font-helvb text-body-mob leading-body s:text-body"
     >
-      <span class="ul single title !ease-out">{{ data.title }}</span>
+      <span class="ul single title fast">{{ data.title }}</span>
     </h3>
     <p class="relative z-1 text-body-sm-mob leading-sm s:text-body-sm">
       {{ createExcerpt(data.intro, 30) }}
