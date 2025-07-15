@@ -186,24 +186,29 @@ sup {
       top: 0.5rem;
     }
   }
-  &.lines {
-    li {
-      padding-top: 2rem;
-      padding-bottom: 2rem;
-      &:before {
-        top: 2.35rem;
-      }
+}
+.bullets.lines {
+  li {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    &:before {
+      top: 2.35rem;
     }
   }
 }
 .bullets ol {
   padding-left: 2.2rem;
   list-style: decimal;
+  li {
+    &:before {
+      display: none;
+    }
+  }
   ol {
     list-style: lower-alpha;
   }
   li {
-    padding-left: 2.2rem;
+    padding-left: 1rem;
   }
 }
 
