@@ -7,7 +7,7 @@ const loaded = ref(false);
 onMounted(() => {
   setTimeout(() => {
     loaded.value = true;
-  }, 100);
+  }, 200);
 });
 
 const hero_img = {

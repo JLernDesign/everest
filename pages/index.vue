@@ -17,11 +17,11 @@ onMounted(() => {
 
   setTimeout(() => {
     loaded.value = true;
-  }, 500);
+  }, 1000);
 
   setTimeout(() => {
     placeholder.value = false;
-  }, 600);
+  }, 1100);
 });
 </script>
 
