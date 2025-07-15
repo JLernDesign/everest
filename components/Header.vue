@@ -186,7 +186,13 @@ const hideSticky = () => {
               " /></span
         ></a> -->
 
-        <a v-if="data.signIn" :href="data.signIn" target="_blank">Sign In</a>
+        <a
+          v-if="data.signIn"
+          :href="data.signIn"
+          target="_blank"
+          class="invisible"
+          >Sign In</a
+        >
       </div>
 
       <CtaGroup

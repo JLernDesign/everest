@@ -28,7 +28,8 @@ export default function (obj) {
         return "/about/leadership";
       case "MediaCollectionRecord":
         return "/media/" + obj.internal.tag.slug;
-
+      case "LegalRecord":
+        return "/legal/" + obj.internal.slug;
       default:
         break;
     }

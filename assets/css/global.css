@@ -166,7 +166,7 @@ sup {
   background-size: 100% 1px;
 }
 
-.bullets {
+.bullets ul {
   li {
     position: relative;
     display: flex;
@@ -194,6 +194,16 @@ sup {
         top: 2.35rem;
       }
     }
+  }
+}
+.bullets ol {
+  padding-left: 2.2rem;
+  list-style: decimal;
+  ol {
+    list-style: lower-alpha;
+  }
+  li {
+    padding-left: 2.2rem;
   }
 }
 

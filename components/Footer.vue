@@ -1,6 +1,23 @@
 <script setup>
+import gql from "graphql-tag";
+
 const props = defineProps(["menu", "data"]);
 const investors = useState("investors", () => props.data.investors);
+
+/* get all legal pages */
+const legalQuery = gql`
+  query {
+    allLegals {
+      title
+      slug
+    }
+  }
+`;
+
+const { data: legals } = await useGraphqlQuery({
+  query: legalQuery.loc.source.body,
+});
+const legalPages = legals.value.allLegals;
 </script>
 
 <template>
@@ -95,8 +112,14 @@ const investors = useState("investors", () => props.data.investors);
       >
         <div class="max-s:order-2 max-s:mt-[5rem]">
           <ul class="flex items-center space-x-5">
-            <li><NuxtLink to="/">Privacy Policy</NuxtLink></li>
-            <li>•</li>
+            <template v-for="item in legalPages">
+              <li>
+                <NuxtLink :to="`/legal/${item.slug}`" class="hover:text-red">{{
+                  item.title
+                }}</NuxtLink>
+              </li>
+              <li>•</li>
+            </template>
             <li>© 2025 Everest Systems, Inc</li>
           </ul>
           <div class="mt-5 text-[#6E7174]">
