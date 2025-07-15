@@ -46,7 +46,7 @@ router.beforeEach(async (to, from) => {
 // open site after initial load
 onMounted(() => {
   // open page
-  openPage(route.fullPath, route.name);
+  //openPage(route.fullPath, route.name);
 
   // check if tab is focused
   window.addEventListener("focus", () => {

@@ -38,7 +38,7 @@ onMounted(() => {
       <LazyVideoModal />
     </template>
     <Cookies />
-    <UISiteCover />
+    <!-- <UISiteCover /> -->
   </div>
 </template>
 

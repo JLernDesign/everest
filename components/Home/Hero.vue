@@ -58,15 +58,22 @@ const hero_img = {
       </div>
 
       <!-- clouds -->
-      <UICloud type="2" class="-right-[32.4rem] -top-[30.5rem]" />
-      <div class="cloud-group absolute left-0 top-[35rem] z-1 s:top-[45.8rem]">
-        <UICloud type="3" class="left-[64.7rem] top-[23rem]" />
-        <UICloud type="1" class="-left-[9rem] top-[27rem] -scale-x-100" />
-        <UICloud
-          type="1"
-          class="left-[24.6rem] top-[44rem] !w-[91rem] -rotate-[10deg]"
-        />
-        <UICloud type="2" class="-left-[22.9rem] top-0" />
+      <div
+        :class="loaded ? 'opacity-100' : 'opacity-0'"
+        class="transition-opacity duration-500"
+      >
+        <UICloud type="2" class="-right-[32.4rem] -top-[30.5rem]" />
+        <div
+          class="cloud-group absolute left-0 top-[35rem] z-1 s:top-[45.8rem]"
+        >
+          <UICloud type="3" class="left-[64.7rem] top-[23rem]" />
+          <UICloud type="1" class="-left-[9rem] top-[27rem] -scale-x-100" />
+          <UICloud
+            type="1"
+            class="left-[24.6rem] top-[44rem] !w-[91rem] -rotate-[10deg]"
+          />
+          <UICloud type="2" class="-left-[22.9rem] top-0" />
+        </div>
       </div>
     </div>
 
@@ -79,7 +86,7 @@ const hero_img = {
       <LazyMediaSlider :data="mediaSlides" />
     </div>
 
-    <UIArrowDown class="max-s:hidden" />
+    <UIArrowDown v-if="loaded" class="max-s:hidden" />
   </Section>
 </template>
 
