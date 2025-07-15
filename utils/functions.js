@@ -63,7 +63,7 @@ export const fillColor = (obj) => {
 };
 
 // auto scroll to section on click
-export const jumpTo = (e) => {
+/* export const jumpTo = (e) => {
   const os = 50;
   const id = e.target.dataset.id;
   const trg = document.querySelector('div[data-id="' + id + '"]');
@@ -72,10 +72,10 @@ export const jumpTo = (e) => {
     scrollTo: { y: trg, offsetY: os },
     ease: "expo.inOut",
   });
-};
+}; */
 
 // turn section class on/off based on scroll position
-export const registerSection = (el, os = 0) => {
+/* export const registerSection = (el, os = 0) => {
   const elems = document.querySelectorAll(el);
   elems.forEach((elem) => {
     ScrollTrigger.create({
@@ -96,10 +96,10 @@ export const registerSection = (el, os = 0) => {
       },
     });
   });
-};
+}; */
 
 // update side menu with active section
-export const setActiveSection = (el, id) => {
+/* export const setActiveSection = (el, id) => {
   const secs = document.querySelector(el).querySelectorAll("li");
   secs.forEach((sec) => {
     if (sec.dataset.id == id) {
@@ -108,7 +108,7 @@ export const setActiveSection = (el, id) => {
       sec.classList.remove("on");
     }
   });
-};
+}; */
 
 // pin side menu while scrolling
 
@@ -273,27 +273,28 @@ export const toggleExpand = (id, group) => {
   });
 };
 
-export const shuffle = (array) => {
+/* export const shuffle = (array) => {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
   }
   return array;
-};
+}; */
 
-export const labelToScroll = (timeline, label) => {
+/* export const labelToScroll = (timeline, label) => {
   let st = timeline.scrollTrigger;
   return (
     st.start +
     (st.end - st.start) * (timeline.labels[label] / timeline.duration())
   );
-};
+}; */
 
 export const isTouchDevice = () => {
   const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
   return isTouchDevice;
 };
 
+// check if SSR
 export const isSSR = () => {
   if (typeof window !== "undefined") {
     return true;
@@ -304,10 +305,10 @@ if (isSSR()) {
   gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, SplitText);
 }
 
-const hoverSp = 0.5;
-const hoverEase = "power3.out";
+/* const hoverSp = 0.5;
+const hoverEase = "power3.out"; */
 
-export const hoverOnSocial = (e) => {
+/* export const hoverOnSocial = (e) => {
   if (!isTouchDevice()) {
     const trg = e.target;
     const txt = trg.querySelector(".txt");
@@ -329,7 +330,7 @@ export const hoverOnSocial = (e) => {
       },
     );
   }
-};
+}; */
 /* export const hoverOffSocial = (e) => {
   const trg = e.target;
   const txt = trg.querySelector('.txt');
@@ -403,9 +404,9 @@ export const createExcerpt = (
   el.openAnim();
 }; */
 
-export const convertRemToPixels = (rem) => {
+/* export const convertRemToPixels = (rem) => {
   return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
-};
+}; */
 
 export const layoutShiftRefresh = () => {
   ScrollTrigger.refresh();

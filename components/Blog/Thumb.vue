@@ -47,7 +47,7 @@ const hoverOn = () => {
     },
   );
   title.classList.add("on");
-  if (isVideo) {
+  if (arrowDiamond.value) {
     arrowDiamond.value.hoverOn();
   }
 };
@@ -64,7 +64,7 @@ const hoverOff = () => {
     ease: "power3.out",
   });
   title.classList.remove("on");
-  if (isVideo) {
+  if (arrowDiamond.value) {
     arrowDiamond.value.hoverOff();
   }
 };

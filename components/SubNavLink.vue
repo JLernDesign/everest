@@ -33,7 +33,8 @@ const isActive = computed(() => {
 const hoverOn = () => {
   toggleAccent("on");
 };
-const hoverOff = () => {
+const hoverOff = (e) => {
+  if (e.target.classList.contains("on")) return;
   toggleAccent("off");
 };
 
@@ -64,11 +65,15 @@ const toggleAccent = (state) => {
     class="ul single fast relative text-body-sm-mob leading-base hover:text-red s:text-body-sm"
     :class="isActive ? 'on text-red' : ''"
     @mouseenter="hoverOn"
-    @mouseleave="isActive ? null : hoverOff"
+    @mouseleave="hoverOff"
   >
     <div
       class="accent absolute -top-[1.75rem] left-0 hidden h-[1rem] w-[1.1rem] s:block"
-      :class="isActive ? 'translate-x-0 translate-y-0 opacity-100' : ''"
+      :class="
+        isActive
+          ? 'translate-x-0 translate-y-0 opacity-100'
+          : '-translate-x-[1rem] -translate-y-[1rem] opacity-0'
+      "
       ref="accent"
     >
       <img src="/public/ui/tri.svg" alt="" />
