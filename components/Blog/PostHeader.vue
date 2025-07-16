@@ -63,9 +63,25 @@ const props = defineProps(["data", "type"]);
         <!-- news post -->
         <div v-else class="relative size-full">
           <img
-            src="/video/media-bg.jpg"
+            src="/video/media-bg-lg.jpg"
             class="absolute left-0 top-0 size-full"
           />
+          <div
+            v-if="data.tag.slug == 'collaborations'"
+            class="absolute left-1/2 top-1/2 h-[20rem] w-[36rem] -translate-x-1/2 -translate-y-1/2 rounded-base bg-jaffa"
+          >
+            <div
+              v-if="data.logo"
+              class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+            >
+              <div class="h-[12rem] w-[20rem]">
+                <img
+                  :src="data.logo.url"
+                  class="!h-full !w-full !object-contain"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -3,7 +3,6 @@ import { Image as DatocmsImage } from "vue-datocms";
 
 const props = defineProps(["data"]);
 
-console.log(props.data);
 const isVideo = computed(() => {
   return props.data.media?.video?.file || props.data.media?.video?.external;
 });
@@ -86,14 +85,29 @@ const isVideo = computed(() => {
       ></div>
 
       <!-- logo -->
-      <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+      <div
+        v-if="data.logo"
+        class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+      >
         <div class="h-[10rem] w-[20rem]">
-          <img
-            :src="data.pressLogo.url"
-            class="!h-full !w-full !object-contain"
-          />
+          <img :src="data.logo.url" class="!h-full !w-full !object-contain" />
         </div>
       </div>
     </template>
+
+    <!-- collaborations -->
+    <div
+      v-if="data.tag.slug == 'collaborations'"
+      class="absolute left-1/2 top-1/2 h-[14.4rem] w-[29rem] -translate-x-1/2 -translate-y-1/2 rounded-base bg-jaffa"
+    >
+      <div
+        v-if="data.logo"
+        class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+      >
+        <div class="h-[8rem] w-[16rem]">
+          <img :src="data.logo.url" class="!h-full !w-full !object-contain" />
+        </div>
+      </div>
+    </div>
   </div>
 </template>

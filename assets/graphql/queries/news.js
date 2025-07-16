@@ -45,7 +45,7 @@ export const newsCollectionQuery = gql`
           base64
         }
       }
-      pressLogo {
+      logo {
         url
       }
       accentColor {
@@ -86,7 +86,7 @@ export const newsPostQuery = gql`
           base64
         }
       }
-      pressLogo {
+      logo {
         url
       }
       accentColor {
