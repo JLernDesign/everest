@@ -111,16 +111,17 @@ const legalPages = legals.value.allLegals;
         class="legal relative mt-[7rem] text-body-xsm text-white s:mt-[15rem] max-s:flex max-s:flex-col"
       >
         <div class="max-s:order-2 max-s:mt-[5rem]">
-          <ul class="flex items-center space-x-5">
-            <template v-for="item in legalPages">
+          <ul class="flex flex-wrap items-center leading-body">
+            <template v-for="(item, i) in legalPages">
               <li>
                 <NuxtLink :to="`/legal/${item.slug}`" class="hover:text-red">{{
                   item.title
                 }}</NuxtLink>
               </li>
-              <li>•</li>
+              <li v-if="i !== legalPages.length - 1" class="mx-5">•</li>
             </template>
-            <li>© 2025 Everest Systems, Inc</li>
+            <li class="mx-5 hidden s:block">•</li>
+            <li class="max-s:w-full">© 2025 Everest Systems, Inc</li>
           </ul>
           <div class="mt-5 text-[#6E7174]">
             Design: <a href="https://griflan.com" target="_blank">Griflan</a>

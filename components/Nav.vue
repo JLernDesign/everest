@@ -29,6 +29,9 @@ const setActive = () => {
     case "about":
       activePage.value = "About";
       break;
+    case "news":
+      activePage.value = "About";
+      break;
 
     default:
       activePage.value = "";

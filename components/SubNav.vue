@@ -7,8 +7,11 @@ const mobile = breakpoints.smallerOrEqual("tablet1");
 const route = useRoute();
 const current = props.data.find(
   (item) =>
-    item.slug === route.params.slug || item.tag?.slug === route.params.slug,
+    item.slug === route.params.slug ||
+    item.tag?.slug === route.params.slug ||
+    item.tag?.slug === route.name.split("-")[1],
 );
+
 const active = ref(0);
 const open = ref(false);
 const menu = ref(null);

@@ -62,6 +62,7 @@ const closeMenu = () => {
 };
 
 const toggleAccent = (state) => {
+  accent = qs(".accent", main.value);
   if (state == "on") {
     gsap.to(accent, {
       duration: 0.5,

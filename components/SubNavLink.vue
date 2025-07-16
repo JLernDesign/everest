@@ -12,6 +12,11 @@ const isActive = computed(() => {
     if (route.params.slug == (props.data.slug || props.data.tag?.slug)) {
       active = true;
     }
+
+    // news links
+    if (route.name.split("-")[1] == props.data.tag?.slug) {
+      active = true;
+    }
   }
 
   // link changes content

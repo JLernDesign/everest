@@ -88,7 +88,7 @@ defineExpose({ openItem, open, closeItem });
       >
         <div class="shrink-0 s:w-[35%]">
           <div
-            class="w-[23.4rem] overflow-hidden rounded-base-mob s:rounded-base"
+            class="h-[14.8rem] w-[23.4rem] overflow-hidden rounded-base-mob s:rounded-base [&_div]:!h-full [&_div]:!max-w-none [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
           >
             <DatocmsImage
               v-if="data.image"

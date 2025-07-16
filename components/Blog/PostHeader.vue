@@ -59,6 +59,14 @@ const props = defineProps(["data", "type"]);
           :data="data.image.responsiveImage"
           class="h-full w-full"
         />
+
+        <!-- news post -->
+        <div v-else class="relative size-full">
+          <img
+            src="/video/media-bg.jpg"
+            class="absolute left-0 top-0 size-full"
+          />
+        </div>
       </div>
     </div>
 

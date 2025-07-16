@@ -45,6 +45,12 @@ export const InternalFragment = gql`
           slug
         }
       }
+      ... on NewsCollectionRecord {
+        __typename
+        tag {
+          slug
+        }
+      }
     }
   }
 `;

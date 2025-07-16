@@ -37,6 +37,7 @@ const props = defineProps({
       :class="[
         align == 'center' && 'mx-auto max-w-[70rem]',
         loc == 'home-hero' && 's:!space-y-[1.8rem]',
+        template == 'news' && 'max-w-[80rem]',
       ]"
     >
       <h1
