@@ -33,12 +33,7 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@nuxt/scripts",
     "nuxt-graphql-request",
-    "@nuxtjs/gtm",
   ],
-
-  gtm: {
-    id: "GTM-KS9LCPNL",
-  },
 
   runtimeConfig: {
     public: {
