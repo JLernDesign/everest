@@ -25,7 +25,6 @@ export default defineNuxtConfig({
       failOnError: false,
       crawlLinks: true,
     },
-    preset: "netlify",
   },
 
   modules: [
@@ -33,11 +32,13 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@nuxt/scripts",
     "nuxt-graphql-request",
+    [
+      "@nuxtjs/google-tag-manager",
+      {
+        id: "GTM-KS9LCPNL",
+      },
+    ],
   ],
-
-  /* gtag: {
-    id: "G-252493159",
-  }, */
 
   runtimeConfig: {
     public: {
