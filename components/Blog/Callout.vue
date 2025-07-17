@@ -11,14 +11,14 @@ const selected = posts.slice(0, 3);
 
 <template>
   <Section
-    class="pb-section-bot-mob bg-jaffa pt-section-top-lg s:pb-section-bot max-s:!px-0"
+    class="bg-jaffa pb-section-bot-mob pt-section-top-lg s:pb-section-bot max-s:!px-0"
     side="none"
   >
     <BlogHeader :data="page" />
 
     <!-- thumbs -->
     <div
-      class="flex w-full flex-col divide-grayline border-y border-grayline s:flex-row s:divide-x-1 max-s:divide-y-1"
+      class="grid w-full grid-cols-1 divide-grayline border-y border-grayline s:grid-cols-3 s:divide-x-1 max-s:divide-y-1"
     >
       <BlogThumb v-for="(item, i) in selected" :data="item" />
     </div>

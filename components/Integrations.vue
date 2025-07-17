@@ -55,6 +55,7 @@ const changeGroup = (group) => {
       v-if="data.groups.length > 1"
       :data="data.groups"
       :changeContent="changeGroup"
+      class="max-s:mt-8"
     />
 
     <!-- desktop module -->

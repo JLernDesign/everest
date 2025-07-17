@@ -3,7 +3,7 @@ const props = defineProps(["theme"]);
 const arrow = ref(null);
 
 onMounted(() => {
-  // sticky nav
+  // hide/show arrow
   useEventListener(window, "scroll", () => {
     if (window.scrollY > 0) {
       arrow.value.classList.add("off");

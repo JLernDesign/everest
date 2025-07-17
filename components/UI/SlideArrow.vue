@@ -61,7 +61,7 @@ defineExpose({
       ></div>
       <IconArrow
         :color="color == 'blue' ? 'stroke-lightblue' : 'stroke-red'"
-        class="relative z-10 ease-out group-hover:translate-x-4"
+        class="relative z-10 ease-out s:group-hover:translate-x-4"
       />
     </button>
   </div>

@@ -452,6 +452,24 @@ svg.trans {
   }
 }
 
+@keyframes glow {
+  0% {
+    opacity: 0.2;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.2;
+    transform: scale(0.5);
+  }
+}
+.glower {
+  animation: glow 4s ease-in-out infinite;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);

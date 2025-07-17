@@ -2,6 +2,8 @@
 import { Image as DatocmsImage } from "vue-datocms";
 const props = defineProps(["data"]);
 
+const title = ref(true);
+
 const linkTo = computed(() => {
   // external link
   if (props.data.media?.externalLink) {
@@ -40,6 +42,10 @@ const hoverOff = () => {
     arrowDiamond.value.hoverOff();
   }
 };
+
+defineExpose({
+  title,
+});
 </script>
 
 <template>
@@ -121,7 +127,12 @@ const hoverOff = () => {
       </div>
 
       <!-- title -->
-      <div class="absolute bottom-0 left-0 z-1 w-full p-4">
+      <div
+        class="absolute bottom-0 left-0 z-1 w-full p-4 transition-all delay-100 duration-500 ease-in-out"
+        :class="
+          title ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
+        "
+      >
         <div class="rounded-base-mob bg-jaffa p-[1.2rem] pb-3">
           <h3 class="leading-body-sm text-body-sm-mob">
             {{ data.title }}

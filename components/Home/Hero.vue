@@ -44,7 +44,7 @@ const hero_img = {
       class="image-wrap relative left-1/2 top-auto -ml-[91rem] w-[180rem] origin-top scale-[.4] s:absolute s:left-0 s:top-0 s:ml-0 s:scale-100 max-s:mt-[3.2rem] max-s:h-[36rem]"
     >
       <UIGlow
-        class="left-[36.2rem] top-[8.3rem] h-[106.2rem] !w-[118.1rem] transition-opacity duration-500 s:top-[19.7rem]"
+        class="glower left-[36.2rem] top-[8.3rem] h-[106.2rem] !w-[118.1rem] transition-opacity duration-500 s:top-[19.7rem]"
         :class="loaded ? 'opacity-100' : 'opacity-0'"
         src="/home/hero-glow.svg"
       />
@@ -62,17 +62,42 @@ const hero_img = {
         :class="loaded ? 'opacity-100' : 'opacity-0'"
         class="transition-opacity duration-500"
       >
-        <UICloud type="2" class="-right-[32.4rem] -top-[30.5rem]" />
+        <UICloud
+          type="2"
+          class="-right-[32.4rem] -top-[30.5rem]"
+          :anim="true"
+          :speed="50"
+        />
         <div
           class="cloud-group absolute left-0 top-[35rem] z-1 s:top-[45.8rem]"
         >
-          <UICloud type="3" class="left-[64.7rem] top-[23rem]" />
-          <UICloud type="1" class="-left-[9rem] top-[27rem] -scale-x-100" />
+          <UICloud
+            type="3"
+            class="left-[64.7rem] top-[23rem]"
+            :anim="true"
+            :speed="45"
+          />
           <UICloud
             type="1"
-            class="left-[24.6rem] top-[44rem] !w-[91rem] -rotate-[10deg]"
+            class="-left-[9rem] top-[27rem]"
+            :flip="true"
+            :anim="true"
+            :speed="40"
           />
-          <UICloud type="2" class="-left-[22.9rem] top-0" />
+          <UICloud
+            type="1"
+            class="left-[24.6rem] top-[44rem]"
+            :anim="true"
+            :speed="35"
+            :rot="-10"
+            :width="91"
+          />
+          <UICloud
+            type="2"
+            class="-left-[22.9rem] top-0"
+            :anim="true"
+            :speed="30"
+          />
         </div>
       </div>
     </div>

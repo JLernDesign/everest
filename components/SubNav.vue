@@ -32,6 +32,7 @@ const handleClick = (item, i) => {
   if (item.items) {
     props.changeContent(i);
     active.value = i;
+    closeMenu();
   }
 };
 

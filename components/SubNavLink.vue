@@ -44,6 +44,7 @@ const hoverOff = (e) => {
 };
 
 const toggleAccent = (state) => {
+  if (!accent.value) return;
   gsap.killTweensOf(accent.value);
   if (state == "on") {
     gsap.to(accent.value, {
@@ -67,7 +68,7 @@ const toggleAccent = (state) => {
 
 <template>
   <button
-    class="ul single fast relative text-body-sm-mob leading-base hover:text-red s:text-body-sm"
+    class="ul single fast relative text-body-sm-mob leading-base hover:text-red s:text-body-sm max-s:!bg-none"
     :class="isActive ? 'on text-red' : ''"
     @mouseenter="hoverOn"
     @mouseleave="hoverOff"

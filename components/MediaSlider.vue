@@ -55,6 +55,7 @@ onUnmounted(() => {
 
   <!-- nav -->
   <UIProgressBars
+    v-if="data.length > 1"
     ref="progressBars"
     :speed="speed"
     :total="data.length"

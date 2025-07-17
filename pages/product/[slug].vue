@@ -3,6 +3,9 @@ import { productQuery } from "~/assets/graphql/queries/product";
 import { toHead } from "vue-datocms";
 
 const route = useRoute();
+const loaded = ref(false);
+const demo = ref(null);
+const scrolled = ref(false);
 
 const { data } = await useGraphqlQuery({
   query: productQuery.loc.source.body,
@@ -16,6 +19,21 @@ const page = data.value.product;
 onMounted(() => {
   const theme = useState("theme");
   theme.value = "light";
+
+  setTimeout(() => {
+    loaded.value = true;
+  }, 200);
+
+  // minimize video on scroll
+  useEventListener(window, "scroll", () => {
+    if (window.scrollY > 0) {
+      scrolled.value = true;
+      demo.value.title = false;
+    } else {
+      scrolled.value = false;
+      demo.value.title = true;
+    }
+  });
 });
 
 // compile meta tags for head
@@ -30,6 +48,22 @@ useHead(() => {
     <ProductHero v-if="page.hero" :data="page.hero" :order="page.order" />
     <FlexibleBlocks :data="page.flexibleContent.modules" template="product" />
     <FooterLockup :data="page.footerCallout" />
+
+    <!-- media module -->
+    <div
+      v-if="page.demoVideo"
+      class="fixed bottom-[4rem] right-[4rem] z-20 hidden s:block"
+    >
+      <div
+        class="relative aspect-[1.31] origin-bottom-right overflow-hidden rounded-base-mob transition-all duration-[750ms] ease-in-out s:w-[33.5rem] s:rounded-base"
+        :class="[
+          loaded ? 'opacity-100' : 'opacity-0',
+          scrolled ? 'translate-x-[2rem] translate-y-[2rem] scale-[.65]' : '',
+        ]"
+      >
+        <UIMediaThumb :data="page.demoVideo" ref="demo" />
+      </div>
+    </div>
   </div>
 </template>
 
