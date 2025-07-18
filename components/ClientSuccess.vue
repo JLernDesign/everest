@@ -1,4 +1,7 @@
 <script setup>
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import { Image as DatocmsImage } from "vue-datocms";
 import gql from "graphql-tag";
 import {
@@ -8,12 +11,17 @@ import {
   LinkFragment,
 } from "~/assets/graphql/fragments/global";
 
+if (isSSR()) {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
 const props = defineProps(["theme", "data"]);
 const mobile = breakpoints.smallerOrEqual("tablet1");
 const active = 0;
 const carouselRef = ref(null);
 const carouselRefRight = ref(null);
 const carouselRefLeft = ref(null);
+const parallax = ref(null);
 let page_data;
 
 // navigation handlers
@@ -64,6 +72,25 @@ onMounted(() => {
     next();
     slideTimer();
   }, 200);
+
+  // parallax
+  const section = parallax.value.querySelector(".section-wrap");
+  gsap.set(parallax.value, {
+    marginTop: "-40rem",
+  });
+  gsap.set(section, {
+    yPercent: 40,
+  });
+  gsap.to(section, {
+    yPercent: 0,
+    ease: "none",
+    scrollTrigger: {
+      trigger: parallax.value,
+      start: "top bottom",
+      end: "top top",
+      scrub: true,
+    },
+  });
 });
 
 // check for new data
@@ -93,183 +120,191 @@ if (props.data.slides && props.data.slides.length > 0) {
 </script>
 
 <template>
-  <Section
-    :theme="theme"
-    class="bg-jaffa pb-section-bot-mob s:pb-section-bot"
-    :class="page_data.jaggedEdge && 'mt-[23rem] !pt-16 s:mt-[26.8rem] s:!pt-8'"
-  >
-    <template v-if="page_data.jaggedEdge">
-      <UIGlow
-        class="transform-origin-left scale-60 -top-[18rem] h-[60rem] w-[116rem] s:-top-[35rem] s:h-[35rem] s:w-[116rem] s:scale-100 max-s:left-1/2 max-s:translate-x-[-50%] max-s:blur-big"
-        src="/ui/callout-bot-gradient.svg"
-      />
-      <div
-        class="gradient-cover absolute left-0 top-0 z-0 h-full w-full bg-jaffa"
-      ></div>
-      <UIJagEdge color="fill-jaffa" />
-    </template>
-
-    <SectionHeader :theme="theme" :data="page_data.header" />
-
-    <!-- slide module -->
-    <div
-      class="mt-[3rem] flex s:mt-md"
-      v-if="page_data.slides && page_data.slides.length > 0"
-      :class="page_data.slides.length > 1 && 's:divide-x-1 s:divide-grayline'"
+  <div class="relative" ref="parallax">
+    <Section
+      :theme="theme"
+      class="bg-jaffa pb-section-bot-mob s:pb-section-bot"
+      :class="
+        page_data.jaggedEdge && 'mt-[23rem] !pt-16 s:mt-[26.8rem] s:!pt-8'
+      "
     >
-      <!-- left -->
-      <div class="col lt hidden w-[27.5%] overflow-hidden s:block">
-        <Carousel ref="carouselRefLeft" :start="2" :drag="false">
-          <div
-            v-for="slide in page_data.slides"
-            class="item shrink-0 s:w-[47.5rem] s:px-[10rem]"
+      <template v-if="page_data.jaggedEdge">
+        <UIGlow
+          class="transform-origin-left scale-60 -top-[18rem] h-[60rem] w-[116rem] s:-top-[35rem] s:h-[35rem] s:w-[116rem] s:scale-100 max-s:left-1/2 max-s:translate-x-[-50%] max-s:blur-big"
+          src="/ui/callout-bot-gradient.svg"
+        />
+        <div
+          class="gradient-cover absolute left-0 top-0 z-0 h-full w-full bg-jaffa"
+        ></div>
+        <UIJagEdge color="fill-jaffa" />
+      </template>
+
+      <SectionHeader :theme="theme" :data="page_data.header" />
+
+      <!-- slide module -->
+      <div
+        class="mt-[3rem] flex s:mt-md"
+        v-if="page_data.slides && page_data.slides.length > 0"
+        :class="page_data.slides.length > 1 && 's:divide-x-1 s:divide-grayline'"
+      >
+        <!-- left -->
+        <div class="col lt hidden w-[27.5%] overflow-hidden s:block">
+          <Carousel ref="carouselRefLeft" :start="2" :drag="false">
+            <div
+              v-for="slide in page_data.slides"
+              class="item shrink-0 s:w-[47.5rem] s:px-[10rem]"
+            >
+              <div
+                v-if="slide.media.image"
+                class="photo aspect-[1.57] w-full overflow-hidden rounded-base-mob s:rounded-base"
+              >
+                <!-- image -->
+                <DatocmsImage :data="slide.media.image.responsiveImage" />
+              </div>
+
+              <!-- name -->
+              <div
+                v-if="slide.name"
+                class="slide-text mt-10 text-body-xsm-mob s:text-body-xsm"
+              >
+                <p class="font-helvb">{{ slide.name }}</p>
+                <p>{{ slide.title }}</p>
+              </div>
+            </div>
+          </Carousel>
+
+          <!-- arrow -->
+          <UISlideArrow
+            v-if="page_data.slides.length > 1"
+            dir="left"
+            class="cursor-pointer px-[10rem]"
+            @click="handlePrev"
+          />
+        </div>
+
+        <!-- active slide (center) -->
+        <div class="col main w-full s:w-[45%] s:overflow-hidden">
+          <Carousel
+            ref="carouselRef"
+            class="relative max-s:-left-[2rem] max-s:w-screen"
+            :drag="mobile ? true : false"
+            @mousedown="stopSlideshow"
           >
             <div
-              v-if="slide.media.image"
-              class="photo aspect-[1.57] w-full overflow-hidden rounded-base-mob s:rounded-base"
+              v-for="slide in page_data.slides"
+              class="item w-screen shrink-0 px-side-mob s:w-[77.2rem] s:px-[10rem]"
             >
-              <!-- image -->
-              <DatocmsImage :data="slide.media.image.responsiveImage" />
-            </div>
+              <div
+                class="photo aspect-[1.57] w-full overflow-hidden rounded-base-mob s:rounded-base"
+              >
+                <DatocmsImage
+                  v-if="slide.media.image"
+                  :data="slide.media.image.responsiveImage"
+                  class="w-full"
+                />
+              </div>
 
-            <!-- name -->
+              <hr class="my-side-mob text-black s:my-side" />
+
+              <!-- text details -->
+              <div class="slide-text">
+                <!-- stats -->
+                <div
+                  v-if="slide.statsGroup"
+                  class="stats mb-side flex space-x-14 leading-[1]"
+                >
+                  <div
+                    v-for="stat in slide.statsGroup.stats"
+                    class="stat-item flex items-end space-x-4"
+                  >
+                    <h3 class="font-barlow-cond text-sm-mob s:text-sm">
+                      {{ stat.figure }}
+                    </h3>
+                    <p class="text-body-xsm-mob s:text-body-xsm">
+                      {{ stat.label }}
+                    </p>
+                  </div>
+                </div>
+
+                <!-- quote -->
+                <blockquote v-if="slide.quote">“{{ slide.quote }}”</blockquote>
+                <div
+                  class="byline mt-[2.5rem] flex items-center justify-between text-body-xsm-mob s:mt-[5.5rem] s:text-body-xsm"
+                >
+                  <div v-if="slide.name">
+                    <p class="font-helvb">{{ slide.name }}</p>
+                    <p v-if="slide.title">
+                      {{ slide.title }}
+                    </p>
+                  </div>
+                  <UILogo
+                    v-if="slide.logo"
+                    :src="slide.logo.url"
+                    class="!h-14"
+                  />
+                </div>
+              </div>
+            </div>
+          </Carousel>
+        </div>
+
+        <!-- right -->
+        <div class="col rt hidden w-[27.5%] overflow-hidden s:block">
+          <Carousel ref="carouselRefRight" :start="1" :drag="false">
             <div
-              v-if="slide.name"
-              class="slide-text mt-10 text-body-xsm-mob s:text-body-xsm"
+              v-for="slide in page_data.slides"
+              class="item shrink-0 s:w-[47.5rem] s:px-[10rem]"
             >
-              <p class="font-helvb">{{ slide.name }}</p>
-              <p>{{ slide.title }}</p>
-            </div>
-          </div>
-        </Carousel>
+              <div
+                v-if="slide.media.image"
+                class="photo aspect-[1.57] w-full overflow-hidden rounded-base-mob s:rounded-base"
+              >
+                <!-- image -->
+                <DatocmsImage :data="slide.media.image.responsiveImage" />
+              </div>
 
-        <!-- arrow -->
+              <!-- name -->
+              <div
+                v-if="slide.name"
+                class="slide-text mt-10 text-body-xsm-mob s:text-body-xsm"
+              >
+                <p class="font-helvb">{{ slide.name }}</p>
+                <p>{{ slide.title }}</p>
+              </div>
+            </div>
+          </Carousel>
+
+          <!-- arrow -->
+          <UISlideArrow
+            v-if="page_data.slides.length > 1"
+            dir="right"
+            class="cursor-pointer px-[10rem]"
+            @click="handleNext"
+            :speed="speed"
+            ref="progressBar"
+          />
+        </div>
+      </div>
+
+      <!-- mobile controls-->
+      <div
+        class="relative mt-[5.5rem] flex h-[3.2rem] w-full justify-between px-side-mob s:hidden"
+      >
         <UISlideArrow
           v-if="page_data.slides.length > 1"
           dir="left"
-          class="cursor-pointer px-[10rem]"
+          class="!w-[48%]"
           @click="handlePrev"
         />
-      </div>
-
-      <!-- active slide (center) -->
-      <div class="col main w-full s:w-[45%] s:overflow-hidden">
-        <Carousel
-          ref="carouselRef"
-          class="relative max-s:-left-[2rem] max-s:w-screen"
-          :drag="mobile ? true : false"
-          @mousedown="stopSlideshow"
-        >
-          <div
-            v-for="slide in page_data.slides"
-            class="item w-screen shrink-0 px-side-mob s:w-[77.2rem] s:px-[10rem]"
-          >
-            <div
-              class="photo aspect-[1.57] w-full overflow-hidden rounded-base-mob s:rounded-base"
-            >
-              <DatocmsImage
-                v-if="slide.media.image"
-                :data="slide.media.image.responsiveImage"
-                class="w-full"
-              />
-            </div>
-
-            <hr class="my-side-mob text-black s:my-side" />
-
-            <!-- text details -->
-            <div class="slide-text">
-              <!-- stats -->
-              <div
-                v-if="slide.statsGroup"
-                class="stats mb-side flex space-x-14 leading-[1]"
-              >
-                <div
-                  v-for="stat in slide.statsGroup.stats"
-                  class="stat-item flex items-end space-x-4"
-                >
-                  <h3 class="font-barlow-cond text-sm-mob s:text-sm">
-                    {{ stat.figure }}
-                  </h3>
-                  <p class="text-body-xsm-mob s:text-body-xsm">
-                    {{ stat.label }}
-                  </p>
-                </div>
-              </div>
-
-              <!-- quote -->
-              <blockquote v-if="slide.quote">“{{ slide.quote }}”</blockquote>
-              <div
-                class="byline mt-[2.5rem] flex items-center justify-between text-body-xsm-mob s:mt-[5.5rem] s:text-body-xsm"
-              >
-                <div v-if="slide.name">
-                  <p class="font-helvb">{{ slide.name }}</p>
-                  <p v-if="slide.title">
-                    {{ slide.title }}
-                  </p>
-                </div>
-                <UILogo v-if="slide.logo" :src="slide.logo.url" class="!h-14" />
-              </div>
-            </div>
-          </div>
-        </Carousel>
-      </div>
-
-      <!-- right -->
-      <div class="col rt hidden w-[27.5%] overflow-hidden s:block">
-        <Carousel ref="carouselRefRight" :start="1" :drag="false">
-          <div
-            v-for="slide in page_data.slides"
-            class="item shrink-0 s:w-[47.5rem] s:px-[10rem]"
-          >
-            <div
-              v-if="slide.media.image"
-              class="photo aspect-[1.57] w-full overflow-hidden rounded-base-mob s:rounded-base"
-            >
-              <!-- image -->
-              <DatocmsImage :data="slide.media.image.responsiveImage" />
-            </div>
-
-            <!-- name -->
-            <div
-              v-if="slide.name"
-              class="slide-text mt-10 text-body-xsm-mob s:text-body-xsm"
-            >
-              <p class="font-helvb">{{ slide.name }}</p>
-              <p>{{ slide.title }}</p>
-            </div>
-          </div>
-        </Carousel>
-
-        <!-- arrow -->
         <UISlideArrow
           v-if="page_data.slides.length > 1"
           dir="right"
-          class="cursor-pointer px-[10rem]"
+          class="!w-[48%]"
           @click="handleNext"
-          :speed="speed"
-          ref="progressBar"
         />
       </div>
-    </div>
-
-    <!-- mobile controls-->
-    <div
-      class="relative mt-[5.5rem] flex h-[3.2rem] w-full justify-between px-side-mob s:hidden"
-    >
-      <UISlideArrow
-        v-if="page_data.slides.length > 1"
-        dir="left"
-        class="!w-[48%]"
-        @click="handlePrev"
-      />
-      <UISlideArrow
-        v-if="page_data.slides.length > 1"
-        dir="right"
-        class="!w-[48%]"
-        @click="handleNext"
-      />
-    </div>
-  </Section>
+    </Section>
+  </div>
 </template>
 
 <style scoped></style>

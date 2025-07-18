@@ -27,7 +27,7 @@ const splitHeadline = (el) => {
   const spl = new SplitText(el, {
     type: "chars, words",
     charsClass: "letter",
-    wordsClass: "word overflow-hidden pb-1",
+    wordsClass: "word overflow-hidden pb-1 whitespace-nowrap",
   });
   const letters = main.value.querySelectorAll(".letter");
   gsap.set(letters, {
@@ -55,8 +55,8 @@ onMounted(() => {
     tl = gsap.timeline({
       scrollTrigger: {
         trigger: main.value,
-        start: "top 60%",
-        end: "bottom 55%",
+        start: "top 90%",
+        end: "bottom 60%",
         scrub: true,
       },
     });
