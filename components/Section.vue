@@ -17,7 +17,7 @@ onMounted(() => {
 
 <template>
   <section
-    class="section-wrap on relative z-1 w-full"
+    class="section-wrap relative z-1 w-full"
     :class="[
       theme == 'dark' && 'bg-shadowblue text-white',
       hero

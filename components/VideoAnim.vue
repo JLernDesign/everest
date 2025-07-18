@@ -1,6 +1,6 @@
 <script setup>
 import is from "is_js";
-const props = defineProps(["file", "loc", "loop", "autoplay"]);
+const props = defineProps(["file", "loc", "loop", "autoplay", "size"]);
 
 const chrome = is.chrome();
 const firefox = is.firefox();
@@ -11,11 +11,18 @@ const ios = is.ios();
 const video = ref(null);
 
 const playVideo = () => {
+  //console.log("play", video.value.currentTime);
   video.value.play();
+};
+
+const pauseVideo = () => {
+  //console.log("pause", video.value.currentTime);
+  video.value.pause();
 };
 
 defineExpose({
   playVideo,
+  pauseVideo,
 });
 </script>
 
@@ -27,6 +34,7 @@ defineExpose({
       :loop="loop && true"
       :autoplay="autoplay && true"
       ref="video"
+      :class="size === 'fill' ? 'h-full w-full' : null"
     >
       <source
         v-if="safari || ios"

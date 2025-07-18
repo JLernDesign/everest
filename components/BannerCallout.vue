@@ -1,9 +1,36 @@
 <script setup>
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 const props = defineProps(["data"]);
+
+if (isSSR()) {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
+let ctx;
+const main = ref(null);
+const video = ref(null);
+
+onMounted(() => {
+  // add animation context
+  ctx = gsap.context((self) => {
+    // turn on rock animation when in view
+    playInView(main.value, null, toggleVideo);
+  });
+});
+
+onUnmounted(() => {
+  ctx.revert();
+});
+
+const toggleVideo = (ev) => {
+  ev == "enter" ? video.value.playVideo() : video.value.pauseVideo();
+};
 </script>
 
 <template>
-  <div class="relative p-side-mob s:px-side s:py-section-bot">
+  <div class="relative p-side-mob s:px-side s:py-section-bot" ref="main">
     <!-- content -->
     <div
       class="relative z-1 flex flex-col justify-between overflow-hidden rounded-base-mob bg-shadowblue bg-[url(/ui/callout-texture-mob@2x.jpg)] bg-cover p-side-mob text-white s:flex-row s:rounded-base s:bg-[url(/ui/callout-texture@2x.jpg)] s:p-[7rem] s:pl-[11.5rem]"
@@ -30,7 +57,14 @@ const props = defineProps(["data"]);
       <!-- image 3D -->
       <div
         class="relative h-[16rem] w-full overflow-hidden rounded-base-mob bg-[url(/public/ui/callout-gradient@2x.png)] bg-cover s:h-[31rem] s:w-[59rem] s:rounded-base max-s:order-1"
-      ></div>
+      >
+        <VideoAnim
+          file="RevolvingRockLogo1"
+          :loop="true"
+          size="fill"
+          ref="video"
+        />
+      </div>
     </div>
   </div>
 </template>

@@ -1,5 +1,16 @@
 <script setup>
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
+
 const props = defineProps(["data", "align", "subnav"]);
+const main = ref(null);
+const video = ref(null);
+
+if (isSSR()) {
+  gsap.registerPlugin(SplitText);
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 // check for inline image marker
 const hl = props.data.headline.split("[]");
@@ -7,6 +18,83 @@ let hasBlock = false;
 if (hl.length > 1) {
   hasBlock = true;
 }
+
+// headline animation
+let ctx, tl;
+const stag = 0.02;
+
+const splitHeadline = (el) => {
+  const spl = new SplitText(el, {
+    type: "chars, words",
+    charsClass: "letter",
+    wordsClass: "word overflow-hidden pb-1",
+  });
+  const letters = main.value.querySelectorAll(".letter");
+  gsap.set(letters, {
+    opacity: 0,
+    yPercent: 100,
+  });
+
+  const rock = main.value.querySelector(".rock-anim");
+  gsap.set(rock, {
+    opacity: 0,
+    yPercent: 100,
+  });
+};
+
+onMounted(() => {
+  // split headline into letters
+  splitHeadline(main.value.querySelectorAll(".text"));
+
+  // add animation context
+  ctx = gsap.context((self) => {
+    // turn on rock animation when in view
+    playInView(main.value, null, toggleVideo);
+
+    // setup timeline
+    tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: main.value,
+        start: "top 60%",
+        end: "bottom 55%",
+        scrub: true,
+      },
+    });
+
+    // get characters and reverse order
+    const letters = gsap.utils.toArray(self.selector(".letter")).reverse();
+    const rock = self.selector(".rock-anim");
+
+    // animate each character on
+    tl.to(letters, {
+      duration: 0.5,
+      opacity: 1,
+      stagger: stag,
+      yPercent: 0,
+      ease: "power3.inOut",
+    });
+
+    // show rock animation
+    tl.to(
+      rock,
+      {
+        duration: 0.5,
+        opacity: 1,
+        yPercent: 0,
+        ease: "power3.inOut",
+      },
+      stag * 3,
+    );
+  }, main.value);
+});
+
+onUnmounted(() => {
+  ctx.revert();
+});
+
+const toggleVideo = (ev) => {
+  ev == "enter" ? video.value.playVideo() : video.value.pauseVideo();
+};
 </script>
 
 <template>
@@ -16,19 +104,27 @@ if (hl.length > 1) {
   >
     <h2
       class="font-barlow-cond-semibold text-xxl-mob uppercase leading-xxl s:text-xxl"
+      ref="main"
     >
       <!-- has inline block element -->
       <template v-if="hasBlock">
-        <span v-html="formatText(hl[0])"></span>
+        <span class="text" v-html="formatText(hl[0])"></span>
         <span
-          class="-mr-4 inline-flex h-[5.5rem] w-[10.6rem] rounded-[.7rem] bg-[url(/ui/callout-gradient@2x.png)] bg-cover s:-mr-10 s:h-[16.8rem] s:w-[32.1rem] s:rounded-[.9rem]"
-        ></span>
-        <span v-html="formatText(hl[1])"></span>
+          class="rock-anim -mr-4 inline-flex h-[5.5rem] w-[10.6rem] overflow-hidden rounded-[.7rem] bg-[url(/ui/callout-gradient@2x.png)] bg-cover s:-mr-10 s:h-[16.8rem] s:w-[32.1rem] s:rounded-[.9rem]"
+        >
+          <VideoAnim
+            file="RevolvingRockLogo1"
+            :loop="true"
+            size="fill"
+            ref="video"
+          />
+        </span>
+        <span class="text" v-html="formatText(hl[1])"></span>
       </template>
 
       <!-- plain headline -->
       <template v-else>
-        <span v-html="formatText(data.headline)"></span>
+        <span class="text" v-html="formatText(data.headline)"></span>
       </template>
     </h2>
 

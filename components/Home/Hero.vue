@@ -1,5 +1,4 @@
 <script setup>
-import { Image as DatocmsImage } from "vue-datocms";
 const props = defineProps(["data", "mediaSlides"]);
 
 const loaded = ref(false);
