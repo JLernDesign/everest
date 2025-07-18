@@ -6,9 +6,11 @@ const loaded = ref(false);
 const video = ref(null);
 
 onMounted(() => {
-  loaded.value = true;
   setTimeout(() => {
-    video.value.playVideo();
+    loaded.value = true;
+    setTimeout(() => {
+      video.value.playVideo();
+    }, 200);
   }, 200);
 });
 </script>

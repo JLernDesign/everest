@@ -36,8 +36,6 @@ onMounted(() => {
 onUnmounted(() => {});
 
 const closeVideoModal = (id) => {
-  video_ready.value = false;
-
   // pause mux video
   player = document.getElementById("video");
   if (provider && provider == "mux") {
@@ -53,13 +51,14 @@ const closeVideoModal = (id) => {
     ease: "power3.in",
     onComplete: function () {
       videoID.value = "";
+      video_ready.value = false;
     },
   });
-  gsap.to(wrap, {
+  /* gsap.to(wrap, {
     duration: 0.35,
     opacity: 0,
     ease: "power3.in",
-  });
+  }); */
 };
 </script>
 
@@ -82,7 +81,7 @@ const closeVideoModal = (id) => {
           :data="video"
           id="video"
           accent-color="#FC5161"
-          class="rounded-base-mob overflow-hidden s:rounded-base"
+          class="overflow-hidden rounded-base-mob s:rounded-base"
         />
 
         <!-- youtube -->
@@ -92,14 +91,14 @@ const closeVideoModal = (id) => {
           width="100%"
           height="auto"
           :player-vars="{ autoplay: true, rel: 0 }"
-          class="rounded-base-mob h-full w-full overflow-hidden s:rounded-base"
+          class="h-full w-full overflow-hidden rounded-base-mob s:rounded-base"
           :video-id="video.providerUid"
           ref="yt_player"
         />
 
         <!-- close button -->
         <button
-          class="absolute -right-[2.5rem] -top-[5rem] size-[3rem]"
+          class="absolute -right-[.5rem] -top-[4rem] size-[3rem] s:-right-[2.5rem] s:-top-[5rem]"
           @click="closeVideoModal"
         >
           <div

@@ -94,7 +94,11 @@ onMounted(() => {
               class="photo aspect-[1.57] w-full overflow-hidden rounded-base-mob s:rounded-base"
             >
               <!-- image -->
-              <img :src="slide.photo.url" alt="" />
+              <img
+                :src="slide.photo.url"
+                alt=""
+                class="h-full w-full object-cover"
+              />
             </div>
           </div>
         </Carousel>
@@ -126,7 +130,7 @@ onMounted(() => {
               <img
                 v-if="slide.photo"
                 :src="slide.photo.url"
-                class="w-full"
+                class="h-full w-full object-cover"
                 alt=""
               />
             </div>
@@ -164,7 +168,11 @@ onMounted(() => {
               class="photo aspect-[1.57] w-full overflow-hidden rounded-base-mob s:rounded-base"
             >
               <!-- image -->
-              <img :src="slide.photo.url" alt="" />
+              <img
+                :src="slide.photo.url"
+                alt=""
+                class="h-full w-full object-cover"
+              />
             </div>
           </div>
         </Carousel>

@@ -18,13 +18,15 @@ onMounted(() => {
     <SectionHeaderBig align="center" :data="data" />
 
     <!-- brands -->
-    <Brands
-      v-if="logos"
-      class="mt-[8rem] s:mt-[12rem]"
-      theme="light"
-      :data="logos"
-      :scroll="true"
-    />
+    <template v-if="loaded">
+      <Brands
+        v-if="logos"
+        class="mt-[8rem] s:mt-[12rem]"
+        theme="light"
+        :data="logos"
+        :scroll="true"
+      />
+    </template>
   </Section>
 </template>
 
