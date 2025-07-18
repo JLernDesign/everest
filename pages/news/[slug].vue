@@ -13,8 +13,6 @@ const { data } = await useGraphqlQuery({
   },
 });
 
-console.log(data.value);
-
 let ctx, mm;
 const min = 650;
 const main = ref();

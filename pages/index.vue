@@ -2,7 +2,6 @@
 import { homeQuery } from "~/assets/graphql/queries/home";
 
 const loaded = ref(false);
-const placeholder = ref(true);
 
 const { data } = await useGraphqlQuery({
   query: homeQuery.loc.source.body,
@@ -18,10 +17,6 @@ onMounted(() => {
   setTimeout(() => {
     loaded.value = true;
   }, 1000);
-
-  setTimeout(() => {
-    placeholder.value = false;
-  }, 1100);
 });
 </script>
 
@@ -32,13 +27,12 @@ onMounted(() => {
       :data="page.hero"
       :mediaSlides="page.mediaSlider.mediaSlides"
     />
-    <div v-if="placeholder" class="h-screen w-screen bg-skyblue"></div>
+    <LazyHomeIntro
+      v-if="page.intro"
+      :data="page.intro"
+      :logos="page.featuredLogos"
+    />
     <template v-if="loaded">
-      <LazyHomeIntro
-        v-if="page.intro"
-        :data="page.intro"
-        :logos="page.featuredLogos"
-      />
       <LazyFlexibleBlocks
         :data="page.flexibleContent.modules"
         template="home"

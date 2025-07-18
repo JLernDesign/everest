@@ -3,12 +3,21 @@ const props = defineProps({
   theme: { default: null },
   hero: { default: false },
   side: { default: "normal" },
+  anim: { default: false },
+});
+
+const main = ref(null);
+
+onMounted(() => {
+  if (props.anim) {
+    toggleOn(main.value, 0, 500);
+  }
 });
 </script>
 
 <template>
   <section
-    class="relative z-1 w-full"
+    class="section-wrap on relative z-1 w-full"
     :class="[
       theme == 'dark' && 'bg-shadowblue text-white',
       hero
@@ -18,6 +27,7 @@ const props = defineProps({
       side == 'lg' && 'px-side-mob s:px-side-lg',
       side == 'none' && 'px-0',
     ]"
+    ref="main"
   >
     <slot />
   </section>

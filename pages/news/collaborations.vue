@@ -10,8 +10,6 @@ const page = data.value.newsPage;
 const collections = data.value.allNewsCollections;
 const posts = data.value.allNewsPosts.filter((post) => post.tag.slug === slug);
 
-console.log(posts);
-
 onMounted(() => {
   const theme = useState("theme");
   theme.value = "light";

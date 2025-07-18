@@ -13,6 +13,7 @@ const loaded = ref(false);
 const { y, directions } = useScroll(window);
 const sp = 0.75;
 const easer = "power3.out";
+
 onMounted(() => {
   setTimeout(() => {
     loaded.value = true;

@@ -9,10 +9,10 @@ const { data } = await useGraphqlQuery({
 });
 const page = data.value.mediaPage;
 const collections = data.value.allMediaCollections.filter(
-  (collection) => collection.tag.slug != "ebooks",
+  (collection) => collection.tag?.slug != "ebooks",
 );
 const posts = data.value.allMediaPosts.filter(
-  (post) => post.tag.slug === route.params.slug,
+  (post) => post.tag?.slug === route.params.slug,
 );
 
 onMounted(() => {

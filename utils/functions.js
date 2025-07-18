@@ -110,6 +110,32 @@ export const fillColor = (obj) => {
   });
 }; */
 
+// turn section class on/off based on scroll position
+export const toggleOn = (el, os = 0, add = 0) => {
+  ScrollTrigger.create({
+    trigger: el,
+    start: `top+=${os} bottom`,
+    end: `bottom+=${add} top`,
+
+    onEnter: () => {
+      /*       console.log("onEnter", el);
+       */ el.classList.add("on");
+    },
+    onEnterBack: () => {
+      /*       console.log("onEnterBack", el);
+       */ el.classList.add("on");
+    },
+    onLeave: () => {
+      /*       console.log("onLeave", el);
+       */ el.classList.remove("on");
+    },
+    onLeaveBack: () => {
+      /*       console.log("onLeaveBack", el);
+       */ el.classList.remove("on");
+    },
+  });
+};
+
 // pin side menu while scrolling
 
 export const pinMenu = (el, startPin, endPin, topOs) => {

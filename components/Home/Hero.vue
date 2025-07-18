@@ -3,34 +3,22 @@ import { Image as DatocmsImage } from "vue-datocms";
 const props = defineProps(["data", "mediaSlides"]);
 
 const loaded = ref(false);
+const video = ref(null);
 
 onMounted(() => {
+  loaded.value = true;
   setTimeout(() => {
-    loaded.value = true;
+    video.value.playVideo();
   }, 200);
 });
-
-const hero_img = {
-  responsiveImage: {
-    srcSet:
-      "https://www.datocms-assets.com/160976/1752429988-ph-home-hero-2x.png?dpr=0.25 523w,https://www.datocms-assets.com/160976/1752429988-ph-home-hero-2x.png?dpr=0.5 1046w,https://www.datocms-assets.com/160976/1752429988-ph-home-hero-2x.png?dpr=0.75 1569w,https://www.datocms-assets.com/160976/1752429988-ph-home-hero-2x.png 2092w",
-    webpSrcSet:
-      "https://www.datocms-assets.com/160976/1752429988-ph-home-hero-2x.png?dpr=0.25&fm=webp 523w,https://www.datocms-assets.com/160976/1752429988-ph-home-hero-2x.png?dpr=0.5&fm=webp 1046w,https://www.datocms-assets.com/160976/1752429988-ph-home-hero-2x.png?dpr=0.75&fm=webp 1569w,https://www.datocms-assets.com/160976/1752429988-ph-home-hero-2x.png?fm=webp 2092w",
-    sizes: "(max-width: 2092px) 100vw, 2092px",
-    src: "https://www.datocms-assets.com/160976/1752429988-ph-home-hero-2x.png",
-    width: 2092,
-    height: 1904,
-    aspectRatio: 1.0987394957983194,
-    alt: null,
-    title: null,
-    base64:
-      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAWCAYAAADafVyIAAADeUlEQVR42n2V67LbJhSFEaCrfa6Zad//IfKj0zc6TdqcHFu2JSTyLYQU223DzB4h2Ky1b2z85z/+NDFGM8+zmaYpSQgT/1Na07DWGu/9b74sf6/K8qmqKqbl5Jw7FUXRc74PIYzDMMyIQ/w4jiXnnRQ3AgFJOMS/XQiYWwSCGd0IuKRgXkBQoF+gZzVn2Cz8Oouxzrdtm4CuPZCsayLLHkQZI/As1nnvQPMY6DkTsTpmD0o8KhNB13X/CtH/EAjcVlVt67ry8kResTcRxZkzdgzBECen8Gwh+hWB1lcCrC8BLau6bmpJVWnNWW0a49EHH4JxTATyIBGgvBFck1wTEE950EGwB3vfNHULUUHCR2dNDcElGgPBTIGEWwK5fu3BOgScZxDYPXpPi7hnkZXeF96aEfPPIkBG5220rpJXwl0IVksXD/gyj1eiKipm88q+5FOWLp1zbgT4ZBaSAW0OGVnmszhPxn+ZA0ZNDb6yJoIX1iTtol9dZKksZu2CTkAKwpNKNHnQ930CmuTBdtHC4lFM5jwC8EAwH4j5AwbtkUaXSncBgon9AYxRZziriooS/md/OBwWAoHLKsCvvWA03KbGO1cvhVSpMBxflS1RciETnNC/BHkRggh0AYufBGuIIAiZZG0VS6k6LpqfAJUMyAjhCYIDBO9gvE/T3IM/cH7SeeFuIVpzEBKBPAhrHlQhZ4DOhOMM6DH3Is3fWf+KAV/Q+wcjv2PgWX1JIdIgySMg8w3Bz68I5h6CHisPEHzIdd1a9k8U/t/U5BsEb2D9xTpeTEf2LpsHAo93pbmJSd8jBEd1TIw4qrEptpoD8g2Fr5ngjf8+3OXw5qIp1tdipcQmlXThfyAcA/oSk0LmHJ65I6ofMsDcDWH4pmn+8x6sb0K+C6ktqwUDbtVVc7sWkRSmFSPlUIatHqRmh0a8I7jrRyrVFos7CHaZYFbLgLjV/lbqa/50VgT7/T57ELdXbCOQ9TE+wPBIMp+x9gXgx0xAO/Ijt/xICL+D8ZHzshVKSvJut7vppgvBvIUHecLCF8BfAfwE7lMmaHSL87N5zBdtAHi8IVhzcN+yU9NbLtpjIQ+cUzd9Lpc3WXmo5IGTB0UhDw6cPXH2CzJvBKoIja2bYrneEM0pYT0mjeJMKFpi0gLcIbxsVcoBBB0EO/Q64t5x0TrAD2sOfgCgq/PG1kWNZgAAAABJRU5ErkJggg==",
-  },
-};
 </script>
 
 <template>
-  <Section :hero="true" class="!pt-[10.5rem] s:!pt-[24.5rem] s:pb-[10rem]">
+  <Section
+    class="!pt-[10.5rem] s:!pt-[24.5rem] s:pb-[10rem]"
+    :hero="true"
+    :anim="true"
+  >
     <SectionHeader
       class="max-w-[60rem] transition-opacity duration-500"
       :class="loaded ? 'opacity-100' : 'opacity-0'"
@@ -41,68 +29,76 @@ const hero_img = {
 
     <!-- image -->
     <div
-      class="image-wrap relative left-1/2 top-auto -ml-[91rem] w-[180rem] origin-top scale-[.4] s:absolute s:left-0 s:top-0 s:ml-0 s:scale-100 max-s:mt-[3.2rem] max-s:h-[36rem]"
+      class="image-wrap relative left-1/2 top-auto -ml-[91rem] h-[112rem] w-[180rem] origin-top scale-[.4] s:absolute s:left-0 s:top-0 s:ml-0 s:scale-100 max-s:mt-[3.2rem] max-s:h-[36rem]"
     >
       <UIGlow
-        class="glower left-[36.2rem] top-[8.3rem] h-[106.2rem] !w-[118.1rem] transition-opacity duration-500 s:top-[19.7rem]"
-        :class="loaded ? 'opacity-100' : 'opacity-0'"
+        class="glower left-[36.2rem] top-[8.3rem] h-[106.2rem] !w-[118.1rem] s:top-[19.7rem]"
         src="/home/hero-glow.svg"
       />
+
+      <!-- laptop animation -->
       <div
-        class="bg-image absolute left-[31.4rem] top-0 z-1 w-[104.6rem] s:top-[11.4rem]"
+        class="computer-wrap absolute left-[31.4rem] top-0 z-1 h-[100rem] w-[110rem] overflow-hidden s:top-[11.4rem]"
       >
-        <div class="computer absolute left-0 top-0 z-0">
-          <DatocmsImage :data="hero_img.responsiveImage" />
-          <!-- <img src="/public/home/ph-home-hero@2x.png" alt="" /> -->
+        <div
+          class="absolute w-[104.6rem] translate-x-[6.2rem] translate-y-[-1rem] scale-[1.5]"
+        >
+          <VideoAnim file="Laptop" ref="video" />
         </div>
       </div>
 
+      <!-- cover laptop bottom with clouds to remove hard edge -->
+      <img
+        src="/public/ui/cloud-type2.png"
+        alt=""
+        class="pointer-events-none absolute bottom-0 left-0 z-2 hidden h-[46rem] w-[120rem] translate-x-[50rem] translate-y-[25rem] scale-x-[-1] s:block"
+      />
+
       <!-- clouds -->
-      <div
-        :class="loaded ? 'opacity-100' : 'opacity-0'"
-        class="transition-opacity duration-500"
-      >
+      <UICloud
+        type="2"
+        class="cloud1 -right-[32.4rem] -top-[30.5rem]"
+        :anim="true"
+        :speed="50"
+      />
+      <div class="cloud-group absolute left-0 top-[35rem] z-1 s:top-[45.8rem]">
+        <UICloud
+          type="3"
+          class="cloud2 left-[64.7rem] top-[23rem]"
+          :anim="true"
+          :speed="55"
+        />
+        <UICloud
+          type="1"
+          class="cloud3 -left-[9rem] top-[27rem]"
+          :flip="true"
+          :anim="true"
+          :speed="65"
+        />
+        <UICloud
+          type="1"
+          class="cloud4 left-[24.6rem] top-[44rem]"
+          :anim="true"
+          :speed="40"
+          :rot="-10"
+          :width="91"
+        />
         <UICloud
           type="2"
-          class="-right-[32.4rem] -top-[30.5rem]"
+          class="cloud5 -left-[22.9rem] top-0"
           :anim="true"
-          :speed="50"
+          :speed="35"
         />
-        <div
-          class="cloud-group absolute left-0 top-[35rem] z-1 s:top-[45.8rem]"
-        >
-          <UICloud
-            type="3"
-            class="left-[64.7rem] top-[23rem]"
-            :anim="true"
-            :speed="45"
-          />
-          <UICloud
-            type="1"
-            class="-left-[9rem] top-[27rem]"
-            :flip="true"
-            :anim="true"
-            :speed="40"
-          />
-          <UICloud
-            type="1"
-            class="left-[24.6rem] top-[44rem]"
-            :anim="true"
-            :speed="35"
-            :rot="-10"
-            :width="91"
-          />
-          <UICloud
-            type="2"
-            class="-left-[22.9rem] top-0"
-            :anim="true"
-            :speed="30"
-          />
-        </div>
       </div>
     </div>
 
-    <!-- video -->
+    <!-- cover image for fade in -->
+    <div
+      class="image-cover fixed left-0 top-0 z-1 grid h-full w-full place-items-center bg-skyblue transition-opacity duration-500"
+      :class="loaded ? 'opacity-0' : 'opacity-100'"
+    ></div>
+
+    <!-- video slider -->
     <div
       v-if="mediaSlides && mediaSlides.length > 0"
       class="relative z-5 transition-opacity duration-500 s:mt-[24rem] s:grid s:justify-end"
