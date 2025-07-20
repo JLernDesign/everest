@@ -153,6 +153,9 @@ sup {
   background-repeat: no-repeat;
   background-size: 0% 1px;
   transition: var(--ease-in-out);
+  &.use-ul {
+    background-size: 100% 1px;
+  }
   &.fast {
     transition:
       color 0.3s linear,
@@ -360,6 +363,9 @@ sup {
 }
 svg.trans {
   transition: all 0.3s linear;
+}
+.anim-item {
+  opacity: 0;
 }
 
 /* hoveres */

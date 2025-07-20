@@ -256,6 +256,33 @@ export const playInView = (
   });
 };
 
+// animate items into place on scroll to section
+export const animIntoView = (
+  items,
+  trigger,
+  stagger = 0.1,
+  start = "top 50%",
+) => {
+  // set initial positions
+  gsap.set(items, {
+    yPercent: 25,
+    opacity: 0,
+  });
+
+  // trigger animate on when enter into view
+  gsap.to(items, {
+    duration: 1.25,
+    yPercent: 0,
+    opacity: 1,
+    ease: "power3.out",
+    stagger: stagger,
+    scrollTrigger: {
+      trigger: trigger,
+      start: start,
+    },
+  });
+};
+
 // expand/collapse sections
 export const toggleExpand = (id, group) => {
   group.forEach((item, i) => {

@@ -1,7 +1,8 @@
 <script setup>
-import { ref } from "vue";
+import gsap from "gsap";
 
 const props = defineProps(["data"]);
+const anims = ref(null);
 
 // if more than 3 items, init slider
 let slider = false;
@@ -26,6 +27,21 @@ const handlePrev = () => {
 const handleNext = () => {
   carouselRef.value?.next();
 };
+
+let ctx;
+onMounted(() => {
+  ctx = gsap.context((self) => {
+    // animate items into place on scroll to section
+    setTimeout(() => {
+      const items = gsap.utils.toArray(".anim-item");
+      animIntoView(items, anims.value, 0.2, "top 80%");
+    }, 200);
+  }, anims.value);
+});
+
+onUnmounted(() => {
+  ctx.revert();
+});
 </script>
 
 <template>
@@ -38,7 +54,7 @@ const handleNext = () => {
     <SectionHeader theme="dark" :data="data.header" />
 
     <!-- buckets -->
-    <div class="mt-12 s:mt-[8rem] s:px-[13rem]">
+    <div class="mt-12 s:mt-[8rem] s:px-[13rem]" ref="anims">
       <div class="w-full overflow-hidden">
         <Carousel
           ref="carouselRef"
@@ -50,7 +66,7 @@ const handleNext = () => {
         >
           <div
             v-for="(item, i) in data.buckets"
-            class="item"
+            class="item anim-item"
             :class="slider && 'px-[2.9rem]'"
           >
             <div
@@ -58,7 +74,7 @@ const handleNext = () => {
             >
               <IconTri color="fill-red" class="mb-4" />
               <div
-                class="num font-barlow-cond-semibold mb-12 text-xxl-mob leading-xxl text-shadowblue s:text-xxl"
+                class="num mb-12 font-barlow-cond-semibold text-xxl-mob leading-xxl text-shadowblue s:text-xxl"
               >
                 {{ "0" + (i + 1) }}
               </div>
@@ -83,7 +99,7 @@ const handleNext = () => {
             >
               <IconTri color="fill-red" class="mb-10 s:mb-4" />
               <div
-                class="num font-barlow-cond-semibold mb-12 text-xxl-mob leading-xxl text-shadowblue s:text-xxl"
+                class="num mb-12 font-barlow-cond-semibold text-xxl-mob leading-xxl text-shadowblue s:text-xxl"
               >
                 {{ "0" + (i + 1) }}
               </div>

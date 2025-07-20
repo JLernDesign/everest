@@ -1,11 +1,27 @@
 <script setup>
+import gsap from "gsap";
 import { Image as DatocmsImage } from "vue-datocms";
 
 const props = defineProps(["theme", "nav", "data", "num", "template"]);
+
+const main = ref(null);
+let ctx;
+
+onMounted(() => {
+  ctx = gsap.context((self) => {
+    // animate items into place on scroll to section
+    const items = gsap.utils.toArray(".anim-item");
+    animIntoView(items, main.value, 0.1, "top 40%");
+  }, main.value);
+});
+onUnmounted(() => {
+  ctx.revert();
+});
 </script>
 
 <template>
   <div
+    ref="main"
     class="overview-card dark relative w-full border-b px-side-mob py-[6rem] s:px-[20rem] s:py-[11rem]"
     :class="
       theme == 'dark'
@@ -16,9 +32,11 @@ const props = defineProps(["theme", "nav", "data", "num", "template"]);
     <div class="content relative z-1 flex flex-col justify-between s:flex-row">
       <!-- text -->
       <div
-        class="left flex w-full s:w-1/2 s:items-center max-s:order-2 max-s:mt-12 max-s:flex-col"
+        class="anim-item left flex w-full s:w-1/2 s:items-center max-s:order-2 max-s:mt-12 max-s:flex-col"
       >
-        <div class="num left-0 top-0 mb-[2rem] s:absolute s:mb-[11rem]">
+        <div
+          class="anim-item num left-0 top-0 mb-[2rem] s:absolute s:mb-[11rem]"
+        >
           <IconTri color="fill-red" />
           <div class="font-barlow-cond text-num opacity-30">
             {{ num < 10 ? "0" + num : num }}
@@ -61,7 +79,7 @@ const props = defineProps(["theme", "nav", "data", "num", "template"]);
       </div>
 
       <!-- image -->
-      <div class="right w-full s:w-1/2 max-s:order-1">
+      <div class="anim-item right w-full s:w-1/2 max-s:order-1">
         <div
           class="image relative flex aspect-[1.0675] w-full items-center justify-center overflow-hidden rounded-base-mob bg-skyblue s:rounded-base s:p-[11.5rem]"
         >

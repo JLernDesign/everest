@@ -20,6 +20,7 @@ const props = defineProps({
       align == 'left' ? 'text-left' : 'text-center',
       theme == 'dark' && 'text-white',
       valign == 'center' && 'flex flex-col justify-center',
+      loc == 'home-hero' && 's:!space-y-[1.8rem]',
     ]"
   >
     <!-- eyebrow -->
@@ -36,7 +37,7 @@ const props = defineProps({
       class="has-break space-y-[2rem] s:space-y-[2.5rem] s:pb-4"
       :class="[
         align == 'center' && 'mx-auto max-w-[70rem]',
-        loc == 'home-hero' && 's:!space-y-[1.8rem]',
+        loc == 'home-hero' && 's:!space-y-[1.8rem] s:!pb-0',
         template == 'news' && 'max-w-[80rem]',
       ]"
     >

@@ -52,7 +52,7 @@ useHead(() => {
     <!-- media module -->
     <div
       v-if="page.demoVideo"
-      class="fixed bottom-[4rem] right-[4rem] z-20 hidden s:block"
+      class="pointer-events-none fixed bottom-[4rem] right-[4rem] z-20 hidden s:block"
     >
       <div
         class="relative aspect-[1.31] origin-bottom-right overflow-hidden rounded-base-mob transition-all duration-[750ms] ease-in-out s:w-[33.5rem] s:rounded-base"

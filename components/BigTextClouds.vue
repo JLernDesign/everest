@@ -25,6 +25,7 @@ const props = defineProps(["data"]);
       align="center"
       :data="data.header"
       :subnav="data.sections"
+      anim="scroll"
     />
   </Section>
 </template>

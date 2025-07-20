@@ -8,6 +8,7 @@ const { data } = await useGraphqlQuery({
 const page = data.value.about;
 
 onMounted(() => {
+  window.scrollTo(0, 0);
   const theme = useState("theme");
   theme.value = "light";
 });

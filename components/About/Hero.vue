@@ -1,7 +1,12 @@
 <script setup>
+import gsap from "gsap";
+
 const props = defineProps(["data", "stats"]);
 const mobile = breakpoints.smallerOrEqual("tablet1");
 const slider = ref(true);
+const anims = ref(null);
+const loaded = ref(false);
+let ctx;
 
 onMounted(() => {
   if (!mobile.value && props.stats.length <= 3) {
@@ -9,6 +14,22 @@ onMounted(() => {
   } else {
     slider.value = true;
   }
+
+  ctx = gsap.context((self) => {
+    // animate items into place on scroll to section
+    setTimeout(() => {
+      const items = gsap.utils.toArray(".anim-item");
+      animIntoView(items, anims.value, 0.2, "top 90%");
+    }, 200);
+
+    setTimeout(() => {
+      loaded.value = true;
+    }, 200);
+  }, anims.value);
+});
+
+onUnmounted(() => {
+  ctx.revert();
 });
 
 let duplicated = [];
@@ -32,20 +53,37 @@ watch(mobile, () => {
     :hero="true"
     side="none"
     class="bg-skyblue pb-[16rem] text-center s:pb-section-bot-lg max-s:pt-hero-mob-lg"
+    :anim="true"
   >
     <!-- bg elements -->
-    <UICloud type="1" class="-left-[11.5rem] top-[26.5rem] -scale-x-100" />
-    <UICloud type="2" class="-left-[25rem] top-0" />
+    <UICloud
+      type="1"
+      class="-left-[11.5rem] top-[26.5rem]"
+      :flip="true"
+      :anim="true"
+      :speed="65"
+    />
+    <UICloud type="2" class="-left-[25rem] top-0" :anim="true" :speed="55" />
     <UICloud
       type="2"
-      class="left-[22.1rem] top-[43.5rem] !w-[91rem] -rotate-[10deg]"
+      class="left-[22.1rem] top-[43.5rem]"
+      :anim="true"
+      :speed="45"
+      :rot="-10"
+      :width="91"
     />
-    <UICloud type="3" class="left-[64rem] top-[45.7rem]" />
+    <UICloud
+      type="3"
+      class="left-[64rem] top-[45.7rem]"
+      :anim="true"
+      :speed="35"
+    />
 
     <SectionHeaderBig
       align="center"
       :data="{ headline: data }"
       class="px-side-mob s:px-side"
+      anim="auto"
     />
 
     <!-- slider -->
@@ -79,11 +117,12 @@ watch(mobile, () => {
     <!-- static buckets if 3 or less stats -->
     <template v-else>
       <div
-        class="mb-[6rem] mt-[37.5rem] flex flex-wrap justify-center gap-[8rem]"
+        ref="anims"
+        class="anim-wrap mb-[6rem] mt-[37.5rem] flex flex-wrap justify-center gap-[8rem]"
       >
         <div
           v-for="(stat, i) in stats"
-          class="z-1 h-full w-[35.2rem] rounded-base-mob bg-white p-[2rem] text-left s:h-[27.7rem] s:w-[40rem] s:rounded-base s:p-[3.2rem] s:pt-[3.75rem]"
+          class="anim-item z-1 h-full w-[35.2rem] rounded-base-mob bg-white p-[2rem] text-left s:h-[27.7rem] s:w-[40rem] s:rounded-base s:p-[3.2rem] s:pt-[3.75rem]"
           :style="`margin-top:-${13 * i}rem`"
         >
           <IconTri color="fill-red" class="mb-[2.4rem]" />
@@ -96,6 +135,12 @@ watch(mobile, () => {
         </div>
       </div>
     </template>
+
+    <!-- cover image for fade in -->
+    <div
+      class="image-cover fixed left-0 top-0 z-1 grid h-full w-full place-items-center bg-skyblue transition-opacity duration-500"
+      :class="loaded ? 'opacity-0' : 'opacity-100'"
+    ></div>
   </Section>
 </template>
 

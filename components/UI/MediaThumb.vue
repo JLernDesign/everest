@@ -50,7 +50,7 @@ defineExpose({
 
 <template>
   <div
-    class="item h-full w-full shrink-0 s:w-[33.5rem]"
+    class="item pointer-events-auto h-full w-full shrink-0 s:w-[33.5rem]"
     @mouseenter="hoverOn"
     @mouseleave="hoverOff"
   >

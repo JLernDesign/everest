@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 
-const props = defineProps(["data", "align", "subnav"]);
+const props = defineProps(["data", "align", "subnav", "anim"]);
 const main = ref(null);
 const video = ref(null);
 
@@ -21,25 +21,31 @@ if (hl.length > 1) {
 
 // headline animation
 let ctx, tl;
-const stag = 0.02;
+const stag = props.anim == "scroll" ? 0.02 : 0.1;
 
 const splitHeadline = (el) => {
+  // split headline into letters
   const spl = new SplitText(el, {
     type: "chars, words",
     charsClass: "letter",
     wordsClass: "word overflow-hidden pb-1 whitespace-nowrap",
   });
+
+  // set initial positions
   const letters = main.value.querySelectorAll(".letter");
   gsap.set(letters, {
     opacity: 0,
     yPercent: 100,
   });
 
+  // set rock animation
   const rock = main.value.querySelector(".rock-anim");
-  gsap.set(rock, {
-    opacity: 0,
-    yPercent: 100,
-  });
+  if (rock) {
+    gsap.set(rock, {
+      opacity: 0,
+      yPercent: 100,
+    });
+  }
 };
 
 onMounted(() => {
@@ -49,17 +55,23 @@ onMounted(() => {
   // add animation context
   ctx = gsap.context((self) => {
     // turn on rock animation when in view
-    playInView(main.value, null, toggleVideo);
+    if (hasBlock) {
+      playInView(main.value, null, toggleVideo);
+    }
 
-    // setup timeline
-    tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: main.value,
-        start: "top 90%",
-        end: "bottom 60%",
-        scrub: true,
-      },
-    });
+    // setup timeline for headline animation
+    if (props.anim == "auto") {
+      tl = gsap.timeline().pause();
+    } else {
+      tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: main.value,
+          start: "top 90%",
+          end: "bottom 60%",
+          scrub: true,
+        },
+      });
+    }
 
     // get characters and reverse order
     const letters = gsap.utils.toArray(self.selector(".letter")).reverse();
@@ -67,24 +79,31 @@ onMounted(() => {
 
     // animate each character on
     tl.to(letters, {
-      duration: 0.5,
+      duration: props.anim == "scroll" ? 0.5 : 0.75,
       opacity: 1,
       stagger: stag,
       yPercent: 0,
-      ease: "power3.inOut",
+      ease: props.anim == "scroll" ? "power3.inOut" : "power3.out",
     });
 
     // show rock animation
     tl.to(
       rock,
       {
-        duration: 0.5,
+        duration: props.anim == "scroll" ? 0.5 : 0.75,
         opacity: 1,
         yPercent: 0,
-        ease: "power3.inOut",
+        ease: props.anim == "scroll" ? "power3.inOut" : "power3.out",
       },
       stag * 3,
     );
+
+    // play timeline on mounted
+    if (props.anim == "auto") {
+      setTimeout(() => {
+        tl.play();
+      }, 200);
+    }
   }, main.value);
 });
 
