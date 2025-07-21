@@ -104,10 +104,7 @@ onMounted(() => {
     </div>
 
     <!-- cover image for fade in -->
-    <div
-      class="image-cover fixed left-0 top-0 z-1 grid h-full w-full place-items-center bg-skyblue transition-opacity duration-500"
-      :class="loaded ? 'opacity-0' : 'opacity-100'"
-    ></div>
+    <LoadCover :loaded="loaded" />
 
     <!-- video slider -->
     <div
