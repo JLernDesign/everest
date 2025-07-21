@@ -153,8 +153,9 @@ sup {
   background-repeat: no-repeat;
   background-size: 0% 1px;
   transition: var(--ease-in-out);
-  &.use-ul {
+  &.cta {
     background-size: 100% 1px;
+    transition: color 0.5s linear;
   }
   &.fast {
     transition:

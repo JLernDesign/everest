@@ -36,7 +36,7 @@ export const mediaCollectionQuery = gql`
         slug
       }
     }
-    allMediaPosts(orderBy: publishDate_DESC) {
+    allMediaPosts(first: 100, orderBy: publishDate_DESC) {
       ...MediaPostFragment
     }
   }

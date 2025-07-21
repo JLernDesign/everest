@@ -25,7 +25,9 @@ onUnmounted(() => {
 });
 
 const toggleVideo = (ev) => {
-  ev == "enter" ? video.value.playVideo() : video.value.pauseVideo();
+  if (video.value) {
+    ev == "enter" ? video.value.playVideo() : video.value.pauseVideo();
+  }
 };
 </script>
 

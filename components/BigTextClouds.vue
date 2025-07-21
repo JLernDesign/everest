@@ -10,15 +10,21 @@ const props = defineProps(["data"]);
     <!-- bg elements -->
     <div
       v-for="n in 2"
-      class="absolute left-0 w-[180rem]"
-      :class="n == 1 ? 'bottom-0' : 'top-0 rotate-180'"
+      class="absolute left-0 h-[40rem] w-[180rem]"
+      :class="n == 1 ? 'bottom-0' : 'top-0 scale-y-[-1]'"
     >
       <UICloud
         type="2"
-        class="-bottom-[26.5rem] -left-[23.6rem]"
-        :class="n == 2 && 'rotate-180'"
+        class="-left-[23.6rem] top-0"
+        :anim="true"
+        :speed="60"
       />
-      <UICloud type="3" class="-bottom-[72.7rem] -right-[53.4rem]" />
+      <UICloud
+        type="3"
+        class="-right-[53.4rem] top-[5rem]"
+        :anim="true"
+        :speed="40"
+      />
       <UIGlow class="glower bottom-0 h-[21.8rem]" src="/ui/edge-gradient.svg" />
     </div>
 

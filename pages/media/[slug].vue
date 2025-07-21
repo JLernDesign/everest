@@ -7,6 +7,7 @@ const route = useRoute();
 const { data } = await useGraphqlQuery({
   query: mediaCollectionQuery.loc.source.body,
 });
+console.log(data.value);
 const page = data.value.mediaPage;
 const collections = data.value.allMediaCollections.filter(
   (collection) => collection.tag?.slug != "ebooks",

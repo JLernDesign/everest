@@ -1,12 +1,39 @@
 <script setup>
+import { gsap } from "gsap";
+
 const props = defineProps(["data"]);
+
+const main = ref(null);
+const video = ref(null);
+let ctx;
+
+onMounted(() => {
+  ctx = gsap.context((self) => {
+    playInView(main.value, null, playVideo);
+  });
+});
+
+onUnmounted(() => {
+  ctx.revert();
+});
+
+const playVideo = (ev) => {
+  if (video.value) {
+    if (ev == "enter") {
+      video.value.playVideo();
+    } else {
+      video.value.pauseVideo();
+      video.value.currentTime = 0;
+    }
+  }
+};
 </script>
 
 <template>
-  <div class="relative p-side-mob s:p-side">
+  <div class="relative p-side-mob s:p-side" ref="main">
     <!-- content -->
     <div
-      class="relative overflow-hidden rounded-base-mob bg-[#FFD0B9] px-side-mob py-side-mob s:rounded-base s:px-[11.5rem] s:py-[7rem]"
+      class="relative overflow-hidden rounded-base-mob bg-[#FFD0B9] px-side-mob py-side-mob s:min-h-[61.5rem] s:rounded-base s:px-[11.5rem] s:py-[7rem]"
     >
       <!-- gradient -->
       <div
@@ -44,11 +71,13 @@ const props = defineProps(["data"]);
 
       <!-- image -->
       <div
-        class="right-0 top-0 flex h-full items-center pr-[12rem] s:absolute max-s:h-[32.5rem]"
+        class="right-0 top-0 flex h-full items-center s:absolute s:w-[84rem] s:pr-[12rem] max-s:-mt-[3rem] max-s:h-[32.5rem]"
       >
-        <!-- <div class="w-[54rem]">
-          <img src="/public/ui/ph-footer-callout@2x.png" alt="" />
-        </div> -->
+        <div
+          class="video-wrap absolute left-1/2 top-1/2 w-[75rem] -translate-x-1/2 -translate-y-1/2 s:w-[150rem] max-s:h-0"
+        >
+          <VideoAnim file="StoneLogo1" ref="video" />
+        </div>
       </div>
 
       <!-- seal -->
