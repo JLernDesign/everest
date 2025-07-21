@@ -35,7 +35,7 @@ const goto = (n) => {
 onMounted(() => {
   let el;
   ctx = gsap.context((self) => {
-    const items = gsap.utils.toArray(".item");
+    const items = self.selector(".item");
 
     let activeElement;
     loop = horizontalLoop(items, {

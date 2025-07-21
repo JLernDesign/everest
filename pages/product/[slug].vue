@@ -17,6 +17,8 @@ const page = data.value.product;
 /* console.log(toRaw(data.value)); */
 
 onMounted(() => {
+  window.scrollTo(0, 0);
+
   const theme = useState("theme");
   theme.value = "light";
 
@@ -57,13 +59,16 @@ useHead(() => {
       <div
         class="relative aspect-[1.31] origin-bottom-right overflow-hidden rounded-base-mob transition-all duration-[750ms] ease-in-out s:w-[33.5rem] s:rounded-base"
         :class="[
-          loaded ? 'opacity-100' : 'opacity-0',
+          loaded ? 'translate-x-0 opacity-100' : 'translate-y-[2rem] opacity-0',
           scrolled ? 'translate-x-[2rem] translate-y-[2rem] scale-[.65]' : '',
         ]"
       >
         <UIMediaThumb :data="page.demoVideo" ref="demo" />
       </div>
     </div>
+
+    <!-- cover image for fade in -->
+    <LoadCover :loaded="loaded" />
   </div>
 </template>
 

@@ -472,9 +472,6 @@ svg.trans {
     /*  transform: scale(0.75); */
   }
 }
-.glower {
-  animation: glow 4s ease-in-out infinite;
-}
 
 @keyframes spin {
   0% {
@@ -490,6 +487,9 @@ svg.trans {
 }
 
 .section-wrap.on {
+  .glower {
+    animation: glow 4s ease-in-out infinite;
+  }
   .animate-cloud {
     animation: ticker 30s linear infinite;
   }

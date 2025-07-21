@@ -183,7 +183,7 @@ const toggleSubMenu = (e) => {
     <!-- submenu -->
     <template v-if="loaded">
       <div v-if="submenu" class="nav-sub relative z-0 h-0 w-full">
-        <Submenu :id="data.label" :data="data.submenu" />
+        <Submenu :id="data.label" :data="data.submenu" @click="closeMenu" />
       </div>
     </template>
 

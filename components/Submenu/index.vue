@@ -7,6 +7,12 @@ if (props.id == "Product") {
   products = props.data;
   products.length % 2 != 0 && products.push("");
 }
+
+const emit = defineEmits(["click"]);
+
+const handleClick = (item) => {
+  emit("click", item);
+};
 </script>
 
 <template>
@@ -25,10 +31,18 @@ if (props.id == "Product") {
         "
       >
         <template v-if="id == 'Product'">
-          <SubmenuLinkIcon v-for="(item, i) in products" :data="item" />
+          <SubmenuLinkIcon
+            v-for="(item, i) in products"
+            :data="item"
+            @click="handleClick"
+          />
         </template>
         <template v-else>
-          <SubmenuLink v-for="(item, i) in data" :data="item" />
+          <SubmenuLink
+            v-for="(item, i) in data"
+            :data="item"
+            @click="handleClick"
+          />
         </template>
       </ul>
     </div>

@@ -23,7 +23,7 @@ if (hl.length > 1) {
 let ctx, tl;
 const stag = props.anim == "scroll" ? 0.02 : 0.1;
 
-const splitHeadline = (el) => {
+/* const splitHeadline = (el) => {
   // split headline into letters
   const spl = new SplitText(el, {
     type: "chars, words",
@@ -38,6 +38,12 @@ const splitHeadline = (el) => {
     yPercent: 100,
   });
 
+}; */
+
+onMounted(() => {
+  // split headline into letters
+  splitHeadline(main.value.querySelectorAll(".text"), main.value);
+
   // set rock animation
   const rock = main.value.querySelector(".rock-anim");
   if (rock) {
@@ -46,11 +52,6 @@ const splitHeadline = (el) => {
       yPercent: 100,
     });
   }
-};
-
-onMounted(() => {
-  // split headline into letters
-  splitHeadline(main.value.querySelectorAll(".text"));
 
   // add animation context
   ctx = gsap.context((self) => {

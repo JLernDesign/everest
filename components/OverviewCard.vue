@@ -10,7 +10,7 @@ let ctx;
 onMounted(() => {
   ctx = gsap.context((self) => {
     // animate items into place on scroll to section
-    const items = gsap.utils.toArray(".anim-item");
+    const items = self.selector(".anim-item");
     animIntoView(items, main.value, 0.1, "top 40%");
   }, main.value);
 });

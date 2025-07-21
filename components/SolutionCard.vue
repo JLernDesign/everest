@@ -1,9 +1,10 @@
 <script setup>
+import gsap from "gsap";
 import { Image as DatocmsImage } from "vue-datocms";
 
 const props = defineProps(["theme", "nav", "data", "num", "template"]);
 const main = ref(null);
-let items, bullets, spacers;
+let items, bullets, spacers, ctx;
 
 onMounted(() => {
   items = main.value.querySelectorAll(".bullet-wrap");
@@ -12,7 +13,21 @@ onMounted(() => {
 
   // open first bullet by default
   handleClick(0);
+
+  /* ctx = gsap.context((self) => {
+    // animate items into place on scroll to section
+    setTimeout(() => {
+      const items = self.selector(".anim-item");
+      console.log(items);
+
+      animIntoView(items, main.value, 0.1, "top 40%");
+    }, 200);
+  }, main.value); */
 });
+
+/* onUnmounted(() => {
+  ctx && ctx.revert();
+}); */
 
 const handleClick = (i) => {
   // toggle expand on items

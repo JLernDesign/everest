@@ -1,7 +1,5 @@
 <script setup>
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
 import { Image as DatocmsImage } from "vue-datocms";
 import gql from "graphql-tag";
 import {
@@ -10,10 +8,6 @@ import {
   ResponsiveImageFragment,
   LinkFragment,
 } from "~/assets/graphql/fragments/global";
-
-if (isSSR()) {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 const props = defineProps(["theme", "data"]);
 const mobile = breakpoints.smallerOrEqual("tablet1");
@@ -48,7 +42,7 @@ const stopSlideshow = () => {
 const speed = 5;
 const pageInactive = useState("pageInactive");
 const progressBar = ref(null);
-let slideshow;
+let slideshow, mm;
 
 const next = () => {
   progressBar.value?.next();
@@ -73,24 +67,15 @@ onMounted(() => {
     slideTimer();
   }, 200);
 
-  // parallax
-  const section = parallax.value.querySelector(".section-wrap");
-  gsap.set(parallax.value, {
-    marginTop: "-40rem",
+  // section parallax
+  mm = gsap.matchMedia();
+  mm.add("(min-width: 650px)", () => {
+    parallaxSection(parallax.value, 40);
   });
-  gsap.set(section, {
-    yPercent: 40,
-  });
-  gsap.to(section, {
-    yPercent: 0,
-    ease: "none",
-    scrollTrigger: {
-      trigger: parallax.value,
-      start: "top bottom",
-      end: "top top",
-      scrub: true,
-    },
-  });
+});
+
+onUnmounted(() => {
+  mm && mm.revert();
 });
 
 // check for new data

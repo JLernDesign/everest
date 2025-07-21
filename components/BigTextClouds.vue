@@ -5,6 +5,7 @@ const props = defineProps(["data"]);
 <template>
   <Section
     class="z-1 overflow-hidden bg-skyblue !pt-section-top pb-section-bot-mob text-center s:pb-section-bot"
+    :anim="true"
   >
     <!-- bg elements -->
     <div
@@ -18,7 +19,7 @@ const props = defineProps(["data"]);
         :class="n == 2 && 'rotate-180'"
       />
       <UICloud type="3" class="-bottom-[72.7rem] -right-[53.4rem]" />
-      <UIGlow class="bottom-0 h-[21.8rem]" src="/ui/edge-gradient.svg" />
+      <UIGlow class="glower bottom-0 h-[21.8rem]" src="/ui/edge-gradient.svg" />
     </div>
 
     <SectionHeaderBig

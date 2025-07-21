@@ -18,14 +18,14 @@ onMounted(() => {
   ctx = gsap.context((self) => {
     // animate items into place on scroll to section
     setTimeout(() => {
-      const items = gsap.utils.toArray(".anim-item");
+      const items = anims.value.querySelectorAll(".anim-item");
       animIntoView(items, anims.value, 0.2, "top 90%");
     }, 200);
-
-    setTimeout(() => {
-      loaded.value = true;
-    }, 200);
   }, anims.value);
+
+  setTimeout(() => {
+    loaded.value = true;
+  }, 200);
 });
 
 onUnmounted(() => {
@@ -137,10 +137,7 @@ watch(mobile, () => {
     </template>
 
     <!-- cover image for fade in -->
-    <div
-      class="image-cover fixed left-0 top-0 z-1 grid h-full w-full place-items-center bg-skyblue transition-opacity duration-500"
-      :class="loaded ? 'opacity-0' : 'opacity-100'"
-    ></div>
+    <LoadCover :loaded="loaded" />
   </Section>
 </template>
 

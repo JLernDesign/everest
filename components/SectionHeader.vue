@@ -1,4 +1,6 @@
 <script setup>
+import { gsap } from "gsap";
+
 const props = defineProps({
   data: { default: null },
   align: { default: "center" },
@@ -9,6 +11,31 @@ const props = defineProps({
   wrap: { default: false },
   loc: { default: null },
   template: { default: null },
+  anim: { default: false },
+});
+
+const main = ref(null);
+
+onMounted(() => {
+  if (props.anim) {
+    setTimeout(() => {
+      // get all anim items
+      const items = main.value.querySelectorAll(".anim-item");
+
+      // animate items into place
+      gsap.fromTo(
+        items,
+        { y: "2rem" },
+        {
+          duration: 1.25,
+          opacity: 1,
+          y: 0,
+          stagger: 0.2,
+          ease: "power3.out",
+        },
+      );
+    }, 1000);
+  }
 });
 </script>
 
@@ -22,6 +49,7 @@ const props = defineProps({
       valign == 'center' && 'flex flex-col justify-center',
       loc == 'home-hero' && 's:!space-y-[1.8rem]',
     ]"
+    ref="main"
   >
     <!-- eyebrow -->
     <div
@@ -41,21 +69,24 @@ const props = defineProps({
         template == 'news' && 'max-w-[80rem]',
       ]"
     >
-      <h1
-        v-if="hero"
-        class="!mb-6 font-barlow-cond text-xl-mob leading-xl s:!mb-12 s:text-xl"
-        v-html="formatText(data.headline)"
-      ></h1>
-      <h2
-        v-else
-        class="font-barlow-cond text-lg-mob leading-lg s:text-lg"
-        :class="!data.intro && 's:pb-[.5rem]'"
-        v-html="formatText(data.headline)"
-      ></h2>
+      <AnimHeadline :anim="anim">
+        <h1
+          v-if="hero"
+          class="text !mb-6 font-barlow-cond text-xl-mob leading-xl s:!mb-12 s:text-xl"
+          v-html="formatText(data.headline)"
+        ></h1>
+        <h2
+          v-else
+          class="text font-barlow-cond text-lg-mob leading-lg s:text-lg"
+          :class="!data.intro && 's:pb-[.5rem]'"
+          v-html="formatText(data.headline)"
+        ></h2>
+      </AnimHeadline>
+
       <div
         v-if="data.intro"
         class="max-w-[62rem]"
-        :class="align == 'center' && 'mx-auto'"
+        :class="[align == 'center' && 'mx-auto', anim && 'anim-item']"
       >
         <p v-html="formatText(data.intro)"></p>
       </div>
@@ -68,7 +99,7 @@ const props = defineProps({
       :align="align"
       :theme="theme"
       :wrap="wrap"
-      :class="loc == 'home-hero' && 's:!pt-0'"
+      :class="[loc == 'home-hero' && 's:!pt-0', anim && 'anim-item']"
     />
 
     <!-- subpage nav -->

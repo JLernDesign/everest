@@ -263,6 +263,8 @@ export const animIntoView = (
   stagger = 0.1,
   start = "top 50%",
 ) => {
+  //console.log(items);
+
   // set initial positions
   gsap.set(items, {
     yPercent: 25,
@@ -558,3 +560,45 @@ export const removeWidows = (string) => {
 export const qs = (s, o = document) => o.querySelector(s);
 export const qsa = (s, o = document) => [...o.querySelectorAll(s)];
 export const rect = (el) => el.getBoundingClientRect();
+
+// parallax
+export const parallaxSection = (wrap, margin, os = 0) => {
+  // section to move
+  const px_section = wrap.querySelector(".section-wrap");
+
+  // set initial positions to account for margin
+  gsap.set(wrap, {
+    marginTop: "-" + (margin - os) + "rem",
+  });
+  gsap.set(px_section, {
+    y: margin + "rem",
+  });
+
+  // animate section
+  gsap.to(px_section, {
+    y: 0,
+    ease: "none",
+    scrollTrigger: {
+      trigger: wrap,
+      start: "top bottom",
+      end: "top top",
+      scrub: true,
+    },
+  });
+};
+
+export const splitHeadline = (el, wrap) => {
+  // split headline into letters
+  const spl = new SplitText(el, {
+    type: "chars, words",
+    charsClass: "letter",
+    wordsClass: "word overflow-hidden pb-1 whitespace-nowrap",
+  });
+
+  // set initial positions
+  const letters = wrap.querySelectorAll(".letter");
+  gsap.set(letters, {
+    opacity: 0,
+    yPercent: 100,
+  });
+};
