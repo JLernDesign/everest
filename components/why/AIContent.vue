@@ -47,14 +47,25 @@ const props = defineProps(["data", "color"]);
     >
       <!-- image -->
       <div class="w-full border-l border-l-whiteline s:w-[57%]">
-        <div
-          class="ph-image aspect-[1.44] bg-cover"
-          :class="
-            color == 'red'
-              ? 'bg-[url(/why/aifirst-redbg.svg)]'
-              : 'bg-[url(/why/aifirst-bluebg.svg)]'
-          "
-        ></div>
+        <div class="ph-image relative aspect-[1.44]">
+          <img
+            :src="
+              color == 'red'
+                ? '/why/ai-first-ph1@2x.png'
+                : '/why/ai-first-ph2@2x.png'
+            "
+            alt=""
+            class="h-full w-full"
+          />
+          <div
+            class="absolute left-0 top-0 h-full w-full bg-cover"
+            :class="
+              color == 'red'
+                ? 'bg-[url(/why/aifirst-redbg.svg)]'
+                : 'bg-[url(/why/aifirst-bluebg.svg)]'
+            "
+          ></div>
+        </div>
       </div>
 
       <!-- text -->
