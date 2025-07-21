@@ -57,7 +57,7 @@ onMounted(() => {
 
       <!-- cover laptop bottom with clouds to remove hard edge -->
       <div
-        class="absolute -bottom-[10rem] left-1/2 z-1 ml-[6rem] h-[20rem] w-[115rem] -translate-x-1/2 rounded-full bg-skyblue blur-[20px]"
+        class="absolute -bottom-[10rem] left-1/2 z-1 ml-[6rem] hidden h-[20rem] w-[115rem] -translate-x-1/2 rounded-full bg-skyblue blur-[20px] s:block"
       ></div>
       <!-- <img
         src="/public/ui/cloud-type2.png"
