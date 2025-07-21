@@ -27,14 +27,14 @@ onMounted(() => {
         items,
         { y: "2rem" },
         {
-          duration: 1.25,
+          duration: 1,
           opacity: 1,
           y: 0,
-          stagger: 0.2,
+          stagger: 0.1,
           ease: "power3.out",
         },
       );
-    }, 1000);
+    }, 800);
   }
 });
 </script>

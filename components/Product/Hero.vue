@@ -14,6 +14,7 @@ onMounted(() => {
     loaded.value = true;
   }, 200);
 
+  // show hero image
   setTimeout(() => {
     const image = main.value.$el.querySelector(".hero-image");
     console.log(image);
@@ -29,7 +30,7 @@ onMounted(() => {
         ease: "power3.out",
       },
     );
-  }, 1400);
+  }, 1200);
 });
 
 onUnmounted(() => {

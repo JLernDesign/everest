@@ -592,7 +592,7 @@ export const splitHeadline = (el, wrap) => {
   const spl = new SplitText(el, {
     type: "chars, words",
     charsClass: "letter",
-    wordsClass: "word overflow-hidden pb-1 whitespace-nowrap",
+    wordsClass: "word pb-1 whitespace-nowrap",
   });
 
   // set initial positions

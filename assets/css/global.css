@@ -170,6 +170,7 @@ sup {
   background-size: 100% 1px;
 }
 
+/* bullets */
 .bullets ul {
   li {
     position: relative;
@@ -367,6 +368,12 @@ svg.trans {
 }
 .anim-item {
   opacity: 0;
+}
+.word {
+  overflow: hidden;
+  &.show {
+    overflow: visible;
+  }
 }
 
 /* hoveres */

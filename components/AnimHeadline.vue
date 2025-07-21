@@ -12,16 +12,22 @@ onMounted(() => {
 
     // add animation context
     ctx = gsap.context((self) => {
-      tl = gsap.timeline().pause();
+      tl = gsap
+        .timeline({
+          onComplete: () => {
+            fixOverflow();
+          },
+        })
+        .pause();
 
       // get characters and reverse order
       const letters = gsap.utils.toArray(self.selector(".letter")).reverse();
 
       // animate each character on
       tl.to(letters, {
-        duration: 0.75,
+        duration: 0.65,
         opacity: 1,
-        stagger: 0.05,
+        stagger: 0.03,
         yPercent: 0,
         ease: "power3.out",
       });
@@ -32,6 +38,13 @@ onMounted(() => {
     }, main.value);
   }
 });
+
+const fixOverflow = () => {
+  const words = main.value.querySelectorAll(".word");
+  words.forEach((word) => {
+    word.classList.add("show");
+  });
+};
 </script>
 
 <template>
