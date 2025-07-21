@@ -33,7 +33,6 @@ const hoverOn = () => {
         : 'text-white after:bg-white'
     "
     @mouseenter="hoverOn"
-    @mouseleave="hoverOff"
     ><slot
   /></NuxtLink>
 </template>
