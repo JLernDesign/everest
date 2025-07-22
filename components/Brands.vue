@@ -43,7 +43,7 @@ const toggle = (state) => {
 <template>
   <div>
     <h4
-      class="text-tag-mob mb-4 text-center s:mb-6 s:text-tag"
+      class="mb-4 text-center text-tag-mob s:mb-6 s:text-tag"
       :class="theme == 'dark' ? 'text-white' : 'text-black'"
     >
       {{ data.title }}

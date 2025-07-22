@@ -50,7 +50,7 @@ onMounted(() => {
 
 onUnmounted(() => {
   ctx.revert();
-  mm && mm.revert();
+  /* mm && mm.revert(); */
 });
 </script>
 

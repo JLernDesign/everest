@@ -30,17 +30,48 @@ useHead(() => {
 });
 
 // execute leave animation for each route
-router.beforeEach(async (to, from) => {
-  /* console.log("exit animation"); */
-  // navigate within same route
-  /*   if (to.path == from.path) {
-    // change posts query
+const page_color = useState("page_color", () => "skyblue");
+router.beforeEach(async (to, from, next) => {
+  console.log("to:", to);
+  if (
+    to.name.includes("about") ||
+    to.name.includes("index") ||
+    to.name.includes("product")
+  ) {
+    page_color.value = "bg-skyblue";
+  }
+  if (
+    to.name.includes("why") ||
+    to.name.includes("demo") ||
+    to.name.includes("blog") ||
+    to.name.includes("media") ||
+    to.name.includes("legal")
+  ) {
+    page_color.value = "bg-jaffa";
+  }
+  if (to.name.includes("ai") || to.name.includes("client")) {
+    page_color.value = "bg-shadowblue";
+  }
+  /* console.log("page_color:", page_color.value); */
 
-    // bring page back
-    setTimeout(() => {
-      refreshPage();
-    }, 500);
-  } */
+  const reveals = document.querySelectorAll(".cover-inner");
+  console.log(reveals);
+  gsap.set("#page-reveal", { display: "flex", opacity: 1 });
+  gsap.fromTo(
+    reveals,
+    { opacity: 0, scaleY: 0, display: "block" },
+    {
+      duration: 0.75,
+      opacity: 1,
+      scaleY: 1,
+      stagger: 0.05,
+      ease: "power3.inOut",
+    },
+  );
+
+  // delay until animation is complete
+  await new Promise((resolve) => setTimeout(resolve, 750));
+  next();
 });
 
 // open site after initial load
@@ -59,7 +90,14 @@ onMounted(() => {
 
 // open new page after leave
 const refreshPage = () => {
-  /* console.log("open animation"); */
+  window.scrollTo(0, 0);
+
+  gsap.to("#page-reveal", {
+    duration: 0.5,
+    opacity: 0,
+    display: "none",
+    ease: "none",
+  });
 };
 </script>
 
@@ -70,9 +108,6 @@ const refreshPage = () => {
         name: 'custom',
         mode: 'out-in',
         css: false,
-        onLeave: (el, done) => {
-          done();
-        },
         onEnter: () => {
           refreshPage();
         },

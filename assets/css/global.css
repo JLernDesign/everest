@@ -149,7 +149,7 @@ sup {
 .ul.single {
   text-decoration: none;
   background-image: linear-gradient(currentColor, currentColor);
-  background-position: 0% 100%;
+  background-position: 0% 90%;
   background-repeat: no-repeat;
   background-size: 0% 1px;
   transition: var(--ease-in-out);

@@ -2,6 +2,7 @@
 import { homeQuery } from "~/assets/graphql/queries/home";
 
 const loaded = ref(false);
+const intro = ref(null);
 
 const { data } = await useGraphqlQuery({
   query: homeQuery.loc.source.body,
@@ -31,6 +32,7 @@ onMounted(() => {
       v-if="page.intro"
       :data="page.intro"
       :logos="page.featuredLogos"
+      ref="intro"
     />
     <template v-if="loaded">
       <LazyFlexibleBlocks

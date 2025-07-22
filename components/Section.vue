@@ -10,7 +10,7 @@ const main = ref(null);
 
 onMounted(() => {
   if (props.anim) {
-    toggleOn(main.value, 0, 500);
+    toggleOn(main.value, 0, 1500);
   }
 });
 </script>

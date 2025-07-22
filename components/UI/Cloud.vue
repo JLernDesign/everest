@@ -1,10 +1,19 @@
 <script setup>
-const props = defineProps(["type", "anim", "speed", "flip", "rot", "width"]);
+const props = defineProps([
+  "type",
+  "anim",
+  "speed",
+  "flip",
+  "rot",
+  "width",
+  "num",
+  "delay",
+]);
 </script>
 
 <template>
   <div
-    class="absolute z-0"
+    class="cloud absolute z-0"
     :class="[
       type == 1 && 'w-[129.3rem]',
       type == 2 && 'w-[111.7rem]',
@@ -14,9 +23,9 @@ const props = defineProps(["type", "anim", "speed", "flip", "rot", "width"]);
     <div class="cloud-wrap absolute left-0 top-0 inline-flex">
       <div
         v-for="n in 2"
-        class="cloud-mover w-screen min-w-[180rem]"
+        class="cloud-mover relative w-screen min-w-[180rem]"
         :class="anim ? 'animate-cloud' : ''"
-        :style="{ animationDuration: speed + 's' }"
+        :style="{ animationDuration: speed + 's', animationDelay: delay + 's' }"
       >
         <img
           :src="`/ui/cloud-type${type}.png`"
@@ -32,6 +41,9 @@ const props = defineProps(["type", "anim", "speed", "flip", "rot", "width"]);
             width && { width: width + 'rem' },
           ]"
         />
+
+        <!-- for debugging by cloud number -->
+        <!-- <div class="absolute left-1/2 top-1/2 z-10 text-xl">{{ num }}</div> -->
       </div>
     </div>
   </div>

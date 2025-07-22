@@ -14,6 +14,7 @@ onMounted(() => {
   <Section
     class="z-1 pb-section-bot-mob text-center transition-opacity duration-200 s:!pt-section-top-lg s:pb-section-bot"
     :class="loaded ? 'opacity-100' : 'opacity-0'"
+    id="intro"
   >
     <SectionHeaderBig align="center" :data="data" />
 
