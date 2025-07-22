@@ -4,7 +4,7 @@ import { Image as DatocmsImage } from "vue-datocms";
 const props = defineProps(["data", "color"]);
 const main = ref(null);
 const active = 0;
-
+const carouselRef = ref(null);
 let items, wraps, topSpacers, botSpacers;
 
 onMounted(() => {
@@ -21,6 +21,9 @@ const handleClick = (i) => {
   toggleExpand(i, wraps);
   toggleExpand(i, topSpacers);
   toggleExpand(i, botSpacers);
+
+  // go to slide
+  carouselRef.value.goto(i);
 };
 </script>
 
@@ -73,7 +76,7 @@ const handleClick = (i) => {
             </div>
             <!-- add space below -->
             <div class="spacer bot h-0 overflow-hidden">
-              <div class="h-[20rem]"></div>
+              <div class="s:h-[20rem]"></div>
             </div>
           </div>
         </div>
@@ -83,13 +86,18 @@ const handleClick = (i) => {
       <div
         class="w-full border-r border-r-whiteline p-8 s:w-[57%] max-s:order-1 max-s:border max-s:border-t-0 max-s:border-whiteline"
       >
-        <div
-          class="ph-image grid aspect-[1.32] place-content-center rounded-sm bg-skyblue p-12"
-        >
-          <DatocmsImage
-            v-if="data.slides[active].image"
-            :data="data.slides[active].image.responsiveImage"
-          />
+        <div class="w-full overflow-hidden rounded-sm bg-skyblue">
+          <Carousel :drag="false" :center="false" ref="carouselRef">
+            <div
+              v-for="slide in data.slides"
+              class="item ph-image grid aspect-[1.32] w-[31.1rem] shrink-0 place-content-center p-4 s:w-[80rem] s:p-12 [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
+            >
+              <DatocmsImage
+                v-if="slide.image"
+                :data="slide.image.responsiveImage"
+              />
+            </div>
+          </Carousel>
         </div>
       </div>
     </div>
