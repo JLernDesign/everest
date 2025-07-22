@@ -59,7 +59,7 @@ router.beforeEach(async (to, from, next) => {
   gsap.set("#page-reveal", { display: "flex", opacity: 1 });
   gsap.fromTo(
     reveals,
-    { opacity: 0, scaleY: 0, display: "block" },
+    { opacity: 1, scaleY: 0, display: "block" },
     {
       duration: 0.75,
       opacity: 1,
