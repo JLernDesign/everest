@@ -355,6 +355,11 @@ const OverviewFragment = gql`
       image {
         ...ResponsiveImageFragment
       }
+      productPage {
+        slug
+        title
+        infographic
+      }
     }
   }
 `;

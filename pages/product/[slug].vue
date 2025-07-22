@@ -47,14 +47,19 @@ useHead(() => {
 
 <template>
   <div class="bg-jaffa">
-    <ProductHero v-if="page.hero" :data="page.hero" :order="page.order" />
+    <ProductHero
+      v-if="page.hero"
+      :data="page.hero"
+      :order="page.order"
+      :video-file="page.infographic"
+    />
     <FlexibleBlocks :data="page.flexibleContent.modules" template="product" />
     <FooterLockup :data="page.footerCallout" />
 
     <!-- media module -->
     <div
       v-if="page.demoVideo"
-      class="pointer-events-none fixed bottom-[4rem] right-[4rem] z-20 hidden s:block"
+      class="pointer-events-none fixed bottom-[4rem] right-[4rem] z-19 hidden s:block"
     >
       <div
         class="relative aspect-[1.31] origin-bottom-right overflow-hidden rounded-base-mob transition-all duration-[750ms] ease-in-out s:w-[33.5rem] s:rounded-base"

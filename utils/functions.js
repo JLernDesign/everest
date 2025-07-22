@@ -262,6 +262,7 @@ export const animIntoView = (
   trigger,
   stagger = 0.1,
   start = "top 50%",
+  func,
 ) => {
   //console.log(items);
 
@@ -281,6 +282,16 @@ export const animIntoView = (
     scrollTrigger: {
       trigger: trigger,
       start: start,
+      onEnter: () => {
+        if (func != undefined) {
+          func("enter");
+        }
+      },
+      onEnterBack: () => {
+        if (func != undefined) {
+          func("enter");
+        }
+      },
     },
   });
 };

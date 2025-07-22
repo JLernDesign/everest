@@ -26,6 +26,7 @@ export const productQuery = gql`
           }
         }
       }
+      infographic
       seo: _seoMetaTags {
         attributes
         content

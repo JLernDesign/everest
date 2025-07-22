@@ -2,9 +2,10 @@
 import gsap from "gsap";
 import { Image as DatocmsImage } from "vue-datocms";
 
-const props = defineProps(["data", "order"]);
+const props = defineProps(["data", "order", "videoFile"]);
 const loaded = ref(false);
 const main = ref(null);
+const video = ref(null);
 let ctx;
 
 onMounted(() => {
@@ -17,7 +18,9 @@ onMounted(() => {
   // show hero image
   setTimeout(() => {
     const image = main.value.$el.querySelector(".hero-image");
-    console.log(image);
+    if (video.value) {
+      video.value.playVideo();
+    }
     gsap.fromTo(
       image,
       {
@@ -82,14 +85,15 @@ onUnmounted(() => {
         class="relative left-1/2 w-screen -translate-x-1/2 text-grayline s:hidden"
       />
       <div
-        class="grid w-full place-content-center border-x border-x-grayline p-side-mob s:w-[43%] s:px-[7rem] s:py-[3.5rem]"
+        class="grid w-full place-content-center border-x border-x-grayline s:w-[43%]"
       >
-        <div class="anim-item hero-image">
-          <DatocmsImage
+        <div class="anim-item hero-image hero-image">
+          <VideoAnim :file="`infographics/${videoFile}`" ref="video" />
+          <!-- <DatocmsImage
             v-if="data.image"
             :data="data.image.responsiveImage"
             class="hero-image"
-          />
+          /> -->
         </div>
       </div>
 

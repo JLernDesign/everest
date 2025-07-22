@@ -2,21 +2,28 @@
 import gsap from "gsap";
 import { Image as DatocmsImage } from "vue-datocms";
 
-const props = defineProps(["theme", "nav", "data", "num", "template"]);
-
+const props = defineProps(["theme", "nav", "data", "num"]);
 const main = ref(null);
+const video = ref(null);
 let ctx;
 
 onMounted(() => {
   ctx = gsap.context((self) => {
     // animate items into place on scroll to section
     const items = self.selector(".anim-item");
-    animIntoView(items, main.value, 0.1, "top 40%");
+    animIntoView(items, main.value, 0.1, "top 40%", playVideo);
   }, main.value);
 });
+
 onUnmounted(() => {
   ctx.revert();
 });
+
+const playVideo = (state) => {
+  if (state == "enter" && video.value) {
+    video.value.playVideo();
+  }
+};
 </script>
 
 <template>
@@ -46,22 +53,22 @@ onUnmounted(() => {
         <!-- text contents -->
         <div class="max-w-[60rem]">
           <h3
+            v-if="data.productPage"
             class="mb-5 font-helvb text-md-mob leading-sm-md s:text-md"
-            v-html="formatText(data.headline)"
+            v-html="formatText(data.productPage.title)"
           ></h3>
           <span
             class="bullets block max-w-[48rem] space-y-16 [&_ul]:space-y-4"
             v-html="removeWidows(data.body)"
           ></span>
 
-          <!-- cta buttons -->
-          <CtaGroup
-            v-if="data.cta"
-            :data="data.cta.buttons"
-            :align="align"
-            :theme="theme"
+          <!-- cta button -->
+          <CtaBtn
+            v-if="data.productPage"
+            :to="`/product/${data.productPage.slug}`"
             class="mt-8"
-          />
+            >Learn More</CtaBtn
+          >
         </div>
 
         <!-- slide nav -->
@@ -81,7 +88,7 @@ onUnmounted(() => {
       <!-- image -->
       <div class="anim-item right w-full s:w-1/2 max-s:order-1">
         <div
-          class="image relative flex aspect-[1.0675] w-full items-center justify-center overflow-hidden rounded-base-mob bg-skyblue s:rounded-base s:p-[11.5rem]"
+          class="image relative flex aspect-[1.0675] w-full items-center justify-center overflow-hidden rounded-base-mob bg-skyblue s:rounded-base"
         >
           <UICloud type="2" class="-left-[16rem] top-[44rem]" />
           <UICloud type="2" class="-top-[25rem] left-[18rem]" />
@@ -89,9 +96,11 @@ onUnmounted(() => {
           <div
             class="image-ph relative h-full w-full max-s:p-side-mob [&>div]:h-full [&_img]:h-full [&_img]:w-full [&_img]:object-contain"
           >
-            <DatocmsImage
-              v-if="data.image"
-              :data="data.image.responsiveImage"
+            <VideoAnim
+              v-if="data.productPage"
+              class="absolute left-1/2 top-1/2 aspect-square !h-auto -translate-x-1/2 -translate-y-1/2 [&_video]:h-full"
+              :file="`infographics/${data.productPage.infographic}`"
+              ref="video"
             />
           </div>
         </div>

@@ -55,7 +55,6 @@ router.beforeEach(async (to, from, next) => {
   /* console.log("page_color:", page_color.value); */
 
   const reveals = document.querySelectorAll(".cover-inner");
-  console.log(reveals);
   gsap.set("#page-reveal", { display: "flex", opacity: 1 });
   gsap.fromTo(
     reveals,
