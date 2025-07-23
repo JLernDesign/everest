@@ -9,7 +9,7 @@ let ctx;
 
 onMounted(() => {
   ctx = gsap.context((self) => {
-    playInView(main.value, null, playVideo, 0, "top bottom+=100");
+    playInView(main.value, null, playVideo, 0, "top bottom+=500");
   });
 });
 
@@ -53,6 +53,7 @@ const playVideo = (ev) => {
           file="Growing Rocks Clean_Correction_With_BG (1)"
           ref="video"
           size="fill"
+          class="[&_video]:object-cover"
         />
       </div>
 
