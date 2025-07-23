@@ -20,7 +20,7 @@ const props = defineProps({
   },
   size: {
     type: String,
-    default: "fill",
+    default: null,
   },
   alpha: {
     type: Boolean,

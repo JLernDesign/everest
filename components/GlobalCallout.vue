@@ -9,7 +9,7 @@ let ctx;
 
 onMounted(() => {
   ctx = gsap.context((self) => {
-    playInView(main.value, null, playVideo);
+    playInView(main.value, null, playVideo, 0, "top bottom+=100");
   });
 });
 
