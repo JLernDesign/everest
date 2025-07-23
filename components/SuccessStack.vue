@@ -7,7 +7,10 @@ const slide = ref(null);
 const carouselRef = ref(null);
 let items;
 const amtY = 7.6;
-const active = ref(0);
+const posY = [0, -7.6, -15.2];
+const current = ref(0);
+const z = [3, 2, 1];
+const order = [0, 1, 2];
 const bgs = ["#ffffff", "#313944", "#262D36"];
 const text_colors = [
   "#000000",
@@ -29,26 +32,81 @@ onMounted(() => {
   //items.reverse();
 
   items.forEach((item, i) => {
-    let amt = amtY * (items.length - 1 - i) + "rem";
-    gsap.set(item, { y: amt, zIndex: items.length - 1 - i });
+    //let amt = amtY * (items.length - 1 - i) + "rem";
+    gsap.set(item, { y: posY[i] + "rem", zIndex: z[i] });
 
     let title = qs(".title", item);
 
     // fully grayed
     if (i > 1) {
       gsap.set(item, { backgroundColor: "#262D36" });
-      gsap.set(title, { opacity: 0.1, color: "#ffffff" });
+      gsap.set(title, { color: text_colors[2] });
     }
     // partial grayed
     if (i == 1) {
       gsap.set(item, { backgroundColor: "#313944" });
-      gsap.set(title, { opacity: 0.3, color: "#ffffff" });
+      gsap.set(title, { color: text_colors[1] });
     }
   });
 });
 
-const changeSlide = (i) => {
-  console.log("changeSlide", i);
+const changeSlide = (i, dir) => {
+  console.log("changeSlide", i, dir);
+
+  // move current slide down and fade out
+  gsap.to(items[order[0]], {
+    duration: 0.5,
+    y: posY[0] + amtY + "rem",
+    opacity: 0,
+    ease: "power3.in",
+    onComplete: () => {
+      // move current slide to back
+      gsap.fromTo(
+        items[order[0]],
+        { y: posY[2] - amtY + "rem", zIndex: z[2], backgroundColor: bgs[2] },
+        {
+          duration: 0.5,
+          y: posY[2] + "rem",
+          opacity: 1,
+          ease: "power3.out",
+        },
+      );
+    },
+  });
+  // change title color
+  let title = qs(".title", items[order[0]]);
+  gsap.set(title, { color: text_colors[2] });
+
+  // move next slide to front
+  gsap.to(items[order[1]], {
+    duration: 1,
+    y: posY[0] + "rem",
+    backgroundColor: bgs[0],
+    zIndex: z[0],
+    ease: "power3.inOut",
+    onStart: () => {
+      let title = qs(".title", items[order[1]]);
+      gsap.set(title, { color: text_colors[0] });
+    },
+  });
+
+  // move last slide to middle
+  gsap.to(items[order[2]], {
+    duration: 1,
+    y: posY[1] + "rem",
+    backgroundColor: bgs[1],
+    zIndex: z[1],
+    ease: "power3.inOut",
+    onStart: () => {
+      let title = qs(".title", items[order[2]]);
+      gsap.set(title, { color: text_colors[1] });
+    },
+  });
+
+  // update order
+  setTimeout(() => {
+    order.push(order.shift());
+  }, 1000);
 };
 </script>
 
@@ -61,10 +119,16 @@ const changeSlide = (i) => {
 
     <!-- slides -->
     <div
-      class="slides relative mx-auto mt-[5rem] hidden h-[51.5rem] w-[116rem] s:block max-s:w-full"
+      class="slides relative top-[15.2rem] mx-auto mt-[5rem] hidden h-[51.5rem] w-[116rem] s:block max-s:w-full"
       ref="main"
     >
-      <StackSlide v-for="(slide, i) in data.slides" :data="slide" :key="i" />
+      <StackSlide
+        v-for="(slide, i) in data.slides"
+        :data="slide"
+        :key="i"
+        :num="i"
+        :changeSlide="changeSlide"
+      />
     </div>
 
     <!-- mobile slides -->
@@ -77,7 +141,7 @@ const changeSlide = (i) => {
           v-for="(slide, i) in data.slides"
           :key="i"
         >
-          <StackSlide :data="slide" :num="i" :changeSlide="changeSlide" />
+          <StackSlide :data="slide" />
         </div>
       </Carousel>
     </div>
@@ -106,7 +170,7 @@ const changeSlide = (i) => {
       :data="data.cta.buttons"
       align="center"
       :theme="theme"
-      class="mt-[4rem] s:mt-[6rem]"
+      class="relative z-2 mt-[4rem] s:mt-[6rem]"
     />
   </Section>
 </template>
