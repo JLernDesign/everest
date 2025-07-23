@@ -46,6 +46,10 @@ onMounted(() => {
     }
   });
 });
+
+const changeSlide = (i) => {
+  console.log("changeSlide", i);
+};
 </script>
 
 <template>
@@ -73,7 +77,7 @@ onMounted(() => {
           v-for="(slide, i) in data.slides"
           :key="i"
         >
-          <StackSlide :data="slide" />
+          <StackSlide :data="slide" :num="i" :changeSlide="changeSlide" />
         </div>
       </Carousel>
     </div>

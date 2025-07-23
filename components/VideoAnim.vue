@@ -68,7 +68,7 @@ defineExpose({
       :loop="loop && true"
       :autoplay="autoplay && true"
       ref="video"
-      :class="size === 'fill' ? 'h-full w-full object-cover' : null"
+      :class="size == 'fill' ? 'h-full w-full' : null"
     >
       <template v-if="alpha">
         <source

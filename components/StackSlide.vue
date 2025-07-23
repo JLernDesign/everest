@@ -1,22 +1,24 @@
 <script setup>
 import { Image as DatocmsImage } from "vue-datocms";
-const props = defineProps(["data"]);
+const props = defineProps(["data", "num", "changeSlide"]);
 const main = ref(null);
 const carouselRef = ref(null);
 
 // Navigation handlers
 const handlePrev = () => {
-  carouselRef.value?.back();
+  //carouselRef.value?.back();
+  props.changeSlide(props.num - 1);
 };
 
 const handleNext = () => {
-  carouselRef.value?.next();
+  //carouselRef.value?.next();
+  props.changeSlide(props.num + 1);
 };
 </script>
 
 <template>
   <div
-    class="slide rounded-base-mob left-0 top-0 w-full bg-white shadow-[4px_4px_20px_0px_rgba(0,0,0,0.03)] s:absolute s:rounded-base max-s:h-full"
+    class="slide left-0 top-0 w-full rounded-base-mob bg-white shadow-[4px_4px_20px_0px_rgba(0,0,0,0.03)] s:absolute s:rounded-base max-s:h-full"
     ref="main"
   >
     <!-- title -->
@@ -38,7 +40,7 @@ const handleNext = () => {
     >
       <div class="shrink-0 s:w-[35%]">
         <div
-          class="rounded-base-mob w-[23.4rem] overflow-hidden s:rounded-base"
+          class="w-[23.4rem] overflow-hidden rounded-base-mob s:rounded-base"
         >
           <DatocmsImage v-if="data.image" :data="data.image.responsiveImage" />
         </div>
