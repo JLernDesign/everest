@@ -4,16 +4,10 @@ const props = defineProps(["color"]);
 
 <template>
   <div class="on group relative">
-    <img
-      src="/public/about/pin-tri.svg"
-      alt=""
-      class="absolute -top-[.2rem] left-0 h-[6.2rem] w-[7rem]"
-    />
-    <div
-      v-for="i in 3"
-      :key="i"
-      class="tri absolute left-0 top-0 h-[6.2rem] w-[7rem]"
-    >
+    <div class="absolute -top-[.2rem] left-0 size-[7rem]">
+      <img src="/public/about/pin-tri.svg" alt="" />
+    </div>
+    <div v-for="i in 3" :key="i" class="tri absolute left-0 top-0 size-[7rem]">
       <img src="/public/about/pin-tri-red.svg" alt="" />
     </div>
   </div>
