@@ -35,17 +35,8 @@ const playVideo = (ev) => {
     <div
       class="relative overflow-hidden rounded-base-mob bg-[#FFD0B9] px-side-mob py-side-mob s:min-h-[61.5rem] s:rounded-base s:px-[11.5rem] s:py-[7rem]"
     >
-      <!-- video bg -->
-      <div class="left-0 top-0 z-0 hidden h-full w-full s:absolute s:block">
-        <VideoAnim
-          file="Growing Rocks Clean_Correction_With_BG"
-          ref="video"
-          :alpha="false"
-          size="fill"
-        />
-      </div>
       <!-- gradient -->
-      <!-- <div
+      <div
         class="circle-gradient absolute h-[60.8rem] w-[38.5rem] -rotate-90 rounded-[121.6rem] opacity-[.6] blur-[50px] s:-right-[6rem] s:-top-[44rem] s:h-[121.6rem] s:w-[77rem] max-s:-bottom-[20rem] max-s:left-1/2 max-s:translate-x-[-50%]"
         style="
           background: radial-gradient(
@@ -54,7 +45,16 @@ const playVideo = (ev) => {
             #f7ff9d 55.77%
           );
         "
-      ></div> -->
+      ></div>
+
+      <!-- video bg -->
+      <div class="left-0 top-0 z-0 hidden h-full w-full s:absolute s:block">
+        <VideoAnim
+          file="Growing Rocks Clean_Correction_With_BG (1)"
+          ref="video"
+          size="fill"
+        />
+      </div>
 
       <!-- text -->
       <div class="text has-break relative z-10 w-full s:w-[65%]">
