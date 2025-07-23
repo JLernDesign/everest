@@ -1,6 +1,32 @@
 <script setup>
 import is from "is_js";
-const props = defineProps(["file", "loc", "loop", "autoplay", "size"]);
+
+const props = defineProps({
+  file: {
+    type: String,
+    required: true,
+  },
+  loc: {
+    type: String,
+    default: "center",
+  },
+  loop: {
+    type: Boolean,
+    default: false,
+  },
+  autoplay: {
+    type: Boolean,
+    default: false,
+  },
+  size: {
+    type: String,
+    default: "fill",
+  },
+  alpha: {
+    type: Boolean,
+    default: true,
+  },
+});
 
 const chrome = is.chrome();
 const firefox = is.firefox();
@@ -42,18 +68,22 @@ defineExpose({
       :loop="loop && true"
       :autoplay="autoplay && true"
       ref="video"
-      :class="size === 'fill' ? 'h-full w-full' : null"
+      :class="size === 'fill' ? 'h-full w-full object-cover' : null"
     >
-      <source
-        v-if="safari || ios"
-        :src="`/video/${file}.mp4`"
-        type="video/mp4"
-      />
-      <source
-        v-else-if="chrome || firefox || edge"
-        :src="`/video/${file}.webm`"
-        type="video/webm"
-      />
+      <template v-if="alpha">
+        <source
+          v-if="safari || ios"
+          :src="`/video/${file}.mp4`"
+          type="video/mp4"
+        />
+        <source
+          v-else-if="chrome || firefox || edge"
+          :src="`/video/${file}.webm`"
+          type="video/webm"
+        />
+      </template>
+
+      <source v-else :src="`/video/${file}.mp4`" type="video/mp4" />
     </video>
   </div>
 </template>

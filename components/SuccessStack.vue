@@ -6,6 +6,14 @@ const main = ref(null);
 const slide = ref(null);
 const carouselRef = ref(null);
 let items;
+const amtY = 7.6;
+const active = ref(0);
+const bgs = ["#ffffff", "#313944", "#262D36"];
+const text_colors = [
+  "#000000",
+  "rgba(255,255,255,0.3)",
+  "rgba(255,255,255,0.1)",
+];
 
 // Navigation handlers
 const handlePrev = () => {
@@ -21,7 +29,7 @@ onMounted(() => {
   //items.reverse();
 
   items.forEach((item, i) => {
-    let amt = 7.6 * (items.length - 1 - i) + "rem";
+    let amt = amtY * (items.length - 1 - i) + "rem";
     gsap.set(item, { y: amt, zIndex: items.length - 1 - i });
 
     let title = qs(".title", item);
@@ -43,7 +51,7 @@ onMounted(() => {
 <template>
   <Section
     :theme="theme"
-    class="pb-section-bot-mob bg-skyblue pt-section-top-lg s:pb-section-bot"
+    class="bg-skyblue pb-section-bot-mob pt-section-top-lg s:pb-section-bot"
   >
     <SectionHeader :theme="theme" :data="data.header" />
 

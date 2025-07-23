@@ -35,8 +35,17 @@ const playVideo = (ev) => {
     <div
       class="relative overflow-hidden rounded-base-mob bg-[#FFD0B9] px-side-mob py-side-mob s:min-h-[61.5rem] s:rounded-base s:px-[11.5rem] s:py-[7rem]"
     >
+      <!-- video bg -->
+      <div class="left-0 top-0 z-0 hidden h-full w-full s:absolute s:block">
+        <VideoAnim
+          file="Growing Rocks Clean_Correction_With_BG"
+          ref="video"
+          :alpha="false"
+          size="fill"
+        />
+      </div>
       <!-- gradient -->
-      <div
+      <!-- <div
         class="circle-gradient absolute h-[60.8rem] w-[38.5rem] -rotate-90 rounded-[121.6rem] opacity-[.6] blur-[50px] s:-right-[6rem] s:-top-[44rem] s:h-[121.6rem] s:w-[77rem] max-s:-bottom-[20rem] max-s:left-1/2 max-s:translate-x-[-50%]"
         style="
           background: radial-gradient(
@@ -45,10 +54,10 @@ const playVideo = (ev) => {
             #f7ff9d 55.77%
           );
         "
-      ></div>
+      ></div> -->
 
       <!-- text -->
-      <div class="text has-break relative w-full s:w-[65%]">
+      <div class="text has-break relative z-10 w-full s:w-[65%]">
         <h2
           v-if="data.headline"
           class="font-barlow-cond text-xl-mob leading-xl s:text-xl max-s:pr-[2rem] [&_.nobr]:whitespace-normal"
@@ -70,7 +79,8 @@ const playVideo = (ev) => {
       </div>
 
       <!-- image -->
-      <div
+
+      <!-- <div
         class="right-0 top-0 flex h-full items-center s:absolute s:w-[84rem] s:pr-[12rem] max-s:-mt-[3rem] max-s:h-[32.5rem]"
       >
         <div
@@ -78,7 +88,7 @@ const playVideo = (ev) => {
         >
           <VideoAnim file="StoneLogo1" ref="video" />
         </div>
-      </div>
+      </div> -->
 
       <!-- seal -->
       <div class="absolute right-0 top-0 hidden p-side-mob s:block s:p-side">

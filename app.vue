@@ -32,7 +32,7 @@ useHead(() => {
 // execute leave animation for each route
 const page_color = useState("page_color", () => "skyblue");
 router.beforeEach(async (to, from, next) => {
-  console.log("to:", to);
+  /* console.log("to:", to); */
   if (
     to.name.includes("about") ||
     to.name.includes("index") ||

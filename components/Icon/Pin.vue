@@ -3,33 +3,44 @@ const props = defineProps(["color"]);
 </script>
 
 <template>
-  <svg
-    width="71"
-    height="66"
-    viewBox="0 0 71 66"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    class="h-[6.6rem] w-[7.1rem]"
-  >
-    <path
-      d="M34.349 1.59401C34.8578 0.703863 36.1413 0.703861 36.6501 1.594L70.3059 60.4763C70.8109 61.3598 70.1729 62.4592 69.1553 62.4592H1.84381C0.826192 62.4592 0.188272 61.3598 0.693249 60.4763L34.349 1.59401Z"
-      fill="#FEF6F0"
+  <div class="on group relative">
+    <img
+      src="/public/about/pin-tri.svg"
+      alt=""
+      class="absolute -top-[.2rem] left-0 h-[6.2rem] w-[7rem]"
     />
-    <path
-      opacity="0.5"
-      d="M33.7068 18.2289C34.472 16.9036 36.3848 16.9036 37.1499 18.2289L56.559 51.8463C57.3241 53.1716 56.3677 54.8281 54.8374 54.8281H16.0193C14.4891 54.8281 13.5327 53.1716 14.2978 51.8463L33.7068 18.2289Z"
-      fill="#FC5161"
-    />
-    <path
-      opacity="0.5"
-      d="M34.2818 25.5689C34.7919 24.6854 36.0671 24.6854 36.5772 25.5689L49.9175 48.675C50.4276 49.5584 49.79 50.6628 48.7698 50.6628H22.0892C21.0691 50.6628 20.4315 49.5585 20.9415 48.675L34.2818 25.5689Z"
-      fill="#FC5161"
-    />
-    <path
-      d="M34.8548 32.907C35.1099 32.4653 35.7475 32.4653 36.0025 32.907L43.274 45.5016C43.5291 45.9434 43.2103 46.4956 42.7002 46.4956H28.1572C27.6471 46.4956 27.3283 45.9434 27.5833 45.5016L34.8548 32.907Z"
-      fill="#FC5161"
-    />
-  </svg>
+    <div
+      v-for="i in 3"
+      :key="i"
+      class="tri absolute left-0 top-0 h-[6.2rem] w-[7rem]"
+    >
+      <img src="/public/about/pin-tri-red.svg" alt="" />
+    </div>
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.group.on .tri {
+  animation: burst 2.25s linear infinite;
+  &:nth-child(2) {
+    animation-delay: -0.75s;
+  }
+  &:nth-child(3) {
+    animation-delay: -1.5s;
+  }
+}
+@keyframes burst {
+  0% {
+    opacity: 0.2;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(0.425);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+}
+</style>
