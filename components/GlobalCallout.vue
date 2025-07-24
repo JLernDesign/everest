@@ -48,7 +48,9 @@ const playVideo = (ev) => {
       ></div>
 
       <!-- video bg -->
-      <div class="left-0 top-0 z-0 hidden h-full w-full s:absolute s:block">
+      <div
+        class="-bottom-[1px] left-0 z-0 hidden h-full w-full s:absolute s:block"
+      >
         <VideoAnim
           file="Growing Rocks Clean_Correction_With_BG (1)"
           ref="video"

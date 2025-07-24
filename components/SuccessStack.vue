@@ -3,12 +3,10 @@ import gsap from "gsap";
 const props = defineProps(["theme", "data"]);
 
 const main = ref(null);
-const slide = ref(null);
 const carouselRef = ref(null);
 let items;
 const amtY = 7.6;
 const posY = [0, -7.6, -15.2];
-const current = ref(0);
 const z = [3, 2, 1];
 const order = [0, 1, 2];
 const bgs = ["#ffffff", "#313944", "#262D36"];
