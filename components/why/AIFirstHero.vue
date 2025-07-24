@@ -72,6 +72,7 @@ const playVideo = (ev) => {
           ref="video"
           :alpha="false"
           size="fill"
+          :loop="true"
         />
       </div>
     </div>

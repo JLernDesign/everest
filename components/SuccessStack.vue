@@ -50,62 +50,92 @@ onMounted(() => {
   });
 });
 
-const changeSlide = (i, dir) => {
-  console.log("changeSlide", i, dir);
+const dur = 1;
+const stag = 0.02;
 
-  // move current slide down and fade out
-  gsap.to(items[order[0]], {
-    duration: 0.5,
-    y: posY[0] + amtY + "rem",
-    opacity: 0,
+const changeSlide = (i, dir) => {
+  // move first slide down / last slide up
+  let cur1 = dir == "next" ? 0 : 2;
+  let next1 = dir == "next" ? 2 : 0;
+  let startY = dir == "next" ? 36 : posY[cur1] + amtY;
+  let endY = dir == "next" ? posY[next1] + amtY : 36;
+
+  let item1 = items[order[cur1]];
+  gsap.to(item1, {
+    duration: dur / 2,
+    y: startY + "rem",
+    opacity: 1,
+    rotate: dir == "next" ? 5 : -5,
     ease: "power3.in",
+    onStart: () => {
+      let title = qs(".title", item1);
+      gsap.set(title, { color: text_colors[next1] });
+    },
     onComplete: () => {
       // move current slide to back
-      gsap.fromTo(
-        items[order[0]],
-        { y: posY[2] - amtY + "rem", zIndex: z[2], backgroundColor: bgs[2] },
-        {
-          duration: 0.5,
-          y: posY[2] + "rem",
-          opacity: 1,
-          ease: "power3.out",
-        },
-      );
-    },
-  });
-  // change title color
-  let title = qs(".title", items[order[0]]);
-  gsap.set(title, { color: text_colors[2] });
-
-  // move next slide to front
-  gsap.to(items[order[1]], {
-    duration: 1,
-    y: posY[0] + "rem",
-    backgroundColor: bgs[0],
-    zIndex: z[0],
-    ease: "power3.inOut",
-    onStart: () => {
-      let title = qs(".title", items[order[1]]);
-      gsap.set(title, { color: text_colors[0] });
+      gsap.set(item1, {
+        opacity: 1,
+        display: "none",
+        y: endY + "rem",
+        zIndex: z[next1],
+        backgroundColor: bgs[next1],
+        rotate: dir == "next" ? 5 : -5,
+      });
+      gsap.to(item1, {
+        display: "block",
+        delay: stag * 3,
+        duration: dir == "next" ? 1 : 0.75,
+        y: posY[next1] + "rem",
+        opacity: 1,
+        rotate: 0,
+        ease: dir == "next" ? "elastic.out(1,3)" : "elastic.out(1,2.5)",
+      });
     },
   });
 
-  // move last slide to middle
-  gsap.to(items[order[2]], {
-    duration: 1,
-    y: posY[1] + "rem",
-    backgroundColor: bgs[1],
-    zIndex: z[1],
+  // move middle slide to front or back
+  let cur2 = 1;
+  let next2 = dir == "next" ? 0 : 2;
+
+  let item2 = items[order[cur2]];
+  gsap.to(item2, {
+    delay: stag,
+    duration: dur,
+    y: posY[next2] + "rem",
+    backgroundColor: bgs[next2],
+    zIndex: z[next2],
     ease: "power3.inOut",
     onStart: () => {
-      let title = qs(".title", items[order[2]]);
-      gsap.set(title, { color: text_colors[1] });
+      let title = qs(".title", item2);
+      gsap.set(title, { color: text_colors[next2] });
+    },
+  });
+
+  // move first or last slide to middle
+  let cur3 = dir == "next" ? 2 : 0;
+  let next3 = 1;
+
+  let item3 = items[order[cur3]];
+  gsap.to(item3, {
+    delay: stag * 2,
+    duration: dur,
+    y: posY[next3] + "rem",
+    backgroundColor: bgs[next3],
+    zIndex: z[next3],
+    ease: "power3.inOut",
+    onStart: () => {
+      let title = qs(".title", item3);
+      gsap.set(title, { color: text_colors[next3] });
     },
   });
 
   // update order
   setTimeout(() => {
-    order.push(order.shift());
+    if (dir == "next") {
+      order.push(order.shift());
+    } else {
+      order.unshift(order.pop());
+    }
   }, 1000);
 };
 </script>
