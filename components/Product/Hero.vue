@@ -33,7 +33,7 @@ onMounted(() => {
         ease: "power3.out",
       },
     );
-  }, 1200);
+  }, 600);
 });
 
 onUnmounted(() => {

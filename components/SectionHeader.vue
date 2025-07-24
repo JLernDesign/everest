@@ -25,12 +25,12 @@ onMounted(() => {
       // animate items into place
       gsap.fromTo(
         items,
-        { y: "2rem" },
+        { y: "3rem" },
         {
           duration: 1,
           opacity: 1,
           y: 0,
-          stagger: 0.1,
+          stagger: 0.15,
           ease: "power3.out",
         },
       );
@@ -69,19 +69,18 @@ onMounted(() => {
         template == 'news' && 'max-w-[80rem]',
       ]"
     >
-      <AnimHeadline :anim="anim">
-        <h1
-          v-if="hero"
-          class="text !mb-6 font-barlow-cond text-xl-mob leading-xl s:!mb-12 s:text-xl"
-          v-html="formatText(data.headline)"
-        ></h1>
-        <h2
-          v-else
-          class="text font-barlow-cond text-lg-mob leading-lg s:text-lg"
-          :class="!data.intro && 's:pb-[.5rem]'"
-          v-html="formatText(data.headline)"
-        ></h2>
-      </AnimHeadline>
+      <h1
+        v-if="hero"
+        class="text !mb-6 font-barlow-cond text-xl-mob leading-xl s:!mb-12 s:text-xl"
+        v-html="formatText(data.headline)"
+        :class="anim && 'anim-item'"
+      ></h1>
+      <h2
+        v-else
+        class="text font-barlow-cond text-lg-mob leading-lg s:text-lg"
+        :class="[!data.intro && 's:pb-[.5rem]', anim && 'anim-item']"
+        v-html="formatText(data.headline)"
+      ></h2>
 
       <div
         v-if="data.intro"
