@@ -125,3 +125,35 @@ export const newsPostQuery = gql`
   ${FooterFragment}
   ${LinkFragment}
 `;
+
+export const featuredNewsQuery = gql`
+  query {
+    allNewsPosts(orderBy: publishDate_DESC, first: 3) {
+      __typename
+      title
+      slug
+      publishDate
+      tag {
+        name
+        slug
+      }
+      image {
+        responsiveImage(imgixParams: { fit: fillmax, w: 1400, h: 1050 }) {
+          src
+          width
+          height
+          alt
+          base64
+        }
+      }
+      logo {
+        url
+      }
+      accentColor {
+        bgColor
+      }
+      intro
+      externalLink
+    }
+  }
+`;

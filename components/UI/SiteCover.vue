@@ -1,8 +1,5 @@
 <script setup>
 const page_color = useState("page_color");
-/* watch(page_color, (newVal) => {
-  console.log("page_color:", newVal);
-}); */
 </script>
 
 <template>

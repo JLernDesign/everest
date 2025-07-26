@@ -1,12 +1,11 @@
 <script setup>
-import { blogQuery } from "~/assets/graphql/queries/blog";
+import { featuredNewsQuery } from "~/assets/graphql/queries/news";
 const props = defineProps(["data", "type", "posts"]);
 
 const { data: posts_data } = await useGraphqlQuery({
-  query: blogQuery.loc.source.body,
+  query: featuredNewsQuery.loc.source.body,
 });
-const posts = props.posts || posts_data.value.allPosts;
-const selected = posts.slice(0, 3);
+const posts = props.posts || posts_data.value.allNewsPosts;
 </script>
 
 <template>
@@ -31,10 +30,10 @@ const selected = posts.slice(0, 3);
       <div
         class="grid w-full grid-cols-1 divide-grayline border-y border-grayline s:grid-cols-3 s:divide-x-1 max-s:divide-y-1"
       >
-        <BlogThumb v-for="(item, i) in selected" :data="item" />
+        <BlogThumb v-for="(item, i) in posts" :data="item" />
       </div>
       <div v-if="type == 'callout'" class="mt-btn text-center">
-        <CtaBtn to="/blog">View More</CtaBtn>
+        <CtaBtn to="/news/press">View More</CtaBtn>
       </div>
     </div>
   </Section>

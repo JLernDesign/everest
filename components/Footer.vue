@@ -122,6 +122,17 @@ const legalPages = legals.value.allLegals;
             </template>
             <li class="mx-5 hidden s:block">•</li>
             <li class="max-s:w-full">© 2025 Everest Systems, Inc</li>
+
+            <template v-if="data.emailAddress">
+              <li class="mx-5 hidden s:block">•</li>
+              <li>
+                <a
+                  :href="`mailto:${data.emailAddress}`"
+                  class="hover:text-red"
+                  >{{ data.emailAddress }}</a
+                >
+              </li>
+            </template>
           </ul>
           <div class="mt-5 text-[#6E7174]">
             Design: <a href="https://griflan.com" target="_blank">Griflan</a>

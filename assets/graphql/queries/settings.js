@@ -47,6 +47,7 @@ export const settingsQuery = gql`
         address
         coords
       }
+      emailAddress
       badges {
         url
       }

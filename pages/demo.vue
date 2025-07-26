@@ -1,6 +1,5 @@
 <script setup>
 import { demoQuery } from "~/assets/graphql/queries/demo.js";
-import { toHead } from "vue-datocms";
 
 const loaded = ref(false);
 const { data } = await useGraphqlQuery({
@@ -9,7 +8,6 @@ const { data } = await useGraphqlQuery({
 const page = data.value.bookDemo;
 const locations = data.value.global.locations;
 const logos = data.value.bookDemo.featuredLogos;
-//const form_id = "5350cf07-c779-4320-9bd6-a3ecc0bef59f";
 
 onMounted(() => {
   window.addEventListener("message", (event) => {
@@ -42,16 +40,11 @@ onMounted(() => {
   const theme = useState("theme");
   theme.value = "light";
 });
-
-// compile meta tags for head
-useHead(() => {
-  if (!data.value) return {};
-  return toHead(page.seo);
-});
 </script>
 
 <template>
   <div class="bg-jaffa">
+    <Seo :data="page.seo" />
     <Section :hero="true" class="max-s:pt-hero-mob-lg">
       <header class="text-center">
         <h1

@@ -45,7 +45,8 @@ router.beforeEach(async (to, from, next) => {
     to.name.includes("demo") ||
     to.name.includes("blog") ||
     to.name.includes("media") ||
-    to.name.includes("legal")
+    to.name.includes("legal") ||
+    to.name.includes("news")
   ) {
     page_color.value = "bg-jaffa";
   }

@@ -1,6 +1,5 @@
 <script setup>
 import { productQuery } from "~/assets/graphql/queries/product";
-import { toHead } from "vue-datocms";
 
 const route = useRoute();
 const loaded = ref(false);
@@ -37,16 +36,11 @@ onMounted(() => {
     }
   });
 });
-
-// compile meta tags for head
-useHead(() => {
-  if (!data.value) return {};
-  return toHead(page.seo);
-});
 </script>
 
 <template>
   <div class="bg-jaffa">
+    <Seo :data="page.seo" />
     <ProductHero
       v-if="page.hero"
       :data="page.hero"

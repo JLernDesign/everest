@@ -15,6 +15,11 @@ const barProgress = () => {
   });
 };
 
+const stopProgress = () => {
+  gsap.killTweensOf(bars);
+  gsap.set(bars[current], { xPercent: 0 });
+};
+
 const next = (n) => {
   // reset all bars
   gsap.killTweensOf(bars);
@@ -65,6 +70,7 @@ onMounted(() => {
 
 defineExpose({
   next,
+  stopProgress,
 });
 </script>
 

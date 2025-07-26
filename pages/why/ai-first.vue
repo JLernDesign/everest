@@ -1,6 +1,5 @@
 <script setup>
 import { aiFirstQuery } from "~/assets/graphql/queries/ai-first.js";
-import { toHead } from "vue-datocms";
 
 const { data } = await useGraphqlQuery({
   query: aiFirstQuery.loc.source.body,
@@ -12,16 +11,11 @@ onMounted(() => {
   const theme = useState("theme");
   theme.value = "dark";
 });
-
-// compile meta tags for head
-useHead(() => {
-  if (!data.value) return {};
-  return toHead(page.seo);
-});
 </script>
 
 <template>
   <div class="text-white">
+    <Seo :data="page.seo" />
     <WhyAIFirstHero :data="page.hero" />
 
     <template v-for="module in page.aiFirstFlexible.aiFirstModules">

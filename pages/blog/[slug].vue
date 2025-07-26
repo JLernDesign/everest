@@ -3,7 +3,6 @@ import gsap from "gsap";
 import gql from "graphql-tag";
 import { StructuredText as DatocmsStructuredText } from "vue-datocms";
 import { postQuery, PostFragment } from "~/assets/graphql/queries/blog";
-import { toHead } from "vue-datocms";
 
 const route = useRoute();
 
@@ -31,6 +30,27 @@ const nextPostsQuery = gql`
 const { data: nextPostsData } = await useGraphqlQuery({
   query: nextPostsQuery.loc.source.body,
 });
+
+// loop back to beginning if there are less than 3 posts
+if (nextPostsData.value.allPosts.length < 3) {
+  let amount = 3 - nextPostsData.value.allPosts.length;
+  const firstPostsQuery = gql`
+    query {
+      allPosts(orderBy: publishDate_DESC, first: ${amount}) {
+        ...PostFragment
+      }
+    }
+    ${PostFragment}
+  `;
+
+  const { data: firstPostsData } = await useGraphqlQuery({
+    query: firstPostsQuery.loc.source.body,
+  });
+  nextPostsData.value.allPosts = [
+    ...nextPostsData.value.allPosts,
+    ...firstPostsData.value.allPosts,
+  ];
+}
 
 let ctx, mm;
 const min = 650;
@@ -104,16 +124,12 @@ const renderBlock = ({ record }) => {
     );
   }
 };
-
-// compile meta tags for head
-useHead(() => {
-  if (!data.value) return {};
-  return toHead(data.value.post.seo);
-});
 </script>
 
 <template>
   <div class="bg-jaffa pt-hero-top-mob s:pt-post-top" ref="main">
+    <Seo :data="data.post.seo" />
+
     <!-- header -->
     <BlogPostHeader :data="data.post" />
 

@@ -36,6 +36,7 @@ const props = defineProps(["data"]);
       :hero="true"
       :data="data"
       :wrap="true"
+      :anim="true"
     />
   </Section>
 </template>

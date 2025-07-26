@@ -1,6 +1,5 @@
 <script setup>
 import { newsCollectionQuery } from "~/assets/graphql/queries/news.js";
-import { toHead } from "vue-datocms";
 const slug = "collaborations";
 
 const { data } = await useGraphqlQuery({
@@ -14,16 +13,12 @@ onMounted(() => {
   const theme = useState("theme");
   theme.value = "light";
 });
-
-// compile meta tags for head
-useHead(() => {
-  if (!data.value) return {};
-  return toHead(page.seo);
-});
 </script>
 
 <template>
   <div class="bg-jaffa">
+    <Seo :data="page.seo" />
+
     <!-- basic hero -->
     <BasicHero
       :data="page.hero"

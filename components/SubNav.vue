@@ -5,11 +5,11 @@ import { vOnClickOutside } from "@vueuse/components";
 const props = defineProps(["data", "template", "changeContent"]);
 const mobile = breakpoints.smallerOrEqual("tablet1");
 const route = useRoute();
+let slug = route.params.slug || route.name.split("-")[1];
+
+// find current page based on page slug or tag slug
 const current = props.data.find(
-  (item) =>
-    item.slug === route.params.slug ||
-    item.tag?.slug === route.params.slug ||
-    item.tag?.slug === route.name.split("-")[1],
+  (item) => item.slug === slug || item.tag?.slug === slug,
 );
 
 const active = ref(0);

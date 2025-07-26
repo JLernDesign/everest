@@ -25,6 +25,11 @@ const slideTimer = () => {
   }, speed * 1000);
 };
 
+const stopSlideshow = () => {
+  clearInterval(slideshow);
+  progressBars.value?.stopProgress();
+};
+
 onUnmounted(() => {
   clearInterval(slideshow);
 });
@@ -42,7 +47,11 @@ onMounted(() => {
     :side="false"
     class="border-t border-grayline s:!py-[5rem] max-s:pt-0"
   >
-    <Carousel v-if="data?.featuredPosts" ref="carousel">
+    <Carousel
+      v-if="data?.featuredPosts"
+      ref="carousel"
+      @mousedown="stopSlideshow"
+    >
       <div
         v-for="(item, i) in data.featuredPosts"
         class="item shrink-0 s:px-[1.6rem] max-s:w-full"

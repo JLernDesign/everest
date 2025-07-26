@@ -89,11 +89,6 @@ onUnmounted(() => {
       >
         <div class="anim-item hero-image hero-image">
           <VideoAnim :file="`infographics/${videoFile}`" ref="video" />
-          <!-- <DatocmsImage
-            v-if="data.image"
-            :data="data.image.responsiveImage"
-            class="hero-image"
-          /> -->
         </div>
       </div>
 

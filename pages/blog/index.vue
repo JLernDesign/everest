@@ -1,7 +1,6 @@
 <script setup>
 import { gsap } from "gsap";
 import { blogQuery } from "~/assets/graphql/queries/blog";
-import { toHead } from "vue-datocms";
 
 const page = ref(1);
 const postsPerPage = 12;
@@ -94,16 +93,12 @@ const updatePage = (n) => {
     });
   }, 300);
 };
-
-// compile meta tags for head
-useHead(() => {
-  if (!data.value || !finalPageData.value) return {};
-  return toHead(finalPageData.value.seo);
-});
 </script>
 
 <template>
   <div ref="main" class="bg-jaffa">
+    <Seo :data="finalPageData.seo" />
+
     <Section class="s:pt-section-top-lg" :hero="true" side="none">
       <BlogHeader v-if="finalPageData" :icon="false" :data="finalPageData" />
     </Section>

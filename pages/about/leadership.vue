@@ -1,6 +1,5 @@
 <script setup>
 import { leadershipQuery } from "~/assets/graphql/queries/leadership.js";
-import { toHead } from "vue-datocms";
 
 const { data } = await useGraphqlQuery({
   query: leadershipQuery.loc.source.body,
@@ -11,22 +10,13 @@ onMounted(() => {
   const theme = useState("theme");
   theme.value = "light";
 });
-
-// compile meta tags for head
-useHead(() => {
-  if (!data.value) return {};
-  return toHead(page.seo);
-});
 </script>
 
 <template>
   <div class="bg-skyblue">
-    <!-- basic hero -->
+    <Seo :data="page.seo" />
     <BasicHero :data="{ headline: page.team.header.headline }" />
-
-    <!-- team -->
     <AboutTeam :data="page.team" />
-
     <FlexibleBlocks :data="page.flexibleContent.modules" />
     <FooterLockup :data="page.footerCallout" />
   </div>

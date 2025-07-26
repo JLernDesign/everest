@@ -98,9 +98,9 @@ defineExpose({ openItem, open, closeItem });
         </div>
         <div
           v-if="data.quote"
-          class="w-auto text-body-sm-mob leading-sm s:text-body-sm max-s:mt-12"
+          class="w-full text-body-sm-mob leading-sm s:text-body-sm max-s:mt-12"
         >
-          <blockquote>"{{ data.quote }}"</blockquote>
+          <blockquote>“{{ data.quote }}”</blockquote>
         </div>
       </div>
     </div>

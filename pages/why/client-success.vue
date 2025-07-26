@@ -1,6 +1,5 @@
 <script setup>
 import { clientsQuery } from "~/assets/graphql/queries/clients.js";
-import { toHead } from "vue-datocms";
 
 const { data } = await useGraphqlQuery({
   query: clientsQuery.loc.source.body,
@@ -11,16 +10,11 @@ onMounted(() => {
   const theme = useState("theme");
   theme.value = "dark";
 });
-
-// compile meta tags for head
-useHead(() => {
-  if (!data.value) return {};
-  return toHead(page.seo);
-});
 </script>
 
 <template>
   <div class="bg-skyblue">
+    <Seo :data="page.seo" />
     <WhyClientsHero :data="page.hero" :items="page.clientSlider" />
     <ClientSuccessGrid
       v-if="page.clientGrid"

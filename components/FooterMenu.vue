@@ -15,7 +15,7 @@ const toggleMenu = (e) => {
 
 <template>
   <ul
-    class="mt-[2rem] w-[28rem] divide-y-1 divide-darkline border-b-1 border-t-1 border-darkline text-body-sm-mob leading-[1] text-white s:text-body-sm"
+    class="mt-[2rem] w-[28rem] divide-y-1 divide-darkline border-b-1 border-t-1 border-darkline text-body-sm-mob leading-[1] text-white s:text-body-sm [&_button]:!bg-[position:0_100%]"
     ref="main"
   >
     <!-- link -->

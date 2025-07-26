@@ -1,13 +1,12 @@
 <script setup>
 import { mediaCollectionQuery } from "~/assets/graphql/queries/media.js";
-import { toHead } from "vue-datocms";
 
 const route = useRoute();
 
 const { data } = await useGraphqlQuery({
   query: mediaCollectionQuery.loc.source.body,
 });
-console.log(data.value);
+
 const page = data.value.mediaPage;
 const collections = data.value.allMediaCollections.filter(
   (collection) => collection.tag?.slug != "ebooks",
@@ -20,16 +19,12 @@ onMounted(() => {
   const theme = useState("theme");
   theme.value = "light";
 });
-
-// compile meta tags for head
-useHead(() => {
-  if (!data.value) return {};
-  return toHead(page.seo);
-});
 </script>
 
 <template>
   <div class="bg-jaffa">
+    <Seo :data="page.seo" />
+
     <!-- basic hero -->
     <BasicHero
       :data="page.hero"

@@ -2,7 +2,6 @@
 import gsap from "gsap";
 import { StructuredText as DatocmsStructuredText } from "vue-datocms";
 import { newsPostQuery } from "~/assets/graphql/queries/news";
-import { toHead } from "vue-datocms";
 
 const route = useRoute();
 
@@ -54,47 +53,13 @@ const renderBlock = ({ record }) => {
       ),
     ]);
   }
-
-  // quote block
-  /*   if (record.__typename === "BlogQuoteRecord") {
-    return h(
-      "div",
-      {
-        class:
-          "content-block quote relative left-1/2 w-screen max-s:-ml-[50vw] s:-translate-x-1/2 -ml-[20rem] s:!my-[10rem] max-s:!my-[8rem]",
-      },
-      [
-        h(
-          "div",
-          {
-            class:
-              "quote-wrap s:bg-[url(/public/blog/quote-bg.svg)] bg-[url(/public/blog/quote-bg-mob.svg)] bg-cover s:px-[20rem] s:py-[13.2rem] py-[17rem] border-y-1 border-y-grayline",
-          },
-          [
-            h(
-              "blockquote",
-              {
-                class:
-                  "text-xl-mob s:text-xl font-barlow-cond leading-xl text-center s:p-[8rem] p-[4rem] rounded-base-mob s:rounded-base bg-jaffa",
-              },
-              record.text,
-            ),
-          ],
-        ),
-      ],
-    );
-  } */
 };
-
-// compile meta tags for head
-useHead(() => {
-  if (!data.value) return {};
-  return toHead(data.value.newsPost.seo);
-});
 </script>
 
 <template>
   <div class="bg-jaffa pt-hero-top-mob s:pt-post-top" ref="main">
+    <Seo :data="data.newsPost.seo" />
+
     <!-- header -->
     <BlogPostHeader :data="data.newsPost" />
 
