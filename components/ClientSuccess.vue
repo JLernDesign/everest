@@ -39,7 +39,6 @@ const progressBarMobile = ref(null);
 let slideshow;
 
 const startSlideshow = () => {
-  console.log("startSlideshow");
   mobile.value
     ? progressBarMobile.value?.barProgress()
     : progressBar.value?.barProgress();
@@ -48,7 +47,6 @@ const startSlideshow = () => {
 };
 
 const stopSlideshow = () => {
-  console.log("stopSlideshow");
   clearInterval(slideshow);
   mobile.value
     ? progressBarMobile.value?.stopProgress()

@@ -6,6 +6,7 @@ const mobile = breakpoints.smallerOrEqual("tablet1");
 const slider = ref(true);
 const anims = ref(null);
 const loaded = ref(false);
+const main = ref(null);
 let ctx;
 
 onMounted(() => {
@@ -16,12 +17,17 @@ onMounted(() => {
   }
 
   ctx = gsap.context((self) => {
+    // parallax clouds
+    const clouds = self.selector(".cloud");
+    const cloudY = [60, 40, 30, 80];
+    cloudParallax(main.value.$el, null, clouds, cloudY);
+
     // animate items into place on scroll to section
     setTimeout(() => {
       const items = anims.value.querySelectorAll(".anim-item");
       animIntoView(items, anims.value, 0.2, "top 90%");
     }, 200);
-  }, anims.value);
+  }, main.value.$el);
 
   setTimeout(() => {
     loaded.value = true;
@@ -54,6 +60,7 @@ watch(mobile, () => {
     side="none"
     class="bg-skyblue pb-[16rem] text-center s:pb-section-bot-lg max-s:pt-hero-mob-lg"
     :anim="true"
+    ref="main"
   >
     <!-- bg elements -->
     <UICloud
@@ -62,21 +69,30 @@ watch(mobile, () => {
       :flip="true"
       :anim="true"
       :speed="65"
+      :num="1"
     />
-    <UICloud type="2" class="-left-[25rem] top-0" :anim="true" :speed="55" />
+    <UICloud
+      type="2"
+      class="-left-[25rem] top-0"
+      :anim="true"
+      :speed="75"
+      :num="2"
+    />
     <UICloud
       type="2"
       class="left-[22.1rem] top-[43.5rem]"
       :anim="true"
-      :speed="45"
+      :speed="60"
       :rot="-10"
       :width="91"
+      :num="3"
     />
     <UICloud
       type="3"
       class="left-[64rem] top-[45.7rem]"
       :anim="true"
-      :speed="35"
+      :speed="50"
+      :num="4"
     />
 
     <SectionHeaderBig
