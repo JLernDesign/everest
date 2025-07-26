@@ -43,9 +43,23 @@ onMounted(() => {
               opacity: 1,
               scrollTrigger: {
                 trigger: card,
-                start: "top bottom",
+                start: "top 75%",
                 end: "top top",
                 scrub: true,
+                onEnter: () => {
+                  //card.classList.add("on");
+                  //console.log("enter " + index);
+                },
+                onEnterBack: () => {
+                  //card.classList.add("on");
+                },
+                onLeave: () => {
+                  //card.classList.remove("on");
+                  //console.log("leave " + index);
+                },
+                onLeaveBack: () => {
+                  //card.classList.remove("on");
+                },
               },
             },
           );

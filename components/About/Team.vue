@@ -32,15 +32,22 @@ const handleClick = (i) => {
   <Section
     class="bg-skyblue pb-section-bot-mob s:!pt-0 s:pb-section-bot max-s:pt-0"
     side="lg"
+    :anim="true"
   >
     <!-- bg elements -->
     <UICloud
       type="3"
-      class="-left-[59rem] top-[73rem] -scale-x-100 opacity-50"
+      class="-left-[59rem] top-[73rem] opacity-50"
+      :flip="true"
+      :anim="true"
+      :speed="60"
     />
     <UICloud
       type="3"
-      class="left-[88rem] top-[28rem] -scale-x-100 opacity-50"
+      class="left-[88rem] top-[28rem] opacity-50"
+      :flip="true"
+      :anim="true"
+      :speed="80"
     />
 
     <div class="flex-col s:flex s:flex-row s:justify-between" ref="main">

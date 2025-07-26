@@ -1,6 +1,5 @@
 <script setup>
 import gsap from "gsap";
-import { Image as DatocmsImage } from "vue-datocms";
 
 const props = defineProps(["theme", "nav", "data", "num"]);
 const main = ref(null);
@@ -29,7 +28,7 @@ const playVideo = (state) => {
 <template>
   <div
     ref="main"
-    class="overview-card dark relative w-full border-b px-side-mob py-[6rem] s:px-[20rem] s:py-[11rem]"
+    class="overview-card section-wrap dark relative w-full border-b px-side-mob py-[6rem] s:px-[20rem] s:py-[11rem]"
     :class="
       theme == 'dark'
         ? 'border-[#3D4856] bg-shadowblue'
@@ -90,8 +89,18 @@ const playVideo = (state) => {
         <div
           class="image relative flex aspect-[1.0675] w-full items-center justify-center overflow-hidden rounded-base-mob bg-skyblue s:rounded-base"
         >
-          <UICloud type="2" class="-left-[16rem] top-[44rem]" />
-          <UICloud type="2" class="-top-[25rem] left-[18rem]" />
+          <UICloud
+            type="2"
+            class="-left-[16rem] top-[44rem]"
+            :anim="true"
+            :speed="60"
+          />
+          <UICloud
+            type="2"
+            class="-top-[25rem] left-[18rem]"
+            :anim="true"
+            :speed="80"
+          />
 
           <div
             class="image-ph relative h-full w-full max-s:p-side-mob [&>div]:h-full [&_img]:h-full [&_img]:w-full [&_img]:object-contain"

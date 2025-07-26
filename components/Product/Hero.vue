@@ -9,7 +9,11 @@ const video = ref(null);
 let ctx;
 
 onMounted(() => {
-  ctx = gsap.context((self) => {}, main.value);
+  ctx = gsap.context((self) => {
+    const clouds = self.selector(".cloud");
+    const cloudY = [80, 40, 20];
+    cloudParallax(main.value.$el, null, clouds, cloudY);
+  }, main.value.$el);
 
   setTimeout(() => {
     loaded.value = true;
@@ -56,16 +60,18 @@ onUnmounted(() => {
     />
     <UICloud
       type="2"
-      class="-top-[30rem] left-[99rem]"
+      class="-top-[30rem] left-0"
       :anim="true"
-      :speed="55"
+      :speed="70"
+      :delay="-50"
     />
-    <UICloud type="2" class="left-0 top-[68rem]" :anim="true" :speed="30" />
+    <UICloud type="2" class="left-0 top-[38rem]" :anim="true" :speed="60" />
     <UICloud
       type="3"
-      class="left-[73rem] top-[65rem]"
+      class="left-0 top-[65rem]"
       :anim="true"
       :speed="50"
+      :delay="-40"
     />
 
     <div

@@ -572,7 +572,7 @@ export const qs = (s, o = document) => o.querySelector(s);
 export const qsa = (s, o = document) => [...o.querySelectorAll(s)];
 export const rect = (el) => el.getBoundingClientRect();
 
-// parallax
+// parallax - not used
 export const parallaxSection = (wrap, margin, os = 0) => {
   // section to move
   const px_section = wrap.querySelector(".section-wrap");
@@ -611,5 +611,31 @@ export const splitHeadline = (el, wrap) => {
   gsap.set(letters, {
     opacity: 0,
     yPercent: 100,
+  });
+};
+
+// cloud parallax
+
+export const cloudParallax = (trigger, endTrigger = null, clouds, cloudY) => {
+  let tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: trigger,
+      endTrigger: endTrigger || trigger,
+      start: "top top",
+      end: "bottom top",
+      scrub: true,
+    },
+  });
+
+  // move clouds
+  clouds.forEach((cloud, i) => {
+    tl.to(
+      cloud,
+      {
+        y: cloudY[i] + "rem",
+        ease: "none",
+      },
+      0,
+    );
   });
 };

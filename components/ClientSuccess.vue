@@ -1,5 +1,4 @@
 <script setup>
-import gsap from "gsap";
 import { Image as DatocmsImage } from "vue-datocms";
 import gql from "graphql-tag";
 import {
@@ -11,11 +10,10 @@ import {
 
 const props = defineProps(["theme", "data"]);
 const mobile = breakpoints.smallerOrEqual("tablet1");
-const active = 0;
 const carouselRef = ref(null);
 const carouselRefRight = ref(null);
 const carouselRefLeft = ref(null);
-/* const parallax = ref(null); */
+const main = ref(null);
 let page_data;
 
 // navigation handlers
@@ -33,20 +31,36 @@ const handleNext = () => {
   stopSlideshow();
 };
 
-const stopSlideshow = () => {
-  clearInterval(slideshow);
-  progressBar.value?.stopProgress();
-};
-
 // slideshow
 const speed = 5;
 const pageInactive = useState("pageInactive");
 const progressBar = ref(null);
+const progressBarMobile = ref(null);
 let slideshow;
-/* let mm; */
+
+const startSlideshow = () => {
+  console.log("startSlideshow");
+  mobile.value
+    ? progressBarMobile.value?.barProgress()
+    : progressBar.value?.barProgress();
+  //next();
+  slideTimer();
+};
+
+const stopSlideshow = () => {
+  console.log("stopSlideshow");
+  clearInterval(slideshow);
+  mobile.value
+    ? progressBarMobile.value?.stopProgress()
+    : progressBar.value?.stopProgress();
+};
+
+const toggleSlideshow = (ev) => {
+  ev == "enter" ? startSlideshow() : stopSlideshow();
+};
 
 const next = () => {
-  progressBar.value?.next();
+  mobile.value ? progressBarMobile.value?.next() : progressBar.value?.next();
   carouselRef.value?.next();
   carouselRefRight.value?.next();
   carouselRefLeft.value?.next();
@@ -61,23 +75,10 @@ const slideTimer = () => {
 };
 
 onMounted(() => {
-  // start slideshow
   setTimeout(() => {
-    progressBar.value?.barProgress();
-    next();
-    slideTimer();
+    playInView(main.value, null, toggleSlideshow);
   }, 200);
-
-  // section parallax
-  /*   mm = gsap.matchMedia();
-  mm.add("(min-width: 650px)", () => {
-    parallaxSection(parallax.value, 40);
-  }); */
 });
-
-/* onUnmounted(() => {
-  mm && mm.revert();
-}); */
 
 // check for new data
 if (props.data.slides && props.data.slides.length > 0) {
@@ -129,6 +130,7 @@ if (props.data.slides && props.data.slides.length > 0) {
       class="mt-[3rem] flex s:mt-md"
       v-if="page_data.slides && page_data.slides.length > 0"
       :class="page_data.slides.length > 1 && 's:divide-x-1 s:divide-grayline'"
+      ref="main"
     >
       <!-- left -->
       <div class="col lt hidden w-[27.5%] overflow-hidden s:block">
@@ -170,7 +172,7 @@ if (props.data.slides && props.data.slides.length > 0) {
         <Carousel
           ref="carouselRef"
           class="relative max-s:-left-[2rem] max-s:w-screen"
-          :drag="mobile ? true : false"
+          :drag="false"
           @mousedown="stopSlideshow"
         >
           <div
@@ -280,6 +282,8 @@ if (props.data.slides && props.data.slides.length > 0) {
         dir="right"
         class="!w-[48%]"
         @click="handleNext"
+        :speed="speed"
+        ref="progressBarMobile"
       />
     </div>
   </Section>

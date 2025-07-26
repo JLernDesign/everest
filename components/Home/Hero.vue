@@ -4,10 +4,8 @@ const props = defineProps(["data", "mediaSlides"]);
 
 const loaded = ref(false);
 const video = ref(null);
-const cloudParallax = ref(null);
 const main = ref(null);
-let ctx, tl;
-const cloudY = [70, 152, 20, 86, 120, 165];
+let ctx;
 
 onMounted(() => {
   // play video on load
@@ -21,28 +19,9 @@ onMounted(() => {
   // setup scrolltrigger for cloud parallax
   ctx = gsap.context((self) => {
     const intro = document.getElementById("intro");
-    tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: main.value,
-        endTrigger: intro,
-        start: "top top",
-        end: "bottom top",
-        scrub: true,
-      },
-    });
-
-    // move clouds
     const clouds = self.selector(".cloud");
-    clouds.forEach((cloud, i) => {
-      tl.to(
-        cloud,
-        {
-          y: cloudY[i] + "rem",
-          ease: "none",
-        },
-        0,
-      );
-    });
+    const cloudY = [70, 152, 20, 86, 120, 165];
+    cloudParallax(main.value, intro, clouds, cloudY);
   }, main.value);
 });
 
@@ -110,7 +89,6 @@ onUnmounted(() => {
         />
         <div
           class="cloud-group absolute left-0 top-[35rem] z-1 s:top-[45.8rem]"
-          ref="cloudParallax"
         >
           <UICloud
             type="3"

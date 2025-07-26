@@ -133,14 +133,24 @@ const duplicated = computed(() => {
     class="pb-section-bot-mob pt-section-top-lg s:pb-section-bot"
     :class="page_data.background == 'blue' ? 'bg-skyblue' : 'bg-jaffa'"
     side="none"
+    :anim="true"
   >
     <!-- bg elements -->
     <template v-if="page_data.background == 'blue'">
       <UICloud
         type="3"
-        class="-scale-x-100 opacity-50 s:-left-[53.3rem] s:top-[46.6rem]"
+        class="opacity-50 s:-left-[53.3rem] s:top-[46.6rem]"
+        :flip="true"
+        :anim="true"
+        :speed="75"
       />
-      <UICloud type="3" class="top-0 -scale-x-100 opacity-50 s:left-[93rem]" />
+      <UICloud
+        type="3"
+        class="top-0 opacity-50 s:left-[93rem]"
+        :flip="true"
+        :anim="true"
+        :speed="85"
+      />
     </template>
 
     <SectionHeader
@@ -186,7 +196,7 @@ const duplicated = computed(() => {
             </div>
 
             <div
-              class="absolute bottom-0 left-0 z-1 h-auto w-full p-[3.2rem] text-body-sm-mob leading-sm s:text-body-sm"
+              class="absolute bottom-0 left-0 z-1 h-auto w-full p-side-mob text-body-sm-mob leading-sm s:p-[3.2rem] s:text-body-sm"
             >
               <span v-html="formatText(slide.body)"></span>
             </div>
