@@ -90,6 +90,8 @@ onUnmounted(() => {
         :nav="true"
         :data="item"
         :num="i + 1"
+        :cards="data.sections"
+        :id="item.id"
       />
     </div>
   </Section>

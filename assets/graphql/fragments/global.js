@@ -346,19 +346,16 @@ const OverviewFragment = gql`
     }
     sections {
       id
-      title
-      headline
       body
-      cta {
-        ...LinkFragment
-      }
-      image {
-        ...ResponsiveImageFragment
-      }
       productPage {
         slug
         title
         infographic
+        hero {
+          image {
+            ...ResponsiveImageFragment
+          }
+        }
       }
     }
   }

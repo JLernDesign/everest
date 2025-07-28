@@ -1,7 +1,8 @@
 <script setup>
 import gsap from "gsap";
+import { Image as DatocmsImage } from "vue-datocms";
 
-const props = defineProps(["theme", "nav", "data", "num"]);
+const props = defineProps(["theme", "nav", "data", "num", "cards"]);
 const main = ref(null);
 const video = ref(null);
 let ctx;
@@ -10,7 +11,10 @@ onMounted(() => {
   ctx = gsap.context((self) => {
     // animate items into place on scroll to section
     const items = self.selector(".anim-item");
-    animIntoView(items, main.value, 0.1, "top 40%", playVideo);
+    animIntoView(items, main.value, 0.1, "top 40%");
+
+    // get active nav item and animate on when in view
+    playInView(main.value, null, registerNav, 0, "top top+=5%");
   }, main.value);
 });
 
@@ -18,10 +22,87 @@ onUnmounted(() => {
   ctx.revert();
 });
 
-const playVideo = (state) => {
-  if (state == "enter" && video.value) {
-    video.value.playVideo();
+const registerNav = (state) => {
+  const line = main.value.querySelector(".nav-item.active .line-fill");
+  const title = main.value.querySelector(".nav-item.active .title");
+
+  if (state == "enter") {
+    animateNav(line, title, "on");
   }
+};
+
+const animateNav = (line, title, toggle) => {
+  gsap.killTweensOf(line);
+  gsap.killTweensOf(title);
+
+  // on state
+  if (toggle == "on") {
+    gsap.to(line, {
+      scaleX: 1,
+      duration: 0.75,
+      ease: "power3.out",
+    });
+    gsap.fromTo(
+      title,
+      {
+        y: 10,
+        opacity: 0,
+        clipPath: "inset(0 100% 0 0)",
+      },
+      {
+        delay: 0.25,
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        clipPath: "inset(0 0% 0 0)",
+        ease: "power3.out",
+      },
+    );
+
+    // off state
+  } else {
+    gsap.to(line, {
+      scaleX: 0,
+      duration: 0.5,
+      ease: "power3.in",
+    });
+    gsap.to(title, {
+      y: 10,
+      duration: 0.3,
+      opacity: 0,
+      clipPath: "inset(0 100% 0 0)",
+      ease: "power2.in",
+    });
+  }
+};
+
+const hoverOn = (e) => {
+  if (e.target.classList.contains("active")) return;
+
+  const line = e.target.querySelector(".line-fill");
+  const title = e.target.querySelector(".title");
+
+  animateNav(line, title, "on");
+};
+
+const hoverOff = (e) => {
+  if (e.target.classList.contains("active")) return;
+
+  const line = e.target.querySelector(".line-fill");
+  const title = e.target.querySelector(".title");
+
+  animateNav(line, title, "off");
+};
+
+const handleClick = (e) => {
+  const element = document.getElementById(e.target.dataset.id);
+  const parent = e.target.closest(".pin-spacer");
+  console.log(parent);
+  gsap.to(window, {
+    scrollTo: { y: element },
+    duration: 0.75,
+    ease: "power3.inOut",
+  });
 };
 </script>
 
@@ -73,13 +154,29 @@ const playVideo = (state) => {
         <!-- slide nav -->
         <div
           v-if="nav"
-          class="slide-nav absolute bottom-0 left-0 hidden w-[21rem] bg-[url(/public/ui/peak.png)] bg-contain bg-bottom bg-no-repeat s:block"
+          class="slide-nav absolute bottom-0 left-0 hidden h-[10rem] w-[21rem] bg-[url(/public/ui/peak.png)] bg-contain bg-bottom bg-no-repeat s:block"
         >
-          <div class="flex w-full flex-col gap-y-6">
+          <div class="flex h-full w-full flex-col justify-between">
             <div
-              v-for="n in 7"
-              class="nav-line h-[1px] w-full bg-[#3D4856]"
-            ></div>
+              v-for="(item, i) in cards"
+              class="nav-item relative flex grow cursor-pointer flex-col justify-end"
+              :class="item.id == data.id && 'active'"
+              :data-id="item.id"
+              @mouseenter="hoverOn"
+              @mouseleave="hoverOff"
+              @click="handleClick"
+            >
+              <div class="nav-line h-[1px] w-full bg-[#3D4856]">
+                <div
+                  class="line-fill h-[1px] w-full origin-left scale-x-0 bg-red"
+                ></div>
+              </div>
+              <div
+                class="title absolute left-full top-full h-[2rem] -translate-y-1/2 whitespace-nowrap pl-[1.2rem] font-barlow text-body-xsm uppercase text-red opacity-0"
+              >
+                {{ item.productPage.title }}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -105,12 +202,16 @@ const playVideo = (state) => {
           <div
             class="image-ph relative h-full w-full max-s:p-side-mob [&>div]:h-full [&_img]:h-full [&_img]:w-full [&_img]:object-contain"
           >
-            <VideoAnim
+            <DatocmsImage
+              v-if="data.productPage.hero.image"
+              :data="data.productPage.hero.image.responsiveImage"
+            />
+            <!-- <VideoAnim
               v-if="data.productPage"
               class="absolute left-1/2 top-1/2 aspect-square !h-auto -translate-x-1/2 -translate-y-1/2 [&_video]:h-full"
               :file="`infographics/${data.productPage.infographic}`"
               ref="video"
-            />
+            /> -->
           </div>
         </div>
       </div>
