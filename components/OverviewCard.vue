@@ -173,7 +173,7 @@ const handleClick = (e) => {
               </div>
               <div
                 class="title absolute left-full top-full h-[2rem] -translate-y-1/2 whitespace-nowrap pl-[1.2rem] font-barlow text-body-xsm uppercase text-red opacity-0"
-                :class="item.id == data.id && 'hidden'"
+                :class="item.id == data.id && 'pointer-events-none invisible'"
               >
                 {{ item.productPage.title }}
               </div>
