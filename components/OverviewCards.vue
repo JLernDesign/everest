@@ -31,6 +31,29 @@ onMounted(() => {
         pinSpacing: false,
       });
 
+      // control cloud movement for each card
+      ScrollTrigger.create({
+        trigger: card,
+        start: "top bottom",
+        end: "bottom top",
+        onEnter: () => {
+          card.classList.add("on");
+          console.log("start clouds " + index);
+        },
+        onEnterBack: () => {
+          card.classList.add("on");
+          console.log("start clouds " + index);
+        },
+        onLeave: () => {
+          card.classList.remove("on");
+          console.log("stop clouds " + index);
+        },
+        onLeaveBack: () => {
+          card.classList.remove("on");
+          console.log("stop clouds " + index);
+        },
+      });
+
       // Create scrub animation for cover opacity
       if (index > 0) {
         const previousCard = cards[index - 1];
@@ -46,20 +69,6 @@ onMounted(() => {
                 start: "top 75%",
                 end: "top top",
                 scrub: true,
-                onEnter: () => {
-                  //card.classList.add("on");
-                  //console.log("enter " + index);
-                },
-                onEnterBack: () => {
-                  //card.classList.add("on");
-                },
-                onLeave: () => {
-                  //card.classList.remove("on");
-                  //console.log("leave " + index);
-                },
-                onLeaveBack: () => {
-                  //card.classList.remove("on");
-                },
               },
             },
           );

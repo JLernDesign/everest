@@ -183,9 +183,7 @@ const handleClick = (e) => {
       </div>
 
       <!-- image -->
-      <div
-        class="anim-item right section-wrap on1 w-full s:w-1/2 max-s:order-1"
-      >
+      <div class="anim-item right w-full s:w-1/2 max-s:order-1">
         <div
           class="image relative flex aspect-[1.0675] w-full items-center justify-center overflow-hidden rounded-base-mob bg-skyblue s:rounded-base"
         >
