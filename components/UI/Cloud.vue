@@ -47,7 +47,7 @@ const props = defineProps([
         />
 
         <!-- for debugging by cloud number -->
-        <div class="absolute left-1/2 top-1/2 z-10 text-xl">{{ num }}</div>
+        <!-- <div class="absolute left-1/2 top-1/2 z-10 text-xl">{{ num }}</div> -->
       </div>
     </div>
   </div>
