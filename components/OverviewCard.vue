@@ -173,6 +173,7 @@ const handleClick = (e) => {
               </div>
               <div
                 class="title absolute left-full top-full h-[2rem] -translate-y-1/2 whitespace-nowrap pl-[1.2rem] font-barlow text-body-xsm uppercase text-red opacity-0"
+                :class="item.id == data.id && 'hidden'"
               >
                 {{ item.productPage.title }}
               </div>
@@ -182,21 +183,25 @@ const handleClick = (e) => {
       </div>
 
       <!-- image -->
-      <div class="anim-item right w-full s:w-1/2 max-s:order-1">
+      <div
+        class="anim-item right section-wrap on1 w-full s:w-1/2 max-s:order-1"
+      >
         <div
           class="image relative flex aspect-[1.0675] w-full items-center justify-center overflow-hidden rounded-base-mob bg-skyblue s:rounded-base"
         >
           <UICloud
             type="2"
-            class="-left-[16rem] top-[44rem]"
+            class="-top-[25rem] left-[18rem]"
             :anim="true"
-            :speed="60"
+            :speed="40"
+            container="!w-[70rem]"
           />
           <UICloud
             type="2"
-            class="-top-[25rem] left-[18rem]"
+            class="-left-[16rem] top-[44rem]"
             :anim="true"
-            :speed="80"
+            :speed="20"
+            container="!w-[70rem]"
           />
 
           <div

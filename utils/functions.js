@@ -616,12 +616,18 @@ export const splitHeadline = (el, wrap) => {
 
 // cloud parallax
 
-export const cloudParallax = (trigger, endTrigger = null, clouds, cloudY) => {
+export const cloudParallax = (
+  trigger,
+  endTrigger = null,
+  clouds,
+  cloudY,
+  st = "top top",
+) => {
   let tl = gsap.timeline({
     scrollTrigger: {
       trigger: trigger,
       endTrigger: endTrigger || trigger,
-      start: "top top",
+      start: st,
       end: "bottom top",
       scrub: true,
     },

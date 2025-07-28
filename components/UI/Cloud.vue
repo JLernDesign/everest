@@ -8,6 +8,7 @@ const props = defineProps([
   "width",
   "num",
   "delay",
+  "container",
 ]);
 </script>
 
@@ -23,8 +24,11 @@ const props = defineProps([
     <div class="cloud-wrap absolute left-0 top-0 inline-flex">
       <div
         v-for="n in 2"
-        class="cloud-mover relative w-screen min-w-[180rem]"
-        :class="anim ? 'animate-cloud' : ''"
+        class="cloud-mover relative"
+        :class="[
+          anim ? 'animate-cloud' : '',
+          container ? container : 'w-screen min-w-[180rem]',
+        ]"
         :style="{ animationDuration: speed + 's', animationDelay: delay + 's' }"
       >
         <img
@@ -43,7 +47,7 @@ const props = defineProps([
         />
 
         <!-- for debugging by cloud number -->
-        <!-- <div class="absolute left-1/2 top-1/2 z-10 text-xl">{{ num }}</div> -->
+        <div class="absolute left-1/2 top-1/2 z-10 text-xl">{{ num }}</div>
       </div>
     </div>
   </div>
