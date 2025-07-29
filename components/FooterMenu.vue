@@ -11,6 +11,14 @@ const toggleMenu = (e) => {
   const id = e.target.dataset.num;
   toggleExpand(id, menus);
 };
+
+const handleClick = (e, item) => {
+  if (item.submenu) {
+    toggleMenu(e);
+  } else {
+    navigateTo(getUrl(item));
+  }
+};
 </script>
 
 <template>
@@ -22,15 +30,16 @@ const toggleMenu = (e) => {
     <li v-for="(item, i) in data">
       <button
         class="ul single fast flex h-[4rem] w-full items-center justify-between pl-[.4rem] pr-[1.2rem] [&>*]:pointer-events-none"
-        @click="toggleMenu"
+        @click="handleClick($event, item)"
         :data-num="i"
       >
         <span class="mt-1">{{ item.label }}</span>
-        <IconChevron color="stroke-red" />
+        <IconChevron v-if="item.submenu" color="stroke-red" />
       </button>
 
       <!-- sub menu -->
       <ul
+        v-if="item.submenu"
         class="submenu h-0 overflow-hidden pl-[1.2rem] text-body-xsm-mob s:text-body-xsm"
       >
         <span class="block space-y-5 pb-[2.25rem] pt-[1.75rem]">

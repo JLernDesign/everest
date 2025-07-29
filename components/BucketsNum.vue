@@ -30,7 +30,6 @@ const handleNext = () => {
 };
 
 let ctx;
-/* let mm; */
 
 onMounted(() => {
   ctx = gsap.context((self) => {
@@ -40,17 +39,10 @@ onMounted(() => {
       animIntoView(items, anims.value, 0.2, "top 80%");
     }, 200);
   }, anims.value);
-
-  // section parallax
-  /*   mm = gsap.matchMedia();
-  mm.add("(min-width: 650px)", () => {
-    parallaxSection(parallax.value, 40, 10);
-  }); */
 });
 
 onUnmounted(() => {
   ctx.revert();
-  /* mm && mm.revert(); */
 });
 </script>
 

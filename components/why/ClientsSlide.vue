@@ -1,10 +1,23 @@
 <script setup>
 import { Image as DatocmsImage } from "vue-datocms";
 const props = defineProps(["data"]);
+const arrowDiamond = ref(null);
 
 const handleClick = (item) => {
   if (item.video) {
     openVideoModal(item.video);
+  }
+};
+
+const hoverOn = () => {
+  if (arrowDiamond.value) {
+    arrowDiamond.value.hoverOn();
+  }
+};
+
+const hoverOff = () => {
+  if (arrowDiamond.value) {
+    arrowDiamond.value.hoverOff();
   }
 };
 </script>
@@ -13,6 +26,8 @@ const handleClick = (item) => {
   <div
     class="relative z-1 h-[19.2rem] w-[30.2rem] shrink-0 cursor-pointer overflow-hidden rounded-base-mob p-[3.2rem] pt-[3.75rem] text-left s:rounded-base"
     @click="handleClick(data)"
+    @mouseenter="hoverOn"
+    @mouseleave="hoverOff"
   >
     <!-- photo -->
     <div
@@ -40,6 +55,12 @@ const handleClick = (item) => {
         align="object-left-bottom"
         :small="true"
       />
+    </div>
+
+    <!-- video cover -->
+    <!-- <div class="absolute left-0 top-0 size-full bg-[#2A3440] opacity-80"></div> -->
+    <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+      <UIArrowDiamond ref="arrowDiamond" />
     </div>
   </div>
 </template>

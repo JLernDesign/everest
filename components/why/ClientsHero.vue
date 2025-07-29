@@ -1,7 +1,10 @@
 <script setup>
+import gsap from "gsap";
 const props = defineProps(["data", "items"]);
 const mobile = breakpoints.smallerOrEqual("tablet1");
 const slider = ref(true);
+const anims = ref(null);
+let ctx;
 
 onMounted(() => {
   if (!mobile.value && props.items.length <= 3) {
@@ -9,6 +12,18 @@ onMounted(() => {
   } else {
     slider.value = true;
   }
+
+  // animate items into place on scroll to section
+  ctx = gsap.context((self) => {
+    setTimeout(() => {
+      const items = anims.value.querySelectorAll(".anim-item");
+      animIntoView(items, anims.value, 0.2, "top bottom");
+    }, 1000);
+  }, anims.value);
+});
+
+onUnmounted(() => {
+  ctx.revert();
 });
 
 let duplicated = [];
@@ -35,7 +50,13 @@ watch(mobile, () => {
   >
     <UITexture />
 
-    <SectionHeader class="pt-[4rem]" align="center" :hero="true" :data="data" />
+    <SectionHeader
+      class="pt-[4rem]"
+      align="center"
+      :hero="true"
+      :data="data"
+      :anim="true"
+    />
 
     <!-- slider -->
     <template v-if="slider || mobile">
@@ -61,11 +82,13 @@ watch(mobile, () => {
     <template v-else>
       <div
         class="mb-[13rem] mt-[24.5rem] flex flex-wrap justify-center gap-[6rem]"
+        ref="anims"
       >
         <WhyClientsSlide
           v-for="(item, i) in items"
           :data="item"
           :style="`margin-top:-${9.5 * i}rem`"
+          class="anim-item"
         />
       </div>
     </template>
