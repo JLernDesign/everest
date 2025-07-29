@@ -94,12 +94,15 @@ const hoverOff = (e) => {
   animateNav(line, title, "off");
 };
 
-const handleClick = (e) => {
-  const element = document.getElementById(e.target.dataset.id);
-  const parent = e.target.closest(".pin-spacer");
-  console.log(parent);
+const handleClick = (num) => {
+  const el = document.getElementById("overview-cards");
+  const baseOs = rect(el).top + window.scrollY;
+  const cardH = main.value.scrollHeight;
+  //const num = Number(e.target.dataset.num);
+  const offset = baseOs + cardH * num;
+  console.log(baseOs, cardH, num, offset);
   gsap.to(window, {
-    scrollTo: { y: element },
+    scrollTo: { y: offset },
     duration: 0.75,
     ease: "power3.inOut",
   });
@@ -169,12 +172,13 @@ const getDelay = () => {
           <div class="flex h-full w-full flex-col justify-between">
             <div
               v-for="(item, i) in cards"
-              class="nav-item relative flex grow cursor-pointer flex-col justify-end"
+              class="nav-item relative flex grow translate-y-1/2 cursor-pointer flex-col justify-center"
               :class="item.id == data.id && 'active'"
               :data-id="item.id"
+              :data-num="i"
               @mouseenter="hoverOn"
               @mouseleave="hoverOff"
-              @click="handleClick"
+              @click="handleClick(i)"
             >
               <div class="nav-line h-[1px] w-full bg-[#3D4856]">
                 <div
@@ -182,7 +186,7 @@ const getDelay = () => {
                 ></div>
               </div>
               <div
-                class="title absolute left-full top-full h-[2rem] -translate-y-1/2 whitespace-nowrap pl-[1.2rem] font-barlow text-body-xsm uppercase text-red opacity-0"
+                class="title absolute -top-1/2 left-full h-[2rem] whitespace-nowrap pl-[1.2rem] font-barlow text-body-xsm uppercase text-red opacity-0"
                 :class="item.id == data.id && 'pointer-events-none invisible'"
               >
                 {{ item.productPage.title }}

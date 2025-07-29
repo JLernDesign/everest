@@ -21,10 +21,12 @@ const text_colors = [
 // Navigation handlers (mobile)
 const handlePrev = () => {
   carouselRef.value?.back();
+  stopSlideshow();
 };
 
 const handleNext = () => {
   carouselRef.value?.next();
+  stopSlideshow();
 };
 
 onMounted(() => {
@@ -236,7 +238,12 @@ onUnmounted(() => {
     <div
       class="slides-mobile relative left-1/2 w-screen -translate-x-1/2 s:hidden"
     >
-      <Carousel ref="carouselRef" :drag="true" class="mt-[2rem]">
+      <Carousel
+        ref="carouselRef"
+        :drag="true"
+        class="mt-[2rem]"
+        @mousedown="stopSlideshow"
+      >
         <div
           class="item w-full shrink-0 px-side-mob"
           v-for="(slide, i) in data.slides"

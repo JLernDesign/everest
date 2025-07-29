@@ -26,16 +26,23 @@ const closePopup = () => {
     class="cookies fixed bottom-[2rem] left-0 z-20 s:bottom-[4rem] s:left-[4rem] max-s:px-side-mob"
   >
     <div
-      class="cookies-inner w-full rounded-base bg-shadowblue p-[2rem] text-body-xsm leading-sm text-white s:w-[83rem]"
+      class="cookies-inner w-full rounded-base bg-red p-[2rem] text-body-xsm leading-sm text-white s:w-[83rem]"
     >
       <div class="cookies-content space-y-[1rem]">
         <p>
           We use cookies on our website to see how you interact with it. By
-          accepting, you agree to our use of such cookies.
+          accepting, you agree to our use of such
+          <NuxtLink to="/legal/cookie-notice" class="text-skyblue underline"
+            >cookies</NuxtLink
+          >.
         </p>
         <div class="cookies-buttons flex gap-[2.5rem]">
-          <button class="button underline" @click="closePopup">Accept</button>
-          <button class="button underline" @click="closePopup">Decline</button>
+          <button class="button text-skyblue underline" @click="closePopup">
+            Accept
+          </button>
+          <button class="button text-skyblue underline" @click="closePopup">
+            Decline
+          </button>
         </div>
       </div>
       <!-- close button -->

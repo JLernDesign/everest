@@ -111,7 +111,7 @@ onUnmounted(() => {
       ><UIGradientBot :theme="theme"
     /></SectionHeader>
 
-    <div class="overview-wrap relative" ref="overviewWrap">
+    <div id="overview-cards" class="overview-wrap relative" ref="overviewWrap">
       <OverviewCard
         v-for="(item, i) in data.sections"
         :theme="theme"
