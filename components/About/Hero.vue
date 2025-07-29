@@ -119,7 +119,9 @@ watch(mobile, () => {
             class="z-1 h-full w-[32rem] rotate-[15deg] rounded-base-mob bg-white p-[2rem] text-left s:h-[27.7rem] s:w-[40rem] s:rounded-base s:p-[3.2rem] s:pt-[3.75rem]"
           >
             <IconTri color="fill-red" class="mb-[2.4rem]" />
-            <h3 class="font-barlow-cond text-xl-mob leading-xl s:text-xl">
+            <h3
+              class="-tracking-sm font-barlow-cond text-xl-mob leading-xl s:text-xl"
+            >
               {{ stat.figure }}
             </h3>
             <p class="mt-[2.8rem] text-body-sm-mob s:text-body-sm">
@@ -142,7 +144,9 @@ watch(mobile, () => {
           :style="`margin-top:-${13 * i}rem`"
         >
           <IconTri color="fill-red" class="mb-[2.4rem]" />
-          <h3 class="font-barlow-cond text-xl-mob leading-xl s:text-xl">
+          <h3
+            class="-tracking-sm font-barlow-cond text-xl-mob leading-xl s:text-xl"
+          >
             {{ stat.figure }}
           </h3>
           <p class="mt-[2.8rem] text-body-sm-mob s:text-body-sm">

@@ -125,7 +125,7 @@ const toggleVideo = (ev) => {
     class="relative space-y-header-mob s:space-y-header-lg"
   >
     <h2
-      class="font-barlow-cond-semibold text-xxl-mob uppercase leading-xxl s:text-xxl"
+      class="-tracking-md font-barlow-cond-semibold text-xxl-mob uppercase leading-xxl s:text-xxl"
       ref="main"
     >
       <!-- has inline block element -->

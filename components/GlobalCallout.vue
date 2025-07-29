@@ -63,7 +63,7 @@ const playVideo = (ev) => {
       <div class="text has-break relative z-10 w-full s:w-[65%]">
         <h2
           v-if="data.headline"
-          class="font-barlow-cond text-xl-mob leading-xl s:text-xl max-s:pr-[2rem] [&_.nobr]:whitespace-normal"
+          class="-tracking-sm font-barlow-cond text-xl-mob leading-xl s:text-xl max-s:pr-[2rem] [&_.nobr]:whitespace-normal"
           v-html="formatText(data.headline)"
         ></h2>
         <p

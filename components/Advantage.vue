@@ -63,7 +63,7 @@ props.data.color == "gray" ? (color = "text-white") : null;
                     class="stat w-full space-y-5 s:w-1/2"
                   >
                     <h3
-                      class="font-barlow-cond text-xl-mob leading-xl s:text-xl"
+                      class="-tracking-sm font-barlow-cond text-xl-mob leading-xl s:text-xl"
                     >
                       {{ item.figure }}
                     </h3>

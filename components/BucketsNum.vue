@@ -76,7 +76,7 @@ onUnmounted(() => {
             >
               <IconTri color="fill-red" class="mb-4" />
               <div
-                class="num mb-12 font-barlow-cond-semibold text-xxl-mob leading-xxl text-shadowblue s:text-xxl"
+                class="num -tracking-md mb-12 font-barlow-cond-semibold text-xxl-mob leading-xxl text-shadowblue s:text-xxl"
               >
                 {{ "0" + (i + 1) }}
               </div>
@@ -101,7 +101,7 @@ onUnmounted(() => {
             >
               <IconTri color="fill-red" class="mb-10 s:mb-4" />
               <div
-                class="num mb-12 font-barlow-cond-semibold text-xxl-mob leading-xxl text-shadowblue s:text-xxl"
+                class="num -tracking-md mb-12 font-barlow-cond-semibold text-xxl-mob leading-xxl text-shadowblue s:text-xxl"
               >
                 {{ "0" + (i + 1) }}
               </div>

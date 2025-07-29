@@ -71,7 +71,7 @@ onMounted(() => {
     >
       <h1
         v-if="hero"
-        class="text !mb-6 font-barlow-cond text-xl-mob leading-xl s:!mb-12 s:text-xl"
+        class="text -tracking-sm !mb-6 font-barlow-cond text-xl-mob leading-xl s:!mb-12 s:text-xl"
         v-html="formatText(data.headline)"
         :class="anim && 'anim-item'"
       ></h1>

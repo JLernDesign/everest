@@ -31,7 +31,7 @@ const props = defineProps({ data: { default: null }, icon: { default: true } });
 
     <div class="text order-2 shrink-0 pt-[4.5rem] s:pb-[5rem]">
       <h2
-        class="font-barlow-cond text-[6.5rem] uppercase leading-xxl s:text-xxl"
+        class="-tracking-md font-barlow-cond text-[6.5rem] uppercase leading-xxl s:text-xxl"
       >
         {{ data.title }}
       </h2>

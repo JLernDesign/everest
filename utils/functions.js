@@ -609,7 +609,7 @@ export const splitHeadline = (el, wrap) => {
   // set initial positions
   const letters = wrap.querySelectorAll(".letter");
   gsap.set(letters, {
-    opacity: 0,
+    opacity: 1,
     yPercent: 100,
   });
 };

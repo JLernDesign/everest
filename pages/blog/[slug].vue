@@ -114,7 +114,7 @@ const renderBlock = ({ record }) => {
               "blockquote",
               {
                 class:
-                  "text-xl-mob s:text-xl font-barlow-cond leading-xl text-center s:p-[8rem] p-[4rem] rounded-base-mob s:rounded-base bg-jaffa",
+                  "text-xl-mob s:text-xl -tracking-sm font-barlow-cond leading-xl text-center s:p-[8rem] p-[4rem] rounded-base-mob s:rounded-base bg-jaffa",
               },
               record.text,
             ),

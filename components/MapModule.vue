@@ -69,7 +69,7 @@ const handleMouseLeave = (e) => {
       class="relative z-1 space-y-[3rem] text-center s:space-y-header-lg max-s:pt-[5rem]"
     >
       <h2
-        class="font-barlow-cond-semibold text-xxl-mob uppercase leading-xxl s:text-xxl"
+        class="-tracking-md font-barlow-cond-semibold text-xxl-mob uppercase leading-xxl s:text-xxl"
         v-html="addLineBreaks(data.headline)"
       ></h2>
       <p
