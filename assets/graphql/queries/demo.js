@@ -17,6 +17,7 @@ export const demoQuery = gql`
       }
       headline
       intro
+      byline
       hubspotId
       featuredLogos {
         title

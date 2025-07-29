@@ -246,7 +246,7 @@ sup {
 }
 
 @media (max-width: 900px) {
-  .has-break br {
+  .has-break:not(.allow-break) br {
     display: none;
   }
   .has-break .nobr br {

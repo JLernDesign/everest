@@ -32,26 +32,41 @@ onMounted(() => {
       });
 
       // control cloud movement for each card
-      ScrollTrigger.create({
-        trigger: card,
-        start: "top bottom",
-        end: "bottom top",
-        onEnter: () => {
-          card.classList.add("on");
-          console.log("start clouds " + index);
+      let tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: card,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+          onEnter: () => {
+            card.classList.add("on");
+            console.log("start clouds " + index);
+          },
+          onEnterBack: () => {
+            card.classList.add("on");
+            console.log("start clouds " + index);
+          },
+          onLeave: () => {
+            card.classList.remove("on");
+            console.log("stop clouds " + index);
+          },
+          onLeaveBack: () => {
+            card.classList.remove("on");
+            console.log("stop clouds " + index);
+          },
         },
-        onEnterBack: () => {
-          card.classList.add("on");
-          console.log("start clouds " + index);
-        },
-        onLeave: () => {
-          card.classList.remove("on");
-          console.log("stop clouds " + index);
-        },
-        onLeaveBack: () => {
-          card.classList.remove("on");
-          console.log("stop clouds " + index);
-        },
+      });
+      const clouds = card.querySelectorAll(".cloud");
+      const cloudY = [35, 50];
+      clouds.forEach((cloud, i) => {
+        tl.to(
+          cloud,
+          {
+            y: cloudY[i] + "rem",
+            ease: "none",
+          },
+          0,
+        );
       });
 
       // Create scrub animation for cover opacity

@@ -76,6 +76,7 @@ const props = defineProps(["data", "template"]);
       v-if="module.__typename == 'AscendingSliderRecord'"
       :data="module"
       :class="i == data.length - 1 && 's:!pb-[15rem]'"
+      :template="template"
     />
     <LazySuccessStack
       v-if="module.__typename == 'ClientCardsModuleRecord'"

@@ -17,11 +17,14 @@ const follow = ref(null);
 let active = false;
 let count = 0;
 const mouseDown = ref(false);
+const section = ref(null);
+let ctx;
 
 // get mouse movement
 const { elementX, elementY } = useMouseInElement(main);
 
 onMounted(() => {
+  // mouse follow
   if (!isTouchDevice()) {
     useEventListener(main.value, "mouseenter", () => {
       if (!active) {
@@ -44,15 +47,24 @@ onMounted(() => {
         useEventListener(main.value, "mousemove", followMouse);
       }
     });
-
     useEventListener(main.value, "mouseleave", () => {
       unfollowMouse();
     });
   }
+
+  // parallax clouds
+  ctx = gsap.context((self) => {
+    const clouds = self.selector(".cloud");
+    const cloudY = [40, 60];
+    cloudParallax(section.value.$el, null, clouds, cloudY, "top bottom");
+  }, section.value.$el);
+});
+
+onUnmounted(() => {
+  ctx.revert();
 });
 
 const followMouse = () => {
-  // reduce amount of calls to every 10
   // follow mouse
   gsap.set(follow.value, {
     x: elementX.value,
@@ -75,12 +87,10 @@ const unfollowMouse = () => {
 
 const handleMouseDown = () => {
   mouseDown.value = true;
-  console.log("mousedown");
 };
 
 const handleMouseUp = () => {
   mouseDown.value = false;
-  console.log("mouseup");
 };
 
 // get data
@@ -134,24 +144,30 @@ const duplicated = computed(() => {
     :class="page_data.background == 'blue' ? 'bg-skyblue' : 'bg-jaffa'"
     side="none"
     :anim="true"
+    ref="section"
   >
     <!-- bg elements -->
-    <template v-if="page_data.background == 'blue'">
+    <div
+      v-if="page_data.background == 'blue'"
+      class="absolute left-0 top-0 w-full overflow-hidden"
+      :class="template == 'home' ? 'h-[125%]' : 'h-full'"
+    >
       <UICloud
         type="3"
-        class="opacity-50 s:-left-[53.3rem] s:top-[46.6rem]"
+        class="-top-[10rem] left-0 opacity-[.6]"
+        :flip="true"
+        :anim="true"
+        :speed="85"
+        :delay="-20"
+      />
+      <UICloud
+        type="3"
+        class="left-0 opacity-75 s:top-[45rem]"
         :flip="true"
         :anim="true"
         :speed="75"
       />
-      <UICloud
-        type="3"
-        class="top-0 opacity-50 s:left-[93rem]"
-        :flip="true"
-        :anim="true"
-        :speed="85"
-      />
-    </template>
+    </div>
 
     <SectionHeader
       :theme="theme"

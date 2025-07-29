@@ -622,13 +622,14 @@ export const cloudParallax = (
   clouds,
   cloudY,
   st = "top top",
+  end = "bottom top",
 ) => {
   let tl = gsap.timeline({
     scrollTrigger: {
       trigger: trigger,
       endTrigger: endTrigger || trigger,
       start: st,
-      end: "bottom top",
+      end: end,
       scrub: true,
     },
   });

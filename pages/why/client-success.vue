@@ -1,6 +1,10 @@
 <script setup>
 import { clientsQuery } from "~/assets/graphql/queries/clients.js";
 
+definePageMeta({
+  alias: ["/client-success"],
+});
+
 const { data } = await useGraphqlQuery({
   query: clientsQuery.loc.source.body,
 });

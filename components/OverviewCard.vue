@@ -104,6 +104,16 @@ const handleClick = (e) => {
     ease: "power3.inOut",
   });
 };
+
+const getDelay = () => {
+  let del;
+  if (props.num % 2 == 0) {
+    del = -5;
+  } else {
+    del = -15;
+  }
+  return del;
+};
 </script>
 
 <template>
@@ -189,17 +199,19 @@ const handleClick = (e) => {
         >
           <UICloud
             type="2"
-            class="-top-[25rem] left-[18rem]"
+            class="-top-[45rem] left-0"
             :anim="true"
-            :speed="40"
-            container="!w-[70rem]"
+            :speed="60"
+            :delay="getDelay()"
+            container="!w-[100rem]"
           />
           <UICloud
             type="2"
-            class="-left-[16rem] top-[44rem]"
+            class="left-0 top-[0rem]"
             :anim="true"
-            :speed="20"
-            container="!w-[70rem]"
+            :speed="40"
+            :delay="getDelay() * 2"
+            container="!w-[100rem]"
           />
 
           <div

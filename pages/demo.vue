@@ -45,6 +45,7 @@ onMounted(() => {
 <template>
   <div class="bg-jaffa">
     <Seo :data="page.seo" />
+
     <Section :hero="true" class="max-s:pt-hero-mob-lg">
       <header class="text-center">
         <h1
@@ -52,11 +53,11 @@ onMounted(() => {
         >
           {{ page.headline }}
         </h1>
-        <h2
+        <!-- <h2
           class="block text-body-md-mob leading-md s:hidden max-s:pt-[2.5rem] max-s:text-center"
         >
           {{ page.intro }}
-        </h2>
+        </h2> -->
       </header>
     </Section>
 
@@ -66,14 +67,18 @@ onMounted(() => {
         <!-- columns -->
         <div class="flex flex-col items-start justify-between s:flex-row">
           <!-- text -->
-          <div class="w-full s:w-[38%] max-s:order-2">
-            <h2
-              class="hidden text-body-md-mob leading-md s:block s:text-body-md max-s:text-center"
-            >
+          <div class="w-full s:w-[38%] max-s:order-2 max-s:mt-side">
+            <h2 class="text-body-md-mob leading-md s:text-body-md">
               {{ page.intro }}
             </h2>
+            <p
+              v-if="page.byline"
+              class="mt-[2rem] text-body-sm-mob leading-sm s:text-body-sm"
+            >
+              {{ page.byline }}
+            </p>
 
-            <hr class="my-side text-black max-s:mb-[2.5rem]" />
+            <hr class="text-black s:my-side max-s:my-[2.5rem]" />
 
             <!-- contact -->
             <div
@@ -94,7 +99,7 @@ onMounted(() => {
               </div>
             </div>
 
-            <hr class="my-side text-black max-s:mt-[2.5rem]" />
+            <hr class="text-black s:my-side max-s:my-[2.5rem]" />
 
             <!-- brands -->
             <div

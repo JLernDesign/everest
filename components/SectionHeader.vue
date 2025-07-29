@@ -65,7 +65,7 @@ onMounted(() => {
       class="has-break space-y-[2rem] s:space-y-[2.5rem] s:pb-4"
       :class="[
         align == 'center' && 'mx-auto max-w-[70rem]',
-        loc == 'home-hero' && 's:!space-y-[1.8rem] s:!pb-0',
+        loc == 'home-hero' && 'allow-break s:!space-y-[1.8rem] s:!pb-0',
         template == 'news' && 'max-w-[80rem]',
       ]"
     >
