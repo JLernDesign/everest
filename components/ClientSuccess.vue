@@ -42,7 +42,6 @@ const startSlideshow = () => {
   mobile.value
     ? progressBarMobile.value?.barProgress()
     : progressBar.value?.barProgress();
-  //next();
   slideTimer();
 };
 
@@ -76,6 +75,10 @@ onMounted(() => {
   setTimeout(() => {
     playInView(main.value, null, toggleSlideshow);
   }, 200);
+});
+
+onUnmounted(() => {
+  stopSlideshow();
 });
 
 // check for new data

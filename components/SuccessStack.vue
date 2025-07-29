@@ -2,8 +2,10 @@
 import gsap from "gsap";
 const props = defineProps(["theme", "data"]);
 
+const mobile = breakpoints.smallerOrEqual("tablet1");
 const main = ref(null);
 const carouselRef = ref(null);
+const slides = ref(null);
 let items;
 const amtY = 7.6;
 const posY = [0, -7.6, -15.2];
@@ -16,7 +18,7 @@ const text_colors = [
   "rgba(255,255,255,0.1)",
 ];
 
-// Navigation handlers
+// Navigation handlers (mobile)
 const handlePrev = () => {
   carouselRef.value?.back();
 };
@@ -26,9 +28,10 @@ const handleNext = () => {
 };
 
 onMounted(() => {
+  // get slides
   items = qsa(".slide", main.value);
-  //items.reverse();
 
+  // set initial positions
   items.forEach((item, i) => {
     //let amt = amtY * (items.length - 1 - i) + "rem";
     gsap.set(item, { y: posY[i] + "rem", zIndex: z[i] });
@@ -46,12 +49,17 @@ onMounted(() => {
       gsap.set(title, { color: text_colors[1] });
     }
   });
+
+  // play slideshow on scroll to section
+  setTimeout(() => {
+    playInView(main.value, null, toggleSlideshow);
+  }, 200);
 });
 
 const dur = 1;
 const stag = 0.02;
 
-const changeSlide = (i, dir) => {
+const changeSlide = (dir) => {
   // move first slide down / last slide up
   let cur1 = dir == "next" ? 0 : 2;
   let next1 = dir == "next" ? 2 : 0;
@@ -136,6 +144,68 @@ const changeSlide = (i, dir) => {
     }
   }, 1000);
 };
+
+// slideshow
+const speed = 5;
+const pageInactive = useState("pageInactive");
+const progressBarMobile = ref(null);
+let slideshow;
+
+const startSlideshow = () => {
+  if (mobile.value) {
+    progressBarMobile.value?.barProgress();
+  } else {
+    if (slides.value) {
+      slides.value.forEach((slide) => {
+        slide.barProgress();
+      });
+    }
+  }
+  slideTimer();
+};
+
+const stopSlideshow = () => {
+  clearInterval(slideshow);
+  if (mobile.value) {
+    progressBarMobile.value?.stopProgress();
+  } else {
+    if (slides.value) {
+      slides.value.forEach((slide) => {
+        slide.stopProgress();
+      });
+    }
+  }
+};
+
+const toggleSlideshow = (ev) => {
+  ev == "enter" ? startSlideshow() : stopSlideshow();
+};
+
+const next = () => {
+  if (mobile.value) {
+    progressBarMobile.value?.next();
+    carouselRef.value?.next();
+  } else {
+    changeSlide("next");
+    if (slides.value) {
+      slides.value.forEach((slide) => {
+        slide.next();
+      });
+    }
+  }
+};
+
+const slideTimer = () => {
+  slideshow = setInterval(() => {
+    if (!pageInactive.value) {
+      next();
+    }
+  }, speed * 1000);
+};
+
+onUnmounted(() => {
+  stopSlideshow();
+});
 </script>
 
 <template>
@@ -156,6 +226,9 @@ const changeSlide = (i, dir) => {
         :key="i"
         :num="i"
         :changeSlide="changeSlide"
+        :stopSlideshow="stopSlideshow"
+        :speed="speed"
+        ref="slides"
       />
     </div>
 
@@ -189,6 +262,8 @@ const changeSlide = (i, dir) => {
         dir="right"
         class="!w-[48%] cursor-pointer"
         @click="handleNext"
+        :speed="speed"
+        ref="progressBarMobile"
       />
     </div>
 

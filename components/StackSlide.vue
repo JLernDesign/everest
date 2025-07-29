@@ -1,19 +1,44 @@
 <script setup>
 import { Image as DatocmsImage } from "vue-datocms";
-const props = defineProps(["data", "num", "changeSlide"]);
+const props = defineProps([
+  "data",
+  "num",
+  "changeSlide",
+  "stopSlideshow",
+  "speed",
+]);
 const main = ref(null);
 const carouselRef = ref(null);
+const progressBar = ref(null);
 
 // Navigation handlers
 const handlePrev = () => {
-  //carouselRef.value?.back();
-  props.changeSlide(props.num, "prev");
+  props.changeSlide("prev");
+  props.stopSlideshow();
 };
 
 const handleNext = () => {
-  //carouselRef.value?.next();
-  props.changeSlide(props.num, "next");
+  props.changeSlide("next");
+  props.stopSlideshow();
 };
+
+const barProgress = () => {
+  progressBar.value?.barProgress();
+};
+
+const next = () => {
+  progressBar.value?.next();
+};
+
+const stopProgress = () => {
+  progressBar.value?.stopProgress();
+};
+
+defineExpose({
+  barProgress,
+  next,
+  stopProgress,
+});
 </script>
 
 <template>
@@ -61,7 +86,13 @@ const handleNext = () => {
         <UISlideArrow dir="left" class="cursor-pointer" @click="handlePrev" />
       </div>
       <div class="relative w-[23.4rem]">
-        <UISlideArrow dir="right" class="cursor-pointer" @click="handleNext" />
+        <UISlideArrow
+          dir="right"
+          class="cursor-pointer"
+          @click="handleNext"
+          :speed="speed"
+          ref="progressBar"
+        />
       </div>
     </div>
   </div>
