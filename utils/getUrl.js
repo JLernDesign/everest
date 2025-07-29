@@ -13,7 +13,7 @@ export default function (obj) {
       case "AiFirstRecord":
         return "/why/ai-first";
       case "ClientSuccessRecord":
-        return "/why/client-success";
+        return "/client-success";
       case "WhySubpageRecord":
         return "/why/" + obj.internal.slug;
       case "ProductRecord":

@@ -20,6 +20,9 @@ const setActive = () => {
     case "why":
       activePage.value = "Why Everest";
       break;
+    case "client-success":
+      activePage.value = "Customer";
+      break;
     case "blog":
       activePage.value = "Learn";
       break;

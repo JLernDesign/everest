@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 const props = defineProps(["theme", "header", "nav", "data"]);
 const overviewWrap = ref(null);
 let mm;
+let ctx;
 const min = 650;
 
 onMounted(() => {
@@ -31,44 +32,6 @@ onMounted(() => {
         pinSpacing: false,
       });
 
-      // control cloud movement for each card
-      let tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: card,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true,
-          onEnter: () => {
-            card.classList.add("on");
-            console.log("start clouds " + index);
-          },
-          onEnterBack: () => {
-            card.classList.add("on");
-            console.log("start clouds " + index);
-          },
-          onLeave: () => {
-            card.classList.remove("on");
-            console.log("stop clouds " + index);
-          },
-          onLeaveBack: () => {
-            card.classList.remove("on");
-            console.log("stop clouds " + index);
-          },
-        },
-      });
-      const clouds = card.querySelectorAll(".cloud");
-      const cloudY = [35, 50];
-      clouds.forEach((cloud, i) => {
-        tl.to(
-          cloud,
-          {
-            y: cloudY[i] + "rem",
-            ease: "none",
-          },
-          0,
-        );
-      });
-
       // Create scrub animation for cover opacity
       if (index > 0) {
         const previousCard = cards[index - 1];
@@ -91,10 +54,51 @@ onMounted(() => {
       }
     });
   });
+
+  // parallax clouds
+  ctx = gsap.context((self) => {
+    const cards = self.selector(".overview-card");
+    // control cloud movement for each card
+    cards.forEach((card) => {
+      let tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: card,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+          onEnter: () => {
+            card.classList.add("on");
+          },
+          onEnterBack: () => {
+            card.classList.add("on");
+          },
+          onLeave: () => {
+            card.classList.remove("on");
+          },
+          onLeaveBack: () => {
+            card.classList.remove("on");
+          },
+        },
+      });
+      const clouds = card.querySelectorAll(".cloud");
+      const cloudY = [40, 55];
+      clouds.forEach((cloud, i) => {
+        tl.to(
+          cloud,
+          {
+            y: cloudY[i] + "rem",
+            ease: "none",
+          },
+          0,
+        );
+      });
+    });
+  }, overviewWrap.value);
 });
 
 onUnmounted(() => {
   mm && mm.revert();
+  ctx.revert();
 });
 </script>
 
