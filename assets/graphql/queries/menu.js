@@ -62,6 +62,7 @@ export const menuQuery = gql`
         ... on MenuGroupRecord {
           __typename
           label
+          id
           submenu {
             ... on MenuItemRecord {
               __typename

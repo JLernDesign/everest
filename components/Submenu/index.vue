@@ -1,9 +1,10 @@
 <script setup>
 const props = defineProps(["data", "id"]);
+const productId = "ZpWZSBQDQti1xbn9l2cD_Q";
 
 // add filler block if odd number of products
 let products;
-if (props.id == "Product") {
+if (props.id == productId) {
   products = props.data;
   products.length % 2 != 0 && products.push("");
 }
@@ -21,16 +22,16 @@ const handleClick = (item) => {
   >
     <div
       class="menu-bg absolute left-1/2 -translate-x-1/2 rounded-base-mob bg-shadowblue bg-[url(/ui/menu-texture@2x.webp)] bg-cover p-[1.5rem] shadow-submenu s:rounded-base"
-      :class="id == 'Product' ? 'w-[90rem]' : 'w-[41rem]'"
+      :class="id == productId ? 'w-[90rem]' : 'w-[41rem]'"
     >
       <ul
         class="menu-contents divide-y-1 divide-whiteline rounded-[.7rem] bg-shadowblue text-body-xsm-mob leading-sm text-white s:text-body-xsm"
         :class="
-          id == 'Product' &&
+          id == productId &&
           'grid grid-cols-2 [&_li:nth-child(2)]:!border-t-transparent [&_li:nth-child(even)]:border-l-1'
         "
       >
-        <template v-if="id == 'Product'">
+        <template v-if="id == productId">
           <SubmenuLinkIcon
             v-for="(item, i) in products"
             :data="item"
