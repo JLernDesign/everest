@@ -11,7 +11,27 @@ let ctx;
 onMounted(() => {
   ctx = gsap.context((self) => {
     playInView(main.value, null, playVideo);
-  });
+
+    const image = self.selector(".video-anim");
+    gsap.set(image, { opacity: 0 });
+
+    setTimeout(() => {
+      gsap.fromTo(
+        image,
+        {
+          y: "-2rem",
+          clipPath: "inset(0% 0 100% 0)",
+        },
+        {
+          duration: 1.25,
+          opacity: 1,
+          y: 0,
+          clipPath: "inset(0% 0 0% 0)",
+          ease: "power3.out",
+        },
+      );
+    }, 800);
+  }, main.value);
 
   setTimeout(() => {
     loaded.value = true;
@@ -59,6 +79,7 @@ const playVideo = (ev) => {
         theme="dark"
         :hero="true"
         :data="data"
+        :anim="true"
       />
 
       <!-- image -->

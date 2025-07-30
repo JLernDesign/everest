@@ -305,7 +305,7 @@ export const toggleExpand = (id, group) => {
         item.classList.add("open");
         const h = item.scrollHeight;
         gsap.to(item, {
-          duration: 0.75,
+          duration: 1.25,
           height: h,
           ease: "power3.inOut",
           onComplete: function () {
@@ -320,7 +320,7 @@ export const toggleExpand = (id, group) => {
         gsap.fromTo(
           item,
           { height: h },
-          { duration: 0.75, height: 0, ease: "power3.inOut" },
+          { duration: 1.25, height: 0, ease: "power3.inOut" },
         );
       }
 
@@ -332,7 +332,7 @@ export const toggleExpand = (id, group) => {
         gsap.fromTo(
           item,
           { height: h },
-          { duration: 0.75, height: 0, ease: "power3.inOut" },
+          { duration: 1.25, height: 0, ease: "power3.inOut" },
         );
       }
     }

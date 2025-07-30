@@ -5,6 +5,7 @@ const active = 0;
 const carouselRef = ref(null);
 const carouselRefRight = ref(null);
 const carouselRefLeft = ref(null);
+const main = ref(null);
 
 // navigation handlers
 const handlePrev = () => {
@@ -21,19 +22,33 @@ const handleNext = () => {
   stopSlideshow();
 };
 
+const startSlideshow = () => {
+  mobile.value
+    ? progressBarMobile.value?.barProgress()
+    : progressBar.value?.barProgress();
+  slideTimer();
+};
+
 const stopSlideshow = () => {
   clearInterval(slideshow);
-  progressBar.value?.stopProgress();
+  mobile.value
+    ? progressBarMobile.value?.stopProgress()
+    : progressBar.value?.stopProgress();
+};
+
+const toggleSlideshow = (ev) => {
+  ev == "enter" ? startSlideshow() : stopSlideshow();
 };
 
 // slideshow
 const speed = 5;
 const pageInactive = useState("pageInactive");
 const progressBar = ref(null);
+const progressBarMobile = ref(null);
 let slideshow;
 
 const next = () => {
-  progressBar.value?.next();
+  mobile.value ? progressBarMobile.value?.next() : progressBar.value?.next();
   carouselRef.value?.next();
   carouselRefRight.value?.next();
   carouselRefLeft.value?.next();
@@ -48,12 +63,13 @@ const slideTimer = () => {
 };
 
 onMounted(() => {
-  // start slideshow
   setTimeout(() => {
-    progressBar.value?.barProgress();
-    next();
-    slideTimer();
+    playInView(main.value, null, toggleSlideshow);
   }, 200);
+});
+
+onUnmounted(() => {
+  stopSlideshow();
 });
 </script>
 
@@ -81,6 +97,7 @@ onMounted(() => {
       class="mt-[3rem] flex s:mt-md"
       v-if="data.slides && data.slides.length > 0"
       :class="data.slides.length > 1 && 's:divide-x-1 s:divide-grayline'"
+      ref="main"
     >
       <!-- left -->
       <div class="col lt hidden w-[27.5%] overflow-hidden s:block">
@@ -117,8 +134,7 @@ onMounted(() => {
         <Carousel
           ref="carouselRef"
           class="relative max-s:-left-[2rem] max-s:w-screen"
-          :drag="mobile ? true : false"
-          @mousedown="stopSlideshow"
+          :drag="false"
         >
           <div
             v-for="slide in data.slides"
@@ -204,6 +220,8 @@ onMounted(() => {
         dir="right"
         class="!w-[48%]"
         @click="handleNext"
+        :speed="speed"
+        ref="progressBarMobile"
       />
     </div>
   </Section>

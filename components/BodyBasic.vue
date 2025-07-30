@@ -5,9 +5,7 @@ import { Image as DatocmsImage } from "vue-datocms";
 const props = defineProps(["data", "edge", "layout"]);
 
 const main = ref(null);
-/* const parallax = ref(null); */
 let ctx;
-/* let mm; */
 
 onMounted(() => {
   ctx = gsap.context((self) => {
@@ -17,17 +15,10 @@ onMounted(() => {
       animIntoView(items, main.value, 0.2, "top 75%");
     }, 200);
   }, main.value);
-
-  // section parallax
-  /*   mm = gsap.matchMedia();
-  mm.add("(min-width: 650px)", () => {
-    parallaxSection(parallax.value, 30);
-  }); */
 });
 
 onUnmounted(() => {
   ctx.revert();
-  /* mm.revert(); */
 });
 </script>
 

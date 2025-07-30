@@ -1,16 +1,42 @@
 <script setup>
+import { gsap } from "gsap";
+
 const props = defineProps(["data"]);
+
+const main = ref(null);
+const buckets = ref(null);
+const header = ref(null);
+let ctx;
+
+onMounted(() => {
+  ctx = gsap.context((self) => {
+    // animate items into place on scroll to section
+    setTimeout(() => {
+      const intro = self.selector(".intro");
+      const items = self.selector(".anim-item");
+      animIntoView(intro, header.value, 0.2, "top 60%");
+      animIntoView(items, buckets.value, 0.2, "top 70%");
+    }, 200);
+  }, main.value);
+});
+
+onUnmounted(() => {
+  ctx.revert();
+});
 </script>
 
 <template>
-  <div>
+  <div ref="main">
     <!-- header -->
-    <div class="relative border-t border-t-whiteline px-side-mob s:px-side-lg">
+    <div
+      class="relative border-t border-t-whiteline px-side-mob s:px-side-lg"
+      ref="header"
+    >
       <div
         class="w-full border-x border-x-whiteline bg-[url(/why/ai-lines-bgfull.svg)] bg-cover px-side-mob py-[4rem] s:px-side s:py-[11.2rem]"
       >
         <div
-          class="mx-auto space-y-[2.5rem] rounded-base-mob bg-shadowblue p-side-mob text-center s:w-[81rem] s:rounded-base s:p-[6rem]"
+          class="intro mx-auto space-y-[2.5rem] rounded-base-mob bg-shadowblue p-side-mob text-center s:w-[81rem] s:rounded-base s:p-[6rem]"
         >
           <h2
             class="font-barlow-cond text-lg-mob leading-lg s:text-lg"
@@ -28,6 +54,7 @@ const props = defineProps(["data"]);
     >
       <div
         class="flex flex-col flex-wrap border-x border-x-whiteline s:flex-row"
+        ref="buckets"
       >
         <div
           v-for="(bucket, i) in data.buckets"
@@ -38,21 +65,23 @@ const props = defineProps(["data"]);
               's:border-l s:border-l-whiteline max-s:border-t max-s:border-t-whiteline',
           ]"
         >
-          <div
-            class="icon mb-[2.5rem] size-[3.6rem]"
-            :class="accentColor(bucket)"
-          >
-            <img v-if="bucket.icon" :src="bucket.icon.url" alt="" />
+          <div class="anim-item">
+            <div
+              class="icon mb-[2.5rem] size-[3.6rem]"
+              :class="accentColor(bucket)"
+            >
+              <img v-if="bucket.icon" :src="bucket.icon.url" alt="" />
+            </div>
+            <h3
+              class="font-barlow-cond text-sm-mob leading-lg s:text-sm"
+              :class="accentColor(bucket)"
+              v-html="formatText(bucket.headline)"
+            ></h3>
+            <p
+              class="mt-[1.8rem] text-body-sm-mob leading-sm s:text-body-sm"
+              v-html="formatText(bucket.description)"
+            ></p>
           </div>
-          <h3
-            class="font-barlow-cond text-sm-mob leading-lg s:text-sm"
-            :class="accentColor(bucket)"
-            v-html="formatText(bucket.headline)"
-          ></h3>
-          <p
-            class="mt-[1.8rem] text-body-sm-mob leading-sm s:text-body-sm"
-            v-html="formatText(bucket.description)"
-          ></p>
         </div>
       </div>
     </div>

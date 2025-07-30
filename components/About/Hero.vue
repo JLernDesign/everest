@@ -23,10 +23,12 @@ onMounted(() => {
     cloudParallax(main.value.$el, null, clouds, cloudY);
 
     // animate items into place on scroll to section
-    setTimeout(() => {
-      const items = anims.value.querySelectorAll(".anim-item");
-      animIntoView(items, anims.value, 0.2, "top 90%");
-    }, 200);
+    if (!mobile.value) {
+      setTimeout(() => {
+        const items = anims.value.querySelectorAll(".anim-item");
+        animIntoView(items, anims.value, 0.2, "top 90%");
+      }, 200);
+    }
   }, main.value.$el);
 
   setTimeout(() => {

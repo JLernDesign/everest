@@ -1,11 +1,12 @@
 <script setup>
+import { gsap } from "gsap";
 import { Image as DatocmsImage } from "vue-datocms";
 
 const props = defineProps(["data", "color"]);
 const main = ref(null);
 const active = 0;
 const carouselRef = ref(null);
-let items, wraps, topSpacers, botSpacers;
+let items, wraps, topSpacers, botSpacers, ctx;
 
 onMounted(() => {
   items = main.value.querySelectorAll(".slide");
@@ -13,7 +14,19 @@ onMounted(() => {
   topSpacers = main.value.querySelectorAll(".spacer.top");
   botSpacers = main.value.querySelectorAll(".spacer.bot");
   // open first wrap by default
-  handleClick(0);
+  ctx = gsap.context((self) => {
+    // animate items into place on scroll to section
+    setTimeout(() => {
+      //playInView(main.value, null, openFirst, 0, "top 50%");
+      const image = self.selector(".anim-item");
+      animIntoView(image, main.value, 0.2, "top 60%", openFirst);
+    }, 200);
+  }, main.value);
+  //handleClick(0);
+});
+
+onUnmounted(() => {
+  ctx.revert();
 });
 
 const handleClick = (i) => {
@@ -24,6 +37,16 @@ const handleClick = (i) => {
 
   // go to slide
   carouselRef.value.goto(i);
+};
+
+const open = false;
+const openFirst = () => {
+  if (!open) {
+    setTimeout(() => {
+      handleClick(0);
+      open = true;
+    }, 1000);
+  }
 };
 </script>
 
@@ -54,7 +77,7 @@ const handleClick = (i) => {
         <div class="items divide-y-1 divide-whiteline">
           <div
             v-for="(slide, i) in data.slides"
-            class="slide px-side-mob py-6 s:px-side"
+            class="anim-item slide px-side-mob py-6 s:px-side"
           >
             <!-- add space above -->
             <div class="spacer top h-0 overflow-hidden">
@@ -86,11 +109,11 @@ const handleClick = (i) => {
       <div
         class="w-full border-r border-r-whiteline p-8 s:w-[57%] max-s:order-1 max-s:border max-s:border-t-0 max-s:border-whiteline"
       >
-        <div class="w-full overflow-hidden rounded-sm bg-skyblue">
+        <div class="anim-item w-full overflow-hidden rounded-sm bg-skyblue">
           <Carousel :drag="false" :center="false" ref="carouselRef">
             <div
               v-for="slide in data.slides"
-              class="item ph-image grid aspect-[1.32] w-[31.1rem] shrink-0 place-content-center p-4 s:w-[80rem] s:p-12 [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
+              class="item grid aspect-[1.32] w-[31.1rem] shrink-0 place-content-center p-4 s:w-[80rem] s:p-12 [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
             >
               <DatocmsImage
                 v-if="slide.image"

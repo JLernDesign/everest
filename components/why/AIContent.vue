@@ -9,8 +9,15 @@ let ctx;
 
 onMounted(() => {
   ctx = gsap.context((self) => {
+    // toggle video on scroll
     playInView(main.value, null, playVideo);
-  });
+
+    // animate items into place on scroll to section
+    setTimeout(() => {
+      const items = self.selector(".anim-item");
+      animIntoView(items, main.value, 0.2, "top 60%");
+    }, 200);
+  }, main.value);
 });
 
 onUnmounted(() => {
@@ -70,11 +77,11 @@ const playVideo = (ev) => {
 
     <!-- content -->
     <div
-      class="relative flex flex-col border-t border-t-whiteline px-side-mob s:flex-row s:px-side-lg"
+      class="relative flex flex-col overflow-hidden border-t border-t-whiteline px-side-mob s:flex-row s:px-side-lg"
     >
       <!-- image -->
       <div class="w-full border-l border-l-whiteline s:w-[57%]">
-        <div class="ph-image relative aspect-[1.44]">
+        <div class="anim-item relative aspect-[1.44]">
           <VideoAnim
             v-if="color == 'red'"
             file="Everest - Web Animation - ERP System - V01"
@@ -89,29 +96,12 @@ const playVideo = (ev) => {
             :alpha="false"
             :loop="true"
           />
-          <!-- <img
-            :src="
-              color == 'red'
-                ? '/why/ai-first-ph1@2x.png'
-                : '/why/ai-first-ph2@2x.png'
-            "
-            alt=""
-            class="h-full w-full"
-          /> -->
-          <!-- <div
-            class="absolute left-0 top-0 h-full w-full bg-cover"
-            :class="
-              color == 'red'
-                ? 'bg-[url(/why/aifirst-redbg.svg)]'
-                : 'bg-[url(/why/aifirst-bluebg.svg)]'
-            "
-          ></div> -->
         </div>
       </div>
 
       <!-- text -->
       <div
-        class="flex flex-col justify-end border-x border-x-whiteline p-side-mob s:w-[43%] s:p-[5rem]"
+        class="anim-item flex flex-col justify-end border-x border-x-whiteline p-side-mob s:w-[43%] s:p-[5rem]"
       >
         <span v-html="data.body"></span>
       </div>
