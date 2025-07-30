@@ -21,24 +21,7 @@ if (hl.length > 1) {
 
 // headline animation
 let ctx, tl;
-const stag = props.anim == "scroll" ? 0.02 : 0.1;
-
-/* const splitHeadline = (el) => {
-  // split headline into letters
-  const spl = new SplitText(el, {
-    type: "chars, words",
-    charsClass: "letter",
-    wordsClass: "word overflow-hidden pb-1 whitespace-nowrap",
-  });
-
-  // set initial positions
-  const letters = main.value.querySelectorAll(".letter");
-  gsap.set(letters, {
-    opacity: 0,
-    yPercent: 100,
-  });
-
-}; */
+const stag = props.anim == "scroll" ? 0.02 : 0.03;
 
 onMounted(() => {
   // split headline into letters

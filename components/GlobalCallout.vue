@@ -52,7 +52,7 @@ const playVideo = (ev) => {
         class="-bottom-[1px] left-0 z-0 hidden h-full w-full s:absolute s:block"
       >
         <VideoAnim
-          file="Growing Rocks Clean_Correction_With_BG_HIGH"
+          file="Growing_Rocks"
           ref="video"
           size="fill"
           class="[&_video]:object-cover"

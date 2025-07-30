@@ -40,9 +40,9 @@ const closePopup = () => {
           <button class="button text-skyblue underline" @click="closePopup">
             Accept
           </button>
-          <button class="button text-skyblue underline" @click="closePopup">
+          <!-- <button class="button text-skyblue underline" @click="closePopup">
             Decline
-          </button>
+          </button> -->
         </div>
       </div>
       <!-- close button -->

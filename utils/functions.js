@@ -646,3 +646,29 @@ export const cloudParallax = (
     );
   });
 };
+
+export const scrollHeadline = (el) => {
+  // split headline into letters
+  splitHeadline(el.querySelectorAll(".text"), el);
+
+  let tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: el,
+      start: "top 90%",
+      end: "bottom 60%",
+      scrub: true,
+    },
+  });
+
+  // get characters and reverse order
+  const letters = gsap.utils.toArray(el.querySelectorAll(".letter")).reverse();
+
+  // animate each character on
+  tl.to(letters, {
+    duration: 0.5,
+    opacity: 1,
+    stagger: 0.05,
+    yPercent: 0,
+    ease: "power3.inOut",
+  });
+};

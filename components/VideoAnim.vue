@@ -34,13 +34,13 @@ const safari = is.safari();
 const edge = is.edge();
 const ios = is.ios();
 
-const file = computed(() => {
+/* const file = computed(() => {
   if (props.file.includes("infographics")) {
     const ext = chrome ? "-vp9-chrome" : "-hevc-safari";
     return props.file + ext;
   }
   return props.file;
-});
+}); */
 
 const video = ref(null);
 

@@ -1,27 +1,10 @@
 <script setup>
 import gsap from "gsap";
+
 const props = defineProps(["data"]);
-
 const locations = inject("locations");
-
-const coords = [
-  {
-    x: "13rem",
-    y: "29rem",
-  },
-  {
-    x: "38.4rem",
-    y: "63.6rem",
-  },
-  {
-    x: "59rem",
-    y: "20.8rem",
-  },
-  {
-    x: "65rem",
-    y: "25.2rem",
-  },
-];
+const main = ref(null);
+let ctx;
 
 const getCoords = (coords) => {
   const x = Number(coords.split(",")[0]) / 10;
@@ -61,25 +44,41 @@ const handleMouseLeave = (e) => {
     ease: "power3.out",
   });
 };
+
+onMounted(() => {
+  ctx = gsap.context((self) => {
+    // animate items into place on scroll to section
+    setTimeout(() => {
+      const items = main.value.$el.querySelectorAll(".anim-item");
+      animIntoView(items, main.value.$el, 0.2, "top 30%");
+    }, 200);
+  }, main.value);
+});
+
+onUnmounted(() => {
+  ctx.revert();
+});
 </script>
 
 <template>
-  <Section class="max-s:pb-section-bot-mob">
+  <Section class="max-s:pb-section-bot-mob" ref="main">
     <header
       class="relative z-1 space-y-[3rem] text-center s:space-y-header-lg max-s:pt-[5rem]"
     >
-      <h2
-        class="-tracking-md font-barlow-cond-semibold text-xxl-mob uppercase leading-xxl s:text-xxl"
-        v-html="addLineBreaks(data.headline)"
-      ></h2>
+      <AnimHeadline>
+        <h2
+          class="-tracking-md text font-barlow-cond-semibold text-xxl-mob uppercase leading-xxl s:text-xxl"
+          v-html="addLineBreaks(data.headline)"
+        ></h2>
+      </AnimHeadline>
       <p
-        class="mx-auto max-w-[80rem] text-body-md-mob leading-md s:text-body-md"
+        class="anim-item mx-auto max-w-[80rem] text-body-md-mob leading-md s:text-body-md"
         v-html="formatText(data.intro)"
       ></p>
     </header>
 
     <!-- map area -->
-    <div class="relative">
+    <div class="anim-item relative">
       <!-- mobile gradient -->
       <div
         class="absolute -top-[30rem] left-1/2 z-0 h-[93rem] w-screen -translate-x-1/2 s:hidden"
