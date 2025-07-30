@@ -1,7 +1,9 @@
 <script setup>
+import { gsap } from "gsap";
 import { Image as DatocmsImage } from "vue-datocms";
 const props = defineProps(["data"]);
 const arrowDiamond = ref(null);
+const main = ref(null);
 
 const handleClick = (item) => {
   if (item.video) {
@@ -10,12 +12,34 @@ const handleClick = (item) => {
 };
 
 const hoverOn = () => {
+  const arrow = main.value.querySelector(".hover-arrow");
+  gsap.to(main.value, {
+    y: -10,
+    ease: "power3.out",
+    duration: 0.5,
+  });
+  gsap.to(arrow, {
+    opacity: 1,
+    duration: 0.5,
+    ease: "power3.out",
+  });
   if (arrowDiamond.value) {
     arrowDiamond.value.hoverOn();
   }
 };
 
 const hoverOff = () => {
+  const arrow = main.value.querySelector(".hover-arrow");
+  gsap.to(main.value, {
+    y: 0,
+    ease: "power3.out",
+    duration: 0.5,
+  });
+  gsap.to(arrow, {
+    opacity: 0,
+    duration: 0.5,
+    ease: "power3.out",
+  });
   if (arrowDiamond.value) {
     arrowDiamond.value.hoverOff();
   }
@@ -28,6 +52,7 @@ const hoverOff = () => {
     @click="handleClick(data)"
     @mouseenter="hoverOn"
     @mouseleave="hoverOff"
+    ref="main"
   >
     <!-- photo -->
     <div
@@ -58,9 +83,13 @@ const hoverOff = () => {
     </div>
 
     <!-- video cover -->
-    <!-- <div class="absolute left-0 top-0 size-full bg-[#2A3440] opacity-80"></div> -->
-    <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-      <UIArrowDiamond ref="arrowDiamond" />
+    <div class="hover-arrow absolute left-0 top-0 size-full opacity-0">
+      <div
+        class="absolute left-0 top-0 size-full bg-[#2A3440] opacity-80"
+      ></div>
+      <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+        <UIArrowDiamond ref="arrowDiamond" />
+      </div>
     </div>
   </div>
 </template>
