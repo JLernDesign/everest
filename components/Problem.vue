@@ -162,7 +162,7 @@ onUnmounted(() => {
 
       <!-- image -->
       <div
-        class="image has-break w-full overflow-hidden rounded-base-mob bg-cover p-[1.4rem] s:h-auto s:min-h-[72.6rem] s:w-[72rem] s:rounded-base max-s:order-2"
+        class="image has-break w-full overflow-hidden rounded-base-mob bg-cover px-[1.4rem] py-side s:h-auto s:min-h-[72.6rem] s:w-[72rem] s:rounded-base max-s:order-2"
         :class="
           layout == 'img-rt'
             ? 'order-2 bg-[url(/ui/mt-red@2x.jpg)]'
@@ -176,7 +176,7 @@ onUnmounted(() => {
         >
           <div
             v-for="slide in slides"
-            class="item flex shrink-0 flex-col justify-center px-side-mob s:w-[72rem] s:px-[13rem]"
+            class="item flex w-full shrink-0 flex-col justify-center px-[2.7rem] s:w-[72rem] s:px-[13rem]"
           >
             <div class="rotate-[15deg]">
               <div
