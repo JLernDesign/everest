@@ -18,13 +18,13 @@ export default defineNuxtConfig({
     },
   },
 
-  scripts: {
+  /* scripts: {
     registry: {
       googleTagManager: {
         id: "GTM-KS9LCPNL",
       },
     },
-  },
+  }, */
 
   ssr: true,
 

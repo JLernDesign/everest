@@ -26,7 +26,9 @@ provide("global_cta", header_data.value.global.headerCta);
 </script>
 
 <template>
-  <div class="wrapper section-wrap on relative min-h-screen overflow-hidden">
+  <div
+    class="wrapper section-wrap on relative min-h-screen overflow-hidden bg-skyblue"
+  >
     <Header ref="header" :menu="main_menu" :data="header_data.global" />
 
     <UICloud
@@ -83,8 +85,4 @@ provide("global_cta", header_data.value.global.headerCta);
   </div>
 </template>
 
-<style>
-html {
-  background-color: theme("colors.skyblue");
-}
-</style>
+<style scoped></style>

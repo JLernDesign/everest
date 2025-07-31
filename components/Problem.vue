@@ -1,23 +1,81 @@
 <script setup>
 const props = defineProps(["layout", "data"]);
 const active = ref(0);
+const mobile = breakpoints.smallerOrEqual("tablet1");
+const main = ref(null);
 const carouselRef = ref(null);
+const total = props.data.slides.length;
+const slides = props.data.slides.reverse();
 
 const handleSlide = (dir) => {
   if (dir == "left") {
     active.value--;
     if (active.value < 0) {
-      active.value = props.data.slides.length - 1;
-    }
-    carouselRef.value?.back();
-  } else {
-    active.value++;
-    if (active.value > props.data.slides.length - 1) {
-      active.value = 0;
+      active.value = total - 1;
     }
     carouselRef.value?.next();
+  } else {
+    active.value++;
+    if (active.value > total - 1) {
+      active.value = 0;
+    }
+    carouselRef.value?.back();
   }
+  stopSlideshow();
 };
+
+// slideshow
+const speed = 5;
+const pageInactive = useState("pageInactive");
+const progressBar = ref(null);
+const progressBarMobile = ref(null);
+let slideshow;
+
+const startSlideshow = () => {
+  mobile.value
+    ? progressBarMobile.value?.barProgress()
+    : progressBar.value?.barProgress();
+  slideTimer();
+};
+
+const stopSlideshow = () => {
+  clearInterval(slideshow);
+  mobile.value
+    ? progressBarMobile.value?.stopProgress()
+    : progressBar.value?.stopProgress();
+};
+
+const toggleSlideshow = (ev) => {
+  ev == "enter" ? startSlideshow() : stopSlideshow();
+};
+
+const next = () => {
+  mobile.value ? progressBarMobile.value?.next() : progressBar.value?.next();
+  active.value++;
+  if (active.value > total - 1) {
+    active.value = 0;
+  }
+  carouselRef.value?.back();
+};
+
+const slideTimer = () => {
+  slideshow = setInterval(() => {
+    if (!pageInactive.value) {
+      next();
+    }
+  }, speed * 1000);
+};
+
+onMounted(() => {
+  carouselRef.value?.goto(total - 1);
+  setTimeout(() => {
+    playInView(main.value, null, toggleSlideshow);
+  }, 200);
+});
+
+onUnmounted(() => {
+  stopSlideshow();
+});
 </script>
 
 <template>
@@ -46,6 +104,7 @@ const handleSlide = (dir) => {
 
     <!-- slides -->
     <div
+      ref="main"
       class="mt-[5rem] flex flex-col justify-between overflow-hidden rounded-base-mob bg-shadowblue s:mt-[10rem] s:flex-row s:rounded-base"
     >
       <!-- text -->
@@ -86,7 +145,7 @@ const handleSlide = (dir) => {
             :class="layout == 'img-rt' ? 'text-red' : 'text-lightblue'"
           >
             <span class="inline-block w-[3rem] text-center">
-              {{ active + 1 }}/{{ data.slides.length }}</span
+              {{ active + 1 }}/{{ total }}</span
             >
           </div>
           <div class="relative h-full w-[23.4rem]">
@@ -94,6 +153,8 @@ const handleSlide = (dir) => {
               dir="right"
               @click="handleSlide('right')"
               :color="layout == 'img-rt' ? 'red' : 'blue'"
+              :speed="speed"
+              ref="progressBar"
             />
           </div>
         </div>
@@ -108,22 +169,28 @@ const handleSlide = (dir) => {
             : 'order-1 bg-[url(/ui/mt-blue@2x.jpg)]'
         "
       >
-        <Carousel :drag="false" class="h-full" ref="carouselRef">
+        <Carousel
+          :drag="false"
+          class="h-full -rotate-[15deg]"
+          ref="carouselRef"
+        >
           <div
-            v-for="slide in data.slides"
-            class="item flex w-full shrink-0 flex-col justify-center px-side-mob s:px-[13rem]"
+            v-for="slide in slides"
+            class="item flex shrink-0 flex-col justify-center px-side-mob s:w-[72rem] s:px-[13rem]"
           >
-            <div
-              class="flex flex-col items-center rounded-base-mob bg-jaffa p-[3.2rem] text-center text-body-sm-mob leading-sm s:rounded-base s:text-body-sm"
-            >
-              <div v-if="slide.icon" class="icon mb-[3rem] size-[12.2rem]">
-                <img :src="slide.icon.url" alt="" />
+            <div class="rotate-[15deg]">
+              <div
+                class="flex flex-col items-center rounded-base-mob bg-jaffa p-[3.2rem] text-center text-body-sm-mob leading-sm s:rounded-base s:text-body-sm"
+              >
+                <div v-if="slide.icon" class="icon mb-[3rem] size-[12.2rem]">
+                  <img :src="slide.icon.url" alt="" />
+                </div>
+                <h3
+                  class="mb-[4.25rem] font-barlow-cond text-h5 uppercase leading-base"
+                  v-html="formatText(slide.headline)"
+                ></h3>
+                <p v-html="formatText(slide.description)"></p>
               </div>
-              <h3
-                class="mb-[4.25rem] font-barlow-cond text-h5 uppercase leading-base"
-                v-html="formatText(slide.headline)"
-              ></h3>
-              <p v-html="formatText(slide.description)"></p>
             </div>
           </div>
         </Carousel>
@@ -144,7 +211,7 @@ const handleSlide = (dir) => {
       </div>
       <div class="count px-side-mob font-barlow-cond text-red s:px-side">
         <span class="inline-block w-[3rem] text-center">
-          {{ active + 1 }}/{{ data.slides.length }}
+          {{ active + 1 }}/{{ total }}
         </span>
       </div>
       <div class="relative h-full w-[11rem] shrink-0 s:w-[23.4rem]">
@@ -153,6 +220,8 @@ const handleSlide = (dir) => {
           :color="red"
           class="cursor-pointer"
           @click="handleSlide('right')"
+          :speed="speed"
+          ref="progressBarMobile"
         />
       </div>
     </div>
