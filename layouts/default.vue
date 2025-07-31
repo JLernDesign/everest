@@ -37,7 +37,7 @@ onMounted(() => {
       <LazyFooter :menu="main_menu" :data="data" />
       <LazyVideoModal />
     </template>
-    <Cookies />
+    <!-- <Cookies /> -->
     <UISiteCover />
   </div>
 </template>

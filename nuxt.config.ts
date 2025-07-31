@@ -15,6 +15,12 @@ export default defineNuxtConfig({
           content: "width=device-width, initial-scale=1, maximum-scale=1",
         },
       ],
+      script: [
+        {
+          src: "https://cdn-cookieyes.com/client_data/d1b7ffd5032a4a6b43bcaccf/script.js",
+          id: "cookieyes",
+        },
+      ],
     },
   },
 
