@@ -11,7 +11,7 @@ let ctx;
 
 onMounted(() => {
   ctx = gsap.context((self) => {
-    const start = mobile.value ? "top 40%" : "top bottom+=100";
+    const start = mobile.value ? "top 40%" : "top 70%";
     playInView(main.value, null, playVideo, 0, start);
   });
 });

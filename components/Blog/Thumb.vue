@@ -2,8 +2,7 @@
 import { gsap } from "gsap";
 const props = defineProps(["data", "loc"]);
 const main = ref(null);
-
-const arrowDiamond = ref(null);
+const image = ref(null);
 
 const linkTo = computed(() => {
   // external media link
@@ -56,9 +55,7 @@ const hoverOn = () => {
     },
   );
   title.classList.add("on");
-  if (arrowDiamond.value) {
-    arrowDiamond.value.hoverOn();
-  }
+  image.value?.hoverOn();
 };
 
 const hoverOff = () => {
@@ -73,9 +70,7 @@ const hoverOff = () => {
     ease: "power3.out",
   });
   title.classList.remove("on");
-  if (arrowDiamond.value) {
-    arrowDiamond.value.hoverOff();
-  }
+  image.value?.hoverOff();
 };
 </script>
 
@@ -97,7 +92,7 @@ const hoverOff = () => {
     </div>
 
     <!-- image -->
-    <BlogThumbImage :data="data" />
+    <BlogThumbImage :data="data" ref="image" />
 
     <!-- date/tag -->
     <BlogDetails class="mt-[3.2rem]" :data="data" />

@@ -1,7 +1,7 @@
 <script setup>
 import { gsap } from "gsap";
 
-const props = defineProps(["dir", "color", "speed"]);
+const props = defineProps(["dir", "color", "speed", "barColor"]);
 const main = ref(null);
 const speed = props.speed;
 let bar;
@@ -58,6 +58,10 @@ defineExpose({
     >
       <div
         class="bar absolute left-0 top-0 h-full w-full rounded-btn bg-jaffaltfade"
+        :class="
+          barColor == 'blue' && 'bg-lightblue opacity-30',
+          barColor == 'red' && 'bg-red opacity-30'
+        "
       ></div>
       <IconArrow
         :color="color == 'blue' ? 'stroke-lightblue' : 'stroke-red'"

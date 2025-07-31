@@ -3,8 +3,23 @@ import { Image as DatocmsImage } from "vue-datocms";
 
 const props = defineProps(["data"]);
 
+const arrowDiamond = ref(null);
+
 const isVideo = computed(() => {
   return props.data.media?.video?.file || props.data.media?.video?.external;
+});
+
+const hoverOn = () => {
+  arrowDiamond.value?.hoverOn();
+};
+
+const hoverOff = () => {
+  arrowDiamond.value?.hoverOff();
+};
+
+defineExpose({
+  hoverOn,
+  hoverOff,
 });
 </script>
 

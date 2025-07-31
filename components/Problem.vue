@@ -153,6 +153,7 @@ onUnmounted(() => {
               dir="right"
               @click="handleSlide('right')"
               :color="layout == 'img-rt' ? 'red' : 'blue'"
+              :bar-color="layout == 'img-rt' ? 'red' : 'blue'"
               :speed="speed"
               ref="progressBar"
             />

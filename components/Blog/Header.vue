@@ -24,7 +24,7 @@ const props = defineProps({ data: { default: null }, icon: { default: true } });
       <img
         src="/public/blog/line-decor.png"
         alt=""
-        class="absolute h-full w-[36.3rem] max-w-none object-cover"
+        class="relative float-right h-full w-[36.3rem] max-w-none object-cover"
         :class="n == 1 ? 'right-0' : 'left-0 -scale-x-100'"
       />
     </div>
