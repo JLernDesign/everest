@@ -31,9 +31,9 @@ onUnmounted(() => {
 
 const handleClick = (i) => {
   // toggle expand on items
-  toggleExpand(i, wraps);
-  toggleExpand(i, topSpacers);
-  toggleExpand(i, botSpacers);
+  toggleExpand(i, wraps, 1.25);
+  toggleExpand(i, topSpacers, 1.25);
+  toggleExpand(i, botSpacers, 1.25);
 
   // go to slide
   carouselRef.value.goto(i);

@@ -297,7 +297,7 @@ export const animIntoView = (
 };
 
 // expand/collapse sections
-export const toggleExpand = (id, group) => {
+export const toggleExpand = (id, group, speed = 0.75) => {
   group.forEach((item, i) => {
     if (id == i) {
       // open
@@ -305,7 +305,7 @@ export const toggleExpand = (id, group) => {
         item.classList.add("open");
         const h = item.scrollHeight;
         gsap.to(item, {
-          duration: 1.25,
+          duration: speed,
           height: h,
           ease: "power3.inOut",
           onComplete: function () {
@@ -320,7 +320,7 @@ export const toggleExpand = (id, group) => {
         gsap.fromTo(
           item,
           { height: h },
-          { duration: 1.25, height: 0, ease: "power3.inOut" },
+          { duration: speed, height: 0, ease: "power3.inOut" },
         );
       }
 
@@ -332,7 +332,7 @@ export const toggleExpand = (id, group) => {
         gsap.fromTo(
           item,
           { height: h },
-          { duration: 1.25, height: 0, ease: "power3.inOut" },
+          { duration: speed, height: 0, ease: "power3.inOut" },
         );
       }
     }

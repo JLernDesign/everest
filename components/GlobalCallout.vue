@@ -3,13 +3,16 @@ import { gsap } from "gsap";
 
 const props = defineProps(["data"]);
 
+const mobile = breakpoints.smallerOrEqual("tablet1");
 const main = ref(null);
 const video = ref(null);
+const videoMobile = ref(null);
 let ctx;
 
 onMounted(() => {
   ctx = gsap.context((self) => {
-    playInView(main.value, null, playVideo, 0, "top bottom+=100");
+    const start = mobile.value ? "top 40%" : "top bottom+=100";
+    playInView(main.value, null, playVideo, 0, start);
   });
 });
 
@@ -18,13 +21,13 @@ onUnmounted(() => {
 });
 
 const playVideo = (ev) => {
-  if (video.value) {
-    if (ev == "enter") {
-      video.value.playVideo();
-    } else {
-      video.value.pauseVideo();
-      video.value.currentTime = 0;
-    }
+  if (ev == "enter") {
+    mobile.value ? videoMobile.value.playVideo() : video.value.playVideo();
+  } else {
+    mobile.value ? videoMobile.value.pauseVideo() : video.value.pauseVideo();
+    mobile.value
+      ? (videoMobile.value.currentTime = 0)
+      : (video.value.currentTime = 0);
   }
 };
 </script>
@@ -81,17 +84,20 @@ const playVideo = (ev) => {
         />
       </div>
 
-      <!-- image -->
+      <!-- mobile image -->
 
-      <!-- <div
-        class="right-0 top-0 flex h-full items-center s:absolute s:w-[84rem] s:pr-[12rem] max-s:-mt-[3rem] max-s:h-[32.5rem]"
-      >
+      <div class="relative block s:hidden max-s:h-[27rem]">
         <div
-          class="video-wrap absolute left-1/2 top-1/2 w-[75rem] -translate-x-1/2 -translate-y-1/2 s:w-[150rem] max-s:h-0"
+          class="video-wrap absolute -bottom-[2rem] -right-[4.5rem] w-[80rem]"
         >
-          <VideoAnim file="StoneLogo1" ref="video" />
+          <VideoAnim
+            file="Growing_Rocks"
+            ref="videoMobile"
+            size="fill"
+            class="[&_video]:object-cover"
+          />
         </div>
-      </div> -->
+      </div>
 
       <!-- seal -->
       <div class="absolute right-0 top-0 hidden p-side-mob s:block s:p-side">

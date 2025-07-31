@@ -140,7 +140,7 @@ const duplicated = computed(() => {
 <template>
   <Section
     :theme="theme"
-    class="pb-section-bot-mob pt-section-top-lg s:pb-section-bot"
+    class="pb-section-bot pt-section-top-lg"
     :class="page_data.background == 'blue' ? 'bg-skyblue' : 'bg-jaffa'"
     side="none"
     :anim="true"
