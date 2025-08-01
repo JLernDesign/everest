@@ -31,7 +31,7 @@ onUnmounted(() => {
     <div
       v-for="n in 2"
       class="absolute left-0 h-[40rem] w-[180rem]"
-      :class="n == 1 ? 'top-0' : 'bottom-0'"
+      :class="n == 1 ? '-top-[25rem] s:top-0' : '-bottom-[25rem] s:bottom-0'"
     >
       <UICloud
         type="2"
@@ -52,9 +52,11 @@ onUnmounted(() => {
         :delay="delays[n - 1]"
       />
       <UIGlow
-        class="glower h-[21.8rem]"
+        class="glower h-[21.8rem] w-full"
         src="/ui/edge-gradient.svg"
-        :class="n == 1 ? '-top-[8rem]' : '-bottom-[5rem]'"
+        :class="
+          n == 1 ? 'top-[0rem] s:top-[8rem]' : 'bottom-[10rem] s:-bottom-[5rem]'
+        "
       />
     </div>
 

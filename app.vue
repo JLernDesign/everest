@@ -54,6 +54,11 @@ router.beforeEach(async (to, from, next) => {
     page_color.value = "bg-shadowblue";
   }
   /* console.log("page_color:", page_color.value); */
+  setTimeout(() => {
+    page_color.value == "bg-shadowblue"
+      ? (theme.value = "dark")
+      : (theme.value = "light");
+  }, 500);
 
   const reveals = document.querySelectorAll(".cover-inner");
   gsap.set("#page-reveal", { display: "flex", opacity: 1 });

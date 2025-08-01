@@ -8,9 +8,10 @@ const route = useRoute();
 let slug = route.params.slug || route.name.split("-")[1];
 
 // find current page based on page slug or tag slug
-const current = props.data.find(
+const current_page = props.data.find(
   (item) => item.slug === slug || item.tag?.slug === slug,
 );
+const current = ref(current_page);
 
 const active = ref(0);
 const open = ref(false);
@@ -32,6 +33,7 @@ const handleClick = (item, i) => {
   if (item.items) {
     props.changeContent(i);
     active.value = i;
+    current.value = props.data[i].title;
     closeMenu();
   }
 };
@@ -84,7 +86,7 @@ const closeMenu = () => {
           <img src="/public/ui/tri.svg" alt="" />
         </div>
         <span v-if="current" class="ul on text-red after:bg-red">{{
-          current.title
+          current.title || current
         }}</span>
       </button>
     </div>

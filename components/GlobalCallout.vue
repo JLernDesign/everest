@@ -88,7 +88,7 @@ const playVideo = (ev) => {
 
       <div class="relative block s:hidden max-s:h-[27rem]">
         <div
-          class="video-wrap absolute -bottom-[2rem] -right-[4.5rem] w-[80rem]"
+          class="video-wrap absolute -bottom-[2.2rem] -right-[4.5rem] w-[80rem]"
         >
           <VideoAnim
             file="Growing_Rocks"
