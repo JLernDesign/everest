@@ -122,7 +122,7 @@ const getDelay = () => {
 <template>
   <div
     ref="main"
-    class="overview-card section-wrap dark relative w-full border-b px-side-mob py-[6rem] s:px-[20rem] s:py-[11rem]"
+    class="overview-card section-wrap dark relative w-full border-b px-side-mob py-[6rem] s:min-h-screen s:px-[20rem] s:py-[11rem]"
     :class="
       theme == 'dark'
         ? 'border-[#3D4856] bg-shadowblue'
@@ -159,7 +159,7 @@ const getDelay = () => {
           <CtaBtn
             v-if="data.productPage"
             :to="`/product/${data.productPage.slug}`"
-            class="mt-8"
+            class="mt-12"
             >Learn More</CtaBtn
           >
         </div>

@@ -89,7 +89,7 @@ export default {
     letterSpacing: {
       base: ".25rem",
       sm: ".1rem",
-      md: ".2rem",
+      md: ".4rem",
     },
     borderRadius: {
       sm: ".5rem",

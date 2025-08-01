@@ -127,7 +127,7 @@ const handleClick = (i) => {
             :data="data.cta.buttons"
             :align="align"
             :theme="theme"
-            class="mt-8"
+            class="mt-12"
           />
         </div>
       </div>
