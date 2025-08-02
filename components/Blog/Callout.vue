@@ -20,7 +20,7 @@ const posts = data.value.allPosts;
 
     <!-- thumbs -->
     <div
-      class="grid w-full grid-cols-1 divide-grayline border-y border-grayline s:grid-cols-3 s:divide-x-1 max-s:divide-y-1"
+      class="mx-auto grid w-full max-w-[180rem] grid-cols-1 divide-grayline border-y border-grayline s:grid-cols-3 s:divide-x-1 max-s:divide-y-1"
     >
       <BlogThumb v-for="(item, i) in posts" :data="item" />
     </div>

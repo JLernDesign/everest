@@ -57,7 +57,9 @@ onUnmounted(() => {
 
     <!-- buckets -->
     <div class="mt-12 s:mt-[8rem] s:px-[13rem]" ref="anims">
-      <div class="w-full overflow-hidden s:-mb-[12rem] s:pb-[12rem]">
+      <div
+        class="mx-auto w-full max-w-[150rem] overflow-hidden s:-mb-[12rem] s:pb-[12rem]"
+      >
         <Carousel
           ref="carouselRef"
           :drag="slider ? true : false"
@@ -122,7 +124,7 @@ onUnmounted(() => {
       <!-- controls -->
       <div
         v-if="slider"
-        class="mt-[5.5rem] hidden w-full justify-between px-[1rem] s:flex"
+        class="mx-auto mt-[5.5rem] hidden w-full max-w-[150rem] justify-between px-[1rem] s:flex"
       >
         <div class="relative h-full w-[23.4rem]">
           <UISlideArrow

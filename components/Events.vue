@@ -98,7 +98,7 @@ onMounted(() => {
 
     <!-- events list -->
     <div
-      class="relative mt-12 flex-col s:mt-[10rem] s:flex s:flex-row"
+      class="max-w-content relative mx-auto mt-12 flex flex-col s:mt-[10rem] s:flex s:flex-row"
       ref="main"
       @mouseenter="showImage"
       @mouseleave="hideImage"

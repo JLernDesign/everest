@@ -6,7 +6,7 @@ const props = defineProps(["color"]);
   <div
     class="pointer-events-none absolute left-0 z-1 h-[8rem] w-full s:-top-[26.6rem] s:h-[26.8rem] max-s:-top-[8rem] max-s:overflow-hidden"
   >
-    <div class="absolute w-[180rem] max-s:-left-[115rem]">
+    <div class="xxl:w-full absolute w-[180rem] max-s:-left-[115rem]">
       <svg
         id="uuid-a7e36ef3-9a73-4651-a660-54067f565c41"
         xmlns="http://www.w3.org/2000/svg"

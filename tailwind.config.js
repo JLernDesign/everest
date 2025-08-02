@@ -10,7 +10,7 @@ export default {
       m: "900px",
       l: "1024px",
       xl: "1200px",
-      "2xl": "1536px",
+      xxl: "1920px",
       landscape: { orientation: "landscape" },
       portrait: { orientation: "portrait" },
       "has-hover": { raw: "(hover: hover) and (pointer: fine)" },
@@ -119,6 +119,7 @@ export default {
       },
       maxWidth: {
         base: "148rem",
+        content: "172rem",
       },
       padding: {
         sm: ".8rem",

@@ -5,8 +5,14 @@ const props = defineProps(["data"]);
 <template>
   <Section :hero="true" class="pb-[12rem] s:pb-section-bot-lg">
     <!-- bg elements -->
-    <UIGlow class="top-0 hidden s:block" src="/why/gradient1.svg" />
-    <UIGlow class="bottom-0 hidden s:block" src="/why/gradient2.svg" />
+    <UIGlow
+      class="xxl:w-full left-1/2 top-0 hidden -translate-x-1/2 s:block [&_img]:w-full"
+      src="/why/gradient1.svg"
+    />
+    <UIGlow
+      class="bottom-0 left-1/2 hidden -translate-x-1/2 s:block [&_img]:w-full"
+      src="/why/gradient2.svg"
+    />
     <UIGlow
       class="left-0 top-0 block h-full w-full !blur-0 s:hidden [&_img]:h-full [&_img]:w-full"
       src="/why/gradient-mob.svg"

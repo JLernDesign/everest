@@ -128,7 +128,7 @@ if (props.data.slides && props.data.slides.length > 0) {
 
     <!-- slide module -->
     <div
-      class="mt-[3rem] flex s:mt-md"
+      class="max-w-content mx-auto mt-[3rem] flex s:mt-md"
       v-if="page_data.slides && page_data.slides.length > 0"
       :class="page_data.slides.length > 1 && 's:divide-x-1 s:divide-grayline'"
       ref="main"

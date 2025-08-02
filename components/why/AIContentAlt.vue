@@ -39,7 +39,7 @@ const handleClick = (i) => {
   carouselRef.value.goto(i);
 };
 
-const open = false;
+let open = false;
 const openFirst = () => {
   if (!open) {
     setTimeout(() => {
@@ -110,7 +110,12 @@ const openFirst = () => {
         class="w-full border-r border-r-whiteline p-8 s:w-[57%] max-s:order-1 max-s:border max-s:border-t-0 max-s:border-whiteline"
       >
         <div class="anim-item w-full overflow-hidden rounded-sm bg-skyblue">
-          <Carousel :drag="false" :center="false" ref="carouselRef">
+          <Carousel
+            :drag="false"
+            :center="false"
+            ref="carouselRef"
+            class="!inline-flex !w-auto"
+          >
             <div
               v-for="slide in data.slides"
               class="item grid aspect-[1.32] w-[31.1rem] shrink-0 place-content-center p-4 s:w-[80rem] s:p-12 [&_img]:h-full [&_img]:w-full [&_img]:object-cover"

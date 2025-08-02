@@ -86,7 +86,7 @@ onUnmounted(() => {
   >
     <!-- header -->
     <header
-      class="relative flex h-[1.8rem] justify-between"
+      class="relative mx-auto flex h-[1.8rem] max-w-base justify-between"
       :class="
         layout == 'img-rt' ? '[&_.eyebrow]:bg-jaffa' : '[&_.eyebrow]:bg-skyblue'
       "
@@ -105,7 +105,7 @@ onUnmounted(() => {
     <!-- slides -->
     <div
       ref="main"
-      class="mt-[5rem] flex flex-col justify-between overflow-hidden rounded-base-mob bg-shadowblue s:mt-[10rem] s:flex-row s:rounded-base"
+      class="mx-auto mt-[5rem] flex max-w-base flex-col justify-between overflow-hidden rounded-base-mob bg-shadowblue s:mt-[10rem] s:flex-row s:rounded-base"
     >
       <!-- text -->
       <div

@@ -50,6 +50,9 @@ onMounted(() => {
         element.classList.add("active");
         activeElement = element;
       },
+      onUpdate: (element, index) => {
+        console.log("onUpdate", element, index);
+      },
     });
 
     if (props.click) {

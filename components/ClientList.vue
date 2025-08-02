@@ -67,7 +67,7 @@ const handleClick = (i) => {
     <!-- <UIFilter :data="{ label: 'filter by industry' }" /> -->
 
     <!-- list -->
-    <div class="list">
+    <div class="list mx-auto max-w-base">
       <ClientListItem
         v-for="(item, i) in data.slides"
         :data="item"

@@ -87,6 +87,7 @@ export default function horizontalLoop(items, config) {
           xPercent: (i) => xPercents[i],
         });
         totalWidth = getTotalWidth();
+        //console.log("totalWidth", totalWidth);
       },
       timeWrap,
       populateOffsets = () => {

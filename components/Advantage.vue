@@ -14,7 +14,7 @@ props.data.color == "gray" ? (color = "text-white") : null;
 <template>
   <Section class="bg-jaffa pb-section-bot-mob s:pb-section-bot" side="lg">
     <!-- header -->
-    <header class="relative flex h-[1.8rem] justify-between">
+    <header class="relative mx-auto flex h-[1.8rem] max-w-base justify-between">
       <LineFull class="top-1/2" />
       <div class="relative z-1 bg-jaffa px-5 text-body-sm-mob s:text-body-sm">
         {{ data.eyebrow }}
@@ -26,7 +26,7 @@ props.data.color == "gray" ? (color = "text-white") : null;
 
     <!-- columns -->
     <div
-      class="flex flex-col items-start justify-between pt-section-top-mob s:flex-row s:pt-section-top"
+      class="mx-auto flex max-w-base flex-col items-start justify-between pt-section-top-mob s:flex-row s:pt-section-top"
     >
       <!-- headline -->
       <div
