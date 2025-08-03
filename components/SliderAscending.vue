@@ -54,6 +54,7 @@ onMounted(() => {
     });
   }
 
+  // prevent slider drag if scrolling
   if (isTouchDevice()) {
     isScrolling.value = true;
     useEventListener(window, "scroll", (e) => {
@@ -62,8 +63,8 @@ onMounted(() => {
       clearTimeout(scrollTimeout);
       scrollTimeout = setTimeout(() => {
         isScrolling.value = false;
-        console.log("not scrolling", window.scrollY);
-      }, 500);
+        //console.log("not scrolling", window.scrollY);
+      }, 100);
     });
   }
 
