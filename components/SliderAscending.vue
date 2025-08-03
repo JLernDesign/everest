@@ -19,7 +19,7 @@ let count = 0;
 const mouseDown = ref(false);
 const section = ref(null);
 let ctx;
-const isScrolling = ref(true);
+const isScrolling = ref(false);
 let scrollTimeout;
 
 // get mouse movement
@@ -52,10 +52,13 @@ onMounted(() => {
     useEventListener(main.value, "mouseleave", () => {
       unfollowMouse();
     });
+  }
 
+  if (isTouchDevice()) {
+    isScrolling.value = true;
     useEventListener(window, "scroll", (e) => {
       isScrolling.value = true;
-      console.log("scrolling", window.scrollY);
+      //console.log("scrolling", window.scrollY);
       clearTimeout(scrollTimeout);
       scrollTimeout = setTimeout(() => {
         isScrolling.value = false;
