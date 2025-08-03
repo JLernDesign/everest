@@ -3,7 +3,7 @@ const props = defineProps(["data"]);
 let menus,
   n = 0;
 const main = ref(null);
-console.log(props.data);
+
 onMounted(() => {
   menus = qsa(".submenu", main.value);
 });

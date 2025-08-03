@@ -212,6 +212,8 @@ export default function horizontalLoop(items, config) {
       tl.vars.onReverseComplete();
       tl.reverse();
     }
+
+    // draggable
     if (config.draggable && typeof Draggable === "function") {
       proxy = document.createElement("div");
       let wrap = gsap.utils.wrap(0, 1),
@@ -249,18 +251,27 @@ export default function horizontalLoop(items, config) {
         onThrowUpdate: align,
         overshootTolerance: 0,
         inertia: true,
+        throwResistance: 5000,
+        maxDuration: 1,
         snap(value) {
           //note: if the user presses and releases in the middle of a throw, due to the sudden correction of proxy.x in the onPressInit(), the velocity could be very large, throwing off the snap. So sense that condition and adjust for it. We also need to set overshootTolerance to 0 to prevent the inertia from causing it to shoot past and come back
           if (Math.abs(startProgress / -ratio - this.x) < 10) {
             return lastSnap + initChangeX;
           }
+          let backup = lastSnap;
           let time = -(value * ratio) * tl.duration(),
             wrappedTime = timeWrap(time),
             snapTime = times[getClosest(times, wrappedTime, tl.duration())],
             dif = snapTime - wrappedTime;
+          //console.log(wrappedTime, snapTime, dif);
           Math.abs(dif) > tl.duration() / 2 &&
             (dif += dif < 0 ? tl.duration() : -tl.duration());
           lastSnap = (time + dif) / tl.duration() / -ratio;
+          if (lastSnap > 2000 || lastSnap < -5000) {
+            console.log("too fast", lastSnap);
+            lastSnap = backup;
+          }
+          console.log(lastSnap);
           return lastSnap;
         },
         onRelease() {
@@ -274,6 +285,8 @@ export default function horizontalLoop(items, config) {
       })[0];
       tl.draggable = draggable;
     }
+    // end draggable
+
     tl.closestIndex(true);
     lastIndex = curIndex;
     onChange && onChange(items[curIndex], curIndex);
