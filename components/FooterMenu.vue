@@ -3,7 +3,7 @@ const props = defineProps(["data"]);
 let menus,
   n = 0;
 const main = ref(null);
-console.log("footer menu");
+console.log(props.data);
 onMounted(() => {
   menus = qsa(".submenu", main.value);
 });
@@ -32,7 +32,7 @@ const handleClick = (e, item) => {
       <button
         class="ul single fast flex h-[4rem] w-full items-center justify-between pl-[.4rem] pr-[1.2rem] [&>*]:pointer-events-none"
         @click="handleClick($event, item)"
-        :data-num="item.submenu && n++"
+        :data-num="item.submenu ? n++ : null"
       >
         <span class="mt-1">{{ item.label }}</span>
         <IconChevron v-if="item.submenu" color="stroke-red" />
