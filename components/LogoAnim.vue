@@ -36,7 +36,9 @@ const hover_easer = "power3.out";
 
 const hoverOn = () => {
   // hide logo
-  logo.value.setSticky();
+  if (window.scrollY === 0) {
+    logo.value.setSticky();
+  }
   gsap.to(logo.value.$el, {
     scale: 0.5,
     opacity: 0,
@@ -73,7 +75,9 @@ const hoverOff = () => {
   });
 
   // show logo
-  logo.value.unsetSticky();
+  if (window.scrollY === 0) {
+    logo.value.unsetSticky();
+  }
   gsap.to(logo.value.$el, {
     scale: 1,
     opacity: 1,
@@ -94,7 +98,7 @@ defineExpose({
   >
     <NuxtLink
       to="/"
-      class="block h-[5.3rem] w-[6.2rem] origin-top-left s:h-[8.1rem] s:w-[9.4rem]"
+      class="relative block h-[5.3rem] w-[6.2rem] origin-top-left s:h-[8.1rem] s:w-[9.4rem]"
       ref="logo_wrap"
       @mouseenter="hoverOn"
       @mouseleave="hoverOff"
@@ -102,7 +106,7 @@ defineExpose({
       <IconLogo ref="logo" :theme="theme" />
       <div
         ref="video_hover"
-        class="video-hover pointer-events-none absolute left-[2rem] top-[3.5rem] w-[13rem] opacity-0"
+        class="video-hover pointer-events-none absolute left-1/2 top-1/2 w-[13rem] -translate-x-1/2 -translate-y-1/2 opacity-0"
       >
         <VideoAnim
           file="RevolvingRockLogo1"
