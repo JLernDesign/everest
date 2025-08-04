@@ -4,8 +4,12 @@ const investors = useState("investors");
 </script>
 
 <template>
-  <div class="footer-lockup relative text-black">
+  <div class="footer-lockup relative z-1 overflow-hidden text-black">
     <UITexture />
+    <!-- <UITexture class="bg-[position:0_bottom !top-[-26.6rem]" /> -->
+
+    <!-- bg texture with jag edge -->
+    <!-- <FooterJag /> -->
 
     <!-- callout -->
     <GlobalCallout :data="data" />

@@ -2,6 +2,10 @@
 import { newsCollectionQuery } from "~/assets/graphql/queries/news.js";
 const slug = "press";
 
+definePageMeta({
+  alias: ["/press", "/news"],
+});
+
 const { data } = await useGraphqlQuery({
   query: newsCollectionQuery.loc.source.body,
 });

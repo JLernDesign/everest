@@ -1,8 +1,16 @@
 <script setup>
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gql from "graphql-tag";
+
+if (isSSR()) {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const props = defineProps(["menu", "data"]);
 const investors = useState("investors", () => props.data.investors);
+const main = ref(null);
+let ctx;
 
 /* get all legal pages */
 const legalQuery = gql`
@@ -18,10 +26,32 @@ const { data: legals } = await useGraphqlQuery({
   query: legalQuery.loc.source.body,
 });
 const legalPages = legals.value.allLegals;
+
+onMounted(() => {
+  // parallax reveal footer on scroll
+  ctx = gsap.context((self) => {
+    /* const footer = self.selector(".footer-details");
+    gsap.set(footer, { yPercent: -50 });
+    gsap.to(footer, {
+      yPercent: 0,
+      ease: "none",
+      scrollTrigger: {
+        trigger: main.value,
+        start: "top bottom",
+        end: "+=50%",
+        scrub: true,
+      },
+    }); */
+  }, main.value);
+});
+
+onUnmounted(() => {
+  ctx.revert();
+});
 </script>
 
 <template>
-  <footer class="main relative">
+  <footer class="main relative" ref="main">
     <!-- footer details -->
     <div class="footer-details relative bg-shadowblue p-side-mob s:p-side">
       <UIJagEdge color="fill-shadowblue" />

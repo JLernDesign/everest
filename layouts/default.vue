@@ -30,9 +30,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="wrapper" ref="wrapper">
+  <div class="wrapper overflow-hidden" ref="wrapper">
     <LazyHeader ref="header" :menu="main_menu" :data="data" />
-    <div class="main-contents overflow-hidden"><slot /></div>
+    <div class="main-contents"><slot /></div>
     <template v-if="loaded">
       <LazyFooter :menu="main_menu" :data="data" />
       <LazyVideoModal />
