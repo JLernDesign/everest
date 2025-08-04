@@ -80,7 +80,7 @@ defineExpose({
 </script>
 
 <template>
-  <div class="flex w-full" ref="main">
+  <div class="relative flex w-full" ref="main">
     <slot />
   </div>
 </template>
