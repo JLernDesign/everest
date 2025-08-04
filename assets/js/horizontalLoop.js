@@ -93,6 +93,7 @@ export default function horizontalLoop(items, config) {
         timeOffset = center
           ? (tl.duration() * (container.offsetWidth / 2)) / totalWidth
           : 0;
+
         center &&
           times.forEach((t, i) => {
             times[i] = timeWrap(
@@ -154,7 +155,7 @@ export default function horizontalLoop(items, config) {
             .add("label" + i, distanceToStart / pixelsPerSecond);
           times[i] = distanceToStart / pixelsPerSecond;
         }
-        console.log("update times", times);
+        /* console.log("update times", times); */
         timeWrap = gsap.utils.wrap(0, tl.duration());
       },
       refresh = (deep) => {
@@ -190,7 +191,7 @@ export default function horizontalLoop(items, config) {
       curIndex = newIndex;
       vars.overwrite = true;
       gsap.killTweensOf(proxy);
-      console.log("gsap log", tl.labels, time);
+      /* console.log("gsap log", tl.labels, time); */
       return vars.duration === 0
         ? tl.time(timeWrap(time))
         : tl.tweenTo(time, vars);
@@ -250,6 +251,7 @@ export default function horizontalLoop(items, config) {
         onThrowUpdate: align,
         overshootTolerance: 0,
         inertia: true,
+        resistance: 5000,
         snap(value) {
           //note: if the user presses and releases in the middle of a throw, due to the sudden correction of proxy.x in the onPressInit(), the velocity could be very large, throwing off the snap. So sense that condition and adjust for it. We also need to set overshootTolerance to 0 to prevent the inertia from causing it to shoot past and come back
           if (Math.abs(startProgress / -ratio - this.x) < 10) {
