@@ -35,6 +35,8 @@ const hover_speed = 0.5;
 const hover_easer = "power3.out";
 
 const hoverOn = () => {
+  if (isTouchDevice()) return;
+
   // hide logo
   if (window.scrollY === 0) {
     logo.value.setSticky();
@@ -65,6 +67,8 @@ const hoverOn = () => {
 };
 
 const hoverOff = () => {
+  if (isTouchDevice()) return;
+
   // hide video
   video.value.pauseVideo();
   gsap.to(video_hover.value, {

@@ -18,7 +18,6 @@ const main_menu = menu_data.value.menu;
 
 /* watch layout shift for scrolltrigger refresh */
 watch(height, () => {
-  //console.log("layout shifted: " + height.value);
   layoutShiftRefresh();
 });
 
@@ -37,7 +36,6 @@ onMounted(() => {
       <LazyFooter :menu="main_menu" :data="data" />
       <LazyVideoModal />
     </template>
-    <!-- <Cookies /> -->
     <UISiteCover />
   </div>
 </template>

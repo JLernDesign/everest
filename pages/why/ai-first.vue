@@ -5,11 +5,16 @@ const { data } = await useGraphqlQuery({
   query: aiFirstQuery.loc.source.body,
 });
 const page = data.value.aiFirst;
+const loaded = ref(false);
 /* console.log(page); */
 
 onMounted(() => {
   const theme = useState("theme");
   theme.value = "dark";
+
+  setTimeout(() => {
+    loaded.value = true;
+  }, 200);
 });
 </script>
 
@@ -43,6 +48,9 @@ onMounted(() => {
     </template>
 
     <FooterLockup :data="page.footerCallout" />
+
+    <!-- cover image for fade in -->
+    <LoadCover :loaded="loaded" color="bg-shadowblue" />
   </div>
 </template>
 

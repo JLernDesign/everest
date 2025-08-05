@@ -14,7 +14,7 @@ onMounted(() => {
     animIntoView(items, main.value, 0.1, "top 40%");
 
     // get active nav item and animate on when in view
-    playInView(main.value, null, registerNav, 0, "top top+=5%");
+    playInView(main.value, null, registerNav, 0, "top top+=20%");
   }, main.value);
 });
 

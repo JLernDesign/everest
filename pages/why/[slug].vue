@@ -10,10 +10,15 @@ const { data } = await useGraphqlQuery({
   },
 });
 const page = data.value.whySubpage;
+const loaded = ref(false);
 
 onMounted(() => {
   const theme = useState("theme");
   theme.value = "light";
+
+  setTimeout(() => {
+    loaded.value = true;
+  }, 200);
 });
 </script>
 
@@ -23,6 +28,9 @@ onMounted(() => {
     <WhyHero :data="page.hero" />
     <FlexibleBlocks :data="page.flexibleContent.modules" template="why" />
     <FooterLockup :data="page.footerCallout" />
+
+    <!-- cover image for fade in -->
+    <LoadCover :loaded="loaded" color="bg-jaffa" />
   </div>
 </template>
 
