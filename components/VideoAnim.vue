@@ -54,9 +54,14 @@ const pauseVideo = () => {
   video.value.pause();
 };
 
+const resetVideo = () => {
+  video.value.currentTime = 0;
+};
+
 defineExpose({
   playVideo,
   pauseVideo,
+  resetVideo,
 });
 </script>
 

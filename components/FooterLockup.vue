@@ -4,12 +4,21 @@ const investors = useState("investors");
 </script>
 
 <template>
-  <div class="footer-lockup relative z-1 overflow-hidden text-black">
-    <UITexture />
-    <!-- <UITexture class="bg-[position:0_bottom !top-[-26.6rem]" /> -->
+  <div class="footer-lockup relative z-0 overflow-hidden text-black s:z-1">
+    <UITexture class="block s:hidden" />
+    <UITexture class="bg-[position:0_bottom !top-[-26.6rem] hidden s:block" />
 
     <!-- bg texture with jag edge -->
-    <!-- <FooterJag /> -->
+    <!-- <div
+      class="shadow-jag absolute bottom-0 left-[15rem] h-[26.8rem] w-full blur-[20px]"
+      style="
+        background: radial-gradient(
+          rgba(0, 0, 0, 0.1) 10%,
+          rgba(0, 0, 0, 0) 80%
+        );
+      "
+    ></div> -->
+    <FooterJag />
 
     <!-- callout -->
     <GlobalCallout :data="data" />
@@ -27,7 +36,7 @@ const investors = useState("investors");
         <!-- logo -->
         <NuxtLink
           to="/"
-          class="mt-[3.5rem] block h-[5.3rem] w-[6.2rem] s:mt-[15rem] s:h-[8.1rem] s:w-[9.4rem]"
+          class="footer-logo mt-[3.5rem] block h-[5.3rem] w-[6.2rem] s:mt-[15rem] s:h-[8.1rem] s:w-[9.4rem]"
         >
           <IconLogo color="white" />
         </NuxtLink>

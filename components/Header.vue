@@ -7,7 +7,6 @@ const scrolled = ref(false);
 const sticky = ref(true);
 const header = ref(null);
 const logo = ref(null);
-const logo_wrap = ref(null);
 const theme = useState("theme");
 const loaded = ref(false);
 const { y, directions } = useScroll(window);
@@ -68,14 +67,6 @@ const smallHeader = () => {
   scrolled.value = true;
   logo.value.setSticky();
 
-  // logo
-  gsap.to(logo_wrap.value.$el, {
-    duration: sp,
-    scale: 0.73,
-    y: "-.8rem",
-    ease: easer,
-  });
-
   // nav
   const bg = qs(".navbg", header.value);
   const wrap = qs(".nav-wrap", header.value);
@@ -99,14 +90,6 @@ const fullHeader = () => {
   logo.value.unsetSticky();
 
   gsap.set(header.value, { yPercent: 0 });
-
-  // logo
-  gsap.to(logo_wrap.value.$el, {
-    duration: sp,
-    scale: 1,
-    y: "0rem",
-    ease: easer,
-  });
 
   // nav
   const bg = qs(".navbg", header.value);
@@ -150,17 +133,7 @@ const hideSticky = () => {
     ref="header"
   >
     <!-- logo -->
-    <div
-      class="logo-main absolute z-5 pl-side-mob pt-[1.5rem] s:pl-side s:pt-[4.25rem]"
-    >
-      <NuxtLink
-        to="/"
-        class="block h-[5.3rem] w-[6.2rem] origin-top-left s:h-[8.1rem] s:w-[9.4rem]"
-        ref="logo_wrap"
-      >
-        <IconLogo ref="logo" :theme="theme" />
-      </NuxtLink>
-    </div>
+    <LogoAnim ref="logo" :speed="sp" :easer="easer" />
 
     <!-- nav -->
     <div class="nav-wrap hidden w-full justify-center pt-[6rem] s:grid">

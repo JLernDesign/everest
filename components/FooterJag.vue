@@ -2,7 +2,7 @@
 
 <template>
   <div
-    class="absolute bottom-0 left-0 h-[26.8rem] w-full [clip-path:url(#jag-edge)]"
+    class="absolute bottom-0 left-0 hidden h-[26.8rem] w-full [clip-path:url(#jag-edge)] s:block"
   >
     <UITexture class="bg-[position:0_-1rem]" />
   </div>
