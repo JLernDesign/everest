@@ -40,7 +40,7 @@ provide("global_cta", header_data.value.global.headerCta);
     />
 
     <div class="overflow-hidden pb-[4rem] pt-[9rem] text-center">
-      <h1 class="font-barlow-cond text-[57.2rem] leading-[1]">
+      <h1 class="font-barlow-cond text-[20rem] leading-[1] s:text-[57.2rem]">
         {{ error.statusCode == "404" ? "404" : error.statusCode }}
       </h1>
 

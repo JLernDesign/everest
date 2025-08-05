@@ -5,6 +5,7 @@ const mobile = breakpoints.smallerOrEqual("tablet1");
 const slider = ref(true);
 const anims = ref(null);
 const isScrolling = ref(false);
+let scrollTimeout;
 let ctx;
 
 onMounted(() => {

@@ -8,6 +8,7 @@ const anims = ref(null);
 const loaded = ref(false);
 const main = ref(null);
 const isScrolling = ref(false);
+let scrollTimeout;
 let ctx;
 
 onMounted(() => {
