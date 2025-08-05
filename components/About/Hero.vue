@@ -7,6 +7,7 @@ const slider = ref(true);
 const anims = ref(null);
 const loaded = ref(false);
 const main = ref(null);
+const isScrolling = ref(false);
 let ctx;
 
 onMounted(() => {
@@ -15,6 +16,9 @@ onMounted(() => {
   } else {
     slider.value = true;
   }
+
+  // prevent slider drag if scrolling on mobile
+  checkScroll();
 
   ctx = gsap.context((self) => {
     // parallax clouds
@@ -108,7 +112,10 @@ watch(mobile, () => {
     <template v-if="slider || mobile">
       <Carousel
         class="slider-wrap mt-[10rem] -rotate-[15deg] s:mt-[22.5rem] s:!h-[50rem]"
-        :class="slider ? 's:ml-[5.65rem]' : 'justify-center s:ml-[3.5rem]'"
+        :class="[
+          slider ? 's:ml-[5.65rem]' : 'justify-center s:ml-[3.5rem]',
+          isScrolling ? '!pointer-events-none' : '',
+        ]"
         :drag="slider && true"
         :center="slider && true"
         :start="slider && 1"
@@ -122,7 +129,7 @@ watch(mobile, () => {
           >
             <IconTri color="fill-red" class="mb-[2.4rem]" />
             <h3
-              class="-tracking-sm font-barlow-cond text-xl-mob leading-xl s:text-xl"
+              class="font-barlow-cond text-xl-mob leading-xl -tracking-sm s:text-xl"
             >
               {{ stat.figure }}
             </h3>
@@ -147,7 +154,7 @@ watch(mobile, () => {
         >
           <IconTri color="fill-red" class="mb-[2.4rem]" />
           <h3
-            class="-tracking-sm font-barlow-cond text-xl-mob leading-xl s:text-xl"
+            class="font-barlow-cond text-xl-mob leading-xl -tracking-sm s:text-xl"
           >
             {{ stat.figure }}
           </h3>

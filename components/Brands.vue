@@ -1,9 +1,12 @@
 <script setup>
 import { gsap } from "gsap";
-const props = defineProps(["data", "theme", "scroll"]);
+const props = defineProps(["data", "theme", "scroll", "template"]);
 
 const main = ref();
 let mm, ctx;
+const total = props.data.logos.length;
+const speed = 150 / total;
+const dup = props.template == "home" ? 3 : 2;
 
 onMounted(() => {
   // desktop scroll
@@ -41,9 +44,9 @@ const toggle = (state) => {
 </script>
 
 <template>
-  <div>
+  <div id="brands">
     <h4
-      class="mb-4 text-center text-tag-mob s:mb-6 s:text-tag"
+      class="title mb-4 text-center text-tag-mob s:mb-6 s:text-tag"
       :class="theme == 'dark' ? 'text-white' : 'text-black'"
     >
       {{ data.title }}
@@ -68,13 +71,14 @@ const toggle = (state) => {
       :class="scroll ? 'flex' : 'flex s:hidden'"
     >
       <div
-        v-for="n in 2"
+        v-for="n in dup"
         class="brands-group flex justify-center space-x-[6rem] s:space-x-[9rem]"
+        :style="{ animationDuration: `${speed}s` }"
       >
         <UILogo
           v-for="item in data.logos"
           :src="item.url ? item.url : item"
-          class="max-s:h-[5rem] max-s:w-[10rem] max-s:shrink-0"
+          class="s:!w-[13rem] max-s:h-[5rem] max-s:w-[10rem] max-s:shrink-0"
         />
         <div class="brands-group-spacer" />
       </div>

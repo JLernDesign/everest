@@ -19,8 +19,7 @@ let count = 0;
 const mouseDown = ref(false);
 const section = ref(null);
 let ctx;
-const isScrolling = ref(true);
-let scrollTimeout;
+const isScrolling = ref(false);
 
 // get mouse movement
 const { elementX, elementY } = useMouseInElement(main);
@@ -54,21 +53,8 @@ onMounted(() => {
     });
   }
 
-  // prevent slider drag if scrolling
-  if (isTouchDevice()) {
-    isScrolling.value = true;
-    useEventListener(window, "scroll", (e) => {
-      isScrolling.value = true;
-      //console.log("scrolling", window.scrollY);
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => {
-        isScrolling.value = false;
-        //console.log("not scrolling", window.scrollY);
-      }, 100);
-    });
-  } else {
-    isScrolling.value = false;
-  }
+  // prevent slider drag if scrolling on mobile
+  checkScroll();
 
   // parallax clouds
   ctx = gsap.context((self) => {
