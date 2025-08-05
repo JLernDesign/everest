@@ -14,8 +14,17 @@ onMounted(() => {
     slider.value = true;
   }
 
-  // prevent slider drag if scrolling on mobile
-  checkScroll();
+  // prevent slider drag if scrolling
+  if (isTouchDevice()) {
+    isScrolling.value = true;
+    useEventListener(window, "scroll", (e) => {
+      isScrolling.value = true;
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        isScrolling.value = false;
+      }, 100);
+    });
+  }
 
   // animate items into place on scroll to section
   ctx = gsap.context((self) => {
