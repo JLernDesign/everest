@@ -24,7 +24,7 @@ onMounted(() => {
         tl = gsap.timeline({
           scrollTrigger: {
             trigger: brands_wrap,
-            start: "top 60%",
+            start: "top 65%",
             end: "+=100%",
             scrub: true,
           },

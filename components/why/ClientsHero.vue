@@ -4,6 +4,7 @@ const props = defineProps(["data", "items"]);
 const mobile = breakpoints.smallerOrEqual("tablet1");
 const slider = ref(true);
 const anims = ref(null);
+const isScrolling = ref(false);
 let ctx;
 
 onMounted(() => {
@@ -12,6 +13,9 @@ onMounted(() => {
   } else {
     slider.value = true;
   }
+
+  // prevent slider drag if scrolling on mobile
+  checkScroll();
 
   // animate items into place on scroll to section
   ctx = gsap.context((self) => {
@@ -62,9 +66,12 @@ watch(mobile, () => {
     <template v-if="slider || mobile">
       <Carousel
         class="slider-wrap mt-[10rem] -rotate-[15deg] s:mt-[15.5rem] s:!h-[40rem] max-s:!h-[30rem]"
-        :class="
-          slider ? 'ml-[1.5rem] s:ml-[5.65rem]' : 'justify-center s:ml-[3.5rem]'
-        "
+        :class="[
+          slider
+            ? 'ml-[1.5rem] s:ml-[5.65rem]'
+            : 'justify-center s:ml-[3.5rem]',
+          isScrolling ? '!pointer-events-none' : '',
+        ]"
         :drag="slider && true"
         :center="slider && true"
         :start="slider && 1"
