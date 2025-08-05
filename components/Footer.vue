@@ -10,7 +10,7 @@ if (isSSR()) {
 const props = defineProps(["menu", "data"]);
 const investors = useState("investors", () => props.data.investors);
 const main = ref(null);
-let ctx;
+let ctx, mm;
 
 /* get all legal pages */
 const legalQuery = gql`
@@ -29,24 +29,31 @@ const legalPages = legals.value.allLegals;
 
 onMounted(() => {
   // parallax reveal footer on scroll
-  ctx = gsap.context((self) => {
-    /* const footer = self.selector(".footer-details");
-    gsap.set(footer, { yPercent: -50 });
-    gsap.to(footer, {
-      yPercent: 0,
-      ease: "none",
-      scrollTrigger: {
-        trigger: main.value,
-        start: "top bottom",
-        end: "+=50%",
-        scrub: true,
-      },
-    }); */
-  }, main.value);
+  mm = gsap.matchMedia();
+  mm.add(
+    "(min-width: 650px)",
+    (self) => {
+      const footer = self.selector(".footer-details");
+      const lockup = document.querySelector(".footer-logo");
+      gsap.set(footer, { yPercent: -50 });
+      gsap.to(footer, {
+        yPercent: 0,
+        ease: "none",
+        scrollTrigger: {
+          trigger: lockup,
+          endTrigger: main.value,
+          start: "top bottom",
+          end: "bottom bottom",
+          scrub: true,
+        },
+      });
+    },
+    main.value,
+  );
 });
 
 onUnmounted(() => {
-  ctx.revert();
+  mm.revert();
 });
 </script>
 
@@ -54,7 +61,10 @@ onUnmounted(() => {
   <footer class="main relative" ref="main">
     <!-- footer details -->
     <div class="footer-details relative bg-shadowblue p-side-mob s:p-side">
-      <UIJagEdge color="fill-shadowblue" />
+      <UIJagEdge color="fill-shadowblue" class="block s:hidden" />
+      <div
+        class="absolute -top-[26.6rem] left-0 hidden h-[26.8rem] w-full bg-shadowblue s:block"
+      ></div>
 
       <!-- columns -->
       <div
