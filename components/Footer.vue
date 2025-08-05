@@ -8,9 +8,10 @@ if (isSSR()) {
 }
 
 const props = defineProps(["menu", "data"]);
-const investors = useState("investors", () => props.data.investors);
 const main = ref(null);
-let ctx, mm;
+let mm;
+const h = 268;
+const basew = 1800;
 
 /* get all legal pages */
 const legalQuery = gql`
@@ -28,21 +29,21 @@ const { data: legals } = await useGraphqlQuery({
 const legalPages = legals.value.allLegals;
 
 onMounted(() => {
+  const footer = document.querySelector(".footer-details");
+
   // parallax reveal footer on scroll
   mm = gsap.matchMedia();
   mm.add(
     "(min-width: 650px)",
     (self) => {
-      const footer = self.selector(".footer-details");
-      const lockup = document.querySelector(".footer-logo");
       gsap.set(footer, { yPercent: -50 });
       gsap.to(footer, {
         yPercent: 0,
         ease: "none",
         scrollTrigger: {
-          trigger: lockup,
-          endTrigger: main.value,
-          start: "top bottom",
+          id: "footer-parallax",
+          trigger: main.value,
+          start: () => getFooterStart(),
           end: "bottom bottom",
           scrub: true,
         },
@@ -53,8 +54,14 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-  mm.revert();
+  mm && mm.revert();
 });
+
+const getFooterStart = () => {
+  const w = window.innerWidth;
+  const os = h * (w / basew);
+  return "top-=" + os + " bottom";
+};
 </script>
 
 <template>
