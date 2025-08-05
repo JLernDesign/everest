@@ -19,7 +19,7 @@ let count = 0;
 const mouseDown = ref(false);
 const section = ref(null);
 let ctx;
-const isScrolling = ref(false);
+const isScrolling = ref(true);
 let scrollTimeout;
 
 // get mouse movement
@@ -66,6 +66,8 @@ onMounted(() => {
         //console.log("not scrolling", window.scrollY);
       }, 100);
     });
+  } else {
+    isScrolling.value = false;
   }
 
   // parallax clouds
