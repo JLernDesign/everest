@@ -4,6 +4,7 @@ import {
   HeroFragment,
   LinkFragment,
   ResponsiveImageFragment,
+  VideoFragment,
 } from "../fragments/global";
 
 export const newsCollectionQuery = gql`
@@ -53,12 +54,21 @@ export const newsCollectionQuery = gql`
       }
       intro
       externalLink
+      media {
+        ... on MediaVideoRecord {
+          __typename
+          video {
+            ...VideoFragment
+          }
+        }
+      }
     }
   }
   ${HeroFragment}
   ${FooterFragment}
   ${LinkFragment}
   ${ResponsiveImageFragment}
+  ${VideoFragment}
 `;
 
 export const newsPostQuery = gql`

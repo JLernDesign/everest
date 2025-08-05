@@ -5,6 +5,7 @@ import { blogQuery } from "~/assets/graphql/queries/blog";
 const page = ref(1);
 const postsPerPage = 12;
 const main = ref(null);
+const loaded = ref(false);
 
 // Create reactive variables
 const queryVariables = computed(() => {
@@ -47,6 +48,10 @@ onMounted(() => {
   if (data.value?.blogLanding) {
     initialPageData.value = data.value.blogLanding;
   }
+
+  setTimeout(() => {
+    loaded.value = true;
+  }, 200);
 });
 
 // Use initial page data if current pageData is not available
@@ -148,6 +153,9 @@ const updatePage = (n) => {
       v-if="finalPageData?.footerCallout"
       :data="finalPageData.footerCallout"
     />
+
+    <!-- cover image for fade in -->
+    <LoadCover :loaded="loaded" color="bg-jaffa" />
   </div>
 </template>
 

@@ -14,10 +14,15 @@ const collections = data.value.allMediaCollections.filter(
 const posts = data.value.allMediaPosts.filter(
   (post) => post.tag?.slug === route.params.slug,
 );
+const loaded = ref(false);
 
 onMounted(() => {
   const theme = useState("theme");
   theme.value = "light";
+
+  setTimeout(() => {
+    loaded.value = true;
+  }, 200);
 });
 </script>
 
@@ -44,5 +49,8 @@ onMounted(() => {
     </BlogGrid>
 
     <FooterLockup :data="page.footerCallout" />
+
+    <!-- cover image for fade in -->
+    <LoadCover :loaded="loaded" color="bg-jaffa" />
   </div>
 </template>

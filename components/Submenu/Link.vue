@@ -1,7 +1,10 @@
 <script setup>
 const props = defineProps(["data"]);
 const route = useRoute();
-const link = getUrl(props.data);
+const isActive = (item) => {
+  let link = getUrl(item);
+  return route.path == link;
+};
 </script>
 
 <template>
@@ -10,13 +13,13 @@ const link = getUrl(props.data);
     <template v-if="data.__typename == 'MenuItemRecord'">
       <span
         class="ul mb-[.4rem] inline-block font-helvb leading-[1] after:bg-red"
-        :class="route.path == link ? 'nuxt-link-active' : ''"
+        :class="isActive(data) ? 'nuxt-link-active' : ''"
         >{{ data.label }}</span
       >
       <span class="block opacity-[.65]">{{ data.description }}</span>
 
       <NuxtLink
-        :to="link"
+        :to="getUrl(data)"
         :target="data.external ? '_blank' : null"
         class="absolute left-0 top-0 z-1 h-full w-full"
       ></NuxtLink>
@@ -37,6 +40,7 @@ const link = getUrl(props.data);
             :to="getUrl(item)"
             :target="item.external ? '_blank' : null"
             class="ul after:bg-red"
+            :class="isActive(item) ? 'nuxt-link-active' : ''"
             >{{ item.label }}</NuxtLink
           >
         </li>

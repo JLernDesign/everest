@@ -90,6 +90,7 @@ export default {
       base: ".25rem",
       sm: ".1rem",
       md: ".4rem",
+      "md-mob": ".1rem",
     },
     borderRadius: {
       sm: ".5rem",

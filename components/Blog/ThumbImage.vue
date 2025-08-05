@@ -94,7 +94,7 @@ defineExpose({
     </div>
 
     <!-- press -->
-    <template v-if="data.tag.slug == 'press'">
+    <template v-if="data.tag.slug == 'press' && !isVideo">
       <div
         class="absolute left-0 top-0 size-full bg-[#2A3440] opacity-80"
       ></div>

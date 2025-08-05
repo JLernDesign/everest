@@ -5,7 +5,6 @@ const props = defineProps(["data", "theme"]);
 
 const main = ref(null);
 const video = ref(null);
-const loaded = ref(false);
 let ctx;
 
 onMounted(() => {
@@ -32,10 +31,6 @@ onMounted(() => {
       );
     }, 800);
   }, main.value);
-
-  setTimeout(() => {
-    loaded.value = true;
-  }, 200);
 });
 
 onUnmounted(() => {
@@ -99,9 +94,6 @@ const playVideo = (ev) => {
     </div>
 
     <UIArrowDown class="max-s:hidden" theme="dark" />
-
-    <!-- cover image for fade in -->
-    <LoadCover :loaded="loaded" class="!bg-shadowblue" />
   </Section>
 </template>
 

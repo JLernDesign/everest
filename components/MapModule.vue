@@ -67,7 +67,7 @@ onUnmounted(() => {
     >
       <AnimHeadline>
         <h2
-          class="-tracking-md text font-barlow-cond-semibold text-xxl-mob uppercase leading-xxl s:text-xxl"
+          class="-tracking-md-mob text font-barlow-cond-semibold text-xxl-mob uppercase leading-xxl s:text-xxl s:-tracking-md"
           v-html="addLineBreaks(data.headline)"
         ></h2>
       </AnimHeadline>

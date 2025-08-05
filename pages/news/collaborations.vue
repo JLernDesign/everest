@@ -8,10 +8,15 @@ const { data } = await useGraphqlQuery({
 const page = data.value.newsPage;
 const collections = data.value.allNewsCollections;
 const posts = data.value.allNewsPosts.filter((post) => post.tag.slug === slug);
+const loaded = ref(false);
 
 onMounted(() => {
   const theme = useState("theme");
   theme.value = "light";
+
+  setTimeout(() => {
+    loaded.value = true;
+  }, 200);
 });
 </script>
 
@@ -36,6 +41,9 @@ onMounted(() => {
         <div v-for="n in 2" class="thumb spacer w-[60rem]"></div>
       </template>
     </BlogGrid>
+
+    <!-- cover image for fade in -->
+    <LoadCover :loaded="loaded" color="bg-jaffa" />
 
     <FooterLockup :data="page.footerCallout" />
   </div>

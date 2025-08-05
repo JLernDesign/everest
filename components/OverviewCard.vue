@@ -14,7 +14,7 @@ onMounted(() => {
     animIntoView(items, main.value, 0.1, "top 40%");
 
     // get active nav item and animate on when in view
-    playInView(main.value, null, registerNav, 0, "top top+=5%");
+    playInView(main.value, null, registerNav, 0, "top top+=10%");
   }, main.value);
 });
 
@@ -100,7 +100,7 @@ const handleClick = (num) => {
   const cardH = main.value.scrollHeight;
   //const num = Number(e.target.dataset.num);
   const offset = baseOs + cardH * num;
-  console.log(baseOs, cardH, num, offset);
+
   gsap.to(window, {
     scrollTo: { y: offset },
     duration: 0.75,

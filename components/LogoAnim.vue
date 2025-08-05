@@ -1,6 +1,6 @@
 <script setup>
 import gsap from "gsap";
-const props = defineProps(["speed", "easer"]);
+const props = defineProps(["speed", "easer", "theme"]);
 
 const logo = ref(null);
 const logo_wrap = ref(null);
@@ -35,6 +35,8 @@ const hover_speed = 0.5;
 const hover_easer = "power3.out";
 
 const hoverOn = () => {
+  if (isTouchDevice()) return;
+
   // hide logo
   if (window.scrollY === 0) {
     logo.value.setSticky();
@@ -65,6 +67,8 @@ const hoverOn = () => {
 };
 
 const hoverOff = () => {
+  if (isTouchDevice()) return;
+
   // hide video
   video.value.pauseVideo();
   gsap.to(video_hover.value, {
@@ -102,6 +106,7 @@ defineExpose({
       ref="logo_wrap"
       @mouseenter="hoverOn"
       @mouseleave="hoverOff"
+      @click="hoverOff"
     >
       <IconLogo ref="logo" :theme="theme" />
       <div

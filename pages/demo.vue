@@ -1,6 +1,7 @@
 <script setup>
 import { demoQuery } from "~/assets/graphql/queries/demo.js";
 
+const formLoaded = ref(false);
 const loaded = ref(false);
 const { data } = await useGraphqlQuery({
   query: demoQuery.loc.source.body,
@@ -16,7 +17,7 @@ onMounted(() => {
       event.data.eventName === "onFormReady"
     ) {
       nextTick(() => {
-        loaded.value = true;
+        formLoaded.value = true;
       });
     }
   });
@@ -37,6 +38,10 @@ onMounted(() => {
     });
   }
 
+  setTimeout(() => {
+    loaded.value = true;
+  }, 200);
+
   const theme = useState("theme");
   theme.value = "light";
 });
@@ -49,7 +54,7 @@ onMounted(() => {
     <Section :hero="true" class="max-s:pt-hero-mob-lg">
       <header class="text-center">
         <h1
-          class="-tracking-md font-barlow-cond-semibold text-xxl-mob uppercase leading-xxl s:text-xxl"
+          class="-tracking-md-mob font-barlow-cond-semibold text-xxl-mob uppercase leading-xxl s:text-xxl s:-tracking-md"
         >
           {{ page.headline }}
         </h1>
@@ -117,7 +122,7 @@ onMounted(() => {
             <UITexture />
 
             <!-- hubspot form -->
-            <div class="form" :class="!loaded && 'off min-h-[80.4rem]'">
+            <div class="form" :class="!formLoaded && 'off min-h-[80.4rem]'">
               <div
                 id="hubspotForm"
                 v-once
@@ -133,6 +138,9 @@ onMounted(() => {
     <FlexibleBlocks :data="page.flexibleContent.modules" template="demo" />
 
     <FooterLockup :data="page.footerCallout" />
+
+    <!-- cover image for fade in -->
+    <LoadCover :loaded="loaded" color="bg-jaffa" />
   </div>
 </template>
 

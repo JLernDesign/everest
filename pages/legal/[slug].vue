@@ -22,10 +22,15 @@ const { data } = await useGraphqlQuery({
   },
 });
 const page = data.value.legal;
+const loaded = ref(false);
 
 onMounted(() => {
   const theme = useState("theme");
   theme.value = "light";
+
+  setTimeout(() => {
+    loaded.value = true;
+  }, 200);
 });
 </script>
 
@@ -49,5 +54,8 @@ onMounted(() => {
 
     <!-- spacer -->
     <div class="h-[5rem] s:h-[26rem]"></div>
+
+    <!-- cover image for fade in -->
+    <LoadCover :loaded="loaded" color="bg-jaffa" />
   </div>
 </template>
