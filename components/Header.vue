@@ -133,7 +133,7 @@ const hideSticky = () => {
     ref="header"
   >
     <!-- logo -->
-    <LogoAnim ref="logo" :speed="sp" :easer="easer" />
+    <LogoAnim ref="logo" :speed="sp" :easer="easer" :theme="theme" />
 
     <!-- nav -->
     <div class="nav-wrap hidden w-full justify-center pt-[6rem] s:grid">

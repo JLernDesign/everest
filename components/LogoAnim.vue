@@ -1,6 +1,6 @@
 <script setup>
 import gsap from "gsap";
-const props = defineProps(["speed", "easer"]);
+const props = defineProps(["speed", "easer", "theme"]);
 
 const logo = ref(null);
 const logo_wrap = ref(null);
@@ -106,6 +106,7 @@ defineExpose({
       ref="logo_wrap"
       @mouseenter="hoverOn"
       @mouseleave="hoverOff"
+      @click="hoverOff"
     >
       <IconLogo ref="logo" :theme="theme" />
       <div
