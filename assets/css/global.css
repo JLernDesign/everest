@@ -316,6 +316,11 @@ sup {
     margin: 2rem auto !important;
   }
 }
+.article {
+  a:hover {
+    color: theme("colors.red");
+  }
+}
 
 @media (max-width: 649px) {
   .article-body {
