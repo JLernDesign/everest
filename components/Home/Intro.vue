@@ -9,56 +9,61 @@ if (isSSR()) {
 
 const loaded = ref(false);
 const brands = ref(null);
-let ctx, tl;
+let mm, tl;
 
 onMounted(() => {
   setTimeout(() => {
     loaded.value = true;
 
     nextTick(() => {
-      ctx = gsap.context((self) => {
-        let brands_wrap = document.getElementById("brands");
-        let logos = self.selector(".logo");
-        let title = self.selector(".title");
+      mm = gsap.matchMedia();
+      mm.add(
+        "(min-width: 650px)",
+        (self) => {
+          let brands_wrap = document.getElementById("brands");
+          let logos = self.selector(".logo");
+          let title = self.selector(".title");
 
-        tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: brands_wrap,
-            start: "top 65%",
-            end: "+=100%",
-            scrub: true,
-          },
-        });
+          tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: brands_wrap,
+              start: "top 65%",
+              end: "+=100%",
+              scrub: true,
+            },
+          });
 
-        tl.to(
-          title,
-          {
-            opacity: 0,
-            y: "-5rem",
-            duration: 3,
-            ease: "power3.in",
-          },
-          4.5,
-        );
+          tl.to(
+            title,
+            {
+              opacity: 0,
+              y: "-5rem",
+              duration: 3,
+              ease: "power3.in",
+            },
+            4.5,
+          );
 
-        tl.to(
-          logos,
-          {
-            y: "-10rem",
-            duration: 3,
-            opacity: 0,
-            ease: "power3.in",
-            stagger: 0.5,
-          },
-          0,
-        );
-      }, brands.value.$el);
+          tl.to(
+            logos,
+            {
+              y: "-10rem",
+              duration: 3,
+              opacity: 0,
+              ease: "power3.in",
+              stagger: 0.5,
+            },
+            0,
+          );
+        },
+        brands.value.$el,
+      );
     });
   }, 500);
 });
 
 onUnmounted(() => {
-  ctx && ctx.revert();
+  mm && mm.revert();
 });
 </script>
 

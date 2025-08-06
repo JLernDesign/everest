@@ -5,6 +5,7 @@ const mobile = breakpoints.smallerOrEqual("tablet1");
 const slider = ref(true);
 const anims = ref(null);
 const isScrolling = ref(false);
+let scrollTimeout;
 let ctx;
 
 onMounted(() => {
@@ -14,8 +15,17 @@ onMounted(() => {
     slider.value = true;
   }
 
-  // prevent slider drag if scrolling on mobile
-  checkScroll();
+  // prevent slider drag if scrolling
+  if (isTouchDevice()) {
+    isScrolling.value = true;
+    useEventListener(window, "scroll", (e) => {
+      isScrolling.value = true;
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        isScrolling.value = false;
+      }, 100);
+    });
+  }
 
   // animate items into place on scroll to section
   ctx = gsap.context((self) => {

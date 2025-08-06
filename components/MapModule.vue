@@ -134,11 +134,12 @@ onUnmounted(() => {
         v-for="location in locations"
         class="flex items-start gap-x-10 px-[1.5rem] py-8 text-body-sm-mob leading-sm"
       >
-        <img
+        <!-- <img
           src="/public/about/map-pin-mob.svg"
           alt=""
           class="mt-2 w-[4.5rem] shrink-0"
-        />
+        /> -->
+        <IconPin class="-ml-4 -mt-3 mr-4 w-[4.5rem] shrink-0" :mobile="true" />
         <span>
           <span class="font-helvh">{{ location.location }}</span>
           <br />

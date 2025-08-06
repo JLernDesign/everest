@@ -518,18 +518,3 @@ export const scrollHeadline = (el) => {
     ease: "power3.inOut",
   });
 };
-
-// delay carousel drag on mobile
-export const checkScroll = () => {
-  let scrollTimeout;
-  if (isTouchDevice()) {
-    isScrolling.value = true;
-    useEventListener(window, "scroll", (e) => {
-      isScrolling.value = true;
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => {
-        isScrolling.value = false;
-      }, 100);
-    });
-  }
-};

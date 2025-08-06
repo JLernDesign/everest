@@ -8,6 +8,7 @@ const anims = ref(null);
 const loaded = ref(false);
 const main = ref(null);
 const isScrolling = ref(false);
+let scrollTimeout;
 let ctx;
 
 onMounted(() => {
@@ -17,8 +18,17 @@ onMounted(() => {
     slider.value = true;
   }
 
-  // prevent slider drag if scrolling on mobile
-  checkScroll();
+  // prevent slider drag if scrolling
+  if (isTouchDevice()) {
+    isScrolling.value = true;
+    useEventListener(window, "scroll", (e) => {
+      isScrolling.value = true;
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        isScrolling.value = false;
+      }, 100);
+    });
+  }
 
   ctx = gsap.context((self) => {
     // parallax clouds
@@ -125,7 +135,7 @@ watch(mobile, () => {
           class="item h-[19rem] shrink-0 px-[1.5rem] s:px-[4.2rem]"
         >
           <div
-            class="z-1 h-full w-[32rem] rotate-[15deg] rounded-base-mob bg-white p-[2rem] text-left s:h-[27.7rem] s:w-[40rem] s:rounded-base s:p-[3.2rem] s:pt-[3.75rem]"
+            class="z-1 h-auto w-[32rem] rotate-[15deg] rounded-base-mob bg-white p-[2rem] text-left s:h-[27.7rem] s:w-[40rem] s:rounded-base s:p-[3.2rem] s:pt-[3.75rem]"
           >
             <IconTri color="fill-red" class="mb-[2.4rem]" />
             <h3

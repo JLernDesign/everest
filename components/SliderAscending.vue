@@ -20,6 +20,7 @@ const mouseDown = ref(false);
 const section = ref(null);
 let ctx;
 const isScrolling = ref(false);
+let scrollTimeout;
 
 // get mouse movement
 const { elementX, elementY } = useMouseInElement(main);
@@ -53,8 +54,17 @@ onMounted(() => {
     });
   }
 
-  // prevent slider drag if scrolling on mobile
-  checkScroll();
+  // prevent slider drag if scrolling
+  if (isTouchDevice()) {
+    isScrolling.value = true;
+    useEventListener(window, "scroll", (e) => {
+      isScrolling.value = true;
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        isScrolling.value = false;
+      }, 100);
+    });
+  }
 
   // parallax clouds
   ctx = gsap.context((self) => {
@@ -182,7 +192,7 @@ const duplicated = computed(() => {
     <!-- slider -->
     <div ref="main" class="relative">
       <Carousel
-        class="slider-wrap ml-[.4rem] mt-[5rem] !h-[50rem] -rotate-[15deg] space-x-[0] s:ml-[2.5rem] s:mt-[16.5rem] s:!h-[82rem] s:!cursor-none"
+        class="slider-wrap ml-[.4rem] mt-[5rem] !h-[50rem] -rotate-[15deg] space-x-[0] xs:mt-[12rem] s:ml-[2.5rem] s:mt-[16.5rem] s:!h-[82rem] s:!cursor-none"
         :class="isScrolling ? '!pointer-events-none' : ''"
         :drag="true"
         @mousedown="handleMouseDown"

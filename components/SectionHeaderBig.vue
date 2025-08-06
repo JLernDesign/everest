@@ -115,7 +115,7 @@ const toggleVideo = (ev) => {
       <template v-if="hasBlock">
         <span class="text" v-html="formatText(hl[0])"></span>
         <span
-          class="rock-anim -mr-4 inline-flex h-[5.5rem] w-[10.6rem] overflow-hidden rounded-[.7rem] bg-[url(/ui/callout-gradient@2x.png)] bg-cover s:-mr-10 s:h-[16.8rem] s:w-[32.1rem] s:rounded-[.9rem]"
+          class="rock-anim -mr-2 inline-flex h-[6rem] w-[10.6rem] overflow-hidden rounded-[.7rem] bg-[url(/ui/callout-gradient@2x.png)] bg-cover s:-mr-10 s:h-[16.8rem] s:w-[32.1rem] s:rounded-[.9rem]"
         >
           <VideoAnim
             file="RevolvingRockLogo1"

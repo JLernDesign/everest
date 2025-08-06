@@ -1,10 +1,10 @@
 <script setup>
-const props = defineProps(["color"]);
+const props = defineProps(["color", "mobile"]);
 </script>
 
 <template>
   <div class="on group relative">
-    <div class="absolute left-0 size-[7rem]">
+    <div v-if="!mobile" class="absolute left-0 size-[7rem]">
       <img src="/public/about/pin-tri.svg" alt="" />
     </div>
     <div v-for="i in 3" :key="i" class="tri absolute left-0 top-0 size-[7rem]">

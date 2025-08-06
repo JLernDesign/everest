@@ -20,14 +20,8 @@ onMounted(() => {
 
 // desktop: submenu open/close
 const openMenu = () => {
-  // kill off old
-  gsap.killTweensOf([el, accent]);
-
-  // toggle active class
-  link.classList.add("on");
-
-  // show arrow
-  toggleAccent("on");
+  // hover on animation
+  hoverOn();
 
   // show menu
   gsap.to(el, {
@@ -40,6 +34,31 @@ const openMenu = () => {
 };
 
 const closeMenu = () => {
+  // hover off animation
+  hoverOff();
+
+  // hide menu
+  gsap.to(el, {
+    duration: 0.3,
+    opacity: 0,
+    display: "none",
+    y: 15,
+    ease: "power3.in",
+  });
+};
+
+const hoverOn = () => {
+  // kill off old
+  gsap.killTweensOf([el, accent]);
+
+  // toggle active class
+  link.classList.add("on");
+
+  // show arrow
+  toggleAccent("on");
+};
+
+const hoverOff = () => {
   // kill off old
   gsap.killTweensOf([el, accent]);
 
@@ -50,15 +69,6 @@ const closeMenu = () => {
   if (props.active != props.data.label) {
     toggleAccent("off");
   }
-
-  // hide menu
-  gsap.to(el, {
-    duration: 0.3,
-    opacity: 0,
-    display: "none",
-    y: 15,
-    ease: "power3.in",
-  });
 };
 
 const toggleAccent = (state) => {
@@ -170,7 +180,11 @@ const toggleSubMenu = (e) => {
         type == 'main' && active == data.label ? 'nuxt-link-active' : null,
         single && 'hover:text-red',
       ]"
-      @mouseenter="type == 'main' && submenu ? openMenu() : null"
+      @mouseenter="[
+        type == 'main' && submenu ? openMenu() : null,
+        type == 'main' && !submenu ? hoverOn() : null,
+      ]"
+      @mouseleave="[type == 'main' && !submenu ? hoverOff() : null]"
       v-on="{ click: type == 'mobile' ? handleClick : null }"
       >{{ data.label }}
 

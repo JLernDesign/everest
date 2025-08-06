@@ -7,17 +7,6 @@ const investors = useState("investors");
   <div class="footer-lockup relative z-0 overflow-hidden text-black s:z-1">
     <UITexture class="block s:hidden" />
     <UITexture class="bg-[position:0_bottom !top-[-26.6rem] hidden s:block" />
-
-    <!-- bg texture with jag edge -->
-    <!-- <div
-      class="shadow-jag absolute bottom-0 left-[15rem] h-[26.8rem] w-full blur-[20px]"
-      style="
-        background: radial-gradient(
-          rgba(0, 0, 0, 0.1) 10%,
-          rgba(0, 0, 0, 0) 80%
-        );
-      "
-    ></div> -->
     <FooterJag />
 
     <!-- callout -->

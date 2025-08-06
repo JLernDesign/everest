@@ -15,13 +15,13 @@ const setActive = () => {
 
   switch (parent) {
     case "product":
-      activePage.value = "Product";
+      activePage.value = "Products";
       break;
     case "why":
       activePage.value = "Why Everest";
       break;
     case "client-success":
-      activePage.value = "Customer";
+      activePage.value = "Customers";
       break;
     case "blog":
       activePage.value = "Learn";

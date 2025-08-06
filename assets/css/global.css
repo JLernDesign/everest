@@ -93,15 +93,6 @@ sup {
 
 /* UI */
 
-/* .ul-link {
-  a {
-    text-decoration: underline;
-    text-underline-offset: 0.35rem;
-    &:hover {
-      opacity: 0.75;
-    }
-  }
-} */
 .ul {
   position: relative;
   &:after {
@@ -245,7 +236,7 @@ sup {
   white-space: nowrap;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 650px) {
   .has-break:not(.allow-break) br {
     display: none;
   }
@@ -268,20 +259,6 @@ sup {
       }
     }
   }
-  /*  .bullets {
-    li {
-      padding-left: 3.125rem;
-      min-height: 2.25rem;
-      &:before {
-        width: 2.25rem;
-        height: 2.25rem;
-        background-size: 2.25rem auto;
-      }
-    }
-  } */
-  /*   .nobr {
-    white-space: normal;
-  } */
 }
 
 /* blog / plain text */
@@ -374,10 +351,6 @@ svg.trans {
   &.show {
     overflow: visible;
   }
-}
-
-/* hoveres */
-@media (pointer: fine) {
 }
 
 .scroll-reveal {
