@@ -1,5 +1,9 @@
 <script setup>
 import gql from "graphql-tag";
+import {
+  FooterFragment,
+  LinkFragment,
+} from "~/assets/graphql/fragments/global";
 
 const route = useRoute();
 const slug = route.params.slug;
@@ -11,8 +15,13 @@ const legalQuery = gql`
       slug
       _updatedAt
       content
+      footerCallout {
+        ...FooterFragment
+      }
     }
   }
+  ${FooterFragment}
+  ${LinkFragment}
 `;
 
 const { data } = await useGraphqlQuery({
@@ -52,8 +61,7 @@ onMounted(() => {
       </div>
     </Section>
 
-    <!-- spacer -->
-    <div class="h-[5rem] s:h-[26rem]"></div>
+    <FooterLockup :data="page.footerCallout" />
 
     <!-- cover image for fade in -->
     <LoadCover :loaded="loaded" color="bg-jaffa" />

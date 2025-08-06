@@ -164,6 +164,15 @@ export const featuredNewsQuery = gql`
       }
       intro
       externalLink
+      media {
+        ... on MediaVideoRecord {
+          __typename
+          video {
+            ...VideoFragment
+          }
+        }
+      }
     }
   }
+  ${VideoFragment}
 `;

@@ -66,7 +66,7 @@ const playVideo = (ev) => {
       <div class="text has-break relative z-10 w-full s:w-[65%]">
         <h2
           v-if="data.headline"
-          class="-tracking-sm font-barlow-cond text-xl-mob leading-xl s:text-xl max-s:pr-[2rem] [&_.nobr]:whitespace-normal"
+          class="font-barlow-cond text-xl-mob leading-xl -tracking-sm s:text-xl max-s:pr-[2rem] [&_.nobr]:whitespace-normal"
           v-html="formatText(data.headline)"
         ></h2>
         <p
@@ -88,7 +88,7 @@ const playVideo = (ev) => {
 
       <div class="relative block s:hidden max-s:h-[27rem]">
         <div
-          class="video-wrap absolute -bottom-[2.2rem] -right-[4.5rem] w-[80rem]"
+          class="video-wrap absolute -bottom-[2.2rem] right-1/2 w-[80rem] translate-x-[25.5%]"
         >
           <VideoAnim
             file="Growing_Rocks"

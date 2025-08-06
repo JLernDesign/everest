@@ -192,7 +192,7 @@ const duplicated = computed(() => {
     <!-- slider -->
     <div ref="main" class="relative">
       <Carousel
-        class="slider-wrap ml-[.4rem] mt-[5rem] !h-[50rem] -rotate-[15deg] space-x-[0] s:ml-[2.5rem] s:mt-[16.5rem] s:!h-[82rem] s:!cursor-none"
+        class="slider-wrap ml-[.4rem] mt-[5rem] !h-[50rem] -rotate-[15deg] space-x-[0] xs:mt-[12rem] s:ml-[2.5rem] s:mt-[16.5rem] s:!h-[82rem] s:!cursor-none"
         :class="isScrolling ? '!pointer-events-none' : ''"
         :drag="true"
         @mousedown="handleMouseDown"

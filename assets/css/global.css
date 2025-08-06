@@ -245,7 +245,7 @@ sup {
   white-space: nowrap;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 450px) {
   .has-break:not(.allow-break) br {
     display: none;
   }

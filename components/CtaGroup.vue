@@ -8,7 +8,7 @@ const props = defineProps(["data", "align", "theme", "wrap"]);
     :class="[
       align == 'center' ? 'items-center justify-center' : 'text-left',
       wrap &&
-        'max-s:mx-side-mob max-s:flex-wrap max-s:space-x-0 max-s:space-y-8',
+        'max-s:mx-side-mob max-s:flex-col max-s:flex-wrap max-s:space-x-0 max-s:space-y-8',
     ]"
   >
     <template v-for="item in data">

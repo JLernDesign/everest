@@ -57,13 +57,13 @@ props.data.color == "gray" ? (color = "text-white") : null;
                 ></span>
 
                 <!-- stats -->
-                <div v-if="block.stats" class="stats flex flex-col s:flex-row">
+                <div v-if="block.stats" class="stats flex flex-row gap-x-4">
                   <div
                     v-for="item in block.stats.stats"
-                    class="stat w-full space-y-5 s:w-1/2"
+                    class="stat w-1/2 space-y-5"
                   >
                     <h3
-                      class="-tracking-sm font-barlow-cond text-xl-mob leading-xl s:text-xl"
+                      class="font-barlow-cond text-xl-mob leading-xl -tracking-sm s:text-xl"
                     >
                       {{ item.figure }}
                     </h3>
