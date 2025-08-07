@@ -261,6 +261,10 @@ export default function horizontalLoop(items, config) {
           Math.abs(dif) > tl.duration() / 2 &&
             (dif += dif < 0 ? tl.duration() : -tl.duration());
           lastSnap = (time + dif) / tl.duration() / -ratio;
+          console.log(lastSnap);
+          if (lastSnap > 3000 || lastSnap < -5000) {
+            lastSnap = times[3];
+          }
           return lastSnap;
         },
         onRelease() {
