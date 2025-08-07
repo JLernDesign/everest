@@ -7,10 +7,11 @@ import {
 
 const route = useRoute();
 const slug = route.params.slug;
+const locale = "en";
 
 const legalQuery = gql`
-  query ($slug: String!) {
-    legal(filter: { slug: { eq: $slug } }) {
+  query ($slug: String!, $locale: SiteLocale!) {
+    legal(locale: $locale, filter: { slug: { eq: $slug } }) {
       title
       slug
       _updatedAt
@@ -28,6 +29,7 @@ const { data } = await useGraphqlQuery({
   query: legalQuery.loc.source.body,
   variables: {
     slug,
+    locale,
   },
 });
 const page = data.value.legal;
