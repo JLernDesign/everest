@@ -1,7 +1,37 @@
 <script setup>
 import { gsap } from "gsap";
+import gql from "graphql-tag";
+import {
+  FooterFragment,
+  LinkFragment,
+} from "~/assets/graphql/fragments/global";
 
 const props = defineProps(["data"]);
+let page_data;
+
+// check for new data
+if (props.data.headline) {
+  page_data = props.data;
+} else {
+  // use fallback data
+  const fallbackQuery = gql`
+    query {
+      global {
+        footerCallout {
+          ...FooterFragment
+        }
+      }
+    }
+    ${FooterFragment}
+    ${LinkFragment}
+  `;
+
+  const { data } = await useGraphqlQuery({
+    query: fallbackQuery.loc.source.body,
+  });
+  page_data = data.value.global.footerCallout;
+  console.log(page_data);
+}
 
 const mobile = breakpoints.smallerOrEqual("tablet1");
 const main = ref(null);
@@ -65,19 +95,19 @@ const playVideo = (ev) => {
       <!-- text -->
       <div class="text has-break relative z-10 w-full s:w-[65%]">
         <h2
-          v-if="data.headline"
+          v-if="page_data.headline"
           class="font-barlow-cond text-xl-mob leading-xl -tracking-sm s:text-xl max-s:pr-[2rem] [&_.nobr]:whitespace-normal"
-          v-html="formatText(data.headline)"
+          v-html="formatText(page_data.headline)"
         ></h2>
         <p
-          v-if="data.intro"
+          v-if="page_data.intro"
           class="mt-[3rem] s:mt-[4.75rem]"
-          v-html="formatText(data.intro)"
+          v-html="formatText(page_data.intro)"
         ></p>
 
         <CtaGroup
-          v-if="data.cta"
-          :data="data.cta.buttons"
+          v-if="page_data.cta"
+          :data="page_data.cta.buttons"
           :align="left"
           theme="light"
           class="mt-side-mob s:mt-side"
@@ -85,7 +115,6 @@ const playVideo = (ev) => {
       </div>
 
       <!-- mobile image -->
-
       <div class="relative block s:hidden max-s:h-[27rem]">
         <div
           class="video-wrap absolute -bottom-[2.2rem] right-1/2 w-[80rem] translate-x-[25.5%]"

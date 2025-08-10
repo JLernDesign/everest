@@ -5,9 +5,11 @@ import {
   LinkFragment,
 } from "~/assets/graphql/fragments/global";
 
+const { locale } = useI18n();
+
 const route = useRoute();
 const slug = route.params.slug;
-const locale = "en";
+const selectedLocale = locale.value;
 
 const legalQuery = gql`
   query ($slug: String!, $locale: SiteLocale!) {
@@ -29,7 +31,7 @@ const { data } = await useGraphqlQuery({
   query: legalQuery.loc.source.body,
   variables: {
     slug,
-    locale,
+    locale: selectedLocale,
   },
 });
 const page = data.value.legal;

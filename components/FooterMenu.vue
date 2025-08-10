@@ -1,4 +1,5 @@
 <script setup>
+const localeRoute = useLocaleRoute();
 const props = defineProps(["data"]);
 let menus,
   n = 0;
@@ -17,7 +18,7 @@ const handleClick = (e, item) => {
   if (item.submenu) {
     toggleMenu(e);
   } else {
-    navigateTo(getUrl(item));
+    navigateTo(localeRoute(getUrl(item)));
   }
 };
 </script>
@@ -46,7 +47,7 @@ const handleClick = (e, item) => {
         <span class="block space-y-5 pb-[2.25rem] pt-[1.75rem]">
           <li v-for="subitem in item.submenu">
             <NuxtLink
-              :to="getUrl(subitem)"
+              :to="$localePath(getUrl(subitem))"
               :target="subitem.external && '_blank'"
               :class="!subitem.submenu ? 'ul single fast' : null"
               >{{ subitem.label }}</NuxtLink
@@ -58,9 +59,11 @@ const handleClick = (e, item) => {
               v-if="subitem.submenu"
             >
               <li v-for="subsubitem in subitem.submenu">
-                <NuxtLink :to="getUrl(subsubitem)" class="ul single fast">{{
-                  subsubitem.label
-                }}</NuxtLink>
+                <NuxtLink
+                  :to="$localePath(getUrl(subsubitem))"
+                  class="ul single fast"
+                  >{{ subsubitem.label }}</NuxtLink
+                >
               </li>
             </ul>
           </li>

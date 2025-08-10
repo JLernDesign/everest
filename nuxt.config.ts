@@ -47,6 +47,7 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@nuxt/scripts",
     "nuxt-graphql-request",
+    "@nuxtjs/i18n",
   ],
 
   runtimeConfig: {
@@ -54,6 +55,14 @@ export default defineNuxtConfig({
       datoCmsToken: process.env.DATO_CMS_TOKEN,
       BASE_URL: process.env.BASE_URL,
     },
+  },
+
+  i18n: {
+    defaultLocale: "en",
+    locales: [
+      { code: "en", name: "English" },
+      { code: "de", name: "Deutsch" },
+    ],
   },
 
   css: ["~/assets/fonts/fonts.css", "~/assets/css/global.css"],

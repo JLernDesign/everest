@@ -2,6 +2,10 @@
 import gsap from "gsap";
 import { useScroll } from "@vueuse/core";
 
+/* language setting */
+const { setLocale } = useI18n();
+//setLocale("de");
+
 const props = defineProps(["menu", "data"]);
 const scrolled = ref(false);
 const sticky = ref(true);

@@ -176,6 +176,9 @@ export const VideoFragment = gql`
       url
       width
     }
+    loopClip {
+      url
+    }
   }
 `;
 
