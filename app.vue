@@ -9,7 +9,7 @@ const layout = ref(null);
 
 // initial states
 const page_title = useState("page_title", () => "index");
-const base_url = useState("base_url", () => "https://everest25.netlify.app");
+const base_url = useState("base_url", () => "https://everest-systems.com");
 const theme = useState("theme", () => "light");
 const pageInactive = useState("pageInactive", () => false);
 
