@@ -15,6 +15,16 @@ useHead(() => {
   // overrides for title and image
   if (props.title) {
     seo.title = props.title;
+    const og_title = seo.meta.find((meta) => meta.property === "og:title");
+    if (og_title) {
+      og_title.content = props.title;
+    }
+    const twitter_title = seo.meta.find(
+      (meta) => meta.name === "twitter:title",
+    );
+    if (twitter_title) {
+      twitter_title.content = props.title;
+    }
   }
   if (props.image) {
     const og_image = seo.meta.find((meta) => meta.property === "og:image");
@@ -28,7 +38,7 @@ useHead(() => {
       twitter_image.content = props.image;
     }
   }
-  //
+
   return seo;
 });
 </script>
