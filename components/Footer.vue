@@ -16,7 +16,7 @@ const basew = 1800;
 /* get all legal pages */
 const legalQuery = gql`
   query {
-    allLegals {
+    allLegals(orderBy: order_ASC) {
       title
       slug
     }

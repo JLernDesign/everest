@@ -3,6 +3,8 @@ import { gsap } from "gsap";
 const props = defineProps(["data", "loc"]);
 const main = ref(null);
 const image = ref(null);
+const route = useRoute();
+const router = useRouter();
 
 const linkTo = computed(() => {
   // external media link
@@ -35,6 +37,13 @@ const isVideo = computed(() => {
 
 const handleClick = () => {
   if (props.data.media?.video?.file) {
+    // add id to query params
+    router.push({
+      path: route.path,
+      query: { ...route.query, id: props.data.id },
+    });
+
+    // open video modal
     openVideoModal(props.data.media?.video);
   }
 };

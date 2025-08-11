@@ -22,6 +22,12 @@ onMounted(() => {
 
   setTimeout(() => {
     loaded.value = true;
+
+    // if video id query, open modal
+    const video_data = posts.find((post) => post.id === route.query.id);
+    if (video_data) {
+      openVideoModal(video_data.media?.video);
+    }
   }, 200);
 });
 </script>

@@ -464,6 +464,7 @@ const BasicContentFragment = gql`
 `;
 export const MediaPostFragment = gql`
   fragment MediaPostFragment on MediaPostRecord {
+    id
     title
     intro
     publishDate

@@ -34,8 +34,8 @@ onMounted(() => {
     <div class="main-contents"><slot /></div>
     <template v-if="loaded">
       <LazyFooter :menu="main_menu" :data="data" />
-      <LazyVideoModal />
     </template>
+    <LazyVideoModal />
     <UISiteCover />
   </div>
 </template>
