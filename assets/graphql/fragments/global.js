@@ -165,6 +165,7 @@ export const VideoFragment = gql`
         height
         thumbhash
         blurUpThumb
+        thumbnailUrl
       }
     }
     external {

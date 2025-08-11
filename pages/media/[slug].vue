@@ -14,6 +14,14 @@ const collections = data.value.allMediaCollections.filter(
 const posts = data.value.allMediaPosts.filter(
   (post) => post.tag?.slug === route.params.slug,
 );
+
+let video_data, seo_title, seo_image;
+if (route.query.id) {
+  video_data = posts.find((post) => post.id === route.query.id);
+  seo_title = `Everest Systems | ${video_data.title}`;
+  seo_image = video_data.media?.video?.file?.video?.thumbnailUrl;
+}
+
 const loaded = ref(false);
 
 onMounted(() => {
@@ -24,7 +32,6 @@ onMounted(() => {
     loaded.value = true;
 
     // if video id query, open modal
-    const video_data = posts.find((post) => post.id === route.query.id);
     if (video_data) {
       openVideoModal(video_data.media?.video);
     }
@@ -34,7 +41,11 @@ onMounted(() => {
 
 <template>
   <div class="bg-jaffa">
-    <Seo :data="page.seo" />
+    <Seo
+      :data="page.seo"
+      :title="route.query.id ? seo_title : null"
+      :image="route.query.id ? seo_image : null"
+    />
 
     <!-- basic hero -->
     <BasicHero
