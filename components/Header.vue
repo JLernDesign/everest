@@ -151,27 +151,7 @@ const hideSticky = () => {
 
     <!-- cta / login -->
     <div class="cta-wrap absolute right-0 top-0 hidden pr-side pt-10 s:block">
-      <div
-        class="lang mb-[1.65rem] flex justify-end space-x-8 text-[1.3rem] uppercase"
-      >
-        <!-- language -->
-        <!-- <a href="#" class="flex items-start">
-          <span>EN</span
-          ><span class="ml-2 mt-1 inline-block"
-            ><IconChevron
-              :color="
-                theme == 'dark' ? 'stroke-white' : 'stroke-black'
-              " /></span
-        ></a> -->
-
-        <a
-          v-if="data.signIn"
-          :href="data.signIn"
-          target="_blank"
-          class="invisible"
-          >Sign In</a
-        >
-      </div>
+      <Language />
 
       <CtaGroup
         v-if="data.headerCta"
