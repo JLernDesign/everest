@@ -2,10 +2,6 @@
 import gsap from "gsap";
 import { useScroll } from "@vueuse/core";
 
-/* language setting */
-const { setLocale } = useI18n();
-//setLocale("de");
-
 const props = defineProps(["menu", "data"]);
 const scrolled = ref(false);
 const sticky = ref(true);
@@ -150,16 +146,20 @@ const hideSticky = () => {
     </div>
 
     <!-- cta / login -->
-    <div class="cta-wrap absolute right-0 top-0 hidden pr-side pt-10 s:block">
-      <Language />
+    <div
+      class="cta-wrap absolute right-[4.5rem] top-5 pr-side pt-10 s:right-0 s:top-0"
+    >
+      <Language :theme="theme" />
 
-      <CtaGroup
-        v-if="data.headerCta"
-        :data="data.headerCta.buttons"
-        :align="left"
-        theme="dark"
-        :class="scrolled && 'btn-shadow'"
-      />
+      <div class="hidden s:block">
+        <CtaGroup
+          v-if="data.headerCta"
+          :data="data.headerCta.buttons"
+          :align="left"
+          theme="dark"
+          :class="scrolled && 'btn-shadow'"
+        />
+      </div>
     </div>
   </header>
 

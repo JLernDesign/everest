@@ -30,7 +30,6 @@ if (props.data.headline) {
     query: fallbackQuery.loc.source.body,
   });
   page_data = data.value.global.footerCallout;
-  console.log(page_data);
 }
 
 const mobile = breakpoints.smallerOrEqual("tablet1");

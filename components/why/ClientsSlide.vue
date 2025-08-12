@@ -4,7 +4,7 @@ import { Image as DatocmsImage } from "vue-datocms";
 const props = defineProps(["data"]);
 const arrowDiamond = ref(null);
 const main = ref(null);
-
+console.log(props.data);
 const handleClick = (item) => {
   if (item.video) {
     openVideoModal(item.video);
@@ -63,6 +63,13 @@ const hoverOff = () => {
         :data="data.image.responsiveImage"
         class="h-full w-full"
       />
+
+      <!-- has video loop -->
+      <div v-if="data.video?.loopClip" class="absolute left-0 top-0 size-full">
+        <video loop muted autoplay playsinline class="size-full object-contain">
+          <source :src="data.video?.loopClip?.url" type="video/mp4" />
+        </video>
+      </div>
     </div>
 
     <!-- gradient -->
