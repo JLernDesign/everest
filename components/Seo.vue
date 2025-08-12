@@ -1,6 +1,6 @@
 <script setup>
 import { toHead } from "vue-datocms";
-const props = defineProps(["data", "title", "image", "description"]);
+const props = defineProps(["data", "title", "image"]);
 
 // compile meta tags for head
 useHead(() => {
@@ -27,7 +27,7 @@ useHead(() => {
   }
 
   // override for description
-  if (props.description) {
+  /*   if (props.description) {
     const desc = createExcerpt(props.description, 20);
 
     const description = seo.meta.find((meta) => meta.name === "description");
@@ -41,7 +41,7 @@ useHead(() => {
     description && (description.content = desc);
     og_description && (og_description.content = desc);
     twitter_description && (twitter_description.content = desc);
-  }
+  } */
 
   // override for image
   if (props.image) {
