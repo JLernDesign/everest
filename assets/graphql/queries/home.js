@@ -12,6 +12,11 @@ import {
 export const homeQuery = gql`
   query {
     home {
+      seo: _seoMetaTags {
+        attributes
+        content
+        tag
+      }
       hero {
         ...HeroFragment
       }

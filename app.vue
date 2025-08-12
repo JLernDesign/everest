@@ -23,10 +23,10 @@ const { data } = await useGraphqlQuery({
 provide("locations", data.value.global.locations);
 provide("global_cta", data.value.global.headerCta);
 
-// compile meta tags for head
+// set favicon from datocms
 useHead(() => {
   if (!data.value) return {};
-  return toHead(data.value.home.seo, data.value.site.favicon);
+  return toHead(data.value.site.favicon);
 });
 
 // execute leave animation for each route
