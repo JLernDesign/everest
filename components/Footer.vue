@@ -16,7 +16,7 @@ const basew = 1800;
 /* get all legal pages */
 const legalQuery = gql`
   query {
-    allLegals {
+    allLegals(orderBy: order_ASC) {
       title
       slug
     }
@@ -123,7 +123,7 @@ const getFooterStart = () => {
           <div class="group">
             <!-- title -->
             <h3 class="font-barlow-cond text-[2.1rem] uppercase text-red">
-              Explore Everest
+              {{ $t("explore") }}
             </h3>
 
             <!-- menu -->
@@ -134,7 +134,7 @@ const getFooterStart = () => {
         <!-- contact -->
         <div class="col w-full s:w-[45.5%] s:pl-[5rem]">
           <h3 class="font-barlow-cond text-[2.1rem] uppercase text-red">
-            Contact
+            {{ $t("contact") }}
           </h3>
           <div
             v-if="data.locations"
@@ -184,7 +184,10 @@ const getFooterStart = () => {
             </template>
           </ul>
           <div class="mt-5 text-[#6E7174]">
-            Design: <a href="https://griflan.com" target="_blank">Griflan</a>
+            Design:
+            <a href="https://griflan.com" target="_blank" class="hover:text-red"
+              >Griflan</a
+            >
           </div>
         </div>
         <div
