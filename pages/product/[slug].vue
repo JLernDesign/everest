@@ -46,6 +46,7 @@ onMounted(() => {
       :data="page.hero"
       :order="page.order"
       :video-file="page.infographic"
+      :demo-video="page.demoVideo"
     />
     <FlexibleBlocks :data="page.flexibleContent.modules" template="product" />
     <FooterLockup :data="page.footerCallout" />

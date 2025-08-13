@@ -2,7 +2,7 @@
 import gsap from "gsap";
 import { Image as DatocmsImage } from "vue-datocms";
 
-const props = defineProps(["data", "order", "videoFile"]);
+const props = defineProps(["data", "order", "videoFile", "demoVideo"]);
 const loaded = ref(false);
 const main = ref(null);
 const video = ref(null);
@@ -49,7 +49,7 @@ onUnmounted(() => {
   <Section
     :hero="true"
     side="none"
-    class="overflow-hidden bg-skyblue max-s:pb-[16rem]"
+    class="overflow-hidden bg-skyblue max-s:pb-[12rem]"
     ref="main"
     :anim="true"
   >
@@ -103,6 +103,19 @@ onUnmounted(() => {
         class="anim-item absolute right-0 top-0 hidden pr-side pt-[5rem] font-barlow-cond text-num s:block"
       >
         {{ order < 10 && "0" }}{{ order }}
+      </div>
+
+      <!-- media module mobile -->
+      <div
+        v-if="demoVideo"
+        class="relative block border-x border-x-grayline p-side-mob s:hidden"
+      >
+        <hr
+          class="absolute left-1/2 top-0 w-screen -translate-x-1/2 text-grayline"
+        />
+        <div class="relative aspect-[1.31] overflow-hidden rounded-base-mob">
+          <UIMediaThumb :data="demoVideo" ref="demo" />
+        </div>
       </div>
     </div>
 
