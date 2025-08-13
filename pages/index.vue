@@ -1,11 +1,17 @@
 <script setup>
 import { homeQuery } from "~/assets/graphql/queries/home";
 
+const { locale } = useI18n();
+const selectedLocale = locale.value;
+
 const loaded = ref(false);
 const intro = ref(null);
 
 const { data } = await useGraphqlQuery({
   query: homeQuery.loc.source.body,
+  variables: {
+    locale: selectedLocale,
+  },
 });
 const page = data.value.home;
 

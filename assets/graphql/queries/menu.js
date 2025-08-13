@@ -56,8 +56,8 @@ export const InternalFragment = gql`
 `;
 
 export const menuQuery = gql`
-  query {
-    menu {
+  query ($locale: SiteLocale!) {
+    menu(locale: $locale) {
       main {
         ... on MenuGroupRecord {
           __typename

@@ -64,7 +64,7 @@ const handleClick = (item) => {
       v-on="mobile ? { click: toggleMenu } : { mouseenter: openMenu }"
       class="group relative z-2 flex items-start hover:text-red"
     >
-      <span>EN</span
+      <span>{{ locale.toUpperCase() }}</span
       ><span class="ml-2 mt-1 inline-block"
         ><IconChevron
           :color="theme == 'dark' ? 'stroke-white' : 'stroke-black'"

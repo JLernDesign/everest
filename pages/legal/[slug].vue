@@ -5,10 +5,10 @@ import {
   LinkFragment,
 } from "~/assets/graphql/fragments/global";
 
-const { locale } = useI18n();
-
-const route = useRoute();
 const slug = route.params.slug;
+
+const { locale } = useI18n();
+const route = useRoute();
 const selectedLocale = locale.value;
 
 const legalQuery = gql`
