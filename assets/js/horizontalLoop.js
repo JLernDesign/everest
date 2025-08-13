@@ -249,7 +249,9 @@ export default function horizontalLoop(items, config) {
         onThrowUpdate: align,
         overshootTolerance: 0,
         inertia: true,
+        dragResistance: 0.6,
         snap(value) {
+          console.log("snap value", value);
           //note: if the user presses and releases in the middle of a throw, due to the sudden correction of proxy.x in the onPressInit(), the velocity could be very large, throwing off the snap. So sense that condition and adjust for it. We also need to set overshootTolerance to 0 to prevent the inertia from causing it to shoot past and come back
           if (Math.abs(startProgress / -ratio - this.x) < 10) {
             return lastSnap + initChangeX;
@@ -261,6 +263,12 @@ export default function horizontalLoop(items, config) {
           Math.abs(dif) > tl.duration() / 2 &&
             (dif += dif < 0 ? tl.duration() : -tl.duration());
           lastSnap = (time + dif) / tl.duration() / -ratio;
+          console.log(
+            "lastSnap, time, dif",
+            lastSnap.toFixed(2),
+            time.toFixed(2),
+            dif.toFixed(2),
+          );
           return lastSnap;
         },
         onRelease() {
