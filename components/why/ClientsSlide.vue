@@ -13,8 +13,9 @@ const handleClick = (item) => {
 
 const hoverOn = () => {
   const arrow = main.value.querySelector(".hover-arrow");
-  gsap.to(main.value, {
-    y: -10,
+  const photo = main.value.querySelector(".photo-wrap");
+  gsap.to(photo, {
+    scale: 1.1,
     ease: "power3.out",
     duration: 0.5,
   });
@@ -30,8 +31,9 @@ const hoverOn = () => {
 
 const hoverOff = () => {
   const arrow = main.value.querySelector(".hover-arrow");
-  gsap.to(main.value, {
-    y: 0,
+  const photo = main.value.querySelector(".photo-wrap");
+  gsap.to(photo, {
+    scale: 1,
     ease: "power3.out",
     duration: 0.5,
   });
@@ -63,6 +65,13 @@ const hoverOff = () => {
         :data="data.image.responsiveImage"
         class="h-full w-full"
       />
+
+      <!-- has video loop -->
+      <div v-if="data.video?.loopClip" class="absolute left-0 top-0 size-full">
+        <video loop muted autoplay playsinline class="size-full object-contain">
+          <source :src="data.video?.loopClip?.url" type="video/mp4" />
+        </video>
+      </div>
     </div>
 
     <!-- gradient -->
