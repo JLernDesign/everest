@@ -266,13 +266,14 @@ export default function horizontalLoop(items, config) {
             console.log("restart");
             dif = times[0] - wrappedTime;
           }
-          if (value < -2500) {
+          if (value < -3000) {
             console.log("restart end");
             dif = times[times.length - 1] - wrappedTime;
           }
 
           console.log("snapTime", snapTime);
           console.log("dif", dif);
+          console.log("--------------------------------");
 
           Math.abs(dif) > tl.duration() / 2 &&
             (dif += dif < 0 ? tl.duration() : -tl.duration());

@@ -62,7 +62,7 @@ onMounted(() => {
       clearTimeout(scrollTimeout);
       scrollTimeout = setTimeout(() => {
         isScrolling.value = false;
-      }, 500);
+      }, 200);
     });
   }
 
