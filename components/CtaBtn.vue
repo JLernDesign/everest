@@ -42,7 +42,7 @@ const hoverOff = () => {
 
 <template>
   <NuxtLink
-    :to="data && getUrl(data)"
+    :to="data && $localePath(getUrl(data))"
     :target="data?.external && '_blank'"
     class="cta-btn inline-flex items-center rounded-btn bg-red px-[1.5rem] py-[1.1rem] font-helvh text-body-sm-mob text-skyblue s:px-[1.75rem] s:py-[1.4rem] s:text-body-sm"
     :class="stretch && 'justify-between'"

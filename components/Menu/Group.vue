@@ -14,7 +14,7 @@ const items = computed(() => {
         <template v-if="item.__typename == 'MenuItemRecord'">
           <NuxtLink
             v-if="item.label"
-            :to="getUrl(item)"
+            :to="$localePath(getUrl(item))"
             @click="close"
             class="block border-t-1 border-grayline px-side-mob py-5 text-body-sm-mob leading-sm"
             :class="[

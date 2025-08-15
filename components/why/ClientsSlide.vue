@@ -4,7 +4,7 @@ import { Image as DatocmsImage } from "vue-datocms";
 const props = defineProps(["data"]);
 const arrowDiamond = ref(null);
 const main = ref(null);
-console.log(props.data);
+
 const handleClick = (item) => {
   if (item.video) {
     openVideoModal(item.video);

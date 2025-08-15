@@ -91,6 +91,7 @@ export const menuQuery = gql`
         ... on MenuItemRecord {
           __typename
           label
+          id
           ...InternalFragment
           external
         }

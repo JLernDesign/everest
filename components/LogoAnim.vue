@@ -101,7 +101,7 @@ defineExpose({
     class="logo-main absolute z-5 pl-side-mob pt-[1.5rem] s:pl-side s:pt-[4.25rem]"
   >
     <NuxtLink
-      to="/"
+      :to="$localePath('/')"
       class="relative block h-[5.3rem] w-[6.2rem] origin-top-left s:h-[8.1rem] s:w-[9.4rem]"
       ref="logo_wrap"
       @mouseenter="hoverOn"

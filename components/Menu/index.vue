@@ -126,7 +126,7 @@ const toggleSubMenus = (e) => {
           class="logo-main absolute z-5 pl-side-mob pt-[1.5rem] s:pl-side s:pt-[4.25rem]"
         >
           <NuxtLink
-            to="/"
+            :to="$localePath('/')"
             @click="closeMenu"
             class="block h-[5.3rem] w-[6.2rem] origin-top-left s:h-[8.1rem] s:w-[9.4rem]"
           >

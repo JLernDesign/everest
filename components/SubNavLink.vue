@@ -14,7 +14,8 @@ const isActive = computed(() => {
     }
 
     // news links
-    if (route.name.split("-")[1] == props.data.tag?.slug) {
+    let name = route.name.split("___"); // account for locale
+    if (name[0].split("-")[1] == props.data.tag?.slug) {
       active = true;
     }
   }
@@ -68,7 +69,7 @@ const toggleAccent = (state) => {
 
 <template>
   <button
-    class="ul single fast relative text-body-sm-mob leading-base hover:text-red s:text-body-sm max-s:!bg-none"
+    class="ul single relative text-body-sm-mob leading-base hover:text-red s:text-body-sm max-s:!bg-none"
     :class="isActive ? 'on text-red' : ''"
     @mouseenter="hoverOn"
     @mouseleave="hoverOff"

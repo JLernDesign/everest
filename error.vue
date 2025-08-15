@@ -16,6 +16,9 @@ console.log(props.error);
 // get global settings data
 const { data: header_data } = await useGraphqlQuery({
   query: settingsQuery.loc.source.body,
+  variables: {
+    locale: locale.value,
+  },
 });
 
 const { data: menu_data } = await useGraphqlQuery({

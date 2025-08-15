@@ -89,7 +89,7 @@ const props = defineProps(["data", "type"]);
     <!-- add link for feature module -->
     <NuxtLink
       v-if="type == 'feature'"
-      :to="`/blog/${data.slug}`"
+      :to="$localePath(`/blog/${data.slug}`)"
       class="absolute left-0 top-0 h-full w-full"
     ></NuxtLink>
   </div>

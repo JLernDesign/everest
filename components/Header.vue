@@ -153,7 +153,7 @@ const hideSticky = () => {
 
       <div class="hidden s:block">
         <CtaGroup
-          v-if="data.headerCta"
+          v-if="data?.headerCta"
           :data="data.headerCta.buttons"
           :align="left"
           theme="dark"

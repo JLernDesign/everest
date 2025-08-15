@@ -31,9 +31,9 @@ const handleClick = (e, item) => {
     <!-- link -->
     <li v-for="(item, i) in data">
       <button
-        class="ul single fast flex h-[4rem] w-full items-center justify-between pl-[.4rem] pr-[1.2rem] [&>*]:pointer-events-none"
+        class="ul single flex h-[4rem] w-full items-center justify-between pl-[.4rem] pr-[1.2rem] [&>*]:pointer-events-none"
         @click="handleClick($event, item)"
-        :data-num="item.submenu ? n++ : null"
+        :data-num="i"
       >
         <span class="mt-1">{{ item.label }}</span>
         <IconChevron v-if="item.submenu" color="stroke-red" />
@@ -41,10 +41,12 @@ const handleClick = (e, item) => {
 
       <!-- sub menu -->
       <ul
-        v-if="item.submenu"
         class="submenu h-0 overflow-hidden pl-[1.2rem] text-body-xsm-mob s:text-body-xsm"
       >
-        <span class="block space-y-5 pb-[2.25rem] pt-[1.75rem]">
+        <span
+          v-if="item.submenu"
+          class="block space-y-5 pb-[2.25rem] pt-[1.75rem]"
+        >
           <li v-for="subitem in item.submenu">
             <NuxtLink
               :to="$localePath(getUrl(subitem))"
@@ -61,7 +63,7 @@ const handleClick = (e, item) => {
               <li v-for="subsubitem in subitem.submenu">
                 <NuxtLink
                   :to="$localePath(getUrl(subsubitem))"
-                  class="ul single fast"
+                  class="ul single"
                   >{{ subsubitem.label }}</NuxtLink
                 >
               </li>
