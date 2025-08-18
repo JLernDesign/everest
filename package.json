@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@datocms/cma-client-browser": "5.0.1",
     "@mux/mux-player": "3.4.1",
     "@nuxt/scripts": "^0.11.6",
     "@nuxtjs/i18n": "10.0.3",

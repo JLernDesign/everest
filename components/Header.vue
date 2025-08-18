@@ -165,6 +165,9 @@ const hideSticky = () => {
 
   <!-- mobile menu -->
   <Menu :data="menu.main" :sticky="sticky" />
+
+  <!-- search -->
+  <Search />
 </template>
 
 <style scoped></style>
