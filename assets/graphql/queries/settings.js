@@ -2,7 +2,7 @@ import gql from "graphql-tag";
 import { LinkFragment } from "../fragments/global";
 
 export const settingsQuery = gql`
-  query {
+  query ($locale: SiteLocale!) {
     site: _site {
       favicon: faviconMetaTags {
         attributes
@@ -16,7 +16,7 @@ export const settingsQuery = gql`
         }
       }
     }
-    global {
+    global(locale: $locale) {
       headerCta {
         ...LinkFragment
       }

@@ -68,52 +68,6 @@ const closeMenu = () => {
   }
 };
 
-// toggle submenu
-/* const toggleSubMenu = (e) => {
-  const child = e.target;
-  const parent = child.parentElement;
-  const el = parent.querySelector(".nav-sub");
-  const arrow = parent.querySelector(".arrow");
-
-  // open
-  if (!el.classList.contains("open")) {
-    el.classList.add("open");
-
-    const h = parent.querySelector(".sub").offsetHeight;
-
-    gsap.to(el, {
-      duration: 0.75,
-      height: h,
-      ease: "power3.inOut",
-      onComplete: function () {
-        el.style.height = "auto";
-      },
-    });
-
-    gsap.to(arrow, {
-      duration: 0.75,
-      scaleY: -1,
-      ease: "power3.inOut",
-    });
-
-    // close
-  } else {
-    e.target.classList.remove("open");
-
-    gsap.to(el, {
-      duration: 0.75,
-      height: 0,
-      ease: "power3.inOut",
-    });
-
-    gsap.to(arrow, {
-      duration: 0.75,
-      scaleY: 1,
-      ease: "power3.inOut",
-    });
-  }
-}; */
-
 const toggleSubMenus = (e) => {
   const submenus = document.querySelectorAll(".nav-sub");
 
@@ -172,7 +126,7 @@ const toggleSubMenus = (e) => {
           class="logo-main absolute z-5 pl-side-mob pt-[1.5rem] s:pl-side s:pt-[4.25rem]"
         >
           <NuxtLink
-            to="/"
+            :to="$localePath('/')"
             @click="closeMenu"
             class="block h-[5.3rem] w-[6.2rem] origin-top-left s:h-[8.1rem] s:w-[9.4rem]"
           >

@@ -98,7 +98,7 @@ onMounted(() => {
 
     <!-- events list -->
     <div
-      class="max-w-content relative mx-auto mt-12 flex flex-col s:mt-[10rem] s:flex s:flex-row"
+      class="relative mx-auto mt-12 flex max-w-content flex-col s:mt-[10rem] s:flex s:flex-row"
       ref="main"
       @mouseenter="showImage"
       @mouseleave="hideImage"
@@ -134,7 +134,7 @@ onMounted(() => {
                 v-if="item.link"
                 :href="item.link"
                 target="_blank"
-                class="ul single relative font-helvh after:bg-red max-s:underline"
+                class="ul single relative font-helvh max-s:underline"
                 >{{ item.title }}</a
               >
               <div v-else class="font-helvh">{{ item.title }}</div>

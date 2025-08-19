@@ -10,8 +10,8 @@ import {
 } from "../fragments/global";
 
 export const homeQuery = gql`
-  query {
-    home {
+  query ($locale: SiteLocale!) {
+    home(locale: $locale) {
       seo: _seoMetaTags {
         attributes
         content

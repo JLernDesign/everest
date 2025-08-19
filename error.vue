@@ -8,16 +8,24 @@ const props = defineProps({
   required: true,
 });
 
+const { locale } = useI18n();
+
 // log error for debugging
 console.log(props.error);
 
 // get global settings data
 const { data: header_data } = await useGraphqlQuery({
   query: settingsQuery.loc.source.body,
+  variables: {
+    locale: locale.value,
+  },
 });
 
 const { data: menu_data } = await useGraphqlQuery({
   query: menuQuery.loc.source.body,
+  variables: {
+    locale: locale.value,
+  },
 });
 const main_menu = menu_data.value.menu;
 

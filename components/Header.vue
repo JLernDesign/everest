@@ -146,41 +146,28 @@ const hideSticky = () => {
     </div>
 
     <!-- cta / login -->
-    <div class="cta-wrap absolute right-0 top-0 hidden pr-side pt-10 s:block">
-      <div
-        class="lang mb-[1.65rem] flex justify-end space-x-8 text-[1.3rem] uppercase"
-      >
-        <!-- language -->
-        <!-- <a href="#" class="flex items-start">
-          <span>EN</span
-          ><span class="ml-2 mt-1 inline-block"
-            ><IconChevron
-              :color="
-                theme == 'dark' ? 'stroke-white' : 'stroke-black'
-              " /></span
-        ></a> -->
+    <div
+      class="cta-wrap absolute right-[4.5rem] top-5 pr-side pt-10 s:right-0 s:top-0"
+    >
+      <Language :theme="theme" />
 
-        <a
-          v-if="data.signIn"
-          :href="data.signIn"
-          target="_blank"
-          class="invisible"
-          >Sign In</a
-        >
+      <div class="hidden s:block">
+        <CtaGroup
+          v-if="data?.headerCta"
+          :data="data.headerCta.buttons"
+          :align="left"
+          theme="dark"
+          :class="scrolled && 'btn-shadow'"
+        />
       </div>
-
-      <CtaGroup
-        v-if="data.headerCta"
-        :data="data.headerCta.buttons"
-        :align="left"
-        theme="dark"
-        :class="scrolled && 'btn-shadow'"
-      />
     </div>
   </header>
 
   <!-- mobile menu -->
   <Menu :data="menu.main" :sticky="sticky" />
+
+  <!-- search -->
+  <!-- <Search /> -->
 </template>
 
 <style scoped></style>

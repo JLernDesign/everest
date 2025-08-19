@@ -5,7 +5,8 @@ import { vOnClickOutside } from "@vueuse/components";
 const props = defineProps(["data", "template", "changeContent"]);
 const mobile = breakpoints.smallerOrEqual("tablet1");
 const route = useRoute();
-let slug = route.params.slug || route.name.split("-")[1];
+let name = route.name.split("___"); // account for locale
+let slug = route.params.slug || name[0].split("-")[1];
 
 // find current page based on page slug or tag slug
 const current_page = props.data.find(
@@ -85,7 +86,7 @@ const closeMenu = () => {
         >
           <img src="/public/ui/tri.svg" alt="" />
         </div>
-        <span v-if="current" class="ul on text-red after:bg-red">{{
+        <span v-if="current" class="ul menu-link on text-red after:bg-red">{{
           current.title || current
         }}</span>
       </button>

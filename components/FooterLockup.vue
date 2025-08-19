@@ -24,7 +24,7 @@ const investors = useState("investors");
 
         <!-- logo -->
         <NuxtLink
-          to="/"
+          :to="$localePath('/')"
           class="footer-logo mt-[3.5rem] block h-[5.3rem] w-[6.2rem] s:mt-[15rem] s:h-[8.1rem] s:w-[9.4rem]"
         >
           <IconLogo color="white" />

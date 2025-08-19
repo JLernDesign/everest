@@ -24,13 +24,13 @@ export default defineNuxtConfig({
     },
   },
 
-  scripts: {
+  /*   scripts: {
     registry: {
       googleTagManager: {
         id: "GTM-KS9LCPNL",
       },
     },
-  },
+  }, */
 
   ssr: true,
 
@@ -47,12 +47,36 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@nuxt/scripts",
     "nuxt-graphql-request",
+    "@nuxtjs/i18n",
   ],
 
   runtimeConfig: {
     public: {
       datoCmsToken: process.env.DATO_CMS_TOKEN,
       BASE_URL: process.env.BASE_URL,
+    },
+  },
+
+  i18n: {
+    langDir: "locales",
+    defaultLocale: "en",
+    locales: [
+      { code: "en", name: "English", file: "en.json" },
+      { code: "de", name: "Deutsch", file: "de.json" },
+    ],
+  },
+
+  vite: {
+    define: {
+      __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: true,
+    },
+    build: {
+      minify: "terser",
+      terserOptions: {
+        compress: {
+          drop_console: true,
+        },
+      },
     },
   },
 

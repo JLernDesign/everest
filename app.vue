@@ -3,6 +3,8 @@ import gsap from "gsap";
 import { toHead } from "vue-datocms";
 import { settingsQuery } from "~/assets/graphql/queries/settings";
 
+const { locale } = useI18n();
+
 const route = useRoute();
 const router = useRouter();
 const layout = ref(null);
@@ -13,10 +15,19 @@ const base_url = useState("base_url", () => "https://everest-systems.com");
 const theme = useState("theme", () => "light");
 const pageInactive = useState("pageInactive", () => false);
 
+// reactive variables
+const queryVariables = computed(() => {
+  const vars = {
+    locale: locale.value,
+  };
+  return vars;
+});
+
 // get global settings data
 const QUERY = settingsQuery.loc.source.body;
 const { data } = await useGraphqlQuery({
   query: QUERY,
+  variables: queryVariables,
 });
 
 // make reused global data available
@@ -113,7 +124,7 @@ const refreshPage = () => {
 </script>
 
 <template>
-  <NuxtLayout ref="layout" :data="data.global">
+  <NuxtLayout ref="layout" :data="data ? data.global : null">
     <NuxtPage
       :transition="{
         name: 'custom',

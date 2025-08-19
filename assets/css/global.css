@@ -93,7 +93,8 @@ sup {
 
 /* UI */
 
-.ul {
+/* main menu underlines */
+.ul.menu-link {
   position: relative;
   &:after {
     content: "";
@@ -119,42 +120,41 @@ sup {
 .nuxt-link-active {
   color: theme("colors.red");
 }
-.has-ul .ul {
-  position: relative;
-  transition: all 0.3s ease-out;
-}
-.has-ul:hover {
-  > .ul,
-  > span span .ul {
-    color: theme("colors.red");
-    &:after {
-      transform: scaleX(1);
-      opacity: 1;
-      transition: var(--ease-out);
+
+/* submenu underlines */
+.has-ul {
+  .ul.menu-link {
+    position: relative;
+    transition: all 0.3s ease-out;
+  }
+  &:hover {
+    > .ul.menu-link,
+    > span span .ul.menu-link {
+      color: theme("colors.red");
+      &:after {
+        transform: scaleX(1);
+        opacity: 1;
+        transition: var(--ease-out);
+      }
     }
   }
 }
 
-/* new underline method */
-
+/* button underlines */
 .ul.single {
   text-decoration: none;
   background-image: linear-gradient(currentColor, currentColor);
   background-position: 0% 90%;
   background-repeat: no-repeat;
   background-size: 0% 1px;
-  transition: var(--ease-in-out);
+  transition:
+    color 0.3s linear,
+    background-size 0.5s ease-out;
   &.cta {
     background-size: 100% 1px;
     transition: color 0.5s linear;
   }
-  &.fast {
-    transition:
-      color 0.3s linear,
-      background-size 0.5s ease-out;
-  }
 }
-
 .ul.single:hover,
 .ul.single.on {
   color: theme("colors.red");
@@ -245,12 +245,6 @@ sup {
   }
 }
 
-/* @media (min-width: 650px) {
-  .has-break-mob :not(.nobr) br {
-    display: none;
-  }
-} */
-
 @media (max-width: 649px) {
   .bullets.lines {
     li {
@@ -262,7 +256,7 @@ sup {
 }
 
 /* blog / plain text */
-
+/* 
 .article-body {
   h2 {
     font-size: 1.825rem;
@@ -335,7 +329,7 @@ sup {
       }
     }
   }
-}
+} */
 
 /* transitions */
 

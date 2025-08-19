@@ -24,7 +24,7 @@ const hoverOn = () => {
 <template>
   <NuxtLink
     ref="main"
-    :to="data && getUrl(data)"
+    :to="data && $localePath(getUrl(data))"
     :target="data?.external && '_blank'"
     class="ul single cta relative font-helvh text-body-sm-mob transition-none s:text-body-sm"
     :class="

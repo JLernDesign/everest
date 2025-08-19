@@ -1,5 +1,6 @@
 <script setup>
 import { Image as DatocmsImage } from "vue-datocms";
+const localePath = useLocalePath();
 const props = defineProps(["data"]);
 
 const title = ref(true);
@@ -16,7 +17,7 @@ const linkTo = computed(() => {
   }
 
   // internal link (blog post)
-  return `/blog/${props.data.slug}`;
+  return localePath("/blog/" + props.data.slug);
 });
 
 const isVideo = computed(() => {
@@ -95,10 +96,23 @@ defineExpose({
         </div>
       </div>
 
+      <!-- has video loop -->
+      <div
+        v-if="data.media?.video?.loopClip"
+        class="absolute left-0 top-0 size-full"
+      >
+        <video loop muted autoplay playsinline class="size-full object-contain">
+          <source :src="data.media.video.loopClip.url" type="video/mp4" />
+        </video>
+      </div>
+
       <!-- video -->
       <template v-if="isVideo">
         <div
-          v-if="data.media?.__typename == 'MediaVideoRecord'"
+          v-if="
+            data.media?.__typename == 'MediaVideoRecord' ||
+            data.media?.video?.loopClip
+          "
           class="absolute left-0 top-0 size-full bg-[#2A3440] opacity-80"
         ></div>
 

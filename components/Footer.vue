@@ -81,20 +81,20 @@ const getFooterStart = () => {
         <div class="col flex w-full s:w-[32.5%] s:pr-[5rem] max-s:flex-col">
           <div class="max-w-[43.5rem]">
             <p
-              v-if="data.description"
+              v-if="data?.description"
               v-html="formatText(data.description)"
             ></p>
             <div
               class="mt-side-mob flex flex-col s:mt-side s:flex-row s:items-center s:justify-between max-s:gap-y-[3.5rem]"
             >
               <CtaGroup
-                v-if="data.footerCta"
+                v-if="data?.footerCta"
                 :data="data.footerCta.buttons"
                 :align="left"
                 theme="dark"
               />
               <ul
-                v-if="data.socialMedia"
+                v-if="data?.socialMedia"
                 class="social flex items-end space-x-[2.5rem]"
               >
                 <li v-for="item in data.socialMedia">
@@ -123,7 +123,7 @@ const getFooterStart = () => {
           <div class="group">
             <!-- title -->
             <h3 class="font-barlow-cond text-[2.1rem] uppercase text-red">
-              Explore Everest
+              {{ $t("explore") }}
             </h3>
 
             <!-- menu -->
@@ -134,10 +134,10 @@ const getFooterStart = () => {
         <!-- contact -->
         <div class="col w-full s:w-[45.5%] s:pl-[5rem]">
           <h3 class="font-barlow-cond text-[2.1rem] uppercase text-red">
-            Contact
+            {{ $t("contact") }}
           </h3>
           <div
-            v-if="data.locations"
+            v-if="data?.locations"
             class="relative mt-4 space-y-[1.25rem] s:mt-side s:columns-2 s:space-y-[3rem]"
           >
             <div v-for="item in data.locations">
@@ -161,16 +161,18 @@ const getFooterStart = () => {
           <ul class="flex flex-wrap items-center leading-body">
             <template v-for="(item, i) in legalPages">
               <li>
-                <NuxtLink :to="`/legal/${item.slug}`" class="hover:text-red">{{
-                  item.title
-                }}</NuxtLink>
+                <NuxtLink
+                  :to="$localePath(`/legal/${item.slug}`)"
+                  class="hover:text-red"
+                  >{{ item.title }}</NuxtLink
+                >
               </li>
               <li v-if="i !== legalPages.length - 1" class="mx-5">•</li>
             </template>
             <li class="mx-5 hidden s:block">•</li>
             <li class="max-s:w-full">© 2025 Everest Systems, Inc</li>
 
-            <template v-if="data.emailAddress">
+            <template v-if="data?.emailAddress">
               <li class="mx-5 hidden s:block">•</li>
               <li>
                 <a
@@ -182,11 +184,14 @@ const getFooterStart = () => {
             </template>
           </ul>
           <div class="mt-5 text-[#6E7174]">
-            Design: <a href="https://griflan.com" target="_blank">Griflan</a>
+            Design:
+            <a href="https://griflan.com" target="_blank" class="hover:text-red"
+              >Griflan</a
+            >
           </div>
         </div>
         <div
-          v-if="data.badges"
+          v-if="data?.badges"
           class="-top-1/2 right-0 flex space-x-[2rem] s:absolute max-s:order-1"
         >
           <img

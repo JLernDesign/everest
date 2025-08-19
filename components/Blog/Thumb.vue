@@ -1,5 +1,6 @@
 <script setup>
 import { gsap } from "gsap";
+const localePath = useLocalePath();
 const props = defineProps(["data", "loc"]);
 const main = ref(null);
 const image = ref(null);
@@ -19,7 +20,7 @@ const linkTo = computed(() => {
 
   // internal news post
   if (["press", "collaborations"].includes(props.data.tag.slug)) {
-    return `/news/${props.data.slug}`;
+    return localePath("/news/" + props.data.slug);
   }
 
   // document (ebook)
@@ -28,7 +29,7 @@ const linkTo = computed(() => {
   }
 
   // internal link (blog post)
-  return `/blog/${props.data.slug}`;
+  return localePath(`/blog/${props.data.slug}`);
 });
 
 const isVideo = computed(() => {
@@ -110,7 +111,7 @@ const hoverOff = () => {
     <h3
       class="relative z-1 mb-[1.2rem] font-helvb text-body-mob leading-body s:text-body"
     >
-      <span class="ul single title fast">{{ data.title }}</span>
+      <span class="ul single title">{{ data.title }}</span>
     </h3>
     <p class="relative z-1 text-body-sm-mob leading-sm s:text-body-sm">
       {{ createExcerpt(data.intro, 30) }}

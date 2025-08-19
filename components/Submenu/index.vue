@@ -1,6 +1,11 @@
 <script setup>
 const props = defineProps(["data", "id"]);
-const productId = "ZpWZSBQDQti1xbn9l2cD_Q";
+
+const { locale } = useI18n();
+const selectedLocale = locale.value;
+
+let productId = "ZpWZSBQDQti1xbn9l2cD_Q";
+selectedLocale == "de" && (productId = "Cy7kTmGhRkuIzZXvlAYWOQ");
 
 // add filler block if odd number of products
 let products;
