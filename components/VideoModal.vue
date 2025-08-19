@@ -1,6 +1,8 @@
 <script setup>
 import { VideoPlayer } from "vue-datocms";
 import gsap from "gsap";
+const route = useRoute();
+const router = useRouter();
 const videoID = useState("videoID");
 const video_ready = ref(false);
 let video, player, provider;
@@ -42,6 +44,7 @@ const closeVideoModal = (id) => {
     player.pause();
   }
 
+  // close modal
   const modal = document.getElementById("video-modal");
   const wrap = document.getElementById("video-player");
   gsap.to(modal, {
@@ -54,11 +57,9 @@ const closeVideoModal = (id) => {
       video_ready.value = false;
     },
   });
-  /* gsap.to(wrap, {
-    duration: 0.35,
-    opacity: 0,
-    ease: "power3.in",
-  }); */
+
+  // remove id from query params
+  router.replace({ query: null });
 };
 </script>
 

@@ -1,4 +1,5 @@
 <script setup>
+import { gsap } from "gsap";
 import gql from "graphql-tag";
 import { LinkFragment } from "~/assets/graphql/fragments/global";
 import { useClipboard } from "@vueuse/core";
@@ -44,6 +45,22 @@ const copy_url = base_url.value + route.path;
 
 const copy_to_clipboard = () => {
   copy(copy_url);
+
+  // show popup
+  gsap.killTweensOf(".copy-popup");
+  gsap.to(".copy-popup", {
+    opacity: 1,
+    duration: 0.3,
+    ease: "power3.out",
+    onComplete: () => {
+      gsap.to(".copy-popup", {
+        opacity: 0,
+        delay: 0.1,
+        duration: 0.3,
+        ease: "power3.in",
+      });
+    },
+  });
 };
 </script>
 
@@ -75,33 +92,39 @@ const copy_to_clipboard = () => {
         >
           <a
             :href="facebook_url"
-            class="grid place-content-center hover:[&_svg]:fill-white"
+            class="group grid place-content-center"
             target="_blank"
-            ><SocialFacebook class="fill-red"
+            ><SocialFacebook class="fill-red group-hover:fill-white"
           /></a>
           <a
             :href="linkedin_url"
-            class="grid place-content-center hover:[&_svg]:fill-white"
+            class="group grid place-content-center"
             target="_blank"
-            ><SocialLinkedin class="fill-red"
+            ><SocialLinkedin class="fill-red group-hover:fill-white"
           /></a>
           <a
             :href="pinterest_url"
-            class="grid place-content-center hover:[&_svg]:fill-white"
+            class="group grid place-content-center"
             target="_blank"
-            ><SocialPinterest class="fill-red"
+            ><SocialPinterest class="fill-red group-hover:fill-white"
           /></a>
           <a
             :href="x_url"
-            class="grid place-content-center hover:[&_svg]:fill-white"
+            class="group grid place-content-center"
             target="_blank"
-            ><SocialX class="fill-red"
+            ><SocialX class="fill-red group-hover:fill-white"
           /></a>
-          <a
+          <div
             @click="copy_to_clipboard"
-            class="grid cursor-pointer place-content-center hover:[&_svg]:fill-white"
-            ><SocialWeblink class="fill-red"
-          /></a>
+            class="group relative grid cursor-pointer place-content-center"
+          >
+            <SocialWeblink class="fill-red group-hover:fill-white" />
+            <div
+              class="copy-popup pointer-events-none absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-base-mob bg-white px-2 py-1 font-barlow-cond text-body-sm uppercase text-red opacity-0"
+            >
+              Copied
+            </div>
+          </div>
         </div>
       </div>
     </div>

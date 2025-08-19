@@ -12,6 +12,11 @@ import {
 export const homeQuery = gql`
   query ($locale: SiteLocale!) {
     home(locale: $locale) {
+      seo: _seoMetaTags {
+        attributes
+        content
+        tag
+      }
       hero {
         ...HeroFragment
       }

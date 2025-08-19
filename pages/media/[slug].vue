@@ -34,6 +34,13 @@ const { data: postsData } = await useGraphqlQuery({
 });
 posts.value = postsData.value.allMediaPosts;
 
+let video_data, seo_title, seo_image;
+if (route.query.id) {
+  video_data = posts.find((post) => post.id === route.query.id);
+  seo_title = `Everest Systems | ${video_data.title}`;
+  seo_image = video_data.media?.video?.file?.video?.thumbnailUrl;
+}
+
 const loaded = ref(false);
 
 onMounted(() => {
@@ -42,13 +49,22 @@ onMounted(() => {
 
   setTimeout(() => {
     loaded.value = true;
+
+    // if video id query, open modal
+    if (video_data) {
+      openVideoModal(video_data.media?.video);
+    }
   }, 200);
 });
 </script>
 
 <template>
   <div class="bg-jaffa">
-    <Seo :data="page.seo" />
+    <Seo
+      :data="page.seo"
+      :title="route.query.id ? seo_title : null"
+      :image="route.query.id ? seo_image : null"
+    />
 
     <!-- basic hero -->
     <BasicHero

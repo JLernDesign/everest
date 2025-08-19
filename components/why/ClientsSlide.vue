@@ -13,8 +13,9 @@ const handleClick = (item) => {
 
 const hoverOn = () => {
   const arrow = main.value.querySelector(".hover-arrow");
-  gsap.to(main.value, {
-    y: -10,
+  const photo = main.value.querySelector(".photo-wrap");
+  gsap.to(photo, {
+    scale: 1.1,
     ease: "power3.out",
     duration: 0.5,
   });
@@ -30,8 +31,9 @@ const hoverOn = () => {
 
 const hoverOff = () => {
   const arrow = main.value.querySelector(".hover-arrow");
-  gsap.to(main.value, {
-    y: 0,
+  const photo = main.value.querySelector(".photo-wrap");
+  gsap.to(photo, {
+    scale: 1,
     ease: "power3.out",
     duration: 0.5,
   });

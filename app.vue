@@ -11,7 +11,7 @@ const layout = ref(null);
 
 // initial states
 const page_title = useState("page_title", () => "index");
-const base_url = useState("base_url", () => "https://everest25.netlify.app");
+const base_url = useState("base_url", () => "https://everest-systems.com");
 const theme = useState("theme", () => "light");
 const pageInactive = useState("pageInactive", () => false);
 
@@ -34,60 +34,66 @@ const { data } = await useGraphqlQuery({
 provide("locations", data.value.global.locations);
 provide("global_cta", data.value.global.headerCta);
 
-// compile meta tags for head
+// set favicon from datocms
 useHead(() => {
   if (!data.value) return {};
-  return toHead(data.value.home.seo, data.value.site.favicon);
+  return toHead(data.value.site.favicon);
 });
 
 // execute leave animation for each route
 const page_color = useState("page_color", () => "skyblue");
 router.beforeEach(async (to, from, next) => {
-  /* console.log("to:", to); */
-  if (
-    to.name.includes("about") ||
-    to.name.includes("index") ||
-    to.name.includes("product")
-  ) {
-    page_color.value = "bg-skyblue";
-  }
-  if (
-    to.name.includes("why") ||
-    to.name.includes("demo") ||
-    to.name.includes("blog") ||
-    to.name.includes("media") ||
-    to.name.includes("legal") ||
-    to.name.includes("news")
-  ) {
-    page_color.value = "bg-jaffa";
-  }
-  if (to.name.includes("ai") || to.name.includes("client")) {
-    page_color.value = "bg-shadowblue";
-  }
-  /* console.log("page_color:", page_color.value); */
-  setTimeout(() => {
-    page_color.value == "bg-shadowblue"
-      ? (theme.value = "dark")
-      : (theme.value = "light");
-  }, 500);
+  // bypass animation if changing video id
+  if (to.query.id || from.query.id) {
+    next();
 
-  const reveals = document.querySelectorAll(".cover-inner");
-  gsap.set("#page-reveal", { display: "flex", opacity: 1 });
-  gsap.fromTo(
-    reveals,
-    { opacity: 1, scaleY: 0, display: "block" },
-    {
-      duration: 0.75,
-      opacity: 1,
-      scaleY: 1,
-      stagger: 0.05,
-      ease: "power3.inOut",
-    },
-  );
+    // execute leave animation
+  } else {
+    if (
+      to.name.includes("about") ||
+      to.name.includes("index") ||
+      to.name.includes("product")
+    ) {
+      page_color.value = "bg-skyblue";
+    }
+    if (
+      to.name.includes("why") ||
+      to.name.includes("demo") ||
+      to.name.includes("blog") ||
+      to.name.includes("media") ||
+      to.name.includes("legal") ||
+      to.name.includes("news")
+    ) {
+      page_color.value = "bg-jaffa";
+    }
+    if (to.name.includes("ai") || to.name.includes("client")) {
+      page_color.value = "bg-shadowblue";
+    }
+    /* console.log("page_color:", page_color.value); */
+    setTimeout(() => {
+      page_color.value == "bg-shadowblue"
+        ? (theme.value = "dark")
+        : (theme.value = "light");
+    }, 500);
 
-  // delay until animation is complete
-  await new Promise((resolve) => setTimeout(resolve, 750));
-  next();
+    const reveals = document.querySelectorAll(".cover-inner");
+    gsap.set("#page-reveal", { display: "flex", opacity: 1 });
+    gsap.fromTo(
+      reveals,
+      { opacity: 1, scaleY: 0, display: "block" },
+      {
+        duration: 0.75,
+        opacity: 1,
+        scaleY: 1,
+        stagger: 0.05,
+        ease: "power3.inOut",
+      },
+    );
+
+    // delay until animation is complete
+    await new Promise((resolve) => setTimeout(resolve, 750));
+    next();
+  }
 });
 
 // open site after initial load

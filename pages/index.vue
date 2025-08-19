@@ -14,6 +14,7 @@ const { data } = await useGraphqlQuery({
   },
 });
 const page = data.value.home;
+const title = page.seo.find((meta) => meta.tag === "title");
 
 onMounted(() => {
   window.scrollTo(0, 0);
@@ -29,6 +30,7 @@ onMounted(() => {
 
 <template>
   <div class="bg-skyblue">
+    <Seo :data="page.seo" :title="title.content" />
     <HomeHero
       v-if="page.hero"
       :data="page.hero"

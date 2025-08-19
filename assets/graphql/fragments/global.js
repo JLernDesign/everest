@@ -165,6 +165,7 @@ export const VideoFragment = gql`
         height
         thumbhash
         blurUpThumb
+        thumbnailUrl
       }
     }
     external {
@@ -467,6 +468,7 @@ const BasicContentFragment = gql`
 `;
 export const MediaPostFragment = gql`
   fragment MediaPostFragment on MediaPostRecord {
+    id
     title
     intro
     publishDate

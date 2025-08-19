@@ -361,12 +361,6 @@ export const openVideoModal = (obj) => {
       ease: "quad.out",
     },
   );
-
-  // start video
-  const player = document.getElementById("video");
-  setTimeout(() => {
-    //player.play();
-  }, 500);
 };
 
 // preload hidden images

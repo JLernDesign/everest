@@ -16,13 +16,6 @@ export const settingsQuery = gql`
         }
       }
     }
-    home {
-      seo: _seoMetaTags {
-        attributes
-        content
-        tag
-      }
-    }
     global(locale: $locale) {
       headerCta {
         ...LinkFragment
