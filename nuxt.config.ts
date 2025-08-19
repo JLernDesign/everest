@@ -24,13 +24,13 @@ export default defineNuxtConfig({
     },
   },
 
-  scripts: {
+  /*   scripts: {
     registry: {
       googleTagManager: {
         id: "GTM-KS9LCPNL",
       },
     },
-  },
+  }, */
 
   ssr: true,
 
@@ -64,6 +64,12 @@ export default defineNuxtConfig({
       { code: "en", name: "English", file: "en.json" },
       { code: "de", name: "Deutsch", file: "de.json" },
     ],
+  },
+
+  vite: {
+    define: {
+      __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: true,
+    },
   },
 
   css: ["~/assets/fonts/fonts.css", "~/assets/css/global.css"],
