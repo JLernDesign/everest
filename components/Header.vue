@@ -167,7 +167,7 @@ const hideSticky = () => {
   <Menu :data="menu.main" :sticky="sticky" />
 
   <!-- search -->
-  <Search />
+  <!-- <Search /> -->
 </template>
 
 <style scoped></style>

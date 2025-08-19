@@ -70,6 +70,14 @@ export default defineNuxtConfig({
     define: {
       __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: true,
     },
+    build: {
+      minify: "terser",
+      terserOptions: {
+        compress: {
+          drop_console: true,
+        },
+      },
+    },
   },
 
   css: ["~/assets/fonts/fonts.css", "~/assets/css/global.css"],
