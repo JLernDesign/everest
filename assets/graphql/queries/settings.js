@@ -20,7 +20,10 @@ export const settingsQuery = gql`
       headerCta {
         ...LinkFragment
       }
-      topBanner
+      topBanner {
+        bannerText
+        bgColor
+      }
       signIn
       investors {
         title

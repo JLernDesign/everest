@@ -39,7 +39,7 @@ defineExpose({
 
 <template>
   <div
-    class="menu-btn absolute right-[2rem] top-[2.4rem] z-10 flex h-[4rem] w-[4.5rem] translate-y-[3rem] cursor-pointer flex-col items-center justify-center gap-[.5rem] rounded-[.7rem] bg-red transition-colors duration-300"
+    class="menu-btn absolute right-[2rem] top-[2.4rem] z-10 flex h-[4rem] w-[4.5rem] cursor-pointer flex-col items-center justify-center gap-[.5rem] rounded-[.7rem] bg-red transition-colors duration-300"
     :class="open && 'bg-shadowblue'"
   >
     <div

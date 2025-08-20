@@ -2,7 +2,7 @@
 import gsap from "gsap";
 import { useScroll } from "@vueuse/core";
 
-const props = defineProps(["menu", "data"]);
+const props = defineProps(["menu", "data", "banner"]);
 const scrolled = ref(false);
 const sticky = ref(true);
 const header = ref(null);
@@ -10,8 +10,11 @@ const logo = ref(null);
 const theme = useState("theme");
 const loaded = ref(false);
 const { y, directions } = useScroll(window);
+const mobile = breakpoints.smallerOrEqual("tablet1");
 const sp = 0.75;
 const easer = "power3.out";
+let bannerGap = 0;
+props.banner && !mobile.value ? (bannerGap = "1rem") : null;
 
 onMounted(() => {
   setTimeout(() => {
@@ -22,7 +25,7 @@ onMounted(() => {
       {
         duration: 0.75,
         opacity: 1,
-        y: 0,
+        y: bannerGap,
         ease: "power3.out",
       },
     );
@@ -37,12 +40,22 @@ onMounted(() => {
 const setSticky = () => {
   // shrink header on scroll start
   if (window.scrollY > 0) {
-    if (!scrolled.value) {
+    if (!scrolled.value && !mobile.value) {
       smallHeader();
+    }
+    if (mobile.value) {
+      const menu = document.querySelector(".mobile-menu");
+      gsap.killTweensOf(menu);
+      gsap.to(menu, { duration: 0.75, y: 0, ease: easer });
     }
   } else {
     if (scrolled.value) {
       fullHeader();
+    }
+    if (mobile.value) {
+      const menu = document.querySelector(".mobile-menu");
+      gsap.killTweensOf(menu);
+      gsap.to(menu, { duration: 0.5, y: "3.6rem", ease: easer });
     }
   }
 
@@ -67,6 +80,9 @@ const smallHeader = () => {
   scrolled.value = true;
   logo.value.setSticky();
 
+  // header
+  gsap.to(header.value, { duration: sp, y: 0, ease: easer });
+
   // nav
   const bg = qs(".navbg", header.value);
   const wrap = qs(".nav-wrap", header.value);
@@ -76,20 +92,21 @@ const smallHeader = () => {
     { scaleX: 0.7 },
     { duration: 2, opacity: 1, scaleX: 1, ease: "expo.out" },
   );
-  gsap.to(wrap, { duration: sp, y: "-3.4rem", ease: easer });
+  gsap.to(wrap, { duration: sp, y: "-2.9rem", ease: easer });
 
   // cta
   const cta = qs(".cta-wrap", header.value);
   const lang = qs(".lang", header.value);
-  gsap.to(cta, { duration: sp, y: "-3.4rem", ease: easer });
-  gsap.to(lang, { duration: 0.3, autoAlpha: 0, ease: "none" });
+  gsap.to(cta, { duration: sp, y: "-2.9rem", ease: easer });
+  //gsap.to(lang, { duration: 0.3, autoAlpha: 0, ease: "none" });
 };
 
 const fullHeader = () => {
   scrolled.value = false;
   logo.value.unsetSticky();
 
-  gsap.set(header.value, { yPercent: 0 });
+  // header
+  gsap.to(header.value, { duration: 0.5, y: bannerGap, ease: "power3.out" });
 
   // nav
   const bg = qs(".navbg", header.value);
@@ -136,7 +153,7 @@ const hideSticky = () => {
     <LogoAnim ref="logo" :speed="sp" :easer="easer" :theme="theme" />
 
     <!-- nav -->
-    <div class="nav-wrap hidden w-full justify-center pt-[6.5rem] s:grid">
+    <div class="nav-wrap hidden w-full justify-center pt-[6rem] s:grid">
       <div class="relative grid place-content-center px-[5rem] py-[1.25rem]">
         <div
           class="navbg absolute -top-[1px] left-0 h-full w-full rounded-btn border-1 border-jaffalt bg-jaffa opacity-0 shadow-nav"
@@ -147,13 +164,13 @@ const hideSticky = () => {
 
     <!-- cta / login -->
     <div
-      class="cta-wrap absolute right-[4.5rem] top-[4.2rem] flex items-center justify-end space-x-8 pr-side pt-10 s:right-0 s:top-[3.6rem]"
+      class="cta-wrap absolute right-[4.5rem] top-[4.75rem] flex items-center justify-end space-x-8 pr-side pt-10 s:right-0 s:top-[3.4rem]"
     >
-      <button class="search-btn relative [&_.icon]:hover:fill-red">
+      <button class="search-btn relative max-s:-mt-1 [&_.icon]:hover:fill-red">
         <span
           class="hit absolute left-1/2 top-1/2 size-[200%] -translate-x-1/2 -translate-y-1/2"
         ></span>
-        <IconSearch color="fill-black" />
+        <IconSearch :color="theme == 'dark' ? 'fill-white' : 'fill-black'" />
       </button>
 
       <Language :theme="theme" />

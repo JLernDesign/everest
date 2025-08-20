@@ -45,13 +45,14 @@ onMounted(() => {
       ref="header"
       :menu="menu_data.menu"
       :data="data"
+      :banner="data.topBanner"
     />
+    <GlobalBanner :data="data.topBanner" />
     <div class="main-contents"><slot /></div>
     <template v-if="loaded">
       <LazyFooter v-if="menu_data" :menu="menu_data.menu" :data="data" />
     </template>
     <LazyVideoModal />
-    <LazyGlobalBanner :data="data?.topBanner" />
     <UISiteCover />
   </div>
 </template>

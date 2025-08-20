@@ -47,7 +47,7 @@ onUnmounted(() => {
 
       <!-- image -->
       <div
-        class="image-wrap xxl:left-1/2 xxl:-translate-x-1/2 relative left-1/2 top-auto -ml-[91rem] h-[112rem] w-[180rem] origin-top scale-[.4] s:absolute s:left-0 s:top-0 s:ml-0 s:scale-100 max-s:mt-[3.2rem] max-s:h-[36rem]"
+        class="image-wrap relative left-1/2 top-auto -ml-[91rem] h-[112rem] w-[180rem] origin-top scale-[.4] s:absolute s:left-0 s:top-0 s:ml-0 s:scale-100 xxl:left-1/2 xxl:-translate-x-1/2 max-s:mt-[3.2rem] max-s:h-[36rem]"
       >
         <UIGlow
           class="glower left-[36.2rem] top-[8.3rem] h-[106.2rem] !w-[118.1rem] s:top-[19.7rem]"

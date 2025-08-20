@@ -14,6 +14,8 @@ export const bgColor = (obj) => {
       return "bg-lightblue";
     case "lightblue":
       return "bg-skyblue";
+    case "darkblue":
+      return "bg-blue";
     case "red":
       return "bg-red";
     case "tan":
@@ -22,6 +24,8 @@ export const bgColor = (obj) => {
       return "bg-yellow";
     case "green":
       return "bg-green";
+    case "black":
+      return "bg-shadowblue";
 
     default:
       break;

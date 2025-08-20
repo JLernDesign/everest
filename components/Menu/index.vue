@@ -103,7 +103,7 @@ const toggleSubMenus = (e) => {
 
 <template>
   <div
-    class="mobile-menu fixed left-0 top-0 z-20 block h-0 w-screen overflow-visible s:hidden"
+    class="mobile-menu fixed left-0 top-0 z-20 block h-0 w-screen translate-y-[3.6rem] overflow-visible s:hidden"
     ref="main"
   >
     <!-- menu button -->
@@ -116,15 +116,13 @@ const toggleSubMenus = (e) => {
 
     <!-- main menu -->
     <div
-      class="menu-wrap absolute left-0 top-0 z-1 hidden h-screen w-screen touch-auto overflow-scroll overscroll-contain"
+      class="menu-wrap absolute left-0 top-[0] z-1 hidden h-screen w-screen touch-auto overflow-scroll overscroll-contain"
       ref="menu"
     >
       <!-- top bar -->
       <div class="bar fixed left-0 top-0 z-10 h-[9rem] w-full bg-skyblue">
         <!-- logo -->
-        <div
-          class="logo-main absolute z-5 pl-side-mob pt-[1.5rem] s:pl-side s:pt-[4.25rem]"
-        >
+        <div class="logo-main absolute z-5 pl-side-mob pt-[1.5rem] s:pl-side">
           <NuxtLink
             :to="$localePath('/')"
             @click="closeMenu"
