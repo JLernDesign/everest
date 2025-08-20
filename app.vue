@@ -33,6 +33,7 @@ const { data } = await useGraphqlQuery({
 // make reused global data available
 provide("locations", data.value.global.locations);
 provide("global_cta", data.value.global.headerCta);
+provide("investors", data.value.global.investors);
 
 // set favicon from datocms
 useHead(() => {

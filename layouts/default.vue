@@ -11,7 +11,7 @@ const { width, height } = useElementSize(wrapper);
 const theme = useState("theme");
 const loaded = ref(false);
 const main_menu = ref(null);
-
+console.log(props.data);
 // reactive variables
 const queryVariables = computed(() => {
   const vars = {
@@ -51,6 +51,7 @@ onMounted(() => {
       <LazyFooter v-if="menu_data" :menu="menu_data.menu" :data="data" />
     </template>
     <LazyVideoModal />
+    <LazyGlobalBanner :data="data?.topBanner" />
     <UISiteCover />
   </div>
 </template>

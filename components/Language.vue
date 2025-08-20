@@ -55,7 +55,7 @@ const handleClick = (item) => {
 
 <template>
   <div
-    class="lang relative z-2 mb-[1.65rem] flex justify-end space-x-8 text-[1.3rem] uppercase"
+    class="lang relative z-2 inline-block text-[1.3rem] uppercase s:pt-2"
     v-on="!mobile ? { mouseleave: closeMenu } : {}"
   >
     <!-- language -->
@@ -74,7 +74,7 @@ const handleClick = (item) => {
 
     <!-- language menu -->
     <div
-      class="absolute right-0 top-0 z-1 hidden w-[6.8rem] pt-[2rem]"
+      class="absolute left-1/2 top-0 z-1 hidden w-[6.8rem] -translate-x-1/2 pt-[2rem] s:top-2"
       v-on="!mobile ? { mouseleave: closeMenu } : {}"
       ref="menu"
     >

@@ -1,6 +1,6 @@
 <script setup>
 const props = defineProps(["data"]);
-const investors = useState("investors");
+const investors = inject("investors");
 </script>
 
 <template>

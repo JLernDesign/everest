@@ -14,7 +14,7 @@ const setSticky = () => {
   gsap.to(logo_wrap.value.$el, {
     duration: props.speed,
     scale: 0.73,
-    y: "-.8rem",
+    y: "-1.3rem",
     ease: props.easer,
   });
 };
@@ -97,9 +97,7 @@ defineExpose({
 </script>
 
 <template>
-  <div
-    class="logo-main absolute z-5 pl-side-mob pt-[1.5rem] s:pl-side s:pt-[4.25rem]"
-  >
+  <div class="logo-main absolute z-5 pl-side-mob pt-[4.75rem] s:pl-side">
     <NuxtLink
       :to="$localePath('/')"
       class="relative block h-[5.3rem] w-[6.2rem] origin-top-left s:h-[8.1rem] s:w-[9.4rem]"

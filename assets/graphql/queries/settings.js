@@ -20,6 +20,7 @@ export const settingsQuery = gql`
       headerCta {
         ...LinkFragment
       }
+      topBanner
       signIn
       investors {
         title

@@ -76,12 +76,12 @@ const smallHeader = () => {
     { scaleX: 0.7 },
     { duration: 2, opacity: 1, scaleX: 1, ease: "expo.out" },
   );
-  gsap.to(wrap, { duration: sp, y: "-2.9rem", ease: easer });
+  gsap.to(wrap, { duration: sp, y: "-3.4rem", ease: easer });
 
   // cta
   const cta = qs(".cta-wrap", header.value);
   const lang = qs(".lang", header.value);
-  gsap.to(cta, { duration: sp, y: "-2.9rem", ease: easer });
+  gsap.to(cta, { duration: sp, y: "-3.4rem", ease: easer });
   gsap.to(lang, { duration: 0.3, autoAlpha: 0, ease: "none" });
 };
 
@@ -136,7 +136,7 @@ const hideSticky = () => {
     <LogoAnim ref="logo" :speed="sp" :easer="easer" :theme="theme" />
 
     <!-- nav -->
-    <div class="nav-wrap hidden w-full justify-center pt-[6rem] s:grid">
+    <div class="nav-wrap hidden w-full justify-center pt-[6.5rem] s:grid">
       <div class="relative grid place-content-center px-[5rem] py-[1.25rem]">
         <div
           class="navbg absolute -top-[1px] left-0 h-full w-full rounded-btn border-1 border-jaffalt bg-jaffa opacity-0 shadow-nav"
@@ -147,8 +147,15 @@ const hideSticky = () => {
 
     <!-- cta / login -->
     <div
-      class="cta-wrap absolute right-[4.5rem] top-5 pr-side pt-10 s:right-0 s:top-0"
+      class="cta-wrap absolute right-[4.5rem] top-[4.2rem] flex items-center justify-end space-x-8 pr-side pt-10 s:right-0 s:top-[3.6rem]"
     >
+      <button class="search-btn relative [&_.icon]:hover:fill-red">
+        <span
+          class="hit absolute left-1/2 top-1/2 size-[200%] -translate-x-1/2 -translate-y-1/2"
+        ></span>
+        <IconSearch color="fill-black" />
+      </button>
+
       <Language :theme="theme" />
 
       <div class="hidden s:block">

@@ -16,7 +16,7 @@ export default (options) => {
     method: "POST",
     headers: {
       Authorization: `Bearer ${runtimeConfig.public.datoCmsToken}`,
-      "X-Environment": "staging",
+      /* "X-Environment": "staging", */
     },
     body: computed(() => {
       const vars = toValue(variables);
