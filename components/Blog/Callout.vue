@@ -15,6 +15,7 @@ const posts = data.value.allPosts;
   <Section
     class="bg-jaffa pb-section-bot-mob pt-section-top-lg s:pb-section-bot max-s:!px-0"
     side="none"
+    data-datocms-noindex
   >
     <BlogHeader :data="page" />
 

@@ -1,11 +1,11 @@
 <script setup>
-//import { useSiteSearch } from "vue-datocms";
 import { buildClient } from "@datocms/cma-client-browser";
 
 const runtimeConfig = useRuntimeConfig();
 const client = buildClient({ apiToken: runtimeConfig.public.datoCmsToken });
-const buildId = "36758"; //36565
-//const { state, error, data } = useSiteSearch({ client });
+const buildId = "36758";
+//36758 (staging)
+//36565 (production)
 
 const route = useRoute();
 const q = route.query.q;
@@ -17,6 +17,7 @@ results.value = await client.searchResults.list({
   filter: { query: q, build_trigger_id: buildId, fuzzy: true },
   limit: 100,
 });
+
 console.log(results.value);
 
 onMounted(() => {
@@ -29,10 +30,30 @@ onMounted(() => {
 });
 
 const formatUrl = (url) => {
-  if (url.includes("https://")) {
-    return url;
+  if (url.includes(".app")) {
+    return url.split(".app")[1];
   }
-  return "https://" + url;
+
+  return url;
+};
+
+const formatTitle = (title) => {
+  if (title.includes("Everest Systems | ")) {
+    return title.replace("Everest Systems | ", "");
+  }
+  return title;
+};
+
+const getType = (url) => {
+  if (url.includes("blog")) {
+    return "Post";
+  } else if (url.includes("news")) {
+    return "Press";
+  } else if (url.includes("media")) {
+    return "Media";
+  } else {
+    return "Page";
+  }
 };
 </script>
 
@@ -43,19 +64,31 @@ const formatUrl = (url) => {
 
     <!-- content -->
     <Section class="!pt-0 pb-section-bot-mob s:pb-section-bot">
-      <div
-        class="article bullets mx-auto s:min-h-[80rem] s:max-w-[865px] [&_*+*]:mt-[1.8rem] [&_*+*]:s:mt-[3.2rem] [&_*+h2]:mt-[6rem] [&_*+h2]:s:mt-[9rem] [&_a:hover]:text-red [&_a]:break-all [&_a]:underline [&_a]:underline-offset-[.25rem] [&_h2]:font-helvb [&_h2]:text-body-md-mob [&_h2]:s:text-body-md [&_h3+p]:mt-[.25rem] [&_h3+p]:s:mt-[.5rem] [&_h3]:font-helvb [&_ul]:space-y-[1rem]"
-      >
-        <div v-for="result in results" :key="result.id">
+      <div class="mx-auto max-w-base border-t-1 border-grayline">
+        <div
+          v-for="result in results"
+          :key="result.id"
+          class="item relative border-b-1 border-grayline py-[3rem] text-body-sm-mob leading-sm s:px-side s:py-[4rem] s:pr-[30rem] s:text-body-sm"
+        >
           <h3 class="mb-2">
-            <NuxtLink :to="result.url">{{ result.title }}</NuxtLink>
+            <NuxtLink
+              :to="formatUrl(result.url)"
+              class="ul single relative font-helvh max-s:underline"
+              >{{ formatTitle(result.title) }}</NuxtLink
+            >
           </h3>
-          <p>{{ result.body_excerpt }}</p>
+          <p class="mt-2">{{ result.body_excerpt }}</p>
+
+          <div
+            class="tag absolute right-0 top-[4rem] inline-block rounded-sm border-1 border-black px-[1.4rem] pb-[.6rem] pt-[.4rem] font-barlow text-tag font-medium uppercase"
+          >
+            {{ getType(result.url) }}
+          </div>
         </div>
       </div>
     </Section>
 
-    <!--  <FooterLockup /> -->
+    <FooterLockup :data="{}" />
 
     <!-- cover image for fade in -->
     <LoadCover :loaded="loaded" color="bg-jaffa" />

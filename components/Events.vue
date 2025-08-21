@@ -141,21 +141,6 @@ onMounted(() => {
               <p v-if="item.description" class="mt-2">{{ item.description }}</p>
             </div>
           </div>
-
-          <!-- hover image -->
-          <!-- <div
-            class="pointer-events-none dato-image absolute right-0 top-1/2 hidden h-[21.5rem] w-[28.5rem] -translate-y-1/2 s:block [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
-          >
-            <div
-              class="hover-image absolute h-full w-full overflow-hidden rounded-base opacity-0"
-            >
-              <DatocmsImage
-                v-if="item.image"
-                :data="item.image.responsiveImage"
-                class="h-full w-full"
-              />
-            </div>
-          </div> -->
         </div>
       </div>
 
