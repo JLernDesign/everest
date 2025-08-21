@@ -11,7 +11,7 @@ const { width, height } = useElementSize(wrapper);
 const theme = useState("theme");
 const loaded = ref(false);
 const main_menu = ref(null);
-console.log(props.data);
+
 // reactive variables
 const queryVariables = computed(() => {
   const vars = {

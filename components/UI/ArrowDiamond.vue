@@ -1,4 +1,10 @@
 <script setup>
+const props = defineProps({
+  icon: {
+    type: String,
+    default: "play",
+  },
+});
 const on = ref(false);
 
 const hoverOn = () => {
@@ -23,7 +29,13 @@ defineExpose({
         :class="on ? 'bg-skyblue' : null"
       >
         <IconArrowFill
+          v-if="icon == 'play'"
           class="relative ml-1 -rotate-45 transition-[fill] duration-500"
+          :color="on ? 'fill-red' : 'fill-skyblue'"
+        />
+        <IconSearch
+          v-if="icon == 'search'"
+          class="relative !size-[1.9rem] -rotate-45 transition-[fill] duration-500"
           :color="on ? 'fill-red' : 'fill-skyblue'"
         />
       </div>
