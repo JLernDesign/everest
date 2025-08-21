@@ -1,33 +1,17 @@
 <script setup>
 import { gsap } from "gsap";
-import { useSiteSearch } from "vue-datocms";
-import { buildClient } from "@datocms/cma-client-browser";
 import { vOnClickOutside } from "@vueuse/components";
-
-const runtimeConfig = useRuntimeConfig();
-const client = buildClient({ apiToken: runtimeConfig.public.datoCmsToken });
-
-const { state, error, data } = useSiteSearch({ client });
 
 const open = ref(false);
 const arrowDiamond = ref(null);
 const main = ref(null);
-const rawResults = ref(null);
+const q = ref("");
 
-async function doSearch() {
-  navigateTo("/search?q=" + state.query);
-
-  // conduct search
-  rawResults.value = await client.searchResults.list({
-    filter: { query: state.query },
-    limit: 100,
-  });
+function handleSearch() {
+  navigateTo("/search?q=" + q.value);
 
   // close search
   closeSearch();
-
-  // log results
-  console.log(rawResults.value);
 }
 
 const openSearch = () => {
@@ -100,15 +84,15 @@ defineExpose({
             id="search-input"
             type="text"
             class="h-full w-auto grow bg-transparent text-black outline-none"
-            v-model="state.query"
-            @keyup.enter="doSearch()"
+            v-model="q"
+            @keyup.enter="handleSearch()"
           />
         </div>
         <div
           class="search-input-icon absolute right-[.5rem] top-1/2 size-[5.4rem] -translate-y-1/2 s:right-[1.5rem]"
         >
           <button
-            @click="doSearch()"
+            @click="handleSearch()"
             @mouseenter="arrowDiamond.hoverOn()"
             @mouseleave="arrowDiamond.hoverOff()"
           >

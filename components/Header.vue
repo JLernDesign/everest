@@ -205,10 +205,10 @@ watch(mobile, () => {
   </header>
 
   <!-- mobile menu -->
-  <Menu :data="menu.main" :sticky="sticky" />
+  <Menu :data="menu.main" :sticky="sticky" data-datocms-noindex />
 
   <!-- search -->
-  <SearchBar ref="searchBar" />
+  <SearchBar ref="searchBar" data-datocms-noindex />
 </template>
 
 <style scoped></style>

@@ -47,10 +47,15 @@ onMounted(() => {
       :data="data"
       :banner="data.topBanner"
     />
-    <GlobalBanner :data="data.topBanner" />
+    <GlobalBanner :data="data.topBanner" data-datocms-noindex />
     <div class="main-contents"><slot /></div>
     <template v-if="loaded">
-      <LazyFooter v-if="menu_data" :menu="menu_data.menu" :data="data" />
+      <LazyFooter
+        v-if="menu_data"
+        :menu="menu_data.menu"
+        :data="data"
+        data-datocms-noindex
+      />
     </template>
     <LazyVideoModal />
     <UISiteCover />
