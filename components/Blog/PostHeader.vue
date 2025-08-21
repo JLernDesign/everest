@@ -11,6 +11,7 @@ const props = defineProps(["data", "type"]);
       data.accentColor.bgColor ? bgColor(data.accentColor) : 'bg-tan',
       type != 'feature' && 'max-s:pb-0',
     ]"
+    data-datocms-noindex
   >
     <!-- text -->
     <div

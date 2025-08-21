@@ -14,7 +14,7 @@ const results = ref(null);
 
 // conduct search
 results.value = await client.searchResults.list({
-  filter: { query: q, build_trigger_id: buildId, fuzzy: true },
+  filter: { query: q, build_trigger_id: buildId },
   limit: 100,
 });
 
@@ -70,20 +70,27 @@ const getType = (url) => {
           :key="result.id"
           class="item relative border-b-1 border-grayline py-[3rem] text-body-sm-mob leading-sm s:px-side s:py-[4rem] s:pr-[30rem] s:text-body-sm"
         >
-          <h3 class="mb-2">
+          <h3 class="mb-2 max-s:pr-[8rem]">
             <NuxtLink
               :to="formatUrl(result.url)"
               class="ul single relative font-helvh max-s:underline"
               >{{ formatTitle(result.title) }}</NuxtLink
             >
           </h3>
-          <p class="mt-2">{{ result.body_excerpt }}</p>
+          <p class="mt-8 s:mt-2">{{ result.body_excerpt }}...</p>
 
           <div
-            class="tag absolute right-0 top-[4rem] inline-block rounded-sm border-1 border-black px-[1.4rem] pb-[.6rem] pt-[.4rem] font-barlow text-tag font-medium uppercase"
+            class="tag absolute right-0 top-[2.5rem] inline-block rounded-sm border-1 border-black px-[1.4rem] pb-[.6rem] pt-[.4rem] font-barlow text-tag font-medium uppercase s:top-[4rem]"
           >
             {{ getType(result.url) }}
           </div>
+        </div>
+
+        <div
+          class="py-[3rem] text-body-sm-mob leading-sm s:px-side s:py-[4rem] s:pr-[30rem] s:text-body-sm"
+          v-if="results.length == 0"
+        >
+          <h3 class="text-center">No results found</h3>
         </div>
       </div>
     </Section>
