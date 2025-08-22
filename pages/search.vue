@@ -14,11 +14,11 @@ const results = ref([]);
 
 // conduct search
 results.value = await client.searchResults.list({
-  filter: { query: q, build_trigger_id: buildId },
+  filter: { query: q, build_trigger_id: buildId, fuzzy: true },
   limit: 100,
 });
-
-console.log(results.value);
+/* 
+console.log(results.value); */
 
 onMounted(() => {
   const theme = useState("theme");
@@ -65,6 +65,33 @@ const getType = (url) => {
     return "Page";
   }
 };
+
+/* highlight matches */
+const formatHighlight = (string) => {
+  if (!string || string.length == 0) {
+    return "";
+  }
+
+  let str = "";
+  let last = "";
+  string.forEach((item, i) => {
+    if (item == last) {
+      return;
+    }
+
+    if (i > 0) {
+      str += " ... ";
+    }
+
+    str += item
+      .replaceAll("[h]", "<span class='highlight'>")
+      .replaceAll("[/h]", "</span>");
+
+    last = item;
+  });
+
+  return str;
+};
 </script>
 
 <template>
@@ -87,7 +114,15 @@ const getType = (url) => {
               >{{ formatTitle(result.title) }}</NuxtLink
             >
           </h3>
-          <p class="mt-8 s:mt-2">{{ result.body_excerpt }}...</p>
+          <p
+            class="mt-8 s:mt-2 [&_.highlight]:bg-skyblue [&_.highlight]:bg-opacity-50 [&_.highlight]:px-1 [&_.highlight]:pb-1 [&_.highlight]:pt-2"
+            v-html="formatHighlight(result.highlight.body)"
+          ></p>
+          <!-- <p
+            class="mt-8 s:mt-2 [&_.highlight]:bg-skyblue [&_.highlight]:bg-opacity-50 [&_.highlight]:px-1 [&_.highlight]:pb-1 [&_.highlight]:pt-2"
+          >
+            {{ result.body_excerpt }}...
+          </p> -->
 
           <div
             class="tag absolute right-0 top-[2.5rem] inline-block rounded-sm border-1 border-black px-[1.4rem] pb-[.6rem] pt-[.4rem] font-barlow text-tag font-medium uppercase s:top-[4rem]"

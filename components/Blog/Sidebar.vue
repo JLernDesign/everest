@@ -68,6 +68,7 @@ const copy_to_clipboard = () => {
   <div
     id="sidebar"
     class="z-2 s:h-0 s:w-[28.4rem] max-s:order-2 max-s:mt-[8rem] max-s:px-side-mob"
+    data-datocms-noindex
   >
     <div class="menu relative">
       <div

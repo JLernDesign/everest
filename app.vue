@@ -44,6 +44,7 @@ useHead(() => {
 // execute leave animation for each route
 const page_color = useState("page_color", () => "skyblue");
 router.beforeEach(async (to, from, next) => {
+  console.log("to", to);
   // bypass animation if changing video id
   if (to.query.id || from.query.id) {
     next();
@@ -63,7 +64,8 @@ router.beforeEach(async (to, from, next) => {
       to.name.includes("blog") ||
       to.name.includes("media") ||
       to.name.includes("legal") ||
-      to.name.includes("news")
+      to.name.includes("news") ||
+      to.name.includes("search")
     ) {
       page_color.value = "bg-jaffa";
     }
