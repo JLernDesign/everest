@@ -57,4 +57,8 @@ export default defineNuxtConfig({
   },
 
   css: ["~/assets/fonts/fonts.css", "~/assets/css/global.css"],
+
+  routeRules: {
+    "/post/**": { redirect: "/blog/**" },
+  },
 });
