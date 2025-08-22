@@ -114,15 +114,15 @@ const formatHighlight = (string) => {
               >{{ formatTitle(result.title) }}</NuxtLink
             >
           </h3>
-          <p
+          <!-- <p
             class="mt-8 s:mt-2 [&_.highlight]:bg-skyblue [&_.highlight]:bg-opacity-50 [&_.highlight]:px-1 [&_.highlight]:pb-1 [&_.highlight]:pt-2"
             v-html="formatHighlight(result.highlight.body)"
-          ></p>
-          <!-- <p
+          ></p> -->
+          <p
             class="mt-8 s:mt-2 [&_.highlight]:bg-skyblue [&_.highlight]:bg-opacity-50 [&_.highlight]:px-1 [&_.highlight]:pb-1 [&_.highlight]:pt-2"
           >
             {{ result.body_excerpt }}...
-          </p> -->
+          </p>
 
           <div
             class="tag absolute right-0 top-[2.5rem] inline-block rounded-sm border-1 border-black px-[1.4rem] pb-[.6rem] pt-[.4rem] font-barlow text-tag font-medium uppercase s:top-[4rem]"
