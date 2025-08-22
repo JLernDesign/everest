@@ -10,7 +10,7 @@ const buildId = "36758";
 const route = useRoute();
 const q = route.query.q;
 const loaded = ref(false);
-const results = ref(null);
+const results = ref([]);
 
 // conduct search
 results.value = await client.searchResults.list({
@@ -29,6 +29,16 @@ onMounted(() => {
   }, 200);
 });
 
+/* refresh search */
+watch(
+  () => route.query.q,
+  () => {
+    results.value = [];
+    console.log("refreshing", route.query.q);
+  },
+);
+
+/* formatting */
 const formatUrl = (url) => {
   if (url.includes(".app")) {
     return url.split(".app")[1];
@@ -86,8 +96,9 @@ const getType = (url) => {
           </div>
         </div>
 
+        <!-- no results -->
         <div
-          class="py-[3rem] text-body-sm-mob leading-sm s:px-side s:py-[4rem] s:pr-[30rem] s:text-body-sm"
+          class="py-[3rem] text-body-sm-mob leading-sm s:px-side s:py-[4rem] s:text-body-sm"
           v-if="results.length == 0"
         >
           <h3 class="text-center">No results found</h3>
