@@ -48,6 +48,8 @@ export const settingsQuery = gql`
       badges {
         url
       }
+      gatedHeadline
+      gatedIntro
     }
   }
   ${LinkFragment}

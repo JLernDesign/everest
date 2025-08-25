@@ -34,6 +34,10 @@ const { data } = await useGraphqlQuery({
 provide("locations", data.value.global.locations);
 provide("global_cta", data.value.global.headerCta);
 provide("investors", data.value.global.investors);
+provide("gated_content", {
+  headline: data.value.global.gatedHeadline,
+  intro: data.value.global.gatedIntro,
+});
 
 // set favicon from datocms
 useHead(() => {
@@ -44,9 +48,12 @@ useHead(() => {
 // execute leave animation for each route
 const page_color = useState("page_color", () => "skyblue");
 router.beforeEach(async (to, from, next) => {
-  console.log("to", to);
   // bypass animation if changing video id
   if (to.query.id || from.query.id) {
+    next();
+
+    // bypass animation if changing search query
+  } else if (to.query.q && from.query.q) {
     next();
 
     // execute leave animation

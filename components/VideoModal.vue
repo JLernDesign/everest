@@ -98,16 +98,10 @@ const closeVideoModal = (id) => {
         />
 
         <!-- close button -->
-        <button
-          class="absolute -right-[.5rem] -top-[4rem] size-[3rem] s:-right-[2.5rem] s:-top-[5rem]"
-          @click="closeVideoModal"
-        >
-          <div
-            v-for="n in 2"
-            class="absolute left-1/2 top-1/2 h-0 w-[2rem] -translate-x-1/2 -translate-y-1/2 border-t-2 border-skyblue"
-            :class="n == 1 ? 'rotate-45' : '-rotate-45'"
-          ></div>
-        </button>
+        <UICloseBtn
+          :close="closeVideoModal"
+          class="-right-[.5rem] -top-[4rem] s:-right-[2.5rem] s:-top-[5rem]"
+        />
       </div>
     </div>
   </div>

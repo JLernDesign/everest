@@ -24,9 +24,9 @@ const linkTo = computed(() => {
   }
 
   // document (ebook)
-  if (props.data.media?.document) {
+  /* if (props.data.media?.document) {
     return props.data.media?.document.url;
-  }
+  } */
 
   // internal link (blog post)
   return localePath(`/blog/${props.data.slug}`);
@@ -36,7 +36,12 @@ const isVideo = computed(() => {
   return props.data.media?.video?.file || props.data.media?.video?.external;
 });
 
+const isGated = computed(() => {
+  return props.data.gatedContent;
+});
+
 const handleClick = () => {
+  // video
   if (props.data.media?.video?.file) {
     // add id to query params
     router.push({
@@ -46,6 +51,11 @@ const handleClick = () => {
 
     // open video modal
     openVideoModal(props.data.media?.video);
+  }
+
+  // gated content
+  if (props.data.gatedContent) {
+    openGateModal(props.data.media?.document?.url);
   }
 };
 
@@ -126,7 +136,7 @@ const hoverOff = () => {
 
     <!-- open video modal -->
     <button
-      v-if="isVideo"
+      v-if="isVideo || isGated"
       class="absolute left-0 top-0 z-2 block size-full"
       @click="handleClick"
     ></button>

@@ -58,6 +58,7 @@ onMounted(() => {
       />
     </template>
     <LazyVideoModal />
+    <LazyGateModal />
     <UISiteCover />
   </div>
 </template>

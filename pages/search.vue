@@ -1,5 +1,6 @@
 <script setup>
 import { buildClient } from "@datocms/cma-client-browser";
+import gsap from "gsap";
 
 const runtimeConfig = useRuntimeConfig();
 const client = buildClient({ apiToken: runtimeConfig.public.datoCmsToken });
@@ -11,14 +12,14 @@ const route = useRoute();
 const q = route.query.q;
 const loaded = ref(false);
 const results = ref([]);
+const resultsWrapper = ref(null);
 
 // conduct search
 results.value = await client.searchResults.list({
   filter: { query: q, build_trigger_id: buildId, fuzzy: true },
   limit: 100,
 });
-/* 
-console.log(results.value); */
+console.log(results.value);
 
 onMounted(() => {
   const theme = useState("theme");
@@ -33,10 +34,31 @@ onMounted(() => {
 watch(
   () => route.query.q,
   () => {
-    results.value = [];
-    console.log("refreshing", route.query.q);
+    newSearch();
   },
 );
+
+const newSearch = async () => {
+  // hide results
+  gsap.to(resultsWrapper.value, {
+    opacity: 0,
+    duration: 0.5,
+    ease: "none",
+  });
+
+  // new search
+  results.value = await client.searchResults.list({
+    filter: { query: route.query.q, build_trigger_id: buildId, fuzzy: true },
+    limit: 100,
+  });
+
+  // show new results
+  gsap.to(resultsWrapper.value, {
+    opacity: 1,
+    duration: 0.5,
+    ease: "none",
+  });
+};
 
 /* formatting */
 const formatUrl = (url) => {
@@ -101,7 +123,10 @@ const formatHighlight = (string) => {
 
     <!-- content -->
     <Section class="!pt-0 pb-section-bot-mob s:pb-section-bot">
-      <div class="mx-auto max-w-base border-t-1 border-grayline">
+      <div
+        class="mx-auto max-w-base border-t-1 border-grayline"
+        ref="resultsWrapper"
+      >
         <div
           v-for="result in results"
           :key="result.id"

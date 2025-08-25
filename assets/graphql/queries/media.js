@@ -38,7 +38,11 @@ export const mediaCollectionQuery = gql`
 
 export const mediaPostsQuery = gql`
   query ($tagId: ItemId!) {
-    allMediaPosts(filter: { tag: { eq: $tagId } }, first: 100) {
+    allMediaPosts(
+      filter: { tag: { eq: $tagId } }
+      first: 100
+      orderBy: publishDate_DESC
+    ) {
       ...MediaPostFragment
     }
   }

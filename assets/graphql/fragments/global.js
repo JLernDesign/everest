@@ -476,6 +476,7 @@ export const MediaPostFragment = gql`
       name
       slug
     }
+    gatedContent
     media {
       ... on ProductDemoRecord {
         __typename

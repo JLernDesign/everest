@@ -108,16 +108,10 @@ defineExpose({
     </div>
 
     <!-- close button -->
-    <button
-      class="group absolute bottom-[.5rem] right-[.5rem] size-[3rem] s:bottom-[1rem] s:right-[2rem]"
-      @click="closeSearch"
-    >
-      <div
-        v-for="n in 2"
-        class="absolute left-1/2 top-1/2 h-0 w-[2rem] -translate-x-1/2 -translate-y-1/2 border-t-2 border-skyblue transition-colors duration-300 group-hover:border-red"
-        :class="n == 1 ? 'rotate-45' : '-rotate-45'"
-      ></div>
-    </button>
+    <UICloseBtn
+      :close="closeSearch"
+      class="bottom-[.5rem] right-[.5rem] s:bottom-[1rem] s:right-[2rem]"
+    />
   </div>
 </template>
 

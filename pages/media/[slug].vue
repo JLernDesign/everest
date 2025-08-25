@@ -11,16 +11,17 @@ const { data } = await useGraphqlQuery({
   query: mediaCollectionQuery.loc.source.body,
 });
 const page = data.value.mediaPage;
-const collections = data.value.allMediaCollections.filter(
+const collections = data.value.allMediaCollections;
+/* const collections = data.value.allMediaCollections.filter(
   (collection) => collection.tag?.slug != "ebooks",
-);
+); */
 
 // get tag id
 const tagIds = {
   "product-demos": "cg00smj3TbioZKUzVg3s2A",
   video: "fyWxNDPCQeCC5Ue2d3rdtQ",
   podcasts: "Ug2zyP8QSZanoBxyhEZ1wA",
-  "e-book": "fCd4d2mrSAeBNYqcPSAZCw",
+  ebooks: "fCd4d2mrSAeBNYqcPSAZCw",
 };
 const tagId = tagIds[route.params.slug];
 

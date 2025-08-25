@@ -367,6 +367,22 @@ export const openVideoModal = (obj) => {
   );
 };
 
+// gate modal
+export const openGateModal = (url) => {
+  const gatedUrl = useState("gatedUrl");
+  gatedUrl.value = url;
+  const modal = document.getElementById("gate-modal");
+  gsap.fromTo(
+    modal,
+    { opacity: 0, display: "block" },
+    {
+      duration: 0.5,
+      opacity: 1,
+      ease: "power3.out",
+    },
+  );
+};
+
 // preload hidden images
 export const preloadImg = (file) => {
   let img = new Image();

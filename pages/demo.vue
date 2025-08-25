@@ -12,6 +12,7 @@ const logos = data.value.bookDemo.featuredLogos;
 
 onMounted(() => {
   window.addEventListener("message", (event) => {
+    console.log("event", event.data.eventName);
     if (
       event.data.type === "hsFormCallback" &&
       event.data.eventName === "onFormReady"
@@ -54,7 +55,7 @@ onMounted(() => {
     <Section :hero="true" class="max-s:pt-hero-mob-lg">
       <header class="text-center">
         <h1
-          class="-tracking-md-mob font-barlow-cond-semibold text-xxl-mob uppercase leading-xxl s:text-xxl s:-tracking-md"
+          class="font-barlow-cond-semibold text-xxl-mob uppercase leading-xxl -tracking-md-mob s:text-xxl s:-tracking-md"
         >
           {{ page.headline }}
         </h1>
