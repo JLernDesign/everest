@@ -483,3 +483,21 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 1000px theme("colors.shadowblue") inset;
   -webkit-text-fill-color: #fff;
 }
+
+.form.light {
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px theme("colors.jaffa") inset;
+    -webkit-text-fill-color: #000;
+  }
+}
+
+.form {
+  opacity: 1;
+  transition: opacity 0.25s linear;
+  &.off {
+    opacity: 0;
+  }
+}

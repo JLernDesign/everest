@@ -50,6 +50,7 @@ export const settingsQuery = gql`
       }
       gatedHeadline
       gatedIntro
+      gatedFormId
     }
   }
   ${LinkFragment}

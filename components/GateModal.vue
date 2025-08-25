@@ -1,33 +1,28 @@
 <script setup>
 import gsap from "gsap";
 
-const page = {
-  hubspotId: "4d5fb6f7-233e-4bd1-a143-79eb7e7994e2",
-};
-
 const gatedUrl = useState("gatedUrl");
 const gatedContent = inject("gated_content");
+const formLoaded = ref(false);
+let formHeight = 0;
+let modal = null;
 
 onMounted(() => {
+  modal = document.getElementById("gate-modal");
+
   window.addEventListener("message", (event) => {
+    //console.log("event", event.data.eventName);
     if (
       event.data.type === "hsFormCallback" &&
       event.data.eventName === "onFormReady"
     ) {
       nextTick(() => {
-        console.log("form loaded");
+        formLoaded.value = true;
       });
-    }
-    if (
-      event.data.type === "hsFormCallback" &&
-      event.data.eventName === "onFormSubmit"
-    ) {
-      console.log("form submitted");
-      //showGatedContent();
     }
   });
 
-  if (page.hubspotId) {
+  if (gatedContent.formId) {
     const script = document.createElement("script");
     script.src = "https://js.hsforms.net/forms/v2.js";
     document.body.appendChild(script);
@@ -35,11 +30,16 @@ onMounted(() => {
       if (window.hbspt) {
         window.hbspt.forms.create({
           portalId: "48112164",
-          formId: page.hubspotId,
-          target: "#hubspotForm",
+          formId: gatedContent.formId,
+          target: "#hubspotGatedForm",
           css: "",
+          onBeforeFormSubmit: () => {
+            const form = modal.querySelector(".form");
+            formHeight = form.offsetHeight;
+            form.style.height = formHeight + "px";
+          },
           onFormSubmitted: () => {
-            console.log("✅ HubSpot form submitted!");
+            showGatedContent();
           },
         });
       }
@@ -49,7 +49,6 @@ onMounted(() => {
 
 const closeModal = () => {
   // close modal
-  const modal = document.getElementById("gate-modal");
   gsap.to(modal, {
     duration: 0.35,
     opacity: 0,
@@ -62,14 +61,12 @@ const closeModal = () => {
 };
 
 const showGatedContent = () => {
-  const modal = document.getElementById("gate-modal");
   const form = modal.querySelector(".form");
   const gatedContent = modal.querySelector(".gated-content");
   const gatedContentInner = gatedContent.querySelector(".gated-content-inner");
   const modalInner = modal.querySelector(".modal-inner");
 
   const startHeight = modalInner.offsetHeight;
-  const formHeight = form.offsetHeight;
   const gateHeight = gatedContentInner.offsetHeight;
   const dif = formHeight - gateHeight;
 
@@ -119,11 +116,10 @@ const showGatedContent = () => {
       class="flex h-screen w-screen items-center justify-center p-side-mob s:p-side"
     >
       <div
-        class="modal-inner relative w-full max-w-[73.5rem] rounded-base-mob bg-jaffa p-[5rem] pb-[10rem] s:rounded-base"
+        class="modal-inner relative w-full max-w-[73.5rem] rounded-base-mob bg-jaffa p-[2rem] !pb-[12rem] s:rounded-base s:p-[5rem]"
       >
         <header
-          class="has-break space-y-[2rem] text-center s:space-y-[2.5rem] s:pb-4"
-          @click="showGatedContent"
+          class="has-break space-y-[2rem] pb-[3rem] text-center s:space-y-[1.5rem]"
         >
           <h2
             v-if="gatedContent.headline"
@@ -140,18 +136,18 @@ const showGatedContent = () => {
         </header>
 
         <!-- hubspot form -->
-        <div class="form min-h-[32rem]">
+        <div class="form light" :class="!formLoaded && 'off min-h-[32rem]'">
           <div
-            id="hubspotForm"
+            id="hubspotGatedForm"
             v-once
-            class="form [&_.hs-input]:leading-normal [&_input[type='submit']:hover]:text-lime [&_input[type='submit']]:leading-normal relative s:text-body-sm [&_.hs-form-field]:flex-1 [&_.hs-form-field_label]:text-body-sm-mob [&_.hs-form-field_label]:text-white [&_.hs-form-field_label]:opacity-75 [&_.hs-input]:mt-3 [&_.hs-input]:h-[5rem] [&_.hs-input]:w-full [&_.hs-input]:rounded-sm [&_.hs-input]:border-1 [&_.hs-input]:border-whiteline [&_.hs-input]:bg-shadowblue [&_.hs-input]:!px-6 [&_.hs-input]:!pb-[1.125rem] [&_.hs-input]:!pt-[1.3125rem] [&_.hs-input]:text-body-sm-mob [&_.hs-input]:text-white [&_.hs-input]:outline-none [&_.hs-input]:s:mt-3 s:[&_.hs-input]:!px-[1.875rem] [&_fieldset]:w-full [&_fieldset]:gap-[3.5rem] [&_fieldset]:s:flex [&_form]:space-y-[3rem] [&_input[type='checkbox']]:mt-0 [&_input[type='checkbox']]:h-auto [&_input[type='submit']]:mt-[1rem] [&_input[type='submit']]:w-auto [&_input[type='submit']]:min-w-[13.5rem] [&_input[type='submit']]:rounded-btn [&_input[type='submit']]:bg-red [&_input[type='submit']]:!px-[1.4rem] [&_input[type='submit']]:!py-[1.4rem] [&_input[type='submit']]:font-helvh [&_input[type='submit']]:text-body-sm-mob [&_input[type='submit']]:text-skyblue [&_select]:appearance-none [&_textarea]:!h-[13rem] [&_textarea]:!resize-none"
+            class="form [&_.hs-input]:leading-normal [&_input[type='submit']:hover]:text-lime [&_input[type='submit']]:leading-normal relative s:text-body-sm [&_.form-columns-1+.form-columns-1]:hidden max-s:[&_.form-columns-2]:space-y-[3rem] [&_.hs-error-msgs]:h-0 [&_.hs-error-msgs]:translate-y-2 [&_.hs-error-msgs_label]:!text-body-sm-mob [&_.hs-form-field]:flex-1 [&_.hs-form-field_label]:text-body-sm-mob [&_.hs-form-field_label]:text-black [&_.hs-form-field_label]:opacity-50 s:[&_.hs-form-field_label]:text-body-sm [&_.hs-input]:mt-3 [&_.hs-input]:h-[5rem] [&_.hs-input]:!w-full [&_.hs-input]:rounded-sm [&_.hs-input]:border-1 [&_.hs-input]:border-jaffalt [&_.hs-input]:bg-transparent [&_.hs-input]:!px-6 [&_.hs-input]:!pb-[1.125rem] [&_.hs-input]:!pt-[1.3125rem] [&_.hs-input]:text-body-sm-mob [&_.hs-input]:text-black [&_.hs-input]:outline-none [&_.hs-input]:s:mt-3 s:[&_.hs-input]:!px-[1.875rem] s:[&_.hs-input]:text-body-sm [&_.submitted-message]:opacity-0 [&_fieldset]:w-full [&_fieldset]:!max-w-none [&_fieldset]:gap-[3.5rem] [&_fieldset]:s:flex [&_form]:space-y-[3rem] [&_input[type='checkbox']]:mt-0 [&_input[type='checkbox']]:h-auto [&_input[type='submit']]:mt-[1rem] [&_input[type='submit']]:w-auto [&_input[type='submit']]:min-w-[13.5rem] [&_input[type='submit']]:rounded-btn [&_input[type='submit']]:bg-red [&_input[type='submit']]:!px-[1.4rem] [&_input[type='submit']]:!py-[1.4rem] [&_input[type='submit']]:font-helvh [&_input[type='submit']]:text-body-sm-mob [&_input[type='submit']]:text-skyblue [&_select]:appearance-none [&_textarea]:!h-[13rem] [&_textarea]:!resize-none"
           ></div>
         </div>
         <!-- end hubspot form -->
 
         <!-- gated content -->
         <div class="gated-content h-0 w-full overflow-hidden text-center">
-          <div class="gated-content-inner py-[4rem]">
+          <div class="gated-content-inner py-[2rem]">
             <CtaBtn :data="{ external: true }" :to="gatedUrl"
               >Download Ebook</CtaBtn
             >
@@ -179,4 +175,10 @@ const showGatedContent = () => {
   </div>
 </template>
 
-<style scoped></style>
+<style>
+#hubspotGatedForm {
+  .hs_error_rollup {
+    display: none !important;
+  }
+}
+</style>

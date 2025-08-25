@@ -37,6 +37,7 @@ provide("investors", data.value.global.investors);
 provide("gated_content", {
   headline: data.value.global.gatedHeadline,
   intro: data.value.global.gatedIntro,
+  formId: data.value.global.gatedFormId,
 });
 
 // set favicon from datocms

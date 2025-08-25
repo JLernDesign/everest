@@ -12,7 +12,6 @@ const logos = data.value.bookDemo.featuredLogos;
 
 onMounted(() => {
   window.addEventListener("message", (event) => {
-    console.log("event", event.data.eventName);
     if (
       event.data.type === "hsFormCallback" &&
       event.data.eventName === "onFormReady"
@@ -145,12 +144,4 @@ onMounted(() => {
   </div>
 </template>
 
-<style scoped>
-.form {
-  opacity: 1;
-  transition: opacity 0.25s linear;
-  &.off {
-    opacity: 0;
-  }
-}
-</style>
+<style scoped></style>
