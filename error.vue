@@ -37,7 +37,12 @@ provide("global_cta", header_data.value.global.headerCta);
   <div
     class="wrapper section-wrap on relative min-h-screen overflow-hidden bg-skyblue"
   >
-    <Header ref="header" :menu="main_menu" :data="header_data.global" />
+    <Header
+      v-if="header_data"
+      ref="header"
+      :menu="main_menu"
+      :data="header_data?.global"
+    />
 
     <UICloud
       type="2"

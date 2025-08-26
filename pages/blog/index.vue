@@ -111,6 +111,13 @@ const updatePage = (n) => {
     <!-- featured posts -->
     <BlogFeatured :data="finalPageData" />
 
+    <!-- email signup -->
+    <BlogSignup
+      loc="blog"
+      theme="light"
+      class="pb-[2rem] s:pb-[10rem] max-s:pt-[5rem]"
+    />
+
     <!-- thumbs -->
     <Section :side="false" class="s:!pt-0">
       <!-- filter -->

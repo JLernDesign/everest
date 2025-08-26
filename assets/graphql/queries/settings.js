@@ -51,6 +51,11 @@ export const settingsQuery = gql`
       gatedHeadline
       gatedIntro
       gatedFormId
+      signupForm {
+        headline
+        intro
+        hubspotId
+      }
     }
   }
   ${LinkFragment}

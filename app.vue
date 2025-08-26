@@ -39,6 +39,7 @@ provide("gated_content", {
   intro: data.value.global.gatedIntro,
   formId: data.value.global.gatedFormId,
 });
+provide("signup_form", data.value.global.signupForm);
 
 // set favicon from datocms
 useHead(() => {

@@ -23,7 +23,11 @@ const investors = inject("investors");
         />
 
         <!-- email signup -->
-        <BlogSignup theme="dark" />
+        <BlogSignup
+          loc="footer"
+          theme="dark"
+          class="pb-[2rem] pt-[5rem] s:pb-[4rem] s:pt-[10rem]"
+        />
 
         <!-- logo -->
         <NuxtLink

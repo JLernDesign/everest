@@ -190,7 +190,7 @@ watch(mobile, () => {
         <IconSearch :color="theme == 'dark' ? 'fill-white' : 'fill-black'" />
       </button>
 
-      <Language :theme="theme" />
+      <!-- <Language :theme="theme" /> -->
 
       <div class="hidden s:block">
         <CtaGroup
