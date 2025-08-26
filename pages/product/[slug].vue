@@ -15,6 +15,8 @@ const { data } = await useGraphqlQuery({
 const page = data.value.product;
 /* console.log(toRaw(data.value)); */
 
+provide("client_quote", page.clientQuote);
+
 onMounted(() => {
   window.scrollTo(0, 0);
 
@@ -41,6 +43,7 @@ onMounted(() => {
 <template>
   <div class="bg-jaffa">
     <Seo :data="page.seo" />
+
     <ProductHero
       v-if="page.hero"
       :data="page.hero"
