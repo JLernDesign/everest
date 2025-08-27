@@ -55,7 +55,7 @@ onUnmounted(() => {
     <UIJagEdge color="fill-shadowblue" />
 
     <!-- customer quote -->
-    <ClientItemSingle :data="clientQuote" />
+    <ClientItemSingle v-if="clientQuote" :data="clientQuote" />
 
     <SectionHeader theme="dark" :data="data.header" />
 
