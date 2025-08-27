@@ -55,9 +55,7 @@ onUnmounted(() => {
     <UIJagEdge color="fill-shadowblue" />
 
     <!-- customer quote -->
-    <div class="mx-auto max-w-[115.5rem] pb-[11rem] pt-[10rem]">
-      <ClientListItem :data="clientQuote" :autoOpen="true" loc="products" />
-    </div>
+    <ClientItemSingle :data="clientQuote" />
 
     <SectionHeader theme="dark" :data="data.header" />
 

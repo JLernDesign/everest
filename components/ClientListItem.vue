@@ -62,16 +62,6 @@ const closeItem = () => {
   });
 };
 
-const getDelay = () => {
-  let del;
-  if (props.num % 2 == 0) {
-    del = -5;
-  } else {
-    del = -15;
-  }
-  return del;
-};
-
 defineExpose({ openItem, open, closeItem });
 </script>
 
@@ -82,7 +72,7 @@ defineExpose({ openItem, open, closeItem });
       open
         ? 'cursor-auto bg-white shadow-[4px_4px_20px_0px_rgba(0,0,0,0.03)]'
         : 'cursor-pointer hover:bg-[rgba(255,255,255,0.2)]',
-      loc === 'products' ? '!bg-skyblue' : '',
+      loc === 'products' ? 'overflow-hidden !bg-skyblue' : '',
     ]"
   >
     <!-- add clouds for product -->
@@ -92,17 +82,19 @@ defineExpose({ openItem, open, closeItem });
     >
       <UICloud
         type="2"
-        class="-top-[45rem] left-0"
+        class="-top-[25rem] left-0"
         :anim="true"
-        :speed="60"
-        :delay="getDelay()"
+        :speed="55"
+        :delay="-35"
+        container="!w-[150rem]"
       />
       <UICloud
         type="2"
-        class="left-0 top-[0rem]"
+        class="left-0 top-[10rem] s:top-[0rem]"
         :anim="true"
-        :speed="40"
-        :delay="getDelay() * 2"
+        :speed="35"
+        :delay="0"
+        container="!w-[150rem]"
       />
     </div>
 
