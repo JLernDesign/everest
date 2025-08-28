@@ -3,19 +3,31 @@ import gsap from "gsap";
 
 const props = defineProps(["data", "slider"]);
 const section = ref(null);
+const main = ref(null);
 let ctx;
+const video = ref(null);
+console.log(props.data);
 
 onMounted(() => {
-  // parallax clouds
   ctx = gsap.context((self) => {
+    // turn on rock animation when in view
+    playInView(main.value, null, toggleVideo);
+
+    // parallax clouds
     const clouds = self.selector(".cloud");
     const cloudY = [40, 70];
     cloudParallax(section.value.$el, null, clouds, cloudY, "top bottom");
   }, section.value.$el);
 });
 onUnmounted(() => {
-  ctx.revert();
+  ctx && ctx.revert();
 });
+
+const toggleVideo = (ev) => {
+  if (video.value) {
+    ev == "enter" ? video.value.playVideo() : video.value.pauseVideo();
+  }
+};
 </script>
 
 <template>
@@ -62,6 +74,42 @@ onUnmounted(() => {
 
     <!-- results slider -->
     <CaseStudyResultsSlider :data="slider" loc="lockup" />
+
+    <!-- results lockup -->
+    <div
+      class="has-break relative z-1 mx-auto max-w-[85rem] space-y-[2rem] text-center s:space-y-[3.5rem]"
+      ref="main"
+    >
+      <div class="mx-auto !-mb-8 w-[28rem]">
+        <VideoAnim
+          file="RevolvingRockLogo1"
+          :loop="true"
+          size="fill"
+          ref="video"
+        />
+      </div>
+
+      <h2
+        class="text font-barlow-cond text-xl-mob leading-xl s:text-xl"
+        :class="!data.intro && 's:pb-[.5rem]'"
+        v-html="formatText(data.headline)"
+      ></h2>
+
+      <p
+        v-if="data.intro"
+        class="mx-auto max-w-[62rem]"
+        v-html="formatText(data.intro)"
+      ></p>
+
+      <!-- cta buttons -->
+      <CtaGroup
+        v-if="data.cta"
+        :data="data.cta.buttons"
+        align="center"
+        :theme="theme"
+        wrap="true"
+      />
+    </div>
   </Section>
 </template>
 

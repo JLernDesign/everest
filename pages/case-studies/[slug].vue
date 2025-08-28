@@ -57,7 +57,9 @@ onMounted(() => {
       />
     </template>
 
-    <CaseStudyResults :data="page" :slider="results_slider" />
+    <CaseStudyResults :data="page.casestudyResults" :slider="results_slider" />
+
+    <CaseStudyMoreStories />
 
     <FooterLockup :data="page.footerCallout" />
 

@@ -63,6 +63,13 @@ export const caseStudyQuery = gql`
           ...ClientQuoteFragment
         }
       }
+      casestudyResults {
+        headline
+        intro
+        cta {
+          ...LinkFragment
+        }
+      }
       footerCallout {
         ...FooterFragment
       }
