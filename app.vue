@@ -60,28 +60,20 @@ router.beforeEach(async (to, from, next) => {
 
     // execute leave animation
   } else {
+    // set page color
     if (
       to.name.includes("about") ||
       to.name.includes("index") ||
       to.name.includes("product")
     ) {
       page_color.value = "bg-skyblue";
-    }
-    if (
-      to.name.includes("why") ||
-      to.name.includes("demo") ||
-      to.name.includes("blog") ||
-      to.name.includes("media") ||
-      to.name.includes("legal") ||
-      to.name.includes("news") ||
-      to.name.includes("search")
-    ) {
+    } else if (to.name.includes("ai") || to.name.includes("client")) {
+      page_color.value = "bg-shadowblue";
+    } else {
       page_color.value = "bg-jaffa";
     }
-    if (to.name.includes("ai") || to.name.includes("client")) {
-      page_color.value = "bg-shadowblue";
-    }
-    /* console.log("page_color:", page_color.value); */
+
+    // set theme
     setTimeout(() => {
       page_color.value == "bg-shadowblue"
         ? (theme.value = "dark")

@@ -7,6 +7,14 @@ import { useBreakpoints } from "@vueuse/core";
 export const top_margin = 40;
 export const basew = 1800;
 
+export const color_set = [
+  "bg-red",
+  "bg-green",
+  "bg-lightblue",
+  "bg-jaffalt",
+  "bg-yellow",
+];
+
 // format color picks for tailwind
 export const bgColor = (obj) => {
   switch (obj.bgColor) {

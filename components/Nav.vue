@@ -15,7 +15,7 @@ watch(
 const menuIds = {
   product: "ZpWZSBQDQti1xbn9l2cD_Q",
   why: "PFK4MTMsSGyvr0kIIbiuWg",
-  client: "b7WnWKIVS3ylsgg5EFTu3g",
+  "client-success": "b7WnWKIVS3ylsgg5EFTu3g",
   learn: "Sfyg47Z5TnamVqzdpjtZzw",
   about: "QD9iJU7KSeaA_II0VbKWZw",
 };
