@@ -60,5 +60,7 @@ export default defineNuxtConfig({
 
   routeRules: {
     "/post/**": { redirect: "/blog/**" },
+    "/de": { redirect: "/" },
+    "/de/**": { redirect: "/**" },
   },
 });
