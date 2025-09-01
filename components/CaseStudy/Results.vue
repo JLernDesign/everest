@@ -73,7 +73,7 @@ const toggleVideo = (ev) => {
     </header>
 
     <!-- results slider -->
-    <CaseStudyResultsSlider :data="slider" loc="lockup" />
+    <CaseStudyResultsSlider v-if="slider" :data="slider" loc="lockup" />
 
     <!-- results lockup -->
     <div

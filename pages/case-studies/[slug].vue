@@ -57,7 +57,11 @@ onMounted(() => {
       />
     </template>
 
-    <CaseStudyResults :data="page.casestudyResults" :slider="results_slider" />
+    <CaseStudyResults
+      v-if="page.casestudyResults"
+      :data="page.casestudyResults"
+      :slider="results_slider"
+    />
 
     <CaseStudyMoreStories />
 

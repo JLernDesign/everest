@@ -1,5 +1,24 @@
 <script setup>
-import gql from "graphql-tag";
+import gsap from "gsap";
+import { caseStudiesQuery } from "~/assets/graphql/queries/case-study";
+
+const route = useRoute();
+
+// get page data
+const { data } = await useGraphqlQuery({
+  query: caseStudiesQuery.loc.source.body,
+});
+const page = data.value.allCaseStudies;
+
+// get next 2 case studies
+let flag;
+page.forEach((item, i) => {
+  if (item.slug == route.params.slug) {
+    flag = i;
+  }
+});
+let wrapped_cs = gsap.utils.wrap(page);
+let next = [wrapped_cs(flag + 1), wrapped_cs(flag + 2)];
 </script>
 
 <template>
@@ -18,26 +37,10 @@ import gql from "graphql-tag";
 
       <!-- grid -->
       <div
-        class="mx-auto grid max-w-[131.5rem] s:mt-[10rem] s:grid-cols-2 s:gap-[13.2rem]"
+        class="mx-auto grid max-w-[131.5rem] s:mt-[6rem] s:grid-cols-2 s:gap-[13.2rem] s:pb-12"
       >
-        <div
-          v-for="i in 2"
-          :key="i"
-          class="w-[59rem] rounded-base-mob bg-jaffalt p-[1.5rem] s:rounded-base"
-        >
-          <div
-            class="photo overflow-hidden rounded-base-mob s:rounded-base [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
-          >
-            <!-- <DatocmsImage
-            v-if="data.image"
-            :data="data.image.responsiveImage"
-            class="h-full w-full"
-          /> -->
-          </div>
-          <div class="p-[2.5rem]">
-            <!-- <p>{{ data.headline }}</p> -->
-          </div>
-        </div>
+        <!-- case study thumb -->
+        <CaseStudyThumb v-for="item in next" :key="item.slug" :data="item" />
       </div>
     </div>
   </div>

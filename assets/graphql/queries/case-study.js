@@ -3,6 +3,7 @@ import {
   LinkFragment,
   FooterFragment,
   ResponsiveImageFragment,
+  HeroFragment,
 } from "../fragments/global";
 
 const ResultsSliderFragment = gql`
@@ -37,6 +38,54 @@ const ClientQuoteFragment = gql`
     text
     byline
   }
+`;
+
+const CasestudyThumbFragment = gql`
+  fragment CasestudyThumbFragment on CaseStudyRecord {
+    title
+    slug
+    headline
+    image {
+      ...ResponsiveImageFragment
+    }
+  }
+`;
+
+export const casestudyLandingQuery = gql`
+  query {
+    casestudyLanding {
+      seo: _seoMetaTags {
+        attributes
+        content
+        tag
+      }
+      title
+      hero {
+        ...HeroFragment
+      }
+      footerCallout {
+        ...FooterFragment
+      }
+    }
+    allCaseStudies(orderBy: order_ASC) {
+      ...CasestudyThumbFragment
+    }
+  }
+  ${FooterFragment}
+  ${HeroFragment}
+  ${CasestudyThumbFragment}
+  ${ResponsiveImageFragment}
+  ${LinkFragment}
+`;
+
+export const caseStudiesQuery = gql`
+  query {
+    allCaseStudies(orderBy: order_ASC) {
+      ...CasestudyThumbFragment
+    }
+  }
+  ${CasestudyThumbFragment}
+  ${ResponsiveImageFragment}
 `;
 
 export const caseStudyQuery = gql`
