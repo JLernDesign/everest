@@ -65,10 +65,10 @@ onUnmounted(() => {
 
         <!-- laptop animation -->
         <div
-          class="computer-wrap absolute left-[31.4rem] top-0 z-1 h-[100rem] w-[110rem] overflow-hidden s:top-[11.4rem]"
+          class="computer-wrap absolute left-[30.4rem] top-0 z-1 h-[100rem] w-[110rem] overflow-hidden s:top-[11.4rem]"
         >
           <div
-            class="absolute w-[104.6rem] translate-x-[6.2rem] translate-y-[-1rem] scale-[1.5]"
+            class="absolute w-[104.6rem] translate-x-[7.2rem] translate-y-[-1rem] scale-[1.5]"
           >
             <VideoAnim file="Laptop" ref="video" />
           </div>
