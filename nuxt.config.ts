@@ -29,13 +29,13 @@ export default defineNuxtConfig({
     name: "Everest Systems",
   },
 
-  /*   scripts: {
+  scripts: {
     registry: {
       googleTagManager: {
         id: "GTM-KS9LCPNL",
       },
     },
-  }, */
+  },
 
   ssr: true,
 
@@ -79,11 +79,11 @@ export default defineNuxtConfig({
     },
     build: {
       minify: "terser",
-      /* terserOptions: {
+      terserOptions: {
         compress: {
           drop_console: true,
         },
-      }, */
+      },
     },
   },
 

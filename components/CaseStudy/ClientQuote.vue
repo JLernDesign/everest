@@ -16,7 +16,7 @@ const props = defineProps(["data", "last"]);
       :class="[
         n == 1
           ? '-top-[5rem] s:-top-[13.6rem]'
-          : 'bottom-[5rem] s:bottom-[10rem]',
+          : '-bottom-[10rem] s:bottom-[10rem]',
         n == 2 && last ? '!hidden' : '',
       ]"
       src="/ui/edge-gradient.svg"

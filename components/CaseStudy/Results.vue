@@ -6,7 +6,6 @@ const section = ref(null);
 const main = ref(null);
 let ctx;
 const video = ref(null);
-console.log(props.data);
 
 onMounted(() => {
   ctx = gsap.context((self) => {
@@ -61,7 +60,7 @@ const toggleVideo = (ev) => {
 
     <!-- header -->
     <header
-      class="relative z-1 space-y-[3rem] text-center s:space-y-header-lg max-s:pt-[5rem]"
+      class="relative z-1 space-y-[3rem] px-side-mob text-center s:space-y-header-lg s:px-side"
     >
       <AnimHeadline>
         <h2
