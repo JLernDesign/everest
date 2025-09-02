@@ -30,7 +30,7 @@ onMounted(() => {
 
 <template>
   <div class="bg-jaffa">
-    <!--  <Seo :data="page.seo" />
+    <Seo :data="page.seo" />
 
     <CaseStudyHero
       :data="{
@@ -40,7 +40,7 @@ onMounted(() => {
       }"
     />
 
-    <template v-for="(module, i) in page.casestudyFlexible.casestudyModules">
+    <!--     <template v-for="(module, i) in page.casestudyFlexible.casestudyModules">
       <CaseStudyResultsSlider
         v-if="module.__typename == 'ResultsSliderRecord'"
         :data="module"
@@ -54,17 +54,17 @@ onMounted(() => {
         :data="module"
         :last="i == page.casestudyFlexible.casestudyModules.length - 1"
       />
-    </template>
+    </template> -->
 
-    <CaseStudyResults
+    <!-- <CaseStudyResults
       v-if="page.casestudyResults"
       :data="page.casestudyResults"
       :slider="results_slider"
-    />
+    /> -->
 
     <CaseStudyMoreStories />
 
-    <FooterLockup :data="page.footerCallout" /> -->
+    <FooterLockup :data="page.footerCallout" />
 
     <!-- cover image for fade in -->
     <LoadCover :loaded="loaded" color="bg-jaffa" />
