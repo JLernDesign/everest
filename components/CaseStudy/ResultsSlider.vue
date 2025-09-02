@@ -42,11 +42,11 @@ onUnmounted(() => {
 <template>
   <Section
     side="none"
-    class="results px-side-mob pb-[8.5rem] s:!pt-0 s:pb-[11rem] max-s:!pt-4"
+    class="results px-side-mob pb-section-bot-mob s:!pt-0 s:pb-[11rem]"
     :class="loc != 'lockup' && 'border-t border-t-grayline bg-jaffa'"
   >
     <!-- buckets -->
-    <div class="mt-12 s:mt-[10rem] s:px-[13rem]" ref="anims">
+    <div class="s:mt-[10rem] s:px-[13rem]" ref="anims">
       <div
         class="mx-auto w-full max-w-[148rem] overflow-hidden s:-mb-[12rem] s:pb-[12rem]"
       >
@@ -86,7 +86,8 @@ onUnmounted(() => {
         <div class="space-y-[2.5rem] s:hidden">
           <div v-for="(item, i) in data.slides">
             <div
-              class="bucket h-full w-full rounded-base-mob bg-red p-side-mob s:rounded-base s:p-[3rem]"
+              class="bucket h-full w-full rounded-base-mob p-side-mob s:rounded-base s:p-[3rem]"
+              :class="colors(i)"
             >
               <IconTri color="fill-black" class="mb-10 s:mb-4" />
               <h3

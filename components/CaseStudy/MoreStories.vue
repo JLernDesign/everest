@@ -17,8 +17,12 @@ page.forEach((item, i) => {
     flag = i;
   }
 });
-let wrapped_cs = gsap.utils.wrap(page);
-let next = [wrapped_cs(flag + 1), wrapped_cs(flag + 2)];
+
+let wrapped_cs, next;
+onMounted(() => {
+  wrapped_cs = gsap.utils.wrap(page);
+  next = [wrapped_cs(flag + 1), wrapped_cs(flag + 2)];
+});
 </script>
 
 <template>
@@ -27,7 +31,7 @@ let next = [wrapped_cs(flag + 1), wrapped_cs(flag + 2)];
 
     <!-- content -->
     <div
-      class="relative overflow-hidden rounded-base-mob bg-shadowblue px-side-mob py-side-mob s:rounded-base s:px-side s:py-section-bot"
+      class="relative overflow-hidden rounded-base-mob py-side-mob s:rounded-base s:bg-shadowblue s:px-side s:py-section-bot"
     >
       <header class="pb-14 text-center text-white">
         <h2 class="text font-barlow-cond text-lg-mob leading-lg s:text-lg">
@@ -37,7 +41,7 @@ let next = [wrapped_cs(flag + 1), wrapped_cs(flag + 2)];
 
       <!-- grid -->
       <div
-        class="mx-auto grid max-w-[131.5rem] s:mt-[6rem] s:grid-cols-2 s:gap-[13.2rem] s:pb-12"
+        class="mx-auto grid max-w-[131.5rem] grid-cols-1 gap-[2rem] s:mt-[6rem] s:grid-cols-2 s:gap-[13.2rem] s:pb-12"
       >
         <!-- case study thumb -->
         <CaseStudyThumb v-for="item in next" :key="item.slug" :data="item" />

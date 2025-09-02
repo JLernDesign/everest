@@ -77,7 +77,7 @@ const toggleVideo = (ev) => {
 
     <!-- results lockup -->
     <div
-      class="has-break relative z-1 mx-auto max-w-[85rem] space-y-[2rem] text-center s:space-y-[3.5rem]"
+      class="has-break relative z-1 mx-auto max-w-[85rem] space-y-[2rem] text-center s:space-y-[3.5rem] max-s:px-side-mob"
       ref="main"
     >
       <div class="mx-auto !-mb-8 w-[28rem]">

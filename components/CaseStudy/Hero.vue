@@ -17,7 +17,7 @@ onMounted(() => {});
     >
       <!-- headline -->
       <div
-        class="flex flex-col justify-center border-l border-l-grayline p-side-mob s:w-[69.5%] s:py-[8rem] s:pl-side s:pr-[10rem] max-s:border-r max-s:border-r-grayline max-s:pb-[4rem]"
+        class="flex flex-col justify-center border-l border-l-grayline p-side-mob s:w-[69.5%] s:py-[8rem] s:pl-side s:pr-[10rem] max-s:border-r max-s:border-r-grayline"
       >
         <h1
           class="text font-barlow-cond text-xl-mob leading-xl -tracking-sm s:text-xl"
@@ -26,9 +26,6 @@ onMounted(() => {});
       </div>
 
       <!-- client details -->
-      <!-- <hr
-        class="relative left-1/2 w-screen -translate-x-1/2 text-grayline s:hidden"
-      /> -->
       <div class="border-x border-x-grayline p-8 s:w-[30.5%]">
         <div
           class="photo overflow-hidden rounded-base-mob s:rounded-base [&_img]:h-full [&_img]:w-full [&_img]:object-cover"

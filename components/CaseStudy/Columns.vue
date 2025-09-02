@@ -10,7 +10,7 @@ const color = "green";
   >
     <!-- columns -->
     <div
-      class="mx-auto flex max-w-base flex-col items-start justify-between s:flex-row"
+      class="mx-auto flex max-w-base flex-col items-start justify-between s:flex-row max-s:gap-[2.5rem]"
     >
       <!-- headline -->
       <div class="w-full s:w-[52rem] s:rounded-base">

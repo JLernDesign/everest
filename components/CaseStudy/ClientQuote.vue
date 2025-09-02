@@ -4,9 +4,9 @@ const props = defineProps(["data", "last"]);
 
 <template>
   <div
-    class="content-block quote relative left-1/2 z-2 w-screen s:-translate-x-1/2"
+    class="content-block quote relative left-1/2 z-2 w-screen s:-translate-x-1/2 max-s:-ml-[50vw]"
     :class="
-      last ? 's:!mt-[10rem] max-s:mt-[8rem]' : 's:!my-[10rem] max-s:my-[8rem]'
+      last ? 's:!mt-[10rem] max-s:mt-[5rem]' : 's:!my-[10rem] max-s:my-[2rem]'
     "
   >
     <!-- edge glow -->
