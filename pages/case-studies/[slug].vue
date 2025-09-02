@@ -10,7 +10,6 @@ const { data } = await useGraphqlQuery({
   },
 });
 const page = data.value.caseStudy;
-console.log(page);
 const loaded = ref(false);
 
 // get results slider data for lockup
@@ -41,10 +40,10 @@ onMounted(() => {
     />
 
     <template v-for="(module, i) in page.casestudyFlexible.casestudyModules">
-      <!--       <CaseStudyResultsSlider
+      <CaseStudyResultsSlider
         v-if="module.__typename == 'ResultsSliderRecord'"
         :data="module"
-      /> -->
+      />
       <CaseStudyColumns
         v-if="module.__typename == 'CasestudyBasicRecord'"
         :data="module"
@@ -56,11 +55,11 @@ onMounted(() => {
       />
     </template>
 
-    <!-- <CaseStudyResults
+    <CaseStudyResults
       v-if="page.casestudyResults"
       :data="page.casestudyResults"
       :slider="results_slider"
-    /> -->
+    />
 
     <CaseStudyMoreStories />
 

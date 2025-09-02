@@ -54,6 +54,7 @@ export default defineNuxtConfig({
     "nuxt-graphql-request",
     "@nuxtjs/i18n",
     "@nuxtjs/sitemap",
+    "@nuxtjs/robots",
   ],
 
   runtimeConfig: {

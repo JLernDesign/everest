@@ -3,8 +3,7 @@ import gsap from "gsap";
 
 const props = defineProps(["data", "loc"]);
 const anims = ref(null);
-
-const colors = gsap.utils.wrap(color_set);
+const colors = ref(null);
 
 // if more than 3 items, init slider
 let slider = false;
@@ -25,6 +24,8 @@ const handleNext = () => {
 let ctx;
 
 onMounted(() => {
+  colors.value = gsap.utils.wrap(color_set);
+
   ctx = gsap.context((self) => {
     // animate items into place on scroll to section
     setTimeout(() => {
@@ -70,7 +71,7 @@ onUnmounted(() => {
           >
             <div
               class="bucket h-full w-[45.5rem] rounded-base-mob p-[3rem] s:rounded-base"
-              :class="colors(i)"
+              :class="colors && colors(i)"
             >
               <IconTri color="fill-black" class="mb-12" />
               <h3
@@ -87,7 +88,7 @@ onUnmounted(() => {
           <div v-for="(item, i) in data.slides">
             <div
               class="bucket h-full w-full rounded-base-mob p-side-mob s:rounded-base s:p-[3rem]"
-              :class="colors(i)"
+              :class="colors && colors(i)"
             >
               <IconTri color="fill-black" class="mb-10 s:mb-4" />
               <h3
