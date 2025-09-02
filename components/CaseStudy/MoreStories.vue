@@ -1,5 +1,5 @@
 <script setup>
-import gsap from "gsap";
+import { gsap } from "gsap";
 import { caseStudiesQuery } from "~/assets/graphql/queries/case-study";
 
 const route = useRoute();
