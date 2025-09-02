@@ -24,6 +24,11 @@ export default defineNuxtConfig({
     },
   },
 
+  site: {
+    url: "https://everest-systems.com",
+    name: "Everest Systems",
+  },
+
   /*   scripts: {
     registry: {
       googleTagManager: {
@@ -48,6 +53,7 @@ export default defineNuxtConfig({
     "@nuxt/scripts",
     "nuxt-graphql-request",
     "@nuxtjs/i18n",
+    "@nuxtjs/sitemap",
   ],
 
   runtimeConfig: {
