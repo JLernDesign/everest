@@ -62,5 +62,6 @@ export default defineNuxtConfig({
     "/post/**": { redirect: "/blog/**" },
     "/de": { redirect: "/" },
     "/de/**": { redirect: "/**" },
+    "/revrec": { redirect: "/product/revenue-recognition" },
   },
 });
