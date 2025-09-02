@@ -18,11 +18,8 @@ page.forEach((item, i) => {
   }
 });
 
-let wrapped_cs, next;
-onMounted(() => {
-  wrapped_cs = gsap.utils.wrap(page);
-  next = [wrapped_cs(flag + 1), wrapped_cs(flag + 2)];
-});
+let wrapped_cs = gsap.utils.wrap(page);
+let next = [wrapped_cs(flag + 1), wrapped_cs(flag + 2)];
 </script>
 
 <template>
