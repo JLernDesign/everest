@@ -56,13 +56,13 @@ onMounted(() => {
       />
     </template> -->
 
-    <CaseStudyResults
+    <!-- <CaseStudyResults
       v-if="page.casestudyResults"
       :data="page.casestudyResults"
       :slider="results_slider"
-    />
+    /> -->
 
-    <!-- <CaseStudyMoreStories /> -->
+    <CaseStudyMoreStories />
 
     <FooterLockup :data="page.footerCallout" />
 
