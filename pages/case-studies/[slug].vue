@@ -40,11 +40,11 @@ onMounted(() => {
       }"
     />
 
-    <!-- <template v-for="(module, i) in page.casestudyFlexible.casestudyModules">
-      <CaseStudyResultsSlider
+    <template v-for="(module, i) in page.casestudyFlexible.casestudyModules">
+      <!--       <CaseStudyResultsSlider
         v-if="module.__typename == 'ResultsSliderRecord'"
         :data="module"
-      />
+      /> -->
       <CaseStudyColumns
         v-if="module.__typename == 'CasestudyBasicRecord'"
         :data="module"
@@ -54,7 +54,7 @@ onMounted(() => {
         :data="module"
         :last="i == page.casestudyFlexible.casestudyModules.length - 1"
       />
-    </template> -->
+    </template>
 
     <!-- <CaseStudyResults
       v-if="page.casestudyResults"
