@@ -62,7 +62,7 @@ onMounted(() => {
       :slider="results_slider"
     />
 
-    <CaseStudyMoreStories />
+    <!-- <CaseStudyMoreStories /> -->
 
     <FooterLockup :data="page.footerCallout" />
 
