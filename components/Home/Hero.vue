@@ -47,7 +47,7 @@ onUnmounted(() => {
 
       <!-- image -->
       <div
-        class="image-wrap xxl:left-1/2 xxl:-translate-x-1/2 relative left-1/2 top-auto -ml-[91rem] h-[112rem] w-[180rem] origin-top scale-[.4] s:absolute s:left-0 s:top-0 s:ml-0 s:scale-100 max-s:mt-[3.2rem] max-s:h-[36rem]"
+        class="image-wrap relative left-1/2 top-auto -ml-[91rem] h-[112rem] w-[180rem] origin-top scale-[.4] s:absolute s:left-0 s:top-0 s:ml-0 s:scale-100 xxl:left-1/2 xxl:-translate-x-1/2 max-s:mt-[3.2rem] max-s:h-[36rem]"
       >
         <UIGlow
           class="glower left-[36.2rem] top-[8.3rem] h-[106.2rem] !w-[118.1rem] s:top-[19.7rem]"
@@ -65,10 +65,10 @@ onUnmounted(() => {
 
         <!-- laptop animation -->
         <div
-          class="computer-wrap absolute left-[31.4rem] top-0 z-1 h-[100rem] w-[110rem] overflow-hidden s:top-[11.4rem]"
+          class="computer-wrap absolute left-[30.4rem] top-0 z-1 h-[100rem] w-[110rem] overflow-hidden s:top-[11.4rem]"
         >
           <div
-            class="absolute w-[104.6rem] translate-x-[6.2rem] translate-y-[-1rem] scale-[1.5]"
+            class="absolute w-[104.6rem] translate-x-[7.2rem] translate-y-[-1rem] scale-[1.5]"
           >
             <VideoAnim file="Laptop" ref="video" />
           </div>
