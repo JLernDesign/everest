@@ -2,7 +2,6 @@
 import { caseStudyQuery } from "~/assets/graphql/queries/case-study";
 
 const route = useRoute();
-console.log(route.params.slug);
 
 const { data } = await useGraphqlQuery({
   query: caseStudyQuery.loc.source.body,

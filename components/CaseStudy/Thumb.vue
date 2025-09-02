@@ -26,7 +26,7 @@ const hoverOff = () => {
 
 <template>
   <div
-    class="relative w-[59rem] rounded-base-mob bg-jaffalt p-[1.5rem] pb-[7.6rem] s:rounded-base"
+    class="relative w-full rounded-base-mob bg-jaffalt p-[1.5rem] pb-[7.6rem] s:w-[59rem] s:rounded-base"
     @mouseenter="hoverOn"
     @mouseleave="hoverOff"
     ref="main"
@@ -40,13 +40,13 @@ const hoverOff = () => {
         class="photo-wrap h-full w-full"
       />
     </div>
-    <div class="p-[2rem]">
+    <div class="px-2 py-[2rem] s:px-[2rem]">
       <p>{{ data.headline }}</p>
     </div>
 
     <!-- arrow -->
     <div
-      class="arrow absolute bottom-0 left-0 z-1 flex h-[7.6rem] w-full items-center border-t-1 border-grayline bg-[url('/casestudy/cs-thumb-lines@2x.png')] bg-cover px-[3.75rem]"
+      class="arrow absolute bottom-0 left-0 z-1 flex h-[7.6rem] w-full items-center border-t-1 border-grayline bg-[url('/casestudy/cs-thumb-lines@2x.png')] bg-cover px-[2rem] s:px-[3.75rem]"
     >
       <IconArrow color="stroke-black" />
     </div>

@@ -72,11 +72,11 @@ export default defineNuxtConfig({
     },
     build: {
       minify: "terser",
-      terserOptions: {
+      /* terserOptions: {
         compress: {
           drop_console: true,
         },
-      },
+      }, */
     },
   },
 

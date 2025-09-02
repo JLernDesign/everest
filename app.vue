@@ -67,7 +67,11 @@ router.beforeEach(async (to, from, next) => {
       to.name.includes("product")
     ) {
       page_color.value = "bg-skyblue";
-    } else if (to.name.includes("ai") || to.name.includes("client")) {
+    } else if (
+      to.name.includes("ai") ||
+      to.name.includes("client") ||
+      (to.name.includes("case-studies") && !to.name.includes("slug"))
+    ) {
       page_color.value = "bg-shadowblue";
     } else {
       page_color.value = "bg-jaffa";
