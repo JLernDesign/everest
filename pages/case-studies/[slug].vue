@@ -30,7 +30,7 @@ onMounted(() => {
 
 <template>
   <div class="bg-jaffa">
-    <Seo :data="page.seo" />
+    <!--  <Seo :data="page.seo" />
 
     <CaseStudyHero
       :data="{
@@ -62,9 +62,9 @@ onMounted(() => {
       :slider="results_slider"
     />
 
-    <!-- <CaseStudyMoreStories /> -->
+    <CaseStudyMoreStories />
 
-    <FooterLockup :data="page.footerCallout" />
+    <FooterLockup :data="page.footerCallout" /> -->
 
     <!-- cover image for fade in -->
     <LoadCover :loaded="loaded" color="bg-jaffa" />
