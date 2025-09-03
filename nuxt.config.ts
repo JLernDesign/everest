@@ -88,4 +88,12 @@ export default defineNuxtConfig({
   },
 
   css: ["~/assets/fonts/fonts.css", "~/assets/css/global.css"],
+
+  sitemap: {
+    sources: ["/api/__sitemap__/urls"],
+  },
+
+  robots: {
+    sitemap: "https://everest-systems.com/sitemap.xml",
+  },
 });
