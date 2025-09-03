@@ -23,11 +23,6 @@ const linkTo = computed(() => {
     return localePath("/news/" + props.data.slug);
   }
 
-  // document (ebook)
-  /* if (props.data.media?.document) {
-    return props.data.media?.document.url;
-  } */
-
   // internal link (blog post)
   return localePath(`/blog/${props.data.slug}`);
 });
@@ -41,6 +36,17 @@ const isGated = computed(() => {
 });
 
 const handleClick = () => {
+  // gated content
+  if (props.data.gatedContent) {
+    let type = "document";
+    let gatedUrl = props.data.media?.document?.url;
+    if (props.data.media?.video) {
+      gatedUrl = props.data.media?.video;
+      type = "video";
+    }
+    openGateModal(gatedUrl, type);
+    return;
+  }
   // video
   if (props.data.media?.video?.file) {
     // add id to query params
@@ -51,11 +57,6 @@ const handleClick = () => {
 
     // open video modal
     openVideoModal(props.data.media?.video);
-  }
-
-  // gated content
-  if (props.data.gatedContent) {
-    openGateModal(props.data.media?.document?.url);
   }
 };
 

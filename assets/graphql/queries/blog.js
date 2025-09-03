@@ -95,6 +95,16 @@ export const postQuery = gql`
             }
             caption
           }
+          ... on BlogTableRecord {
+            id
+            __typename
+            colLeft
+            colRight
+            tableRows {
+              colLeft
+              colRight
+            }
+          }
         }
       }
     }

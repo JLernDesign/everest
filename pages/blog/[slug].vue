@@ -123,6 +123,27 @@ const renderBlock = ({ record }) => {
       ],
     );
   }
+
+  // table block
+  if (record.__typename === "BlogTableRecord") {
+    let rows = [];
+    record.tableRows.forEach((row) => {
+      rows.push(
+        h("div", { class: "table-row" }, [
+          h("div", { class: "table-cell" }, row.colLeft),
+          h("div", { class: "table-cell" }, row.colRight),
+        ]),
+      );
+    });
+
+    return h("div", { class: "content-block table" }, [
+      h("div", { class: "table-row" }, [
+        h("div", { class: "table-cell" }, record.colLeft),
+        h("div", { class: "table-cell" }, record.colRight),
+      ]),
+      ...rows,
+    ]);
+  }
 };
 </script>
 

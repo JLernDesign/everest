@@ -104,6 +104,16 @@ const showGatedContent = () => {
     },
   });
 };
+
+const handleClick = () => {
+  if (gatedUrl.value.type == "document") {
+    window.open(gatedUrl.value.url, "_blank");
+  }
+  if (gatedUrl.value.type == "video") {
+    openVideoModal(gatedUrl.value.url);
+  }
+  closeModal();
+};
 </script>
 
 <template>
@@ -148,9 +158,9 @@ const showGatedContent = () => {
         <!-- gated content -->
         <div class="gated-content h-0 w-full overflow-hidden text-center">
           <div class="gated-content-inner py-[2rem]">
-            <CtaBtn :data="{ external: true }" :to="gatedUrl"
-              >Download Ebook</CtaBtn
-            >
+            <CtaBtn :data="{ external: true }" @click.prevent="handleClick">{{
+              gatedUrl?.type == "document" ? "Download Ebook" : "Watch Video"
+            }}</CtaBtn>
           </div>
         </div>
 
