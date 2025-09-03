@@ -19,11 +19,9 @@ const { data: redirect_data } = await useGraphqlQuery({
   query: redirectQuery.loc.source.body,
 });
 const redirects = redirect_data.value.redirect.redirects;
-console.log(redirects);
-console.log(route.path);
 
 if (redirects) {
-  let redirect = redirects.find((item) => "/" + item.oldUrl === route.path);
+  let redirect = redirects.find((item) => item.oldUrl === route.path);
   if (redirect) {
     navigateTo(redirect.newUrl, { redirectCode: 301, external: true });
   }
