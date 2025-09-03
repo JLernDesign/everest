@@ -123,6 +123,11 @@ const renderBlock = ({ record }) => {
       ],
     );
   }
+
+  // table block
+  if (record.__typename === "BlogTableRecord") {
+    return h("span", { class: "content-block table hidden" });
+  }
 };
 </script>
 
