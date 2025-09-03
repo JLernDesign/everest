@@ -7,7 +7,7 @@ import { menuQuery } from "~/assets/graphql/queries/menu";
 const route = useRoute();
 const redirectQuery = gql`
   query {
-    redirect {
+    redirectList {
       redirects {
         oldUrl
         newUrl
@@ -18,7 +18,7 @@ const redirectQuery = gql`
 const { data: redirect_data } = await useGraphqlQuery({
   query: redirectQuery.loc.source.body,
 });
-const redirects = redirect_data.value.redirect.redirects;
+const redirects = redirect_data.value.redirectList.redirects;
 
 if (redirects) {
   let redirect = redirects.find((item) => item.oldUrl === route.path);
