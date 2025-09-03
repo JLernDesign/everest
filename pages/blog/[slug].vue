@@ -129,20 +129,52 @@ const renderBlock = ({ record }) => {
     let rows = [];
     record.tableRows.forEach((row) => {
       rows.push(
-        h("div", { class: "table-row" }, [
-          h("div", { class: "table-cell" }, row.colLeft),
-          h("div", { class: "table-cell" }, row.colRight),
+        h("div", { class: "flex w-full items-center" }, [
+          h("div", { class: "w-1/2 px-12 py-8" }, row.colLeft),
+          h(
+            "div",
+            { class: "w-1/2 border-l border-l-grayline px-12 py-8" },
+            row.colRight,
+          ),
         ]),
       );
     });
 
-    return h("div", { class: "content-block table" }, [
-      h("div", { class: "table-row" }, [
-        h("div", { class: "table-cell" }, record.colLeft),
-        h("div", { class: "table-cell" }, record.colRight),
-      ]),
-      ...rows,
-    ]);
+    return h(
+      "div",
+      {
+        class:
+          "content-block blog-table rounded-base-mob s:rounded-base bg-jaffadk p-[.8rem] w-full s:!my-[10rem] max-s:!my-[8rem]",
+      },
+      [
+        h("div", { class: "table-head flex gap-[.8rem] w-full" }, [
+          h(
+            "div",
+            {
+              class:
+                "font-barlow-cond uppercase bg-jaffa rounded-sm px-12 py-8 w-1/2",
+            },
+            record.colLeft,
+          ),
+          h(
+            "div",
+            {
+              class:
+                "font-barlow-cond uppercase bg-jaffa rounded-sm px-12 py-8 w-1/2",
+            },
+            record.colRight,
+          ),
+        ]),
+        h(
+          "div",
+          {
+            class:
+              "table-body bg-white rounded-sm !mt-[.8rem] w-full divide-y divide-grayline text-body-sm",
+          },
+          [...rows],
+        ),
+      ],
+    );
   }
 };
 </script>
@@ -168,7 +200,7 @@ const renderBlock = ({ record }) => {
         class="relative z-0 flex s:justify-end max-s:order-1 max-s:px-side-mob"
       >
         <div
-          class="article bullets s:min-h-[80rem] s:w-[84rem] [&_*+*]:mt-[1.8rem] [&_*+*]:s:mt-[3.2rem] [&_*+h2]:mt-[6rem] [&_*+h2]:s:mt-[9rem] [&_a:hover]:text-red [&_h2]:font-helvb [&_h2]:text-body-md-mob [&_h2]:s:text-body-md [&_h3+p]:mt-[.25rem] [&_h3+p]:s:mt-[.5rem] [&_h3]:font-helvb [&_ul]:space-y-[1rem]"
+          class="article bullets s:min-h-[80rem] s:w-[84rem] [&_*+*]:mt-[1.8rem] [&_*+*]:s:mt-[3.2rem] [&_*+h2]:mt-[6rem] [&_*+h2]:s:mt-[9rem] [&_.blog-table_*+*]:s:mt-0 [&_a:hover]:text-red [&_h2]:font-helvb [&_h2]:text-body-md-mob [&_h2]:s:text-body-md [&_h3+p]:mt-[.25rem] [&_h3+p]:s:mt-[.5rem] [&_h3]:font-helvb [&_ul]:space-y-[1rem]"
         >
           <DatocmsStructuredText
             :data="data.post.content"
