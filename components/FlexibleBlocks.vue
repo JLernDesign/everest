@@ -33,6 +33,10 @@ const props = defineProps(["data", "template"]);
       v-if="module.__typename == 'ClientSuccessModuleRecord'"
       :data="module"
     />
+    <LazyCompareTable
+      v-if="module.__typename == 'CompareTableRecord'"
+      :data="module"
+    />
     <LazyHappenings
       v-if="module.__typename == 'HappeningsSliderRecord'"
       :data="module"

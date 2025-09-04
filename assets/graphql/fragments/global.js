@@ -569,6 +569,14 @@ const EventsFragment = gql`
     }
   }
 `;
+const CompareTableFragment = gql`
+  fragment CompareTableFragment on CompareTableRecord {
+    __typename
+    header {
+      ...HeaderFragment
+    }
+  }
+`;
 
 export const FlexibleContentFragment = gql`
   fragment FlexibleContentFragment on FlexibleContentRecord {
@@ -594,6 +602,7 @@ export const FlexibleContentFragment = gql`
       ...FullPhotoFragment
       ...HappeningsFragment
       ...EventsFragment
+      ...CompareTableFragment
     }
   }
   ${AdvantageFragment}
@@ -617,4 +626,5 @@ export const FlexibleContentFragment = gql`
   ${FullPhotoFragment}
   ${HappeningsFragment}
   ${EventsFragment}
+  ${CompareTableFragment}
 `;
