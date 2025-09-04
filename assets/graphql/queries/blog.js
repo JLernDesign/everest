@@ -104,6 +104,9 @@ export const postQuery = gql`
               colLeft
               colRight
             }
+            bgColor {
+              bgColor
+            }
           }
         }
       }

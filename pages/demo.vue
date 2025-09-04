@@ -1,20 +1,6 @@
 <script setup>
 import { demoQuery } from "~/assets/graphql/queries/demo.js";
 
-import gql from "graphql-tag";
-const blogQuery = gql`
-  query {
-    allPosts {
-      slug
-      _updatedAt
-    }
-  }
-`;
-const { data: blog_posts } = await useGraphqlQuery({
-  query: blogQuery.loc.source.body,
-});
-console.log(blog_posts.value.allPosts);
-
 const formLoaded = ref(false);
 const loaded = ref(false);
 const { data } = await useGraphqlQuery({

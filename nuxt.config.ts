@@ -96,4 +96,12 @@ export default defineNuxtConfig({
   robots: {
     sitemap: "https://everest-systems.com/sitemap.xml",
   },
+
+  experimental: {
+    defaults: {
+      nuxtLink: {
+        trailingSlash: "append",
+      },
+    },
+  },
 });

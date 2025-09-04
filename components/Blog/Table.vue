@@ -6,7 +6,8 @@ const props = defineProps(["data"]);
   <div class="content-block blog-table w-full s:!my-[8rem] max-s:!my-[5rem]">
     <!-- desktop -->
     <div
-      class="hidden w-full rounded-base-mob bg-jaffadk p-[.8rem] s:block s:rounded-base"
+      class="hidden w-full rounded-base-mob p-[.8rem] s:block s:rounded-base"
+      :class="bgColor(data.bgColor)"
     >
       <div class="table-head flex w-full gap-[.8rem]">
         <div
@@ -39,8 +40,8 @@ const props = defineProps(["data"]);
     <!-- mobile -->
     <div
       v-for="n in 2"
-      class="w-full rounded-base-mob bg-jaffadk p-[.8rem] s:hidden s:rounded-base"
-      :class="n == 2 && '!mt-[2rem]'"
+      class="w-full rounded-base-mob p-[.8rem] s:hidden s:rounded-base"
+      :class="[n == 2 && '!mt-[2rem]', bgColor(data.bgColor)]"
     >
       <div class="table-head w-full">
         <div
