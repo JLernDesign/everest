@@ -63,6 +63,7 @@ const setSticky = () => {
   // activate show/hide once past screen height
   if (y.value > window.innerHeight) {
     // show sticky on scroll up
+
     if (directions.top) {
       if (!sticky.value) {
         dropSticky();
@@ -79,6 +80,7 @@ const setSticky = () => {
 
 const smallHeader = () => {
   scrolled.value = true;
+  sticky.value = true;
   logo.value.setSticky();
 
   // header
@@ -104,6 +106,7 @@ const smallHeader = () => {
 
 const fullHeader = () => {
   scrolled.value = false;
+  sticky.value = false;
   logo.value.unsetSticky();
 
   // header
@@ -132,17 +135,18 @@ const dropSticky = () => {
 
   gsap.to(header.value, {
     duration: 0.75,
-    yPercent: 0,
+    y: 0,
     ease: easer,
   });
 };
 
 const hideSticky = () => {
   sticky.value = false;
+  const h = header.value.scrollHeight;
 
   gsap.to(header.value, {
     duration: 0.75,
-    yPercent: -100,
+    y: -h,
     ease: "power3.inOut",
   });
 };
