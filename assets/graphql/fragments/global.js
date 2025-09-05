@@ -577,6 +577,19 @@ const CompareTableFragment = gql`
     }
   }
 `;
+export const AifirstCalloutFragment = gql`
+  fragment AifirstCalloutFragment on AifirstCalloutRecord {
+    __typename
+    headline
+    intro
+    cta {
+      ...LinkFragment
+    }
+    image {
+      ...ResponsiveImageFragment
+    }
+  }
+`;
 
 export const FlexibleContentFragment = gql`
   fragment FlexibleContentFragment on FlexibleContentRecord {
@@ -603,6 +616,7 @@ export const FlexibleContentFragment = gql`
       ...HappeningsFragment
       ...EventsFragment
       ...CompareTableFragment
+      ...AifirstCalloutFragment
     }
   }
   ${AdvantageFragment}
@@ -627,4 +641,5 @@ export const FlexibleContentFragment = gql`
   ${HappeningsFragment}
   ${EventsFragment}
   ${CompareTableFragment}
+  ${AifirstCalloutFragment}
 `;
