@@ -2,6 +2,7 @@
 import gsap from "gsap";
 
 const props = defineProps(["data"]);
+const clientQuote = inject("client_quote");
 const anims = ref(null);
 /* const parallax = ref(null); */
 
@@ -53,6 +54,9 @@ onUnmounted(() => {
   >
     <UIJagEdge color="fill-shadowblue" />
 
+    <!-- customer quote -->
+    <ClientItemSingle v-if="clientQuote" :data="clientQuote" />
+
     <SectionHeader theme="dark" :data="data.header" />
 
     <!-- buckets -->
@@ -78,7 +82,7 @@ onUnmounted(() => {
             >
               <IconTri color="fill-red" class="mb-4" />
               <div
-                class="num -tracking-md mb-12 font-barlow-cond-semibold text-xxl-mob leading-xxl text-shadowblue s:text-xxl"
+                class="num mb-12 font-barlow-cond-semibold text-xxl-mob leading-xxl -tracking-md text-shadowblue s:text-xxl"
               >
                 {{ "0" + (i + 1) }}
               </div>
@@ -103,7 +107,7 @@ onUnmounted(() => {
             >
               <IconTri color="fill-red" class="mb-10 s:mb-4" />
               <div
-                class="num -tracking-md mb-12 font-barlow-cond-semibold text-xxl-mob leading-xxl text-shadowblue s:text-xxl"
+                class="num mb-12 font-barlow-cond-semibold text-xxl-mob leading-xxl -tracking-md text-shadowblue s:text-xxl"
               >
                 {{ "0" + (i + 1) }}
               </div>

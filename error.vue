@@ -1,12 +1,38 @@
 <script setup>
-import gsap from "gsap";
+import gql from "graphql-tag";
 import { settingsQuery } from "~/assets/graphql/queries/settings";
 import { menuQuery } from "~/assets/graphql/queries/menu";
+
+/* check for redirects from cms */
+const route = useRoute();
+const redirectQuery = gql`
+  query {
+    redirectList {
+      redirects {
+        oldUrl
+        newUrl
+      }
+    }
+  }
+`;
+const { data: redirect_data } = await useGraphqlQuery({
+  query: redirectQuery.loc.source.body,
+});
+const redirects = redirect_data.value.redirectList.redirects;
+
+if (redirects) {
+  let redirect = redirects.find((item) => item.oldUrl === route.path);
+  if (redirect) {
+    navigateTo(redirect.newUrl, { redirectCode: 301, external: true });
+  }
+}
 
 const props = defineProps({
   error: Object,
   required: true,
 });
+
+const { locale } = useI18n();
 
 // log error for debugging
 console.log(props.error);
@@ -14,10 +40,16 @@ console.log(props.error);
 // get global settings data
 const { data: header_data } = await useGraphqlQuery({
   query: settingsQuery.loc.source.body,
+  variables: {
+    locale: locale.value,
+  },
 });
 
 const { data: menu_data } = await useGraphqlQuery({
   query: menuQuery.loc.source.body,
+  variables: {
+    locale: locale.value,
+  },
 });
 const main_menu = menu_data.value.menu;
 
@@ -29,7 +61,12 @@ provide("global_cta", header_data.value.global.headerCta);
   <div
     class="wrapper section-wrap on relative min-h-screen overflow-hidden bg-skyblue"
   >
-    <Header ref="header" :menu="main_menu" :data="header_data.global" />
+    <Header
+      v-if="header_data"
+      ref="header"
+      :menu="main_menu"
+      :data="header_data?.global"
+    />
 
     <UICloud
       type="2"

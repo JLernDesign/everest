@@ -1,9 +1,15 @@
 <script setup>
 import gsap from "gsap";
 import { Image as DatocmsImage } from "vue-datocms";
-const props = defineProps(["data"]);
+const props = defineProps(["data", "autoOpen", "loc"]);
 const open = ref(false);
 const itemRef = ref(null);
+
+onMounted(() => {
+  if (props.autoOpen) {
+    openItem();
+  }
+});
 
 const openItem = () => {
   open.value = true;
@@ -62,15 +68,39 @@ defineExpose({ openItem, open, closeItem });
 <template>
   <div
     class="relative rounded-base-mob transition-all duration-500 ease-out s:rounded-base"
-    :class="
+    :class="[
       open
         ? 'cursor-auto bg-white shadow-[4px_4px_20px_0px_rgba(0,0,0,0.03)]'
-        : 'cursor-pointer hover:bg-[rgba(255,255,255,0.2)]'
-    "
+        : 'cursor-pointer hover:bg-[rgba(255,255,255,0.2)]',
+      loc === 'products' ? 'overflow-hidden !bg-skyblue' : '',
+    ]"
   >
+    <!-- add clouds for product -->
+    <div
+      v-if="loc === 'products'"
+      class="absolute left-0 top-0 size-full overflow-hidden"
+    >
+      <UICloud
+        type="2"
+        class="-top-[25rem] left-0"
+        :anim="true"
+        :speed="55"
+        :delay="-35"
+        container="!w-[150rem]"
+      />
+      <UICloud
+        type="2"
+        class="left-0 top-[10rem] s:top-[0rem]"
+        :anim="true"
+        :speed="35"
+        :delay="0"
+        container="!w-[150rem]"
+      />
+    </div>
+
     <!-- title -->
     <div
-      class="title flex w-full flex-col border-b-1 border-b-grayline px-side-mob pb-[2rem] pt-[2.6rem] s:flex-row s:items-center s:justify-between s:px-side max-s:space-y-2"
+      class="title relative flex w-full flex-col border-b-1 border-b-grayline px-side-mob pb-[2rem] pt-[2.6rem] s:flex-row s:items-center s:justify-between s:px-side max-s:space-y-2"
     >
       <h3 class="s:w-[35%] max-s:mb-3">{{ data.name }}</h3>
       <p class="text-body-xsm-mob leading-sm s:w-[45%] s:text-body-xsm">
@@ -82,7 +112,7 @@ defineExpose({ openItem, open, closeItem });
     </div>
 
     <!-- photo/quote -->
-    <div ref="itemRef" class="item h-0 overflow-hidden">
+    <div ref="itemRef" class="item relative h-0 overflow-hidden">
       <div
         class="flex w-full flex-col items-start justify-between p-side-mob s:flex-row s:p-side"
       >

@@ -1,5 +1,6 @@
 <script setup>
 import { gsap } from "gsap";
+const localePath = useLocalePath();
 const props = defineProps(["data", "loc"]);
 const main = ref(null);
 const image = ref(null);
@@ -19,23 +20,34 @@ const linkTo = computed(() => {
 
   // internal news post
   if (["press", "collaborations"].includes(props.data.tag.slug)) {
-    return `/news/${props.data.slug}`;
-  }
-
-  // document (ebook)
-  if (props.data.media?.document) {
-    return props.data.media?.document.url;
+    return localePath("/news/" + props.data.slug);
   }
 
   // internal link (blog post)
-  return `/blog/${props.data.slug}`;
+  return localePath(`/blog/${props.data.slug}`);
 });
 
 const isVideo = computed(() => {
   return props.data.media?.video?.file || props.data.media?.video?.external;
 });
 
+const isGated = computed(() => {
+  return props.data.gatedContent;
+});
+
 const handleClick = () => {
+  // gated content
+  if (props.data.gatedContent) {
+    let type = "document";
+    let gatedUrl = props.data.media?.document?.url;
+    if (props.data.media?.video) {
+      gatedUrl = props.data.media?.video;
+      type = "video";
+    }
+    openGateModal(gatedUrl, type);
+    return;
+  }
+  // video
   if (props.data.media?.video?.file) {
     // add id to query params
     router.push({
@@ -110,10 +122,10 @@ const hoverOff = () => {
     <h3
       class="relative z-1 mb-[1.2rem] font-helvb text-body-mob leading-body s:text-body"
     >
-      <span class="ul single title fast">{{ data.title }}</span>
+      <span class="ul single title">{{ data.title }}</span>
     </h3>
     <p class="relative z-1 text-body-sm-mob leading-sm s:text-body-sm">
-      {{ data.intro }}
+      {{ createExcerpt(data.intro, 30) }}
     </p>
 
     <!-- arrow -->
@@ -125,7 +137,7 @@ const hoverOff = () => {
 
     <!-- open video modal -->
     <button
-      v-if="isVideo"
+      v-if="isVideo || isGated"
       class="absolute left-0 top-0 z-2 block size-full"
       @click="handleClick"
     ></button>

@@ -98,7 +98,7 @@ onMounted(() => {
 
     <!-- events list -->
     <div
-      class="max-w-content relative mx-auto mt-12 flex flex-col s:mt-[10rem] s:flex s:flex-row"
+      class="relative mx-auto mt-12 flex max-w-content flex-col s:mt-[10rem] s:flex s:flex-row"
       ref="main"
       @mouseenter="showImage"
       @mouseleave="hideImage"
@@ -134,28 +134,13 @@ onMounted(() => {
                 v-if="item.link"
                 :href="item.link"
                 target="_blank"
-                class="ul single relative font-helvh after:bg-red max-s:underline"
+                class="ul single relative font-helvh max-s:underline"
                 >{{ item.title }}</a
               >
               <div v-else class="font-helvh">{{ item.title }}</div>
               <p v-if="item.description" class="mt-2">{{ item.description }}</p>
             </div>
           </div>
-
-          <!-- hover image -->
-          <!-- <div
-            class="pointer-events-none dato-image absolute right-0 top-1/2 hidden h-[21.5rem] w-[28.5rem] -translate-y-1/2 s:block [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
-          >
-            <div
-              class="hover-image absolute h-full w-full overflow-hidden rounded-base opacity-0"
-            >
-              <DatocmsImage
-                v-if="item.image"
-                :data="item.image.responsiveImage"
-                class="h-full w-full"
-              />
-            </div>
-          </div> -->
         </div>
       </div>
 

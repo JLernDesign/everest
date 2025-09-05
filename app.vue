@@ -3,6 +3,8 @@ import gsap from "gsap";
 import { toHead } from "vue-datocms";
 import { settingsQuery } from "~/assets/graphql/queries/settings";
 
+const { locale } = useI18n();
+
 const route = useRoute();
 const router = useRouter();
 const layout = ref(null);
@@ -13,16 +15,31 @@ const base_url = useState("base_url", () => "https://everest-systems.com");
 const theme = useState("theme", () => "light");
 const pageInactive = useState("pageInactive", () => false);
 
+// reactive variables
+const queryVariables = computed(() => {
+  const vars = {
+    locale: locale.value,
+  };
+  return vars;
+});
+
 // get global settings data
 const QUERY = settingsQuery.loc.source.body;
 const { data } = await useGraphqlQuery({
   query: QUERY,
+  variables: queryVariables,
 });
 
 // make reused global data available
 provide("locations", data.value.global.locations);
 provide("global_cta", data.value.global.headerCta);
 provide("investors", data.value.global.investors);
+provide("gated_content", {
+  headline: data.value.global.gatedHeadline,
+  intro: data.value.global.gatedIntro,
+  formId: data.value.global.gatedFormId,
+});
+provide("signup_form", data.value.global.signupForm);
 
 // set favicon from datocms
 useHead(() => {
@@ -37,29 +54,30 @@ router.beforeEach(async (to, from, next) => {
   if (to.query.id || from.query.id) {
     next();
 
+    // bypass animation if changing search query
+  } else if (to.query.q && from.query.q) {
+    next();
+
     // execute leave animation
   } else {
+    // set page color
     if (
       to.name.includes("about") ||
       to.name.includes("index") ||
       to.name.includes("product")
     ) {
       page_color.value = "bg-skyblue";
-    }
-    if (
-      to.name.includes("why") ||
-      to.name.includes("demo") ||
-      to.name.includes("blog") ||
-      to.name.includes("media") ||
-      to.name.includes("legal") ||
-      to.name.includes("news")
+    } else if (
+      to.name.includes("ai") ||
+      to.name.includes("client") ||
+      (to.name.includes("case-studies") && !to.name.includes("slug"))
     ) {
+      page_color.value = "bg-shadowblue";
+    } else {
       page_color.value = "bg-jaffa";
     }
-    if (to.name.includes("ai") || to.name.includes("client")) {
-      page_color.value = "bg-shadowblue";
-    }
-    /* console.log("page_color:", page_color.value); */
+
+    // set theme
     setTimeout(() => {
       page_color.value == "bg-shadowblue"
         ? (theme.value = "dark")
@@ -114,7 +132,7 @@ const refreshPage = () => {
 </script>
 
 <template>
-  <NuxtLayout ref="layout" :data="data.global">
+  <NuxtLayout ref="layout" :data="data ? data.global : null">
     <NuxtPage
       :transition="{
         name: 'custom',

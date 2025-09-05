@@ -10,8 +10,12 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@datocms/cma-client-browser": "5.0.1",
     "@mux/mux-player": "3.4.1",
     "@nuxt/scripts": "^0.11.6",
+    "@nuxtjs/i18n": "10.0.6",
+    "@nuxtjs/robots": "5.5.1",
+    "@nuxtjs/sitemap": "7.4.3",
     "@unhead/vue": "^2.0.8",
     "@vueuse/components": "13.5.0",
     "graphql": "16.11.0",

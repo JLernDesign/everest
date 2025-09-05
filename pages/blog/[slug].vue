@@ -3,6 +3,7 @@ import gsap from "gsap";
 import gql from "graphql-tag";
 import { StructuredText as DatocmsStructuredText } from "vue-datocms";
 import { postQuery, PostFragment } from "~/assets/graphql/queries/blog";
+import BlogTable from "~/components/Blog/Table.vue";
 
 const route = useRoute();
 
@@ -126,7 +127,7 @@ const renderBlock = ({ record }) => {
 
   // table block
   if (record.__typename === "BlogTableRecord") {
-    return h("span", { class: "content-block table hidden" });
+    return h(BlogTable, { data: record });
   }
 };
 </script>
@@ -152,7 +153,7 @@ const renderBlock = ({ record }) => {
         class="relative z-0 flex s:justify-end max-s:order-1 max-s:px-side-mob"
       >
         <div
-          class="article bullets s:min-h-[80rem] s:w-[84rem] [&_*+*]:mt-[1.8rem] [&_*+*]:s:mt-[3.2rem] [&_*+h2]:mt-[6rem] [&_*+h2]:s:mt-[9rem] [&_h2]:font-helvb [&_h2]:text-body-md-mob [&_h2]:s:text-body-md [&_h3+p]:mt-[.25rem] [&_h3+p]:s:mt-[.5rem] [&_h3]:font-helvb [&_ul]:space-y-[1rem]"
+          class="article bullets s:min-h-[80rem] s:w-[84rem] [&_*+*]:mt-[1.8rem] [&_*+*]:s:mt-[3.2rem] [&_*+h2]:mt-[6rem] [&_*+h2]:s:mt-[9rem] [&_.blog-table_*+*]:mt-0 [&_a:hover]:text-red [&_h2]:font-helvb [&_h2]:text-body-md-mob [&_h2]:s:text-body-md [&_h3+p]:mt-[.25rem] [&_h3+p]:s:mt-[.5rem] [&_h3]:font-helvb [&_ul]:space-y-[1rem]"
         >
           <DatocmsStructuredText
             :data="data.post.content"

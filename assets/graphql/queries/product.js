@@ -35,6 +35,15 @@ export const productQuery = gql`
       hero {
         ...HeroFragment
       }
+      clientQuote {
+        name
+        title
+        industry
+        quote
+        image {
+          ...ResponsiveImageFragment
+        }
+      }
       flexibleContent {
         ...FlexibleContentFragment
       }

@@ -7,6 +7,14 @@ import { useBreakpoints } from "@vueuse/core";
 export const top_margin = 40;
 export const basew = 1800;
 
+export const color_set = [
+  "bg-red",
+  "bg-green",
+  "bg-lightblue",
+  "bg-jaffalt",
+  "bg-yellow",
+];
+
 // format color picks for tailwind
 export const bgColor = (obj) => {
   switch (obj.bgColor) {
@@ -14,6 +22,8 @@ export const bgColor = (obj) => {
       return "bg-lightblue";
     case "lightblue":
       return "bg-skyblue";
+    case "darkblue":
+      return "bg-blue";
     case "red":
       return "bg-red";
     case "tan":
@@ -22,6 +32,8 @@ export const bgColor = (obj) => {
       return "bg-yellow";
     case "green":
       return "bg-green";
+    case "black":
+      return "bg-shadowblue";
 
     default:
       break;
@@ -359,6 +371,22 @@ export const openVideoModal = (obj) => {
       duration: 0.5,
       opacity: 1,
       ease: "quad.out",
+    },
+  );
+};
+
+// gate modal
+export const openGateModal = (url, type) => {
+  const gatedUrl = useState("gatedUrl");
+  gatedUrl.value = { url: url, type: type };
+  const modal = document.getElementById("gate-modal");
+  gsap.fromTo(
+    modal,
+    { opacity: 0, display: "block" },
+    {
+      duration: 0.5,
+      opacity: 1,
+      ease: "power3.out",
     },
   );
 };

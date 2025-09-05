@@ -24,6 +24,11 @@ export default defineNuxtConfig({
     },
   },
 
+  site: {
+    url: "https://everest-systems.com",
+    name: "Everest Systems",
+  },
+
   scripts: {
     registry: {
       googleTagManager: {
@@ -47,6 +52,9 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@nuxt/scripts",
     "nuxt-graphql-request",
+    "@nuxtjs/i18n",
+    "@nuxtjs/sitemap",
+    "@nuxtjs/robots",
   ],
 
   runtimeConfig: {
@@ -56,12 +64,50 @@ export default defineNuxtConfig({
     },
   },
 
+  i18n: {
+    langDir: "locales",
+    defaultLocale: "en",
+    locales: [
+      { code: "en", name: "English", file: "en.json" },
+      { code: "de", name: "Deutsch", file: "de.json" },
+    ],
+  },
+
+  vite: {
+    define: {
+      __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: true,
+    },
+    build: {
+      minify: "terser",
+      terserOptions: {
+        compress: {
+          drop_console: true,
+        },
+      },
+    },
+  },
+
   css: ["~/assets/fonts/fonts.css", "~/assets/css/global.css"],
+
+  sitemap: {
+    sources: ["/api/__sitemap__/urls"],
+  },
+
+  robots: {
+    sitemap: "https://everest-systems.com/sitemap.xml",
+  },
+
+  experimental: {
+    defaults: {
+      nuxtLink: {
+        trailingSlash: "append",
+      },
+    },
+  },
 
   routeRules: {
     "/post/**": { redirect: "/blog/**" },
     "/de": { redirect: "/" },
     "/de/**": { redirect: "/**" },
-    "/revrec": { redirect: "/product/revenue-recognition" },
   },
 });
