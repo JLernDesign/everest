@@ -1,13 +1,15 @@
 <script setup>
-import { Image as DatocmsImage } from "vue-datocms";
+import { gsap } from "gsap";
 import gql from "graphql-tag";
 import {
   AifirstCalloutFragment,
-  ResponsiveImageFragment,
   LinkFragment,
 } from "~/assets/graphql/fragments/global";
 
 const props = defineProps(["data"]);
+const main = ref(null);
+const video = ref(null);
+let ctx;
 let page_data;
 
 // check for new data
@@ -24,7 +26,6 @@ if (props.data.headline) {
       }
     }
     ${AifirstCalloutFragment}
-    ${ResponsiveImageFragment}
     ${LinkFragment}
   `;
 
@@ -33,6 +34,27 @@ if (props.data.headline) {
   });
   page_data = data.value.global.aifirstCallout;
 }
+
+onMounted(() => {
+  ctx = gsap.context((self) => {
+    playInView(main.value, null, playVideo);
+  });
+});
+
+onUnmounted(() => {
+  ctx.revert();
+});
+
+const playVideo = (ev) => {
+  if (video.value) {
+    if (ev == "enter") {
+      video.value.playVideo();
+    } else {
+      video.value.pauseVideo();
+      video.value.currentTime = 0;
+    }
+  }
+};
 </script>
 
 <template>
@@ -61,12 +83,14 @@ if (props.data.headline) {
           class="w-full space-y-[2.5rem] px-side-mob pb-side pt-side-mob s:w-[43%] s:space-y-[4rem] s:border-x s:border-whiteline s:px-side s:pb-[12rem] s:pt-section-top"
         >
           <div
-            class="mx-auto w-[31.6rem] overflow-auto rounded-base-mob s:rounded-base [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
+            class="mx-auto aspect-[1.07] w-[31.6rem] overflow-auto rounded-base-mob s:rounded-base [&_video]:object-cover"
           >
-            <DatocmsImage
-              v-if="page_data.image"
-              :data="page_data.image.responsiveImage"
-              class="h-full w-full"
+            <VideoAnim
+              file="Griflan - Everest - Clouds - V01"
+              ref="video"
+              :alpha="false"
+              size="fill"
+              :loop="true"
             />
           </div>
           <p class="mx-auto s:max-w-[50rem]">

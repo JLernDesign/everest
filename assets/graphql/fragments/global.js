@@ -585,9 +585,6 @@ export const AifirstCalloutFragment = gql`
     cta {
       ...LinkFragment
     }
-    image {
-      ...ResponsiveImageFragment
-    }
   }
 `;
 
