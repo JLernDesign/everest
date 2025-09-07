@@ -1,6 +1,7 @@
 export default defineNuxtRouteMiddleware((to, from) => {
   // Exclude the root path "/" and paths already ending with a slash
-  if (to.path === "/" || to.path.endsWith("/")) {
+  if (to.path === "/" || to.path.endsWith("/") || to.query.q) {
+    //console.log("no redirect");
     return;
   }
 
