@@ -9,8 +9,8 @@ export default defineNuxtRouteMiddleware((to, from) => {
   const nextPath = to.path + "/";
 
   // Redirect using navigateTo with a 308 Permanent Redirect status code
-  return navigateTo(
+  /*   return navigateTo(
     { path: nextPath, query: to.query, hash: to.hash },
     { redirectCode: 308 },
-  );
+  ); */
 });
