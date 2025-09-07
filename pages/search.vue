@@ -4,7 +4,7 @@ import gsap from "gsap";
 
 const runtimeConfig = useRuntimeConfig();
 const client = buildClient({ apiToken: runtimeConfig.public.datoCmsToken });
-const buildId = "36758";
+const buildId = "36565";
 //36758 (staging)
 //36565 (production)
 
@@ -19,7 +19,7 @@ results.value = await client.searchResults.list({
   filter: { query: q, build_trigger_id: buildId, fuzzy: true },
   limit: 100,
 });
-console.log(results.value);
+/* console.log(results.value); */
 
 onMounted(() => {
   const theme = useState("theme");
