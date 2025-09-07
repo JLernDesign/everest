@@ -8,6 +8,7 @@ const formattedDate = useDateFormat(props.data.publishDate, "MM.DD.YY");
 <template>
   <div
     class="row details relative z-1 mb-10 flex items-center space-x-[2rem] font-barlow text-tag"
+    data-datocms-noindex
   >
     <time>{{ formattedDate }}</time>
     <div
