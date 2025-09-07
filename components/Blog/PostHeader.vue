@@ -11,7 +11,6 @@ const props = defineProps(["data", "type"]);
       data.accentColor.bgColor ? bgColor(data.accentColor) : 'bg-tan',
       type != 'feature' && 'max-s:pb-0',
     ]"
-    data-datocms-noindex
   >
     <!-- text -->
     <div
@@ -20,6 +19,7 @@ const props = defineProps(["data", "type"]);
       <BlogDetails :data="data" class="mb-[3rem] s:mb-[6.5rem]" />
       <h1
         class="mb-[1.5rem] font-helvb text-md-mob leading-base s:mb-[3.2rem] s:text-md"
+        data-datocms-noindex
       >
         {{ data.title }}
       </h1>
