@@ -15,10 +15,12 @@ const results = ref([]);
 const resultsWrapper = ref(null);
 
 // conduct search
-results.value = await client.searchResults.list({
-  filter: { query: q, build_trigger_id: buildId, fuzzy: true },
-  limit: 100,
-});
+if (q) {
+  results.value = await client.searchResults.list({
+    filter: { query: q, build_trigger_id: buildId, fuzzy: true },
+    limit: 100,
+  });
+}
 /* console.log(results.value); */
 
 onMounted(() => {
@@ -62,8 +64,8 @@ const newSearch = async () => {
 
 /* formatting */
 const formatUrl = (url) => {
-  if (url.includes(".app")) {
-    return url.split(".app")[1];
+  if (url.includes(".com")) {
+    return url.split(".com")[1];
   }
 
   return url;
@@ -139,10 +141,6 @@ const formatHighlight = (string) => {
               >{{ formatTitle(result.title) }}</NuxtLink
             >
           </h3>
-          <!-- <p
-            class="mt-8 s:mt-2 [&_.highlight]:bg-skyblue [&_.highlight]:bg-opacity-50 [&_.highlight]:px-1 [&_.highlight]:pb-1 [&_.highlight]:pt-2"
-            v-html="formatHighlight(result.highlight.body)"
-          ></p> -->
           <p
             class="mt-8 s:mt-2 [&_.highlight]:bg-skyblue [&_.highlight]:bg-opacity-50 [&_.highlight]:px-1 [&_.highlight]:pb-1 [&_.highlight]:pt-2"
           >
