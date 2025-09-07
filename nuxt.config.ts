@@ -97,13 +97,13 @@ export default defineNuxtConfig({
     sitemap: "https://everest-systems.com/sitemap.xml",
   },
 
-  /*   experimental: {
+  experimental: {
     defaults: {
       nuxtLink: {
         trailingSlash: "append",
       },
     },
-  }, */
+  },
 
   routeRules: {
     "/post/**": { redirect: "/blog/**" },
