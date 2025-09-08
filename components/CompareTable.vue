@@ -74,7 +74,7 @@ const getMinWidth = () => {
     <div class="compare-table relative mx-auto max-w-base" ref="dragWrap">
       <!-- gradient -->
       <div
-        class="gradient absolute left-1/2 top-1/2 mt-[4rem] h-[120%] w-[50rem] -translate-x-1/2 -translate-y-1/2 blur-[50px] s:h-[150%] s:w-[180rem]"
+        class="gradient absolute left-1/2 top-1/2 mt-[4rem] h-[120%] w-[50rem] -translate-x-1/2 -translate-y-1/2 blur-[50px] s:h-[130%] s:w-[180rem]"
       >
         <img
           src="/public/ui/big-bg-gradient.svg"
