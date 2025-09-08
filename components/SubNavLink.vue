@@ -89,19 +89,4 @@ const toggleAccent = (state) => {
   </button>
 </template>
 
-<style scoped>
-/* button {
-  transition: var(--ease-out);
-}
-.on {
-  color: theme("colors.red");
-}
-@media (min-width: 650px) {
-  .on {
-    background-size: 100% 1px;
-    .accent {
-      opacity: 1;
-    }
-  }
-} */
-</style>
+<style scoped></style>

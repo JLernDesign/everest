@@ -82,6 +82,10 @@ const props = defineProps(["data", "template"]);
       v-if="module.__typename == 'ClientCardsModuleRecord'"
       :data="module"
     />
+    <LazyWhyAICallout
+      v-if="module.__typename == 'AifirstCalloutRecord'"
+      :data="module"
+    />
   </template>
 </template>
 
