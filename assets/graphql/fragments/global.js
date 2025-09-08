@@ -575,6 +575,7 @@ const CompareTableFragment = gql`
     header {
       ...HeaderFragment
     }
+    tableData
   }
 `;
 export const AifirstCalloutFragment = gql`

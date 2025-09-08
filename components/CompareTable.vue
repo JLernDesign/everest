@@ -3,6 +3,21 @@ import gsap from "gsap";
 
 const props = defineProps(["data"]);
 const main = ref(null);
+const tableData = toRaw(props.data.tableData);
+const colIDs = tableData.columns;
+const labels = tableData.columns.filter((item, index) => index !== 0);
+const isHighlight = (item) => {
+  return item.toLowerCase().includes("everest");
+};
+const formatContent = (item) => {
+  if (item.toLowerCase() == "yes") {
+    return '<img class="check" src="/ui/table-yes.svg" alt="" />';
+  } else if (item.toLowerCase() == "no") {
+    return '<img class="check" src="/ui/table-no.svg" alt="" />';
+  } else {
+    return "<p>" + item + "</p>";
+  }
+};
 </script>
 
 <template>
@@ -29,22 +44,22 @@ const main = ref(null);
         <!-- table head -->
         <div class="table-head row -mb-[.1rem] h-[6rem] w-full px-[.8rem]">
           <div class="cell w-[52%]"></div>
-
-          <div class="cell hl-cell h-full w-[24%] px-[.6rem]">
+          <div
+            v-for="item in labels"
+            class="cell hl-cell h-full w-[24%] px-[.6rem]"
+          >
             <div
-              class="hl flex h-full w-full items-center justify-between rounded-t-sm bg-shadowblue px-[2.4rem] text-white"
+              class="hl flex h-full w-full items-center justify-between rounded-t-sm px-[2.4rem]"
+              :class="
+                isHighlight(item)
+                  ? 'bg-shadowblue text-white'
+                  : 'bg-jaffalt text-black'
+              "
             >
-              <h4 class="font-barlow-cond uppercase">Everest</h4>
-              <div class="w-[2.5rem]">
+              <h4 class="font-barlow-cond uppercase">{{ item }}</h4>
+              <div v-if="isHighlight(item)" class="w-[2.5rem]">
                 <IconLogoMark color="white" />
               </div>
-            </div>
-          </div>
-          <div class="cell hl-cell h-full w-[24%] px-[.6rem]">
-            <div
-              class="hl flex h-full w-full items-center rounded-t-sm bg-jaffalt px-[2.4rem] text-black"
-            >
-              <h4 class="font-barlow-cond uppercase">Netsuite</h4>
             </div>
           </div>
         </div>
@@ -56,55 +71,46 @@ const main = ref(null);
           <div
             class="inner w-full divide-y divide-grayline rounded-sm bg-jaffa"
           >
-            <div v-for="n in 2" class="row w-full divide-x divide-grayline">
-              <!-- title cell -->
-              <div class="cell w-[52%] pl-[1.8rem]"><p>G2 reviews</p></div>
+            <div
+              v-for="(item, n) in tableData.data"
+              class="row w-full divide-x divide-grayline"
+            >
+              <template v-for="(col, i) in colIDs">
+                <!-- label cell -->
+                <div v-if="i == 0" class="cell w-[52%] pl-[1.8rem]">
+                  <p>{{ item[colIDs[i]] }}</p>
+                </div>
 
-              <!-- highlight cell -->
-              <div class="cell hl-cell w-[24%] px-12">
+                <!-- highlight cell -->
                 <div
-                  class="hl absolute left-0 top-0 h-full w-full px-[.6rem]"
-                  :class="n == 1 && 'pt-[.6rem]'"
+                  v-else-if="isHighlight(col)"
+                  class="cell hl-cell w-[24%] px-12"
                 >
                   <div
-                    class="h-full w-full bg-white"
-                    :class="n == 1 && 'rounded-t-sm'"
-                  ></div>
+                    class="hl absolute left-0 top-0 h-full w-full px-[.6rem]"
+                    :class="[
+                      n == 0 && 'pt-[.6rem]',
+                      n == tableData.data.length - 1 && 'pb-[.6rem]',
+                    ]"
+                  >
+                    <div
+                      class="h-full w-full bg-white"
+                      :class="[
+                        n == 0 && 'rounded-t-sm',
+                        n == tableData.data.length - 1 && 'rounded-b-sm',
+                      ]"
+                    ></div>
+                  </div>
+                  <div class="relative" v-html="formatContent(item[col])"></div>
                 </div>
-                <div class="relative">
-                  <p>5.0/5 stars</p>
-                </div>
-              </div>
 
-              <!-- others cell -->
-              <div class="cell w-[24%] px-12"><p>4.0/5 stars</p></div>
-            </div>
-
-            <!-- testing -->
-            <div v-for="n in 8" class="row w-full divide-x divide-grayline">
-              <div class="cell w-[52%] px-[1.8rem]">
-                <p>
-                  Native integration with CRM, payment processors and many
-                  others
-                </p>
-              </div>
-              <div class="cell hl-cell w-[24%] px-12">
+                <!-- compare cells -->
                 <div
-                  class="hl absolute left-0 top-0 h-full w-full px-[.6rem]"
-                  :class="n == 8 && 'pb-[.6rem]'"
-                >
-                  <div
-                    class="h-full w-full bg-white"
-                    :class="n == 8 && 'rounded-b-sm'"
-                  ></div>
-                </div>
-                <div class="relative">
-                  <img class="check" src="/public/ui/table-yes.svg" alt="" />
-                </div>
-              </div>
-              <div class="cell w-[24%] px-12">
-                <img class="check" src="/public/ui/table-no.svg" alt="" />
-              </div>
+                  v-else
+                  class="cell w-[24%] px-12"
+                  v-html="formatContent(item[col])"
+                ></div>
+              </template>
             </div>
           </div>
         </div>
