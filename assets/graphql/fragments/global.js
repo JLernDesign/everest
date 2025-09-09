@@ -477,6 +477,12 @@ export const MediaPostFragment = gql`
       slug
     }
     gatedContent
+    gateForm {
+      title
+      headline
+      intro
+      hubspotId
+    }
     media {
       ... on ProductDemoRecord {
         __typename

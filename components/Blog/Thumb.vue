@@ -44,7 +44,7 @@ const handleClick = () => {
       gatedUrl = props.data.media?.video;
       type = "video";
     }
-    openGateModal(gatedUrl, type);
+    openGateModal(gatedUrl, type, props.data.gateForm);
     return;
   }
   // video

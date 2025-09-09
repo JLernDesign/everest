@@ -2,10 +2,12 @@
 import gsap from "gsap";
 
 const gatedUrl = useState("gatedUrl");
+const gateForm = useState("gateForm");
 const gatedContent = inject("gated_content");
 const formLoaded = ref(false);
 let formHeight = 0;
 let modal = null;
+const fallbackId = "c9f28857-105a-4932-a211-4f63c780866b";
 
 onMounted(() => {
   modal = document.getElementById("gate-modal");
@@ -22,29 +24,10 @@ onMounted(() => {
     }
   });
 
-  if (gatedContent.formId) {
-    const script = document.createElement("script");
-    script.src = "https://js.hsforms.net/forms/v2.js";
-    document.body.appendChild(script);
-    script.addEventListener("load", () => {
-      if (window.hbspt) {
-        window.hbspt.forms.create({
-          portalId: "48112164",
-          formId: gatedContent.formId,
-          target: "#hubspotGatedForm",
-          css: "",
-          onBeforeFormSubmit: () => {
-            const form = modal.querySelector(".form");
-            formHeight = form.offsetHeight;
-            form.style.height = formHeight + "px";
-          },
-          onFormSubmitted: () => {
-            showGatedContent();
-          },
-        });
-      }
-    });
-  }
+  // add hubspot js
+  const script = document.createElement("script");
+  script.src = "https://js.hsforms.net/forms/v2.js";
+  document.body.appendChild(script);
 });
 
 const closeModal = () => {
@@ -54,10 +37,11 @@ const closeModal = () => {
     opacity: 0,
     display: "none",
     ease: "power3.in",
+    onComplete: () => {
+      gatedUrl.value = "";
+      gateForm.value = {};
+    },
   });
-
-  // reset gatedUrl
-  gatedUrl.value = "";
 };
 
 const showGatedContent = () => {
@@ -114,6 +98,32 @@ const handleClick = () => {
   }
   closeModal();
 };
+
+// populate form once set in state
+watch(gateForm, () => {
+  if (gateForm.value.hubspotId) {
+    createForm(gateForm.value.hubspotId);
+  }
+});
+
+const createForm = (id) => {
+  if (window.hbspt) {
+    window.hbspt.forms.create({
+      portalId: "48112164",
+      formId: id,
+      target: "#hubspotGatedForm",
+      css: "",
+      onBeforeFormSubmit: () => {
+        const form = modal.querySelector(".form");
+        formHeight = form.offsetHeight;
+        form.style.height = formHeight + "px";
+      },
+      onFormSubmitted: () => {
+        showGatedContent();
+      },
+    });
+  }
+};
 </script>
 
 <template>
@@ -129,19 +139,20 @@ const handleClick = () => {
         class="modal-inner relative w-full max-w-[73.5rem] rounded-base-mob bg-jaffa p-[2rem] pb-[10rem] s:rounded-base s:p-[5rem] s:pb-[12rem]"
       >
         <header
+          v-if="gateForm?.headline || gateForm?.intro"
           class="has-break space-y-[2rem] pb-[3rem] text-center s:space-y-[1.5rem]"
         >
           <h2
-            v-if="gatedContent.headline"
+            v-if="gateForm?.headline"
             class="font-barlow-cond text-lg-mob leading-lg s:text-lg"
           >
-            {{ gatedContent.headline }}
+            {{ gateForm.headline }}
           </h2>
           <p
-            v-if="gatedContent.intro"
+            v-if="gateForm?.intro"
             class="leading-body-sm text-body-sm-mob s:text-body-sm"
           >
-            {{ gatedContent.intro }}
+            {{ gateForm.intro }}
           </p>
         </header>
 
