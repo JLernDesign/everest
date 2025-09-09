@@ -62,6 +62,7 @@ watch(mobile, () => {
     class="pb-section-bot-mob s:pb-section-bot-lg"
     theme="dark"
   >
+    <div class="pt-banner"></div>
     <UITexture />
 
     <SectionHeader

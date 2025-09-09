@@ -23,7 +23,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="bg-jaffa">
+  <div class="pt-banner bg-jaffa">
     <Seo :data="page.seo" />
     <WhyHero :data="page.hero" />
     <FlexibleBlocks :data="page.flexibleContent.modules" template="why" />

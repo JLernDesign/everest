@@ -18,7 +18,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="bg-skyblue">
+  <div class="bg-shadowblue">
     <Seo :data="page.seo" />
     <WhyClientsHero :data="page.hero" :items="page.clientSlider" />
     <ClientSuccessGrid

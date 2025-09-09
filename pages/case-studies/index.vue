@@ -20,7 +20,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="bg-shadowblue">
+  <div class="pt-banner bg-shadowblue">
     <Seo :data="page.seo" />
 
     <div class="relative">

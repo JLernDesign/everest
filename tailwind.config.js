@@ -138,6 +138,7 @@ export default {
         "side-lg": "16rem",
         "side-mob": "2rem",
         thumb: "6.8rem",
+        banner: "3.6rem",
       },
       margin: {
         sm: "1.875rem",

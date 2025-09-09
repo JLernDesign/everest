@@ -18,7 +18,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="bg-skyblue">
+  <div class="pt-banner bg-skyblue">
     <Seo :data="page.seo" />
     <BasicHero :data="{ headline: page.team.header.headline }" />
     <AboutTeam :data="page.team" />

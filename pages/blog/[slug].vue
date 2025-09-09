@@ -135,6 +135,7 @@ const renderBlock = ({ record }) => {
 <template>
   <div class="bg-jaffa pt-hero-top-mob s:pt-post-top" ref="main">
     <Seo :data="data.post.seo" />
+    <div class="pt-banner"></div>
 
     <!-- header -->
     <BlogPostHeader :data="data.post" />

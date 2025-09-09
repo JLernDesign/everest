@@ -19,7 +19,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="text-white">
+  <div class="pt-banner bg-shadowblue text-white">
     <Seo :data="page.seo" />
     <WhyAIFirstHero :data="page.hero" />
 
