@@ -84,7 +84,7 @@ const getMinWidth = () => {
       </div>
 
       <!-- table -->
-      <div class="overflow-scroll">
+      <div class="scrollbar-hide overflow-auto">
         <div
           class="table-wrap mt-[3.5rem] s:mt-[5.5rem] max-s:px-side-mob [&_.cell]:relative [&_.cell]:flex [&_.cell]:items-center [&_.row]:flex"
           :style="{ minWidth: getMinWidth() + 'rem' }"
@@ -197,3 +197,13 @@ const getMinWidth = () => {
     </div>
   </Section>
 </template>
+
+<style scoped>
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+</style>
