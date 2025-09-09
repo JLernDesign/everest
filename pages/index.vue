@@ -23,7 +23,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="bg-skyblue">
+  <div class="pt-banner bg-skyblue">
     <Seo :data="page.seo" :title="title.content" />
     <HomeHero
       v-if="page.hero"

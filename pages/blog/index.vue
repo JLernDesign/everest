@@ -101,7 +101,7 @@ const updatePage = (n) => {
 </script>
 
 <template>
-  <div ref="main" class="bg-jaffa">
+  <div ref="main" class="pt-banner bg-jaffa">
     <Seo :data="finalPageData.seo" />
 
     <Section class="s:pt-section-top-lg" :hero="true" side="none">

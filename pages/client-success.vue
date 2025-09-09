@@ -1,10 +1,6 @@
 <script setup>
 import { clientsQuery } from "~/assets/graphql/queries/clients.js";
 
-definePageMeta({
-  alias: ["/client-success"],
-});
-
 const { data } = await useGraphqlQuery({
   query: clientsQuery.loc.source.body,
 });
@@ -22,7 +18,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="bg-skyblue">
+  <div class="bg-shadowblue">
     <Seo :data="page.seo" />
     <WhyClientsHero :data="page.hero" :items="page.clientSlider" />
     <ClientSuccessGrid

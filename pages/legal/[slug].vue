@@ -44,7 +44,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="bg-jaffa">
+  <div class="pt-banner bg-jaffa">
     <!-- basic hero -->
     <BasicHero
       :data="{ headline: page.title }"

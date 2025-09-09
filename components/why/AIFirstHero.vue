@@ -50,10 +50,10 @@ const playVideo = (ev) => {
 </script>
 
 <template>
-  <Section :hero="true" side="none">
+  <Section :hero="true" side="none" class="s:!pt-[12rem]">
     <!-- side image -->
     <div
-      class="absolute left-0 top-0 hidden h-full w-[16rem] pt-hero-top s:block"
+      class="absolute left-0 top-0 hidden h-full w-[16rem] pt-[12rem] s:block"
     >
       <img
         src="/public/why/ai-first-side@2x.png"

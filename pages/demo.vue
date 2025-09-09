@@ -48,13 +48,13 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="bg-jaffa">
+  <div class="pt-banner bg-jaffa">
     <Seo :data="page.seo" />
 
     <Section :hero="true" class="max-s:pt-hero-mob-lg">
       <header class="text-center">
         <h1
-          class="-tracking-md-mob font-barlow-cond-semibold text-xxl-mob uppercase leading-xxl s:text-xxl s:-tracking-md"
+          class="font-barlow-cond-semibold text-xxl-mob uppercase leading-xxl -tracking-md-mob s:text-xxl s:-tracking-md"
         >
           {{ page.headline }}
         </h1>
@@ -144,12 +144,4 @@ onMounted(() => {
   </div>
 </template>
 
-<style scoped>
-.form {
-  opacity: 1;
-  transition: opacity 0.25s linear;
-  &.off {
-    opacity: 0;
-  }
-}
-</style>
+<style scoped></style>

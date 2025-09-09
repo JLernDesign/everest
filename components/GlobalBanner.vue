@@ -29,17 +29,18 @@ watch(mobile, () => {
 
 <template>
   <div
-    class="global-banner relative z-20 h-[3.6rem] w-full overflow-hidden text-body-xsm text-white opacity-0 [&_a:hover]:opacity-75 [&_a]:underline"
-    :class="bgColor(data)"
+    class="global-banner absolute z-20 h-[3.6rem] w-full overflow-hidden p-3 pb-0 text-body-xsm-mob text-white opacity-0 [&_a:hover]:opacity-75 [&_a]:underline"
     ref="banner"
   >
-    <div class="ticker-wrap flex h-full items-center" ref="main">
-      <div
-        v-for="n in 2"
-        class="ticker-group flex shrink-0 items-center s:w-full s:justify-center"
-        :class="n == 2 && 'block s:hidden'"
-        v-html="data.bannerText"
-      ></div>
+    <div class="h-full overflow-hidden rounded-sm" :class="bgColor(data)">
+      <div class="ticker-wrap flex h-full items-center" ref="main">
+        <div
+          v-for="n in 2"
+          class="ticker-group flex shrink-0 items-center pt-1 s:w-full s:justify-center max-s:px-2"
+          :class="n == 2 && 'block s:hidden'"
+          v-html="data.bannerText"
+        ></div>
+      </div>
     </div>
   </div>
 </template>

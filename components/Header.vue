@@ -9,13 +9,14 @@ const header = ref(null);
 const logo = ref(null);
 const searchBar = ref(null);
 const theme = useState("theme");
+const banner = useState("banner");
 const loaded = ref(false);
 const { y, directions } = useScroll(window);
 const mobile = breakpoints.smallerOrEqual("tablet1");
 const sp = 0.75;
 const easer = "power3.out";
 let bannerGap = 0;
-props.banner && !mobile.value ? (bannerGap = "1rem") : null;
+banner.value && !mobile.value ? (bannerGap = "1rem") : null;
 
 onMounted(() => {
   setTimeout(() => {

@@ -119,7 +119,7 @@ const formatHighlight = (string) => {
 </script>
 
 <template>
-  <div class="bg-jaffa">
+  <div class="pt-banner bg-jaffa">
     <!-- basic hero -->
     <BasicHero :data="{ headline: 'Search Results' }" class="max-s:pb-[4rem]" />
 

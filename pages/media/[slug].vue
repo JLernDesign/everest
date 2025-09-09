@@ -1,19 +1,39 @@
 <script setup>
-import { mediaCollectionQuery } from "~/assets/graphql/queries/media.js";
+import {
+  mediaCollectionQuery,
+  mediaPostsQuery,
+} from "~/assets/graphql/queries/media.js";
 
 const route = useRoute();
 
+// get page data
 const { data } = await useGraphqlQuery({
   query: mediaCollectionQuery.loc.source.body,
 });
-
 const page = data.value.mediaPage;
+//const collections = data.value.allMediaCollections;
 const collections = data.value.allMediaCollections.filter(
   (collection) => collection.tag?.slug != "ebooks",
 );
-const posts = data.value.allMediaPosts.filter(
-  (post) => post.tag?.slug === route.params.slug,
-);
+
+// get tag id
+const tagIds = {
+  "product-demos": "cg00smj3TbioZKUzVg3s2A",
+  video: "fyWxNDPCQeCC5Ue2d3rdtQ",
+  podcasts: "Ug2zyP8QSZanoBxyhEZ1wA",
+  ebooks: "fCd4d2mrSAeBNYqcPSAZCw",
+};
+const tagId = tagIds[route.params.slug];
+
+// get posts data
+const posts = ref([]);
+const { data: postsData } = await useGraphqlQuery({
+  query: mediaPostsQuery.loc.source.body,
+  variables: {
+    tagId: tagId,
+  },
+});
+posts.value = postsData.value.allMediaPosts;
 
 let video_data, seo_title, seo_image;
 if (route.query.id) {
@@ -40,7 +60,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="bg-jaffa">
+  <div class="pt-banner bg-jaffa">
     <Seo
       :data="page.seo"
       :title="route.query.id ? seo_title : null"
@@ -56,7 +76,7 @@ onMounted(() => {
     />
 
     <!-- media grid -->
-    <BlogGrid>
+    <BlogGrid v-if="posts.length > 0">
       <BlogThumb v-for="post in posts" :data="post" />
 
       <!-- add spacer thumb if needed -->

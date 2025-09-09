@@ -8,13 +8,6 @@ import {
   MediaPostFragment,
 } from "../fragments/global";
 
-export const tagIds = {
-  "product-demos": "cg00smj3TbioZKUzVg3s2A",
-  video: "fyWxNDPCQeCC5Ue2d3rdtQ",
-  podcast: "Ug2zyP8QSZanoBxyhEZ1wA",
-  "e-book": "fCd4d2mrSAeBNYqcPSAZCw",
-};
-
 export const mediaCollectionQuery = gql`
   query {
     mediaPage {
@@ -36,13 +29,23 @@ export const mediaCollectionQuery = gql`
         slug
       }
     }
-    allMediaPosts(first: 100, orderBy: publishDate_DESC) {
-      ...MediaPostFragment
-    }
   }
   ${HeroFragment}
   ${FooterFragment}
   ${LinkFragment}
+  ${ResponsiveImageFragment}
+`;
+
+export const mediaPostsQuery = gql`
+  query ($tagId: ItemId!) {
+    allMediaPosts(
+      filter: { tag: { eq: $tagId } }
+      first: 100
+      orderBy: publishDate_DESC
+    ) {
+      ...MediaPostFragment
+    }
+  }
   ${ResponsiveImageFragment}
   ${VideoFragment}
   ${MediaPostFragment}
