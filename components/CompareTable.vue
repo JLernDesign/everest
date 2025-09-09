@@ -13,35 +13,6 @@ const tableData = toRaw(props.data.tableData);
 const colIDs = tableData.columns;
 const labels = tableData.columns.filter((item, index) => index !== 0);
 
-let mm, boundsX;
-const maxw = 650;
-const dragEl = ref();
-const dragWrap = ref();
-
-onMounted(() => {
-  // draggable for mobile (below 650px)
-  mm = gsap.matchMedia();
-
-  mm.add("(max-width: " + maxw + "px)", () => {
-    // create draggable instance
-    let winWidth = window.innerWidth;
-    boundsX = dragEl.value.offsetWidth - winWidth;
-
-    /*     Draggable.create(dragEl.value, {
-      type: "x",
-      zIndexBoost: false,
-      edgeResistance: 0.65,
-      allowNativeTouchScrolling: true,
-      bounds: dragWrap.value,
-      inertia: true,
-    }); */
-  });
-});
-
-onUnmounted(() => {
-  mm.revert();
-});
-
 const isHighlight = (item) => {
   return item.toLowerCase().includes("everest");
 };
