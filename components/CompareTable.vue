@@ -31,8 +31,8 @@ onMounted(() => {
       type: "x",
       zIndexBoost: false,
       edgeResistance: 0.65,
-      allowNativeTouchScrolling: false,
-      bounds: dragWrap.value,
+      allowNativeTouchScrolling: true,
+
       inertia: true,
     });
   });
@@ -85,13 +85,13 @@ const getMinWidth = () => {
 
       <!-- table -->
       <div
-        class="table-wrap mt-[3.5rem] will-change-transform s:mt-[5.5rem] max-s:px-side-mob [&_.cell]:relative [&_.cell]:flex [&_.cell]:items-center [&_.row]:flex"
+        class="table-wrap mt-[3.5rem] s:mt-[5.5rem] max-s:px-side-mob [&_.cell]:relative [&_.cell]:flex [&_.cell]:items-center [&_.row]:flex"
         :style="{ minWidth: getMinWidth() + 'rem' }"
         ref="dragEl"
       >
         <!-- table head -->
         <div
-          class="table-head row -mb-[.1rem] h-[3.5rem] w-full px-[.8rem] s:h-[6rem]"
+          class="table-head row pointer-events-none -mb-[.1rem] h-[3.5rem] w-full px-[.8rem] s:h-[6rem]"
         >
           <div
             class="cell"
