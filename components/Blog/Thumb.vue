@@ -125,7 +125,7 @@ const hoverOff = () => {
       <span class="ul single title">{{ data.title }}</span>
     </h3>
     <p class="relative z-1 text-body-sm-mob leading-sm s:text-body-sm">
-      {{ createExcerpt(data.intro, 30) }}
+      {{ data.intro }}
     </p>
 
     <!-- arrow -->
