@@ -83,7 +83,7 @@ const playVideo = (ev) => {
           class="w-full space-y-[2.5rem] px-side-mob pb-side pt-side-mob s:w-[43%] s:space-y-[4rem] s:border-x s:border-whiteline s:px-side s:pb-[12rem] s:pt-section-top"
         >
           <div
-            class="mx-auto aspect-[1.07] w-[31.6rem] overflow-auto rounded-base-mob s:rounded-base [&_video]:object-cover"
+            class="mx-auto aspect-[1.07] w-[31.6rem] overflow-hidden rounded-base-mob s:rounded-base [&_video]:object-cover"
           >
             <VideoAnim
               file="Griflan - Everest - Clouds - V01"
