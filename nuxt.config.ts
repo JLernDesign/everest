@@ -27,6 +27,7 @@ export default defineNuxtConfig({
   site: {
     url: "https://everest-systems.com",
     name: "Everest Systems",
+    trailingSlash: true,
   },
 
   scripts: {
