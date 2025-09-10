@@ -9,14 +9,18 @@ const header = ref(null);
 const logo = ref(null);
 const searchBar = ref(null);
 const theme = useState("theme");
-const banner = useState("banner");
 const loaded = ref(false);
 const { y, directions } = useScroll(window);
 const mobile = breakpoints.smallerOrEqual("tablet1");
 const sp = 0.75;
 const easer = "power3.out";
+
+// configure banner
+const banner = useState("banner");
 let bannerGap = 0;
+let bannerHeight = 0;
 banner.value && !mobile.value ? (bannerGap = "1rem") : null;
+banner.value ? (bannerHeight = "3.6rem") : null;
 
 onMounted(() => {
   setTimeout(() => {
@@ -57,7 +61,7 @@ const setSticky = () => {
     if (mobile.value) {
       const menu = document.querySelector(".mobile-menu");
       gsap.killTweensOf(menu);
-      gsap.to(menu, { duration: 0.5, y: "3.6rem", ease: easer });
+      gsap.to(menu, { duration: 0.5, y: bannerHeight, ease: easer });
     }
   }
 
@@ -169,7 +173,13 @@ watch(mobile, () => {
     data-datocms-noindex
   >
     <!-- logo -->
-    <LogoAnim ref="logo" :speed="sp" :easer="easer" :theme="theme" />
+    <LogoAnim
+      ref="logo"
+      :speed="sp"
+      :easer="easer"
+      :theme="theme"
+      :class="banner ? 'pt-[5.1rem]' : 'pt-[1.5rem]'"
+    />
 
     <!-- nav -->
     <div class="nav-wrap hidden w-full justify-center pt-[6rem] s:grid">
@@ -183,7 +193,8 @@ watch(mobile, () => {
 
     <!-- cta / login -->
     <div
-      class="cta-wrap absolute right-[4.5rem] top-[4.75rem] flex items-center justify-end space-x-8 pr-side pt-10 s:right-0 s:top-[3.4rem]"
+      class="cta-wrap absolute right-[4.5rem] flex items-center justify-end space-x-8 pr-side pt-10 s:right-0 s:top-[3.4rem]"
+      :class="banner ? 'top-[4.75rem]' : 'top-[1.5rem]'"
     >
       <button
         class="search-btn relative max-s:-mt-1 [&_.icon]:hover:fill-red"
