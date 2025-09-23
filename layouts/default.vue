@@ -12,6 +12,9 @@ const theme = useState("theme");
 const loaded = ref(false);
 const main_menu = ref(null);
 
+// configure top banner
+const banner = useState("banner", () => props.data.topBanner.showBanner);
+
 // reactive variables
 const queryVariables = computed(() => {
   const vars = {
@@ -32,6 +35,14 @@ watch(height, () => {
 });
 
 onMounted(() => {
+  // set banner gap
+  const root = document.querySelector(":root");
+  if (banner.value) {
+    root.style.setProperty("--banner-gap", "3.6rem");
+  } else {
+    root.style.setProperty("--banner-gap", "0");
+  }
+
   setTimeout(() => {
     loaded.value = true;
   }, 1000);
@@ -47,7 +58,7 @@ onMounted(() => {
       :data="data"
       :banner="data.topBanner"
     />
-    <GlobalBanner :data="data.topBanner" data-datocms-noindex />
+    <GlobalBanner v-if="banner" :data="data.topBanner" data-datocms-noindex />
     <div class="main-contents"><slot /></div>
     <template v-if="loaded">
       <LazyFooter

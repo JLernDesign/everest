@@ -21,6 +21,7 @@ export const settingsQuery = gql`
         ...LinkFragment
       }
       topBanner {
+        showBanner
         bannerText
         bgColor
       }

@@ -97,4 +97,8 @@ export default defineNuxtConfig({
   robots: {
     sitemap: "https://everest-systems.com/sitemap.xml",
   },
+
+  routeRules: {
+    "/blog": { redirect: "/blog/page/1" },
+  },
 });

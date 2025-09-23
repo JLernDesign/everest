@@ -7,6 +7,7 @@ let menuOpen = false;
 const main = ref(null);
 const menu = ref(null);
 const burger = ref(null);
+const banner = useState("banner");
 
 onMounted(() => {
   // set toggle for scroll up
@@ -103,7 +104,8 @@ const toggleSubMenus = (e) => {
 
 <template>
   <div
-    class="mobile-menu fixed left-0 top-0 z-20 block h-0 w-screen translate-y-[3.6rem] overflow-visible s:hidden"
+    class="mobile-menu fixed left-0 top-0 z-20 block h-0 w-screen overflow-visible s:hidden"
+    :class="banner ? 'translate-y-[3.6rem]' : 'translate-y-0'"
     ref="main"
   >
     <!-- menu button -->
