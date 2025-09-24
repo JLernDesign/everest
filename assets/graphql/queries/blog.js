@@ -108,6 +108,15 @@ export const postQuery = gql`
               bgColor
             }
           }
+          ... on DownloadRecord {
+            id
+            __typename
+            text
+            file {
+              url
+              filename
+            }
+          }
         }
       }
     }
