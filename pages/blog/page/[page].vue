@@ -1,6 +1,6 @@
 <script setup>
 import { gsap } from "gsap";
-import { blogQuery } from "~/assets/graphql/queries/blog";
+import { blogQuery, categoryQuery } from "~/assets/graphql/queries/blog";
 
 const route = useRoute();
 const page = route.params.page;
@@ -100,6 +100,12 @@ const updatePage = (n) => {
     });
   }, 300);
 };
+
+// get all categories
+const { data: allCategories } = await useGraphqlQuery({
+  query: categoryQuery.loc.source.body,
+});
+const categories = toRaw(allCategories.value).allCategories;
 </script>
 
 <template>
@@ -123,11 +129,12 @@ const updatePage = (n) => {
     <!-- thumbs -->
     <Section :side="false" class="s:!pt-0">
       <!-- filter -->
-      <!-- <UIFilter :data="{ label: 'filter by category' }" /> -->
+      <UIFilter :data="categories" label="filter by category" />
 
       <!-- thumbs grid -->
       <div
         id="thumbs"
+        class="relative z-0"
         :style="
           pending && containerHeight > 0
             ? `min-height: ${containerHeight}px`
