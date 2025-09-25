@@ -24,19 +24,6 @@ export default defineNuxtConfig({
     },
   },
 
-  $env: {
-    staging: {
-      site: {
-        indexable: false, // Disable indexing for staging
-      },
-    },
-    production: {
-      site: {
-        indexable: true, // Enable indexing for production
-      },
-    },
-  },
-
   site: {
     url: "https://everest-systems.com",
     name: "Everest Systems",
@@ -111,7 +98,19 @@ export default defineNuxtConfig({
     sitemap: "https://everest-systems.com/sitemap.xml",
   },
 
+  experimental: {
+    defaults: {
+      nuxtLink: {
+        trailingSlash: "append",
+      },
+    },
+  },
+
   routeRules: {
+    "/post/**": { redirect: "/blog/**" },
+    "/de": { redirect: "/" },
+    "/de/**": { redirect: "/**" },
+    "case-studies/**": { redirect: "/" },
     "/blog": { redirect: "/blog/page/1" },
   },
 });
