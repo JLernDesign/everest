@@ -24,6 +24,19 @@ export default defineNuxtConfig({
     },
   },
 
+  $env: {
+    staging: {
+      site: {
+        indexable: false, // Disable indexing for staging
+      },
+    },
+    production: {
+      site: {
+        indexable: true, // Enable indexing for production
+      },
+    },
+  },
+
   site: {
     url: "https://everest-systems.com",
     name: "Everest Systems",
