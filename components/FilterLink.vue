@@ -1,6 +1,5 @@
 <script setup>
-const props = defineProps(["data"]);
-console.log(props.data);
+const props = defineProps(["data", "close"]);
 
 const route = useRoute();
 
@@ -13,7 +12,12 @@ const isActive = (item) => {
 };
 
 const handleClick = () => {
-  navigateTo(`/blog/category/${props.data.slug}`);
+  props.close();
+  if (props.data.slug == "all") {
+    navigateTo("/blog");
+  } else {
+    navigateTo(`/blog/category/${props.data.slug}`);
+  }
 };
 </script>
 

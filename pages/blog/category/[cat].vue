@@ -12,10 +12,10 @@ const { data: allCategories } = await useGraphqlQuery({
 });
 const categories = toRaw(allCategories.value).allCategories;
 const catID = categories.filter((category) => category.slug == cat)[0].id;
+const catName = categories.filter((category) => category.slug == cat)[0].name;
 const all = {
   name: "All",
   slug: "all",
-  id: "all",
 };
 const cats_all = [all, ...categories];
 
@@ -80,7 +80,11 @@ onMounted(() => {
 
     <Section :side="false" class="border-t border-grayline s:!py-[5rem]">
       <!-- filter -->
-      <UIFilter :data="cats_all" label="filter by category" />
+      <UIFilter
+        :data="cats_all"
+        label="filter by category"
+        :category="catName"
+      />
 
       <!-- thumbs grid -->
       <div id="thumbs" class="relative z-0">

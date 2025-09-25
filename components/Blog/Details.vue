@@ -14,7 +14,7 @@ const formattedDate = useDateFormat(props.data.publishDate, "MM.DD.YY");
       :data-id="data.tag.slug"
       class="tag rounded-sm border-1 border-black px-[1.4rem] pb-[.6rem] pt-[.4rem] font-medium uppercase"
     >
-      {{ data.tag.name }}
+      {{ data.category ? data.category.name : data.tag.name }}
     </div>
   </div>
 </template>
