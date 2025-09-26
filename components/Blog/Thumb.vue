@@ -6,6 +6,7 @@ const main = ref(null);
 const image = ref(null);
 const route = useRoute();
 const router = useRouter();
+console.log(props.data);
 
 const linkTo = computed(() => {
   // external media link
@@ -16,6 +17,11 @@ const linkTo = computed(() => {
   // external press link
   if (props.data.externalLink) {
     return props.data.externalLink;
+  }
+
+  // internal video
+  if (isVideo.value) {
+    return localePath("/video/" + props.data.slug);
   }
 
   // internal news post
@@ -135,9 +141,9 @@ const hoverOff = () => {
       <IconArrow color="stroke-black" />
     </div>
 
-    <!-- open video modal -->
+    <!-- open gated modal -->
     <button
-      v-if="isVideo || isGated"
+      v-if="isGated"
       class="absolute left-0 top-0 z-2 block size-full"
       @click="handleClick"
     ></button>

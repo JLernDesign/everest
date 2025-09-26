@@ -10,7 +10,7 @@ onMounted(() => {});
 </script>
 
 <template>
-  <Section :hero="true" side="none" class="s:!pt-[12rem]">
+  <Section :hero="true" side="none">
     <div
       class="relative flex flex-col border-t border-t-grayline px-side-mob s:flex-row s:px-side-lg"
       ref="main"

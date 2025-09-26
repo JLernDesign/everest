@@ -469,12 +469,16 @@ const BasicContentFragment = gql`
 export const MediaPostFragment = gql`
   fragment MediaPostFragment on MediaPostRecord {
     id
+    slug
     title
     intro
     publishDate
     tag {
       name
       slug
+    }
+    accentColor {
+      bgColor
     }
     gatedContent
     gateForm {

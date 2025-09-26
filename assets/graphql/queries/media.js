@@ -50,3 +50,21 @@ export const mediaPostsQuery = gql`
   ${VideoFragment}
   ${MediaPostFragment}
 `;
+
+export const mediaPostQuery = gql`
+  query ($slug: String) {
+    mediaPost(filter: { slug: { eq: $slug } }) {
+      ...MediaPostFragment
+    }
+    mediaPage {
+      footerCallout {
+        ...FooterFragment
+      }
+    }
+  }
+  ${FooterFragment}
+  ${LinkFragment}
+  ${ResponsiveImageFragment}
+  ${VideoFragment}
+  ${MediaPostFragment}
+`;

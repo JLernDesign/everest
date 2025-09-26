@@ -15,6 +15,7 @@ watch(
 const menuIds = {
   product: "ZpWZSBQDQti1xbn9l2cD_Q",
   why: "PFK4MTMsSGyvr0kIIbiuWg",
+  "case-studies": "UkJXviS7Rj2Bs3jeHzblJQ",
   "client-success": "b7WnWKIVS3ylsgg5EFTu3g",
   learn: "Sfyg47Z5TnamVqzdpjtZzw",
   about: "QD9iJU7KSeaA_II0VbKWZw",
@@ -22,7 +23,7 @@ const menuIds = {
 
 const setActive = () => {
   let parent = route.path.split("/")[1];
-  ["media", "blog"].includes(parent) && (parent = "learn");
+  ["media", "blog", "video"].includes(parent) && (parent = "learn");
   ["news"].includes(parent) && (parent = "about");
   activePage.value = menuIds[parent];
 };

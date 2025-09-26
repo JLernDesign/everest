@@ -51,6 +51,13 @@ export const InternalFragment = gql`
           slug
         }
       }
+      ... on CasestudyLandingRecord {
+        __typename
+      }
+      ... on CaseStudyRecord {
+        __typename
+        slug
+      }
     }
   }
 `;
