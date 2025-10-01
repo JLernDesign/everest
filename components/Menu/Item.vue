@@ -66,7 +66,7 @@ const hoverOff = () => {
   link.classList.remove("on");
 
   // hide arrow
-  if (props.active != props.data.label) {
+  if (props.active != props.data.id) {
     toggleAccent("off");
   }
 };
@@ -96,7 +96,7 @@ const toggleAccent = (state) => {
 watch(
   () => props.active,
   () => {
-    props.active == props.data.label ? toggleAccent("on") : toggleAccent("off");
+    props.active == props.data.id ? toggleAccent("on") : toggleAccent("off");
   },
 );
 
@@ -175,9 +175,9 @@ const toggleSubMenu = (e) => {
       :to="type == 'main' && single ? getUrl(data) : null"
       :target="data.external && '_blank'"
       :data-parent="type == 'mobile' && submenu ? true : null"
-      class="toplink ul relative z-1 cursor-pointer text-body-sm-mob after:bg-red s:text-body-sm"
+      class="toplink ul menu-link relative z-1 cursor-pointer text-body-sm-mob after:bg-red s:text-body-sm"
       :class="[
-        type == 'main' && active == data.label ? 'nuxt-link-active' : null,
+        type == 'main' && active == data.id ? 'nuxt-link-active' : null,
         single && 'hover:text-red',
       ]"
       @mouseenter="[

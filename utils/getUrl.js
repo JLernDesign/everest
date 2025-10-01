@@ -1,5 +1,5 @@
 export default function (obj) {
-  if (obj?.external) {
+  if (obj?.external && obj.external !== true) {
     return obj.external;
   }
   if (obj?.internal) {
@@ -14,6 +14,10 @@ export default function (obj) {
         return "/why/ai-first";
       case "ClientSuccessRecord":
         return "/client-success";
+      case "CasestudyLandingRecord":
+        return "/case-studies";
+      case "CaseStudyRecord":
+        return "/case-studies/" + obj.internal.slug;
       case "WhySubpageRecord":
         return "/why/" + obj.internal.slug;
       case "ProductRecord":

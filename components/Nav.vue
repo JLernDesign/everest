@@ -10,35 +10,22 @@ watch(
     setActive();
   },
 );
+
+// menu ids from DatoCMS
+const menuIds = {
+  product: "ZpWZSBQDQti1xbn9l2cD_Q",
+  why: "PFK4MTMsSGyvr0kIIbiuWg",
+  "case-studies": "UkJXviS7Rj2Bs3jeHzblJQ",
+  "client-success": "b7WnWKIVS3ylsgg5EFTu3g",
+  learn: "Sfyg47Z5TnamVqzdpjtZzw",
+  about: "QD9iJU7KSeaA_II0VbKWZw",
+};
+
 const setActive = () => {
   let parent = route.path.split("/")[1];
-
-  switch (parent) {
-    case "product":
-      activePage.value = "Products";
-      break;
-    case "why":
-      activePage.value = "Why Everest";
-      break;
-    case "client-success":
-      activePage.value = "Customers";
-      break;
-    case "blog":
-      activePage.value = "Learn";
-      break;
-    case "media":
-      activePage.value = "Learn";
-      break;
-    case "about":
-      activePage.value = "About";
-      break;
-    case "news":
-      activePage.value = "About";
-      break;
-
-    default:
-      activePage.value = "";
-  }
+  ["media", "blog", "video"].includes(parent) && (parent = "learn");
+  ["news"].includes(parent) && (parent = "about");
+  activePage.value = menuIds[parent];
 };
 
 onMounted(() => {

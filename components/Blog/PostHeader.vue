@@ -1,14 +1,27 @@
 <script setup>
-import { Image as DatocmsImage } from "vue-datocms";
-
 const props = defineProps(["data", "type"]);
+
+const image = ref(null);
+const isVideo = computed(() => {
+  return props.data.media?.video?.file || props.data.media?.video?.external;
+});
+
+const hoverOn = () => {
+  if (isTouchDevice()) return;
+  image.value?.hoverOn();
+};
+
+const hoverOff = () => {
+  if (isTouchDevice()) return;
+  image.value?.hoverOff();
+};
 </script>
 
 <template>
   <div
     class="relative mx-auto flex w-full max-w-[141rem] flex-col p-[2.5rem] s:flex-row s:rounded-base"
     :class="[
-      data.accentColor.bgColor ? bgColor(data.accentColor) : 'bg-tan',
+      data.accentColor?.bgColor ? bgColor(data.accentColor) : 'bg-tan',
       type != 'feature' && 'max-s:pb-0',
     ]"
   >
@@ -52,39 +65,25 @@ const props = defineProps(["data", "type"]);
 
     <!-- image -->
     <div class="right relative w-full s:w-1/2 max-s:order-1">
-      <div
+      <!-- image -->
+      <BlogThumbImage
+        :data="data"
+        ref="image"
+        class="featured-image !aspect-[1.32] !h-full !w-full"
+      />
+      <!-- <div
         class="featured-image dato-image aspect-[1.32] h-full w-full overflow-hidden rounded-sm [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
       >
-        <DatocmsImage
-          v-if="data.image"
-          :data="data.image.responsiveImage"
-          class="h-full w-full"
-        />
+        </div> -->
 
-        <!-- news post -->
-        <div v-else class="relative size-full">
-          <img
-            src="/video/media-bg-lg.jpg"
-            class="absolute left-0 top-0 size-full"
-          />
-          <div
-            v-if="data.tag.slug == 'collaborations'"
-            class="absolute left-1/2 top-1/2 h-[20rem] w-[36rem] -translate-x-1/2 -translate-y-1/2 rounded-base bg-jaffa"
-          >
-            <div
-              v-if="data.logo"
-              class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-            >
-              <div class="h-[12rem] w-[20rem]">
-                <img
-                  :src="data.logo.url"
-                  class="!h-full !w-full !object-contain"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <!-- open video modal -->
+      <button
+        v-if="isVideo"
+        class="absolute left-0 top-0 z-2 block size-full"
+        @click="openVideoModal(data.media?.video)"
+        @mouseenter="hoverOn"
+        @mouseleave="hoverOff"
+      ></button>
     </div>
 
     <!-- add link for feature module -->

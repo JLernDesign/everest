@@ -46,7 +46,7 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-  ctx.revert();
+  ctx && ctx.revert();
 });
 
 const playVideo = (ev) => {

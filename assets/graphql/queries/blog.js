@@ -12,6 +12,11 @@ export const PostFragment = gql`
       name
       slug
     }
+    category {
+      id
+      name
+      slug
+    }
     author {
       name
       photo {
@@ -35,7 +40,7 @@ export const PostFragment = gql`
 `;
 
 export const blogQuery = gql`
-  query ($first: IntType, $skip: IntType) {
+  query ($first: IntType, $skip: IntType, $filter: PostModelFilter) {
     blogLanding {
       seo: _seoMetaTags {
         attributes
@@ -57,7 +62,12 @@ export const blogQuery = gql`
     _allPostsMeta {
       count
     }
-    allPosts(first: $first, skip: $skip, orderBy: [publishDate_DESC]) {
+    allPosts(
+      first: $first
+      skip: $skip
+      orderBy: [publishDate_DESC]
+      filter: $filter
+    ) {
       ...PostFragment
     }
   }
@@ -129,4 +139,14 @@ export const postQuery = gql`
   ${PostFragment}
   ${FooterFragment}
   ${LinkFragment}
+`;
+
+export const categoryQuery = gql`
+  query {
+    allCategories(orderBy: name_ASC) {
+      name
+      slug
+      id
+    }
+  }
 `;

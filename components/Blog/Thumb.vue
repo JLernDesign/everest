@@ -18,6 +18,11 @@ const linkTo = computed(() => {
     return props.data.externalLink;
   }
 
+  // internal video
+  if (isVideo.value) {
+    return localePath("/video/" + props.data.slug);
+  }
+
   // internal news post
   if (["press", "collaborations"].includes(props.data.tag.slug)) {
     return localePath("/news/" + props.data.slug);
@@ -44,7 +49,7 @@ const handleClick = () => {
       gatedUrl = props.data.media?.video;
       type = "video";
     }
-    openGateModal(gatedUrl, type);
+    openGateModal(gatedUrl, type, props.data.gateForm);
     return;
   }
   // video
@@ -135,9 +140,9 @@ const hoverOff = () => {
       <IconArrow color="stroke-black" />
     </div>
 
-    <!-- open video modal -->
+    <!-- open gated modal -->
     <button
-      v-if="isVideo || isGated"
+      v-if="isGated"
       class="absolute left-0 top-0 z-2 block size-full"
       @click="handleClick"
     ></button>

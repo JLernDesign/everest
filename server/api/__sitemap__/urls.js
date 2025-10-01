@@ -9,6 +9,9 @@ const ROUTES_QUERY = `
       slug
       _updatedAt
     }
+    _allPostsMeta {
+      count
+    }
     allWhySubpages(first: 100) {
       slug
       _updatedAt
@@ -53,6 +56,8 @@ export default defineSitemapEventHandler(async (event) => {
       //console.log(res.data);
 
       const posts = res.data.allPosts;
+      const totalPosts = res.data._allPostsMeta.count;
+      const postsPerPage = 12;
       const products = res.data.allProducts;
       const whySubpages = res.data.allWhySubpages;
       const legals = res.data.allLegals;
@@ -72,6 +77,12 @@ export default defineSitemapEventHandler(async (event) => {
           lastmod: post._updatedAt,
         });
       });
+      for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
+        dynamicRoutes.push({
+          loc: `/blog/page/${i}`,
+          lastmod: new Date(),
+        });
+      }
       whySubpages.forEach((whySubpage) => {
         dynamicRoutes.push({
           loc: `/why/${whySubpage.slug}`,

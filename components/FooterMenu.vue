@@ -30,7 +30,7 @@ const handleClick = (e, item) => {
     <!-- link -->
     <li v-for="(item, i) in data">
       <button
-        class="ul single fast flex h-[4rem] w-full items-center justify-between pl-[.4rem] pr-[1.2rem] [&>*]:pointer-events-none"
+        class="ul single flex h-[4rem] w-full items-center justify-between pl-[.4rem] pr-[1.2rem] [&>*]:pointer-events-none"
         @click="handleClick($event, item)"
         :data-num="item.submenu ? n++ : null"
       >
@@ -48,7 +48,7 @@ const handleClick = (e, item) => {
             <NuxtLink
               :to="getUrl(subitem)"
               :target="subitem.external && '_blank'"
-              :class="!subitem.submenu ? 'ul single fast' : null"
+              :class="!subitem.submenu ? 'ul single' : null"
               >{{ subitem.label }}</NuxtLink
             >
 
@@ -58,7 +58,7 @@ const handleClick = (e, item) => {
               v-if="subitem.submenu"
             >
               <li v-for="subsubitem in subitem.submenu">
-                <NuxtLink :to="getUrl(subsubitem)" class="ul single fast">{{
+                <NuxtLink :to="getUrl(subsubitem)" class="ul single">{{
                   subsubitem.label
                 }}</NuxtLink>
               </li>

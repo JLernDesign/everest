@@ -1,5 +1,6 @@
 <script setup>
 import { toHead } from "vue-datocms";
+const route = useRoute();
 const props = defineProps(["data", "title", "image"]);
 
 // compile meta tags for head
@@ -14,6 +15,12 @@ useHead(() => {
   // append site name to title if not provided
   if (!props.title) {
     let title = `Everest Systems | ${seo.title}`;
+
+    // custom ammendments
+    if (route.path.includes("case-studies") && route.name != "case-studies") {
+      title += " Case Study";
+    }
+
     seo.title = title;
     og_title && (og_title.content = title);
     twitter_title && (twitter_title.content = title);

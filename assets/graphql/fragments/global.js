@@ -469,6 +469,7 @@ const BasicContentFragment = gql`
 export const MediaPostFragment = gql`
   fragment MediaPostFragment on MediaPostRecord {
     id
+    slug
     title
     intro
     publishDate
@@ -476,7 +477,16 @@ export const MediaPostFragment = gql`
       name
       slug
     }
+    accentColor {
+      bgColor
+    }
     gatedContent
+    gateForm {
+      title
+      headline
+      intro
+      hubspotId
+    }
     media {
       ... on ProductDemoRecord {
         __typename
@@ -575,6 +585,7 @@ const CompareTableFragment = gql`
     header {
       ...HeaderFragment
     }
+    tableData
   }
 `;
 export const AifirstCalloutFragment = gql`

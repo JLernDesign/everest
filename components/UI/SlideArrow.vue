@@ -54,7 +54,10 @@ defineExpose({
   >
     <button
       class="back group relative grid h-[3.2rem] w-full place-content-center overflow-hidden rounded-btn border-1"
-      :class="color == 'blue' ? 'border-lightblue' : 'border-red'"
+      :class="[
+        color == 'blue' ? 'border-lightblue' : 'border-red',
+        color == 'black' && '!border-black',
+      ]"
     >
       <div
         class="bar absolute left-0 top-0 h-full w-full rounded-btn bg-jaffaltfade"
@@ -64,7 +67,10 @@ defineExpose({
         "
       ></div>
       <IconArrow
-        :color="color == 'blue' ? 'stroke-lightblue' : 'stroke-red'"
+        :color="[
+          color == 'blue' ? 'stroke-lightblue' : 'stroke-red',
+          color == 'black' && '!stroke-black',
+        ]"
         class="relative z-10 ease-out s:group-hover:translate-x-4"
       />
     </button>

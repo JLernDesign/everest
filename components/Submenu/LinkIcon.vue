@@ -20,7 +20,7 @@ const link = getUrl(props.data);
         <!-- text -->
         <span class="max-w-[24rem]">
           <span
-            class="ul mb-[.4rem] inline-block font-helvb leading-[1] after:bg-red"
+            class="ul menu-link mb-[.4rem] inline-block font-helvb leading-[1] after:bg-red"
             :class="route.path == link ? 'nuxt-link-active' : ''"
             >{{ data.label }}</span
           >

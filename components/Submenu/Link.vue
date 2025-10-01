@@ -12,7 +12,7 @@ const isActive = (item) => {
     <!-- menu item -->
     <template v-if="data.__typename == 'MenuItemRecord'">
       <span
-        class="ul mb-[.4rem] inline-block font-helvb leading-[1] after:bg-red"
+        class="ul menu-link mb-[.4rem] inline-block font-helvb leading-[1] after:bg-red"
         :class="isActive(data) ? 'nuxt-link-active' : ''"
         >{{ data.label }}</span
       >
@@ -39,7 +39,7 @@ const isActive = (item) => {
           <NuxtLink
             :to="getUrl(item)"
             :target="item.external ? '_blank' : null"
-            class="ul after:bg-red"
+            class="ul menu-link after:bg-red"
             :class="isActive(item) ? 'nuxt-link-active' : ''"
             >{{ item.label }}</NuxtLink
           >

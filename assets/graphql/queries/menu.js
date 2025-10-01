@@ -51,6 +51,13 @@ export const InternalFragment = gql`
           slug
         }
       }
+      ... on CasestudyLandingRecord {
+        __typename
+      }
+      ... on CaseStudyRecord {
+        __typename
+        slug
+      }
     }
   }
 `;
@@ -91,6 +98,7 @@ export const menuQuery = gql`
         ... on MenuItemRecord {
           __typename
           label
+          id
           ...InternalFragment
           external
         }

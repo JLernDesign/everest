@@ -1,9 +1,11 @@
 <script setup>
 import { gsap } from "gsap";
-import { blogQuery } from "~/assets/graphql/queries/blog";
+import { blogQuery, categoryQuery } from "~/assets/graphql/queries/blog";
 
-const page = ref(1);
+const route = useRoute();
+const page = route.params.page;
 const postsPerPage = 12;
+const skip = postsPerPage * (page - 1);
 const main = ref(null);
 const loaded = ref(false);
 
@@ -11,7 +13,7 @@ const loaded = ref(false);
 const queryVariables = computed(() => {
   const vars = {
     first: postsPerPage,
-    skip: (page.value - 1) * postsPerPage,
+    skip: skip,
   };
   //console.log("Computed variables for page", page.value, ":", vars);
   return vars;
@@ -98,10 +100,16 @@ const updatePage = (n) => {
     });
   }, 300);
 };
+
+// get all categories
+const { data: allCategories } = await useGraphqlQuery({
+  query: categoryQuery.loc.source.body,
+});
+const categories = toRaw(allCategories.value).allCategories;
 </script>
 
 <template>
-  <div ref="main" class="pt-banner bg-jaffa">
+  <div ref="main" class="bg-jaffa pt-banner">
     <Seo :data="finalPageData.seo" />
 
     <Section class="s:pt-section-top-lg" :hero="true" side="none">
@@ -111,14 +119,22 @@ const updatePage = (n) => {
     <!-- featured posts -->
     <BlogFeatured :data="finalPageData" />
 
+    <!-- email signup -->
+    <BlogSignup
+      loc="blog"
+      theme="light"
+      class="pb-[2rem] s:pb-[10rem] max-s:pt-[5rem]"
+    />
+
     <!-- thumbs -->
     <Section :side="false" class="s:!pt-0">
       <!-- filter -->
-      <!-- <UIFilter :data="{ label: 'filter by category' }" /> -->
+      <UIFilter :data="categories" label="filter by category" />
 
       <!-- thumbs grid -->
       <div
         id="thumbs"
+        class="relative z-0"
         :style="
           pending && containerHeight > 0
             ? `min-height: ${containerHeight}px`
