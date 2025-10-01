@@ -69,6 +69,10 @@ export const LinkFragment = gql`
             slug
           }
         }
+        ... on MediaPostRecord {
+          __typename
+          slug
+        }
       }
       external
       style
@@ -119,6 +123,10 @@ export const SingleLinkFragment = gql`
         tag {
           slug
         }
+      }
+      ... on MediaPostRecord {
+        __typename
+        slug
       }
     }
     external
@@ -476,6 +484,9 @@ export const MediaPostFragment = gql`
     tag {
       name
       slug
+    }
+    cta {
+      ...LinkFragment
     }
     accentColor {
       bgColor

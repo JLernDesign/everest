@@ -1,7 +1,14 @@
 <script setup>
 const props = defineProps(["data"]);
 const route = useRoute();
-const link = getUrl(props.data);
+const isActive = (item) => {
+  let path = route.path;
+  if (path.endsWith("/")) {
+    path = path.slice(0, -1);
+  }
+  let link = getUrl(item);
+  return path == link;
+};
 </script>
 
 <template>
@@ -21,14 +28,14 @@ const link = getUrl(props.data);
         <span class="max-w-[24rem]">
           <span
             class="ul menu-link mb-[.4rem] inline-block font-helvb leading-[1] after:bg-red"
-            :class="route.path == link ? 'nuxt-link-active' : ''"
+            :class="isActive(data) ? 'nuxt-link-active' : ''"
             >{{ data.label }}</span
           >
           <span class="block opacity-[.65]">{{ data.description }}</span>
         </span>
       </span>
       <NuxtLink
-        :to="$localePath(getUrl(data))"
+        :to="getUrl(data)"
         class="absolute left-0 top-0 z-1 h-full w-full"
       ></NuxtLink>
     </template>

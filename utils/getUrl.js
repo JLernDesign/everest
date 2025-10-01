@@ -1,5 +1,5 @@
 export default function (obj) {
-  if (obj?.external) {
+  if (obj?.external && obj.external !== true) {
     return obj.external;
   }
   if (obj?.internal) {
@@ -32,10 +32,13 @@ export default function (obj) {
         return "/about/leadership";
       case "MediaCollectionRecord":
         return "/media/" + obj.internal.tag.slug;
+      case "MediaPostRecord":
+        return "/video/" + obj.internal.slug;
       case "LegalRecord":
         return "/legal/" + obj.internal.slug;
       case "NewsCollectionRecord":
         return "/news/" + obj.internal.tag.slug;
+
       default:
         break;
     }

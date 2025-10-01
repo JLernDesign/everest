@@ -2,8 +2,12 @@
 const props = defineProps(["data"]);
 const route = useRoute();
 const isActive = (item) => {
+  let path = route.path;
+  if (path.endsWith("/")) {
+    path = path.slice(0, -1);
+  }
   let link = getUrl(item);
-  return route.path == link;
+  return path == link;
 };
 </script>
 
@@ -19,7 +23,7 @@ const isActive = (item) => {
       <span class="block opacity-[.65]">{{ data.description }}</span>
 
       <NuxtLink
-        :to="$localePath(getUrl(data))"
+        :to="getUrl(data)"
         :target="data.external ? '_blank' : null"
         class="absolute left-0 top-0 z-1 h-full w-full"
       ></NuxtLink>
@@ -37,7 +41,7 @@ const isActive = (item) => {
       <ul class="mt-6 space-y-6 pb-8">
         <li v-for="(item, i) in data.submenu" class="has-ul">
           <NuxtLink
-            :to="$localePath(getUrl(item))"
+            :to="getUrl(item)"
             :target="item.external ? '_blank' : null"
             class="ul menu-link after:bg-red"
             :class="isActive(item) ? 'nuxt-link-active' : ''"

@@ -24,7 +24,6 @@ const hoverOff = () => {
       data.accentColor?.bgColor ? bgColor(data.accentColor) : 'bg-tan',
       type != 'feature' && 'max-s:pb-0',
     ]"
-    data-datocms-noindex
   >
     <!-- text -->
     <div
@@ -33,10 +32,19 @@ const hoverOff = () => {
       <BlogDetails :data="data" class="mb-[3rem] s:mb-[6.5rem]" />
       <h1
         class="mb-[1.5rem] font-helvb text-md-mob leading-base s:mb-[3.2rem] s:text-md"
+        data-datocms-noindex
       >
         {{ data.title }}
       </h1>
       <p>{{ data.intro }}</p>
+
+      <CtaGroup
+        v-if="data.cta"
+        :data="data.cta.buttons"
+        :align="left"
+        :theme="light"
+        class="mt-10"
+      />
 
       <!-- author/arrow -->
       <template v-if="type == 'feature'">
@@ -71,10 +79,6 @@ const hoverOff = () => {
         ref="image"
         class="featured-image !aspect-[1.32] !h-full !w-full"
       />
-      <!-- <div
-        class="featured-image dato-image aspect-[1.32] h-full w-full overflow-hidden rounded-sm [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
-      >
-        </div> -->
 
       <!-- open video modal -->
       <button

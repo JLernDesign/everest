@@ -15,7 +15,7 @@ const accent = ref(null);
 const handleClick = (n) => {
   /*   page.value = n;
   props.update(n); */
-  navigateTo(`/blog/page/${n}`);
+  navigateTo(`/blog/page/${n}/`);
 };
 
 onMounted(() => {
