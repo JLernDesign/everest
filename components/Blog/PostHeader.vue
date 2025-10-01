@@ -38,6 +38,14 @@ const hoverOff = () => {
       </h1>
       <p>{{ data.intro }}</p>
 
+      <CtaGroup
+        v-if="data.cta"
+        :data="data.cta.buttons"
+        :align="left"
+        :theme="light"
+        class="mt-10"
+      />
+
       <!-- author/arrow -->
       <template v-if="type == 'feature'">
         <div class="arrow absolute bottom-0 left-0 z-1 s:pl-side">
@@ -71,10 +79,6 @@ const hoverOff = () => {
         ref="image"
         class="featured-image !aspect-[1.32] !h-full !w-full"
       />
-      <!-- <div
-        class="featured-image dato-image aspect-[1.32] h-full w-full overflow-hidden rounded-sm [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
-      >
-        </div> -->
 
       <!-- open video modal -->
       <button

@@ -49,6 +49,7 @@ export const mediaPostsQuery = gql`
   ${ResponsiveImageFragment}
   ${VideoFragment}
   ${MediaPostFragment}
+  ${LinkFragment}
 `;
 
 export const mediaPostQuery = gql`
