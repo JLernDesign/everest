@@ -2,8 +2,12 @@
 const props = defineProps(["data"]);
 const route = useRoute();
 const isActive = (item) => {
+  let path = route.path;
+  if (path.endsWith("/")) {
+    path = path.slice(0, -1);
+  }
   let link = getUrl(item);
-  return route.path == link;
+  return path == link;
 };
 </script>
 
