@@ -14,7 +14,11 @@ export default defineNuxtConfig({
           name: "viewport",
           content: "width=device-width, initial-scale=1, maximum-scale=1",
         },
+        ...(process.env.NUXT_ENV !== "production"
+          ? [{ name: "robots", content: "noindex" }]
+          : []),
       ],
+
       script: [
         {
           src: "https://cdn-cookieyes.com/client_data/d1b7ffd5032a4a6b43bcaccf/script.js",
@@ -62,6 +66,7 @@ export default defineNuxtConfig({
     public: {
       datoCmsToken: process.env.DATO_CMS_TOKEN,
       BASE_URL: process.env.BASE_URL,
+      NUXT_ENV: process.env.NUXT_ENV,
     },
   },
 

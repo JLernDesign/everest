@@ -1,39 +1,113 @@
 <script setup>
 import gsap from "gsap";
+
 const props = defineProps(["theme", "data", "template"]);
+const mobile = breakpoints.smallerOrEqual("tablet1");
 const groupNum = ref(0);
-const active = ref(0);
 const main = ref(null);
-const sidebar = ref(null);
-let mm, ctx;
-const min = 650;
+let slideshow,
+  els,
+  index = 10,
+  count = 0,
+  max = 10;
+const pageInactive = useState("pageInactive");
+const order = [];
+for (let i = 0; i < index; i++) {
+  order.push(i);
+}
+
+const startSlideshow = () => {
+  if (!mobile.value) {
+    slideshow = setInterval(() => {
+      if (!pageInactive.value) {
+        next();
+      }
+    }, 1000);
+  }
+};
+
+const stopSlideshow = () => {
+  clearInterval(slideshow);
+};
+
+const toggleSlideshow = (ev) => {
+  ev == "enter" ? startSlideshow() : stopSlideshow();
+};
 
 onMounted(() => {
-  //items = main.value.querySelectorAll(".item");
+  // get items
+  els = qsa(".item", main.value);
 
-  mm = gsap.matchMedia();
-  ctx = gsap.context((self) => {
-    setTimeout(() => {
-      // pin menu for duration of article
-      mm.add("(min-width: " + min + "px)", () => {
-        pinMenu(
-          sidebar.value,
-          self.selector(".start-pin"),
-          self.selector(".end-pin"),
-        );
-      });
-    }, 200);
-  }, main.value);
+  // shuffle order
+  gsap.utils.shuffle(order);
+
+  // preload images
+  props.data.groups[groupNum.value].items.forEach((item) => {
+    const img = new Image();
+    img.src = item.image.url;
+    img.onload = () => {
+      //console.log("loaded", item.image.url);
+    };
+  });
+
+  setTimeout(() => {
+    playInView(main.value, null, toggleSlideshow);
+  }, 200);
 });
 
 onUnmounted(() => {
-  ctx.revert();
-  mm.revert();
+  stopSlideshow();
 });
 
-const handleMouseEnter = (i) => {
-  active.value = i;
+const next = () => {
+  //console.log("next", count, index);
+
+  //console.log(props.data.groups[groupNum.value].items[index]);
+  const img = qs("img", els[order[count]]);
+
+  // remove item in slot
+  gsap.to(img, {
+    duration: 0.75,
+    yPercent: -100,
+    ease: "power3.in",
+    opacity: 0,
+  });
+
+  // add next item in slot
+  let nextimg = props.data.groups[groupNum.value].items[index].image.url;
+  setTimeout(() => {
+    img.src = nextimg;
+    gsap.fromTo(
+      img,
+      {
+        yPercent: 100,
+        opacity: 0,
+      },
+      {
+        duration: 0.75,
+        yPercent: 0,
+        ease: "power3.out",
+        opacity: 1,
+      },
+    );
+  }, 750);
+
+  // increment count for next slot
+  count++;
+  count == max && (count = 0);
+
+  // increment index for next item
+  index++;
+  index == props.data.groups[groupNum.value].items.length && (index = 0);
 };
+console.log(props.data.groups[groupNum.value].items);
+
+const items = computed(() => {
+  let filtered = props.data.groups[groupNum.value].items.filter(
+    (item, i) => i < index,
+  );
+  return filtered;
+});
 
 const handleClick = (link) => {
   if (link) {
@@ -42,7 +116,7 @@ const handleClick = (link) => {
 };
 
 const changeGroup = (group) => {
-  groupNum.value = group;
+  //groupNum.value = group;
 };
 </script>
 
@@ -59,54 +133,21 @@ const changeGroup = (group) => {
     />
 
     <!-- desktop module -->
-    <div class="mt-[10rem] hidden flex-col s:flex s:flex-row" ref="main">
-      <!-- logo -->
-      <div class="w-full s:w-1/2" ref="sidebar">
-        <div
-          class="menu grid h-[42rem] w-full place-content-center rounded-base-mob bg-[url(/ui/callout-texture@2x.jpg)] bg-[size:1717px_auto] s:rounded-base"
-        >
-          <div
-            class="flex h-[18rem] w-[28rem] rounded-base-mob bg-jaffa s:rounded-base"
-          >
-            <img
-              v-if="data.groups[groupNum].items[active].image"
-              :src="data.groups[groupNum].items[active].image.url"
-              class="h-full w-full object-contain"
-              alt=""
-            />
-          </div>
-        </div>
-      </div>
-
-      <!-- text -->
-      <div class="w-full pl-[14rem] leading-[1] s:w-1/2">
-        <div class="start-pin"></div>
-        <div
-          class="mb-[3rem] flex px-[2rem] font-barlow text-body-xsm-mob uppercase opacity-40 s:text-body-xsm"
-        >
-          <span class="w-[38%]">{{ data.groups[groupNum].headerLeft }}</span>
-          <span class="w-[62%]">{{ data.groups[groupNum].headerRight }}</span>
-        </div>
-
-        <!-- items -->
-        <div class="space-y-1">
-          <template v-for="(item, i) in data.groups[groupNum].items">
-            <div
-              class="item group relative cursor-pointer text-body-sm-mob leading-sm s:text-body-sm"
-              @mouseenter="handleMouseEnter(i)"
-              @click="handleClick(item.link)"
-            >
-              <div
-                class="absolute -top-[.2rem] h-full w-full scale-y-0 rounded-base-mob bg-white transition-all duration-300 ease-in-out group-hover:scale-y-100 s:rounded-base"
-              ></div>
-              <div class="relative flex px-[2rem] py-[1.2rem]">
-                <span class="w-[38%] pr-4">{{ item.name }}</span>
-                <span class="w-[62%]">{{ item.description }}</span>
-              </div>
-            </div>
-          </template>
-        </div>
-        <div class="end-pin"></div>
+    <div
+      class="mx-auto mt-[10rem] hidden max-w-base gap-[2rem] s:grid s:grid-cols-5"
+      ref="main"
+    >
+      <div
+        v-for="(item, i) in items"
+        :key="i"
+        class="item overflow-hidden rounded-base border border-grayline"
+      >
+        <img
+          v-if="item.image"
+          :src="item.image.url"
+          class="h-full w-full object-contain"
+          alt=""
+        />
       </div>
     </div>
 

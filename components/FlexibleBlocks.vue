@@ -12,7 +12,7 @@ const props = defineProps(["data", "template"]);
       v-if="module.__typename == 'BannerCalloutRecord'"
       :data="module"
     />
-    <LazyBlogCallout v-if="module.__typename == 'BlogCalloutRecord'" />
+    <!-- <LazyBlogCallout v-if="module.__typename == 'BlogCalloutRecord'" /> -->
     <LazyBodyBasic
       v-if="module.__typename == 'BasicContentRecord'"
       :data="module"
@@ -29,10 +29,10 @@ const props = defineProps(["data", "template"]);
       v-if="module.__typename == 'ClientQuoteListRecord'"
       :data="module"
     />
-    <LazyClientSuccess
+    <!--     <LazyClientSuccess
       v-if="module.__typename == 'ClientSuccessModuleRecord'"
       :data="module"
-    />
+    /> -->
     <LazyCompareTable
       v-if="module.__typename == 'CompareTableRecord'"
       :data="module"
@@ -56,40 +56,40 @@ const props = defineProps(["data", "template"]);
       v-if="module.__typename == 'MapModuleRecord'"
       :data="module"
     />
-    <LazyOverviewCards
+    <!--     <LazyOverviewCards
       v-if="module.__typename == 'OverviewRecord' && template != 'product'"
       theme="dark"
       :data="module"
-    />
+    /> -->
     <LazySolutionCards
       v-if="module.__typename == 'SolutionModuleRecord'"
       theme="light"
       :data="module"
     />
-    <LazyPostsCallout
+    <!--     <LazyPostsCallout
       v-if="module.__typename == 'PressCalloutRecord'"
       :data="{ headline: 'Everest in the Press' }"
       type="callout"
-    />
+    /> -->
     <LazyProblem
       v-if="module.__typename == 'ProblemRecord'"
       :layout="module.header.eyebrow == 'The Problem' ? 'img-rt' : 'img-lt'"
       :data="module"
     />
-    <LazySliderAscending
+    <!--     <LazySliderAscending
       v-if="module.__typename == 'AscendingSliderRecord'"
       :data="module"
       :class="i == data.length - 1 && 's:!pb-[15rem]'"
       :template="template"
-    />
+    /> -->
     <LazySuccessStack
       v-if="module.__typename == 'ClientCardsModuleRecord'"
       :data="module"
     />
-    <LazyWhyAICallout
+    <!--     <LazyWhyAICallout
       v-if="module.__typename == 'AifirstCalloutRecord'"
       :data="module"
-    />
+    /> -->
   </template>
 </template>
 

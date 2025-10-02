@@ -6,7 +6,6 @@ const main = ref(null);
 const image = ref(null);
 const route = useRoute();
 const router = useRouter();
-console.log(props.data);
 
 const linkTo = computed(() => {
   // external media link
