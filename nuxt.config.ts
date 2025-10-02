@@ -32,7 +32,7 @@ export default defineNuxtConfig({
     url: "https://everest-systems.com",
     name: "Everest Systems",
     trailingSlash: true,
-    ...(process.env.NUXT_ENV !== "production" ? [{ indexable: false }] : []),
+    indexable: process.env.NUXT_ENV !== "production" ? false : true,
   },
 
   scripts: {
@@ -84,14 +84,14 @@ export default defineNuxtConfig({
     define: {
       __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: true,
     },
-    /* build: {
+    build: {
       minify: "terser",
       terserOptions: {
         compress: {
           drop_console: true,
         },
       },
-    }, */
+    },
   },
 
   css: ["~/assets/fonts/fonts.css", "~/assets/css/global.css"],
@@ -102,6 +102,7 @@ export default defineNuxtConfig({
 
   robots: {
     sitemap: "https://everest-systems.com/sitemap.xml",
+    ...(process.env.NUXT_ENV !== "production" ? [{ indexable: false }] : []),
   },
 
   experimental: {
