@@ -32,6 +32,7 @@ export default defineNuxtConfig({
     url: "https://everest-systems.com",
     name: "Everest Systems",
     trailingSlash: true,
+    ...(process.env.NUXT_ENV !== "production" ? [{ indexable: false }] : []),
   },
 
   scripts: {
