@@ -1,6 +1,7 @@
 export default (options) => {
   const { query, variables = {} } = options;
   const runtimeConfig = useRuntimeConfig();
+  console.log(runtimeConfig.public.NUXT_ENV, process.env.NODE_ENV);
 
   // Create a reactive key that includes the variables
   const key = computed(() => {
