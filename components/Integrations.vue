@@ -18,14 +18,16 @@ const speed = 750;
 let ctx;
 
 const startSlideshow = () => {
-  els = qsa(".item", main.value);
+  if (main.value) {
+    els = qsa(".item", main.value);
 
-  if (!mobile.value && groupTotal > max) {
-    slideshow = setInterval(() => {
-      if (!pageInactive.value) {
-        next();
-      }
-    }, speed);
+    if (!mobile.value && groupTotal > max) {
+      slideshow = setInterval(() => {
+        if (!pageInactive.value) {
+          next();
+        }
+      }, speed);
+    }
   }
 };
 
@@ -182,39 +184,19 @@ onUnmounted(() => {
       </div>
 
       <!-- mobile module -->
-
-      <!-- text list -->
-      <template v-if="template == 'about'">
+      <div class="mt-[4.5rem] grid w-full grid-cols-2 gap-[2rem] s:hidden">
         <div
-          class="mt-[4.5rem] block divide-y-1 divide-grayline border-y-1 border-grayline s:hidden"
+          v-for="(item, i) in data.groups[groupNum].items"
+          class="rounded-base border border-grayline"
         >
-          <div
-            v-for="(item, i) in data.groups[groupNum].items"
-            class="py-8 text-body-sm-mob leading-sm"
-          >
-            <h4 class="mb-2 font-helvb">{{ item.name }}</h4>
-
-            {{ item.description }}
-          </div>
+          <img
+            v-if="item.image"
+            :src="item.image.url"
+            class="h-full w-full object-contain"
+            alt=""
+          />
         </div>
-      </template>
-
-      <!-- logo blocks -->
-      <template v-else>
-        <div class="mt-[4.5rem] grid w-full grid-cols-2 gap-[2rem] s:hidden">
-          <div
-            v-for="(item, i) in data.groups[groupNum].items"
-            class="rounded-base border border-grayline"
-          >
-            <img
-              v-if="item.image"
-              :src="item.image.url"
-              class="h-full w-full object-contain"
-              alt=""
-            />
-          </div>
-        </div>
-      </template>
+      </div>
     </div>
   </Section>
 </template>
