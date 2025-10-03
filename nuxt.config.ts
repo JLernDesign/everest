@@ -102,7 +102,6 @@ export default defineNuxtConfig({
 
   robots: {
     sitemap: "https://everest-systems.com/sitemap.xml",
-    ...(process.env.NUXT_ENV !== "production" ? [{ indexable: false }] : []),
   },
 
   experimental: {
