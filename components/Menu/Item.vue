@@ -172,7 +172,7 @@ const toggleSubMenu = (e) => {
     ref="main"
   >
     <NuxtLink
-      :to="type == 'main' && single ? $localePath(getUrl(data)) : null"
+      :to="type == 'main' && single ? getUrl(data) : null"
       :target="data.external && '_blank'"
       :data-parent="type == 'mobile' && submenu ? true : null"
       class="toplink ul menu-link relative z-1 cursor-pointer text-body-sm-mob after:bg-red s:text-body-sm"

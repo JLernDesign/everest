@@ -14,17 +14,20 @@ watch(
 // menu ids from DatoCMS
 const menuIds = {
   product: "ZpWZSBQDQti1xbn9l2cD_Q",
+  solutions: "GDxbzrg5Ttuqb91m637hNg",
   why: "PFK4MTMsSGyvr0kIIbiuWg",
-  "case-studies": "UkJXviS7Rj2Bs3jeHzblJQ",
-  "client-success": "b7WnWKIVS3ylsgg5EFTu3g",
+  customers: "CuCByLlxSiCC7YjHEZHq6A",
   learn: "Sfyg47Z5TnamVqzdpjtZzw",
-  about: "QD9iJU7KSeaA_II0VbKWZw",
+  /*   "case-studies": "UkJXviS7Rj2Bs3jeHzblJQ",
+  "client-success": "b7WnWKIVS3ylsgg5EFTu3g",
+  about: "QD9iJU7KSeaA_II0VbKWZw", */
 };
 
 const setActive = () => {
   let parent = route.path.split("/")[1];
-  ["media", "blog", "video"].includes(parent) && (parent = "learn");
-  ["news"].includes(parent) && (parent = "about");
+  ["media", "blog", "video", "about"].includes(parent) && (parent = "learn");
+  ["client-success", "case-studies"].includes(parent) && (parent = "customers");
+  //["news"].includes(parent) && (parent = "about");
   activePage.value = menuIds[parent];
 };
 
