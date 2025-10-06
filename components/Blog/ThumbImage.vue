@@ -107,7 +107,7 @@ defineExpose({
     </div>
 
     <!-- press -->
-    <template v-if="data.tag.slug == 'press' && !isVideo">
+    <template v-if="data.tag?.slug == 'press' && !isVideo">
       <div
         class="absolute left-0 top-0 size-full bg-[#2A3440] opacity-80"
       ></div>
@@ -125,7 +125,7 @@ defineExpose({
 
     <!-- collaborations -->
     <div
-      v-if="data.tag.slug == 'collaborations'"
+      v-if="data.tag?.slug == 'collaborations'"
       class="absolute left-1/2 top-1/2 h-[14.4rem] w-[29rem] -translate-x-1/2 -translate-y-1/2 rounded-base bg-jaffa"
     >
       <div
