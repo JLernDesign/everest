@@ -24,7 +24,7 @@ const linkTo = computed(() => {
   }
 
   // internal news post
-  if (["press", "collaborations"].includes(props.data.tag.slug)) {
+  if (["press", "collaborations"].includes(props.data.tag?.slug)) {
     return localePath("/news/" + props.data.slug);
   }
 
