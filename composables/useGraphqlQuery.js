@@ -16,6 +16,12 @@ export default (options) => {
     method: "POST",
     headers: {
       Authorization: `Bearer ${runtimeConfig.public.datoCmsToken}`,
+      ...(runtimeConfig.public.NUXT_ENV == "staging" && {
+        "X-Environment": "staging",
+      }),
+      ...(runtimeConfig.public.NUXT_ENV !== "production" && {
+        "X-Include-Drafts": true,
+      }),
     },
     body: computed(() => {
       const vars = toValue(variables);

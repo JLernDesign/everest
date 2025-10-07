@@ -15,6 +15,7 @@ export default defineNuxtConfig({
           content: "width=device-width, initial-scale=1, maximum-scale=1",
         },
       ],
+
       script: [
         {
           src: "https://cdn-cookieyes.com/client_data/d1b7ffd5032a4a6b43bcaccf/script.js",
@@ -28,6 +29,7 @@ export default defineNuxtConfig({
     url: "https://everest-systems.com",
     name: "Everest Systems",
     trailingSlash: true,
+    indexable: process.env.NUXT_ENV !== "production" ? false : true,
   },
 
   scripts: {
@@ -62,6 +64,7 @@ export default defineNuxtConfig({
     public: {
       datoCmsToken: process.env.DATO_CMS_TOKEN,
       BASE_URL: process.env.BASE_URL,
+      NUXT_ENV: process.env.NUXT_ENV,
     },
   },
 

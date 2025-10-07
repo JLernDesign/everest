@@ -127,6 +127,19 @@ export const postQuery = gql`
               filename
             }
           }
+          ... on EmbedVideoRecord {
+            id
+            __typename
+            video {
+              height
+              provider
+              providerUid
+              thumbnailUrl
+              title
+              url
+              width
+            }
+          }
         }
       }
     }
