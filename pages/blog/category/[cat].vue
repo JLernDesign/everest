@@ -28,6 +28,7 @@ const queryVariables = computed(() => {
       category: {
         in: catID,
       },
+      hide: { eq: false },
     },
   };
   return vars;

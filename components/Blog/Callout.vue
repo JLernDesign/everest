@@ -5,6 +5,7 @@ const { data } = await useGraphqlQuery({
   query: blogQuery.loc.source.body,
   variables: {
     first: 3,
+    filter: { hide: { eq: false } },
   },
 });
 const page = data.value.blogLanding;

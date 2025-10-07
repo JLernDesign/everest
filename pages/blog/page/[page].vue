@@ -14,6 +14,7 @@ const queryVariables = computed(() => {
   const vars = {
     first: postsPerPage,
     skip: skip,
+    filter: { hide: { eq: false } },
   };
   //console.log("Computed variables for page", page.value, ":", vars);
   return vars;
@@ -83,7 +84,7 @@ const updatePage = (n) => {
     scrollTo: { y: thumbs, duration: 0.5, ease: "power3.inOut" },
   });
   setTimeout(() => {
-    page.value = n;
+    //page.value = n;
     gsap.to(thumbs, {
       opacity: 1,
       duration: 0.3,

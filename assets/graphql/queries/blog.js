@@ -8,10 +8,6 @@ export const PostFragment = gql`
     title
     slug
     publishDate
-    tag {
-      name
-      slug
-    }
     category {
       id
       name
@@ -125,6 +121,19 @@ export const postQuery = gql`
             file {
               url
               filename
+            }
+          }
+          ... on EmbedVideoRecord {
+            id
+            __typename
+            video {
+              height
+              provider
+              providerUid
+              thumbnailUrl
+              title
+              url
+              width
             }
           }
         }

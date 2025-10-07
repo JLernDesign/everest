@@ -5,6 +5,7 @@ import { StructuredText as DatocmsStructuredText } from "vue-datocms";
 import { postQuery, PostFragment } from "~/assets/graphql/queries/blog";
 import BlogTable from "~/components/Blog/Table.vue";
 import BlogDownload from "~/components/Blog/Download.vue";
+import BlogVideo from "~/components/Blog/Video.vue";
 
 const route = useRoute();
 
@@ -134,6 +135,11 @@ const renderBlock = ({ record }) => {
   // download block
   if (record.__typename === "DownloadRecord") {
     return h(BlogDownload, { data: record });
+  }
+
+  // video block
+  if (record.__typename === "EmbedVideoRecord") {
+    return h(BlogVideo, { data: record });
   }
 };
 </script>
