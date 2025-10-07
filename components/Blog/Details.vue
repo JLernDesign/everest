@@ -3,16 +3,22 @@ import { useDateFormat } from "@vueuse/core";
 
 const props = defineProps(["data"]);
 const formattedDate = useDateFormat(props.data.publishDate, "MM.DD.YY");
+
+// default tag for blog posts
+if (!props.data.tag) {
+  props.data.tag = {
+    name: "Insight",
+    slug: "insight",
+  };
+}
 </script>
 
 <template>
   <div
     class="row details relative z-1 mb-10 flex items-center space-x-[2rem] font-barlow text-tag"
-    data-datocms-noindex
   >
     <time>{{ formattedDate }}</time>
     <div
-      v-if="data.tag"
       :data-id="data.tag.slug"
       class="tag rounded-sm border-1 border-black px-[1.4rem] pb-[.6rem] pt-[.4rem] font-medium uppercase"
     >
