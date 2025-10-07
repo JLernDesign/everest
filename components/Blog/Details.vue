@@ -12,6 +12,7 @@ const formattedDate = useDateFormat(props.data.publishDate, "MM.DD.YY");
   >
     <time>{{ formattedDate }}</time>
     <div
+      v-if="data.tag"
       :data-id="data.tag.slug"
       class="tag rounded-sm border-1 border-black px-[1.4rem] pb-[.6rem] pt-[.4rem] font-medium uppercase"
     >
