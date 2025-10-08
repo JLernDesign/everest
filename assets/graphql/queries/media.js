@@ -55,7 +55,69 @@ export const mediaPostsQuery = gql`
 export const mediaPostQuery = gql`
   query ($slug: String) {
     mediaPost(filter: { slug: { eq: $slug } }) {
+      seo: _seoMetaTags {
+        attributes
+        content
+        tag
+      }
       ...MediaPostFragment
+      content {
+        value
+        blocks {
+          __typename
+          ... on RecordInterface {
+            __typename
+          }
+          ... on BlogQuoteRecord {
+            id
+            __typename
+            text
+          }
+          ... on BlogImageRecord {
+            id
+            __typename
+            image {
+              url
+            }
+            caption
+          }
+          ... on BlogTableRecord {
+            id
+            __typename
+            colLeft
+            colRight
+            tableRows {
+              colLeft
+              colRight
+            }
+            bgColor {
+              bgColor
+            }
+          }
+          ... on DownloadRecord {
+            id
+            __typename
+            text
+            file {
+              url
+              filename
+            }
+          }
+          ... on EmbedVideoRecord {
+            id
+            __typename
+            video {
+              height
+              provider
+              providerUid
+              thumbnailUrl
+              title
+              url
+              width
+            }
+          }
+        }
+      }
     }
     mediaPage {
       footerCallout {
