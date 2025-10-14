@@ -66,7 +66,7 @@ onMounted(() => {
       :class="[
         align == 'center' && 'mx-auto max-w-[70rem]',
         loc == 'home-hero' && 'allow-break s:!space-y-[1.8rem] s:!pb-0',
-        template == 'news' && 'max-w-[80rem]',
+        (template == 'news' || template == 'legal') && 'max-w-[82rem]',
       ]"
     >
       <h1
