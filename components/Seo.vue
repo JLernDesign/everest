@@ -1,5 +1,7 @@
 <script setup>
 import { toHead } from "vue-datocms";
+
+const baseUrl = useState("base_url");
 const route = useRoute();
 const props = defineProps(["data", "title", "image"]);
 
@@ -17,7 +19,7 @@ useHead(() => {
     let title = `Everest Systems | ${seo.title}`;
 
     // custom ammendments
-    if (route.path.includes("case-studies") && route.name != "case-studies") {
+    if (route.name.includes("case-studies-slug")) {
       title += " Case Study";
     }
 
@@ -60,6 +62,14 @@ useHead(() => {
     og_image && (og_image.content = props.image);
     twitter_image && (twitter_image.content = props.image);
   }
+
+  // add canonical link
+  seo.link = [
+    {
+      rel: "canonical",
+      href: `${baseUrl.value}${route.path}`,
+    },
+  ];
 
   return seo;
 });

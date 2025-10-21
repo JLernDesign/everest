@@ -111,7 +111,7 @@ const closeMenu = () => {
             @click="
               item.slug || item.tag?.slug
                 ? navigateTo(
-                    `/${props.template}/${item.slug || item.tag?.slug}`,
+                    `/${props.template}/${item.slug || item.tag?.slug}/`,
                   )
                 : handleClick(item, i)
             "

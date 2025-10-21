@@ -1,5 +1,4 @@
 <script setup>
-const localeRoute = useLocaleRoute();
 const props = defineProps(["data"]);
 let menus,
   n = 0;
@@ -18,7 +17,7 @@ const handleClick = (e, item) => {
   if (item.submenu) {
     toggleMenu(e);
   } else {
-    navigateTo(localeRoute(getUrl(item)));
+    navigateTo(getUrl(item));
   }
 };
 </script>
@@ -33,7 +32,7 @@ const handleClick = (e, item) => {
       <button
         class="ul single flex h-[4rem] w-full items-center justify-between pl-[.4rem] pr-[1.2rem] [&>*]:pointer-events-none"
         @click="handleClick($event, item)"
-        :data-num="i"
+        :data-num="item.submenu ? n++ : null"
       >
         <span class="mt-1">{{ item.label }}</span>
         <IconChevron v-if="item.submenu" color="stroke-red" />
@@ -41,17 +40,15 @@ const handleClick = (e, item) => {
 
       <!-- sub menu -->
       <ul
+        v-if="item.submenu"
         class="submenu h-0 overflow-hidden pl-[1.2rem] text-body-xsm-mob s:text-body-xsm"
       >
-        <span
-          v-if="item.submenu"
-          class="block space-y-5 pb-[2.25rem] pt-[1.75rem]"
-        >
+        <span class="block space-y-5 pb-[2.25rem] pt-[1.75rem]">
           <li v-for="subitem in item.submenu">
             <NuxtLink
-              :to="$localePath(getUrl(subitem))"
+              :to="getUrl(subitem)"
               :target="subitem.external && '_blank'"
-              :class="!subitem.submenu ? 'ul single fast' : null"
+              :class="!subitem.submenu ? 'ul single' : null"
               >{{ subitem.label }}</NuxtLink
             >
 
@@ -61,11 +58,9 @@ const handleClick = (e, item) => {
               v-if="subitem.submenu"
             >
               <li v-for="subsubitem in subitem.submenu">
-                <NuxtLink
-                  :to="$localePath(getUrl(subsubitem))"
-                  class="ul single"
-                  >{{ subsubitem.label }}</NuxtLink
-                >
+                <NuxtLink :to="getUrl(subsubitem)" class="ul single">{{
+                  subsubitem.label
+                }}</NuxtLink>
               </li>
             </ul>
           </li>

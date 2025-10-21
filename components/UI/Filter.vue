@@ -43,6 +43,7 @@ const closeMenu = () => {
 
 <template>
   <div
+    v-if="data.length > 0"
     class="group relative z-2 mb-[2.5rem] w-full text-center filter s:mb-[4rem]"
     v-on-click-outside="closeMenu"
   >

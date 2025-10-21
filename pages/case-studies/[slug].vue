@@ -28,7 +28,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="pt-banner bg-jaffa">
+  <div class="bg-jaffa pt-banner">
     <Seo :data="page.seo" />
 
     <CaseStudyHero
@@ -46,6 +46,7 @@ onMounted(() => {
       />
       <CaseStudyColumns
         v-if="module.__typename == 'CasestudyBasicRecord'"
+        :class="i == 0 && 'border-t border-t-grayline'"
         :data="module"
       />
       <CaseStudyClientQuote

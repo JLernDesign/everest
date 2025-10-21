@@ -84,7 +84,6 @@ const updatePage = (n) => {
     scrollTo: { y: thumbs, duration: 0.5, ease: "power3.inOut" },
   });
   setTimeout(() => {
-    //page.value = n;
     gsap.to(thumbs, {
       opacity: 1,
       duration: 0.3,

@@ -16,7 +16,7 @@ const basew = 1800;
 /* get all legal pages */
 const legalQuery = gql`
   query {
-    allLegals(orderBy: order_ASC) {
+    allLegals(orderBy: order_ASC, filter: { hide: { eq: false } }) {
       title
       slug
     }
@@ -123,7 +123,7 @@ const getFooterStart = () => {
           <div class="group">
             <!-- title -->
             <h3 class="font-barlow-cond text-[2.1rem] uppercase text-red">
-              {{ $t("explore") }}
+              Explore Everest
             </h3>
 
             <!-- menu -->
@@ -134,7 +134,7 @@ const getFooterStart = () => {
         <!-- contact -->
         <div class="col w-full s:w-[45.5%] s:pl-[5rem]">
           <h3 class="font-barlow-cond text-[2.1rem] uppercase text-red">
-            {{ $t("contact") }}
+            Contact
           </h3>
           <div
             v-if="data?.locations"
@@ -161,11 +161,9 @@ const getFooterStart = () => {
           <ul class="flex flex-wrap items-center leading-body">
             <template v-for="(item, i) in legalPages">
               <li>
-                <NuxtLink
-                  :to="$localePath(`/legal/${item.slug}`)"
-                  class="hover:text-red"
-                  >{{ item.title }}</NuxtLink
-                >
+                <NuxtLink :to="`/legal/${item.slug}`" class="hover:text-red">{{
+                  item.title
+                }}</NuxtLink>
               </li>
               <li v-if="i !== legalPages.length - 1" class="mx-5">•</li>
             </template>

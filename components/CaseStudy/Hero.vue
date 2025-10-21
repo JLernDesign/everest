@@ -20,7 +20,7 @@ onMounted(() => {});
         class="flex flex-col justify-center border-l border-l-grayline p-side-mob s:w-[69.5%] s:py-[8rem] s:pl-side s:pr-[10rem] max-s:border-r max-s:border-r-grayline"
       >
         <h1
-          class="text font-barlow-cond text-xl-mob leading-xl -tracking-sm s:text-xl"
+          class="text font-barlow-cond text-xl-mob leading-xl -tracking-sm s:text-[10rem]"
           v-html="formatText(data.headline)"
         ></h1>
       </div>

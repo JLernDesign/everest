@@ -376,13 +376,9 @@ export const openVideoModal = (obj) => {
 };
 
 // gate modal
-export const openGateModal = (url, type, formData) => {
+export const openGateModal = (url, type) => {
   const gatedUrl = useState("gatedUrl");
   gatedUrl.value = { url: url, type: type };
-
-  const gateForm = useState("gateForm");
-  gateForm.value = formData;
-
   const modal = document.getElementById("gate-modal");
   gsap.fromTo(
     modal,

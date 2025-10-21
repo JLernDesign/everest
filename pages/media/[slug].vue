@@ -11,10 +11,10 @@ const { data } = await useGraphqlQuery({
   query: mediaCollectionQuery.loc.source.body,
 });
 const page = data.value.mediaPage;
-const collections = data.value.allMediaCollections;
-/* const collections = data.value.allMediaCollections.filter(
+//const collections = data.value.allMediaCollections;
+const collections = data.value.allMediaCollections.filter(
   (collection) => collection.tag?.slug != "ebooks",
-); */
+);
 
 // get tag id
 const tagIds = {

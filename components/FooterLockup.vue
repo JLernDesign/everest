@@ -22,16 +22,9 @@ const investors = inject("investors");
           :scroll="false"
         />
 
-        <!-- email signup -->
-        <BlogSignup
-          loc="footer"
-          theme="dark"
-          class="pb-[2rem] pt-[5rem] s:pb-[4rem] s:pt-[10rem]"
-        />
-
         <!-- logo -->
         <NuxtLink
-          :to="$localePath('/')"
+          to="/"
           class="footer-logo mt-[3.5rem] block h-[5.3rem] w-[6.2rem] s:mt-[15rem] s:h-[8.1rem] s:w-[9.4rem]"
         >
           <IconLogo color="white" />

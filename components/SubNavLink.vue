@@ -88,3 +88,5 @@ const toggleAccent = (state) => {
     <span>{{ data.title }}</span>
   </button>
 </template>
+
+<style scoped></style>

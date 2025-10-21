@@ -11,15 +11,19 @@ const { data } = await useGraphqlQuery({
 const page = data.value.allCaseStudies;
 
 // get next 2 case studies
-let flag;
+let flag, next;
 page.forEach((item, i) => {
   if (item.slug == route.params.slug) {
     flag = i;
   }
 });
 
-let wrapped_cs = gsap.utils.wrap(page);
-let next = [wrapped_cs(flag + 1), wrapped_cs(flag + 2)];
+const filtered = page.filter((item) => item.slug != route.params.slug);
+
+let wrapped_cs = gsap.utils.wrap(filtered);
+filtered.length > 1
+  ? (next = [wrapped_cs(flag), wrapped_cs(flag + 1)])
+  : (next = [wrapped_cs(flag)]);
 </script>
 
 <template>

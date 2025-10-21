@@ -1,6 +1,5 @@
 <script setup>
 import { Image as DatocmsImage } from "vue-datocms";
-const localePath = useLocalePath();
 const props = defineProps(["data"]);
 
 const title = ref(true);
@@ -17,7 +16,7 @@ const linkTo = computed(() => {
   }
 
   // internal link (blog post)
-  return localePath("/blog/" + props.data.slug);
+  return `/blog/${props.data.slug}`;
 });
 
 const isVideo = computed(() => {
