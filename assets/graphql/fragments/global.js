@@ -326,8 +326,6 @@ const IntegrationListFragment = gql`
     groups {
       title
       items {
-        name
-        description
         image {
           ...ResponsiveImageFragment
         }
