@@ -8,10 +8,6 @@ export const PostFragment = gql`
     title
     slug
     publishDate
-    tag {
-      name
-      slug
-    }
     category {
       id
       name

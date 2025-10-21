@@ -19,7 +19,7 @@ useHead(() => {
     let title = `Everest Systems | ${seo.title}`;
 
     // custom ammendments
-    if (route.path.includes("case-studies") && route.name != "case-studies") {
+    if (route.name.includes("case-studies-slug")) {
       title += " Case Study";
     }
 
