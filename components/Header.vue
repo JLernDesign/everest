@@ -156,6 +156,12 @@ const hideSticky = () => {
   });
 };
 
+// toggle hidden header
+const hideHeader = useState("hideHeader");
+watch(hideHeader, () => {
+  console.log("changed", hideHeader.value);
+});
+
 // check for mobile to adjust banner gap
 watch(mobile, () => {
   mobile.value ? (bannerGap = 0) : (bannerGap = "1rem");
@@ -183,7 +189,10 @@ watch(mobile, () => {
 
     <!-- nav -->
     <div class="nav-wrap hidden w-full justify-center pt-[6rem] s:grid">
-      <div class="relative grid place-content-center px-[5rem] py-[1.25rem]">
+      <div
+        class="relative grid place-content-center px-[5rem] py-[1.25rem]"
+        :class="hideHeader ? 'hidden' : ''"
+      >
         <div
           class="navbg absolute -top-[1px] left-0 h-full w-full rounded-btn border-1 border-jaffalt bg-jaffa opacity-0 shadow-nav"
         ></div>
@@ -198,6 +207,7 @@ watch(mobile, () => {
     >
       <button
         class="search-btn relative max-s:-mt-1 [&_.icon]:hover:fill-red"
+        :class="hideHeader ? 'hidden' : ''"
         @click="searchBar.openSearch"
       >
         <span

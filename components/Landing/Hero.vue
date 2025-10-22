@@ -1,0 +1,125 @@
+<script setup>
+import { Image as DatocmsImage } from "vue-datocms";
+
+const props = defineProps(["data"]);
+</script>
+
+<template>
+  <Section
+    :hero="true"
+    class="pb-section-bot-lg max-s:pt-hero-mob-lg"
+    side="lg"
+  >
+    <!-- bg elements -->
+    <div
+      class="gradient absolute left-[65.2rem] top-[15.5rem] h-[69.4rem] w-[107.3rem] -scale-x-100 blur-[50px]"
+    >
+      <img src="/public/ui/edge-gradient-sm.svg" alt="" />
+    </div>
+    <UICloud
+      type="2"
+      class="-top-[30rem] left-0 translate-x-[90%]"
+      :anim="true"
+      :speed="70"
+      :delay="-50"
+    />
+    <UICloud
+      type="1"
+      class="left-0 top-[72rem]"
+      :flip="true"
+      :anim="true"
+      :speed="50"
+    />
+
+    <!-- columns -->
+    <div
+      class="relative mx-auto flex max-w-base flex-col items-start justify-between pt-6 s:flex-row"
+      ref="main"
+    >
+      <!-- text -->
+      <div class="text w-full s:w-1/2 s:pr-[11.5rem] max-s:mt-[5rem]">
+        <!-- eyebrow -->
+        <div v-if="data.eyebrow" class="eyebrow mb-6">
+          <h3 class="font-helvb text-red s:text-body-xsm">
+            {{ data.eyebrow }}
+          </h3>
+        </div>
+
+        <!-- header / intro -->
+        <div class="has-break space-y-[2rem] s:space-y-[3.5rem]">
+          <h1
+            class="text font-barlow-cond text-xl-mob leading-xl -tracking-sm s:text-xl"
+            v-html="formatText(data.headline)"
+          ></h1>
+
+          <!-- cta buttons -->
+          <div
+            class="cta-group flex items-center justify-start space-x-[5rem] pt-6"
+          >
+            <CtaGroup
+              v-if="data.cta"
+              :data="data.cta.buttons"
+              :align="left"
+              :theme="light"
+            />
+
+            <!-- logo -->
+            <div v-if="data.heroLogo">
+              <img
+                :src="data.heroLogo.url"
+                :alt="data.heroLogo.alt"
+                class="h-auto w-full max-w-[18.5rem]"
+              />
+            </div>
+
+            <!-- rep -->
+            <div
+              v-else-if="data.rep"
+              class="author flex items-stretch space-x-6 divide-x-1 divide-black"
+            >
+              <img
+                v-if="data.rep.photo"
+                :src="data.rep.photo.url"
+                alt=""
+                class="w-[4rem] overflow-hidden rounded-full s:w-[5rem]"
+              />
+              <div class="flex items-center pl-6">
+                <p class="font-barlow-cond text-body-sm-mob uppercase">
+                  {{ data.rep.name }}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div v-if="data.intro" class="max-w-[52rem]">
+            <p v-html="formatText(data.intro)"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- image -->
+      <div
+        class="image w-full max-w-[72rem] overflow-hidden rounded-base-mob s:w-1/2 s:rounded-base"
+      >
+        <div
+          class="content-image rounded-base-mob s:rounded-base"
+          :class="[
+            data.heroImage.bgColor ? bgColor(data.heroImage) : 'bg-tan',
+            data.heroImage.useBg
+              ? 'bg-cover px-[5rem] py-[6.5rem] s:px-[13rem]'
+              : '',
+          ]"
+          :style="
+            data.heroImage.useBg && data.heroImage.bgImage
+              ? `background-image:url(${data.heroImage.bgImage.url})`
+              : ''
+          "
+        >
+          <div class="w-full">
+            <DatocmsImage :data="data.heroImage.image.responsiveImage" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+</template>
