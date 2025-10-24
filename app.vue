@@ -15,7 +15,7 @@ const base_url = useState("base_url", () => "https://everest-systems.com");
 const theme = useState("theme", () => "light");
 const pageInactive = useState("pageInactive", () => false);
 const hideHeader = useState("hideHeader", () => false);
-console.log(hideHeader.value);
+
 // reactive variables
 const queryVariables = computed(() => {
   const vars = {

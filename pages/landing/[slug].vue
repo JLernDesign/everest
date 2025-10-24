@@ -14,6 +14,7 @@ const { data } = await useGraphqlQuery({
 });
 const page = data.value.paidLanding;
 
+console.log(toRaw(page));
 onMounted(() => {
   hideHeader.value = page.hideHeader;
 
@@ -39,7 +40,13 @@ onBeforeRouteLeave(() => {
     <LandingHero :data="page" />
 
     <!-- flexible content -->
-    <!-- <template v-for="module in page.paidFlexible.paidModules"></template> -->
+    <template v-for="module in page.landingFlexible.landingModules">
+      <LandingBasicColumns
+        v-if="module.__typename == 'LandingBasicRecord'"
+        :data="module"
+      />
+      <Faq v-if="module.__typename == 'FaqRecord'" :data="module" />
+    </template>
 
     <FooterLockup :data="page.footerCallout" />
 

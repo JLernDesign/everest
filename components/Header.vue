@@ -9,6 +9,7 @@ const header = ref(null);
 const logo = ref(null);
 const searchBar = ref(null);
 const theme = useState("theme");
+const hideHeader = useState("hideHeader");
 const loaded = ref(false);
 const { y, directions } = useScroll(window);
 const mobile = breakpoints.smallerOrEqual("tablet1");
@@ -155,12 +156,6 @@ const hideSticky = () => {
     ease: "power3.inOut",
   });
 };
-
-// toggle hidden header
-const hideHeader = useState("hideHeader");
-watch(hideHeader, () => {
-  console.log("changed", hideHeader.value);
-});
 
 // check for mobile to adjust banner gap
 watch(mobile, () => {
