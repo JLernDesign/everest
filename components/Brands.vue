@@ -47,7 +47,11 @@ const toggle = (state) => {
   <div id="brands">
     <h4
       class="title mb-4 text-center text-tag-mob s:mb-6 s:text-tag"
-      :class="theme == 'dark' ? 'text-white' : 'text-black'"
+      :class="[
+        theme == 'dark' ? 'text-white' : 'text-black',
+        template == 'landing' &&
+          '!mb-[4rem] font-barlow-cond !text-body uppercase',
+      ]"
     >
       {{ data.title }}
     </h4>
@@ -55,13 +59,22 @@ const toggle = (state) => {
     <!-- desktop no scroll -->
     <div
       class="hidden justify-center space-x-[4rem] s:flex s:space-x-[9rem]"
-      :class="scroll ? 's:hidden' : ''"
+      :class="[
+        scroll ? 's:hidden' : '',
+
+        template == 'landing' && 'justify-between space-x-0',
+      ]"
     >
-      <UILogo
+      <div
         v-for="item in data.logos"
-        :src="item.url ? item.url : item"
-        class="max-s:shrink-0"
-      />
+        :class="
+          template == 'landing'
+            ? 'flex h-[13.2rem] w-[31rem] items-center justify-center rounded-base bg-white'
+            : ''
+        "
+      >
+        <UILogo :src="item.url ? item.url : item" class="max-s:shrink-0" />
+      </div>
     </div>
 
     <!-- desktop scroll / mobile -->
