@@ -71,11 +71,11 @@ onBeforeRouteLeave(() => {
         :order="i"
       />
 
-      <!--       <LandingCtaForm
+      <LandingCtaForm
         v-if="module.__typename == 'CtaFormRecord'"
         :data="module"
         :order="i"
-      /> -->
+      />
 
       <Faq v-if="module.__typename == 'FaqRecord'" :data="module" />
     </template>

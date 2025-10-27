@@ -49,7 +49,10 @@ const props = defineProps(["data"]);
                 : ''
             "
           >
-            <div class="rounded-base-mob bg-skyblue p-[6.5rem] s:rounded-base">
+            <div
+              class="relative rounded-base-mob bg-skyblue px-[6.5rem] py-[8rem] s:rounded-base"
+              :class="data.image.person ? 'pb-[33rem]' : ''"
+            >
               <blockquote class="relative text-body">
                 <div
                   class="quote lt absolute -top-[5.5rem] font-barlow-cond text-xl-mob leading-xl text-blue s:-left-[3.5rem] s:text-xl"
@@ -57,25 +60,41 @@ const props = defineProps(["data"]);
                   “
                 </div>
                 <div
-                  class="quote rt absolute -bottom-[13rem] right-0 font-barlow-cond text-xl-mob leading-xl text-blue s:-bottom-[18rem] s:text-xl"
+                  class="quote rt absolute -bottom-[13rem] right-0 font-barlow-cond text-xl-mob leading-xl text-blue s:-bottom-[10rem] s:text-xl"
                 >
                   ”
                 </div>
                 {{ data.image.quote }}
               </blockquote>
 
+              <!-- person photo -->
+              <div
+                v-if="data.image.person"
+                class="person-photo absolute bottom-0 left-0 size-[30rem]"
+              >
+                <DatocmsImage :data="data.image.person.responsiveImage" />
+              </div>
+
               <!-- byline -->
               <div
                 v-if="data.image.name"
-                class="byline mt-[3.5rem] text-body-xsm-mob s:mt-[5rem] s:text-body-xsm"
+                class="byline mt-[3.5rem] s:mt-[5rem]"
+                :class="
+                  data.image.person
+                    ? 'absolute bottom-0 left-0 pb-[5rem] pl-[33rem] pr-[5rem]'
+                    : ''
+                "
               >
-                <strong class="block font-helvb">{{ data.image.name }}</strong>
-                {{ data.image.title }}
+                <strong
+                  class="block font-helvb text-body-mob text-red s:text-body"
+                  >{{ data.image.name }}</strong
+                >
+                <span
+                  class="mt-2 inline-block text-body-sm-mob leading-sm s:text-body-sm"
+                  >{{ data.image.title }}</span
+                >
               </div>
             </div>
-            <!-- <div class="w-full">
-              <DatocmsImage :data="data.image.image.responsiveImage" />
-            </div> -->
           </div>
         </template>
 
