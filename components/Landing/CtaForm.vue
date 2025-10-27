@@ -1,6 +1,6 @@
 <script setup>
 const props = defineProps(["data"]);
-console.log(props.data);
+const loaded = ref(false);
 onMounted(() => {
   if (props.data.hubspotId) {
     const script = document.createElement("script");

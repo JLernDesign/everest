@@ -25,6 +25,19 @@ const props = defineProps(["data"]);
           :theme="dark"
           class="mt-10"
         />
+
+        <!-- brands -->
+        <div
+          v-if="data.logoGroup"
+          class="!mt-[5rem] w-full overflow-hidden [&_h4]:!text-left"
+        >
+          <Brands
+            theme="light"
+            :data="data.logoGroup"
+            :scroll="false"
+            template="list-module"
+          />
+        </div>
       </div>
 
       <!-- right -->

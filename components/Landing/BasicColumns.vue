@@ -12,15 +12,18 @@ const props = defineProps(["data"]);
     >
       <!-- text -->
       <div
-        class="text flex w-full flex-col justify-center space-y-10 s:w-1/2 s:space-y-14 s:pr-[11.5rem] max-s:mt-[5rem]"
+        class="text flex w-full flex-col justify-center space-y-[2rem] s:w-1/2 s:space-y-[2.5rem] s:pr-[11.5rem] max-s:mt-[5rem]"
         :class="data.layout == 'img-lt' ? 'order-2 px-[10rem]' : 'order-1'"
       >
+        <!-- headline -->
         <h2
-          class="font-barlow-cond text-lg-mob leading-lg s:text-lg"
+          class="max-w-[52rem] font-barlow-cond text-lg-mob leading-lg s:text-lg"
           v-html="formatText(data.headline)"
         ></h2>
+
+        <!-- intro -->
         <div
-          class="bullets space-y-10 [&_*+h2]:mt-[9rem] [&_h2]:font-helvb [&_h2]:text-body-md-mob [&_h2]:s:text-body-md [&_h3+p]:mt-[.5rem] [&_h3]:font-helvb"
+          class="bullets max-w-[52rem] space-y-10 [&_*+h2]:mt-[9rem] [&_h2]:font-helvb [&_h2]:text-body-md-mob [&_h2]:s:text-body-md [&_h3+p]:mt-[.5rem] [&_h3]:font-helvb"
           v-html="data.body"
         ></div>
 
@@ -33,84 +36,22 @@ const props = defineProps(["data"]);
         />
       </div>
 
-      <!-- image -->
+      <!-- image block -->
       <div
         class="image w-full max-w-[72rem] overflow-hidden rounded-base-mob s:w-1/2 s:rounded-base"
         :class="data.layout == 'img-lt' ? 'order-1' : 'order-2'"
       >
         <!-- Quote Block -->
-        <template v-if="data.image.__typename == 'QuoteBlockRecord'">
-          <div
-            class="content-image rounded-base-mob bg-cover s:rounded-base s:p-[5rem]"
-            :class="[data.image.bgColor ? bgColor(data.image) : 'bg-tan']"
-            :style="
-              data.image.bgImage
-                ? `background-image:url(${data.image.bgImage.url})`
-                : ''
-            "
-          >
-            <div
-              class="relative rounded-base-mob bg-skyblue px-[6.5rem] py-[8rem] s:rounded-base"
-              :class="data.image.person ? 'pb-[33rem]' : ''"
-            >
-              <blockquote class="relative text-body">
-                <div
-                  class="quote lt absolute -top-[5.5rem] font-barlow-cond text-xl-mob leading-xl text-blue s:-left-[3.5rem] s:text-xl"
-                >
-                  “
-                </div>
-                <div
-                  class="quote rt absolute -bottom-[13rem] right-0 font-barlow-cond text-xl-mob leading-xl text-blue s:-bottom-[10rem] s:text-xl"
-                >
-                  ”
-                </div>
-                {{ data.image.quote }}
-              </blockquote>
-
-              <!-- person photo -->
-              <div
-                v-if="data.image.person"
-                class="person-photo absolute bottom-0 left-0 size-[30rem]"
-              >
-                <DatocmsImage :data="data.image.person.responsiveImage" />
-              </div>
-
-              <!-- byline -->
-              <div
-                v-if="data.image.name"
-                class="byline mt-[3.5rem] s:mt-[5rem]"
-                :class="
-                  data.image.person
-                    ? 'absolute bottom-0 left-0 pb-[5rem] pl-[33rem] pr-[5rem]'
-                    : ''
-                "
-              >
-                <strong
-                  class="block font-helvb text-body-mob text-red s:text-body"
-                  >{{ data.image.name }}</strong
-                >
-                <span
-                  class="mt-2 inline-block text-body-sm-mob leading-sm s:text-body-sm"
-                  >{{ data.image.title }}</span
-                >
-              </div>
-            </div>
-          </div>
-        </template>
+        <LandingQuoteBlock
+          v-if="data.image.__typename == 'QuoteBlockRecord'"
+          :data="data.image"
+        />
 
         <!-- Image Caption Block -->
-        <template v-if="data.image.__typename == 'ImageCaptionRecord'">
-          <div
-            class="content-image relative overflow-hidden rounded-base-mob bg-cover s:rounded-base"
-          >
-            <DatocmsImage :data="data.image.image.responsiveImage" />
-            <div
-              class="caption absolute bottom-[3rem] left-[3rem] w-[50%] font-barlow-cond text-sm-mob leading-[.94] text-white s:text-sm"
-            >
-              {{ data.image.caption }}
-            </div>
-          </div>
-        </template>
+        <LandingImageBlock
+          v-if="data.image.__typename == 'ImageCaptionRecord'"
+          :data="data.image"
+        />
 
         <!-- Image Block -->
         <template v-if="data.image.__typename == 'ImageBlockRecord'">
@@ -120,6 +61,13 @@ const props = defineProps(["data"]);
             <DatocmsImage :data="data.image.image.responsiveImage" />
           </div>
         </template>
+
+        <!-- Media Slider Block -->
+        <MediaSlider
+          v-if="data.image.__typename == 'MediaSliderRecord'"
+          :data="data.image.mediaSlides"
+          loc="landing"
+        />
       </div>
     </div>
   </Section>

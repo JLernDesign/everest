@@ -1,6 +1,6 @@
 <script setup>
 import { Image as DatocmsImage } from "vue-datocms";
-const props = defineProps(["data"]);
+const props = defineProps(["data", "loc"]);
 
 const title = ref(true);
 
@@ -51,6 +51,7 @@ defineExpose({
 <template>
   <div
     class="item pointer-events-auto h-full w-full shrink-0 s:w-[33.5rem]"
+    :class="loc == 'landing' && '!w-full'"
     @mouseenter="hoverOn"
     @mouseleave="hoverOff"
   >
@@ -75,7 +76,9 @@ defineExpose({
       <!-- texture background fallback -->
       <img
         v-else
-        src="/video/media-bg.jpg"
+        :src="
+          loc == 'landing' ? '/video/media-bg-lg.jpg' : '/video/media-bg.jpg'
+        "
         class="absolute left-0 top-0 size-full"
       />
 

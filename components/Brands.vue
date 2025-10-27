@@ -63,17 +63,28 @@ const toggle = (state) => {
         scroll ? 's:hidden' : '',
 
         template == 'landing' && 'justify-between space-x-0',
+        template == 'list-module' && 'justify-between !space-x-0',
       ]"
     >
       <div
         v-for="item in data.logos"
-        :class="
+        :class="[
           template == 'landing'
             ? 'flex h-[13.2rem] w-[31rem] items-center justify-center rounded-base bg-white'
-            : ''
-        "
+            : '',
+          template == 'list-module' && 'inline-block w-auto',
+        ]"
       >
-        <UILogo :src="item.url ? item.url : item" class="max-s:shrink-0" />
+        <UILogo
+          :src="item.url ? item.url : item"
+          class="max-s:shrink-0"
+          :class="
+            template == 'list-module' &&
+            'inline-block !w-auto [&_img]:!max-w-[12rem]'
+          "
+          ,
+          :small="template == 'list-module' || template == 'centered-text'"
+        />
       </div>
     </div>
 

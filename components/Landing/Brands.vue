@@ -1,6 +1,5 @@
 <script setup>
 const props = defineProps(["data", "order"]);
-console.log(props.order);
 </script>
 
 <template>
