@@ -7,7 +7,7 @@ const props = defineProps(["data"]);
 <template>
   <Section
     :hero="true"
-    class="pb-section-bot-lg max-s:pt-hero-mob-lg"
+    class="pb-[5rem] s:pb-section-bot-lg max-s:pt-hero-mob-lg"
     side="lg"
   >
     <!-- bg elements -->
@@ -33,14 +33,14 @@ const props = defineProps(["data"]);
 
     <!-- columns -->
     <div
-      class="relative mx-auto flex max-w-base flex-col items-start justify-between pt-6 s:flex-row"
+      class="relative mx-auto flex max-w-base flex-col items-start justify-between s:flex-row"
       ref="main"
     >
       <!-- text -->
-      <div class="text w-full s:w-1/2 s:pr-[11.5rem] max-s:mt-[5rem]">
+      <div class="text w-full s:w-1/2 s:pr-[11.5rem]">
         <!-- eyebrow -->
         <div v-if="data.eyebrow" class="eyebrow mb-6">
-          <h3 class="font-helvb text-red s:text-body-xsm">
+          <h3 class="font-helvb text-body-xsm-mob text-red s:text-body-xsm">
             {{ data.eyebrow }}
           </h3>
         </div>
@@ -48,13 +48,13 @@ const props = defineProps(["data"]);
         <!-- header / intro -->
         <div class="has-break space-y-[2rem] s:space-y-[3.5rem]">
           <h1
-            class="text font-barlow-cond text-xl-mob leading-xl -tracking-sm s:text-xl"
+            class="text font-barlow-cond text-xl-mob leading-xl -tracking-sm s:text-xl max-s:max-w-[450px]"
             v-html="formatText(data.headline)"
           ></h1>
 
           <!-- cta buttons -->
           <div
-            class="cta-group flex items-center justify-start space-x-[5rem] pt-6"
+            class="cta-group items-center justify-start s:flex s:space-x-[5rem] max-s:space-y-8"
           >
             <CtaGroup
               v-if="data.cta"
@@ -99,7 +99,7 @@ const props = defineProps(["data"]);
 
       <!-- image -->
       <div
-        class="image w-full max-w-[72rem] overflow-hidden rounded-base-mob s:w-1/2 s:rounded-base"
+        class="image w-full max-w-[72rem] overflow-hidden rounded-base-mob s:w-1/2 s:rounded-base max-s:mt-[2.5rem]"
       >
         <div
           class="content-image rounded-base-mob s:rounded-base"

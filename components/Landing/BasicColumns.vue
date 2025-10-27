@@ -5,15 +5,19 @@ const props = defineProps(["data"]);
 </script>
 
 <template>
-  <Section class="pb-section-bot-mob s:!p-[5rem]">
+  <Section class="!py-[3.5rem] s:!p-[5rem]">
     <div
-      class="relative mx-auto flex max-w-base flex-col items-stretch justify-between pt-6 s:flex-row"
+      class="relative mx-auto flex max-w-base flex-col items-stretch justify-between s:flex-row"
       ref="main"
     >
       <!-- text -->
       <div
-        class="text flex w-full flex-col justify-center space-y-[2rem] s:w-1/2 s:space-y-[2.5rem] s:pr-[11.5rem] max-s:mt-[5rem]"
-        :class="data.layout == 'img-lt' ? 'order-2 px-[10rem]' : 'order-1'"
+        class="text flex w-full flex-col justify-center space-y-[2rem] s:w-1/2 s:space-y-[2.5rem] s:pr-[11.5rem]"
+        :class="
+          data.layout == 'img-lt'
+            ? 'order-2 s:px-[10rem] max-s:mt-[2.5rem]'
+            : 'order-1'
+        "
       >
         <!-- headline -->
         <h2
@@ -39,7 +43,9 @@ const props = defineProps(["data"]);
       <!-- image block -->
       <div
         class="image w-full max-w-[72rem] overflow-hidden rounded-base-mob s:w-1/2 s:rounded-base"
-        :class="data.layout == 'img-lt' ? 'order-1' : 'order-2'"
+        :class="
+          data.layout == 'img-lt' ? 'order-1' : 'order-2 max-s:mt-[2.5rem]'
+        "
       >
         <!-- Quote Block -->
         <LandingQuoteBlock

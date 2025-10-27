@@ -4,10 +4,10 @@ const props = defineProps(["data"]);
 </script>
 
 <template>
-  <Section class="pb-section-bot-mob s:pb-section-bot">
+  <Section class="pb-[5rem] s:pb-section-bot">
     <SectionHeader :data="data.header" template="landing" />
     <div
-      class="mt-[2.5rem] w-full rounded-base-mob p-[11.5rem] s:rounded-base"
+      class="mt-[2.5rem] w-full rounded-base-mob p-[1.4rem] s:rounded-base s:p-[11.5rem]"
       :class="data.bgColor ? bgColor(data) : 'bg-jaffa'"
     >
       <DatocmsImage :data="data.image.responsiveImage" />

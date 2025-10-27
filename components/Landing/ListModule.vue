@@ -3,10 +3,12 @@ const props = defineProps(["data"]);
 </script>
 
 <template>
-  <Section class="bg-jaffa pb-section-bot-mob s:mt-[5rem] s:pb-section-bot">
+  <Section
+    class="mt-[2.5rem] bg-jaffa pb-section-bot-mob s:mt-[5rem] s:pb-section-bot"
+  >
     <!-- columns -->
     <div
-      class="relative mx-auto flex max-w-base flex-col items-start justify-between divide-x divide-grayline pt-6 s:flex-row"
+      class="relative mx-auto flex max-w-base flex-col items-start justify-between s:flex-row s:divide-x s:divide-grayline"
       ref="main"
     >
       <!-- left -->
@@ -29,7 +31,7 @@ const props = defineProps(["data"]);
         <!-- brands -->
         <div
           v-if="data.logoGroup"
-          class="!mt-[5rem] w-full overflow-hidden [&_h4]:!text-left"
+          class="!mt-[2.5rem] w-full overflow-hidden s:!mt-[5rem] max-s:ml-[-2rem] max-s:w-screen [&_h4]:!text-left"
         >
           <Brands
             theme="light"

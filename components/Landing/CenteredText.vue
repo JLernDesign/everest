@@ -21,7 +21,7 @@ const props = defineProps(["data"]);
         :data="data.logoGroup"
         :scroll="false"
         template="centered-text"
-        class="!my-[7rem]"
+        class="s:!my-[7rem]"
       />
 
       <div
@@ -39,11 +39,14 @@ const props = defineProps(["data"]);
       />
 
       <!-- logo -->
-      <div v-if="data.logoIcon" class="!mt-[5rem] inline-block">
+      <div
+        v-if="data.logoIcon"
+        class="inline-block s:!mt-[5rem] max-s:!mt-[2.5rem]"
+      >
         <img
           :src="data.logoIcon.url"
           :alt="data.logoIcon.alt"
-          class="h-auto w-full max-w-[24rem]"
+          class="h-auto w-full max-w-[16rem] s:max-w-[24rem]"
         />
       </div>
     </div>

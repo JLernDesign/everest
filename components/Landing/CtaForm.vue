@@ -28,9 +28,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <Section
-    class="bg-shadowblue pb-section-bot-mob s:mt-[26.6rem] s:pb-section-bot"
-  >
+  <Section class="bg-shadowblue pb-[2rem] s:mt-[26.6rem] s:pb-section-bot">
     <UITexture />
     <FooterJag loc="top" />
 
@@ -40,10 +38,10 @@ onMounted(() => {
       ref="main"
     >
       <!-- left -->
-      <div class="text w-full s:w-1/2 s:pr-[11.5rem] max-s:mt-[5rem]">
+      <div class="text w-full s:w-1/2 s:pr-[11.5rem]">
         <!-- eyebrow -->
         <div v-if="data.header.eyebrow" class="eyebrow mb-6">
-          <h3 class="font-helvb text-red s:text-body-xsm">
+          <h3 class="font-helvb text-body-xsm-mob text-red s:text-body-xsm">
             {{ data.header.eyebrow }}
           </h3>
         </div>
@@ -57,7 +55,7 @@ onMounted(() => {
 
           <!-- cta buttons -->
           <div
-            class="cta-group flex items-center justify-start space-x-[5rem] pt-6"
+            class="cta-group items-center justify-start pt-6 s:flex s:space-x-[5rem] max-s:space-y-8"
           >
             <CtaGroup
               v-if="data.header.cta"
@@ -95,7 +93,7 @@ onMounted(() => {
 
       <!-- right (form) -->
       <div
-        class="relative w-full overflow-hidden rounded-base-mob bg-shadowblue p-[2.5rem] text-white s:w-1/2 s:rounded-base s:p-[5rem] max-s:order-1 max-s:pb-[5rem]"
+        class="relative w-full overflow-hidden rounded-base-mob bg-shadowblue p-[2.5rem] text-white s:w-1/2 s:rounded-base s:p-[5rem] max-s:order-1 max-s:mt-[5rem] max-s:pb-[5rem]"
       >
         <!-- hubspot form -->
         <div class="form landing-form">
