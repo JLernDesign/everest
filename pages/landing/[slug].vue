@@ -13,8 +13,8 @@ const { data } = await useGraphqlQuery({
   query: landingQuery.loc.source.body,
 });
 const page = data.value.paidLanding;
+/* console.log(toRaw(page)); */
 
-console.log(toRaw(page));
 onMounted(() => {
   hideHeader.value = page.hideHeader;
 

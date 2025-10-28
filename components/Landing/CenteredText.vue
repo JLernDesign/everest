@@ -1,5 +1,4 @@
 <script setup>
-import { Image as DatocmsImage } from "vue-datocms";
 const props = defineProps(["data"]);
 </script>
 
@@ -16,13 +15,14 @@ const props = defineProps(["data"]);
       ></h2>
 
       <!-- brands -->
-      <Brands
-        theme="light"
-        :data="data.logoGroup"
-        :scroll="false"
-        template="centered-text"
-        class="s:!my-[7rem]"
-      />
+      <div class="relative left-1/2 w-screen -translate-x-1/2 s:!my-[7rem]">
+        <Brands
+          theme="light"
+          :data="data.logoGroup"
+          :scroll="data.logoGroup.logos.length > 7 ? true : false"
+          template="centered-text"
+        />
+      </div>
 
       <div
         v-if="data.intro"

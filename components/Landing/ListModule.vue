@@ -43,7 +43,7 @@ const props = defineProps(["data"]);
           <Brands
             theme="light"
             :data="data.logoGroup"
-            :scroll="false"
+            :scroll="data.logoGroup.logos.length > 4 ? true : false"
             template="list-module"
           />
         </div>

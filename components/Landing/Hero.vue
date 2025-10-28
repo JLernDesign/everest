@@ -1,7 +1,24 @@
 <script setup>
+import gsap from "gsap";
 import { Image as DatocmsImage } from "vue-datocms";
 
 const props = defineProps(["data"]);
+
+const main = ref(null);
+let ctx;
+
+onMounted(() => {
+  ctx = gsap.context((self) => {
+    // parallax clouds
+    const clouds = self.selector(".cloud");
+    const cloudY = [60, 30];
+    //cloudParallax(main.value.$el, null, clouds, cloudY);
+  }, main.value.$el);
+});
+
+onUnmounted(() => {
+  ctx.revert();
+});
 </script>
 
 <template>
@@ -9,7 +26,8 @@ const props = defineProps(["data"]);
     :hero="true"
     class="pb-[5rem] s:pb-section-bot-lg max-s:pt-hero-mob-lg"
     side="lg"
-    :anim="true"
+    :anim="false"
+    ref="main"
   >
     <!-- bg elements -->
     <div
@@ -26,7 +44,7 @@ const props = defineProps(["data"]);
     />
     <UICloud
       type="1"
-      class="left-0 top-[72rem]"
+      class="left-0 top-[62rem]"
       :flip="true"
       :anim="true"
       :speed="70"

@@ -5,7 +5,8 @@ const props = defineProps(["data", "theme", "scroll", "template"]);
 const main = ref();
 let mm, ctx;
 const total = props.data.logos.length;
-const speed = 150 / total;
+/* const speed = 150 / total; */
+const speed = total * 10;
 const dup = props.template == "home" ? 3 : 2;
 
 onMounted(() => {
@@ -82,8 +83,11 @@ const toggle = (state) => {
             template == 'list-module' &&
             'inline-block !w-auto [&_img]:!max-w-[12rem]'
           "
-          ,
-          :small="template == 'list-module' || template == 'centered-text'"
+          :small="
+            template == 'list-module' || template == 'centered-text'
+              ? true
+              : false
+          "
         />
       </div>
     </div>
@@ -97,12 +101,27 @@ const toggle = (state) => {
       <div
         v-for="n in dup"
         class="brands-group flex justify-center space-x-[6rem] s:space-x-[9rem]"
+        :class="[
+          template == 'landing' || template == 'list-module'
+            ? 'max-s:!space-x-[4rem]'
+            : '',
+        ]"
         :style="{ animationDuration: `${speed}s` }"
       >
         <UILogo
           v-for="item in data.logos"
           :src="item.url ? item.url : item"
-          class="s:!w-[13rem] max-s:h-[5rem] max-s:w-[10rem] max-s:shrink-0"
+          :class="[
+            template == 'landing'
+              ? 'flex h-[8rem] items-center justify-center rounded-base bg-white s:!h-[13.2rem] s:!w-[31rem] s:px-20 s:py-12 max-s:p-8'
+              : 's:!w-[13rem] max-s:h-[5rem] max-s:w-[10rem] max-s:shrink-0',
+            template == 'list-module' && '[&_img]:!max-w-[12rem]',
+          ]"
+          :small="
+            template == 'list-module' || template == 'centered-text'
+              ? true
+              : false
+          "
         />
         <div class="brands-group-spacer" />
       </div>
