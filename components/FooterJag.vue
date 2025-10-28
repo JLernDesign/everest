@@ -4,8 +4,12 @@ const props = defineProps(["loc"]);
 
 <template>
   <div
-    class="absolute left-0 hidden h-[26.8rem] w-full [clip-path:url(#jag-edge)] s:block"
-    :class="loc === 'top' ? '-top-[26.6rem] scale-[-1]' : 'bottom-0'"
+    class="absolute left-0 w-full [clip-path:url(#jag-edge)] s:h-[26.8rem]"
+    :class="
+      loc === 'top'
+        ? 'h-[8rem] scale-[-1] s:-top-[26.6rem] max-s:-top-[7.95rem]'
+        : 'bottom-0 hidden s:block'
+    "
   >
     <UITexture class="bg-[position:0_-1rem]" />
   </div>

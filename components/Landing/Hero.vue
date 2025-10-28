@@ -9,10 +9,11 @@ const props = defineProps(["data"]);
     :hero="true"
     class="pb-[5rem] s:pb-section-bot-lg max-s:pt-hero-mob-lg"
     side="lg"
+    :anim="true"
   >
     <!-- bg elements -->
     <div
-      class="gradient absolute left-[65.2rem] top-[15.5rem] h-[69.4rem] w-[107.3rem] -scale-x-100 blur-[50px]"
+      class="gradient glower absolute left-[65.2rem] top-[15.5rem] h-[69.4rem] w-[107.3rem] -scale-x-100 blur-[50px]"
     >
       <img src="/public/ui/edge-gradient-sm.svg" alt="" />
     </div>
@@ -20,15 +21,15 @@ const props = defineProps(["data"]);
       type="2"
       class="-top-[30rem] left-0 translate-x-[90%]"
       :anim="true"
-      :speed="70"
-      :delay="-50"
+      :speed="85"
+      :delay="0"
     />
     <UICloud
       type="1"
       class="left-0 top-[72rem]"
       :flip="true"
       :anim="true"
-      :speed="50"
+      :speed="70"
     />
 
     <!-- columns -->
@@ -101,16 +102,13 @@ const props = defineProps(["data"]);
       <div
         class="image w-full max-w-[72rem] overflow-hidden rounded-base-mob s:w-1/2 s:rounded-base max-s:mt-[2.5rem]"
       >
+        <!-- image with background -->
         <div
-          class="content-image rounded-base-mob s:rounded-base"
-          :class="[
-            data.heroImage.bgColor ? bgColor(data.heroImage) : 'bg-tan',
-            data.heroImage.useBg
-              ? 'bg-cover px-[5rem] py-[6.5rem] s:px-[13rem]'
-              : '',
-          ]"
+          v-if="data.heroImage.__typename == 'ImageBgRecord'"
+          class="content-image rounded-base-mob bg-cover px-[5rem] py-[6.5rem] s:rounded-base s:px-[13rem]"
+          :class="[data.heroImage.bgColor ? bgColor(data.heroImage) : 'bg-tan']"
           :style="
-            data.heroImage.useBg && data.heroImage.bgImage
+            data.heroImage.bgImage
               ? `background-image:url(${data.heroImage.bgImage.url})`
               : ''
           "
@@ -118,6 +116,14 @@ const props = defineProps(["data"]);
           <div class="w-full">
             <DatocmsImage :data="data.heroImage.image.responsiveImage" />
           </div>
+        </div>
+
+        <!-- image block -->
+        <div
+          v-if="data.heroImage.__typename == 'ImageBlockRecord'"
+          class="content-image relative overflow-hidden rounded-base-mob bg-cover s:rounded-base"
+        >
+          <DatocmsImage :data="data.heroImage.image.responsiveImage" />
         </div>
       </div>
     </div>

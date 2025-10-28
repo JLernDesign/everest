@@ -8,11 +8,18 @@ const props = defineProps(["data"]);
   >
     <!-- columns -->
     <div
-      class="relative mx-auto flex max-w-base flex-col items-start justify-between s:flex-row s:divide-x s:divide-grayline"
+      class="relative mx-auto flex max-w-base flex-col items-stretch justify-between s:flex-row"
       ref="main"
     >
       <!-- left -->
-      <div class="text w-full space-y-10 s:w-1/2 s:space-y-14 s:pr-[16.5rem]">
+      <div
+        class="text w-full space-y-10 s:w-1/2 s:space-y-14 s:border-grayline"
+        :class="
+          data.layout == 'list-rt'
+            ? 'order-1 s:border-r s:pr-[16.5rem]'
+            : 'order-2 s:border-l s:px-[10rem]'
+        "
+      >
         <h2
           class="font-barlow-cond text-lg-mob leading-lg s:text-lg"
           v-html="formatText(data.headline)"
@@ -43,7 +50,14 @@ const props = defineProps(["data"]);
       </div>
 
       <!-- right -->
-      <div class="text w-full s:w-1/2 s:pl-[6.5rem] max-s:mt-[5rem]">
+      <div
+        class="text w-full s:w-1/2 max-s:mt-[5rem]"
+        :class="
+          data.layout == 'list-rt'
+            ? 'order-2 s:pl-[6.5rem]'
+            : 'order-1 s:pr-[11.5rem]'
+        "
+      >
         <ul class="divide-y divide-grayline">
           <li
             v-for="(item, i) in data.listItems"

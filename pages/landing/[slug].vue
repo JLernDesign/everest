@@ -14,7 +14,7 @@ const { data } = await useGraphqlQuery({
 });
 const page = data.value.paidLanding;
 
-console.log(toRaw(page.landingFlexible.landingModules));
+console.log(toRaw(page));
 onMounted(() => {
   hideHeader.value = page.hideHeader;
 

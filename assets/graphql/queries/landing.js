@@ -64,6 +64,7 @@ const ListModuleFragment = gql`
     __typename
     headline
     intro
+    layout
     logoGroup {
       logos {
         url
@@ -156,13 +157,20 @@ export const landingQuery = gql`
         ...LinkFragment
       }
       heroImage {
-        image {
-          ...ResponsiveImageFragment
+        __typename
+        ... on ImageBgRecord {
+          image {
+            ...ResponsiveImageFragment
+          }
+          bgColor
+          bgImage {
+            ...ResponsiveImageFragment
+          }
         }
-        useBg
-        bgColor
-        bgImage {
-          ...ResponsiveImageFragment
+        ... on ImageBlockRecord {
+          image {
+            ...ResponsiveImageFragment
+          }
         }
       }
       landingFlexible {

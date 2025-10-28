@@ -28,7 +28,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <Section class="bg-shadowblue pb-[2rem] s:mt-[26.6rem] s:pb-section-bot">
+  <Section
+    class="mt-[7rem] bg-shadowblue pb-[2rem] s:mt-[26.6rem] s:pb-section-bot"
+  >
     <UITexture />
     <FooterJag loc="top" />
 

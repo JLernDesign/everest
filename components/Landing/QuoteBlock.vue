@@ -12,7 +12,7 @@ const props = defineProps(["data"]);
   >
     <div
       class="relative rounded-base-mob bg-skyblue px-[1.4rem] py-[4rem] s:rounded-base s:px-[6.5rem] s:py-[8rem]"
-      :class="data.person ? 'pb-[33rem]' : ''"
+      :class="data.person ? '!pb-[33rem]' : ''"
     >
       <blockquote class="relative text-body-mob s:text-body">
         <div
