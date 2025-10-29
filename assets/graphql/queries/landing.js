@@ -130,8 +130,8 @@ const CtaFormFragment = gql`
 `;
 
 export const landingQuery = gql`
-  query {
-    paidLanding {
+  query ($slug: String!) {
+    paidLanding(filter: { slug: { eq: $slug } }) {
       seo: _seoMetaTags {
         attributes
         content

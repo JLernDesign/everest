@@ -62,8 +62,6 @@ const toggle = (state) => {
       class="hidden justify-center space-x-[4rem] s:flex s:space-x-[9rem]"
       :class="[
         scroll ? 's:hidden' : '',
-
-        template == 'landing' && 'justify-between space-x-0',
         template == 'list-module' && 'justify-between !space-x-0',
       ]"
     >

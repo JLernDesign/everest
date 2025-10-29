@@ -15,7 +15,10 @@ const props = defineProps(["data"]);
       ></h2>
 
       <!-- brands -->
-      <div class="relative left-1/2 w-screen -translate-x-1/2 s:!my-[7rem]">
+      <div
+        v-if="data.logoGroup"
+        class="relative left-1/2 w-screen -translate-x-1/2 s:!my-[7rem]"
+      >
         <Brands
           theme="light"
           :data="data.logoGroup"
@@ -34,7 +37,7 @@ const props = defineProps(["data"]);
       <CtaGroup
         v-if="data.cta"
         :data="data.cta.buttons"
-        :align="center"
+        align="center"
         :theme="light"
       />
 

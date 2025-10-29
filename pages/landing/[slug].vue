@@ -2,7 +2,7 @@
 import { landingQuery } from "~/assets/graphql/queries/landing.js";
 
 const route = useRoute();
-const slug = route.params.slug;
+
 definePageMeta({
   alias: ["/:slug"],
 });
@@ -11,6 +11,9 @@ const loaded = ref(false);
 const hideHeader = useState("hideHeader");
 const { data } = await useGraphqlQuery({
   query: landingQuery.loc.source.body,
+  variables: {
+    slug: route.params.slug,
+  },
 });
 const page = data.value.paidLanding;
 /* console.log(toRaw(page)); */
@@ -87,4 +90,8 @@ onBeforeRouteLeave(() => {
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.landing-columns + .landing-columns {
+  padding-top: 0;
+}
+</style>

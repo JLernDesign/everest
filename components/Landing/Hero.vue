@@ -12,7 +12,7 @@ onMounted(() => {
     // parallax clouds
     const clouds = self.selector(".cloud");
     const cloudY = [60, 30];
-    //cloudParallax(main.value.$el, null, clouds, cloudY);
+    cloudParallax(main.value.$el, null, clouds, cloudY);
   }, main.value.$el);
 });
 
@@ -26,7 +26,7 @@ onUnmounted(() => {
     :hero="true"
     class="pb-[5rem] s:pb-section-bot-lg max-s:pt-hero-mob-lg"
     side="lg"
-    :anim="false"
+    :anim="true"
     ref="main"
   >
     <!-- bg elements -->
@@ -59,7 +59,9 @@ onUnmounted(() => {
       <div class="text w-full s:w-1/2 s:pr-[11.5rem]">
         <!-- eyebrow -->
         <div v-if="data.eyebrow" class="eyebrow mb-6">
-          <h3 class="font-helvb text-body-xsm-mob text-red s:text-body-xsm">
+          <h3
+            class="font-helvb text-body-xsm-mob uppercase text-red s:text-body-xsm"
+          >
             {{ data.eyebrow }}
           </h3>
         </div>
@@ -78,7 +80,7 @@ onUnmounted(() => {
             <CtaGroup
               v-if="data.cta"
               :data="data.cta.buttons"
-              :align="left"
+              align="left"
               :theme="light"
             />
 

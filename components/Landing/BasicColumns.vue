@@ -5,7 +5,7 @@ const props = defineProps(["data"]);
 </script>
 
 <template>
-  <Section class="!py-[3.5rem] s:!p-[5rem]">
+  <Section class="landing-columns pb-section-bot-mob s:pb-section-bot">
     <div
       class="relative mx-auto flex max-w-base flex-col items-stretch justify-between s:flex-row"
       ref="main"
@@ -27,14 +27,14 @@ const props = defineProps(["data"]);
 
         <!-- intro -->
         <div
-          class="bullets max-w-[52rem] space-y-10 [&_*+h2]:mt-[9rem] [&_h2]:font-helvb [&_h2]:text-body-md-mob [&_h2]:s:text-body-md [&_h3+p]:mt-[.5rem] [&_h3]:font-helvb"
+          class="article bullets max-w-[52rem] space-y-10 [&_*+h2]:mt-[9rem] [&_a]:underline [&_h2]:font-helvb [&_h2]:text-body-md-mob [&_h2]:s:text-body-md [&_h3+p]:mt-[.5rem] [&_h3]:font-helvb"
           v-html="data.body"
         ></div>
 
         <CtaGroup
           v-if="data.cta"
           :data="data.cta.buttons"
-          :align="left"
+          align="left"
           :theme="dark"
           class="mt-10"
         />
@@ -62,7 +62,7 @@ const props = defineProps(["data"]);
         <!-- Image Block -->
         <template v-if="data.image.__typename == 'ImageBlockRecord'">
           <div
-            class="content-image relative overflow-hidden rounded-base-mob bg-cover s:rounded-base"
+            class="content-image relative overflow-hidden rounded-base-mob bg-cover s:rounded-base [&_div]:!max-w-none [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
           >
             <DatocmsImage :data="data.image.image.responsiveImage" />
           </div>

@@ -90,7 +90,7 @@ const getFooterStart = () => {
               <CtaGroup
                 v-if="data?.footerCta"
                 :data="data.footerCta.buttons"
-                :align="left"
+                align="left"
                 theme="dark"
               />
               <ul

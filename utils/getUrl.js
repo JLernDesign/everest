@@ -26,6 +26,8 @@ export default function (obj) {
         return "/demo";
       case "BlogLandingRecord":
         return "/blog";
+      case "PostRecord":
+        return "/blog/" + obj.internal.slug;
       case "AboutRecord":
         return "/about";
       case "LeadershipRecord":
