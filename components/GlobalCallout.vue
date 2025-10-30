@@ -107,7 +107,7 @@ const playVideo = (ev) => {
         <CtaGroup
           v-if="page_data.cta"
           :data="page_data.cta.buttons"
-          :align="left"
+          align="left"
           theme="light"
           class="mt-side-mob s:mt-side"
         />

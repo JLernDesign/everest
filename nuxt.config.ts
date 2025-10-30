@@ -113,6 +113,6 @@ export default defineNuxtConfig({
     "/post/**": { redirect: "/blog/**" },
     "/de": { redirect: "/" },
     "/de/**": { redirect: "/**" },
-    "/blog": { redirect: "/blog/page/1" },
+    "/blog": { redirect: "/blog/page/1/" },
   },
 });

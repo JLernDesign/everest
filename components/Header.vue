@@ -9,6 +9,7 @@ const header = ref(null);
 const logo = ref(null);
 const searchBar = ref(null);
 const theme = useState("theme");
+const hideHeader = useState("hideHeader");
 const loaded = ref(false);
 const { y, directions } = useScroll(window);
 const mobile = breakpoints.smallerOrEqual("tablet1");
@@ -178,12 +179,20 @@ watch(mobile, () => {
       :speed="sp"
       :easer="easer"
       :theme="theme"
-      :class="banner ? 'pt-[5.1rem]' : 'pt-[1.5rem]'"
+      :class="
+        banner ? 'pt-[5.1rem] s:pt-[4.25rem]' : 'pt-[1.5rem] s:pt-[3.4rem]'
+      "
     />
 
     <!-- nav -->
-    <div class="nav-wrap hidden w-full justify-center pt-[6rem] s:grid">
-      <div class="relative grid place-content-center px-[5rem] py-[1.25rem]">
+    <div
+      class="nav-wrap hidden w-full justify-center s:grid"
+      :class="banner ? 'pt-[6rem]' : 'pt-[5.2rem]'"
+    >
+      <div
+        class="relative grid place-content-center px-[5rem] py-[1.25rem]"
+        :class="hideHeader ? 'hidden' : ''"
+      >
         <div
           class="navbg absolute -top-[1px] left-0 h-full w-full rounded-btn border-1 border-jaffalt bg-jaffa opacity-0 shadow-nav"
         ></div>
@@ -193,11 +202,14 @@ watch(mobile, () => {
 
     <!-- cta / login -->
     <div
-      class="cta-wrap absolute right-[4.5rem] flex items-center justify-end space-x-8 pr-side pt-10 s:right-0 s:top-[3.4rem]"
-      :class="banner ? 'top-[4.75rem]' : 'top-[1.5rem]'"
+      class="cta-wrap absolute right-[4.5rem] flex items-center justify-end space-x-8 pr-side pt-10 s:right-0"
+      :class="
+        banner ? 'top-[4.75rem] s:top-[3.4rem]' : 'top-[1.5rem] s:top-[2.6rem]'
+      "
     >
       <button
         class="search-btn relative max-s:-mt-1 [&_.icon]:hover:fill-red"
+        :class="hideHeader ? 'hidden' : ''"
         @click="searchBar.openSearch"
       >
         <span
@@ -212,7 +224,7 @@ watch(mobile, () => {
         <CtaGroup
           v-if="data?.headerCta"
           :data="data.headerCta.buttons"
-          :align="left"
+          align="left"
           theme="dark"
           :class="scrolled && 'btn-shadow'"
         />

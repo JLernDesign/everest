@@ -67,7 +67,7 @@ onUnmounted(() => {
         <CtaGroup
           v-if="data.cta"
           :data="data.cta.buttons"
-          :align="left"
+          align="left"
           :theme="dark"
           class="mt-10"
         />

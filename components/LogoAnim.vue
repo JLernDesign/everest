@@ -97,7 +97,7 @@ defineExpose({
 </script>
 
 <template>
-  <div class="logo-main absolute z-5 pl-side-mob s:pl-side s:pt-[4.25rem]">
+  <div class="logo-main absolute z-5 pl-side-mob s:pl-side">
     <NuxtLink
       to="/"
       class="relative block h-[5.3rem] w-[6.2rem] origin-top-left s:h-[8.1rem] s:w-[9.4rem]"
