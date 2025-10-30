@@ -13,11 +13,11 @@ let slideshow,
   count = 0,
   max = 10;
 const pageInactive = useState("pageInactive");
-const order = [3, 6, 2, 5, 8, 1, 9, 4, 7, 0];
-const speed = 750;
+/* const order = [3, 6, 2, 5, 8, 1, 9, 4, 7, 0];
+const speed = 750; */
 let ctx;
 
-const startSlideshow = () => {
+/* const startSlideshow = () => {
   if (main.value) {
     els = qsa(".item", main.value);
 
@@ -29,17 +29,17 @@ const startSlideshow = () => {
       }, speed);
     }
   }
-};
+}; */
 
-const stopSlideshow = () => {
+/* const stopSlideshow = () => {
   clearInterval(slideshow);
-};
+}; */
 
-const toggleSlideshow = (ev) => {
+/* const toggleSlideshow = (ev) => {
   ev == "enter" ? startSlideshow() : stopSlideshow();
-};
+}; */
 
-const next = () => {
+/* const next = () => {
   const img = qs("img", els[order[count]]);
 
   // remove item in slot
@@ -77,15 +77,15 @@ const next = () => {
   // increment index for next item
   index++;
   index == props.data.groups[groupNum.value].items.length && (index = 0);
-};
+}; */
 
-const items = computed(() => {
+/* const items = computed(() => {
   groupTotal = props.data.groups[groupNum.value].items.length;
   let filtered = props.data.groups[groupNum.value].items.filter(
     (item, i) => i < max,
   );
   return filtered;
-});
+}); */
 
 const handleClick = (link) => {
   if (link) {
@@ -105,6 +105,7 @@ const changeGroup = (group) => {
     ease: "none",
     onComplete: () => {
       groupNum.value = group;
+      wrap.value.style.height = "auto";
 
       // fade in new
       gsap.to(wrap.value, {
@@ -113,21 +114,20 @@ const changeGroup = (group) => {
         opacity: 1,
         ease: "none",
         onComplete: () => {
-          wrap.value.style.height = "auto";
-          initGroup();
+          /* initGroup(); */
         },
       });
     },
   });
 };
 
-const initGroup = () => {
+/* const initGroup = () => {
   if (groupTotal > max) {
     count = 0;
     index = 10;
     startSlideshow();
   }
-};
+}; */
 
 onMounted(() => {
   // preload images
@@ -138,16 +138,16 @@ onMounted(() => {
     });
   });
 
-  ctx = gsap.context((self) => {
+  /*   ctx = gsap.context((self) => {
     setTimeout(() => {
       playInView(main.value, null, toggleSlideshow);
     }, 200);
-  }, main.value);
+  }, main.value); */
 });
 
 onUnmounted(() => {
-  stopSlideshow();
-  ctx.revert();
+  /* stopSlideshow();
+  ctx.revert(); */
 });
 </script>
 
@@ -170,7 +170,7 @@ onUnmounted(() => {
         ref="main"
       >
         <div
-          v-for="(item, i) in items"
+          v-for="(item, i) in data.groups[groupNum].items"
           :key="item.name"
           class="item overflow-hidden rounded-base border border-grayline"
         >
