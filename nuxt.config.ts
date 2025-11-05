@@ -21,6 +21,11 @@ export default defineNuxtConfig({
           src: "https://cdn-cookieyes.com/client_data/d1b7ffd5032a4a6b43bcaccf/script.js",
           id: "cookieyes",
         },
+        {
+          src: "//js.hs-scripts.com/48112164.js",
+          defer: true,
+          id: "hs-script-loader",
+        },
       ],
     },
   },
