@@ -3,6 +3,9 @@ import { gsap } from "gsap";
 const props = defineProps(["data", "href", "target", "theme", "stretch"]);
 const open = ref(false);
 const arrow = ref(null);
+
+const route = useRoute();
+
 const hoverOn = () => {
   if (isTouchDevice()) return;
   open.value = true;
@@ -42,7 +45,7 @@ const hoverOff = () => {
 
 <template>
   <NuxtLink
-    :to="data && getUrl(data)"
+    :to="data && getUrl(data) + addUtm(route, data.external)"
     :target="data?.external && '_blank'"
     class="cta-btn inline-flex items-center rounded-btn bg-red px-[1.5rem] py-[1.1rem] font-helvh text-body-sm-mob text-skyblue s:px-[1.75rem] s:py-[1.4rem] s:text-body-sm"
     :class="stretch && 'justify-between'"

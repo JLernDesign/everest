@@ -540,3 +540,12 @@ export const scrollHeadline = (el) => {
     ease: "power3.inOut",
   });
 };
+
+// keep UTM source in URL
+export const addUtm = (route, external = false) => {
+  const utmSource = route.query.utm_source;
+  if (utmSource && utmSource !== "" && !external) {
+    return `?utm_source=${utmSource}`;
+  }
+  return "";
+};

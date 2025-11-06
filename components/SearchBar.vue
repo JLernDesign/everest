@@ -6,9 +6,12 @@ const open = ref(false);
 const arrowDiamond = ref(null);
 const main = ref(null);
 const q = ref("");
+const searchQuery = useState("searchQuery", () => null);
+const route = useRoute();
 
 function handleSearch() {
-  navigateTo("/search?q=" + q.value);
+  searchQuery.value = q.value;
+  navigateTo("/search/" + addUtm(route));
 
   // close search
   closeSearch();

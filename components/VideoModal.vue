@@ -1,8 +1,6 @@
 <script setup>
 import { VideoPlayer } from "vue-datocms";
 import gsap from "gsap";
-const route = useRoute();
-const router = useRouter();
 const videoID = useState("videoID");
 const video_ready = ref(false);
 let video, player, provider;
@@ -57,9 +55,6 @@ const closeVideoModal = (id) => {
       video_ready.value = false;
     },
   });
-
-  // remove id from query params
-  router.replace({ query: null });
 };
 </script>
 

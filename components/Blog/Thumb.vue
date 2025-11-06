@@ -20,16 +20,16 @@ const linkTo = computed(() => {
 
   // internal video
   if (isVideo.value) {
-    return localePath("/video/" + props.data.slug);
+    return localePath("/video/" + props.data.slug + addUtm(route));
   }
 
   // internal news post
   if (["press", "collaborations"].includes(props.data.tag?.slug)) {
-    return localePath("/news/" + props.data.slug);
+    return localePath("/news/" + props.data.slug + addUtm(route));
   }
 
   // internal link (blog post)
-  return localePath(`/blog/${props.data.slug}`);
+  return localePath(`/blog/${props.data.slug}` + addUtm(route));
 });
 
 const isVideo = computed(() => {

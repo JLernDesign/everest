@@ -27,7 +27,7 @@ const posts = data.value.allPosts;
       <BlogThumb v-for="(item, i) in posts" :data="item" />
     </div>
     <div class="mt-[4rem] text-center s:mt-btn">
-      <CtaBtn to="/blog">View More</CtaBtn>
+      <CtaBtn to="/blog/page/1/">View More</CtaBtn>
     </div>
   </Section>
 </template>

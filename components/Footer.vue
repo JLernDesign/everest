@@ -9,6 +9,7 @@ if (isSSR()) {
 
 const props = defineProps(["menu", "data"]);
 const main = ref(null);
+const route = useRoute();
 let mm;
 const h = 268;
 const basew = 1800;
@@ -161,9 +162,11 @@ const getFooterStart = () => {
           <ul class="flex flex-wrap items-center leading-body">
             <template v-for="(item, i) in legalPages">
               <li>
-                <NuxtLink :to="`/legal/${item.slug}`" class="hover:text-red">{{
-                  item.title
-                }}</NuxtLink>
+                <NuxtLink
+                  :to="`/legal/${item.slug}` + addUtm(route)"
+                  class="hover:text-red"
+                  >{{ item.title }}</NuxtLink
+                >
               </li>
               <li v-if="i !== legalPages.length - 1" class="mx-5">•</li>
             </template>

@@ -8,6 +8,7 @@ const main = ref(null);
 const menu = ref(null);
 const burger = ref(null);
 const banner = useState("banner");
+const route = useRoute();
 
 onMounted(() => {
   // set toggle for scroll up
@@ -126,7 +127,7 @@ const toggleSubMenus = (e) => {
         <!-- logo -->
         <div class="logo-main absolute z-5 pl-side-mob pt-[1.5rem] s:pl-side">
           <NuxtLink
-            :to="$localePath('/')"
+            :to="'/' + addUtm(route)"
             @click="closeMenu"
             class="block h-[5.3rem] w-[6.2rem] origin-top-left s:h-[8.1rem] s:w-[9.4rem]"
           >
@@ -141,7 +142,7 @@ const toggleSubMenus = (e) => {
       >
         <!-- cta from header -->
         <CtaBtn
-          :to="getUrl(global_cta.buttons[0])"
+          :to="getUrl(global_cta.buttons[0]) + addUtm(route)"
           :stretch="true"
           class="mb-[5rem] w-full"
           @click="closeMenu"
@@ -155,7 +156,7 @@ const toggleSubMenus = (e) => {
         >
           <button
             @click.prevent="handleClick"
-            :data-href="!page.submenu && getUrl(page)"
+            :data-href="!page.submenu && getUrl(page) + addUtm(route)"
             :data-parent="page.submenu && true"
             :data-label="page.label"
             class="inline-block w-full px-3 pt-2 text-left text-body-md-mob leading-base"
