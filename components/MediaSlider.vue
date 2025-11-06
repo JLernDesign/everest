@@ -30,12 +30,14 @@ const stopSlideshow = () => {
 };
 
 onMounted(() => {
-  setTimeout(() => {
-    if (progressBars.value) {
-      progressBars.value.next();
-    }
-    slideTimer();
-  }, 200);
+  if (props.data && props.data.length > 1) {
+    setTimeout(() => {
+      if (progressBars.value) {
+        progressBars.value.next();
+      }
+      slideTimer();
+    }, 200);
+  }
 });
 onUnmounted(() => {
   stopSlideshow();
