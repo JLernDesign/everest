@@ -2,21 +2,45 @@
 import { landingQuery } from "~/assets/graphql/queries/landing.js";
 
 const route = useRoute();
+const directory = route.params.landing;
+let slug = route.params.slug;
+let raw_slug = route.params.slug;
+let slug_query = "";
 
-definePageMeta({
-  alias: ["/:slug"],
-});
+// catch all for multiple slashes in url
+if (Array.isArray(slug)) {
+  slug = raw_slug.join("/");
+}
+
+// if no directory, use the slug
+if (!directory) {
+  slug_query = slug;
+  definePageMeta({
+    alias: ["/:slug"],
+  });
+} else {
+  // if directory, add it to the slug
+  slug_query = directory + "/" + removeTrailingSlash(slug);
+}
 
 const loaded = ref(false);
 const hideHeader = useState("hideHeader");
 const { data } = await useGraphqlQuery({
   query: landingQuery.loc.source.body,
   variables: {
-    slug: route.params.slug,
+    slug: slug_query,
   },
 });
 const page = data.value.paidLanding;
 /* console.log(toRaw(page)); */
+
+/* no page data, send to page not found */
+if (!page) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: "Page Not Found",
+  });
+}
 
 onMounted(() => {
   hideHeader.value = page.hideHeader;

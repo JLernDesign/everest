@@ -549,3 +549,10 @@ export const addUtm = (route, external = false) => {
   }
   return "";
 };
+
+export const removeTrailingSlash = (str) => {
+  if (str.endsWith("/")) {
+    return str.slice(0, -1);
+  }
+  return str;
+};
