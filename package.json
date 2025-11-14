@@ -10,7 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@datocms/cma-client-browser": "5.1.26",
+    "@datocms/cma-client-browser": "5.0.1",
     "@mux/mux-player": "3.4.1",
     "@nuxt/scripts": "^0.11.6",
     "@nuxtjs/i18n": "10.0.6",
@@ -30,7 +30,6 @@
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.14.0",
-    "@types/node": "24.10.1",
     "@vueuse/core": "13.5.0",
     "@vueuse/nuxt": "^13.2.0",
     "prettier": "3.5.3",
