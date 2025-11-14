@@ -48,7 +48,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="pt-banner bg-jaffa">
+  <div class="bg-jaffa pt-banner">
     <Seo :data="page.seo" />
 
     <Section :hero="true" class="max-s:pt-hero-mob-lg">
@@ -137,7 +137,7 @@ onMounted(() => {
 
     <FlexibleBlocks :data="page.flexibleContent.modules" template="demo" />
 
-    <FooterLockup :data="page.footerCallout" />
+    <FooterLockup v-if="loaded" :data="page.footerCallout" />
 
     <!-- cover image for fade in -->
     <LoadCover :loaded="loaded" color="bg-jaffa" />
