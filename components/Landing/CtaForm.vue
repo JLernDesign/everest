@@ -70,7 +70,7 @@ onMounted(() => {
               v-if="data.header.cta"
               :data="data.header.cta.buttons"
               align="left"
-              :theme="light"
+              theme="light"
             />
 
             <!-- rep -->

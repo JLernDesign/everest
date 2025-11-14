@@ -35,7 +35,7 @@ const props = defineProps(["data"]);
           v-if="data.cta"
           :data="data.cta.buttons"
           align="left"
-          :theme="dark"
+          theme="dark"
           class="mt-10"
         />
       </div>
