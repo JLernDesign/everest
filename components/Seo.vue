@@ -74,5 +74,3 @@ useHead(() => {
   return seo;
 });
 </script>
-
-<template></template>
