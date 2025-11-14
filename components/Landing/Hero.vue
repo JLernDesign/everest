@@ -81,7 +81,7 @@ onUnmounted(() => {
               v-if="data.cta"
               :data="data.cta.buttons"
               align="left"
-              :theme="light"
+              theme="light"
             />
 
             <!-- logo -->
