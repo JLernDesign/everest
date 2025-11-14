@@ -137,7 +137,7 @@ onMounted(() => {
 
     <FlexibleBlocks :data="page.flexibleContent.modules" template="demo" />
 
-    <FooterLockup v-if="loaded" :data="page.footerCallout" />
+    <FooterLockup :data="page.footerCallout" />
 
     <!-- cover image for fade in -->
     <LoadCover :loaded="loaded" color="bg-jaffa" />
