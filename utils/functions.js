@@ -542,10 +542,23 @@ export const scrollHeadline = (el) => {
 };
 
 // keep UTM source in URL
+const utm_tags = [
+  "utm_source",
+  "utm_medium",
+  "utm_campaign",
+  "utm_content",
+  "utm_term",
+];
 export const addUtm = (route, external = false) => {
-  const utmSource = route.query.utm_source;
-  if (utmSource && utmSource !== "" && !external) {
-    return `?utm_source=${utmSource}`;
+  let utm_params = "";
+  utm_tags.forEach((tag) => {
+    const value = route.query[tag];
+    if (value && value !== "" && !external) {
+      utm_params += `${utm_params ? "&" : ""}${tag}=${value}`;
+    }
+  });
+  if (utm_params) {
+    return `?${utm_params}`;
   }
   return "";
 };

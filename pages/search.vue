@@ -125,6 +125,12 @@ const formatHighlight = (string) => {
 
   return str;
 };
+
+useHead(() => {
+  return {
+    title: `Everest Systems | Search Results`,
+  };
+});
 </script>
 
 <template>
