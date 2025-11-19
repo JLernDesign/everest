@@ -2,7 +2,7 @@
 import { menuQuery } from "~/assets/graphql/queries/menu";
 import { useElementSize } from "@vueuse/core";
 
-const { locale } = useI18n();
+/* const { locale } = useI18n(); */
 
 const props = defineProps(["theme", "data"]);
 const wrapper = ref(null);
@@ -18,7 +18,7 @@ const banner = useState("banner", () => props.data.topBanner.showBanner);
 // reactive variables
 const queryVariables = computed(() => {
   const vars = {
-    locale: locale.value,
+    locale: "en",
   };
   return vars;
 });

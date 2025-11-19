@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { toHead } from "vue-datocms";
 import { settingsQuery } from "~/assets/graphql/queries/settings";
 
-const { locale } = useI18n();
+/* const { locale } = useI18n(); */
 
 const route = useRoute();
 const router = useRouter();
@@ -19,7 +19,7 @@ const hideHeader = useState("hideHeader", () => false);
 // reactive variables
 const queryVariables = computed(() => {
   const vars = {
-    locale: locale.value,
+    locale: "en",
   };
   return vars;
 });

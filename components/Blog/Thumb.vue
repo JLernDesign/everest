@@ -1,6 +1,6 @@
 <script setup>
 import { gsap } from "gsap";
-const localePath = useLocalePath();
+/* const localePath = useLocalePath(); */
 const props = defineProps(["data", "loc"]);
 const main = ref(null);
 const image = ref(null);
@@ -20,16 +20,16 @@ const linkTo = computed(() => {
 
   // internal video
   if (isVideo.value) {
-    return localePath("/video/" + props.data.slug + addUtm(route));
+    return "/video/" + props.data.slug + addUtm(route);
   }
 
   // internal news post
   if (["press", "collaborations"].includes(props.data.tag?.slug)) {
-    return localePath("/news/" + props.data.slug + addUtm(route));
+    return "/news/" + props.data.slug + addUtm(route);
   }
 
   // internal link (blog post)
-  return localePath(`/blog/${props.data.slug}` + addUtm(route));
+  return `/blog/${props.data.slug}` + addUtm(route);
 });
 
 const isVideo = computed(() => {

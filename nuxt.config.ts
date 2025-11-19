@@ -60,7 +60,7 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@nuxt/scripts",
     "nuxt-graphql-request",
-    "@nuxtjs/i18n",
+    /* "@nuxtjs/i18n", */
     "@nuxtjs/sitemap",
     "@nuxtjs/robots",
   ],
@@ -73,14 +73,14 @@ export default defineNuxtConfig({
     },
   },
 
-  i18n: {
+  /*   i18n: {
     langDir: "locales",
     defaultLocale: "en",
     locales: [
       { code: "en", name: "English", file: "en.json" },
       { code: "de", name: "Deutsch", file: "de.json" },
     ],
-  },
+  }, */
 
   vite: {
     define: {
