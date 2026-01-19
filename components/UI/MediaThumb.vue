@@ -16,7 +16,7 @@ const linkTo = computed(() => {
   }
 
   // internal link (blog post)
-  return `/blog/${props.data.slug}`;
+  return `/blog/${props.data.slug}` + addUtm(route);
 });
 
 const isVideo = computed(() => {

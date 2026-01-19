@@ -1,6 +1,6 @@
 <script setup>
 const props = defineProps(["data", "type"]);
-
+const route = useRoute();
 const image = ref(null);
 const isVideo = computed(() => {
   return props.data.media?.video?.file || props.data.media?.video?.external;
@@ -93,7 +93,7 @@ const hoverOff = () => {
     <!-- add link for feature module -->
     <NuxtLink
       v-if="type == 'feature'"
-      :to="$localePath(`/blog/${data.slug}`)"
+      :to="`/blog/${data.slug}` + addUtm(route)"
       class="absolute left-0 top-0 h-full w-full"
     ></NuxtLink>
   </div>

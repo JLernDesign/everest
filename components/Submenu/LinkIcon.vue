@@ -35,7 +35,7 @@ const isActive = (item) => {
         </span>
       </span>
       <NuxtLink
-        :to="getUrl(data)"
+        :to="getUrl(data) + addUtm(route, data.external)"
         class="absolute left-0 top-0 z-1 h-full w-full"
       ></NuxtLink>
     </template>

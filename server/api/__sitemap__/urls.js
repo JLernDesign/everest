@@ -119,7 +119,6 @@ export default defineSitemapEventHandler(async (event) => {
   const staticRoutes = [
     { loc: "/", changefreq: "daily", priority: 1.0 },
     { loc: "/about", changefreq: "monthly", priority: 0.5 },
-    { loc: "/blog", changefreq: "weekly", priority: 0.7 },
     { loc: "/case-studies", changefreq: "monthly", priority: 0.7 },
     { loc: "/client-success", changefreq: "monthly", priority: 0.7 },
     { loc: "/demo", changefreq: "monthly", priority: 0.7 },

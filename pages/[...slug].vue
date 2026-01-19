@@ -1,22 +1,41 @@
 <script setup>
 import { landingQuery } from "~/assets/graphql/queries/landing.js";
+import { removeTrailingSlash } from "~/utils/functions.js";
 
 const route = useRoute();
+let slug = route.params.slug;
+let raw_slug = route.params.slug;
 
-definePageMeta({
-  alias: ["/:slug"],
-});
+// catch all for multiple slashes in url
+// This handles both:
+// - Single slug: /lp-erp-software/ -> slug = ['lp-erp-software']
+// - Directory + slug: /directory/slug/ -> slug = ['directory', 'slug']
+if (Array.isArray(slug)) {
+  slug = raw_slug.join("/");
+}
+
+// Remove trailing slash and use as slug query
+// The catch-all route already captures the full path, so we just need to clean it
+const slug_query = removeTrailingSlash(slug);
 
 const loaded = ref(false);
 const hideHeader = useState("hideHeader");
 const { data } = await useGraphqlQuery({
   query: landingQuery.loc.source.body,
   variables: {
-    slug: route.params.slug,
+    slug: slug_query,
   },
 });
 const page = data.value.paidLanding;
 /* console.log(toRaw(page)); */
+
+/* no page data, send to page not found */
+if (!page) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: "Page Not Found",
+  });
+}
 
 onMounted(() => {
   hideHeader.value = page.hideHeader;

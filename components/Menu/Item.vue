@@ -4,8 +4,9 @@ const main = ref(null);
 const props = defineProps(["data", "type", "active", "submenu", "close_func"]);
 let el, link, accent, single;
 props.data.__typename == "MenuItemRecord" ? (single = true) : null;
-
+const route = useRoute();
 const loaded = ref(false);
+
 onMounted(() => {
   setTimeout(() => {
     loaded.value = true;
@@ -172,7 +173,11 @@ const toggleSubMenu = (e) => {
     ref="main"
   >
     <NuxtLink
-      :to="type == 'main' && single ? getUrl(data) : null"
+      :to="
+        type == 'main' && single
+          ? getUrl(data) + addUtm(route, data.external)
+          : null
+      "
       :target="data.external && '_blank'"
       :data-parent="type == 'mobile' && submenu ? true : null"
       class="toplink ul menu-link relative z-1 cursor-pointer text-body-sm-mob after:bg-red s:text-body-sm"

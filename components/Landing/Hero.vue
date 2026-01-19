@@ -69,8 +69,8 @@ onUnmounted(() => {
         <!-- header / intro -->
         <div class="has-break space-y-[2rem] s:space-y-[3.5rem]">
           <h1
-            class="text font-barlow-cond text-xl-mob leading-xl -tracking-sm s:text-xl max-s:max-w-[450px]"
-            v-html="formatText(data.headline)"
+            class="text font-barlow-cond text-xl-mob leading-xl -tracking-sm s:text-[11rem] max-s:max-w-[450px]"
+            v-html="addLineBreaks(data.headline)"
           ></h1>
 
           <!-- cta buttons -->
@@ -81,7 +81,7 @@ onUnmounted(() => {
               v-if="data.cta"
               :data="data.cta.buttons"
               align="left"
-              :theme="light"
+              theme="light"
             />
 
             <!-- logo -->

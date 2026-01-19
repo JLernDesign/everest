@@ -48,7 +48,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="pt-banner bg-jaffa">
+  <div class="bg-jaffa pt-banner">
     <Seo :data="page.seo" />
 
     <Section :hero="true" class="max-s:pt-hero-mob-lg">

@@ -108,7 +108,7 @@ const toggleVideo = (ev) => {
     class="relative space-y-header-mob s:space-y-header-lg"
   >
     <h2
-      class="-tracking-md-mob font-barlow-cond-semibold text-xxl-mob uppercase leading-xxl s:text-xxl s:-tracking-md"
+      class="font-barlow-cond-semibold text-xxl-mob uppercase leading-xxl -tracking-md-mob s:text-xxl s:-tracking-md"
       ref="main"
     >
       <!-- has inline block element -->
@@ -139,20 +139,10 @@ const toggleVideo = (ev) => {
     ></p>
 
     <!-- cta buttons -->
-    <CtaGroup
-      v-if="data.cta"
-      :data="data.cta.buttons"
-      :align="align"
-      :theme="theme"
-    />
+    <CtaGroup v-if="data.cta" :data="data.cta.buttons" :align="align" />
 
     <!-- subpage nav -->
-    <SubNav
-      v-if="subnav"
-      :data="subnav"
-      :theme="theme"
-      class="hidden s:block"
-    />
+    <SubNav v-if="subnav" :data="subnav" class="hidden s:block" />
   </header>
 </template>
 

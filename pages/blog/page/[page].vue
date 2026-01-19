@@ -3,6 +3,8 @@ import { gsap } from "gsap";
 import { blogQuery, categoryQuery } from "~/assets/graphql/queries/blog";
 
 const route = useRoute();
+const router = useRouter();
+
 const page = route.params.page;
 const postsPerPage = 12;
 const skip = postsPerPage * (page - 1);

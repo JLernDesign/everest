@@ -9,15 +9,20 @@ const buildId = "36565";
 //36565 (production)
 
 const route = useRoute();
-const q = route.query.q;
+//const q = route.query.q;
+const searchQuery = useState("searchQuery", () => null);
 const loaded = ref(false);
 const results = ref([]);
 const resultsWrapper = ref(null);
 
 // conduct search
-if (q) {
+if (searchQuery.value) {
   results.value = await client.searchResults.list({
-    filter: { query: q, build_trigger_id: buildId, fuzzy: true },
+    filter: {
+      query: searchQuery.value,
+      build_trigger_id: buildId,
+      fuzzy: true,
+    },
     limit: 100,
   });
 }
@@ -34,7 +39,7 @@ onMounted(() => {
 
 /* refresh search */
 watch(
-  () => route.query.q,
+  () => searchQuery.value,
   () => {
     newSearch();
   },
@@ -50,7 +55,11 @@ const newSearch = async () => {
 
   // new search
   results.value = await client.searchResults.list({
-    filter: { query: route.query.q, build_trigger_id: buildId, fuzzy: true },
+    filter: {
+      query: searchQuery.value,
+      build_trigger_id: buildId,
+      fuzzy: true,
+    },
     limit: 100,
   });
 
@@ -116,10 +125,16 @@ const formatHighlight = (string) => {
 
   return str;
 };
+
+useHead(() => {
+  return {
+    title: `Everest Systems | Search Results`,
+  };
+});
 </script>
 
 <template>
-  <div class="pt-banner bg-jaffa">
+  <div class="bg-jaffa pt-banner">
     <!-- basic hero -->
     <BasicHero :data="{ headline: 'Search Results' }" class="max-s:pb-[4rem]" />
 
@@ -136,7 +151,7 @@ const formatHighlight = (string) => {
         >
           <h3 class="mb-2 max-s:pr-[8rem]">
             <NuxtLink
-              :to="formatUrl(result.url)"
+              :to="formatUrl(result.url) + addUtm(route)"
               class="ul single relative font-helvh max-s:underline"
               >{{ formatTitle(result.title) }}</NuxtLink
             >
