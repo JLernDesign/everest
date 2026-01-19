@@ -25,8 +25,22 @@ export const mediaCollectionQuery = gql`
     }
     allMediaCollections(orderBy: order_ASC) {
       title
+      headline
       tag {
         slug
+      }
+      showCallout
+      featuredVideo{
+        post{
+          ... on MediaPostRecord {
+            title
+          }
+        }
+      }
+      signupForm{
+        headline
+        intro
+        hubspotId
       }
     }
   }

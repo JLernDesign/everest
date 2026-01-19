@@ -11,10 +11,20 @@ const { data } = await useGraphqlQuery({
   query: mediaCollectionQuery.loc.source.body,
 });
 const page = data.value.mediaPage;
+
 //const collections = data.value.allMediaCollections;
 const collections = data.value.allMediaCollections.filter(
   (collection) => collection.tag?.slug != "ebooks",
 );
+
+// check for custom page data
+const currentCollection = collections.find(
+  (collection) => collection.tag?.slug === route.params.slug,
+);
+if(currentCollection.headline) {
+  page.hero.headline = currentCollection.headline;
+}
+console.log(currentCollection);
 
 // get tag id
 const tagIds = {
@@ -33,7 +43,7 @@ const { data: postsData } = await useGraphqlQuery({
     tagId: tagId,
   },
 });
-posts.value = postsData.value.allMediaPosts;
+posts.value = postsData.value?.allMediaPosts || [];
 
 let video_data, seo_title, seo_image;
 if (route.query.id) {
