@@ -16,9 +16,10 @@ const { data } = await useGraphqlQuery({
   },
 });
 
+console.log(data.value);
 // check for article
 let article = false;
-if (data.value.mediaPost.content?.value?.document?.children?.length > 1) {
+if (data.value.mediaPost.content?.value?.document?.children?.length > 0) {
   article = true;
 }
 

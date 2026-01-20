@@ -44,16 +44,25 @@ export const mediaCollectionQuery = gql`
               name
             }
             media{
-            ... on ProductDemoRecord{
-              __typename
-              screen{
-                ...ResponsiveImageFragment
+              ... on ProductDemoRecord{
+                __typename
+                screen{
+                  ...ResponsiveImageFragment
+                }
+                video{
+                  ...VideoFragment
+                }
               }
-              video{
-                ...VideoFragment
+              ... on MediaVideoRecord{
+                __typename
+                image {
+                  ...ResponsiveImageFragment
+                }
+                video {
+                  ...VideoFragment
+                }
               }
             }
-          }
           }
         }
       }
