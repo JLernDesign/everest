@@ -28,6 +28,7 @@ export const mediaCollectionQuery = gql`
       headline
       tag {
         slug
+        name
       }
       showCallout
       featuredVideo{
@@ -40,6 +41,7 @@ export const mediaCollectionQuery = gql`
             publishDate
             tag{
               slug
+              name
             }
             media{
             ... on ProductDemoRecord{

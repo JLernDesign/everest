@@ -7,6 +7,7 @@ import BlogDownload from "~/components/Blog/Download.vue";
 import BlogVideo from "~/components/Blog/Video.vue";
 
 const route = useRoute();
+const router = useRouter();
 
 const { data } = await useGraphqlQuery({
   query: mediaPostQuery.loc.source.body,
@@ -52,6 +53,10 @@ onUnmounted(() => {
     mm.revert();
   }
 });
+
+const goBack = () => {
+  router.back();
+}
 
 // Structured Text: block renderer
 const renderBlock = ({ record }) => {
@@ -115,9 +120,19 @@ const renderBlock = ({ record }) => {
 </script>
 
 <template>
+
   <div class="bg-jaffa pt-hero-top-mob s:pt-post-top" ref="main">
     <Seo :data="data.mediaPost.seo" />
     <div class="pt-banner"></div>
+
+    <!-- back button for live demo -->
+    <div v-if="data.mediaPost.tag.slug == 'live-demo'"
+      class="relative max-s:px-side-mob mx-auto w-full max-w-[141rem] s:mb-8 mb-4 max-s:mt-4">
+      <button to="#" @click="goBack" class="flex items-center s:space-x-8 space-x-6 hover:text-red group">
+        <IconArrow color="stroke-black" class="rotate-180 s:w-[1.8rem] w-[1.4rem] -mt-3 group-hover:stroke-red" />
+        <span class="text-body-sm-mob s:text-body-mob">Back to Overview</span>
+      </button>
+    </div>
 
     <!-- header -->
     <div class="pb-section-bot-mob s:pb-section-bot">
@@ -125,26 +140,18 @@ const renderBlock = ({ record }) => {
     </div>
 
     <!-- content -->
-    <Section
-      v-if="article"
+    <Section v-if="article"
       class="relative mx-auto pb-section-bot-mob s:!w-[124rem] s:pb-section-bot max-s:flex max-s:flex-col max-s:pb-[5rem]"
-      side="none"
-    >
+      side="none">
       <!-- sidebar -->
       <BlogSidebar :title="data.mediaPost.title" />
 
       <!-- article -->
       <div class="start-pin hidden s:block"></div>
-      <div
-        class="relative z-0 flex s:justify-end max-s:order-1 max-s:px-side-mob"
-      >
+      <div class="relative z-0 flex s:justify-end max-s:order-1 max-s:px-side-mob">
         <div
-          class="article bullets s:min-h-[80rem] s:w-[84rem] [&_*+*]:mt-[1.8rem] [&_*+*]:s:mt-[3.2rem] [&_*+h2]:mt-[6rem] [&_*+h2]:s:mt-[9rem] [&_.blog-table_*+*]:mt-0 [&_a(not(.cta-btn)):hover]:text-red [&_h2]:font-helvb [&_h2]:text-body-md-mob [&_h2]:s:text-body-md [&_h3+p]:mt-[.25rem] [&_h3+p]:s:mt-[.5rem] [&_h3]:font-helvb [&_ul]:space-y-[1rem]"
-        >
-          <DatocmsStructuredText
-            :data="data.mediaPost.content"
-            :renderBlock="renderBlock"
-          />
+          class="article bullets s:min-h-[80rem] s:w-[84rem] [&_*+*]:mt-[1.8rem] [&_*+*]:s:mt-[3.2rem] [&_*+h2]:mt-[6rem] [&_*+h2]:s:mt-[9rem] [&_.blog-table_*+*]:mt-0 [&_a(not(.cta-btn)):hover]:text-red [&_h2]:font-helvb [&_h2]:text-body-md-mob [&_h2]:s:text-body-md [&_h3+p]:mt-[.25rem] [&_h3+p]:s:mt-[.5rem] [&_h3]:font-helvb [&_ul]:space-y-[1rem]">
+          <DatocmsStructuredText :data="data.mediaPost.content" :renderBlock="renderBlock" />
         </div>
       </div>
       <div class="end-pin hidden s:block"></div>

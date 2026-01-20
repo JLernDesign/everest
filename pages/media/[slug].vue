@@ -24,7 +24,6 @@ const currentCollection = collections.find(
 if (currentCollection.headline) {
   page.hero.headline = currentCollection.headline;
 }
-console.log(currentCollection);
 
 // get tag id
 const tagIds = {
@@ -32,6 +31,7 @@ const tagIds = {
   video: "fyWxNDPCQeCC5Ue2d3rdtQ",
   podcasts: "Ug2zyP8QSZanoBxyhEZ1wA",
   ebooks: "fCd4d2mrSAeBNYqcPSAZCw",
+  "product-releases": "SxGr_jMHQmKSJcaaahbKfQ",
 };
 const tagId = tagIds[route.params.slug];
 
