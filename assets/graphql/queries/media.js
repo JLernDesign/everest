@@ -33,10 +33,29 @@ export const mediaCollectionQuery = gql`
       featuredVideo{
         post{
           ... on MediaPostRecord {
+            id
+            slug
             title
+            intro
+            publishDate
+            tag{
+              slug
+            }
+            media{
+            ... on ProductDemoRecord{
+              __typename
+              screen{
+                ...ResponsiveImageFragment
+              }
+              video{
+                ...VideoFragment
+              }
+            }
+          }
           }
         }
       }
+      demoDate
       signupForm{
         headline
         intro
@@ -48,6 +67,7 @@ export const mediaCollectionQuery = gql`
   ${FooterFragment}
   ${LinkFragment}
   ${ResponsiveImageFragment}
+  ${VideoFragment}
 `;
 
 export const mediaPostsQuery = gql`

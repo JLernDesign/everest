@@ -21,7 +21,7 @@ const collections = data.value.allMediaCollections.filter(
 const currentCollection = collections.find(
   (collection) => collection.tag?.slug === route.params.slug,
 );
-if(currentCollection.headline) {
+if (currentCollection.headline) {
   page.hero.headline = currentCollection.headline;
 }
 console.log(currentCollection);
@@ -71,19 +71,13 @@ onMounted(() => {
 
 <template>
   <div class="pt-banner bg-jaffa">
-    <Seo
-      :data="page.seo"
-      :title="route.query.id ? seo_title : null"
-      :image="route.query.id ? seo_image : null"
-    />
+    <Seo :data="page.seo" :title="route.query.id ? seo_title : null" :image="route.query.id ? seo_image : null" />
 
     <!-- basic hero -->
-    <BasicHero
-      :data="page.hero"
-      :subnav="collections"
-      template="media"
-      class="max-s:z-3"
-    />
+    <BasicHero :data="page.hero" :subnav="collections" template="media" class="max-s:z-3" />
+
+    <!-- live demo callout -->
+    <MediaLiveDemo v-if="currentCollection.showCallout" :data="currentCollection" />
 
     <!-- media grid -->
     <BlogGrid v-if="posts.length > 0">
