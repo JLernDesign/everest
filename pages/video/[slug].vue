@@ -142,7 +142,7 @@ const renderBlock = ({ record }) => {
 
     <!-- content -->
     <Section v-if="article"
-      class="relative mx-auto pb-section-bot-mob s:!w-[124rem] s:pb-section-bot max-s:flex max-s:flex-col max-s:pb-[5rem]"
+      class="relative mx-auto max-s:!pt-0 pb-section-bot-mob s:!w-[124rem] s:pb-section-bot max-s:flex max-s:flex-col max-s:pb-[5rem]"
       side="none">
       <!-- sidebar -->
       <BlogSidebar :title="data.mediaPost.title" />
