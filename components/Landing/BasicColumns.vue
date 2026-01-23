@@ -49,18 +49,18 @@ const props = defineProps(["data"]);
       >
         <!-- Quote Block -->
         <LandingQuoteBlock
-          v-if="data.image.__typename == 'QuoteBlockRecord'"
+          v-if="data.image?.__typename == 'QuoteBlockRecord'"
           :data="data.image"
         />
 
         <!-- Image Caption Block -->
         <LandingImageBlock
-          v-if="data.image.__typename == 'ImageCaptionRecord'"
+          v-if="data.image?.__typename == 'ImageCaptionRecord'"
           :data="data.image"
         />
 
         <!-- Image Block -->
-        <template v-if="data.image.__typename == 'ImageBlockRecord'">
+        <template v-if="data.image?.__typename == 'ImageBlockRecord'">
           <div
             class="content-image relative overflow-hidden rounded-base-mob bg-cover s:rounded-base [&_div]:!max-w-none [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
           >
@@ -70,7 +70,7 @@ const props = defineProps(["data"]);
 
         <!-- Media Slider Block -->
         <MediaSlider
-          v-if="data.image.__typename == 'MediaSliderRecord'"
+          v-if="data.image?.__typename == 'MediaSliderRecord'"
           :data="data.image.mediaSlides"
           loc="landing"
         />
