@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { Image as DatocmsImage } from "vue-datocms";
 
 const props = defineProps(["data"]);
-
+console.log(props.data);
 const main = ref(null);
 let ctx;
 
@@ -79,7 +79,7 @@ onUnmounted(() => {
           >
             <CtaGroup
               v-if="data.cta"
-              :data="data.cta.buttons"
+              :data="data.cta?.buttons"
               align="left"
               theme="light"
             />
@@ -87,8 +87,8 @@ onUnmounted(() => {
             <!-- logo -->
             <div v-if="data.heroLogo">
               <img
-                :src="data.heroLogo.url"
-                :alt="data.heroLogo.alt"
+                :src="data.heroLogo?.url"
+                :alt="data.heroLogo?.alt"
                 class="h-auto w-full max-w-[18.5rem]"
               />
             </div>
@@ -99,14 +99,14 @@ onUnmounted(() => {
               class="author flex items-stretch space-x-6 divide-x-1 divide-black"
             >
               <img
-                v-if="data.rep.photo"
-                :src="data.rep.photo.url"
+                v-if="data.rep?.photo"
+                :src="data.rep?.photo.url"
                 alt=""
                 class="w-[4rem] overflow-hidden rounded-full s:w-[5rem]"
               />
               <div class="flex items-center pl-6">
                 <p class="font-barlow-cond text-body-sm-mob uppercase">
-                  {{ data.rep.name }}
+                  {{ data.rep?.name }}
                 </p>
               </div>
             </div>
@@ -124,9 +124,11 @@ onUnmounted(() => {
       >
         <!-- image with background -->
         <div
-          v-if="data.heroImage.__typename == 'ImageBgRecord'"
+          v-if="data.heroImage?.__typename == 'ImageBgRecord'"
           class="content-image rounded-base-mob bg-cover px-[5rem] py-[6.5rem] s:rounded-base s:px-[13rem]"
-          :class="[data.heroImage.bgColor ? bgColor(data.heroImage) : 'bg-tan']"
+          :class="[
+            data.heroImage?.bgColor ? bgColor(data.heroImage) : 'bg-tan',
+          ]"
           :style="
             data.heroImage.bgImage
               ? `background-image:url(${data.heroImage.bgImage.url})`
@@ -140,7 +142,7 @@ onUnmounted(() => {
 
         <!-- image block -->
         <div
-          v-if="data.heroImage.__typename == 'ImageBlockRecord'"
+          v-if="data.heroImage?.__typename == 'ImageBlockRecord'"
           class="content-image relative overflow-hidden rounded-base-mob bg-cover s:rounded-base"
         >
           <DatocmsImage :data="data.heroImage.image.responsiveImage" />
