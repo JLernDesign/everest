@@ -131,12 +131,15 @@ onUnmounted(() => {
           ]"
           :style="
             data.heroImage.bgImage
-              ? `background-image:url(${data.heroImage.bgImage.url})`
+              ? `background-image:url(${data.heroImage.bgImage?.url})`
               : ''
           "
         >
           <div class="w-full">
-            <DatocmsImage :data="data.heroImage.image.responsiveImage" />
+            <DatocmsImage
+              v-if="data.heroImage.image"
+              :data="data.heroImage.image.responsiveImage"
+            />
           </div>
         </div>
 
@@ -145,7 +148,10 @@ onUnmounted(() => {
           v-if="data.heroImage?.__typename == 'ImageBlockRecord'"
           class="content-image relative overflow-hidden rounded-base-mob bg-cover s:rounded-base"
         >
-          <DatocmsImage :data="data.heroImage.image.responsiveImage" />
+          <DatocmsImage
+            v-if="data.heroImage.image"
+            :data="data.heroImage.image.responsiveImage"
+          />
         </div>
       </div>
     </div>

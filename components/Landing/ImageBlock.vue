@@ -8,7 +8,7 @@ const props = defineProps(["data"]);
   <div
     class="content-image relative overflow-hidden rounded-base-mob bg-cover s:rounded-base [&_div]:!max-w-none [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
   >
-    <DatocmsImage :data="data.image.responsiveImage" />
+    <DatocmsImage v-if="data.image" :data="data.image.responsiveImage" />
     <div
       class="absolute bottom-0 left-0 h-1/2 w-full bg-gradient-to-t from-shadowblue from-50% to-transparent opacity-80"
     ></div>

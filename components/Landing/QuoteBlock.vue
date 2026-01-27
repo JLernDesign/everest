@@ -33,7 +33,7 @@ const props = defineProps(["data"]);
         v-if="data.person"
         class="person-photo absolute bottom-0 left-0 size-[30rem]"
       >
-        <DatocmsImage :data="data.person.responsiveImage" />
+        <DatocmsImage v-if="data.person" :data="data.person.responsiveImage" />
       </div>
 
       <!-- byline -->

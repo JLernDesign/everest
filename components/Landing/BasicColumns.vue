@@ -64,14 +64,17 @@ const props = defineProps(["data"]);
           <div
             class="content-image relative overflow-hidden rounded-base-mob bg-cover s:rounded-base [&_div]:!max-w-none [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
           >
-            <DatocmsImage :data="data.image.image.responsiveImage" />
+            <DatocmsImage
+              v-if="data.image.image"
+              :data="data.image.image.responsiveImage"
+            />
           </div>
         </template>
 
         <!-- Media Slider Block -->
         <MediaSlider
           v-if="data.image?.__typename == 'MediaSliderRecord'"
-          :data="data.image.mediaSlides"
+          :data="data.image?.mediaSlides"
           loc="landing"
         />
       </div>
