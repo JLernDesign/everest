@@ -12,6 +12,7 @@ const { data } = await useGraphqlQuery({
 });
 const page = data.value.mediaPage;
 
+console.log(data.value);
 //const collections = data.value.allMediaCollections;
 const collections = data.value.allMediaCollections.filter(
   (collection) => collection.tag?.slug != "ebooks",
@@ -70,14 +71,26 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="pt-banner bg-jaffa">
-    <Seo :data="page.seo" :title="route.query.id ? seo_title : null" :image="route.query.id ? seo_image : null" />
+  <div class="bg-jaffa pt-banner">
+    <Seo
+      :data="page.seo"
+      :title="route.query.id ? seo_title : null"
+      :image="route.query.id ? seo_image : null"
+    />
 
     <!-- basic hero -->
-    <BasicHero :data="page.hero" :subnav="collections" template="media" class="max-s:z-3" />
+    <BasicHero
+      :data="page.hero"
+      :subnav="collections"
+      template="media"
+      class="max-s:z-3"
+    />
 
     <!-- live demo callout -->
-    <MediaLiveDemo v-if="currentCollection.showCallout" :data="currentCollection" />
+    <MediaLiveDemo
+      v-if="currentCollection.showCallout"
+      :data="currentCollection"
+    />
 
     <!-- media grid -->
     <BlogGrid v-if="posts.length > 0">

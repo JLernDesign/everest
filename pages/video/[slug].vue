@@ -16,7 +16,6 @@ const { data } = await useGraphqlQuery({
   },
 });
 
-console.log(data.value);
 // check for article
 let article = false;
 if (data.value.mediaPost.content?.value?.document?.children?.length > 0) {
@@ -57,7 +56,7 @@ onUnmounted(() => {
 
 const goBack = () => {
   router.back();
-}
+};
 
 // Structured Text: block renderer
 const renderBlock = ({ record }) => {
@@ -121,16 +120,23 @@ const renderBlock = ({ record }) => {
 </script>
 
 <template>
-
   <div class="bg-jaffa pt-hero-top-mob s:pt-post-top" ref="main">
     <Seo :data="data.mediaPost.seo" />
     <div class="pt-banner"></div>
 
     <!-- back button for live demo -->
-    <div v-if="data.mediaPost.tag.slug == 'live-demo'"
-      class="relative max-s:px-side-mob mx-auto w-full max-w-[141rem] s:mb-8 mb-4 max-s:mt-4">
-      <button to="#" @click="goBack" class="flex items-center s:space-x-8 space-x-6 hover:text-red group">
-        <IconArrow color="stroke-black" class="rotate-180 s:w-[1.8rem] w-[1.4rem] -mt-3 group-hover:stroke-red" />
+    <div
+      class="relative mx-auto mb-4 w-full max-w-[141rem] s:mb-8 max-s:mt-4 max-s:px-side-mob"
+    >
+      <button
+        to="#"
+        @click="goBack"
+        class="group flex items-center space-x-6 hover:text-red s:space-x-8"
+      >
+        <IconArrow
+          color="stroke-black"
+          class="-mt-3 w-[1.4rem] rotate-180 group-hover:stroke-red s:w-[1.8rem]"
+        />
         <span class="text-body-sm-mob s:text-body-mob">Back to Overview</span>
       </button>
     </div>
@@ -141,18 +147,26 @@ const renderBlock = ({ record }) => {
     </div>
 
     <!-- content -->
-    <Section v-if="article"
-      class="relative mx-auto max-s:!pt-0 pb-section-bot-mob s:!w-[124rem] s:pb-section-bot max-s:flex max-s:flex-col max-s:pb-[5rem]"
-      side="none">
+    <Section
+      v-if="article"
+      class="relative mx-auto pb-section-bot-mob s:!w-[124rem] s:pb-section-bot max-s:flex max-s:flex-col max-s:!pt-0 max-s:pb-[5rem]"
+      side="none"
+    >
       <!-- sidebar -->
       <BlogSidebar :title="data.mediaPost.title" />
 
       <!-- article -->
       <div class="start-pin hidden s:block"></div>
-      <div class="relative z-0 flex s:justify-end max-s:order-1 max-s:px-side-mob">
+      <div
+        class="relative z-0 flex s:justify-end max-s:order-1 max-s:px-side-mob"
+      >
         <div
-          class="article bullets s:min-h-[80rem] s:w-[84rem] [&_*+*]:mt-[1.8rem] [&_*+*]:s:mt-[3.2rem] [&_*+h2]:mt-[6rem] [&_*+h2]:s:mt-[9rem] [&_.blog-table_*+*]:mt-0 [&_a(not(.cta-btn)):hover]:text-red [&_h2]:font-helvb [&_h2]:text-body-md-mob [&_h2]:s:text-body-md [&_h3+p]:mt-[.25rem] [&_h3+p]:s:mt-[.5rem] [&_h3]:font-helvb [&_ul]:space-y-[1rem]">
-          <DatocmsStructuredText :data="data.mediaPost.content" :renderBlock="renderBlock" />
+          class="article bullets s:min-h-[80rem] s:w-[84rem] [&_*+*]:mt-[1.8rem] [&_*+*]:s:mt-[3.2rem] [&_*+h2]:mt-[6rem] [&_*+h2]:s:mt-[9rem] [&_.blog-table_*+*]:mt-0 [&_a(not(.cta-btn)):hover]:text-red [&_h2]:font-helvb [&_h2]:text-body-md-mob [&_h2]:s:text-body-md [&_h3+p]:mt-[.25rem] [&_h3+p]:s:mt-[.5rem] [&_h3]:font-helvb [&_ul]:space-y-[1rem]"
+        >
+          <DatocmsStructuredText
+            :data="data.mediaPost.content"
+            :renderBlock="renderBlock"
+          />
         </div>
       </div>
       <div class="end-pin hidden s:block"></div>
