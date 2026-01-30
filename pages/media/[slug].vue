@@ -11,10 +11,19 @@ const { data } = await useGraphqlQuery({
   query: mediaCollectionQuery.loc.source.body,
 });
 const page = data.value.mediaPage;
+
 //const collections = data.value.allMediaCollections;
 const collections = data.value.allMediaCollections.filter(
   (collection) => collection.tag?.slug != "ebooks",
 );
+
+// check for custom page data
+const currentCollection = collections.find(
+  (collection) => collection.tag?.slug === route.params.slug,
+);
+if (currentCollection.headline) {
+  page.hero.headline = currentCollection.headline;
+}
 
 // get tag id
 const tagIds = {
@@ -22,6 +31,7 @@ const tagIds = {
   video: "fyWxNDPCQeCC5Ue2d3rdtQ",
   podcasts: "Ug2zyP8QSZanoBxyhEZ1wA",
   ebooks: "fCd4d2mrSAeBNYqcPSAZCw",
+  "product-releases": "Ds3FqkEySgabeVQp0jgpUA",
 };
 const tagId = tagIds[route.params.slug];
 
@@ -33,7 +43,7 @@ const { data: postsData } = await useGraphqlQuery({
     tagId: tagId,
   },
 });
-posts.value = postsData.value.allMediaPosts;
+posts.value = postsData.value?.allMediaPosts || [];
 
 let video_data, seo_title, seo_image;
 if (route.query.id) {
@@ -60,7 +70,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="pt-banner bg-jaffa">
+  <div class="bg-jaffa pt-banner">
     <Seo
       :data="page.seo"
       :title="route.query.id ? seo_title : null"
@@ -73,6 +83,12 @@ onMounted(() => {
       :subnav="collections"
       template="media"
       class="max-s:z-3"
+    />
+
+    <!-- live demo callout -->
+    <MediaLiveDemo
+      v-if="currentCollection.showCallout"
+      :data="currentCollection"
     />
 
     <!-- media grid -->
