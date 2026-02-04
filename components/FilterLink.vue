@@ -14,7 +14,7 @@ const isActive = (item) => {
 const handleClick = () => {
   props.close();
   if (props.data.slug == "all") {
-    navigateTo("/blog");
+    navigateTo("/blog/page/1/");
   } else {
     navigateTo(`/blog/category/${props.data.slug}`);
   }

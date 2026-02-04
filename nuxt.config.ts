@@ -21,6 +21,11 @@ export default defineNuxtConfig({
           src: "https://cdn-cookieyes.com/client_data/d1b7ffd5032a4a6b43bcaccf/script.js",
           id: "cookieyes",
         },
+        {
+          src: "//js.hs-scripts.com/48112164.js",
+          defer: true,
+          id: "hs-script-loader",
+        },
       ],
     },
   },
@@ -55,7 +60,7 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@nuxt/scripts",
     "nuxt-graphql-request",
-    "@nuxtjs/i18n",
+    /* "@nuxtjs/i18n", */
     "@nuxtjs/sitemap",
     "@nuxtjs/robots",
   ],
@@ -68,14 +73,14 @@ export default defineNuxtConfig({
     },
   },
 
-  i18n: {
+  /*   i18n: {
     langDir: "locales",
     defaultLocale: "en",
     locales: [
       { code: "en", name: "English", file: "en.json" },
       { code: "de", name: "Deutsch", file: "de.json" },
     ],
-  },
+  }, */
 
   vite: {
     define: {
@@ -113,6 +118,6 @@ export default defineNuxtConfig({
     "/post/**": { redirect: "/blog/**" },
     "/de": { redirect: "/" },
     "/de/**": { redirect: "/**" },
-    "/blog": { redirect: "/blog/page/1" },
+    "/blog": { redirect: "/blog/page/1/" },
   },
 });

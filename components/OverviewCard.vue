@@ -5,6 +5,7 @@ import { Image as DatocmsImage } from "vue-datocms";
 const props = defineProps(["theme", "nav", "data", "num", "cards"]);
 const main = ref(null);
 const video = ref(null);
+const route = useRoute();
 let ctx;
 
 onMounted(() => {
@@ -158,7 +159,7 @@ const getDelay = () => {
           <!-- cta button -->
           <CtaBtn
             v-if="data.productPage"
-            :to="`/product/${data.productPage.slug}`"
+            :to="`/product/${data.productPage.slug}` + addUtm(route)"
             class="mt-12"
             >Learn More</CtaBtn
           >

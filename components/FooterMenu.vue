@@ -1,11 +1,15 @@
 <script setup>
 const props = defineProps(["data"]);
-let menus,
-  n = 0;
+let menus;
 const main = ref(null);
+const route = useRoute();
 
 onMounted(() => {
   menus = qsa(".submenu", main.value);
+  const buttons = qsa(".has-submenu", main.value);
+  buttons.forEach((button, i) => {
+    button.dataset.num = i;
+  });
 });
 
 const toggleMenu = (e) => {
@@ -17,7 +21,7 @@ const handleClick = (e, item) => {
   if (item.submenu) {
     toggleMenu(e);
   } else {
-    navigateTo(getUrl(item));
+    navigateTo(getUrl(item) + "/" + addUtm(route, item.external));
   }
 };
 </script>
@@ -31,8 +35,8 @@ const handleClick = (e, item) => {
     <li v-for="(item, i) in data">
       <button
         class="ul single flex h-[4rem] w-full items-center justify-between pl-[.4rem] pr-[1.2rem] [&>*]:pointer-events-none"
+        :class="item.submenu && 'has-submenu'"
         @click="handleClick($event, item)"
-        :data-num="item.submenu ? n++ : null"
       >
         <span class="mt-1">{{ item.label }}</span>
         <IconChevron v-if="item.submenu" color="stroke-red" />
@@ -46,7 +50,7 @@ const handleClick = (e, item) => {
         <span class="block space-y-5 pb-[2.25rem] pt-[1.75rem]">
           <li v-for="subitem in item.submenu">
             <NuxtLink
-              :to="getUrl(subitem)"
+              :to="getUrl(subitem) + addUtm(route, subitem.external)"
               :target="subitem.external && '_blank'"
               :class="!subitem.submenu ? 'ul single' : null"
               >{{ subitem.label }}</NuxtLink
@@ -58,9 +62,11 @@ const handleClick = (e, item) => {
               v-if="subitem.submenu"
             >
               <li v-for="subsubitem in subitem.submenu">
-                <NuxtLink :to="getUrl(subsubitem)" class="ul single">{{
-                  subsubitem.label
-                }}</NuxtLink>
+                <NuxtLink
+                  :to="getUrl(subsubitem) + addUtm(route, subsubitem.external)"
+                  class="ul single"
+                  >{{ subsubitem.label }}</NuxtLink
+                >
               </li>
             </ul>
           </li>

@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps(["data"]);
+const props = defineProps(["data", "loc"]);
 const progressBars = ref(null);
 const speed = 5;
 const carousel = ref(null);
@@ -30,12 +30,14 @@ const stopSlideshow = () => {
 };
 
 onMounted(() => {
-  setTimeout(() => {
-    if (progressBars.value) {
-      progressBars.value.next();
-    }
-    slideTimer();
-  }, 200);
+  if (props.data && props.data.length > 1) {
+    setTimeout(() => {
+      if (progressBars.value) {
+        progressBars.value.next();
+      }
+      slideTimer();
+    }, 200);
+  }
 });
 onUnmounted(() => {
   stopSlideshow();
@@ -46,10 +48,16 @@ onUnmounted(() => {
   <!-- thumb wrap -->
   <div
     class="relative aspect-[1.31] overflow-hidden rounded-base-mob s:w-[33.5rem] s:rounded-base"
+    :class="loc == 'landing' && '!w-full'"
   >
     <!-- slides -->
     <Carousel ref="carousel" :drag="false" class="h-full">
-      <UIMediaThumb v-for="slide in data" :key="slide.id" :data="slide.post" />
+      <UIMediaThumb
+        v-for="slide in data"
+        :key="slide.id"
+        :data="slide.post"
+        :loc="loc"
+      />
     </Carousel>
   </div>
 

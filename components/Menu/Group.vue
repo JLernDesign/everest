@@ -3,6 +3,7 @@ const props = defineProps(["data", "close", "level"]);
 const items = computed(() => {
   return props.data.filter((item) => item.label);
 });
+const route = useRoute();
 </script>
 
 <template>
@@ -14,7 +15,7 @@ const items = computed(() => {
         <template v-if="item.__typename == 'MenuItemRecord'">
           <NuxtLink
             v-if="item.label"
-            :to="getUrl(item)"
+            :to="getUrl(item) + addUtm(route, item.external)"
             @click="close"
             class="block border-t-1 border-grayline px-side-mob py-5 text-body-sm-mob leading-sm"
             :class="[

@@ -6,6 +6,7 @@ const logo = ref(null);
 const logo_wrap = ref(null);
 const video_hover = ref(null);
 const video = ref(null);
+const route = useRoute();
 
 const setSticky = () => {
   logo.value.setSticky();
@@ -97,9 +98,9 @@ defineExpose({
 </script>
 
 <template>
-  <div class="logo-main absolute z-5 pl-side-mob s:pl-side s:pt-[4.25rem]">
+  <div class="logo-main absolute z-5 pl-side-mob s:pl-side">
     <NuxtLink
-      to="/"
+      :to="'/' + addUtm(route)"
       class="relative block h-[5.3rem] w-[6.2rem] origin-top-left s:h-[8.1rem] s:w-[9.4rem]"
       ref="logo_wrap"
       @mouseenter="hoverOn"

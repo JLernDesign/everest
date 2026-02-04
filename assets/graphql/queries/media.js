@@ -25,8 +25,52 @@ export const mediaCollectionQuery = gql`
     }
     allMediaCollections(orderBy: order_ASC) {
       title
+      headline
       tag {
         slug
+        name
+      }
+      showCallout
+      featuredVideo{
+        post{
+          ... on MediaPostRecord {
+            id
+            slug
+            title
+            intro
+            publishDate
+            tag{
+              slug
+              name
+            }
+            media{
+              ... on ProductDemoRecord{
+                __typename
+                screen{
+                  ...ResponsiveImageFragment
+                }
+                video{
+                  ...VideoFragment
+                }
+              }
+              ... on MediaVideoRecord{
+                __typename
+                image {
+                  ...ResponsiveImageFragment
+                }
+                video {
+                  ...VideoFragment
+                }
+              }
+            }
+          }
+        }
+      }
+      demoDate
+      signupForm{
+        headline
+        intro
+        hubspotId
       }
     }
   }
@@ -34,6 +78,7 @@ export const mediaCollectionQuery = gql`
   ${FooterFragment}
   ${LinkFragment}
   ${ResponsiveImageFragment}
+  ${VideoFragment}
 `;
 
 export const mediaPostsQuery = gql`

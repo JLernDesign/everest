@@ -10,7 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@datocms/cma-client-browser": "5.0.1",
+    "@datocms/cma-client-browser": "5.1.26",
     "@mux/mux-player": "3.4.1",
     "@nuxt/scripts": "^0.11.6",
     "@nuxtjs/i18n": "10.0.6",
@@ -20,7 +20,7 @@
     "@vueuse/components": "13.5.0",
     "graphql": "16.11.0",
     "graphql-tag": "2.12.6",
-    "gsap": "npm:@gsap/shockingly@^3.12.7",
+    "gsap": "^3.14.2",
     "is_js": "0.9.0",
     "nuxt": "^3.17.3",
     "nuxt-graphql-request": "8.1.1",
@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.14.0",
+    "@types/node": "24.10.1",
     "@vueuse/core": "13.5.0",
     "@vueuse/nuxt": "^13.2.0",
     "prettier": "3.5.3",

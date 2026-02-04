@@ -67,6 +67,7 @@ onMounted(() => {
         align == 'center' && 'mx-auto max-w-[70rem]',
         loc == 'home-hero' && 'allow-break s:!space-y-[1.8rem] s:!pb-0',
         (template == 'news' || template == 'legal') && 'max-w-[82rem]',
+        template == 'landing' && '!max-w-[100rem]',
       ]"
     >
       <h1
@@ -86,7 +87,11 @@ onMounted(() => {
       <div
         v-if="data.intro"
         class="max-w-[62rem]"
-        :class="[align == 'center' && 'mx-auto', anim && 'anim-item']"
+        :class="[
+          align == 'center' && 'mx-auto',
+          anim && 'anim-item',
+          template == 'landing' && '!max-w-[100rem]',
+        ]"
       >
         <p v-html="formatText(data.intro)"></p>
       </div>

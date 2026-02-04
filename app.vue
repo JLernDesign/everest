@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { toHead } from "vue-datocms";
 import { settingsQuery } from "~/assets/graphql/queries/settings";
 
-const { locale } = useI18n();
+/* const { locale } = useI18n(); */
 
 const route = useRoute();
 const router = useRouter();
@@ -14,11 +14,12 @@ const page_title = useState("page_title", () => "index");
 const base_url = useState("base_url", () => "https://everest-systems.com");
 const theme = useState("theme", () => "light");
 const pageInactive = useState("pageInactive", () => false);
+const hideHeader = useState("hideHeader", () => false);
 
 // reactive variables
 const queryVariables = computed(() => {
   const vars = {
-    locale: locale.value,
+    locale: "en",
   };
   return vars;
 });

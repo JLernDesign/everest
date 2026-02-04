@@ -73,6 +73,13 @@ export const LinkFragment = gql`
           __typename
           slug
         }
+        ... on CaseStudyRecord {
+          __typename
+          slug
+        }
+        ... on CasestudyLandingRecord {
+          __typename
+        }
       }
       external
       style
@@ -127,6 +134,13 @@ export const SingleLinkFragment = gql`
       ... on MediaPostRecord {
         __typename
         slug
+      }
+      ... on CaseStudyRecord {
+        __typename
+        slug
+      }
+      ... on CasestudyLandingRecord {
+        __typename
       }
     }
     external

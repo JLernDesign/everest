@@ -7,6 +7,7 @@ import BlogDownload from "~/components/Blog/Download.vue";
 import BlogVideo from "~/components/Blog/Video.vue";
 
 const route = useRoute();
+const router = useRouter();
 
 const { data } = await useGraphqlQuery({
   query: mediaPostQuery.loc.source.body,
@@ -17,7 +18,10 @@ const { data } = await useGraphqlQuery({
 
 // check for article
 let article = false;
-if (data.value.mediaPost.content?.value?.document?.children?.length > 1) {
+if (
+  data.value.mediaPost.content?.value?.document?.children[0].children[0]
+    .value !== ""
+) {
   article = true;
 }
 
@@ -52,6 +56,10 @@ onUnmounted(() => {
     mm.revert();
   }
 });
+
+const goBack = () => {
+  router.back();
+};
 
 // Structured Text: block renderer
 const renderBlock = ({ record }) => {
@@ -119,6 +127,23 @@ const renderBlock = ({ record }) => {
     <Seo :data="data.mediaPost.seo" />
     <div class="pt-banner"></div>
 
+    <!-- back button for live demo -->
+    <div
+      class="relative mx-auto mb-4 w-full max-w-[141rem] s:mb-8 max-s:mt-4 max-s:px-side-mob"
+    >
+      <button
+        to="#"
+        @click="goBack"
+        class="group flex items-center space-x-6 hover:text-red s:space-x-8"
+      >
+        <IconArrow
+          color="stroke-black"
+          class="-mt-3 w-[1.4rem] rotate-180 group-hover:stroke-red s:w-[1.8rem]"
+        />
+        <span class="text-body-sm-mob s:text-body-mob">Back to Overview</span>
+      </button>
+    </div>
+
     <!-- header -->
     <div class="pb-section-bot-mob s:pb-section-bot">
       <BlogPostHeader :data="data.mediaPost" />
@@ -127,7 +152,7 @@ const renderBlock = ({ record }) => {
     <!-- content -->
     <Section
       v-if="article"
-      class="relative mx-auto pb-section-bot-mob s:!w-[124rem] s:pb-section-bot max-s:flex max-s:flex-col max-s:pb-[5rem]"
+      class="relative mx-auto pb-section-bot-mob s:!w-[124rem] s:pb-section-bot max-s:flex max-s:flex-col max-s:!pt-0 max-s:pb-[5rem]"
       side="none"
     >
       <!-- sidebar -->
