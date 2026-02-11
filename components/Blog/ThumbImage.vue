@@ -65,7 +65,7 @@ defineExpose({
         "
         class="absolute left-0 top-0 flex size-full items-center p-[6rem]"
       >
-        <div class="relative overflow-hidden rounded-base shadow-media">
+        <div class="relative w-full overflow-hidden rounded-base shadow-media">
           <!-- pull thumbnail from product demo-->
           <DatocmsImage
             v-if="data.media.screen"
