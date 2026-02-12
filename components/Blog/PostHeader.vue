@@ -1,11 +1,14 @@
 <script setup>
 const props = defineProps(["data", "type"]);
+
 const route = useRoute();
 const image = ref(null);
+const vimeoData = ref(null);
 
 /* get video data from Vimeo API if no data from CMS */
-const vimeoData = ref(null);
-//const vimeoData = await useVimeoData(props.data);
+if (props.data.__typename == "MediaPostRecord") {
+  vimeoData.value = await useVimeoData(props.data);
+}
 
 const isVideo = computed(() => {
   return props.data.media?.video?.file || props.data.media?.video?.external;

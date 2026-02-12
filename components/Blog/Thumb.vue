@@ -3,34 +3,18 @@ import { gsap } from "gsap";
 
 /* const localePath = useLocalePath(); */
 const props = defineProps(["data", "loc"]);
-const main = ref(null);
-const image = ref(null);
+
 const route = useRoute();
 const router = useRouter();
 
-/* get video data from Vimeo API if no data from CMS */
-//const vimeoData = useVimeoData(props.data);
-const runtimeConfig = useRuntimeConfig();
+const main = ref(null);
+const image = ref(null);
 const vimeoData = ref(null);
-onMounted(async () => {
-  await nextTick();
-  if (!props.data.publishDate || !props.data.intro) {
-    if (props.data.media?.video?.external?.provider == "vimeo") {
-      //console.log("Getting video data from Vimeo API");
-      const videoId = props.data.media.video.external?.providerUid;
-      const fields = "name,link,description,created_time";
-      const url = `https://api.vimeo.com/videos/${videoId}?fields=${fields}`;
 
-      const { data: result } = await useFetch(url, {
-        headers: {
-          Authorization: `Bearer ${runtimeConfig.public.vimeoAccessToken}`,
-        },
-      });
-      //console.log("Vimeo data:", result.value);
-      vimeoData.value = result.value;
-    }
-  }
-});
+/* get video data from Vimeo API if no data from CMS */
+if (props.data.__typename == "MediaPostRecord") {
+  vimeoData.value = await useVimeoData(props.data);
+}
 
 const linkTo = computed(() => {
   // external media link
