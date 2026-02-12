@@ -569,3 +569,12 @@ export const removeTrailingSlash = (str) => {
   }
   return str;
 };
+
+export const checkVideoDescription = (intro, vimeoData) => {
+  if (intro !== "") {
+    return intro;
+  }
+  if (vimeoData) {
+    return vimeoData.description;
+  }
+};

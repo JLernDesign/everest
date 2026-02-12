@@ -77,7 +77,7 @@ const copy_to_clipboard = () => {
         <CtaGroup
           v-if="data.articleSidebar.cta"
           :data="data.articleSidebar.cta.buttons"
-          :theme="dark"
+          theme="dark"
           align="center"
           class="flex-wrap !space-x-0 space-y-8"
         />

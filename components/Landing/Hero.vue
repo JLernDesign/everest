@@ -3,7 +3,6 @@ import gsap from "gsap";
 import { Image as DatocmsImage } from "vue-datocms";
 
 const props = defineProps(["data"]);
-console.log(props.data);
 const main = ref(null);
 let ctx;
 
@@ -121,6 +120,10 @@ onUnmounted(() => {
       <!-- image -->
       <div
         class="image w-full max-w-[72rem] overflow-hidden rounded-base-mob s:w-1/2 s:rounded-base max-s:mt-[2.5rem]"
+        :class="
+          data.heroImage?.__typename == 'FormBlockRecord' &&
+          'bg-shadowblue p-[2.5rem] text-white s:p-[5rem] max-s:pb-[5rem]'
+        "
       >
         <!-- image with background -->
         <div
@@ -152,6 +155,14 @@ onUnmounted(() => {
             v-if="data.heroImage.image"
             :data="data.heroImage.image.responsiveImage"
           />
+        </div>
+
+        <!-- form block -->
+        <div
+          v-if="data.heroImage?.__typename == 'FormBlockRecord'"
+          class="form-block"
+        >
+          <LandingFormBlock :data="data.heroImage" loc="hero" />
         </div>
       </div>
     </div>

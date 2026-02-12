@@ -68,6 +68,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       datoCmsToken: process.env.DATO_CMS_TOKEN,
+      vimeoAccessToken: process.env.NUXT_PUBLIC_VIMEO_ACCESS_TOKEN,
       BASE_URL: process.env.BASE_URL,
       NUXT_ENV: process.env.NUXT_ENV,
     },

@@ -1,11 +1,36 @@
 <script setup>
 import { gsap } from "gsap";
+
 /* const localePath = useLocalePath(); */
 const props = defineProps(["data", "loc"]);
 const main = ref(null);
 const image = ref(null);
 const route = useRoute();
 const router = useRouter();
+
+/* get video data from Vimeo API if no data from CMS */
+//const vimeoData = useVimeoData(props.data);
+const runtimeConfig = useRuntimeConfig();
+const vimeoData = ref(null);
+onMounted(async () => {
+  await nextTick();
+  if (!props.data.publishDate || !props.data.intro) {
+    if (props.data.media?.video?.external?.provider == "vimeo") {
+      //console.log("Getting video data from Vimeo API");
+      const videoId = props.data.media.video.external?.providerUid;
+      const fields = "name,link,description,created_time";
+      const url = `https://api.vimeo.com/videos/${videoId}?fields=${fields}`;
+
+      const { data: result } = await useFetch(url, {
+        headers: {
+          Authorization: `Bearer ${runtimeConfig.public.vimeoAccessToken}`,
+        },
+      });
+      //console.log("Vimeo data:", result.value);
+      vimeoData.value = result.value;
+    }
+  }
+});
 
 const linkTo = computed(() => {
   // external media link
@@ -101,42 +126,74 @@ const hoverOff = () => {
 </script>
 
 <template>
-  <div class="thumb relative w-full bg-jaffa p-side-mob pb-[8rem] s:w-[60rem] s:p-thumb s:pb-[15.6rem]" :class="[loc == 'blog' && 'scroll-reveal',
-  loc == 'live-demo' && '!p-0'
-  ]" ref="main" @mouseenter="hoverOn" @mouseleave="hoverOff">
+  <div
+    class="thumb relative w-full bg-jaffa p-side-mob pb-[8rem] s:w-[60rem] s:p-thumb s:pb-[15.6rem]"
+    :class="[loc == 'blog' && 'scroll-reveal', loc == 'live-demo' && '!p-0']"
+    ref="main"
+    @mouseenter="hoverOn"
+    @mouseleave="hoverOff"
+  >
     <!-- bg hover -->
-    <div class="bg-hover absolute left-0 top-0 z-0 h-full w-full p-[1.6rem] opacity-0"
-      :class="loc == 'live-demo' && '!hidden'">
-      <div class="h-full w-full rounded-base-mob bg-jaffalt bg-opacity-25 p-thumb pb-[15.6rem] s:rounded-base"></div>
+    <div
+      class="bg-hover absolute left-0 top-0 z-0 h-full w-full p-[1.6rem] opacity-0"
+      :class="loc == 'live-demo' && '!hidden'"
+    >
+      <div
+        class="h-full w-full rounded-base-mob bg-jaffalt bg-opacity-25 p-thumb pb-[15.6rem] s:rounded-base"
+      ></div>
     </div>
 
     <!-- image -->
     <BlogThumbImage :data="data" ref="image" :loc="loc" />
 
     <!-- date/tag -->
-    <BlogDetails class="mt-[3.2rem]" :data="data" :loc="loc" />
+    <BlogDetails
+      class="mt-[3.2rem]"
+      :data="data"
+      :loc="loc"
+      :key="vimeoData"
+      :external_date="vimeoData?.created_time"
+    />
 
     <!-- title -->
-    <h3 class="relative z-1 mb-[1.2rem] font-helvb text-body-mob leading-body s:text-body">
+    <h3
+      class="relative z-1 mb-[1.2rem] font-helvb text-body-mob leading-body s:text-body"
+    >
       <span class="ul single title">{{ data.title }}</span>
     </h3>
-    <p class="relative z-1 "
-      :class="loc == 'live-demo' ? 'text-body-mob leading-body s:text-body' : 'text-body-sm-mob leading-sm s:text-body-sm'">
-      {{ data.intro }}
+    <p
+      class="relative z-1"
+      :class="
+        loc == 'live-demo'
+          ? 'text-body-mob leading-body s:text-body'
+          : 'text-body-sm-mob leading-sm s:text-body-sm'
+      "
+    >
+      {{ checkVideoDescription(data.intro, vimeoData) }}
     </p>
 
     <!-- arrow -->
-    <div v-if="loc != 'live-demo'"
-      class="arrow absolute bottom-0 z-1 pb-[2rem] s:right-0 s:pb-[3.5rem] s:pr-thumb max-s:left-0 max-s:pb-[2rem] max-s:pl-side-mob">
+    <div
+      v-if="loc != 'live-demo'"
+      class="arrow absolute bottom-0 z-1 pb-[2rem] s:right-0 s:pb-[3.5rem] s:pr-thumb max-s:left-0 max-s:pb-[2rem] max-s:pl-side-mob"
+    >
       <IconArrow color="stroke-black" />
     </div>
 
     <!-- open gated modal -->
-    <button v-if="isGated" class="absolute left-0 top-0 z-2 block size-full" @click="handleClick"></button>
+    <button
+      v-if="isGated"
+      class="absolute left-0 top-0 z-2 block size-full"
+      @click="handleClick"
+    ></button>
 
     <!-- link to blog post / external link -->
-    <NuxtLink v-else :to="linkTo" :target="linkTo.includes('http') ? '_blank' : null"
-      class="absolute left-0 top-0 z-2 block size-full"></NuxtLink>
+    <NuxtLink
+      v-else
+      :to="linkTo"
+      :target="linkTo.includes('http') ? '_blank' : null"
+      class="absolute left-0 top-0 z-2 block size-full"
+    ></NuxtLink>
   </div>
 </template>
 
