@@ -62,6 +62,9 @@ export const clientsQuery = gql`
         quote
         name
         title
+        cta {
+          ...LinkFragment
+        }
       }
       ...ClientGridFragment
       flexibleContent {
