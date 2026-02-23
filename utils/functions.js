@@ -401,7 +401,7 @@ export const preloadImg = (file) => {
 // text formatting
 export const formatText = (str) => {
   let formatted = str;
-  formatted = removeWidows(formatted);
+  //formatted = removeWidows(formatted);
   formatted = addLineBreaks(formatted);
   return formatted;
 };
