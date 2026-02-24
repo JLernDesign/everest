@@ -31,29 +31,30 @@ export const mediaCollectionQuery = gql`
         name
       }
       showCallout
-      featuredVideo{
-        post{
+      featuredVideo {
+        post {
+          __typename
           ... on MediaPostRecord {
             id
             slug
             title
             intro
             publishDate
-            tag{
+            tag {
               slug
               name
             }
-            media{
-              ... on ProductDemoRecord{
+            media {
+              ... on ProductDemoRecord {
                 __typename
-                screen{
+                screen {
                   ...ResponsiveImageFragment
                 }
-                video{
+                video {
                   ...VideoFragment
                 }
               }
-              ... on MediaVideoRecord{
+              ... on MediaVideoRecord {
                 __typename
                 image {
                   ...ResponsiveImageFragment
@@ -67,7 +68,7 @@ export const mediaCollectionQuery = gql`
         }
       }
       demoDate
-      signupForm{
+      signupForm {
         headline
         intro
         hubspotId

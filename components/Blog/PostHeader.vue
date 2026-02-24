@@ -88,6 +88,7 @@ const hoverOff = () => {
       <!-- image -->
       <BlogThumbImage
         :data="data"
+        :external_image="vimeoData?.pictures?.base_link"
         ref="image"
         class="featured-image !aspect-[1.32] !h-full !w-full"
       />

@@ -128,7 +128,12 @@ const hoverOff = () => {
     </div>
 
     <!-- image -->
-    <BlogThumbImage :data="data" ref="image" :loc="loc" />
+    <BlogThumbImage
+      :data="data"
+      :external_image="vimeoData?.pictures?.base_link"
+      ref="image"
+      :loc="loc"
+    />
 
     <!-- date/tag -->
     <BlogDetails

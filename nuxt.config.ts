@@ -84,16 +84,8 @@ export default defineNuxtConfig({
   }, */
 
   vite: {
-    define: {
-      __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: true,
-    },
-    build: {
-      minify: "terser",
-      terserOptions: {
-        compress: {
-          drop_console: true,
-        },
-      },
+    esbuild: {
+      drop: ["console"],
     },
   },
 

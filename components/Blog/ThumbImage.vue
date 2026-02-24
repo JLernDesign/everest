@@ -1,7 +1,7 @@
 <script setup>
 import { Image as DatocmsImage } from "vue-datocms";
 
-const props = defineProps(["data", "loc"]);
+const props = defineProps(["data", "loc", "external_image"]);
 
 const arrowDiamond = ref(null);
 
@@ -43,11 +43,11 @@ defineExpose({
     /> -->
 
     <!-- live demo thumbnail -->
-    <DatocmsImage
+    <!-- <DatocmsImage
       v-else-if="data.media?.screen && loc == 'live-demo'"
       :data="data.media.screen.responsiveImage"
       class="h-full w-full"
-    />
+    /> -->
 
     <!-- texture background fallback -->
     <img
@@ -57,39 +57,38 @@ defineExpose({
     />
 
     <!-- product demo or video -->
-    <template v-if="loc != 'live-demo'">
-      <div
-        v-if="
-          data.media?.__typename == 'ProductDemoRecord' ||
-          data.media?.__typename == 'MediaVideoRecord'
-        "
-        class="absolute left-0 top-0 flex size-full items-center p-[6rem]"
-      >
-        <div class="relative w-full overflow-hidden rounded-base shadow-media">
-          <!-- pull thumbnail from product demo-->
-          <DatocmsImage
-            v-if="data.media.screen"
-            :data="data.media.screen.responsiveImage"
-          />
 
-          <!-- pull thumbnail from basic video -->
-          <DatocmsImage
-            v-else-if="data.media.image"
-            :data="data.media.image.responsiveImage"
-          />
+    <div
+      v-if="
+        data.media?.__typename == 'ProductDemoRecord' ||
+        data.media?.__typename == 'MediaVideoRecord'
+      "
+      class="absolute left-0 top-0 flex size-full items-center p-[6rem]"
+    >
+      <div class="relative w-full overflow-hidden rounded-base shadow-media">
+        <!-- pull thumbnail from product demo-->
+        <DatocmsImage
+          v-if="data.media.screen"
+          :data="data.media.screen.responsiveImage"
+        />
 
-          <!-- pull thumbnail from external video provider -->
-          <img
-            v-else-if="data.media.video?.external"
-            :src="data.media.video.external.thumbnailUrl"
-            class="size-full object-cover"
-          />
-          <!-- <div
+        <!-- pull thumbnail from basic video -->
+        <DatocmsImage
+          v-else-if="data.media.image"
+          :data="data.media.image.responsiveImage"
+        />
+
+        <!-- pull thumbnail from external video provider -->
+        <img
+          v-else-if="data.media.video?.external"
+          :src="external_image || data.media.video.external.thumbnailUrl"
+          class="size-full object-cover"
+        />
+        <!-- <div
           class="absolute left-0 top-0 size-full bg-[#2A3440] opacity-80"
         ></div> -->
-        </div>
       </div>
-    </template>
+    </div>
 
     <!-- has video loop -->
     <div
