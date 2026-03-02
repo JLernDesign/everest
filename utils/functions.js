@@ -401,7 +401,7 @@ export const preloadImg = (file) => {
 // text formatting
 export const formatText = (str) => {
   let formatted = str;
-  formatted = removeWidows(formatted);
+  //formatted = removeWidows(formatted);
   formatted = addLineBreaks(formatted);
   return formatted;
 };
@@ -568,4 +568,13 @@ export const removeTrailingSlash = (str) => {
     return str.slice(0, -1);
   }
   return str;
+};
+
+export const checkVideoDescription = (intro, vimeoData) => {
+  if (intro !== "") {
+    return intro;
+  }
+  if (vimeoData) {
+    return vimeoData.description;
+  }
 };

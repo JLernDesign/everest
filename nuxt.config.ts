@@ -68,6 +68,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       datoCmsToken: process.env.DATO_CMS_TOKEN,
+      vimeoAccessToken: process.env.NUXT_PUBLIC_VIMEO_ACCESS_TOKEN,
       BASE_URL: process.env.BASE_URL,
       NUXT_ENV: process.env.NUXT_ENV,
     },
@@ -83,16 +84,8 @@ export default defineNuxtConfig({
   }, */
 
   vite: {
-    define: {
-      __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: true,
-    },
-    build: {
-      minify: "terser",
-      terserOptions: {
-        compress: {
-          drop_console: true,
-        },
-      },
+    esbuild: {
+      drop: ["console"],
     },
   },
 

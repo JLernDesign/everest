@@ -486,6 +486,7 @@ const BasicContentFragment = gql`
 `;
 export const MediaPostFragment = gql`
   fragment MediaPostFragment on MediaPostRecord {
+    __typename
     id
     slug
     title

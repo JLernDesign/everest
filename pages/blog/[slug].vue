@@ -58,6 +58,7 @@ if (nextPostsData.value.allPosts.length < 3) {
 let ctx, mm;
 const min = 650;
 const main = ref();
+const loaded = ref(false);
 
 onMounted(() => {
   mm = gsap.matchMedia();
@@ -76,6 +77,10 @@ onMounted(() => {
 
   const theme = useState("theme");
   theme.value = "light";
+
+  setTimeout(() => {
+    loaded.value = true;
+  }, 200);
 });
 
 onUnmounted(() => {
@@ -186,6 +191,9 @@ const renderBlock = ({ record }) => {
     />
 
     <FooterLockup :data="data.blogLanding.footerCallout" />
+
+    <!-- cover image for fade in -->
+    <LoadCover :loaded="loaded" color="bg-jaffa" />
   </div>
 </template>
 

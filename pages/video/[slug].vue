@@ -28,6 +28,7 @@ if (
 let ctx, mm;
 const min = 650;
 const main = ref();
+const loaded = ref(false);
 
 onMounted(() => {
   if (article) {
@@ -48,6 +49,10 @@ onMounted(() => {
 
   const theme = useState("theme");
   theme.value = "light";
+
+  setTimeout(() => {
+    loaded.value = true;
+  }, 200);
 });
 
 onUnmounted(() => {
@@ -176,6 +181,9 @@ const renderBlock = ({ record }) => {
     </Section>
 
     <FooterLockup :data="data.mediaPage.footerCallout" />
+
+    <!-- cover image for fade in -->
+    <LoadCover :loaded="loaded" color="bg-jaffa" />
   </div>
 </template>
 

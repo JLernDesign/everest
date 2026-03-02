@@ -17,6 +17,15 @@ if (props.data.video.provider == "youtube") {
       :player-vars="{ rel: 0, start: starttime }"
       :video-id="data.video.providerUid"
     />
+
+    <!-- vimeo -->
+    <ScriptVimeoPlayer
+      v-if="data.video.provider == 'vimeo'"
+      width="100%"
+      height="auto"
+      :vimeo-options="{ autoplay: true, controls: true }"
+      :id="data.video.providerUid"
+    />
   </div>
 </template>
 

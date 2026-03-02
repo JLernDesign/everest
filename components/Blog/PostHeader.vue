@@ -1,7 +1,15 @@
 <script setup>
 const props = defineProps(["data", "type"]);
+
 const route = useRoute();
 const image = ref(null);
+const vimeoData = ref(null);
+
+/* get video data from Vimeo API if no data from CMS */
+if (props.data.__typename == "MediaPostRecord") {
+  vimeoData.value = await useVimeoData(props.data);
+}
+
 const isVideo = computed(() => {
   return props.data.media?.video?.file || props.data.media?.video?.external;
 });
@@ -29,14 +37,18 @@ const hoverOff = () => {
     <div
       class="left relative w-full py-[2.5rem] pb-[5rem] s:w-1/2 s:pb-[7.5rem] s:pl-side s:pr-[6.5rem] max-s:order-2 max-s:h-full"
     >
-      <BlogDetails :data="data" class="mb-[3rem] s:mb-[6.5rem]" />
+      <BlogDetails
+        :data="data"
+        class="mb-[3rem] s:mb-[6.5rem]"
+        :external_date="vimeoData?.created_time"
+      />
       <h1
         class="mb-[1.5rem] font-helvb text-md-mob leading-base s:mb-[3.2rem] s:text-md"
         data-datocms-noindex
       >
         {{ data.title }}
       </h1>
-      <p>{{ data.intro }}</p>
+      <p>{{ checkVideoDescription(data.intro, vimeoData) }}</p>
 
       <CtaGroup
         v-if="data.cta"
@@ -76,6 +88,7 @@ const hoverOff = () => {
       <!-- image -->
       <BlogThumbImage
         :data="data"
+        :external_image="vimeoData?.pictures?.base_link"
         ref="image"
         class="featured-image !aspect-[1.32] !h-full !w-full"
       />

@@ -14,7 +14,7 @@ onMounted(() => {
         video = videoID.value.file.video;
         provider = "mux";
       } else {
-        // youtube
+        // youtube or vimeo
         video = videoID.value.external;
         provider = videoID.value.external.provider;
       }
@@ -90,6 +90,17 @@ const closeVideoModal = (id) => {
           class="h-full w-full overflow-hidden rounded-base-mob s:rounded-base"
           :video-id="video.providerUid"
           ref="yt_player"
+        />
+
+        <!-- vimeo -->
+        <ScriptVimeoPlayer
+          v-if="video_ready && provider == 'vimeo'"
+          trigger="visible"
+          width="100%"
+          height="auto"
+          :vimeo-options="{ autoplay: true, controls: true }"
+          class="h-full w-full overflow-hidden rounded-base-mob s:rounded-base"
+          :id="video.providerUid"
         />
 
         <!-- close button -->

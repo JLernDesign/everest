@@ -172,6 +172,9 @@ export const landingQuery = gql`
             ...ResponsiveImageFragment
           }
         }
+        ... on FormBlockRecord {
+          hubspotId
+        }
       }
       landingFlexible {
         landingModules {
