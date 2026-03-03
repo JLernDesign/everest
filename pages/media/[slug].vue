@@ -14,7 +14,7 @@ const page = data.value.mediaPage;
 
 //const collections = data.value.allMediaCollections;
 const collections = data.value.allMediaCollections.filter(
-  (collection) => collection.tag?.slug != "ebooks",
+  (collection) => collection.tag?.slug != "guides",
 );
 
 // check for custom page data
@@ -30,7 +30,7 @@ const tagIds = {
   "product-demos": "cg00smj3TbioZKUzVg3s2A",
   video: "fyWxNDPCQeCC5Ue2d3rdtQ",
   podcasts: "Ug2zyP8QSZanoBxyhEZ1wA",
-  ebooks: "fCd4d2mrSAeBNYqcPSAZCw",
+  guides: "fCd4d2mrSAeBNYqcPSAZCw",
   "product-releases": "Ds3FqkEySgabeVQp0jgpUA",
 };
 const tagId = tagIds[route.params.slug];
