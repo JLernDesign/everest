@@ -14,7 +14,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="pt-banner bg-jaffa">
+  <div class="bg-skyblue pt-banner">
     <Seo :data="page.seo" />
     <AboutHero :data="page.heroHeadline" :stats="page.statsSlider" />
     <FlexibleBlocks :data="page.flexibleContent.modules" template="about" />

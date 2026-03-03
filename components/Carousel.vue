@@ -8,6 +8,7 @@ const props = defineProps({
   click: { default: false },
   start: { default: 0 },
   padding: { default: 0 },
+  func: { default: null },
 });
 
 let ctx;
@@ -49,6 +50,7 @@ onMounted(() => {
         activeElement && activeElement.classList.remove("active");
         element.classList.add("active");
         activeElement = element;
+        props.func && props.func(index);
       },
       onUpdate: (element, index) => {
         console.log("onUpdate", element, index);

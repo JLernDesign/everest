@@ -41,7 +41,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="pt-banner bg-jaffa">
+  <div class="bg-skyblue pt-banner">
     <Seo :data="page.seo" />
 
     <ProductHero

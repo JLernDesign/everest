@@ -129,6 +129,46 @@ const CtaFormFragment = gql`
   }
 `;
 
+const BasicCenteredTextFragment = gql`
+  fragment BasicCenteredTextFragment on BasicCenteredTextRecord {
+    __typename
+    header {
+      ...HeaderFragment
+    }
+  }
+`;
+
+const BasicSliderFragment = gql`
+  fragment BasicSliderFragment on BasicSliderRecord {
+    __typename
+    header {
+      ...HeaderFragment
+    }
+    imageSlides {
+      ...ResponsiveImageFragment
+    }
+  }
+`;
+
+const CoauthorModuleFragment = gql`
+  fragment CoauthorModuleFragment on CoauthorModuleRecord {
+    __typename
+    header {
+      ...HeaderFragment
+    }
+    authors {
+      name
+      title
+      photo {
+        url
+      }
+      workHistory {
+        text
+      }
+    }
+  }
+`;
+
 export const landingQuery = gql`
   query ($slug: String!) {
     paidLanding(filter: { slug: { eq: $slug } }) {
@@ -186,6 +226,9 @@ export const landingQuery = gql`
           ...CenteredTextFragment
           ...ImageFullFragment
           ...CtaFormFragment
+          ...BasicCenteredTextFragment
+          ...BasicSliderFragment
+          ...CoauthorModuleFragment
         }
       }
       footerCallout {
@@ -206,4 +249,7 @@ export const landingQuery = gql`
   ${CenteredTextFragment}
   ${ImageFullFragment}
   ${CtaFormFragment}
+  ${BasicCenteredTextFragment}
+  ${BasicSliderFragment}
+  ${CoauthorModuleFragment}
 `;

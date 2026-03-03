@@ -435,6 +435,15 @@ export const removeWidows = (string) => {
   return words.join(" ") + " " + formattedLastWords;
 };
 
+// converted to html field, add p tags if not already present
+export const formatIntro = (intro) => {
+  let txt = formatText(intro);
+  if (!txt.includes("<p>")) {
+    return `<p>${txt}</p>`;
+  }
+  return txt;
+};
+
 // shortcuts
 export const qs = (s, o = document) => o.querySelector(s);
 export const qsa = (s, o = document) => [...o.querySelectorAll(s)];

@@ -86,15 +86,14 @@ onMounted(() => {
 
       <div
         v-if="data.intro"
-        class="max-w-[62rem]"
+        class="max-w-[62rem] [&_a:hover]:text-red [&_a]:underline"
         :class="[
           align == 'center' && 'mx-auto',
           anim && 'anim-item',
           template == 'landing' && '!max-w-[100rem]',
         ]"
-      >
-        <p v-html="formatText(data.intro)"></p>
-      </div>
+        v-html="formatIntro(data.intro)"
+      ></div>
     </div>
 
     <!-- cta buttons -->

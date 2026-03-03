@@ -27,6 +27,11 @@ const linkTo = computed(() => {
     return props.data.externalLink;
   }
 
+  // document (guide)
+  if (props.data.media?.document) {
+    return props.data.media?.document.url;
+  }
+
   // internal video
   if (isVideo.value) {
     return "/video/" + props.data.slug + addUtm(route);

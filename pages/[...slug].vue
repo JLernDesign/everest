@@ -93,6 +93,24 @@ onBeforeRouteLeave(() => {
         :order="i"
       />
 
+      <LandingBasicCenteredText
+        v-if="module.__typename == 'BasicCenteredTextRecord'"
+        :data="module"
+        :order="i"
+      />
+
+      <LandingBasicSlider
+        v-if="module.__typename == 'BasicSliderRecord'"
+        :data="module"
+        :order="i"
+      />
+
+      <LandingCoauthors
+        v-if="module.__typename == 'CoauthorModuleRecord'"
+        :data="module"
+        :order="i"
+      />
+
       <LandingCtaForm
         v-if="module.__typename == 'CtaFormRecord'"
         :data="module"

@@ -100,15 +100,6 @@ const toggleVideo = (ev) => {
     ev == "enter" ? video.value.playVideo() : video.value.pauseVideo();
   }
 };
-
-// converted to html field, add p tags if not already present
-const formatIntro = (intro) => {
-  let txt = formatText(intro);
-  if (!txt.includes("<p>")) {
-    return `<p>${txt}</p>`;
-  }
-  return txt;
-};
 </script>
 
 <template>
@@ -143,6 +134,7 @@ const formatIntro = (intro) => {
     </h2>
 
     <div
+      v-if="data.intro"
       class="mx-auto max-w-[80rem] text-body-md-mob leading-md s:text-body-md [&_a:hover]:text-red [&_a]:underline"
       v-html="formatIntro(data.intro)"
     ></div>
