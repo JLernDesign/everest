@@ -118,6 +118,13 @@ onBeforeRouteLeave(() => {
       />
 
       <Faq v-if="module.__typename == 'FaqRecord'" :data="module" />
+
+      <SliderAscending
+        v-if="module.__typename == 'AscendingSliderRecord'"
+        :data="module"
+        :order="i"
+        template="landing"
+      />
     </template>
 
     <FooterLockup :data="page.footerCallout" />

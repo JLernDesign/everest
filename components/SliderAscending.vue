@@ -164,7 +164,10 @@ const duplicated = computed(() => {
     <div
       v-if="page_data.background == 'blue'"
       class="absolute left-0 top-0 w-full overflow-hidden"
-      :class="template == 'home' ? 'h-[125%]' : 'h-full'"
+      :class="[
+        template == 'home' ? 'h-[125%]' : 'h-full',
+        template == 'landing' ? 'overflow-visible' : '',
+      ]"
     >
       <UICloud
         type="3"
@@ -223,6 +226,7 @@ const duplicated = computed(() => {
                 :src="slide.image.url"
                 alt=""
                 class="h-auto w-[15.2rem] object-contain s:w-[22rem]"
+                :class="template == 'landing' ? 'w-[26rem] s:w-[36rem]' : ''"
               />
             </div>
 

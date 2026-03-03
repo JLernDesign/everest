@@ -8,6 +8,7 @@ import {
   FaqFragment,
   MediaSliderFragment,
   VideoFragment,
+  AscendingSliderFragment,
 } from "../fragments/global";
 
 const LogosBlockFragment = gql`
@@ -229,6 +230,7 @@ export const landingQuery = gql`
           ...BasicCenteredTextFragment
           ...BasicSliderFragment
           ...CoauthorModuleFragment
+          ...AscendingSliderFragment
         }
       }
       footerCallout {
@@ -252,4 +254,5 @@ export const landingQuery = gql`
   ${BasicCenteredTextFragment}
   ${BasicSliderFragment}
   ${CoauthorModuleFragment}
+  ${AscendingSliderFragment}
 `;
