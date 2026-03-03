@@ -27,7 +27,7 @@ const { data } = await useGraphqlQuery({
   },
 });
 const page = data.value.paidLanding;
-/* console.log(toRaw(page)); */
+console.log(toRaw(page));
 
 /* no page data, send to page not found */
 if (!page) {
