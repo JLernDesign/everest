@@ -26,6 +26,11 @@ export default defineNuxtConfig({
           defer: true,
           id: "hs-script-loader",
         },
+        {
+          textContent: `!function(e,t){var _=0;e.__default__=e.__default__||{},e.__default__.form_id=357046,e.__default__.team_id=674,e.__default__.listenToIds=["5350cf07-c779-4320-9bd6-a3ecc0bef59f"],function e(){var o=t.createElement("script");o.async=!0,o.src="https://import-cdn.default.com",o.onload=function(){!0,console.info("[Default.com] Powered by Default.com")},o.onerror=function(){++_<=3&&setTimeout(e,1e3*_)},t.head.appendChild(o)}()}(window,document);`,
+          tagPosition: "head",
+          type: "text/javascript",
+        },
       ],
     },
   },
