@@ -7,15 +7,15 @@ const props = defineProps(["data"]);
     <SectionHeader :data="data.header" template="landing" />
 
     <div
-      class="relative mx-auto mt-[2.5rem] flex max-w-base items-stretch justify-center s:mt-[5rem] s:gap-[5.5rem]"
+      class="relative mx-auto mt-[2.5rem] flex w-full max-w-base flex-col items-center gap-[2.5rem] s:mt-[5rem] s:flex-row s:items-stretch s:justify-center s:gap-[5.5rem]"
     >
       <div
         v-for="author in data.authors"
-        class="max-w-[45.5rem] flex-1 rounded-base-mob bg-white p-side-mob s:rounded-base s:p-[5rem]"
+        class="w-full max-w-[45.5rem] flex-1 rounded-base-mob bg-white p-side-mob s:rounded-base s:p-[5rem]"
       >
         <div class="flex flex-col">
           <div
-            class="mb-side aspect-[.88] max-w-[18rem] overflow-hidden rounded-base"
+            class="mb-[2.5rem] aspect-[.88] max-w-[18rem] overflow-hidden rounded-base s:mb-side"
           >
             <img
               v-if="author.photo"
@@ -29,18 +29,18 @@ const props = defineProps(["data"]);
             {{ author.name }}
           </h3>
           <div
-            class="mt-10 divide-y-1 divide-grayline border-y-1 border-grayline"
+            class="mt-6 divide-y-1 divide-grayline border-y-1 border-grayline s:mt-10"
           >
             <p
               v-if="author.title"
-              class="py-8 text-body-sm-mob leading-sm s:text-body-sm"
+              class="py-4 text-body-sm-mob leading-sm s:py-8 s:text-body-sm"
             >
               {{ author.title }}
             </p>
             <p
               v-for="item in author.workHistory"
               :key="item.id"
-              class="py-8 text-body-sm-mob leading-sm s:text-body-sm"
+              class="py-4 text-body-sm-mob leading-sm s:py-8 s:text-body-sm"
             >
               {{ item.text }}
             </p>
