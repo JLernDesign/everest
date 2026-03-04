@@ -1,5 +1,9 @@
 import gql from "graphql-tag";
-import { FooterFragment, LinkFragment } from "../fragments/global";
+import {
+  FooterFragment,
+  LinkFragment,
+  SingleLinkFragment,
+} from "../fragments/global";
 
 export const PostFragment = gql`
   fragment PostFragment on PostRecord {
@@ -98,8 +102,12 @@ export const postQuery = gql`
             __typename
             image {
               url
+              alt
             }
             caption
+            link {
+              ...SingleLinkFragment
+            }
           }
           ... on BlogTableRecord {
             id
@@ -148,6 +156,7 @@ export const postQuery = gql`
   ${PostFragment}
   ${FooterFragment}
   ${LinkFragment}
+  ${SingleLinkFragment}
 `;
 
 export const categoryQuery = gql`
