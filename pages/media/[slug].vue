@@ -12,10 +12,10 @@ const { data } = await useGraphqlQuery({
 });
 const page = data.value.mediaPage;
 
-//const collections = data.value.allMediaCollections;
-const collections = data.value.allMediaCollections.filter(
+const collections = data.value.allMediaCollections;
+/* const collections = data.value.allMediaCollections.filter(
   (collection) => collection.tag?.slug != "guides",
-);
+); */
 
 // check for custom page data
 const currentCollection = collections.find(

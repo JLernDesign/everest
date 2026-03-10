@@ -3,6 +3,9 @@ import {
   FooterFragment,
   LinkFragment,
   SingleLinkFragment,
+  VideoFragment,
+  MediaPostFragment,
+  ResponsiveImageFragment,
 } from "../fragments/global";
 
 export const PostFragment = gql`
@@ -55,6 +58,10 @@ export const blogQuery = gql`
       featuredPosts {
         ...PostFragment
       }
+      mediaTitle
+      featuredMedia {
+        ...MediaPostFragment
+      }
       footerCallout {
         ...FooterFragment
       }
@@ -74,6 +81,9 @@ export const blogQuery = gql`
   ${PostFragment}
   ${FooterFragment}
   ${LinkFragment}
+  ${ResponsiveImageFragment}
+  ${MediaPostFragment}
+  ${VideoFragment}
 `;
 
 export const postQuery = gql`

@@ -94,14 +94,6 @@ const renderBlock = ({ record }) => {
   // photo block
   if (record.__typename === "BlogImageRecord") {
     return h(BlogImage, { data: record });
-    /* return h("figure", { class: "content-block image" }, [
-      h("img", { src: record.image.url }),
-      h(
-        "figcaption",
-        { class: "block text-body-sm-mob s:text-body-sm text-left !mt-6" },
-        record.caption,
-      ),
-    ]); */
   }
 
   // quote block

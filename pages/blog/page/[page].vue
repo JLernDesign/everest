@@ -121,12 +121,19 @@ const categories = toRaw(allCategories.value).allCategories;
     <!-- featured posts -->
     <BlogFeatured :data="finalPageData" />
 
+    <!-- featured media -->
+    <BlogFeaturedMedia
+      v-if="finalPageData.featuredMedia.length > 0"
+      :data="finalPageData.featuredMedia"
+      :title="finalPageData.mediaTitle"
+    />
+
     <!-- email signup -->
-    <BlogSignup
+    <!-- <BlogSignup
       loc="blog"
       theme="light"
       class="pb-[2rem] s:pb-[10rem] max-s:pt-[5rem]"
-    />
+    /> -->
 
     <!-- thumbs -->
     <Section :side="false" class="s:!pt-0">
