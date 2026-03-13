@@ -7,6 +7,7 @@ import BlogTable from "~/components/Blog/Table.vue";
 import BlogDownload from "~/components/Blog/Download.vue";
 import BlogVideo from "~/components/Blog/Video.vue";
 import BlogImage from "~/components/Blog/Image.vue";
+import BlogQuote from "~/components/Blog/Quote.vue";
 
 const route = useRoute();
 
@@ -98,32 +99,7 @@ const renderBlock = ({ record }) => {
 
   // quote block
   if (record.__typename === "BlogQuoteRecord") {
-    return h(
-      "div",
-      {
-        class:
-          "content-block quote relative left-1/2 w-screen max-s:-ml-[50vw] s:-translate-x-1/2 -ml-[20rem] s:!my-[10rem] max-s:!my-[8rem]",
-      },
-      [
-        h(
-          "div",
-          {
-            class:
-              "quote-wrap s:bg-[url(/public/blog/quote-bg.svg)] bg-[url(/public/blog/quote-bg-mob.svg)] bg-cover s:px-[20rem] s:py-[13.2rem] py-[17rem] border-y-1 border-y-grayline",
-          },
-          [
-            h(
-              "blockquote",
-              {
-                class:
-                  "text-xl-mob s:text-xl -tracking-sm font-barlow-cond leading-xl text-center s:p-[8rem] p-[4rem] rounded-base-mob s:rounded-base bg-jaffa",
-              },
-              record.text,
-            ),
-          ],
-        ),
-      ],
-    );
+    return h(BlogQuote, { data: record });
   }
 
   // table block
