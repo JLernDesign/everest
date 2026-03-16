@@ -139,7 +139,7 @@ const getFooterStart = () => {
           </h3>
           <div
             v-if="data?.locations"
-            class="relative mt-4 space-y-[1.25rem] s:mt-side s:columns-2 s:space-y-[3rem]"
+            class="relative mt-4 space-y-[1.25rem] s:mt-side s:columns-2 s:space-y-[3rem] [&>div]:break-inside-avoid"
           >
             <div v-for="item in data.locations">
               <span class="font-helvh">{{ item.location }}</span
