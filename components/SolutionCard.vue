@@ -11,8 +11,10 @@ onMounted(() => {
   spacers = main.value.querySelectorAll(".spacer");
   bullets = main.value.querySelectorAll(".bullet");
 
-  // open first bullet by default
-  handleClick(0);
+  // if bullets, open first bullet by default
+  if (bullets.length > 0) {
+    handleClick(0);
+  }
 
   /* ctx = gsap.context((self) => {
     // animate items into place on scroll to section
@@ -113,7 +115,7 @@ const handleClick = (i) => {
               class="stat w-full space-y-5 s:w-1/2"
             >
               <h3
-                class="-tracking-sm font-barlow-cond text-xl-mob leading-xl s:text-xl"
+                class="font-barlow-cond text-xl-mob leading-xl -tracking-sm s:text-xl"
               >
                 {{ item.figure }}
               </h3>
