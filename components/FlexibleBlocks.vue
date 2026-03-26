@@ -47,6 +47,10 @@ const props = defineProps(["data", "template"]);
       v-if="module.__typename == 'FullPhotoRecord'"
       :data="module"
     />
+    <LazyLandingImageFull
+      v-if="module.__typename == 'ImageFullRecord'"
+      :data="module"
+    />
     <LazyIntegrations
       v-if="module.__typename == 'IntegrationListRecord' && template != 'about'"
       :data="module"

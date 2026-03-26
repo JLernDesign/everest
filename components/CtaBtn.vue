@@ -41,12 +41,21 @@ const hoverOff = () => {
     ease: "power3.in",
   });
 };
+
+const checkExternal = (external) => {
+  if (external && typeof external === "string") {
+    if (external && external.startsWith("http")) {
+      return "_blank";
+    }
+  }
+  return null;
+};
 </script>
 
 <template>
   <NuxtLink
     :to="data && getUrl(data) + addUtm(route, data.external)"
-    :target="data?.external && '_blank'"
+    :target="checkExternal(data?.external)"
     class="cta-btn inline-flex items-center rounded-btn bg-red px-[1.5rem] py-[1.1rem] font-helvh text-body-sm-mob text-skyblue s:px-[1.75rem] s:py-[1.4rem] s:text-body-sm"
     :class="stretch && 'justify-between'"
     @mouseenter="hoverOn"

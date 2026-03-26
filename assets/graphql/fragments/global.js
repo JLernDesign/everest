@@ -620,6 +620,18 @@ export const AifirstCalloutFragment = gql`
     }
   }
 `;
+const ImageFullFragment = gql`
+  fragment ImageFullFragment on ImageFullRecord {
+    __typename
+    header {
+      ...HeaderFragment
+    }
+    image {
+      ...ResponsiveImageFragment
+    }
+    bgColor
+  }
+`;
 
 export const FlexibleContentFragment = gql`
   fragment FlexibleContentFragment on FlexibleContentRecord {
@@ -643,6 +655,7 @@ export const FlexibleContentFragment = gql`
       ...BasicContentFragment
       ...MapModuleFragment
       ...FullPhotoFragment
+      ...ImageFullFragment
       ...HappeningsFragment
       ...EventsFragment
       ...CompareTableFragment
@@ -668,6 +681,7 @@ export const FlexibleContentFragment = gql`
   ${BasicContentFragment}
   ${MapModuleFragment}
   ${FullPhotoFragment}
+  ${ImageFullFragment}
   ${HappeningsFragment}
   ${EventsFragment}
   ${CompareTableFragment}
