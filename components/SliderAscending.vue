@@ -218,15 +218,17 @@ const duplicated = computed(() => {
             </h3>
 
             <!-- illustration -->
-            <div
-              class="illus absolute left-0 top-[12rem] z-0 flex w-full justify-center s:top-[20rem]"
-            >
+            <div class="illus z-0 flex w-full justify-center">
               <img
                 v-if="slide.image"
                 :src="slide.image.url"
                 alt=""
-                class="h-auto w-[15.2rem] object-contain s:w-[22rem]"
-                :class="template == 'landing' ? 'w-[26rem] s:w-[36rem]' : ''"
+                class="h-auto object-contain"
+                :class="
+                  template == 'landing'
+                    ? 'mt-12 size-[26rem] s:h-[25rem] s:w-[30rem]'
+                    : 'absolute left-0 top-[12rem] w-[15.2rem] s:top-[20rem] s:w-[22rem]'
+                "
               />
             </div>
 
