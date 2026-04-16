@@ -217,8 +217,22 @@ const duplicated = computed(() => {
               <span v-html="slide.headline"></span>
             </h3>
 
+            <div
+              class="illus absolute left-0 top-[12rem] z-0 flex w-full justify-center s:top-[20rem]"
+              style="touch-action: pan-y"
+            >
+              <img
+                src="https://www.datocms-assets.com/160976/1750689038-benefitshome_blue.png"
+                alt=""
+                class="h-auto w-[15.2rem] object-contain s:w-[22rem]"
+                style="touch-action: pan-y"
+              />
+            </div>
+
             <!-- illustration -->
-            <div class="illus z-0 flex w-full justify-center">
+            <div
+              class="illus absolute left-0 top-[12rem] z-0 flex w-full justify-center s:top-[20rem]"
+            >
               <img
                 v-if="slide.image"
                 :src="slide.image.url"
@@ -227,7 +241,7 @@ const duplicated = computed(() => {
                 :class="
                   template == 'landing'
                     ? 'mt-12 size-[26rem] s:h-[25rem] s:w-[30rem]'
-                    : 'absolute left-0 top-[12rem] w-[15.2rem] s:top-[20rem] s:w-[22rem]'
+                    : 'w-[15.2rem] s:w-[22rem]'
                 "
               />
             </div>
