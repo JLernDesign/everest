@@ -58,6 +58,10 @@ export const InternalFragment = gql`
         __typename
         slug
       }
+      ... on PaidLandingRecord {
+        __typename
+        slug
+      }
     }
   }
 `;

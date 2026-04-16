@@ -18,6 +18,8 @@ export default function (obj) {
         return "/case-studies";
       case "CaseStudyRecord":
         return "/case-studies/" + obj.internal.slug;
+      case "PaidLandingRecord":
+        return "/" + obj.internal.slug;
       case "WhySubpageRecord":
         return "/why/" + obj.internal.slug;
       case "ProductRecord":

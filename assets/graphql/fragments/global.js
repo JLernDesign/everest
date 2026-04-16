@@ -80,6 +80,10 @@ export const LinkFragment = gql`
         ... on CasestudyLandingRecord {
           __typename
         }
+        ... on PaidLandingRecord {
+          __typename
+          slug
+        }
       }
       external
       style
@@ -141,6 +145,10 @@ export const SingleLinkFragment = gql`
       }
       ... on CasestudyLandingRecord {
         __typename
+      }
+      ... on PaidLandingRecord {
+        __typename
+        slug
       }
     }
     external
