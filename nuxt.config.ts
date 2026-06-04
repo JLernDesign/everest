@@ -42,12 +42,8 @@ export default defineNuxtConfig({
     indexable: process.env.NUXT_ENV !== "production" ? false : true,
   },
 
-  scripts: {
-    registry: {
-      googleTagManager: {
-        id: "GTM-KS9LCPNL",
-      },
-    },
+  gtag: {
+    id: "G-K45KNXH47Z",
   },
 
   ssr: true,
@@ -68,6 +64,7 @@ export default defineNuxtConfig({
     /* "@nuxtjs/i18n", */
     "@nuxtjs/sitemap",
     "@nuxtjs/robots",
+    "nuxt-gtag",
   ],
 
   runtimeConfig: {
