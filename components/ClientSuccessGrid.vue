@@ -4,7 +4,7 @@ const props = defineProps(["data", "edge"]);
 
 <template>
   <Section
-    class="pb-section-bot-mob bg-jaffa s:pb-[20rem]"
+    class="bg-jaffa pb-section-bot-mob s:pb-[20rem]"
     :class="edge && 'pt-8 s:!pt-0'"
   >
     <UIJagEdge v-if="edge" color="fill-jaffa" />
@@ -17,7 +17,7 @@ const props = defineProps(["data", "edge"]);
       <div
         class="gradient absolute left-1/2 top-[24rem] hidden h-[178rem] w-[118rem] -translate-x-1/2 blur-[50px] s:block"
       >
-        <img src="/public/ui/big-bg-gradient.svg" alt="" />
+        <img src="/public/images/ui/big-bg-gradient.svg" alt="" />
       </div>
 
       <div

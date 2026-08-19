@@ -166,8 +166,8 @@ onUnmounted(() => {
         class="image has-break w-full overflow-hidden rounded-base-mob bg-cover px-[1.4rem] py-side s:h-auto s:min-h-[72.6rem] s:w-[72rem] s:rounded-base max-s:order-2"
         :class="
           layout == 'img-rt'
-            ? 'order-2 bg-[url(/ui/mt-red@2x.jpg)]'
-            : 'order-1 bg-[url(/ui/mt-blue@2x.jpg)]'
+            ? 'order-2 bg-[url(/images/ui/mt-red@2x.jpg)]'
+            : 'order-1 bg-[url(/images/ui/mt-blue@2x.jpg)]'
         "
       >
         <Carousel

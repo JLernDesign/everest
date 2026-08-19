@@ -187,12 +187,12 @@ const toggleSubMenus = (e) => {
           class="bottom-image absolute bottom-0 left-1/2 mt-[10rem] w-screen -translate-x-1/2 pb-[9.3rem]"
         >
           <div class="gradient absolute bottom-0 left-0 w-full">
-            <img src="/public/ui/menu-gradient.svg" />
+            <img src="/public/images/ui/menu-gradient.svg" />
           </div>
           <div
             class="clouds absolute -bottom-[13rem] left-1/2 ml-[9rem] w-[108.8rem] -translate-x-1/2"
           >
-            <img src="/public/ui/menu-clouds@2x.png" />
+            <img src="/public/images/ui/menu-clouds@2x.png" />
           </div>
           <div
             class="absolute bottom-0 z-10 h-[9.3rem] w-[108.8rem] bg-shadowblue"

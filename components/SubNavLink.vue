@@ -83,7 +83,7 @@ const toggleAccent = (state) => {
       "
       ref="accent"
     >
-      <img src="/public/ui/tri.svg" alt="" />
+      <img src="/public/images/ui/tri.svg" alt="" />
     </div>
     <span>{{ data.title }}</span>
   </button>

@@ -72,7 +72,7 @@ const copy_to_clipboard = () => {
   >
     <div class="menu relative">
       <div
-        class="cta relative overflow-hidden rounded-base-mob bg-skyblue bg-[url(/public/blog/sidebar-callout@2x.png)] bg-cover px-side-mob pb-[3rem] pt-[21.2rem] text-center s:rounded-base"
+        class="cta relative overflow-hidden rounded-base-mob bg-skyblue bg-[url(/public/images/blog/sidebar-callout@2x.png)] bg-cover px-side-mob pb-[3rem] pt-[21.2rem] text-center s:rounded-base"
       >
         <CtaGroup
           v-if="data.articleSidebar.cta"

@@ -1,21 +1,22 @@
 <script setup>
 const props = defineProps(["data"]);
+const config = useRuntimeConfig();
 </script>
 
 <template>
   <Section :hero="true" class="pb-[12rem] s:pb-section-bot-lg">
     <!-- bg elements -->
     <UIGlow
-      class="xxl:w-full left-1/2 top-0 hidden -translate-x-1/2 s:block [&_img]:w-full"
-      src="/why/gradient1.svg"
+      class="left-1/2 top-0 hidden -translate-x-1/2 s:block xxl:w-full [&_img]:w-full"
+      :src="`${config.app.baseURL}/images/why/gradient1.svg`"
     />
     <UIGlow
       class="bottom-0 left-1/2 hidden -translate-x-1/2 s:block [&_img]:w-full"
-      src="/why/gradient2.svg"
+      :src="`${config.app.baseURL}/images/why/gradient2.svg`"
     />
     <UIGlow
       class="left-0 top-0 block h-full w-full !blur-0 s:hidden [&_img]:h-full [&_img]:w-full"
-      src="/why/gradient-mob.svg"
+      :src="`${config.app.baseURL}/images/why/gradient-mob.svg`"
     />
     <div
       v-for="n in 2"
@@ -23,14 +24,14 @@ const props = defineProps(["data"]);
       :class="n == 1 ? 'left-0' : 'right-0 -scale-x-100'"
     >
       <img
-        src="/public/why/line-decor.svg"
+        src="/images/why/line-decor.svg"
         alt=""
         class="h-full w-full object-cover"
       />
     </div>
     <div class="ornament absolute bottom-0 left-0 block w-full s:hidden">
       <img
-        src="/public/why/line-decor-mob.svg"
+        src="/images/why/line-decor-mob.svg"
         alt=""
         class="h-full w-full object-cover"
       />

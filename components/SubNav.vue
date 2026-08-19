@@ -84,7 +84,7 @@ const closeMenu = () => {
         <div
           class="accent absolute -top-2 left-0 h-[1rem] w-[1.1rem] -translate-y-[1rem]"
         >
-          <img src="/public/ui/tri.svg" alt="" />
+          <img src="/public/images/ui/tri.svg" alt="" />
         </div>
         <span v-if="current" class="ul menu-link on text-red after:bg-red">{{
           current.title || current

@@ -75,7 +75,7 @@ const playVideo = (ev) => {
       <!-- body -->
       <div class="flex">
         <div
-          class="hidden w-[28.5%] bg-[url(/why/ai-module-lines1.svg)] bg-cover s:block"
+          class="hidden w-[28.5%] bg-[url(/images/why/ai-module-lines1.svg)] bg-cover s:block"
         ></div>
 
         <!-- text -->
@@ -105,7 +105,7 @@ const playVideo = (ev) => {
         </div>
 
         <div
-          class="hidden w-[28.5%] bg-[url(/why/ai-module-lines2.svg)] bg-cover s:block"
+          class="hidden w-[28.5%] bg-[url(/images/why/ai-module-lines2.svg)] bg-cover s:block"
         ></div>
       </div>
     </div>

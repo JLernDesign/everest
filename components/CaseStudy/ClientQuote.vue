@@ -1,5 +1,6 @@
 <script setup>
 const props = defineProps(["data", "last"]);
+const config = useRuntimeConfig();
 </script>
 
 <template>
@@ -19,11 +20,11 @@ const props = defineProps(["data", "last"]);
           : '-bottom-[10rem] s:bottom-[10rem]',
         n == 2 && last ? '!hidden' : '',
       ]"
-      src="/ui/edge-gradient.svg"
+      :src="`${config.app.baseURL}/images/ui/edge-gradient.svg`"
     />
 
     <div
-      class="quote-wrap relative border-y-1 border-y-grayline bg-jaffa bg-[url(/public/blog/quote-bg-mob.svg)] bg-cover py-[17rem] s:bg-[url(/public/blog/quote-bg.svg)] s:px-[20rem] s:py-[13.2rem]"
+      class="quote-wrap relative border-y-1 border-y-grayline bg-jaffa bg-[url(/public/images/blog/quote-bg-mob.svg)] bg-cover py-[17rem] s:bg-[url(/public/images/blog/quote-bg.svg)] s:px-[20rem] s:py-[13.2rem]"
     >
       <div class="rounded-base-mob bg-jaffa p-[4rem] s:rounded-base s:p-[8rem]">
         <blockquote

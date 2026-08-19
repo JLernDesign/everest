@@ -84,7 +84,7 @@ onUnmounted(() => {
         class="absolute -top-[30rem] left-1/2 z-0 h-[93rem] w-screen -translate-x-1/2 s:hidden"
       >
         <img
-          src="/public/about/map-gradient-mob.svg"
+          src="/public/images/about/map-gradient-mob.svg"
           alt=""
           class="h-full w-full"
         />
@@ -96,11 +96,11 @@ onUnmounted(() => {
         <div
           class="gradient absolute -top-[31rem] left-1/2 hidden h-[118rem] w-[180rem] -translate-x-1/2 blur-[50px] s:block"
         >
-          <img src="/public/ui/big-bg-gradient.svg" alt="" />
+          <img src="/public/images/ui/big-bg-gradient.svg" alt="" />
         </div>
 
         <!-- map -->
-        <img src="/public/about/map@2x.png" alt="" class="relative" />
+        <img src="/public/images/about/map@2x.png" alt="" class="relative" />
 
         <!-- pins -->
 
@@ -135,7 +135,7 @@ onUnmounted(() => {
         class="flex items-start gap-x-10 px-[1.5rem] py-8 text-body-sm-mob leading-sm"
       >
         <!-- <img
-          src="/public/about/map-pin-mob.svg"
+          src="/public/images/about/map-pin-mob.svg"
           alt=""
           class="mt-2 w-[4.5rem] shrink-0"
         /> -->

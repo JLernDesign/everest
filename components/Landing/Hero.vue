@@ -32,7 +32,7 @@ onUnmounted(() => {
     <div
       class="gradient glower absolute left-[65.2rem] top-[15.5rem] h-[69.4rem] w-[107.3rem] -scale-x-100 blur-[50px]"
     >
-      <img src="/public/ui/edge-gradient-sm.svg" alt="" />
+      <img src="/public/images/ui/edge-gradient-sm.svg" alt="" />
     </div>
     <UICloud
       type="2"

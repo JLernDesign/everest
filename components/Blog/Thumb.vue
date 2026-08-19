@@ -34,7 +34,7 @@ const linkTo = computed(() => {
 
   // internal video
   if (isVideo.value) {
-    return "/video/" + props.data.slug + addUtm(route);
+    return "/images/video/" + props.data.slug + addUtm(route);
   }
 
   // internal news post

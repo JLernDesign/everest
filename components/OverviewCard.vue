@@ -168,7 +168,7 @@ const getDelay = () => {
         <!-- slide nav -->
         <div
           v-if="nav"
-          class="slide-nav absolute bottom-0 left-0 hidden h-[10rem] w-[21rem] bg-[url(/public/ui/peak.png)] bg-contain bg-bottom bg-no-repeat s:block"
+          class="slide-nav absolute bottom-0 left-0 hidden h-[10rem] w-[21rem] bg-[url(/public/images/ui/peak.png)] bg-contain bg-bottom bg-no-repeat s:block"
         >
           <div class="flex h-full w-full flex-col justify-between">
             <div

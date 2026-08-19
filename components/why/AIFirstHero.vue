@@ -56,7 +56,7 @@ const playVideo = (ev) => {
       class="absolute left-0 top-0 hidden h-full w-[16rem] pt-hero-top s:block"
     >
       <img
-        src="/public/why/ai-first-side@2x.png"
+        src="/public/images/why/ai-first-side@2x.png"
         alt=""
         class="h-full w-full object-cover"
       />
@@ -82,7 +82,7 @@ const playVideo = (ev) => {
         class="relative left-1/2 w-screen -translate-x-1/2 text-whiteline s:hidden"
       />
       <div class="border-x border-x-whiteline s:aspect-[.76] s:w-[43%]">
-        <!-- <img src="/public/why/ai-first-hero@2x.png" alt="" /> -->
+        <!-- <img src="/public/images/why/ai-first-hero@2x.png" alt="" /> -->
         <VideoAnim
           file="Griflan - Everest - Clouds - V01"
           ref="video"

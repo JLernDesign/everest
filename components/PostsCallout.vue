@@ -1,6 +1,7 @@
 <script setup>
 import { featuredNewsQuery } from "~/assets/graphql/queries/news";
 const props = defineProps(["data", "type", "posts"]);
+const config = useRuntimeConfig();
 
 const { data: posts_data } = await useGraphqlQuery({
   query: featuredNewsQuery.loc.source.body,
@@ -17,7 +18,7 @@ const posts = props.posts || posts_data.value.allNewsPosts;
     <div class="absolute left-0 top-0 z-1 h-full w-full bg-jaffa"></div>
     <UIGlow
       class="-top-[5rem] z-0 h-[13.6rem] w-full s:-top-[13.6rem] s:blur-big"
-      src="/ui/edge-gradient.svg"
+      :src="`${config.app.baseURL}/images/ui/edge-gradient.svg`"
     />
 
     <div class="relative z-1">

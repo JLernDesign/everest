@@ -63,7 +63,7 @@ const openFirst = () => {
         :class="n == 1 ? 'left-0' : 'right-0 -scale-x-100'"
       >
         <img
-          src="/public/why/ai-side-blue1@2x.png"
+          src="/public/images/why/ai-side-blue1@2x.png"
           alt=""
           class="h-full w-full object-cover"
         />

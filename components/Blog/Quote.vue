@@ -13,7 +13,7 @@ const props = defineProps(["data"]);
           "div",
           {
             class:
-              "quote-wrap s:bg-[url(/public/blog/quote-bg.svg)] bg-[url(/public/blog/quote-bg-mob.svg)] bg-cover s:px-[20rem] s:py-[13.2rem] py-[17rem] border-y-1 border-y-grayline",
+              "quote-wrap s:bg-[url(/public/images/blog/quote-bg.svg)] bg-[url(/public/images/blog/quote-bg-mob.svg)] bg-cover s:px-[20rem] s:py-[13.2rem] py-[17rem] border-y-1 border-y-grayline",
           },
           [
             h(
@@ -35,7 +35,7 @@ const props = defineProps(["data"]);
     class="content-block quote relative left-1/2 -ml-[20rem] w-screen s:!my-[10rem] s:-translate-x-1/2 max-s:!my-[8rem] max-s:-ml-[50vw]"
   >
     <div
-      class="quote-wrap border-y-1 border-y-grayline bg-[url(/public/blog/quote-bg-mob.svg)] bg-cover py-[17rem] s:bg-[url(/public/blog/quote-bg.svg)] s:py-[8rem]"
+      class="quote-wrap border-y-1 border-y-grayline bg-[url(/public/images/blog/quote-bg-mob.svg)] bg-cover py-[17rem] s:bg-[url(/public/images/blog/quote-bg.svg)] s:py-[8rem]"
     >
       <div
         class="relative mx-auto flex flex-row justify-end s:!w-[132rem] max-s:flex-col max-s:pb-[5rem]"

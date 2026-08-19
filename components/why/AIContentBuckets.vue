@@ -33,7 +33,7 @@ onUnmounted(() => {
       ref="header"
     >
       <div
-        class="w-full border-x border-x-whiteline bg-[url(/why/ai-lines-bgfull.svg)] bg-cover px-side-mob py-[4rem] s:px-side s:py-[11.2rem]"
+        class="w-full border-x border-x-whiteline bg-[url(/images/why/ai-lines-bgfull.svg)] bg-cover px-side-mob py-[4rem] s:px-side s:py-[11.2rem]"
       >
         <div
           class="intro mx-auto space-y-[2.5rem] rounded-base-mob bg-shadowblue p-side-mob text-center s:w-[81rem] s:rounded-base s:p-[6rem]"

@@ -1,6 +1,7 @@
 <script setup>
 import { gsap } from "gsap";
 const props = defineProps(["data"]);
+const config = useRuntimeConfig();
 
 let main = ref(null);
 let ctx;
@@ -53,7 +54,7 @@ onUnmounted(() => {
       />
       <UIGlow
         class="glower h-[21.8rem] w-full"
-        src="/ui/edge-gradient.svg"
+        :src="`${config.app.baseURL}/images/ui/edge-gradient.svg`"
         :class="
           n == 1 ? 'top-[0rem] s:top-[8rem]' : 'bottom-[10rem] s:-bottom-[5rem]'
         "

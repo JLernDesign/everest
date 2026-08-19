@@ -1,7 +1,7 @@
 <script setup>
 import gsap from "gsap";
 const props = defineProps(["data", "mediaSlides"]);
-
+const config = useRuntimeConfig();
 const loaded = ref(false);
 const video = ref(null);
 const main = ref(null);
@@ -51,7 +51,7 @@ onUnmounted(() => {
       >
         <UIGlow
           class="glower left-[36.2rem] top-[8.3rem] h-[106.2rem] !w-[118.1rem] s:top-[19.7rem]"
-          src="/home/hero-glow.svg"
+          :src="`${config.app.baseURL}/images/home/hero-glow.svg`"
         />
         <UICloud
           type="2"

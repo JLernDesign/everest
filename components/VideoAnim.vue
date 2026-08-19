@@ -43,6 +43,7 @@ const ios = is.ios();
 }); */
 
 const video = ref(null);
+const config = useRuntimeConfig();
 
 const playVideo = () => {
   //console.log("play", video.value.currentTime);
@@ -78,17 +79,21 @@ defineExpose({
       <template v-if="alpha">
         <source
           v-if="safari || ios"
-          :src="`/video/${file}.mp4`"
+          :src="`${config.app.baseURL}/images/video/${file}.mp4`"
           type="video/mp4"
         />
         <source
           v-else-if="chrome || firefox || edge"
-          :src="`/video/${file}.webm`"
+          :src="`${config.app.baseURL}/images/video/${file}.webm`"
           type="video/webm"
         />
       </template>
 
-      <source v-else :src="`/video/${file}.mp4`" type="video/mp4" />
+      <source
+        v-else
+        :src="`${config.app.baseURL}/images/video/${file}.mp4`"
+        type="video/mp4"
+      />
     </video>
   </div>
 </template>

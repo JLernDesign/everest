@@ -18,9 +18,9 @@ const isHighlight = (item) => {
 };
 const formatContent = (item) => {
   if (item.toLowerCase() == "yes") {
-    return '<img class="check" src="/ui/table-yes.svg" alt="" />';
+    return '<img class="check" src="/images/ui/table-yes.svg" alt="" />';
   } else if (item.toLowerCase() == "no") {
-    return '<img class="check" src="/ui/table-no.svg" alt="" />';
+    return '<img class="check" src="/images/ui/table-no.svg" alt="" />';
   } else {
     return "<p>" + item + "</p>";
   }
@@ -48,7 +48,7 @@ const getMinWidth = () => {
         class="gradient absolute left-1/2 top-1/2 mt-[4rem] h-[120%] w-[50rem] -translate-x-1/2 -translate-y-1/2 blur-[50px] s:h-[130%] s:w-[180rem]"
       >
         <img
-          src="/public/ui/big-bg-gradient.svg"
+          src="/public/images/ui/big-bg-gradient.svg"
           alt=""
           class="h-full w-full object-cover"
         />

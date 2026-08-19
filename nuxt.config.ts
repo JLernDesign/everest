@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
 
   app: {
-    baseURL: "/",
+    baseURL: "/everest/",
     head: {
       title: "Everest",
       htmlAttrs: { lang: "en" },
@@ -46,14 +46,12 @@ export default defineNuxtConfig({
     id: "G-K45KNXH47Z",
   },
 
-  ssr: true,
-
   nitro: {
     prerender: {
       failOnError: false,
       crawlLinks: true,
     },
-    preset: "netlify",
+    preset: "netlify-static",
   },
 
   modules: [

@@ -64,7 +64,7 @@ const hoverOff = () => {
         class="accent absolute -left-[.5rem] -top-[.5rem] h-[1rem] w-[1.1rem]"
         ref="accent"
       >
-        <img src="/public/ui/tri.svg" alt="" />
+        <img src="/public/images/ui/tri.svg" alt="" />
       </li>
       <li
         v-for="n in totalPages"

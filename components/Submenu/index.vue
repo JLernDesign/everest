@@ -21,7 +21,7 @@ const handleClick = (item) => {
     class="submenu absolute left-0 top-full z-0 mt-[2.25rem] hidden min-w-full translate-y-[1.5rem] opacity-0 before:absolute before:-top-[3rem] before:left-1/2 before:h-[3rem] before:w-[30rem] before:-translate-x-1/2 before:content-['']"
   >
     <div
-      class="menu-bg absolute left-1/2 -translate-x-1/2 rounded-base-mob bg-shadowblue bg-[url(/ui/menu-texture@2x.webp)] bg-cover p-[1.5rem] shadow-submenu s:rounded-base"
+      class="menu-bg absolute left-1/2 -translate-x-1/2 rounded-base-mob bg-shadowblue bg-[url(/images/ui/menu-texture@2x.webp)] bg-cover p-[1.5rem] shadow-submenu s:rounded-base"
       :class="id == productId ? 'w-[90rem]' : 'w-[41rem]'"
     >
       <ul

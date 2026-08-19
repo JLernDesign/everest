@@ -3,6 +3,7 @@ const props = defineProps(["type", "data", "close_func"]);
 const route = useRoute();
 const activePage = ref("");
 
+const config = useRuntimeConfig();
 // watch for page change to update nav
 watch(
   () => route.path,
@@ -33,7 +34,7 @@ onMounted(() => {
   setActive();
 
   // preload hidden menu images
-  preloadImg("/ui/menu-texture@2x.webp");
+  preloadImg(`${config.app.baseURL}/images/ui/menu-texture@2x.webp`);
 });
 </script>
 

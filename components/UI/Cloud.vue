@@ -10,6 +10,7 @@ const props = defineProps([
   "delay",
   "container",
 ]);
+const config = useRuntimeConfig();
 </script>
 
 <template>
@@ -32,7 +33,7 @@ const props = defineProps([
         :style="{ animationDuration: speed + 's', animationDelay: delay + 's' }"
       >
         <img
-          :src="`/ui/cloud-type${type}.png`"
+          :src="`${config.app.baseURL}/images/ui/cloud-type${type}.png`"
           alt=""
           :class="[
             type == 1 && 'w-[129.3rem]',

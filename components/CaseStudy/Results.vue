@@ -2,6 +2,7 @@
 import gsap from "gsap";
 
 const props = defineProps(["data", "slider"]);
+const config = useRuntimeConfig();
 const section = ref(null);
 const main = ref(null);
 let ctx;
@@ -39,7 +40,7 @@ const toggleVideo = (ev) => {
     <!-- bg elements -->
     <UIGlow
       class="-top-[5rem] z-0 h-[13.6rem] w-full s:-top-[13.6rem] s:blur-big"
-      src="/ui/edge-gradient.svg"
+      :src="`${config.app.baseURL}/images/ui/edge-gradient.svg`"
     />
     <UICloud
       type="3"

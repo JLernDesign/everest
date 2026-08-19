@@ -93,7 +93,7 @@ const renderBlock = ({ record }) => {
           "div",
           {
             class:
-              "quote-wrap s:bg-[url(/public/blog/quote-bg.svg)] bg-[url(/public/blog/quote-bg-mob.svg)] bg-cover s:px-[20rem] s:py-[13.2rem] py-[17rem] border-y-1 border-y-grayline",
+              "quote-wrap s:bg-[url(/public/images/blog/quote-bg.svg)] bg-[url(/public/images/blog/quote-bg-mob.svg)] bg-cover s:px-[20rem] s:py-[13.2rem] py-[17rem] border-y-1 border-y-grayline",
           },
           [
             h(

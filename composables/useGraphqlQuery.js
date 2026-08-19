@@ -17,10 +17,7 @@ export default (options) => {
     headers: {
       Authorization: `Bearer ${runtimeConfig.public.datoCmsToken}`,
       ...(runtimeConfig.public.NUXT_ENV == "staging" && {
-        "X-Environment": "staging",
-      }),
-      ...(runtimeConfig.public.NUXT_ENV !== "production" && {
-        "X-Include-Drafts": true,
+        "X-Environment": "old-everest-site",
       }),
     },
     body: computed(() => {

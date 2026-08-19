@@ -6,6 +6,7 @@ const props = defineProps(["data", "order", "videoFile", "demoVideo"]);
 const loaded = ref(false);
 const main = ref(null);
 const video = ref(null);
+const config = useRuntimeConfig();
 let ctx;
 
 onMounted(() => {
@@ -56,7 +57,7 @@ onUnmounted(() => {
     <!-- bg elements -->
     <UIGlow
       class="glower bottom-[0rem] left-1/2 hidden h-[36rem] !w-[118rem] -translate-x-1/2 s:block"
-      src="/ui/edge-gradient-sm.svg"
+      :src="`${config.app.baseURL}/images/ui/edge-gradient-sm.svg`"
     />
     <UICloud
       type="2"

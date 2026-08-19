@@ -7,7 +7,7 @@ const props = defineProps(["data"]);
 <template>
   <Section class="bg-skyblue text-center text-white s:!py-side max-s:p-0">
     <div
-      class="bg-[url(/ui/quote-bg@2x.jpg)] bg-cover pb-[8rem] pt-20 s:rounded-base s:pb-[11.5rem] s:pt-[7.6rem] max-s:px-side-mob"
+      class="bg-[url(/images/ui/quote-bg@2x.jpg)] bg-cover pb-[8rem] pt-20 s:rounded-base s:pb-[11.5rem] s:pt-[7.6rem] max-s:px-side-mob"
     >
       <div
         v-if="data.image"
@@ -17,7 +17,7 @@ const props = defineProps(["data"]);
       </div>
 
       <blockquote
-        class="-tracking-sm relative mx-auto max-w-[125rem] font-barlow-cond text-xl-mob leading-xl s:text-xl"
+        class="relative mx-auto max-w-[125rem] font-barlow-cond text-xl-mob leading-xl -tracking-sm s:text-xl"
       >
         <div class="quote lt absolute -top-[5.5rem] s:-left-[3.5rem]">“</div>
         <div

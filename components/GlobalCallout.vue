@@ -129,7 +129,7 @@ const playVideo = (ev) => {
 
       <!-- seal -->
       <div class="absolute right-0 top-0 hidden p-side-mob s:block s:p-side">
-        <img src="/public/ui/tri-erp.svg" alt="" class="w-[12.2rem]" />
+        <img src="/public/images/ui/tri-erp.svg" alt="" class="w-[12.2rem]" />
       </div>
     </div>
   </div>

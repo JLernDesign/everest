@@ -22,7 +22,7 @@ const props = defineProps({ data: { default: null }, icon: { default: true } });
       :class="n == 1 ? 'left-0 order-1' : 'right-0 order-3'"
     >
       <img
-        src="/public/blog/line-decor.png"
+        src="/public/images/blog/line-decor.png"
         alt=""
         class="relative float-right h-full w-[36.3rem] max-w-none object-cover"
         :class="n == 1 ? 'right-0' : 'left-0 -scale-x-100'"
@@ -31,7 +31,7 @@ const props = defineProps({ data: { default: null }, icon: { default: true } });
 
     <div class="text order-2 shrink-0 pt-[4.5rem] s:pb-[5rem]">
       <h2
-        class="-tracking-md-mob font-barlow-cond text-[6.5rem] uppercase leading-xxl s:text-xxl s:-tracking-md"
+        class="font-barlow-cond text-[6.5rem] uppercase leading-xxl -tracking-md-mob s:text-xxl s:-tracking-md"
       >
         {{ data.title }}
       </h2>

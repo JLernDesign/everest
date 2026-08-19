@@ -186,7 +186,7 @@ const createForm = (id) => {
           class="absolute bottom-0 left-0 h-[7.6rem] w-full overflow-hidden rounded-b-base-mob s:rounded-b-base"
         >
           <img
-            src="/ui/modal-bglines.svg"
+            src="/images/ui/modal-bglines.svg"
             alt=""
             class="h-full w-full object-cover"
           />

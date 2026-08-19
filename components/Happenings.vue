@@ -1,5 +1,6 @@
 <script setup>
 const props = defineProps(["theme", "data"]);
+const config = useRuntimeConfig();
 const mobile = breakpoints.smallerOrEqual("tablet1");
 const active = 0;
 const carouselRef = ref(null);
@@ -82,7 +83,7 @@ onUnmounted(() => {
     <template v-if="data.jaggedEdge">
       <UIGlow
         class="transform-origin-left scale-60 -top-[18rem] h-[60rem] w-[116rem] s:-top-[35rem] s:h-[35rem] s:w-[116rem] s:scale-100 max-s:left-1/2 max-s:translate-x-[-50%] max-s:blur-big"
-        src="/ui/callout-bot-gradient.svg"
+        :src="`${config.app.baseURL}/images/ui/callout-bot-gradient.svg`"
       />
       <div
         class="gradient-cover absolute left-0 top-0 z-0 h-full w-full bg-jaffa"
@@ -94,7 +95,7 @@ onUnmounted(() => {
 
     <!-- slide module -->
     <div
-      class="max-w-content mx-auto mt-[3rem] flex s:mt-md"
+      class="mx-auto mt-[3rem] flex max-w-content s:mt-md"
       v-if="data.slides && data.slides.length > 0"
       :class="data.slides.length > 1 && 's:divide-x-1 s:divide-grayline'"
       ref="main"

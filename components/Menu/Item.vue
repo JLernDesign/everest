@@ -195,7 +195,7 @@ const toggleSubMenu = (e) => {
 
       <!-- mobile arrow -->
       <div v-if="type == 'mobile' && submenu" class="arrow">
-        <img src="/public/ui/chevron.svg" alt="" />
+        <img src="/public/images/ui/chevron.svg" alt="" />
       </div>
     </NuxtLink>
 
@@ -210,7 +210,7 @@ const toggleSubMenu = (e) => {
     <div
       class="accent absolute -top-[1rem] left-0 w-[1.1rem] -translate-x-[1rem] -translate-y-[1rem] opacity-0"
     >
-      <img src="/public/ui/tri.svg" alt="" />
+      <img src="/public/images/ui/tri.svg" alt="" />
     </div>
   </li>
 </template>

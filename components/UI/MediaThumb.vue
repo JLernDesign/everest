@@ -1,7 +1,7 @@
 <script setup>
 import { Image as DatocmsImage } from "vue-datocms";
 const props = defineProps(["data", "loc"]);
-
+const config = useRuntimeConfig();
 const title = ref(true);
 
 const linkTo = computed(() => {
@@ -77,7 +77,9 @@ defineExpose({
       <img
         v-else
         :src="
-          loc == 'landing' ? '/video/media-bg-lg.jpg' : '/video/media-bg.jpg'
+          loc == 'landing'
+            ? `${config.app.baseURL}/images/video/media-bg-lg.jpg`
+            : `${config.app.baseURL}/images/video/media-bg.jpg`
         "
         class="absolute left-0 top-0 size-full"
       />

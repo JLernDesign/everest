@@ -37,7 +37,7 @@ const color = "green";
           <template v-if="block.__typename == 'ImageBlockRecord'">
             <div
               class="content-image rounded-base-mob bg-cover px-[5rem] py-[8rem] s:rounded-base s:p-[11.5rem]"
-              :style="`background-image:url(/ui/mt-${color}@2x.jpg)`"
+              :style="`background-image:url(/images/ui/mt-${color}@2x.jpg)`"
             >
               <div class="rounded-base-mob bg-white p-4 s:rounded-base">
                 <img v-if="block.image" :src="block.image.url" alt="" />

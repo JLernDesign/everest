@@ -52,7 +52,7 @@ defineExpose({
     <!-- texture background fallback -->
     <img
       v-else
-      src="/video/media-bg.jpg"
+      src="/images/video/media-bg.jpg"
       class="absolute left-0 top-0 size-full"
     />
 

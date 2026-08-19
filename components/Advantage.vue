@@ -46,7 +46,7 @@ props.data.color == "gray" ? (color = "text-white") : null;
           <template v-if="block.__typename == 'AdvantageTextRecord'">
             <div
               class="content-text bullets lines rounded-base-mob bg-cover p-[1.4rem] s:rounded-base [&_ul]:divide-y-1 [&_ul]:divide-grayline [&_ul]:border-y-1 [&_ul]:border-grayline [&_ul]:text-body-sm-mob [&_ul]:s:text-body-sm"
-              :style="`background-image:url(/ui/mt-${data.color}@2x.jpg)`"
+              :style="`background-image:url(/images/ui/mt-${data.color}@2x.jpg)`"
             >
               <div
                 class="space-y-16 rounded-sm bg-jaffa px-[1.4rem] py-[3rem] s:p-[3.2rem]"
@@ -80,7 +80,7 @@ props.data.color == "gray" ? (color = "text-white") : null;
           <template v-if="block.__typename == 'AdvantageImageRecord'">
             <div
               class="content-image rounded-base-mob bg-cover px-[5rem] py-[8rem] s:rounded-base s:p-[11.5rem]"
-              :style="`background-image:url(/ui/mt-${data.color}@2x.jpg)`"
+              :style="`background-image:url(/images/ui/mt-${data.color}@2x.jpg)`"
             >
               <div class="rounded-base-mob bg-white p-4 s:rounded-base">
                 <img v-if="block.image" :src="block.image.url" alt="" />

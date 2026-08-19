@@ -57,7 +57,7 @@ const toggle = (state) => {
           {{ item.text }}
         </p>
         <div class="item w-6 shrink-0">
-          <img src="/public/ui/diamond-sm.svg" alt="" />
+          <img src="/public/images/ui/diamond-sm.svg" alt="" />
         </div>
       </div>
     </div>
