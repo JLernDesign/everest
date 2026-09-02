@@ -1,14 +1,22 @@
-<script setup>
+<script setup lang="ts">
+import { print } from "graphql";
+import type { SeoMetaTagType } from "vue-datocms";
 import { homeQuery } from "~/assets/graphql/queries/home";
+import type { HomePage, HomeQueryData } from "~/types/home";
 
 const loaded = ref(false);
 const intro = ref(null);
 
-const { data } = await useGraphqlQuery({
-  query: homeQuery.loc.source.body,
+const { data } = await useGraphqlQuery<HomeQueryData>({
+  query: print(homeQuery),
 });
-const page = data.value.home;
-const title = page.seo.find((meta) => meta.tag === "title");
+
+const page = data.value?.home as HomePage | null;
+if (!page) {
+  throw new Error("Failed to load home page");
+}
+
+const title = page.seo.find((meta: SeoMetaTagType) => meta.tag === "title");
 
 onMounted(() => {
   window.scrollTo(0, 0);
@@ -23,8 +31,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="pt-banner bg-skyblue">
-    <Seo :data="page.seo" :title="title.content" />
+  <div class="bg-skyblue pt-banner">
+    <Seo :data="page.seo" :title="title?.content" />
     <HomeHero
       v-if="page.hero"
       :data="page.hero"

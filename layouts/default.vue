@@ -1,6 +1,8 @@
-<script setup>
+<script setup lang="ts">
 import { menuQuery } from "~/assets/graphql/queries/menu";
 import { useElementSize } from "@vueuse/core";
+import { print } from "graphql";
+import type { MenuQueryData } from "~/types/menu";
 
 /* const { locale } = useI18n(); */
 
@@ -24,10 +26,15 @@ const queryVariables = computed(() => {
 });
 
 /* fetch menu data */
-const { data: menu_data } = await useGraphqlQuery({
-  query: menuQuery.loc.source.body,
+const { data: menu_data_raw } = await useGraphqlQuery<MenuQueryData>({
+  query: print(menuQuery),
   variables: queryVariables,
 });
+
+const menu_data = menu_data_raw.value as MenuQueryData | null;
+if (!menu_data) {
+  throw new Error("Failed to load menu");
+}
 
 /* watch layout shift for scrolltrigger refresh */
 watch(height, () => {
@@ -36,7 +43,7 @@ watch(height, () => {
 
 onMounted(() => {
   // set banner gap
-  const root = document.querySelector(":root");
+  const root = document.documentElement as HTMLElement;
   if (banner.value) {
     root.style.setProperty("--banner-gap", "3.6rem");
   } else {
