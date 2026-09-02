@@ -1,5 +1,27 @@
-<script setup>
-const props = defineProps(["data"]);
+<script setup lang="ts">
+const props = defineProps<{
+  data: {
+    type: Object;
+    required: true;
+    color: string;
+    eyebrow: string;
+    headline: string;
+    contentBlocks: any[];
+    stats: {
+      stats: {
+        figure: string;
+        label: string;
+      }[];
+    };
+    image: {
+      url: string;
+    };
+  };
+}>();
+
+if (!props.data) {
+  throw new Error("Advantage component requires data");
+}
 
 // format text color for tailwind
 let color;
